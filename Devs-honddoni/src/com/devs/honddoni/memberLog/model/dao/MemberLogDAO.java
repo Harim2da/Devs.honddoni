@@ -1,5 +1,5 @@
 package com.devs.honddoni.memberLog.model.dao;
 
-public class memberLogDAO {
+public class MemberLogDAO {
 
 }
