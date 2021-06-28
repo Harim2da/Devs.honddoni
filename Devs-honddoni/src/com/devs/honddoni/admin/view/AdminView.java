@@ -1,5 +1,11 @@
 package com.devs.honddoni.admin.view;
 
-public class AdminView {
+import javax.swing.JFrame;
+
+public class AdminView extends JFrame{
+	public AdminView() {
+	}
+	
+	
 
 }
