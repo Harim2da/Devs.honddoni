@@ -12,55 +12,71 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class MemberLogView extends JFrame {
 	
+	private JFrame frame;
+	private JPanel contentPane;	
+	
 	public MemberLogView() {
-		getContentPane().setLayout(null);
-		
+		this.frame = new JFrame();
+		this.contentPane = new JPanel();
+	}
+
+	public void FirstView() {
+		frame.setBounds(100, 100, 516, 909);
+
+		contentPane.setLayout(null);
+		contentPane.setBounds(0, 0, 500, 870);
+
 		JButton btnNewButton = new JButton("logobutton");
+		btnNewButton.setIcon(new ImageIcon(MemberLogView.class.getResource("/memberLog/login/login_1_logo.png")));
+		btnNewButton.setBounds(174, 276, 152, 154);
+		btnNewButton.setBorderPainted(false);
+		getContentPane().add(btnNewButton);
+
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				FirstView();
+				MemberLogView();
+				frame.setVisible(false);
 			}
-		});
-		
-//		btnNewButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//			}
-//		});
-		
-		btnNewButton.setBounds(174, 276, 152, 154);
-		getContentPane().add(btnNewButton);
-		
+		});		
+
 		JButton btnNewButton_1 = new JButton("logo2 button");
+		btnNewButton_1.setIcon(new ImageIcon(MemberLogView.class.getResource("/memberLog/login/login_2_logo2.png")));
 		btnNewButton_1.setBounds(130, 443, 241, 99);
+		btnNewButton_1.setBorderPainted(false);
 		getContentPane().add(btnNewButton_1);
-	}
-	
-	private JPanel contentPane;
-	
-	public void FirstView() {
-		viewframe frame = new viewframe();
-		frame.setVisible(true);
+
+
+		contentPane.add(btnNewButton);
+		contentPane.add(btnNewButton_1);
+
 		frame.getContentPane().add(contentPane);
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 516, 909);
-		
-		contentPane = new JPanel();
-		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 500, 870);
-		contentPane.add(panel);
-		
-		
-		
+
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
-	
-	public void MemberLogView() {}	
+
+	public void MemberLogView() {
+		frame.setBounds(100, 100, 516, 909);
+
+		contentPane.setLayout(null);
+		contentPane.setBounds(0, 0, 500, 870);
+		
+		
+		
+		
+		frame.getContentPane().add(contentPane);
+
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+
+	}
+
 }
