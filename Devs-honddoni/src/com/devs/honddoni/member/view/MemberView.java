@@ -31,7 +31,7 @@ public class MemberView extends JFrame{
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\yhg92\\Downloads\\Group 1014.png"));
-		btnNewButton.setBounds(37, 33, 34, 20);
+		btnNewButton.setBounds(35, 33, 34, 20);
 		getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("");
