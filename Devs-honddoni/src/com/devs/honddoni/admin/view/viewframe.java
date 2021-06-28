@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.awt.Rectangle;
 
 public class viewframe extends JFrame {
 
@@ -51,6 +52,9 @@ public class viewframe extends JFrame {
 		contentPane.add(panel);
 		
 		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setBounds(new Rectangle(35, 129, 430, 121));
+		btnNewButton_1.setContentAreaFilled(false);
+		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\명길\\Downloads\\Group 744.png"));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
