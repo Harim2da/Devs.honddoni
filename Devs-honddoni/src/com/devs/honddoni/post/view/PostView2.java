@@ -57,6 +57,122 @@ public class PostView2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
+		JButton btnNewButton_99_1 = new JButton("");
+		btnNewButton_99_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		JButton btnNewButton_99_1_1_1_1_1_1_1_1_1 = new JButton("");
+		btnNewButton_99_1_1_1_1_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99_1_1_1_1_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_99_1_1_1_1_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_99_1_1_1_1_1_1_1_1_1.setBounds(435, 775, 23, 23);
+		panel.add(btnNewButton_99_1_1_1_1_1_1_1_1_1);
+		
+		JButton btnNewButton_99_1_1_1_1_1_1_1_1 = new JButton("");
+		btnNewButton_99_1_1_1_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99_1_1_1_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_99_1_1_1_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_99_1_1_1_1_1_1_1_1.setBounds(435, 711, 23, 23);
+		panel.add(btnNewButton_99_1_1_1_1_1_1_1_1);
+		
+		JButton btnNewButton_99_1_1_1_1_1_1_1 = new JButton("");
+		btnNewButton_99_1_1_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99_1_1_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_99_1_1_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_99_1_1_1_1_1_1_1.setBounds(435, 648, 23, 23);
+		panel.add(btnNewButton_99_1_1_1_1_1_1_1);
+		
+		JButton btnNewButton_99_1_1_1_1_1_1 = new JButton("");
+		btnNewButton_99_1_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99_1_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_99_1_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_99_1_1_1_1_1_1.setBounds(435, 578, 23, 23);
+		panel.add(btnNewButton_99_1_1_1_1_1_1);
+		
+		JButton btnNewButton_99_1_1_1_1_1 = new JButton("");
+		btnNewButton_99_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_99_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_99_1_1_1_1_1.setBounds(435, 511, 23, 23);
+		panel.add(btnNewButton_99_1_1_1_1_1);
+		
+		JButton btnNewButton_99_1_1_1_1 = new JButton("");
+		btnNewButton_99_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_99_1_1_1_1.setBorderPainted(false);
+		btnNewButton_99_1_1_1_1.setBounds(435, 444, 23, 23);
+		panel.add(btnNewButton_99_1_1_1_1);
+		
+		JButton btnNewButton_99_1_1_1 = new JButton("");
+		btnNewButton_99_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99_1_1_1.setContentAreaFilled(false);
+		btnNewButton_99_1_1_1.setBorderPainted(false);
+		btnNewButton_99_1_1_1.setBounds(435, 378, 23, 23);
+		panel.add(btnNewButton_99_1_1_1);
+		
+		JButton btnNewButton_99_1_1 = new JButton("");
+		btnNewButton_99_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99_1_1.setContentAreaFilled(false);
+		btnNewButton_99_1_1.setBorderPainted(false);
+		btnNewButton_99_1_1.setBounds(435, 311, 23, 23);
+		panel.add(btnNewButton_99_1_1);
+		btnNewButton_99_1.setContentAreaFilled(false);
+		btnNewButton_99_1.setBorderPainted(false);
+		btnNewButton_99_1.setBounds(435, 244, 23, 23);
+		panel.add(btnNewButton_99_1);
+		
+		JButton btnNewButton_5_1_1_1_1_1_1_1_1_1 = new JButton("");
+		btnNewButton_5_1_1_1_1_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentUpdateButton.png")));
+		btnNewButton_5_1_1_1_1_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_5_1_1_1_1_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_5_1_1_1_1_1_1_1_1_1.setBounds(402, 775, 23, 23);
+		panel.add(btnNewButton_5_1_1_1_1_1_1_1_1_1);
+		
+		JButton btnNewButton_5_1_1_1_1_1_1_1_1 = new JButton("");
+		btnNewButton_5_1_1_1_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentUpdateButton.png")));
+		btnNewButton_5_1_1_1_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_5_1_1_1_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_5_1_1_1_1_1_1_1_1.setBounds(402, 711, 23, 23);
+		panel.add(btnNewButton_5_1_1_1_1_1_1_1_1);
+		
+		JButton btnNewButton_5_1_1_1_1_1_1_1 = new JButton("");
+		btnNewButton_5_1_1_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentUpdateButton.png")));
+		btnNewButton_5_1_1_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_5_1_1_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_5_1_1_1_1_1_1_1.setBounds(402, 648, 23, 23);
+		panel.add(btnNewButton_5_1_1_1_1_1_1_1);
+		
+		JButton btnNewButton_5_1_1_1_1_1_1 = new JButton("");
+		btnNewButton_5_1_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentUpdateButton.png")));
+		btnNewButton_5_1_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_5_1_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_5_1_1_1_1_1_1.setBounds(402, 578, 23, 23);
+		panel.add(btnNewButton_5_1_1_1_1_1_1);
+		
+		JButton btnNewButton_5_1_1_1_1_1 = new JButton("");
+		btnNewButton_5_1_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentUpdateButton.png")));
+		btnNewButton_5_1_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_5_1_1_1_1_1.setBorderPainted(false);
+		btnNewButton_5_1_1_1_1_1.setBounds(402, 511, 23, 23);
+		panel.add(btnNewButton_5_1_1_1_1_1);
+		
+		JButton btnNewButton_5_1_1_1_1 = new JButton("");
+		btnNewButton_5_1_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentUpdateButton.png")));
+		btnNewButton_5_1_1_1_1.setContentAreaFilled(false);
+		btnNewButton_5_1_1_1_1.setBorderPainted(false);
+		btnNewButton_5_1_1_1_1.setBounds(402, 444, 23, 23);
+		panel.add(btnNewButton_5_1_1_1_1);
+		
+		JButton btnNewButton_5_1_1_1 = new JButton("");
+		btnNewButton_5_1_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentUpdateButton.png")));
+		btnNewButton_5_1_1_1.setContentAreaFilled(false);
+		btnNewButton_5_1_1_1.setBorderPainted(false);
+		btnNewButton_5_1_1_1.setBounds(402, 378, 23, 23);
+		panel.add(btnNewButton_5_1_1_1);
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setIcon(new ImageIcon(PostView2.class.getResource("/common/Group 1014.png")));
@@ -102,9 +218,26 @@ public class PostView2 extends JFrame {
 		btnNewButton_5.setBounds(402, 178, 23, 23);
 		panel.add(btnNewButton_5);
 		
-		JButton btnNewButton_6 = new JButton("");
-		btnNewButton_6.setBounds(330, 231, 105, 27);
-		panel.add(btnNewButton_6);
+		JButton btnNewButton_5_1 = new JButton("");
+		btnNewButton_5_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentUpdateButton.png")));
+		btnNewButton_5_1.setContentAreaFilled(false);
+		btnNewButton_5_1.setBorderPainted(false);
+		btnNewButton_5_1.setBounds(402, 244, 23, 23);
+		panel.add(btnNewButton_5_1);
+		
+		JButton btnNewButton_99 = new JButton("");
+		btnNewButton_99.setContentAreaFilled(false);
+		btnNewButton_99.setBorderPainted(false);
+		btnNewButton_99.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentReportButton.png")));
+		btnNewButton_99.setBounds(435, 178, 23, 23);
+		panel.add(btnNewButton_99);
+		
+		JButton btnNewButton_5_1_1 = new JButton("");
+		btnNewButton_5_1_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentUpdateButton.png")));
+		btnNewButton_5_1_1.setContentAreaFilled(false);
+		btnNewButton_5_1_1.setBorderPainted(false);
+		btnNewButton_5_1_1.setBounds(402, 311, 23, 23);
+		panel.add(btnNewButton_5_1_1);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(PostView2.class.getResource("/post/commentWriteListLabelTen.png")));
