@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class PostView extends JFrame {
 
@@ -45,8 +46,9 @@ public class PostView extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(0, 0, 500, 870);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(PostView.class.getResource("/post/postpannel.png")));
+		lblNewLabel.setBounds(0, 0, 500, 855);
 		panel.add(lblNewLabel);
 	}
 
