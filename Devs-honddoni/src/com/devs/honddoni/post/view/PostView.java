@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.UIManager;
+import javax.swing.JTextArea;
 
 public class PostView extends JFrame {
 
@@ -80,11 +83,6 @@ public class PostView extends JFrame {
 		sidebar.setBorderPainted(false);
 		panel.add(sidebar);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(0, 368, 500, 870);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ekfrr\\Desktop\\미니프로젝트\\혼또니이미지\\혼또니찾기-비교용.png"));
-		panel.add(lblNewLabel);
-		
 		postTitle = new JTextField();
 		postTitle.setBorder(null);
 		postTitle.setDisabledTextColor(Color.WHITE);
@@ -115,18 +113,27 @@ public class PostView extends JFrame {
 		joinmember.setColumns(10);
 		
 		
-		String[] actioncategory = {" 카테고리를 선택하세요","맛집탐방", "활동", "취미", "산책", "스터디", "게임"};
+		String[] actioncategory = {" "," 맛집탐방", " 활동", " 취미", " 산책", " 스터디", " 게임"};
 		JComboBox selectCategorycombo = new JComboBox(actioncategory);
-		selectCategorycombo.setBackground(new Color(255, 255, 255));
+		selectCategorycombo.setFocusable(false);
+		selectCategorycombo.setLightWeightPopupEnabled(false);
 		selectCategorycombo.setOpaque(false);
-		selectCategorycombo.setBounds(129, 245, 316, 28);
-		selectCategorycombo.setSelectedIndex(0);
+		selectCategorycombo.setForeground(Color.BLACK);
+		selectCategorycombo.setBorder(null);
+		selectCategorycombo.setBackground(UIManager.getColor("Button.disabledShadow"));
+		selectCategorycombo.setBounds(139, 245, 306, 28);
+		selectCategorycombo.setModel(new DefaultComboBoxModel(new String[] {" ", "맛집탐방", "활동", "취미", "산책", "스터디", "게임"}));
 		panel.add(selectCategorycombo);
+		
+		JTextArea postContents = new JTextArea();
+		postContents.setOpaque(false);
+		postContents.setBounds(59, 405, 399, 273);
+		panel.add(postContents);
 		
 		
 		JLabel postbacklabel = new JLabel("");
 		postbacklabel.setBounds(0, 0, 500, 870);
-		postbacklabel.setIcon(new ImageIcon(PostView.class.getResource("/post/postpannel.png")));
+		postbacklabel.setIcon(new ImageIcon(PostView.class.getResource("/post/postpannel2.png")));
 		panel.add(postbacklabel);
 	}
 }
