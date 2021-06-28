@@ -9,6 +9,7 @@ public class Application {
 		
 
 		
+		
 		MemberLogView memberLogView = new MemberLogView();
 		memberLogView.FirstView();
 
