@@ -50,7 +50,7 @@ public class MemberView extends JFrame{
 		honddoniLogo.setContentAreaFilled(false);
 		honddoniLogo.setBorderPainted(false);
 		honddoniLogo.setIcon(new ImageIcon(MemberView.class.getResource("/common/honddoniLogo.png")));
-		honddoniLogo.setBounds(304, 27, 173, 71);
+		honddoniLogo.setBounds(302, 28, 173, 71);
 		getContentPane().add(honddoniLogo);
 		sidebarOpenButton.setContentAreaFilled(false);
 		sidebarOpenButton.setBorderPainted(false);
