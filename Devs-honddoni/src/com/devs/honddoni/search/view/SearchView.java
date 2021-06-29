@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SearchView {
 
@@ -100,6 +102,10 @@ public class SearchView {
 		textField.setColumns(10);
 		
 		JButton intoBoardFrame = new JButton("");
+		intoBoardFrame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		intoBoardFrame.setBounds(35, 160, 431, 105);
 		panel_3.add(intoBoardFrame);
 		
@@ -126,64 +132,64 @@ public class SearchView {
 		
 		//------------------------------------------------------------------------------------------------------------
 		
-//		JPanel panel_4 = new JPanel();
-//		panel_4.setBounds(0, 100, 500, 770);
-//		panel_1.add(panel_4);
-//		panel_4.setLayout(null);
-//		
-//		JLabel achivement1 = new JLabel("");
-//		achivement1.setIcon(new ImageIcon(SearchView.class.getResource("/common/Group 1010.png")));
-//		achivement1.setBounds(179, 172, 70, 39);
-//		panel_4.add(achivement1);
-//		
-//		JLabel exId1 = new JLabel("");
-//		exId1.setIcon(new ImageIcon(SearchView.class.getResource("/search/exId1.png")));
-//		exId1.setBounds(101, 170, 80, 43);
-//		panel_4.add(exId1);
-//		
-//		JLabel profile = new JLabel("");
-//		profile.setIcon(new ImageIcon(SearchView.class.getResource("/member/updateInfo/pf3.png")));
-//		profile.setBounds(40, 163, 57, 50);
-//		panel_4.add(profile);
-//		
-//		JLabel locationLabel = new JLabel("");
-//		locationLabel.setIcon(new ImageIcon(SearchView.class.getResource("/search/Rectangle 30.png")));
-//		locationLabel.setBounds(366, 169, 66, 21);
-//		panel_4.add(locationLabel);
-//		
-//		JButton heart = new JButton("");
-//		heart.setIcon(new ImageIcon(SearchView.class.getResource("/search/like (1) 23.png")));
-//		heart.setBounds(435, 167, 23, 23);
-//		panel_4.add(heart);
-//		
-//		textField = new JTextField();
-//		textField.setBounds(52, 220, 396, 30);
-//		panel_4.add(textField);
-//		textField.setColumns(10);
-//		
-//		JButton intoBoardFrame = new JButton("");
-//		intoBoardFrame.setBounds(35, 160, 431, 105);
-//		panel_4.add(intoBoardFrame);
-//		
-//		searchBar = new JTextField();
-//		searchBar.setBackground(Color.LIGHT_GRAY);
-//		searchBar.setBounds(108, 50, 324, 30);
-//		panel_4.add(searchBar);
-//		searchBar.setColumns(10);
-//		
-//		JButton aim = new JButton();
-//		aim.setIcon(new ImageIcon(SearchView.class.getResource("/search/aim.png")));
-//		aim.setBounds(58, 50, 30, 30);
-//		panel_4.add(aim);
-//		
-//		JLabel searchBarFrame = new JLabel();
-//		searchBarFrame.setBounds(35, 34, 430, 62);
-//		panel_4.add(searchBarFrame);
-//		
-//		JLabel panel2lFrame = new JLabel("New label");
-//		panel2lFrame.setIcon(new ImageIcon(SearchView.class.getResource("/search/selectAllListLabel.png")));
-//		panel2lFrame.setBounds(0, 0, 500, 770);
-//		panel_4.add(panel2lFrame);
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(0, 100, 500, 770);
+		panel_1.add(panel_4);
+		panel_4.setLayout(null);
+		
+		JLabel achivement1 = new JLabel("");
+		achivement1.setIcon(new ImageIcon(SearchView.class.getResource("/common/Group 1010.png")));
+		achivement1.setBounds(179, 172, 70, 39);
+		panel_4.add(achivement1);
+		
+		JLabel exId1 = new JLabel("");
+		exId1.setIcon(new ImageIcon(SearchView.class.getResource("/search/exId1.png")));
+		exId1.setBounds(101, 170, 80, 43);
+		panel_4.add(exId1);
+		
+		JLabel profile1 = new JLabel("");
+		profile1.setIcon(new ImageIcon(SearchView.class.getResource("/member/updateInfo/pf3.png")));
+		profile1.setBounds(40, 163, 57, 50);
+		panel_4.add(profile1);
+		
+		JLabel locationLabel1 = new JLabel("");
+		locationLabel1.setIcon(new ImageIcon(SearchView.class.getResource("/search/Rectangle 30.png")));
+		locationLabel1.setBounds(366, 169, 66, 21);
+		panel_4.add(locationLabel1);
+		
+		JButton heart1 = new JButton("");
+		heart1.setIcon(new ImageIcon(SearchView.class.getResource("/search/like (1) 23.png")));
+		heart1.setBounds(435, 167, 23, 23);
+		panel_4.add(heart1);
+		
+		textField = new JTextField();
+		textField.setBounds(52, 220, 396, 30);
+		panel_4.add(textField);
+		textField.setColumns(10);
+		
+		JButton intoBoardFrame1 = new JButton("");
+		intoBoardFrame1.setBounds(35, 160, 431, 105);
+		panel_4.add(intoBoardFrame1);
+		
+		searchBar = new JTextField();
+		searchBar.setBackground(Color.LIGHT_GRAY);
+		searchBar.setBounds(108, 50, 324, 30);
+		panel_4.add(searchBar);
+		searchBar.setColumns(10);
+		
+		JButton aim1 = new JButton();
+		aim1.setIcon(new ImageIcon(SearchView.class.getResource("/search/aim.png")));
+		aim1.setBounds(58, 50, 30, 30);
+		panel_4.add(aim1);
+		
+		JLabel searchBarFrame1 = new JLabel();
+		searchBarFrame1.setBounds(35, 34, 430, 62);
+		panel_4.add(searchBarFrame1);
+		
+		JLabel panel2lFrame1 = new JLabel("New label");
+		panel2lFrame1.setIcon(new ImageIcon(SearchView.class.getResource("/search/selectAllListLabel.png")));
+		panel2lFrame1.setBounds(0, 0, 500, 770);
+		panel_4.add(panel2lFrame1);
 		
 	}
 }
