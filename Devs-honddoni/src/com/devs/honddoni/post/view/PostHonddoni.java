@@ -1,11 +1,8 @@
 package com.devs.honddoni.post.view;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,7 +21,8 @@ public class PostHonddoni extends JFrame{
 	private JTextField postTitle;
 	private JButton localSelectbtn;
 	private JTextField joinmember;
-	private PostActionCategory actionCategory;
+	private PostActionCategory postA;
+
 	
 	/*혼또니 게시글 작성 화면 불러오기*/
 	public PostHonddoni() {
@@ -35,7 +33,8 @@ public class PostHonddoni extends JFrame{
 		createPostTitle();
 		selectLocal();
 		insertJoinMember();
-				
+		postA = new PostActionCategory();
+		
 		addPostComponent();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,15 +64,17 @@ public class PostHonddoni extends JFrame{
 
 	}
 	
-	/* 게시글 작성 화면 내 쌓아올리기 - 순서 중요*/
+	/* 게시글 작성 화면 내 쌓아올리기 - 순서 중요 */
 	public void addPostComponent() {
+		
 		this.add(topPanel);
 		this.add(bottomPanel);
 		bottomPanel.add(postTypebtn);
 		bottomPanel.add(postTitle);
 		bottomPanel.add(localSelectbtn);
 		bottomPanel.add(joinmember);
-		bottomPanel.add(new PostActionCategory());
+
+
 		
 		
 		bottomPanel.add(bottomLabel);
