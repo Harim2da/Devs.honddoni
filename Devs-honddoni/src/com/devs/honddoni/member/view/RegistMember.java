@@ -18,12 +18,15 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.member.controller.MemberController;
+
 import com.devs.honddoni.member.model.dto.MemberDTO;
 
 public class RegistMember extends JFrame {
 	
 	private MemberController memberController;
+
 	private MemberDTO memberRegistDTO;
+
 	private JFrame registFrame;
 	private JPanel firstPanel;
 	
@@ -44,8 +47,10 @@ public class RegistMember extends JFrame {
 		registFrame.add(firstPanel);		 
 		
 		
+
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
+
 		
 		this.repaint();
 		this.revalidate();		
@@ -107,6 +112,7 @@ public class RegistMember extends JFrame {
 		JPasswordField passwordRePf = new JPasswordField();
 		passwordRePf.setBounds(125, 199, 303, 26);
 		
+
 		JTextField birthdayTf = new JTextField();
 		birthdayTf.setBounds(125, 261, 192, 26);
         
@@ -133,10 +139,12 @@ public class RegistMember extends JFrame {
 				}
 			}
 		});
+
         
 		ButtonGroup genderRb = new ButtonGroup();
 		genderRb.add(genderMRb);
 		genderRb.add(genderFRb);
+
 		
 		JTextField nicknameTf = new JTextField();
 		nicknameTf.setBounds(80, 324, 348, 26);
@@ -144,6 +152,7 @@ public class RegistMember extends JFrame {
 		JTextField addressTf = new JTextField();
 		addressTf.setBounds(80, 387, 348, 26);
 		
+
 		JTextField phoneTf = new JTextField();
 		phoneTf.setBounds(100, 451, 348, 26);
 		
@@ -162,6 +171,7 @@ public class RegistMember extends JFrame {
 			/* DTO만들고 정보 전달...? */
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				
 				if(e.getSource() == agreeBtn) {
 					memberRegistDTO = new MemberDTO();
@@ -193,6 +203,7 @@ public class RegistMember extends JFrame {
 					
 //					memberController.registMember(memberRegistDTO);
 				}
+
 			}
 		});
 		
@@ -208,7 +219,9 @@ public class RegistMember extends JFrame {
 		memberDataLb.add(idTf);
 		memberDataLb.add(passwordPf);
 		memberDataLb.add(passwordRePf);
+
 		memberDataLb.add(birthdayTf);
+
 		memberDataLb.add(genderFRb);
 		memberDataLb.add(genderMRb);
 		memberDataLb.add(nicknameTf);
