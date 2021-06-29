@@ -3,6 +3,8 @@ package com.devs.honddoni.member.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -17,9 +19,14 @@ import javax.swing.JTextField;
 
 import com.devs.honddoni.member.controller.MemberController;
 
+import com.devs.honddoni.member.model.dto.MemberDTO;
+
 public class RegistMember extends JFrame {
 	
 	private MemberController memberController;
+
+	private MemberDTO memberRegistDTO;
+
 	private JFrame registFrame;
 	private JPanel firstPanel;
 	
@@ -37,11 +44,13 @@ public class RegistMember extends JFrame {
 		
 		setPanel();
 		
-		registFrame.add(firstPanel);		
+		registFrame.add(firstPanel);		 
 		
 		
-		registFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		registFrame.setVisible(true);
+
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+
 		
 		this.repaint();
 		this.revalidate();		
@@ -103,23 +112,39 @@ public class RegistMember extends JFrame {
 		JPasswordField passwordRePf = new JPasswordField();
 		passwordRePf.setBounds(125, 199, 303, 26);
 		
-		JComboBox birthYearCbb = new JComboBox();
-		birthYearCbb.setBounds(125, 261, 48, 26);
+
+		JTextField birthdayTf = new JTextField();
+		birthdayTf.setBounds(125, 261, 192, 26);
         
-        JComboBox birthMonthCbb = new JComboBox();
-        birthMonthCbb.setBounds(185, 261, 48, 26);
-        
-        JComboBox birthDayCbb = new JComboBox();
-        birthDayCbb.setBounds(245, 261, 48, 26);
-        
+		/* 라디오 버튼에 따라 gender 설정 */
+		String gender;
         JRadioButton genderMRb = new JRadioButton("남");
         genderMRb.setBounds(330, 260, 55, 26);
+        genderMRb.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == genderMRb) {
+//					gender = "남";
+				}
+			}
+		});
+        
 		JRadioButton genderFRb = new JRadioButton("여");
         genderFRb.setBounds(385, 260, 55, 26);
+        genderFRb.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == genderFRb) {
+//					gender = "여";
+				}
+			}
+		});
+
         
 		ButtonGroup genderRb = new ButtonGroup();
 		genderRb.add(genderMRb);
 		genderRb.add(genderFRb);
+
 		
 		JTextField nicknameTf = new JTextField();
 		nicknameTf.setBounds(80, 324, 348, 26);
@@ -127,6 +152,7 @@ public class RegistMember extends JFrame {
 		JTextField addressTf = new JTextField();
 		addressTf.setBounds(80, 387, 348, 26);
 		
+
 		JTextField phoneTf = new JTextField();
 		phoneTf.setBounds(100, 451, 348, 26);
 		
@@ -145,8 +171,39 @@ public class RegistMember extends JFrame {
 			/* DTO만들고 정보 전달...? */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				memberController.registMember();
+
 				
+				if(e.getSource() == agreeBtn) {
+					memberRegistDTO = new MemberDTO();
+					memberRegistDTO.setMemberId(idTf.getText());
+					
+					/* 비밀번호 추출 */
+					String password = "";
+					char[] pass = passwordPf.getPassword();
+					for(int i = 0; i < pass.length; i++) {
+						password += pass[i];
+					}					
+					memberRegistDTO.setMemberPassword(password);
+					
+					memberRegistDTO.setMemberName(nameTf.getText());
+					memberRegistDTO.setMemberBirth(birthdayTf.getText());
+//					memberRegistDTO.setMemberGender(gender);
+					memberRegistDTO.setMemberAddress(addressTf.getText());
+					memberRegistDTO.setMemberNickname(nicknameTf.getText());
+					memberRegistDTO.setMemberPhone(phoneTf.getText());
+					memberRegistDTO.setMemberEmail(emailTf.getText());
+					
+					/* 등록하는 오늘 날짜 추출 */
+					java.util.Date today = new java.util.Date(System.currentTimeMillis());
+					SimpleDateFormat registFormat = new SimpleDateFormat("yyMMdd");
+					String registDate = registFormat.format(today);
+					memberRegistDTO.setMemRegistDate(registDate);
+					
+					System.out.println(memberRegistDTO);
+					
+//					memberController.registMember(memberRegistDTO);
+				}
+
 			}
 		});
 		
@@ -162,9 +219,9 @@ public class RegistMember extends JFrame {
 		memberDataLb.add(idTf);
 		memberDataLb.add(passwordPf);
 		memberDataLb.add(passwordRePf);
-		memberDataLb.add(birthYearCbb);
-		memberDataLb.add(birthMonthCbb);
-		memberDataLb.add(birthDayCbb);
+
+		memberDataLb.add(birthdayTf);
+
 		memberDataLb.add(genderFRb);
 		memberDataLb.add(genderMRb);
 		memberDataLb.add(nicknameTf);
