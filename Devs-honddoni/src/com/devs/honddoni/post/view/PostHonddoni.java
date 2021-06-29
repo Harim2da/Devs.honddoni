@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class PostHonddoni extends JFrame{
@@ -21,7 +23,8 @@ public class PostHonddoni extends JFrame{
 	private JTextField postTitle;
 	private JButton localSelectbtn;
 	private JTextField joinmember;
-	private PostActionCategory postA;
+	private JTextArea postContents;
+	private JComboBox selectCategorycombo;
 
 	
 	/*혼또니 게시글 작성 화면 불러오기*/
@@ -33,9 +36,11 @@ public class PostHonddoni extends JFrame{
 		createPostTitle();
 		selectLocal();
 		insertJoinMember();
-		postA = new PostActionCategory();
+		selectCategory();
+		postContents();
 		
 		addPostComponent();
+
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -73,11 +78,12 @@ public class PostHonddoni extends JFrame{
 		bottomPanel.add(postTitle);
 		bottomPanel.add(localSelectbtn);
 		bottomPanel.add(joinmember);
-
-
-		
+		bottomPanel.add(selectCategorycombo);
+		bottomPanel.add(postContents);
 		
 		bottomPanel.add(bottomLabel);
+		this.repaint();
+		this.revalidate();
 		
 	}
 	
@@ -135,7 +141,32 @@ public class PostHonddoni extends JFrame{
 		joinmember.setColumns(10);
 	}
 	
+	private void postContents() {
+		postContents = new JTextArea();
+		postContents.setOpaque(false);
+		postContents.setBounds(59, 305, 399, 273);
+		
+	}
 	
+	private void selectCategory() {
+
+		String[] actioncategory = {" "," 맛집탐방", " 활동", " 취미", " 산책", " 스터디", " 게임"};
+		selectCategorycombo = new JComboBox(actioncategory);
+
+		selectCategorycombo.setBounds(139, 145, 306, 28);
+		selectCategorycombo.setSelectedIndex(0);
+		selectCategorycombo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("콤박동작");
+				
+			}
+		});
+		
+		
+	}
 	
 	
 }
