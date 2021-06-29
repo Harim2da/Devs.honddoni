@@ -14,7 +14,7 @@ public class MemberView extends JFrame{
 	
 	public MemberView() {
 		getContentPane().setForeground(Color.WHITE);
-		setDefaultCloseOperation(JFrame.EXIT_ ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 516, 909);
 		
 		JPanel panel = new JPanel();
