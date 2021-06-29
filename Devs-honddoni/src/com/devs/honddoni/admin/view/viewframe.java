@@ -107,5 +107,9 @@ public class viewframe extends JFrame {
 		btnNewButton_7.setIcon(new ImageIcon("C:\\Users\\명길\\Desktop\\admin123\\Scroll.png"));
 		btnNewButton_7.setBounds(221, 798, 56, 25);
 		panel.add(btnNewButton_7);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 0, 500, 100);
+		panel.add(panel_1);
 	}
 }
