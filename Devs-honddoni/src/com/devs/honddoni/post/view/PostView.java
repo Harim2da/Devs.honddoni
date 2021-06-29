@@ -132,8 +132,16 @@ public class PostView extends JFrame {
 		
 		
 		JLabel postbacklabel = new JLabel("");
+		postbacklabel.setBackground(Color.WHITE);
 		postbacklabel.setBounds(0, 0, 500, 870);
 		postbacklabel.setIcon(new ImageIcon(PostView.class.getResource("/post/postpannel2.png")));
 		panel.add(postbacklabel);
 	}
+	
+	
+	
+	
+	
+	
+	
 }
