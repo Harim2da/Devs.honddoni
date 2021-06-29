@@ -22,19 +22,7 @@ public class viewframe extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					viewframe frame = new viewframe();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 
 	/**
 	 * Create the frame.
@@ -56,7 +44,7 @@ public class viewframe extends JFrame {
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setDefaultCapable(false);
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\명길\\Desktop\\admin123\\Check withdrawal request member data.png"));
+		btnNewButton.setIcon(new ImageIcon(viewframe.class.getResource("/admin/admin123/Check withdrawal request member data.png")));
 		btnNewButton.setBounds(35, 129, 430, 121);
 		panel.add(btnNewButton);
 		
@@ -64,14 +52,14 @@ public class viewframe extends JFrame {
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setDefaultCapable(false);
 		btnNewButton_1.setContentAreaFilled(false);
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\명길\\Desktop\\admin123\\Full data of membership subscribers (2).png"));
+		btnNewButton_1.setIcon(new ImageIcon(viewframe.class.getResource("/admin/admin123/Full data of membership subscribers (2).png")));
 		btnNewButton_1.setBounds(34, 293, 430, 121);
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("");
 		btnNewButton_2.setContentAreaFilled(false);
 		btnNewButton_2.setBorderPainted(false);
-		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\명길\\Desktop\\admin123\\Member achievement management.png"));
+		btnNewButton_2.setIcon(new ImageIcon(viewframe.class.getResource("/admin/admin123/Member achievement management.png")));
 		btnNewButton_2.setBounds(34, 456, 430, 121);
 		panel.add(btnNewButton_2);
 		
@@ -97,7 +85,7 @@ public class viewframe extends JFrame {
 		JButton btnNewButton_6 = new JButton("");
 		btnNewButton_6.setContentAreaFilled(false);
 		btnNewButton_6.setBorderPainted(false);
-		btnNewButton_6.setIcon(new ImageIcon("C:\\Users\\명길\\Desktop\\admin123\\Manage Announcement.png"));
+		btnNewButton_6.setIcon(new ImageIcon(viewframe.class.getResource("/admin/admin123/Manage Announcement.png")));
 		btnNewButton_6.setBounds(33, 620, 430, 121);
 		panel.add(btnNewButton_6);
 		
