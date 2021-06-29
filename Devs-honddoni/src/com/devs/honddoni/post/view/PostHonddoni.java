@@ -2,6 +2,8 @@ package com.devs.honddoni.post.view;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -22,7 +24,7 @@ public class PostHonddoni extends JFrame{
 	private JTextField postTitle;
 	private JButton localSelectbtn;
 	private JTextField joinmember;
-	private PostHonddoni2 postH2;
+	private PostActionCategory actionCategory;
 	
 	/*혼또니 게시글 작성 화면 불러오기*/
 	public PostHonddoni() {
@@ -33,9 +35,7 @@ public class PostHonddoni extends JFrame{
 		createPostTitle();
 		selectLocal();
 		insertJoinMember();
-		
-		
-		
+				
 		addPostComponent();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,16 +73,12 @@ public class PostHonddoni extends JFrame{
 		bottomPanel.add(postTitle);
 		bottomPanel.add(localSelectbtn);
 		bottomPanel.add(joinmember);
-		
+		bottomPanel.add(new PostActionCategory());
 		
 		
 		bottomPanel.add(bottomLabel);
 		
 	}
-	
-	
-		
-	
 	
 	/*게시판 종류 선택*/
 	private void selectPost() {
@@ -94,30 +90,13 @@ public class PostHonddoni extends JFrame{
 		postTypebtn.setBounds(43, 20, 56, 30);
 		
 	
-		postTypebtn.addMouseListener(new MouseListener() {
+		postTypebtn.addActionListener(new ActionListener() {
 			
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				// 클릭하면 자유게시판으로 전환 (?) 카드 변환처럼
-				
+			public void actionPerformed(ActionEvent e) {
+				// 자유게시판으로 전환
+				System.out.println("자유게시판 전환");
 			}
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {		
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-			
-			
 		});
 	}
 	
@@ -136,35 +115,13 @@ public class PostHonddoni extends JFrame{
 		localSelectbtn.setContentAreaFilled(false);
 		localSelectbtn.setBorderPainted(false);
 		localSelectbtn.setBounds(105, 78, 125, 31);
-		localSelectbtn.addMouseListener(new MouseListener() {
+		localSelectbtn.addActionListener(new ActionListener() {
 			
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				// 지역 선택 팝업 창
-				
+			public void actionPerformed(ActionEvent e) {
+				// 지도 팝업
+				System.out.println("지도팝업");
 			}
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-			
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				
-			}
-			
-			
 		});
 		
 	}
