@@ -4,8 +4,9 @@ public class TestMain {
 
 	public static void main(String[] args) {
 
-		new FrameManager();
+//		new FrameManager();
 		
+		new ResignMember();
 		
 	}
 
