@@ -6,28 +6,43 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-public class Sidebar extends JPanel {
+public class Sidebar {
 	
+	static JPanel sidebar;
 
 	public Sidebar(JLayeredPane j) {
+		
 		/* 사이드바 */
-		this.setBounds(0, 0, 153, 870);
-		this.setVisible(true);
+		setBounds();
+		setVisible();
+		setOpaque();
 		System.out.println("사이드바");
 		
 		JLabel label = new JLabel();
 		label.setBounds(0, 0, 153, 870);
+//		label.setSize(153, 870);
 		label.setIcon(new ImageIcon("image/common/sidebar_panel.png"));
 		label.setVisible(true);
-		j.add(label);
-		
-		JButton btn1 = new JButton();
-		btn1.setSize(50,50);
-		
-		label.add(btn1);
-		this.repaint();
-		this.revalidate();
-		
+		sidebar.add(label);
 	}
 	
+	
+	private void setOpaque() {
+		sidebar.setOpaque(false);
+	}
+
+
+	private void setVisible() {
+		sidebar.setVisible(true);
+	}
+
+
+	private void setBounds() {
+		sidebar.setBounds(0,0,500,870);
+	}
+
+
+	public static JPanel getInstance() {
+		return sidebar;
+	}
 }
