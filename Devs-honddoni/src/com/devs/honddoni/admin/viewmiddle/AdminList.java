@@ -74,7 +74,7 @@ public class AdminList extends JFrame {
        btn7.addActionListener(new ActionListener() {
     	   @Override
     	   public void actionPerformed(ActionEvent e) {
-    		   new test2();
+    		   new AdminList2();
     		   setVisible(false);
     	   }
     	   

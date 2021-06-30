@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class login extends JFrame {
 	
@@ -20,7 +21,6 @@ public class login extends JFrame {
    	   setBounds(100, 100, 516, 909); //컨테이너 크기
        setDefaultCloseOperation(EXIT_ON_CLOSE);
        setLocationRelativeTo(null);
-
        
        //버튼을 넣기 위한 패널 생성
        JPanel jp = new JPanel();
@@ -40,8 +40,12 @@ public class login extends JFrame {
        ImageIcon  img4 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
        JButton btn4 = new JButton("혼또니 회원가입");
        
-       JLabel label1 = new JLabel();
+       JLabel label1 = new JLabel("혼또니 마크");
        
+       JLabel label2 = new JLabel("혼또니 글씨");
+       
+       JLabel jl = new JLabel("입력 : ");
+//       JTextField jt = new JTextField();
 
        //패널에 버튼 추가
        jp.add(btn1);
@@ -49,6 +53,9 @@ public class login extends JFrame {
        jp.add(btn3);
        jp.add(btn4);
        jp.add(label1);
+       jp.add(label2);
+       jp.add(jl);
+//       jp.add(jt);
    
        //버튼 위치 조정
        btn1.setBounds(34, 592, 430, 62);
@@ -56,7 +63,9 @@ public class login extends JFrame {
        btn3.setBounds(195, 724, 110, 40);
        btn4.setBounds(333, 724, 110, 40);
        label1.setBounds(174, 81, 151, 153);
-
+       label2.setBounds(130, 257, 240, 98);
+       jl.setBounds(34, 431, 430, 62);
+//       jt.setBounds(34, 431, 430, 62);
 
        //컨테이너에 패널 추가
        add(jp);
@@ -68,13 +77,10 @@ public class login extends JFrame {
     		   new login2();
     		   setVisible(false);
     	   }
-    	   
        });
    }
-   
    public static void main(String[] args) {
 
        login l = new login();
-
    }
 }
