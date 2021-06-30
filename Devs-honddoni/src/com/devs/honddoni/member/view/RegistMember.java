@@ -28,7 +28,7 @@ public class RegistMember extends JFrame {
 	
 	/* 확인용 메소드 */
 	public static void main(String[] args) {
-		new RegistMember();
+		new RegistMember(); 
 	}
 	
 	public RegistMember() {
