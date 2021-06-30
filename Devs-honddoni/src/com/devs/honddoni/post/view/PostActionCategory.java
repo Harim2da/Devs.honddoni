@@ -8,8 +8,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class PostActionCategory extends JFrame {
-
+public class PostActionCategory {
+	
 	
 	public PostActionCategory() {
 
@@ -17,7 +17,7 @@ public class PostActionCategory extends JFrame {
 		String[] actioncategory = {" "," 맛집탐방", " 활동", " 취미", " 산책", " 스터디", " 게임"};
 		JComboBox selectCategorycombo = new JComboBox(actioncategory);
 
-		selectCategorycombo.setBounds(139, 245, 306, 28);
+		selectCategorycombo.setBounds(139, 145, 306, 28);
 		selectCategorycombo.setSelectedIndex(0);
 		selectCategorycombo.addActionListener(new ActionListener() {
 			
@@ -30,6 +30,12 @@ public class PostActionCategory extends JFrame {
 		});
 		
 		
+	}
+	
+	public static PostActionCategory getInstance() {
+		
+		
+		return new PostActionCategory();
 	}
 	
 //	public void selectCategory() {
