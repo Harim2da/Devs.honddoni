@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 public class AllBoardList {
 
-	private JFrame mainFrame;
+//	private JFrame mainFrame;
 	private JPanel topPanel;
 	private JPanel bottomPanel;
 	private JLabel bottomLabel;
