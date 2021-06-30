@@ -78,7 +78,9 @@ public class PostHonddoni extends JFrame{
 		bottomPanel.add(postTitle);
 		bottomPanel.add(localSelectbtn);
 		bottomPanel.add(joinmember);
-		bottomPanel.add(selectCategorycombo);
+		
+		
+//		bottomPanel.add(selectCategory().selectCategorycombo);
 		bottomPanel.add(postContents);
 		
 		bottomPanel.add(bottomLabel);
@@ -150,22 +152,22 @@ public class PostHonddoni extends JFrame{
 	
 	private void selectCategory() {
 
-		String[] actioncategory = {" "," 맛집탐방", " 활동", " 취미", " 산책", " 스터디", " 게임"};
-		selectCategorycombo = new JComboBox(actioncategory);
-
-		selectCategorycombo.setBounds(139, 145, 306, 28);
-		selectCategorycombo.setSelectedIndex(0);
-		selectCategorycombo.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("콤박동작");
-				
-			}
-		});
+//		String[] actioncategory = {" "," 맛집탐방", " 활동", " 취미", " 산책", " 스터디", " 게임"};
+//		selectCategorycombo = new JComboBox(actioncategory);
+//
+//		selectCategorycombo.setBounds(139, 145, 306, 28);
+//		selectCategorycombo.setSelectedIndex(0);
+//		selectCategorycombo.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//				System.out.println("콤박동작");
+//				
+//			}
+//		});
 		
-		
+		 PostActionCategory.getInstance();
 	}
 	
 	
