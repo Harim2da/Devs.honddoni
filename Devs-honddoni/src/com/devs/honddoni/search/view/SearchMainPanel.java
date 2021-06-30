@@ -28,7 +28,7 @@ public class SearchMainPanel extends JPanel {
 		bottomLabel.setBackground(Color.white);
 		bottomLabel.setLayout(null);
 		bottomLabel.setBounds(35, 14, 431, 648);
-		bottomLabel.setIcon(new ImageIcon(PostView.class.getResource("/post/postbtmpanel.png")));
+		bottomLabel.setIcon(new ImageIcon(PostView.class.getResource("/search/selectAllListLabel.png")));
 		
 	}
 
