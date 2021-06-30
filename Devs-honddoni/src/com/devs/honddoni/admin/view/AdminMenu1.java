@@ -1,5 +1,5 @@
 package com.devs.honddoni.admin.view;
 
-public class MainFrame {
+public class AdminMenu1 j {
 
 }
