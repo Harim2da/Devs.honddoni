@@ -10,10 +10,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 public class MyPage {
 	
 	private JFrame frame = new JFrame();
+	
+	private JButton cpB1 = new JButton();			//비밀번호 변경 취소버튼
+	private JButton cpB2 = new JButton();			//비밀번호 변경 변경버튼
+	private JLabel cpL1 = new JLabel(); 			//비밀번호 변경 입력창 이미지
+	private JPasswordField cpPF1 = new JPasswordField();	//비밀번호 변경 기존비번 입력창
+	private JPasswordField cpPF2 = new JPasswordField();	//비밀번호 변경 새비번 입력창
+	private JPasswordField cpPF3 = new JPasswordField();	//비밀번호 변경 새비번 확인창
+	
+	public static JButton btnRemove(JButton jbtn) {
+		jbtn.setBorderPainted(false);
+		jbtn.setContentAreaFilled(false);
+		return jbtn;
+	}
 
 	public MyPage() {
 		
@@ -31,13 +45,13 @@ public class MyPage {
 		/* 상단 패널 */
 		JPanel upsidePanel = new JPanel();
 		upsidePanel.setBounds(0, 0, 500, 100);
-		upsidePanel.setBackground(Color.black);
+		upsidePanel.setBackground(Color.white);
 		upsidePanel.setLayout(null);
 		
 		/* 하단 패널 */
 		JPanel downsidePanel = new JPanel();
 		downsidePanel.setBounds(0, 100, 500, 770);
-		downsidePanel.setBackground(Color.red);
+		downsidePanel.setBackground(Color.white);
 		downsidePanel.setLayout(null);
 		
 //		j.add(upsidePanel);
@@ -91,20 +105,32 @@ public class MyPage {
 			public void actionPerformed(ActionEvent e) {
 				/* 비밀번호 변경 호출 */
 				System.out.println("비밀번호변경 호출");
+				/* 비밀번호 변경 */
+				JPanel changePwdPanel = new JPanel();
+				changePwdPanel.setLayout(null);
+				changePwdPanel.setBounds(0, 100, 500, 770);
+				changePwdPanel.setVisible(true);
+				changePwdPanel.setBackground(Color.GRAY);
+				downsidePanel.setVisible(false);
+				frame.add(changePwdPanel);
 				
+				/* 입력창 라벨 */
+				cpL1.setBounds(0, 0, 500, 770);
+				cpL1.setVisible(true);
+				cpL1.setIcon(new ImageIcon("image/member/updatePwd/Group 878.png"));
+				changePwdPanel.add(cpL1);
+				
+				/* 취소 버튼 */
+				btnRemove(cpB1);
+				cpB1.setVisible(true);
+				cpB1.setBounds(92, 501 , 178, 63);
+				cpB1.setIcon(new ImageIcon("image/member/updatePwd/Group 677.png"));
+				changePwdPanel.add(cpB1);
 				
 			}
 		});
 		downsidePanel.add(changePwdButton);
 		
-		/* 비밀번호 변경 */
-			JPanel changePwdPanel = new JPanel();
-			changePwdPanel.setBounds(0, 100, 500, 770);
-			changePwdPanel.setVisible(true);
-			changePwdPanel.setBackground(Color.black);
-			downsidePanel.setVisible(false);
-			
-			frame.add(changePwdPanel);
 			
 		
 		/* 개인정보 변경 버튼 */
@@ -202,6 +228,7 @@ public class MyPage {
 		
 		frame.add(upsidePanel);
 		frame.add(downsidePanel);
+		
 		
 	}
 	
