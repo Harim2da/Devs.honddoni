@@ -57,6 +57,10 @@ public class PostView extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(106, 311, 37, 28);
+		panel.add(comboBox);
+		
 		JButton postconfirm = new JButton("");
 		postconfirm.setBounds(129, 784, 263, 41);
 		postconfirm.setIcon(new ImageIcon(PostView.class.getResource("/post/postbutton.png")));
@@ -130,10 +134,6 @@ public class PostView extends JFrame {
 		selectCategorycombo.setBounds(139, 245, 306, 28);
 		selectCategorycombo.setModel(new DefaultComboBoxModel(new String[] {" ", "맛집탐방", "활동", "취미", "산책", "스터디", "게임"}));
 		panel.add(selectCategorycombo);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(106, 311, 37, 28);
-		panel.add(comboBox);
 		
 		JTextArea postContents = new JTextArea();
 		postContents.setOpaque(false);
