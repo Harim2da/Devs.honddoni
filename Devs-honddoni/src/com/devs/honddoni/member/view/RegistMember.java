@@ -26,6 +26,8 @@ public class RegistMember extends JFrame {
 	private JFrame registFrame;
 	private JPanel firstPanel;
 	
+	private String gender = "여";
+	
 	/* 확인용 메소드 */
 	public static void main(String[] args) {
 		new RegistMember(); 
@@ -114,7 +116,6 @@ public class RegistMember extends JFrame {
         
 		/* 라디오 버튼에 따라 gender 설정 */
 		/* 왜 String gender를 액션리스너에서 또 설정해줘야 되냐... */
-		String gender = "여";
         JRadioButton genderMRb = new JRadioButton("남");
         genderMRb.setBounds(330, 260, 55, 26);
         genderMRb.addActionListener(new ActionListener() {			
@@ -209,7 +210,6 @@ public class RegistMember extends JFrame {
 			/* DTO 만들고 정보 전달...? */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				
 				if(e.getSource() == agreeBtn) {
 					memberRegistDTO = new MemberRegistDTO();
