@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment/>
+	<entry key="selectWholePostNum">
+	  SELECT
+	         COUNT(*)
+	    FROM TBL_POST
+	   WHERE POST_CATEGORY = '혼또니'
+	</entry>
+	<entry key="freeWholePostNum">
+	  SELECT
+	         COUNT(*)
+	    FROM TBL_POST
+	   WHERE POST_CATEGORY = '자유'
+	</entry>
+	<entry key="totalWholePostNum">
+	  SELECT
+	         COUNT(*)
+	    FROM TBL_POST
+	</entry>
+	<entry key="selectWholeCommentsNum">
+	  SELECT
+	         COUNT(*)
+	    FROM TBL_COMMENT
+	</entry>
+	
+	<entry key="selectPostList">
+	  SELECT
+             V.*
+        FROM (SELECT P.POST_NO
+                   , P.POST_NAME
+                   , P.POST_CONTENTS
+                   , P.POST_CATEGORY
+                   , P.POST_MEMBER_NO
+                   , P.POST_MEETINGDATE
+                   , P.POST_MEETINGTIME
+                   , P.POST_WRITINGDATE
+                   , P.POST_WRITINGTIME
+                   , L.LOCAL_NAME
+				   , C.CATEGORY_NAME
+                   , P.POST_DEL_STATUS
+                   , P.POST_NUMBER_OF_PEOPLE
+                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
+        FROM TBL_POST P
+        JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
+        JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
+       WHERE P.POST_CATEGORY = '혼또니'
+         AND L.LOCAL_NAME = ?
+         AND CATEGORY_NAME = ?
+           ) V
+      WHERE V.순서 BETWEEN ? AND ?
+	</entry>
+	<entry key="freePostList">
+	  SELECT
+             V.*
+        FROM (SELECT P.POST_NO
+                   , P.POST_NAME
+                   , P.POST_CONTENTS
+                   , P.POST_CATEGORY
+                   , P.POST_MEMBER_NO
+                   , P.POST_WRITINGDATE
+                   , P.POST_WRITINGTIME
+                   , P.POST_DEL_STATUS
+                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
+        FROM TBL_POST P
+       WHERE P.POST_CATEGORY = '자유'
+           ) V
+      WHERE V.순서 BETWEEN ? AND ?
+	</entry>
+	<entry key="wholePostList">
+	  SELECT
+             V.*
+        FROM (SELECT P.POST_NO
+                   , P.POST_NAME
+                   , P.POST_CONTENTS
+                   , P.POST_CATEGORY
+                   , P.POST_MEMBER_NO
+                   , P.POST_MEETINGDATE
+                   , P.POST_MEETINGTIME
+                   , P.POST_WRITINGDATE
+                   , P.POST_WRITINGTIME
+                   , L.LOCAL_NAME
+				   , C.CATEGORY_NAME
+                   , P.POST_DEL_STATUS
+                   , P.POST_NUMBER_OF_PEOPLE
+                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
+        FROM TBL_POST P
+        JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
+        JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
+           ) V
+      WHERE V.순서 BETWEEN ? AND ?
+	</entry>
+	<entry key="selectCommentsList">
+	  SELECT
+             V.*
+        FROM (SELECT C.COMMENTS_NO
+                   , C.COMMENTS_DATE
+                   , C.COMMENTS_TIME
+                   , C.COMMENTS_CONTENTS
+                   , C.POST_NO
+                   , C.MEMBER_NO
+                   , RANK() OVER(ORDER BY COMMENTS_NO ASC) 순서
+        FROM TBL_COMMENT C
+       WHERE C.POST_NO = ?       
+           ) V
+      WHERE V.순서 BETWEEN ? AND ?
+	</entry>
+</properties>
