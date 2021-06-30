@@ -9,13 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class PostActionCategory {
-	
+	private static JComboBox selectCategorycombo;
 	
 	public PostActionCategory() {
 
 		
 		String[] actioncategory = {" "," 맛집탐방", " 활동", " 취미", " 산책", " 스터디", " 게임"};
-		JComboBox selectCategorycombo = new JComboBox(actioncategory);
+		selectCategorycombo = new JComboBox(actioncategory);
 
 		selectCategorycombo.setBounds(139, 145, 306, 28);
 		selectCategorycombo.setSelectedIndex(0);
@@ -24,39 +24,21 @@ public class PostActionCategory {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("콤박 동작");
-				
-				
+
 			}
 		});
 		
-		
 	}
 	
-	public static PostActionCategory getInstance() {
+	
+	public static JComboBox getInstance() {
+		new PostActionCategory();		
 		
-		
-		return new PostActionCategory();
+		return selectCategorycombo;
 	}
 	
-//	public void selectCategory() {
-//
-//		
-//		System.out.println("콤보박스 실행");
-//		String[] actioncategory = {" "," 맛집탐방", " 활동", " 취미", " 산책", " 스터디", " 게임"};
-//		selectCategorycombo = new JComboBox(actioncategory);
-//
-//		selectCategorycombo.setBounds(139, 245, 306, 28);
-//		selectCategorycombo.setSelectedIndex(0);
-//		selectCategorycombo.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				
-//				
-//			}
-//		});
-//		
+	
+	
 		
 	}
 	
