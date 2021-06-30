@@ -13,13 +13,12 @@ import javax.swing.JPanel;
 
 public class MyPage {
 	
-	private JFrame frame;
-	private Sidebar sidebar;
+	private JFrame frame = new JFrame();
 
 	public MyPage() {
 		
-		JLayeredPane j = new JLayeredPane();
-		j.setBounds(100, 100, 516, 909);
+//		JLayeredPane j = new JLayeredPane();
+//		j.setBounds(100, 100, 516, 909);
 		
 		frame.setBounds(100, 100, 516, 909);
 		frame.setLayout(null);
@@ -59,7 +58,6 @@ public class MyPage {
 			public void actionPerformed(ActionEvent e) {
 
 				System.out.println("버튼 클릭");
-				new Sidebar(j);
 			}
 
 			
@@ -93,17 +91,21 @@ public class MyPage {
 			public void actionPerformed(ActionEvent e) {
 				/* 비밀번호 변경 호출 */
 				System.out.println("비밀번호변경 호출");
-				JPanel changePwdPanel = new JPanel();
-				changePwdPanel.setBounds(0, 100, 500, 770);
-				changePwdPanel.setVisible(true);
-				changePwdPanel.setBackground(Color.black);
-				downsidePanel.setVisible(false);
 				
-				frame.add(changePwdPanel);
 				
 			}
 		});
 		downsidePanel.add(changePwdButton);
+		
+		/* 비밀번호 변경 */
+			JPanel changePwdPanel = new JPanel();
+			changePwdPanel.setBounds(0, 100, 500, 770);
+			changePwdPanel.setVisible(true);
+			changePwdPanel.setBackground(Color.black);
+			downsidePanel.setVisible(false);
+			
+			frame.add(changePwdPanel);
+			
 		
 		/* 개인정보 변경 버튼 */
 		JButton changeMemberinfo = new JButton("");
@@ -192,7 +194,7 @@ public class MyPage {
 		menuNameLabel.setBounds(111, 10, 500, 870);
 		downsidePanel.add(menuNameLabel);
 		
-		
+			
 		
 		/* 새로고침 */
 		frame.repaint();

@@ -1,26 +1,31 @@
 package com.devs.honddoni.member.view;
 
-import javax.swing.JFrame;
-
 import java.awt.Color;
-import java.awt.Rectangle;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 import javax.swing.JPanel;
+
 
 public class ChangePwd extends JPanel {
 	
-	public ChangePwd() {
-		this.setForeground(Color.WHITE);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
+	private JPanel topPanel;
+	private JPanel bottomPanel;
+	
+	/*상단 패널 생성*/
+	public void topPanel() {
+		topPanel = new JPanel();
+		topPanel.setBounds(0, 0, 500, 100);
+		topPanel.setLayout(null);
+		topPanel.setBackground(Color.WHITE);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setBorder(null);
-		panel.setBounds(0, 0, 500, 870);
-		getContentPane().add(panel);
 	}
+	
+	/*하단 패널 생성*/
+	public void bottomPanel() {
+		bottomPanel = new JPanel();
+		bottomPanel.setBounds(0, 100, 500, 770);
+		bottomPanel.setLayout(null);
+		bottomPanel.setBackground(Color.WHITE);	
+	}
+	
+	
 }
