@@ -19,7 +19,6 @@ public class Honest extends JFrame {
    	   setBounds(100, 100, 516, 909); //컨테이너 크기
        setDefaultCloseOperation(EXIT_ON_CLOSE);
        setLocationRelativeTo(null);
-
        
        //버튼을 넣기 위한 패널 생성
        JPanel jp = new JPanel();
@@ -31,23 +30,15 @@ public class Honest extends JFrame {
        JButton btn1 = new JButton("S");
        
        ImageIcon  img2 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-       JButton btn2 = new JButton("M");
-     
+       JButton btn2 = new JButton("M");    
        
        //패널에 버튼 추가
        jp.add(btn1);
-       jp.add(btn2);
-      
-       
-    
+       jp.add(btn2); 
        
        //버튼 위치 조정
        btn1.setBounds(34, 36, 36, 16);
        btn2.setBounds(303, 27, 172, 70);
-      
-     
-       
-       
 
        //컨테이너에 패널 추가
        add(jp);
@@ -63,9 +54,6 @@ public class Honest extends JFrame {
     		   new AdminList();
     		   setVisible(false);
     	   }
-    	   
        });
    }
- 
- 
-   }
+}

@@ -19,7 +19,6 @@ public class AdminList3 extends JFrame {
    	   setBounds(100, 100, 516, 909); //컨테이너 크기
        setDefaultCloseOperation(EXIT_ON_CLOSE);
        setLocationRelativeTo(null);
-
        
        //버튼을 넣기 위한 패널 생성
        JPanel jp = new JPanel();
@@ -52,9 +51,7 @@ public class AdminList3 extends JFrame {
        JButton btn8 = new JButton("N");
        
        ImageIcon  img9 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-       JButton btn9 = new JButton("로그아웃 성공");
-       
-       
+       JButton btn9 = new JButton("로그아웃 성공");             
 
        //패널에 버튼 추가
        jp.add(btn1);
@@ -66,10 +63,7 @@ public class AdminList3 extends JFrame {
        jp.add(btn7);
        jp.add(btn8);
        jp.add(btn9);
-       
-       
-       
-       
+                       
        //버튼 위치 조정
        btn1.setBounds(35, 124, 430, 96);
        btn2.setBounds(33, 253, 430, 96);
@@ -80,11 +74,8 @@ public class AdminList3 extends JFrame {
        btn6.setBounds(34, 36, 36, 16);
        btn7.setBounds(303, 27, 172, 70);
        btn8.setBounds(221, 798, 56, 25);
-       btn9.setBounds(29, 318, 445, 233);
-     
-       
-       
-
+       btn9.setBounds(29, 318, 445, 233);     
+              
        //컨테이너에 패널 추가
        add(jp);
        setVisible(true); //창을 보이게함
@@ -98,10 +89,7 @@ public class AdminList3 extends JFrame {
     	   public void actionPerformed(ActionEvent e) {
     		   new AdminList2();
     		   setVisible(false);
-    	   }
-    	   
+    	   }   
        });
    }
- 
- 
-   }
+}

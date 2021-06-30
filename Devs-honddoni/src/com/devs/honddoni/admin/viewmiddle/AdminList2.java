@@ -61,9 +61,6 @@ public class AdminList2 extends JFrame {
        jp.add(btn7);
        jp.add(btn8);
        
-       
-       
-       
        //버튼 위치 조정
        btn1.setBounds(35, 124, 430, 96);
        btn2.setBounds(33, 253, 430, 96);
@@ -75,9 +72,6 @@ public class AdminList2 extends JFrame {
        btn7.setBounds(303, 27, 172, 70);
        btn8.setBounds(221, 798, 56, 25);
      
-       
-       
-
        //컨테이너에 패널 추가
        add(jp);
        setVisible(true); //창을 보이게함
@@ -85,7 +79,7 @@ public class AdminList2 extends JFrame {
        btn5.addActionListener(new ActionListener() {
     	   @Override
     	   public void actionPerformed(ActionEvent e) {
-    		   new test3();
+    		   new AdminList3();
     		   setVisible(false);
     	   }
     	   
@@ -132,18 +126,9 @@ public class AdminList2 extends JFrame {
     	   public void actionPerformed(ActionEvent e) {
     		   new ReportComment();
     		   setVisible(false);
-    	   }
-    	   
+    	   }	   
        });
-       
-       
-   }
- 
- 
+  
    }
 
-//   public static void main(String[] args) {
-//
-//       test2 t = new test2();
-//   }
-//}
+}   

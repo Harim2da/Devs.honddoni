@@ -20,7 +20,6 @@ public class NoticeWrite1 extends JFrame {
        setDefaultCloseOperation(EXIT_ON_CLOSE);
        setLocationRelativeTo(null);
 
-       
        //버튼을 넣기 위한 패널 생성
        JPanel jp = new JPanel();
 //     setBounds(0, 0, 498, 862);
@@ -42,16 +41,12 @@ public class NoticeWrite1 extends JFrame {
        ImageIcon  img5 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
        JButton btn5 = new JButton("공지사항 게시가 완료되었습니다.");
      
-     
-       
        //패널에 버튼 추가
        jp.add(btn1);
        jp.add(btn2);
        jp.add(btn3);
        jp.add(btn4);
        jp.add(btn5);
-       
-    
        
        //버튼 위치 조정
        btn1.setBounds(34, 36, 36, 16);
@@ -60,9 +55,6 @@ public class NoticeWrite1 extends JFrame {
        btn4.setBounds(129 , 788, 244, 41);
        btn5.setBounds(29 , 370, 445, 233);
      
-       
-       
-
        //컨테이너에 패널 추가
        add(jp);
        setVisible(true); //창을 보이게함
@@ -77,7 +69,6 @@ public class NoticeWrite1 extends JFrame {
     		   new AdminList();
     		   setVisible(false);
     	   }
-    	   
        });
        
        btn5.addActionListener(new ActionListener() {
@@ -86,9 +77,7 @@ public class NoticeWrite1 extends JFrame {
     		   new Notice();
     		   setVisible(false);
     	   }
-    	   
        });
    }
- 
- 
-   }
+
+ }

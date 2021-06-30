@@ -40,23 +40,21 @@ public class login2 extends JFrame {
        
        ImageIcon  img5 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
        JButton btn5 = new JButton("관리자 로그인 성공");
-       
-
+  
        //패널에 버튼 추가
        jp.add(btn1);
        jp.add(btn2);
        jp.add(btn3);
        jp.add(btn4);
        jp.add(btn5);
-   
+  
        //버튼 위치 조정
        btn1.setBounds(34, 592, 430, 62);
        btn2.setBounds(57, 724, 110, 40);
        btn3.setBounds(195, 724, 110, 40);
        btn4.setBounds(333, 724, 110, 40);
        btn5.setBounds(28, 353, 442, 231);
-
-
+       
        //컨테이너에 패널 추가
        add(jp);
        setVisible(true); //창을 보이게함
@@ -67,14 +65,6 @@ public class login2 extends JFrame {
     		   new AdminList();
     		   setVisible(false);
     	   }
-    	   
        });
    }
 }
-//   
-//   public static void main(String[] args) {
-//
-//       login l = new login();
-//
-//   }
-//}
