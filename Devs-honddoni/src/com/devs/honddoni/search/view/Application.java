@@ -4,8 +4,11 @@ public class Application {
 
 	public static void main(String[] args) {
 		
-		new SearchFrameManager();
+		new FreeBoard();
 
+		new SearchBoard();
+		
+		new AllBoardListView();
 	}
 
 }
