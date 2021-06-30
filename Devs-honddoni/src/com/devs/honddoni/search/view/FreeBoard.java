@@ -25,6 +25,7 @@ public class FreeBoard extends JFrame {
 	private JTextArea freeBoardContents;
 	private JButton uploadBtn;
 	
+	
 	// 자유게시글 작성 화면 불러오기
 	public FreeBoard() {
 		this.setBounds(100, 100, 516, 909);
