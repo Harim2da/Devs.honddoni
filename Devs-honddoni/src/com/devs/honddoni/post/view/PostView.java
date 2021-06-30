@@ -131,14 +131,14 @@ public class PostView extends JFrame {
 		selectCategorycombo.setModel(new DefaultComboBoxModel(new String[] {" ", "맛집탐방", "활동", "취미", "산책", "스터디", "게임"}));
 		panel.add(selectCategorycombo);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(106, 311, 37, 28);
+		panel.add(comboBox);
+		
 		JTextArea postContents = new JTextArea();
 		postContents.setOpaque(false);
 		postContents.setBounds(59, 405, 399, 273);
 		panel.add(postContents);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(106, 311, 37, 28);
-		panel.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(170, 311, 39, 28);
