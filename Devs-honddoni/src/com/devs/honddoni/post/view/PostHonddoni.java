@@ -24,8 +24,13 @@ public class PostHonddoni extends JFrame{
 	private JButton localSelectbtn;
 	private JTextField joinmember;
 	private JTextArea postContents;
-	private JComboBox selectCategorycombo;
-
+	private JComboBox selectCategorycombo = PostActionCategory.getInstance();
+	private JButton postbtn;
+	private JComboBox meetingYear;
+	private JComboBox meetingMonth;
+	private JComboBox meetingDay;
+	private JComboBox meetingHour;
+	private JComboBox meetingMinutes;
 	
 	/*혼또니 게시글 작성 화면 불러오기*/
 	public PostHonddoni() {
@@ -36,9 +41,8 @@ public class PostHonddoni extends JFrame{
 		createPostTitle();
 		selectLocal();
 		insertJoinMember();
-		selectCategory();
 		postContents();
-		
+		postButton();
 		addPostComponent();
 
 		this.setVisible(true);
@@ -77,15 +81,14 @@ public class PostHonddoni extends JFrame{
 		bottomPanel.add(postTypebtn);
 		bottomPanel.add(postTitle);
 		bottomPanel.add(localSelectbtn);
-		bottomPanel.add(joinmember);
+		bottomPanel.add(joinmember);	
+		bottomPanel.add(selectCategorycombo);
 		
-		
-//		bottomPanel.add(selectCategory().selectCategorycombo);
 		bottomPanel.add(postContents);
-		
+		bottomPanel.add(postbtn);
 		bottomPanel.add(bottomLabel);
-		this.repaint();
-		this.revalidate();
+//		this.repaint();
+//		this.revalidate();
 		
 	}
 	
@@ -109,6 +112,7 @@ public class PostHonddoni extends JFrame{
 		});
 	}
 	
+	/*혼또니 게시판 제목 작성*/
 	private void createPostTitle() {
 		postTitle = new JTextField();
 		postTitle.setBorder(null);
@@ -118,6 +122,7 @@ public class PostHonddoni extends JFrame{
 		postTitle.setColumns(10);
 	}
 	
+	/*지역 선택 버튼*/
 	private void selectLocal() {
 		localSelectbtn = new JButton("");
 		localSelectbtn.setOpaque(false);
@@ -135,6 +140,7 @@ public class PostHonddoni extends JFrame{
 		
 	}
 	
+	/*모집 인원 기입*/
 	private void insertJoinMember() {
 		joinmember = new JTextField();
 		joinmember.setBorder(null);
@@ -143,6 +149,7 @@ public class PostHonddoni extends JFrame{
 		joinmember.setColumns(10);
 	}
 	
+	/* 게시글 작성*/
 	private void postContents() {
 		postContents = new JTextArea();
 		postContents.setOpaque(false);
@@ -150,24 +157,27 @@ public class PostHonddoni extends JFrame{
 		
 	}
 	
-	private void selectCategory() {
-
-//		String[] actioncategory = {" "," 맛집탐방", " 활동", " 취미", " 산책", " 스터디", " 게임"};
-//		selectCategorycombo = new JComboBox(actioncategory);
-//
-//		selectCategorycombo.setBounds(139, 145, 306, 28);
-//		selectCategorycombo.setSelectedIndex(0);
-//		selectCategorycombo.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				System.out.println("콤박동작");
-//				
-//			}
-//		});
-		
-		 PostActionCategory.getInstance();
+	private void postMeetingTime() {
+		meetingYear
+		meetingMonth
+		meetingDay
+		meetingHour
+		meetingMinutes
+	}
+	
+	
+	
+	
+	
+	
+	
+	/* 게시글 작성 완료 버튼*/
+	private void postButton() {
+		postbtn = new JButton();
+		postbtn.setBounds(129, 684, 263, 41);
+		postbtn.setIcon(new ImageIcon(PostView.class.getResource("/post/postbutton.png")));
+		postbtn.setContentAreaFilled(false);
+		postbtn.setBorderPainted(false);
 	}
 	
 	
