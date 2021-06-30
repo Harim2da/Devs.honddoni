@@ -1,6 +1,6 @@
 package com.devs.honddoni.member.model.dto;
 
-public class MemberDTO implements java.io.Serializable{
+public class MemberRegistDTO implements java.io.Serializable{
 	
 	private int memberNo;
 	private String memberId;
@@ -17,13 +17,14 @@ public class MemberDTO implements java.io.Serializable{
 	private String memberAccess;
 	private String memRegistDate;
 	private String memWithdrawDate;
+	private String memberCharacter;
 	
-	public MemberDTO() {}
+	public MemberRegistDTO() {}
 	
-	public MemberDTO(int memberNo, String memberId, String memberPassword, String memberName, String memberBirth,
+	public MemberRegistDTO(int memberNo, String memberId, String memberPassword, String memberName, String memberBirth,
 			String memberGender, String memberAddress, String memberNickname, String memberPhone, String memberEmail,
 			String memberStatus, String memberProfile, String memberAccess, String memRegistDate,
-			String memWithdrawDate) {
+			String memWithdrawDate, String memberCharacter) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
@@ -40,6 +41,7 @@ public class MemberDTO implements java.io.Serializable{
 		this.memberAccess = memberAccess;
 		this.memRegistDate = memRegistDate;
 		this.memWithdrawDate = memWithdrawDate;
+		this.memberCharacter = memberCharacter;
 	}
 
 	public int getMemberNo() {
@@ -161,10 +163,18 @@ public class MemberDTO implements java.io.Serializable{
 	public void setMemWithdrawDate(String memWithdrawDate) {
 		this.memWithdrawDate = memWithdrawDate;
 	}
+	
+	public String getMemberCharacter() {
+		return memberCharacter;
+	}
+
+	public void setMemberCharacter(String memberCharacter) {
+		this.memberCharacter = memberCharacter;
+	}
 
 	@Override
 	public String toString() {
-		return "MemberDTO [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPassword=" + memberPassword
+		return "MemberRegistDTO [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPassword=" + memberPassword
 				+ ", memberName=" + memberName + ", memberBirth=" + memberBirth + ", memberGender=" + memberGender
 				+ ", memberAddress=" + memberAddress + ", memberNickname=" + memberNickname + ", memberPhone="
 				+ memberPhone + ", memberEmail=" + memberEmail + ", memberStatus=" + memberStatus + ", memberProfile="
