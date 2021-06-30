@@ -134,11 +134,27 @@ public class PostView extends JFrame {
 		comboBox.setBounds(99, 311, 39, 28);
 		panel.add(comboBox);
 		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(170, 311, 39, 28);
+		panel.add(comboBox_1);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setBounds(238, 311, 39, 28);
+		panel.add(comboBox_2);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setBounds(327, 311, 39, 28);
+		panel.add(comboBox_3);
+		
 		
 		JLabel postbacklabel = new JLabel("");
 		postbacklabel.setBackground(Color.WHITE);
 		postbacklabel.setBounds(0, 0, 500, 870);
 		postbacklabel.setIcon(new ImageIcon(PostView.class.getResource("/post/postpannel2.png")));
 		panel.add(postbacklabel);
+		
+		JComboBox comboBox_4 = new JComboBox();
+		comboBox_4.setBounds(396, 311, 39, 28);
+		panel.add(comboBox_4);
 	}
 }
