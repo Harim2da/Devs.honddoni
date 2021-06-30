@@ -9,13 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class test2 extends JFrame {
+public class AdminList3 extends JFrame {
 	
     private JButton b1, b2, b3, b4, b5, b6, b7;
 
-   public test2()
+   public AdminList3()
    {
-       super("관리자메뉴2"); //프레임의 타이틀
+       super("관리자메뉴2(로그아웃)"); //프레임의 타이틀
    	   setBounds(100, 100, 516, 909); //컨테이너 크기
        setDefaultCloseOperation(EXIT_ON_CLOSE);
        setLocationRelativeTo(null);
@@ -50,6 +50,11 @@ public class test2 extends JFrame {
        
        ImageIcon  img8 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
        JButton btn8 = new JButton("N");
+       
+       ImageIcon  img9 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
+       JButton btn9 = new JButton("로그아웃 성공");
+       
+       
 
        //패널에 버튼 추가
        jp.add(btn1);
@@ -60,6 +65,7 @@ public class test2 extends JFrame {
        jp.add(btn6);
        jp.add(btn7);
        jp.add(btn8);
+       jp.add(btn9);
        
        
        
@@ -74,6 +80,7 @@ public class test2 extends JFrame {
        btn6.setBounds(34, 36, 36, 16);
        btn7.setBounds(303, 27, 172, 70);
        btn8.setBounds(221, 798, 56, 25);
+       btn9.setBounds(29, 318, 445, 233);
      
        
        
@@ -82,10 +89,14 @@ public class test2 extends JFrame {
        add(jp);
        setVisible(true); //창을 보이게함
        
-       btn5.addActionListener(new ActionListener() {
+       //컨테이너에 패널 추가
+       add(jp);
+       setVisible(true); //창을 보이게함
+       
+       btn9.addActionListener(new ActionListener() {
     	   @Override
     	   public void actionPerformed(ActionEvent e) {
-    		   new test3();
+    		   new AdminList2();
     		   setVisible(false);
     	   }
     	   
@@ -94,9 +105,3 @@ public class test2 extends JFrame {
  
  
    }
-
-//   public static void main(String[] args) {
-//
-//       test2 t = new test2();
-//   }
-//}

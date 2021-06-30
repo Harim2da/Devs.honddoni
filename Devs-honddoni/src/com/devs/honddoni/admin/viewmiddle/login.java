@@ -6,11 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class login extends JFrame {
 	
     private JButton b1, b2, b3, b4;
+    private JLabel label1;
 
    public login()
    {
@@ -38,18 +40,22 @@ public class login extends JFrame {
        ImageIcon  img4 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
        JButton btn4 = new JButton("혼또니 회원가입");
        
+       JLabel label1 = new JLabel();
+       
 
        //패널에 버튼 추가
        jp.add(btn1);
        jp.add(btn2);
        jp.add(btn3);
        jp.add(btn4);
+       jp.add(label1);
    
        //버튼 위치 조정
        btn1.setBounds(34, 592, 430, 62);
        btn2.setBounds(57, 724, 110, 40);
        btn3.setBounds(195, 724, 110, 40);
        btn4.setBounds(333, 724, 110, 40);
+       label1.setBounds(174, 81, 151, 153);
 
 
        //컨테이너에 패널 추가
@@ -59,7 +65,7 @@ public class login extends JFrame {
        btn1.addActionListener(new ActionListener() {
     	   @Override
     	   public void actionPerformed(ActionEvent e) {
-    		   new test();
+    		   new login2();
     		   setVisible(false);
     	   }
     	   
