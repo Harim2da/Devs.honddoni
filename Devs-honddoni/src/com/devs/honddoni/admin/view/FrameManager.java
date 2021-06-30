@@ -1,4 +1,4 @@
-package com.greedy.section01.view;
+package com.devs.honddoni.admin.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
