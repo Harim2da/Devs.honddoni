@@ -2,19 +2,20 @@ package com.devs.honddoni.admin.viewmiddle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class test extends JFrame {
+public class NoticeWrite1 extends JFrame {
 	
-    private JButton b1, b2, b3, b4, b5, b6, b7;
+    private JButton b1, b2;
 
-   public test()
+   public NoticeWrite1()
    {
-       super("관리자메뉴 1"); //프레임의 타이틀
+       super("공지사항 작성완료"); //프레임의 타이틀
    	   setBounds(100, 100, 516, 909); //컨테이너 크기
        setDefaultCloseOperation(EXIT_ON_CLOSE);
        setLocationRelativeTo(null);
@@ -26,64 +27,68 @@ public class test extends JFrame {
        jp.setLayout(null);
        
        //이미지 버튼 생성
-       ImageIcon  img1 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-       JButton btn1 = new JButton("탈퇴요청 데이터확인");
+       ImageIcon  img1 = new ImageIcon ("../admin/admin123/Check withdrawal request member data.png");
+       JButton btn1 = new JButton("S");
        
        ImageIcon  img2 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-       JButton btn2 = new JButton("회원가입자 전체데이터");
+       JButton btn2 = new JButton("M");
        
        ImageIcon  img3 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-       JButton btn3 = new JButton("회원 업적 관리");
+       JButton btn3 = new JButton("공지사항 작성");
        
        ImageIcon  img4 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-       JButton btn4 = new JButton("공지사항 관리");
+       JButton btn4 = new JButton("작성 완료");
        
        ImageIcon  img5 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-       JButton btn5 = new JButton("S");
+       JButton btn5 = new JButton("공지사항 게시가 완료되었습니다.");
+     
+     
        
-       ImageIcon  img6 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-       JButton btn6 = new JButton("B");
-       
-       ImageIcon  img7 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-       JButton btn7 = new JButton("N");
-
        //패널에 버튼 추가
        jp.add(btn1);
        jp.add(btn2);
        jp.add(btn3);
        jp.add(btn4);
        jp.add(btn5);
-       jp.add(btn6);
-       jp.add(btn7);
        
-       
+    
        
        //버튼 위치 조정
-       btn1.setBounds(35, 129, 430, 121);
-       btn2.setBounds(34, 293, 430, 121);
-       btn3.setBounds(34, 456, 430, 121);
-       btn4.setBounds(33, 620, 430, 121);
-       btn5.setBounds(34, 36, 36, 16);
-       btn6.setBounds(303, 27, 172, 70);
-       btn7.setBounds(221, 798, 56, 25);
+       btn1.setBounds(34, 36, 36, 16);
+       btn2.setBounds(303, 27, 172, 70);
+       btn3.setBounds(35 , 227, 71, 21);
+       btn4.setBounds(129 , 788, 244, 41);
+       btn5.setBounds(29 , 370, 445, 233);
+     
+       
+       
 
        //컨테이너에 패널 추가
        add(jp);
        setVisible(true); //창을 보이게함
        
-       btn7.addActionListener(new ActionListener() {
+       //컨테이너에 패널 추가
+       add(jp);
+       setVisible(true); //창을 보이게함
+       
+       btn2.addActionListener(new ActionListener() {
     	   @Override
     	   public void actionPerformed(ActionEvent e) {
-    		   new test2();
+    		   new AdminList();
+    		   setVisible(false);
+    	   }
+    	   
+       });
+       
+       btn5.addActionListener(new ActionListener() {
+    	   @Override
+    	   public void actionPerformed(ActionEvent e) {
+    		   new Notice();
     		   setVisible(false);
     	   }
     	   
        });
    }
-   
-   public static void main(String[] args) {
-
-       test t = new test();
-
+ 
+ 
    }
-}
