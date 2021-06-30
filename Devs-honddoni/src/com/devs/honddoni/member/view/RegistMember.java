@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,6 +28,7 @@ public class RegistMember extends JFrame {
 	private JPanel firstPanel;
 	
 	private String gender = "여";
+	private JComboBox characterSelectCombo = CharacterSelectCategory.getInstance();
 	
 	/* 확인용 메소드 */
 	public static void main(String[] args) {
@@ -73,8 +75,9 @@ public class RegistMember extends JFrame {
 		/* 세부내용 들어갈 나머지 패널 */
 		JPanel downsidePanel = new JPanel();
 		downsidePanel.setBounds(0, 100, 500, 770);
-//		downsidePanel.setLayout(null); //원래 했어야 하는데, 안 하고 xy를 재버려서 일단 끕니다..
+//		downsidePanel.setLayout(null); //원래 했어야 하는데, 안 하고 xy를 재버려서 각주처리 일단 끕니다..
 		downsidePanel.setBackground(Color.YELLOW);
+		
 		
 		/* 혼또니 로고버튼 */
 		JButton honddoniBtn = new JButton("");
@@ -102,14 +105,13 @@ public class RegistMember extends JFrame {
 //		nameTf.setContentAreaFilled(F2, F2, F2);
 		
 		JTextField idTf = new JTextField();
-		idTf.setBounds(80, 74, 348, 26);
+		idTf.setBounds(80, 74, 200, 26);
 		
 		JPasswordField passwordPf = new JPasswordField();
 		passwordPf.setBounds(95, 136, 333, 26);
 		
 		JPasswordField passwordRePf = new JPasswordField();
-		passwordRePf.setBounds(125, 199, 303, 26);
-		
+		passwordRePf.setBounds(125, 199, 303, 26);		
 
 		JTextField birthdayTf = new JTextField();
 		birthdayTf.setBounds(125, 261, 192, 26);
@@ -142,7 +144,6 @@ public class RegistMember extends JFrame {
 		ButtonGroup genderRb = new ButtonGroup();
 		genderRb.add(genderMRb);
 		genderRb.add(genderFRb);
-
 		
 		JTextField nicknameTf = new JTextField();
 		nicknameTf.setBounds(80, 324, 348, 26);
@@ -190,14 +191,11 @@ public class RegistMember extends JFrame {
 				if(e.getSource() == checkDuplBtn) {
 					
 					String getUserId = idTf.getText();
-					
-//					memberController.idDuplCheck(getUserId);
+					memberController.idDuplCheck(getUserId);
 				}
 				
 			}
 		});
-		
-		/* 성향 메소드 */
 		
 		
 		JButton agreeBtn = new JButton();
@@ -252,10 +250,7 @@ public class RegistMember extends JFrame {
 		cancelBtn.setBorderPainted(false);
 		
 		
-		/* 컴포넌트 올리기 */
-		firstPanel.add(upsidePanel);
-		firstPanel.add(downsidePanel);	
-		
+		/* 컴포넌트 올리기 */		
 		memberDataLb.add(nameTf);
 		memberDataLb.add(idTf);
 		memberDataLb.add(passwordPf);
@@ -271,6 +266,7 @@ public class RegistMember extends JFrame {
 		memberDataLb.add(emailTf);
 		memberDataLb.add(characterSelectLb);
 		memberDataLb.add(characterSelectBtn);
+		memberDataLb.add(checkDuplBtn);
 		
 		
 		upsidePanel.add(honddoniBtn);
@@ -278,6 +274,8 @@ public class RegistMember extends JFrame {
 		downsidePanel.add(agreeBtn);
 		downsidePanel.add(cancelBtn);
 		
+		firstPanel.add(upsidePanel);
+		firstPanel.add(downsidePanel);	
 		
 		this.repaint();
 		this.revalidate();	
