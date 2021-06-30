@@ -158,6 +158,7 @@ public class RegistMember extends JFrame {
 		emailTf.setBounds(80, 514, 348, 26);
 		
 		/* 라벨위에 라벨 & 버튼을 각각 올릴 것 */
+		String character = "외향"; //일단 이렇게 설정
 		JLabel characterSelectLb = new JLabel();
 		characterSelectLb.setBounds(92, 572, 316, 41);
 		characterSelectLb.setIcon(new ImageIcon("image/member/regist/regist_7_character_select.png"));
@@ -170,7 +171,7 @@ public class RegistMember extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == characterSelectBtn) {
 					//성향파악
-					new CharacterSelect();
+//					new CharacterSelect();
 				}
 				
 			}
@@ -228,6 +229,7 @@ public class RegistMember extends JFrame {
 					memberRegistDTO.setMemberNickname(nicknameTf.getText());
 					memberRegistDTO.setMemberPhone(phoneTf.getText());
 					memberRegistDTO.setMemberEmail(emailTf.getText());
+					memberRegistDTO.setMemberCharacter(character);
 					
 					/* 등록하는 오늘 날짜 추출 */
 					java.util.Date today = new java.util.Date(System.currentTimeMillis());
@@ -237,7 +239,7 @@ public class RegistMember extends JFrame {
 					
 					System.out.println(memberRegistDTO);
 					
-//					memberController.registMember(memberRegistDTO);
+					memberController.registMember(memberRegistDTO);
 				}
 
 			}
