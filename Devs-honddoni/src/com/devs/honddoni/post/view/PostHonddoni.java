@@ -158,7 +158,8 @@ public class PostHonddoni extends JFrame{
 	}
 	
 	private void postMeetingTime() {
-		meetingYear
+		
+		meetingYear = new JComboBox();
 		meetingMonth
 		meetingDay
 		meetingHour
