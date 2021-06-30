@@ -44,8 +44,11 @@ public class login extends JFrame {
        
        JLabel label2 = new JLabel("혼또니 글씨");
        
-       JLabel jl = new JLabel("입력 : ");
-//       JTextField jt = new JTextField();
+       JLabel jl = new JLabel("아이디 : ");
+       JTextField jt = new JTextField();
+       
+       JLabel jl1 = new JLabel("패스워드 : ");
+       JTextField jt1 = new JTextField();
 
        //패널에 버튼 추가
        jp.add(btn1);
@@ -55,7 +58,9 @@ public class login extends JFrame {
        jp.add(label1);
        jp.add(label2);
        jp.add(jl);
-//       jp.add(jt);
+       jp.add(jt);
+       jp.add(jl1);
+       jp.add(jt1);
    
        //버튼 위치 조정
        btn1.setBounds(34, 592, 430, 62);
@@ -65,7 +70,9 @@ public class login extends JFrame {
        label1.setBounds(174, 81, 151, 153);
        label2.setBounds(130, 257, 240, 98);
        jl.setBounds(34, 431, 430, 62);
-//       jt.setBounds(34, 431, 430, 62);
+       jt.setBounds(34, 431, 430, 62);
+       jl1.setBounds(34, 512, 430, 62);
+       jt1.setBounds(34, 512, 430, 62);
 
        //컨테이너에 패널 추가
        add(jp);
