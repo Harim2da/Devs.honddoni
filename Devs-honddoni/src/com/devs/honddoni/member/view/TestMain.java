@@ -10,7 +10,9 @@ public class TestMain {
 		
 //		new ChangePwd();
 		
-		new MemeberView();
+//		new MemeberView();
+		
+		new FrameManager();
 	}
 
 }

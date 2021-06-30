@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 public class FrameManager {
 
-	private static JFrame frame = new MyPage();
+	private static JFrame frame = new MemberViewFrame();
 	
 	public static JFrame getFrame() {
 		return FrameManager.frame;
