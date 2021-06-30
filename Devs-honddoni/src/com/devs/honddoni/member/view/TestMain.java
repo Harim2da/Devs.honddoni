@@ -4,10 +4,13 @@ public class TestMain {
 
 	public static void main(String[] args) {
 
-//		new FrameManager();
+//		new MyPage();
 		
-		new ResignMember();
+//		new ResignMember();
 		
+//		new ChangePwd();
+		
+		new MemeberView();
 	}
 
 }

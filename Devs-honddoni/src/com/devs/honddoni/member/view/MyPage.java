@@ -11,8 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-public class MyPage extends JFrame {
+public class MyPage {
 	
+	private JFrame frame;
 	private Sidebar sidebar;
 
 	public MyPage() {
@@ -20,13 +21,13 @@ public class MyPage extends JFrame {
 		JLayeredPane j = new JLayeredPane();
 		j.setBounds(100, 100, 516, 909);
 		
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
-		this.setTitle("혼또니(혼자 또 여행왔니?)");
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 516, 909);
+		frame.setLayout(null);
+		frame.setTitle("혼또니(혼자 또 여행왔니?)");
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		this.add(j);
+//		this.add(j);
 		
 		/* 상단 패널 */
 		JPanel upsidePanel = new JPanel();
@@ -40,8 +41,8 @@ public class MyPage extends JFrame {
 		downsidePanel.setBackground(Color.red);
 		downsidePanel.setLayout(null);
 		
-		j.add(upsidePanel);
-		j.add(downsidePanel);
+//		j.add(upsidePanel);
+//		j.add(downsidePanel);
 		
 		/* 사이드 바 오픈 버튼 */
 		JButton sidebarOpenButton = new JButton("");
@@ -61,6 +62,7 @@ public class MyPage extends JFrame {
 				new Sidebar(j);
 			}
 
+			
 		});
 		
 		/* 혼또니 상단 로고 버튼 */
@@ -91,6 +93,14 @@ public class MyPage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				/* 비밀번호 변경 호출 */
 				System.out.println("비밀번호변경 호출");
+				JPanel changePwdPanel = new JPanel();
+				changePwdPanel.setBounds(0, 100, 500, 770);
+				changePwdPanel.setVisible(true);
+				changePwdPanel.setBackground(Color.black);
+				downsidePanel.setVisible(false);
+				
+				frame.add(changePwdPanel);
+				
 			}
 		});
 		downsidePanel.add(changePwdButton);
@@ -183,12 +193,13 @@ public class MyPage extends JFrame {
 		downsidePanel.add(menuNameLabel);
 		
 		
-		/* 새로고침 */
-		this.repaint();
-		this.revalidate();
 		
-		this.add(upsidePanel);
-		this.add(downsidePanel);
+		/* 새로고침 */
+		frame.repaint();
+		frame.revalidate();
+		
+		frame.add(upsidePanel);
+		frame.add(downsidePanel);
 		
 	}
 	
