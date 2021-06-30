@@ -99,6 +99,12 @@ public class PostView extends JFrame {
 		panel.add(postType);
 		
 		JButton localSelectbtn = new JButton("");
+		localSelectbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		localSelectbtn.setOpaque(false);
 		localSelectbtn.setContentAreaFilled(false);
 		localSelectbtn.setBorderPainted(false);
@@ -131,7 +137,7 @@ public class PostView extends JFrame {
 		panel.add(postContents);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(99, 311, 39, 28);
+		comboBox.setBounds(106, 311, 37, 28);
 		panel.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
