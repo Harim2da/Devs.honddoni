@@ -16,14 +16,16 @@ import com.devs.honddoni.post.view.PostView;
 
 public class FreeBoard extends JFrame {
 
-	private JFrame mainFrame;
+//	private JFrame mainFrame;
 	private JPanel topPanel;
 	private JPanel bottomPanel;
 	private JLabel bottomLabel;
 	private JButton selectBoardType;
 	private JTextField freeBoardTitle;
 	private JTextArea freeBoardContents;
+	private JButton uploadBtn;
 	
+	// 자유게시글 작성 화면 불러오기
 	public FreeBoard() {
 		this.setBounds(100, 100, 516, 909);
 		this.setLayout(null);
@@ -31,6 +33,7 @@ public class FreeBoard extends JFrame {
 		selectBoard();
 		createFreeBoardTitle();
 		freeBoardContents();
+		uploadButton();
 		
 		addFreeBoardComponent();
 		
@@ -38,6 +41,7 @@ public class FreeBoard extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	// 상단 패널 생성
 	public void topPanel() {
 		topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
@@ -45,6 +49,7 @@ public class FreeBoard extends JFrame {
 		topPanel.setBackground(Color.white);
 	}
 	
+	// 하단 패널 생성
 	public void bottomPanel() {
 		bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 770);
@@ -58,6 +63,7 @@ public class FreeBoard extends JFrame {
 		bottomLabel.setIcon(new ImageIcon(FreeBoardView.class.getResource("/post/postbtmpanel.png")));
 	}
 	
+	// 게시판 종류 선택
 	private void selectBoard() {
 		bottomPanel();
 		selectBoardType = new JButton();
@@ -75,6 +81,7 @@ public class FreeBoard extends JFrame {
 		
 	}
 	
+	// 자유게시판 제목 작성
 	private void createFreeBoardTitle() {
 		freeBoardTitle = new JTextField();
 		freeBoardTitle.setBorder(null);
@@ -84,11 +91,21 @@ public class FreeBoard extends JFrame {
 		freeBoardTitle.setColumns(10);
 	}
 	
+	// 게시글 작성
 	private void freeBoardContents() {
 		freeBoardContents = new JTextArea();
 		freeBoardContents.setOpaque(false);
 		freeBoardContents.setBounds(59, 305, 399, 273);
 		
+	}
+	
+	/* 게시글 작성 완료 버튼*/
+	private void uploadButton() {
+		uploadBtn = new JButton();
+		uploadBtn.setBounds(129, 684, 263, 41);
+		uploadBtn.setIcon(new ImageIcon(PostView.class.getResource("/post/postbutton.png")));
+		uploadBtn.setContentAreaFilled(false);
+		uploadBtn.setBorderPainted(false);
 	}
 	
 	
