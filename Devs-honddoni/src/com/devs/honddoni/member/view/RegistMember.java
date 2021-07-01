@@ -39,7 +39,7 @@ public class RegistMember extends JFrame {
 		
 		/* 프레임 설정 */
 		registFrame = this;		//new Frame(); 을 하면, 기존에 만들어둔 프레임을 싹 무시하고 새 프레임을 올리는게 된다.
-		registFrame.setForeground(Color.WHITE);
+		registFrame.setForeground(Color.red);
 		registFrame.setBounds(100, 100, 516, 909);
 		
 		setPanel();
@@ -172,6 +172,8 @@ public class RegistMember extends JFrame {
 				if(e.getSource() == characterSelectBtn) {
 					//성향파악
 //					new CharacterSelect();
+					
+					//성향파악해서 DB에서 왔다갔다해서, 캐릭터 코드를 받아와야 함....
 				}
 				
 			}

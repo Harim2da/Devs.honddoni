@@ -21,6 +21,7 @@
 	   ,A.MEMBER_ACCESS
 	   ,A.MEM_REGIST_DATE
 	   ,A.MEM_WITHDRAW_DATE
+       ,A.MEM_CHARACTER_CODE
 	   )
 	   VALUES
 	   (
@@ -35,10 +36,11 @@
 	   ,?
 	   ,?
 	   ,DEFAULT
-	   ,"1"
+	   ,'1'
 	   ,DEFAULT
 	   ,?
 	   ,NULL
+	   ,?
 	   )
 	</entry>
 	<entry key="idDuplCheck">
