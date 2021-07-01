@@ -1,82 +1,91 @@
 package com.devs.honddoni.memberLog.view;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import com.devs.honddoni.view.viewframe;
-
-import java.awt.Rectangle;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class MemberLogView extends JFrame {
-	
-	private JFrame frame;
-	private JPanel contentPane;	
-	
+import com.devs.honddoni.admin.view.MainFrame;
+
+public class MemberLogView extends JPanel {
+
+	public MainFrame mf;
+	private JPanel bottomPanel = new JPanel();	
+
 	public MemberLogView() {
-		this.frame = new JFrame();
-		this.contentPane = new JPanel();
-	}
 
-	public void FirstView() {
-		frame.setBounds(100, 100, 516, 909);
+		//로그인창 전체패널 생성		
+		bottomPanel.setBounds(0, 0, 500, 870);
+		bottomPanel.setLayout(null);
+		
+		//로고이자 
+		JButton adminLoginBtn = new JButton();
+		adminLoginBtn.setBounds(174, 82, 152, 154);
+		adminLoginBtn.setBorderPainted(false);
+		adminLoginBtn.setIcon(new ImageIcon("image/memberLog/login/login_1_logo.png"));
+		adminLoginBtn.addActionListener(new ActionListener() {
 
-		contentPane.setLayout(null);
-		contentPane.setBounds(0, 0, 500, 870);
-
-		JButton btnNewButton = new JButton("logobutton");
-		btnNewButton.setIcon(new ImageIcon(MemberLogView.class.getResource("/memberLog/login/login_1_logo.png")));
-		btnNewButton.setBounds(174, 276, 152, 154);
-		btnNewButton.setBorderPainted(false);
-		getContentPane().add(btnNewButton);
-
-		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				MemberLogView();
-				frame.setVisible(false);
+			public void actionPerformed(ActionEvent e) {
+
+				//관리자 로그인쪽으로 뺀다
+				
 			}
-		});		
+		});
+		
+		JLabel honddoniLogo = new JLabel();
+		honddoniLogo.setBounds(130, 443, 241, 99);
+		honddoniLogo.setIcon(new ImageIcon("image/common/honddoniLogo.png"));
+		
+		//아이디, 비밀번호 구역
+		JLabel idPwdArea = new JLabel();
+		idPwdArea.setBounds(35, 432, 431, 143);
+		idPwdArea.setIcon(new ImageIcon("image/memberLog/login/login_3_id_and_password.png"));
+		
+		JTextField idTf = new JTextField();
+		idTf.setBounds(130, 453, 200, 26);
+		
+		JTextField pwTf = new JTextField();
+		pwTf.setBounds(130, 453, 200, 26);
+		
+		idPwdArea.add(idTf);
+		idPwdArea.add(pwTf);
+		
+		//로그인 버튼
+		JButton loginBtn = new JButton();
+		loginBtn.setBounds(35, 593, 431, 63);
+		loginBtn.setBorderPainted(false);
+		loginBtn.setIcon(new ImageIcon("image/memberLog/login/login_4_login_btn.png"));
+		loginBtn.addActionListener(new ActionListener() {
 
-		JButton btnNewButton_1 = new JButton("logo2 button");
-		btnNewButton_1.setIcon(new ImageIcon(MemberLogView.class.getResource("/memberLog/login/login_2_logo2.png")));
-		btnNewButton_1.setBounds(130, 443, 241, 99);
-		btnNewButton_1.setBorderPainted(false);
-		getContentPane().add(btnNewButton_1);
-
-
-		contentPane.add(btnNewButton);
-		contentPane.add(btnNewButton_1);
-
-		frame.getContentPane().add(contentPane);
-
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-	}
-
-	public void MemberLogView() {
-		frame.setBounds(100, 100, 516, 909);
-
-		contentPane.setLayout(null);
-		contentPane.setBounds(0, 0, 500, 870);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				//아이디와 비밀번호를 받아서 DTO로 뭉침
+				
+				//로그인 메소드 실행
+				
+			}
+		});
+		
+		//아이디찾기버튼
+		JButton loginBtn = new JButton();
+		
+		//비밀번호찾기버튼
+		JButton searchPasswordBtn = new JButton();
+		
+		//회원가입버튼
+		JButton registBtn = new JButton();
 		
 		
-		
-		
-		frame.getContentPane().add(contentPane);
+		//컴포넌트올리기
 
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
 
-	}
+	}		
+
 
 }

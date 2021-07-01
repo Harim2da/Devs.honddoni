@@ -78,7 +78,6 @@ public class RegistMember extends JFrame {
 //		downsidePanel.setLayout(null); //원래 했어야 하는데, 안 하고 xy를 재버려서 각주처리 일단 끕니다..
 		downsidePanel.setBackground(Color.YELLOW);
 		
-		
 		/* 혼또니 로고버튼 */
 		JButton honddoniBtn = new JButton("");
 		honddoniBtn.setBounds(305, 29, 173, 71);
