@@ -45,17 +45,20 @@ public class MemberDAO {
 			pstmt.setString(1, getUserId);
 			
 			rset = pstmt.executeQuery();
-			
+			System.out.println(rset.getInt("COUNT(*)"));
 			/* 아님 rset.next()로 해서 count로 해야되나... 일단 고민 */
 			/* 카운트가 0 = 중복아님 = 0 */
 			if(rset.getInt("COUNT(*)") == 0) {
 				result = 0;
+				
 			} else {
 				result = 1;
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+
 		}
 
 		return result;

@@ -16,7 +16,7 @@ import com.devs.honddoni.post.view.PostView;
 
 public class FreeBoard extends JFrame {
 
-//	private JFrame mainFrame;
+	private JPanel mainPanel;
 	private JPanel topPanel;
 	private JPanel bottomPanel;
 	private JLabel bottomLabel;

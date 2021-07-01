@@ -81,6 +81,7 @@ public class PostHonddoni extends JFrame{
 	
 	/* 팝업 시 반투명 패널 생성 */
 	public void popupPanel() {
+
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
 		mainFrame.add(pann);
