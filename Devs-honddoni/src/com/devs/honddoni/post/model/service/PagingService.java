@@ -54,11 +54,11 @@ public class PagingService {
 		return result;
 	}
 
-	public int selectWholeCommentsNum() {
+	public int selectWholeCommentsNum(int postNo) {
 
 		Connection con = getConnection();
 
-		int result = pagingDAO.selectWholeCommentsNum(con);
+		int result = pagingDAO.selectWholeCommentsNum(con, postNo);
 
 		close(con);
 

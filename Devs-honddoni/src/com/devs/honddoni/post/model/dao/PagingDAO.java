@@ -110,7 +110,7 @@ public class PagingDAO {
 		return result;
 	}
 	
-	public int selectWholeCommentsNum(Connection con) {
+	public int selectWholeCommentsNum(Connection con, int postNo) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -118,6 +118,7 @@ public class PagingDAO {
 		String query = prop.getProperty("selectWholeCommentsNum");
 		try {
 			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, postNo);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {

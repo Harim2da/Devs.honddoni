@@ -10,6 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.PagenationComments;
+import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
+import com.devs.honddoni.post.controller.PagingController;
+
 public class CommentMain extends JFrame {
 
 	private JPanel upPanel; 		//상단패널
@@ -19,6 +23,7 @@ public class CommentMain extends JFrame {
 	private JButton commentWriteBtn; //댓글 작성 버튼
 	private JLabel commentLongbarLabel; //페이지를 나타낼때 아래 깔래는 바
 	private JButton backBtn;         //뒤로 가기
+	private JLabel frontNumber;	      //페이지를 나타내는 앞의 숫자
 	
 	/* 프레임에서 패널을 더해주기 위한 getter */
 	public JPanel getUpPanel() {
@@ -42,6 +47,9 @@ public class CommentMain extends JFrame {
 	public JButton getBackBtn() {
 		return backBtn;
 	}
+	public JLabel getFrontNumber() {
+		return frontNumber;
+	}
 	/* 프레임을 제외한 나머지를 합친 것 */
 	public void collect() {
 		
@@ -52,11 +60,13 @@ public class CommentMain extends JFrame {
 		commentWriteBtn();
 		commentLongbarLabel();
 		backBtn();
+//		frontNumber();
 		upPanel.add(sidebarBtn);
 		upPanel.add(logoBtn);
 		downPanel.add(commentWriteBtn);
 		downPanel.add(commentLongbarLabel);
 		downPanel.add(backBtn);
+//		commentLongbarLabel.add(frontNumber);
 		
 	}
 	/* 상단 패널 */
@@ -139,6 +149,7 @@ public class CommentMain extends JFrame {
 		
 	}
 	
+	
 	public void commentLongbarLabel() {
 		
 		commentLongbarLabel = new JLabel("");
@@ -164,5 +175,33 @@ public class CommentMain extends JFrame {
 			}
 		});
 	}
+	
+	public void pageBtn() {
+		
+		int pageNo = 1;
+		
+		PagenationComments pagenationComments = new PagenationComments();
+		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, new PagingController().
+				selectWholeCommentsNum(pageNo), 10, 2);
+		
+
+		if(pageInfo.getStartPage() == pageInfo.getEndPage()) {
+			
+		} else if(pageInfo.)
+		
+	}
+	
+//	public void frontNumber() {
+//		
+//		PagenationComments pgc = new PagenationComments();
+//		
+//		
+//		new PagingController().selectWholeCommentsNum(pageNo);
+//		frontNumber = new JLabel();
+//		frontNumber.setLayout(null);
+//		frontNumber.setBounds(50, 2, 14, 14);
+//		
+//	}
+
 	
 }
