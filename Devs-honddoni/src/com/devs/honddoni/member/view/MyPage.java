@@ -67,41 +67,32 @@ public class MyPage {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 //		this.add(j);
-		
+        
+        
+        
 		/* 상단 패널 */
 		JPanel upsidePanel = new JPanel();
 		upsidePanel.setBounds(0, 0, 500, 100);
-		upsidePanel.setBackground(Color.white);
+		upsidePanel.setBackground(Color. white);
 		upsidePanel.setLayout(null);
+//		upsidePanel.setOpaque(false);	//배경 투명
+		frame.add(upsidePanel);
 		
 		/* 하단 패널 */
 		JPanel downsidePanel = new JPanel();
 		downsidePanel.setBounds(0, 100, 500, 770);
 		downsidePanel.setBackground(Color.white);
 		downsidePanel.setLayout(null);
-		
+//		downsidePanel.setOpaque(false);	//배경 투명
+		frame.add(downsidePanel);
 //		j.add(upsidePanel);
 //		j.add(downsidePanel);
 		
-		/* 사이드 바 오픈 버튼 */
-		JButton sidebarOpenButton = new JButton("");
-		sidebarOpenButton.setIcon(new ImageIcon("image/common/Group 1014.png"));
-		sidebarOpenButton.setContentAreaFilled(false);	//배경 투명
-		sidebarOpenButton.setBorderPainted(false);	  	//윤곽선 투명
-		sidebarOpenButton.setBounds(35, 33, 34, 20);
-		upsidePanel.add(sidebarOpenButton);
-		
-		/* 사이드바 오픈 버튼 클릭 시 */
-		sidebarOpenButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				System.out.println("버튼 클릭");
-			}
-
-			
-		});
+		JPanel main = new JPanel();
+		main.setBounds(0,0,500,870);
+		main.setBackground(Color.black);
+		main.setVisible(true);
+		frame.add(main);
 		
 		/* 혼또니 상단 로고 버튼 */
 		JButton honddoniLogo = new JButton("");
@@ -488,14 +479,51 @@ public class MyPage {
 		menuNameLabel.setBounds(111, 10, 500, 870);
 		downsidePanel.add(menuNameLabel);
 		
+        /* 사이드 바 오픈 버튼 */
+        JButton sidebarOpenButton = new JButton("");
+        sidebarOpenButton.setIcon(new ImageIcon("image/common/Group 1014.png"));
+        sidebarOpenButton.setContentAreaFilled(false);	//배경 투명
+        sidebarOpenButton.setBorderPainted(false);	  	//윤곽선 투명
+        sidebarOpenButton.setBounds(35, 33, 34, 20);
+        upsidePanel.add(sidebarOpenButton);
+
+        /* 사이드바 오픈 버튼 클릭 시 */
+        sidebarOpenButton.addActionListener(new ActionListener() {
+        	
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		
+        		JPanel side = new JPanel();
+        		System.out.println("사이드오픈");
+        		side.setBounds(0,0,500,870);
+        		side.setBackground(Color.blue);
+        		side.setVisible(true);
+        		main.add(side);
+        		
+        		
+        		side.repaint();
+        		side.revalidate();
+//        		
+//        		JPanel j = new JPanel();
+//        		j.setBounds(0,0,500,870);
+//        		j.setBackground(Color.black);
+//        		j.setVisible(true);
+//        		side.add(j);
+        	}
+        	
+        	
+        });
+
 			
 		
 		/* 새로고침 */
 		frame.repaint();
 		frame.revalidate();
 		
-		frame.add(upsidePanel);
-		frame.add(downsidePanel);
+//		frame.add(upsidePanel);
+//		frame.add(downsidePanel);
+//		
 		
 		
 	}
