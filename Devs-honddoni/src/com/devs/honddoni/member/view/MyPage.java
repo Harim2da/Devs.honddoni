@@ -15,6 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class MyPage extends JPanel{
@@ -65,9 +66,11 @@ public class MyPage extends JPanel{
 		downsidePanel.setBackground(Color.white);
 		downsidePanel.setLayout(null);
 //		downsidePanel.setOpaque(false);	//배경 투명
+		
 		frame.add(downsidePanel);
 		
 		
+/*==================================  비밀번호 변경 버튼   ================================================== */		
 		
 		/* 비밀번호 변경 버튼 */
 		JButton changePwdButton = new JButton("");
@@ -75,7 +78,6 @@ public class MyPage extends JPanel{
 		changePwdButton.setBorderPainted(false);
 		changePwdButton.setIcon(new ImageIcon("image/member/myPage/pwdchange.png"));
 		changePwdButton.setBounds(92, 53, 137, 137);
-//        frame.setComponentZOrder(changePwdButton , 1);	////////////////////////////
 		changePwdButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -90,7 +92,7 @@ public class MyPage extends JPanel{
 				frame.add(changePwdPanel);
 				
 				/* 취소 버튼 */
-				btnRemove(cpB1);
+				MyPage.btnRemove(cpB1);
 				cpB1.setVisible(true);
 				cpB1.setBounds(58, 595, 178, 63);
 				cpB1.setIcon(new ImageIcon("image/member/updatePwd/Group 677.png"));
@@ -101,13 +103,13 @@ public class MyPage extends JPanel{
 						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
-						new MyPage();
+//						FrameManager.changePanel(changePwdPanel, downsidePanel);
 					}
 				});
 				changePwdPanel.add(cpB1);
 				
 				/* 변경 버튼 */
-				btnRemove(cpB2);
+				MyPage.btnRemove(cpB2);
 				cpB2.setVisible(true);
 				cpB2.setBounds(264, 595, 178, 63);
 				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
@@ -156,13 +158,15 @@ public class MyPage extends JPanel{
 		downsidePanel.add(changePwdButton);
 		
 		
+/*================================== 개인정보 변경 버튼   ================================================== */			
+		
+		
 		/* 개인정보 변경 버튼 */
 		JButton changeMemberinfo = new JButton("");
 		changeMemberinfo.setIcon(new ImageIcon("image/member/myPage/changeInfo.png"));
 		changeMemberinfo.setContentAreaFilled(false);
 		changeMemberinfo.setBorderPainted(false);
 		changeMemberinfo.setBounds(272, 53, 137, 137);
-//        frame.setComponentZOrder(changeMemberinfo , 1);	////////////////////////////
 		changeMemberinfo.addActionListener(new ActionListener() {
 			
 			@Override
@@ -205,12 +209,10 @@ public class MyPage extends JPanel{
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("변경 버튼 클릭");
 						
-						/* 비밀번호 확인 후 다를 시 팝업*/
-						
-						/* 비밀번호 변경 완료 팝업*/
 					}
 				});
 				changeMemberinfoPanel.add(cpB2); 
+
 				
 				/* 프로필 변경 버튼 */
 				btnRemove(ciB1);
@@ -311,13 +313,16 @@ public class MyPage extends JPanel{
 		
 		
 		
+/*==================================  탈퇴하기 버튼   ================================================== */			
+		
+		
+		
 		/* 탈퇴하기 버튼 */
 		JButton resignMemberButton = new JButton("");
 		resignMemberButton.setIcon(new ImageIcon("image/member/myPage/resign.png"));
 		resignMemberButton.setContentAreaFilled(false);
 		resignMemberButton.setBorderPainted(false);
 		resignMemberButton.setBounds(92, 280, 137, 137);
-//        frame.setComponentZOrder( resignMemberButton, 1);	////////////////////////////
 		resignMemberButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -386,6 +391,10 @@ public class MyPage extends JPanel{
 		});
 		downsidePanel.add(resignMemberButton);
 		
+	
+/*==================================  관심글 모아보기 버튼   ================================================== */
+		
+		
 		/* 관심글 모아보기 버튼 */
 		JButton InterestingPostButton = new JButton("");
 		InterestingPostButton.setIcon(new ImageIcon("image/member/myPage/heart.png"));
@@ -403,6 +412,8 @@ public class MyPage extends JPanel{
 		downsidePanel.add(InterestingPostButton);
 		
 		
+/*==================================  업적 & 포인트 버튼   ================================================== */		
+		
 		/* 업적 & 포인트 버튼 */
 		JButton rewardButton = new JButton("");
 		rewardButton.setIcon(new ImageIcon("image/member/myPage/medal.png"));
@@ -418,6 +429,10 @@ public class MyPage extends JPanel{
 			}
 		});
 		downsidePanel.add(rewardButton);
+		
+		
+/*==================================  내글 모아보기 버튼   ================================================== */
+		
 		
 		/* 내글 모아보기 버튼 */
 		JButton writtenPostButton = new JButton("");
@@ -435,6 +450,9 @@ public class MyPage extends JPanel{
 		});
 		downsidePanel.add(writtenPostButton);
 		
+		
+/*==================================  마이페이지에 있는 버튼 밑에 글씨들   ================================================== */
+		
 		/* 마이페이지에 있는 버튼 밑에 글씨들 */
 		JLabel menuNameLabel = new JLabel("");
 		menuNameLabel.setIcon(new ImageIcon("image/member/myPage/myPageName.png"));
@@ -449,9 +467,6 @@ public class MyPage extends JPanel{
 		frame.repaint();
 		frame.revalidate();
 		
-//		frame.add(upsidePanel);
-//		frame.add(downsidePanel);
-//		
 		
 		
 	}
