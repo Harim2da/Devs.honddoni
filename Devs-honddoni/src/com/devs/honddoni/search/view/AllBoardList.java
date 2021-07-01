@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class AllBoardList extends JFrame{
-
+	
+	
 	private JPanel mainPanel;
 	private JPanel topPanel;
 	private JPanel bottomPanel;

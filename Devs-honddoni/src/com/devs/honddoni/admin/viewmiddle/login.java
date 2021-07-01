@@ -20,7 +20,7 @@ public class login extends JFrame {
 	   
        super("로그인"); //프레임의 타이틀
        
-       mainFrame = new JFrame();
+//       mainFrame = new JFrame();
    	   this.setBounds(100, 100, 516, 909); //컨테이너 크기
    	   this.setDefaultCloseOperation(EXIT_ON_CLOSE);
    	   this.setLocationRelativeTo(null);
@@ -53,8 +53,6 @@ public class login extends JFrame {
        JLabel jl1 = new JLabel("패스워드 : ");
        JTextField jt1 = new JTextField();
   
-    		   
-
        //패널에 버튼 추가
        jp.add(btn1);
        jp.add(btn2);
@@ -67,7 +65,6 @@ public class login extends JFrame {
        jp.add(jl1);
        jp.add(jt1);
        
-   
        //버튼 위치 조정
        btn1.setBounds(34, 592, 430, 62);
        btn2.setBounds(57, 724, 110, 40);
@@ -80,16 +77,16 @@ public class login extends JFrame {
        jl1.setBounds(34, 512, 430, 62);
        jt1.setBounds(34, 512, 430, 62);
      
-
        //컨테이너에 패널 추가
-       add(jp);
-       setVisible(true); //창을 보이게함
+       this.add(jp);
+       this.setVisible(true); //창을 보이게함
        
        btn1.addActionListener(new ActionListener() {
     	   @Override
     	   public void actionPerformed(ActionEvent e) {
-    		   login2 login2 = new login2();
-    		   mainFrame.add(login2);
+//    		   login2 login2 = new login2();
+//    		   mainFrame.add(login2);
+    		   new login2();
     		   jp.setVisible(false);
     	   }
        });

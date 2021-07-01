@@ -14,7 +14,9 @@ import com.devs.honddoni.member.view.MyPage;
 
 public class MainFrame {
 	
+
 	private static JFrame mainframe = new JFrame();
+
 	
 	public MainFrame() {
 		mainframe.setBounds(100, 100, 516, 909);
@@ -29,8 +31,10 @@ public class MainFrame {
 	
 	
 	public void topPanel() {
+
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
+
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
