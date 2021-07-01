@@ -81,7 +81,7 @@ public class PostHonddoni extends JFrame{
 	public void popupPanel() {
 		popupPanel = new JPanel();
 		popupPanel.setBounds(0, 30, 500, 670);
-		popupPanel.setLayout(null);
+		popupPanel.setLayout(null);vmf
 		popupPanel.setBackground(new Color(0,0,0,122)); //반투명 설정
 		bottomPanel.add(popupPanel);
 	
