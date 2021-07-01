@@ -20,7 +20,6 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class MyPage extends JPanel{
 	
-//	JFrame frame = new JFrame();
 	MainFrame frame = new MainFrame();
 	
 	/* 비밀번호변경 */
@@ -224,7 +223,7 @@ public class MyPage extends JPanel{
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("프로필 변경 버튼 클릭");
+						System.out.println("프로필 변경 버튼 클릭"); 
 						
 					}
 				});
@@ -286,7 +285,7 @@ public class MyPage extends JPanel{
 				/* 개인정보 변경 입력창 라벨 */
 				ciL3.setBounds(0, 0, 500, 770);
 				ciL3.setVisible(true);
-				ciL3.setIcon(new ImageIcon("image/member/updateInfo/Group 1073.png"));
+				ciL3.setIcon(new ImageIcon("image/member/updateInfo/G  roup 1073.png"));
 				changeMemberinfoPanel.add(ciL3);
 				
 				/* 본인 성향 선택 콤보박스 */
@@ -396,20 +395,47 @@ public class MyPage extends JPanel{
 		
 		
 		/* 관심글 모아보기 버튼 */
-		JButton InterestingPostButton = new JButton("");
-		InterestingPostButton.setIcon(new ImageIcon("image/member/myPage/heart.png"));
-		InterestingPostButton.setContentAreaFilled(false);
-		InterestingPostButton.setBorderPainted(false);
-		InterestingPostButton.setBounds(272, 280, 137, 137);
-		InterestingPostButton.addActionListener(new ActionListener() {
+		JButton interestingPostButton = new JButton("");
+		interestingPostButton.setIcon(new ImageIcon("image/member/myPage/heart.png"));
+		interestingPostButton.setContentAreaFilled(false);
+		interestingPostButton.setBorderPainted(false);
+		interestingPostButton.setBounds(272, 280, 137, 137);
+		interestingPostButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/* 관심글 모아보기  호출 */
 				System.out.println("관심글 모아보기  호출");
+				JPanel interestingPostPanel = new JPanel();
+				interestingPostPanel.setLayout(null);
+				interestingPostPanel.setBounds(0, 100, 500, 770);
+				interestingPostPanel.setVisible(true);
+				interestingPostPanel.setBackground(Color.white);
+				downsidePanel.setVisible(false);
+				frame.add(interestingPostPanel);  
+				
+				JLabel interestingPostLabel = new JLabel();
+				interestingPostLabel.setBounds(0, 100, 500, 770);
+				interestingPostLabel.setIcon(new ImageIcon("image/member/AllInteresting/qq.png"));
+				interestingPostPanel.add(interestingPostLabel);
+				
+				JLabel qqqq = new JLabel();
+				
+				String[] qq = {"지역별(가나다)", "활동 카테고리별"};
+				JComboBox qqq = new JComboBox(qq);
+				qqq.setBounds(276, 140, 187, 36);
+				qqq.setVisible(true);
+				interestingPostPanel.add(qqq);
+				
+				
+				JLabel asdasd = new JLabel();
+				asdasd.setBounds(276, 40, 187, 36);
+				asdasd.setIcon(new ImageIcon("image/member/AllInteresting/qqq.png"));
+				interestingPostLabel.add(asdasd);
+				
 			}
 		});
-		downsidePanel.add(InterestingPostButton);
+		downsidePanel.add(interestingPostButton);
 		
 		
 /*==================================  업적 & 포인트 버튼   ================================================== */		
