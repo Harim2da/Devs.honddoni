@@ -4,11 +4,13 @@ public class Application {
 
 	public static void main(String[] args) {
 		
-		new FreeBoard();
-
-		new SearchBoard();
+		new MainBottomPanel();
 		
-		new AllBoardListView();
+//		new FreeBoard();
+//
+//		new SearchBoard();
+//		
+//		new AllBoardListView();
 	}
 
 }
