@@ -23,7 +23,11 @@ public class CommentMain extends JFrame {
 	private JButton commentWriteBtn; //댓글 작성 버튼
 	private JLabel commentLongbarLabel; //페이지를 나타낼때 아래 깔래는 바
 	private JButton backBtn;         //뒤로 가기
-	private JLabel frontNumber;	      //페이지를 나타내는 앞의 숫자
+	private JLabel beforeNumber;	      //페이지를 나타내는 앞의 숫자
+	private JLabel afterNumber;				//페이지를 나타내는 뒤의 숫자
+	private int frontPage = 1;			//현재 페이지
+	private JButton beforeBtn;			//페이지를 앞으로 이동하는 버튼
+	private JButton afterBtn;			//페이지를 뒤로 이동하는 버튼
 	
 	/* 프레임에서 패널을 더해주기 위한 getter */
 	public JPanel getUpPanel() {
@@ -47,8 +51,23 @@ public class CommentMain extends JFrame {
 	public JButton getBackBtn() {
 		return backBtn;
 	}
-	public JLabel getFrontNumber() {
-		return frontNumber;
+	public JLabel getBeforeNumber() {
+		return beforeNumber;
+	}
+	public JLabel getAfterNumber() {
+		return afterNumber;
+	}
+	public int getFrontPage() {
+		return frontPage;
+	}
+	public void setFrontPage(int frontPage) {
+		this.frontPage = frontPage;
+	}
+	public JButton getBeforeBtn() {
+		return beforeBtn;
+	}
+	public JButton getAfterBtn() {
+		return afterBtn;
 	}
 	/* 프레임을 제외한 나머지를 합친 것 */
 	public void collect() {
@@ -60,13 +79,19 @@ public class CommentMain extends JFrame {
 		commentWriteBtn();
 		commentLongbarLabel();
 		backBtn();
-//		frontNumber();
+		beforeNumber();
+		afterNumber(1, 1);
+		beforeBtn(1, 1);
+		afterBtn(1, 1);	
 		upPanel.add(sidebarBtn);
 		upPanel.add(logoBtn);
 		downPanel.add(commentWriteBtn);
 		downPanel.add(commentLongbarLabel);
 		downPanel.add(backBtn);
-//		commentLongbarLabel.add(frontNumber);
+		commentLongbarLabel.add(beforeNumber);
+		commentLongbarLabel.add(afterNumber);
+		commentLongbarLabel.add(beforeBtn);
+		commentLongbarLabel.add(afterBtn);
 		
 	}
 	/* 상단 패널 */
@@ -176,32 +201,90 @@ public class CommentMain extends JFrame {
 		});
 	}
 	
-	public void pageBtn() {
+	public void beforeBtn(int postNo, int pageNo) {
 		
-		int pageNo = 1;
-		
+		pageNo = frontPage;
+		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
+		new PagingController().selectWholeCommentsNum(postNo);
+		int totalCount = dto.getTotalCount();	
 		PagenationComments pagenationComments = new PagenationComments();
-		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, new PagingController().
-				selectWholeCommentsNum(pageNo), 10, 2);
+		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 2, 5);
 		
-
-		if(pageInfo.getStartPage() == pageInfo.getEndPage()) {
+		beforeBtn = new JButton("");
+		beforeBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
+		beforeBtn.setContentAreaFilled(false);
+		beforeBtn.setBorderPainted(false);
+		beforeBtn.setBounds(15, 4, 14, 14);
+		if(pageNo == 1) {
+			beforeBtn.setVisible(false);
+		}
+		beforeBtn.addActionListener(new ActionListener() {
 			
-		} else if(pageInfo.)
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("이전페이지로 이동");
+				/* 이전페이지 호출*/
+			}
+		});
+
 		
 	}
 	
-//	public void frontNumber() {
-//		
-//		PagenationComments pgc = new PagenationComments();
-//		
-//		
-//		new PagingController().selectWholeCommentsNum(pageNo);
-//		frontNumber = new JLabel();
-//		frontNumber.setLayout(null);
-//		frontNumber.setBounds(50, 2, 14, 14);
-//		
-//	}
+	public void afterBtn(int postNo, int pageNo) {
+		
+		pageNo = frontPage;
+		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
+		new PagingController().selectWholeCommentsNum(postNo);
+		int totalCount = dto.getTotalCount();	
+		PagenationComments pagenationComments = new PagenationComments();
+		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 2, 5);
+		
+		afterBtn = new JButton("");
+		afterBtn.setIcon(new ImageIcon("image/post/afterPageButton.png"));
+		afterBtn.setContentAreaFilled(false);
+		afterBtn.setBorderPainted(false);
+		afterBtn.setBounds(120, 4, 14, 14);
+		if(pageNo == pageInfo.getMaxPage()) {
+			beforeBtn.setVisible(false);
+		}
+		afterBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("다음페이지 호출");
+				/* 다음페이지 호출*/
+			}
+		});
+	}
+	
+	public void beforeNumber() {
+		
+		
+		String frontPageString = Integer.valueOf(frontPage).toString();
+		
+		beforeNumber = new JLabel(frontPageString);
+		beforeNumber.setLayout(null);
+		beforeNumber.setBounds(50, 4, 14, 14);
+		
+	}
+	
+	public void afterNumber(int postNo, int pageNo) {
+		
+		pageNo = frontPage;
+		
+		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
+		new PagingController().selectWholeCommentsNum(postNo);
+		int totalCount = dto.getTotalCount();
+		PagenationComments pagenationComments = new PagenationComments();
+		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 2, 5);
+		
+		String backPageString = Integer.valueOf(pageInfo.getMaxPage()).toString();
+		
+		afterNumber = new JLabel(backPageString);
+		afterNumber.setLayout(null);
+		afterNumber.setBounds(85, 4, 14, 14);
+		
+	}
 
 	
 }
