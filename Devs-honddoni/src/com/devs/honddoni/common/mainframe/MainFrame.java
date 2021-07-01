@@ -36,11 +36,11 @@ public class MainFrame {
 		topPanel.setBackground(Color.WHITE);
 		mainframe.add(topPanel);
 		
-		JPanel bottomPanel = new JPanel();
-		bottomPanel.setBounds(0, 100, 500, 770);
-		bottomPanel.setLayout(null);
-		bottomPanel.setBackground(Color.WHITE);
-		mainframe.add(bottomPanel);
+//		JPanel bottomPanel = new JPanel();
+//		bottomPanel.setBounds(0, 100, 500, 770);
+//		bottomPanel.setLayout(null);
+//		bottomPanel.setBackground(Color.WHITE);
+//		mainframe.add(bottomPanel);
 		
 		/* 상단 패널 뒷배경 생성 */
 		JLabel backgroundImage = new JLabel();
@@ -61,7 +61,6 @@ public class MainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("my혼또니 버튼 클릭");
-				changePanel(this., new MyPage());
 			}
 		});
 		backgroundImage.add(myHonddoniBtn);
