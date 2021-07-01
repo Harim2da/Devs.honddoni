@@ -1,6 +1,7 @@
 package com.devs.honddoni.member.view;
 
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,7 +49,6 @@ public class MyPage {
 	private JComboBox characterSelectCombo;
 	
 	
-	
 	public static JButton btnRemove(JButton jbtn) {
 		jbtn.setBorderPainted(false);
 		jbtn.setContentAreaFilled(false);
@@ -57,19 +57,14 @@ public class MyPage {
 
 	public MyPage() {
 		
-//		JLayeredPane j = new JLayeredPane();
-//		j.setBounds(100, 100, 516, 909);
 		
 		frame.setBounds(100, 100, 516, 909);
 		frame.setLayout(null);
 		frame.setTitle("혼또니(혼자 또 여행왔니?)");
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setResizable(false);			//왜 16픽셀 추가됨?
 		
-//		this.add(j);
-        
-        
-        
 		/* 상단 패널 */
 		JPanel upsidePanel = new JPanel();
 		upsidePanel.setBounds(0, 0, 500, 100);
@@ -77,6 +72,7 @@ public class MyPage {
 		upsidePanel.setLayout(null);
 //		upsidePanel.setOpaque(false);	//배경 투명
 		frame.add(upsidePanel);
+//		frame.setComponentZOrder(upsidePanel, 1);
 		
 		/* 하단 패널 */
 		JPanel downsidePanel = new JPanel();
@@ -85,15 +81,62 @@ public class MyPage {
 		downsidePanel.setLayout(null);
 //		downsidePanel.setOpaque(false);	//배경 투명
 		frame.add(downsidePanel);
-//		j.add(upsidePanel);
-//		j.add(downsidePanel);
+//		frame.setComponentZOrder(downsidePanel, 1);
 		
-		JPanel main = new JPanel();
-		main.setBounds(0,0,500,870);
-		main.setBackground(Color.black);
-		main.setVisible(true);
-		frame.add(main);
 		
+//		JPanel main = new JPanel();
+//		main.setBounds(0,0,500,870);
+//		main.setBackground(Color.black);
+//		main.setVisible(true);
+//		main.setOpaque(false);	//배경 투명
+//		frame.add(main);
+//		frame.setComponentZOrder(main, 1);
+		
+		
+		
+        /* 사이드 바 오픈 버튼 */
+        JButton sidebarOpenButton = new JButton("");
+        sidebarOpenButton.setIcon(new ImageIcon("image/common/Group 1014.png"));
+        sidebarOpenButton.setContentAreaFilled(false);	//배경 투명
+        sidebarOpenButton.setBorderPainted(false);	  	//윤곽선 투명
+        sidebarOpenButton.setBounds(35, 33, 34, 20);
+        upsidePanel.add(sidebarOpenButton);
+//        frame.setComponentZOrder(sidebarOpenButton , 1);	////////////////////////////
+        /* 사이드바 오픈 버튼 클릭 시 */
+        sidebarOpenButton.addActionListener(new ActionListener() {
+        	
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		
+        		JPanel side = new JPanel();
+        		System.out.println("사이드오픈");
+        		side.setBounds(0,0,250,870);
+        		side.setBackground(Color.blue);
+        		side.setComponentZOrder(frame, 10);
+        		side.setVisible(true);
+        		downsidePanel.add(side);		//사이드바 하단패널에 올리기
+//        		main.add(side);		//사이드바 밑에깔린패널 에 올리기
+        		
+        		
+        		
+//        		frame.setComponentZOrder(side, 0);
+        		
+        		/* 사이드바 새로고침 */
+        		side.repaint();
+        		side.revalidate();
+//        		
+//        		JPanel j = new JPanel();
+//        		j.setBounds(0,0,500,870);
+//        		j.setBackground(Color.black);
+//        		j.setVisible(true);
+//        		side.add(j);
+        	}
+        	
+        	
+        });
+        
+        
 		/* 혼또니 상단 로고 버튼 */
 		JButton honddoniLogo = new JButton("");
 		honddoniLogo.setContentAreaFilled(false);
@@ -101,6 +144,7 @@ public class MyPage {
 		honddoniLogo.setIcon(new ImageIcon("image/common/honddoniLogo.png"));
 		honddoniLogo.setBounds(302, 28, 173, 71);
 		upsidePanel.add(honddoniLogo);	
+        frame.setComponentZOrder(honddoniLogo , 1);	////////////////////////////
 		honddoniLogo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -116,6 +160,7 @@ public class MyPage {
 		changePwdButton.setBorderPainted(false);
 		changePwdButton.setIcon(new ImageIcon("image/member/myPage/pwdchange.png"));
 		changePwdButton.setBounds(92, 53, 137, 137);
+//        frame.setComponentZOrder(changePwdButton , 1);	////////////////////////////
 		changePwdButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -202,6 +247,7 @@ public class MyPage {
 		changeMemberinfo.setContentAreaFilled(false);
 		changeMemberinfo.setBorderPainted(false);
 		changeMemberinfo.setBounds(272, 53, 137, 137);
+//        frame.setComponentZOrder(changeMemberinfo , 1);	////////////////////////////
 		changeMemberinfo.addActionListener(new ActionListener() {
 			
 			@Override
@@ -356,6 +402,7 @@ public class MyPage {
 		resignMemberButton.setContentAreaFilled(false);
 		resignMemberButton.setBorderPainted(false);
 		resignMemberButton.setBounds(92, 280, 137, 137);
+//        frame.setComponentZOrder( resignMemberButton, 1);	////////////////////////////
 		resignMemberButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -479,41 +526,7 @@ public class MyPage {
 		menuNameLabel.setBounds(111, 10, 500, 870);
 		downsidePanel.add(menuNameLabel);
 		
-        /* 사이드 바 오픈 버튼 */
-        JButton sidebarOpenButton = new JButton("");
-        sidebarOpenButton.setIcon(new ImageIcon("image/common/Group 1014.png"));
-        sidebarOpenButton.setContentAreaFilled(false);	//배경 투명
-        sidebarOpenButton.setBorderPainted(false);	  	//윤곽선 투명
-        sidebarOpenButton.setBounds(35, 33, 34, 20);
-        upsidePanel.add(sidebarOpenButton);
 
-        /* 사이드바 오픈 버튼 클릭 시 */
-        sidebarOpenButton.addActionListener(new ActionListener() {
-        	
-        	@Override
-        	public void actionPerformed(ActionEvent e) {
-        		
-        		
-        		JPanel side = new JPanel();
-        		System.out.println("사이드오픈");
-        		side.setBounds(0,0,500,870);
-        		side.setBackground(Color.blue);
-        		side.setVisible(true);
-        		main.add(side);
-        		
-        		
-        		side.repaint();
-        		side.revalidate();
-//        		
-//        		JPanel j = new JPanel();
-//        		j.setBounds(0,0,500,870);
-//        		j.setBackground(Color.black);
-//        		j.setVisible(true);
-//        		side.add(j);
-        	}
-        	
-        	
-        });
 
 			
 		

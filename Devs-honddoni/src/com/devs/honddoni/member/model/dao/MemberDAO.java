@@ -46,6 +46,7 @@ public class MemberDAO {
 
 			rset = pstmt.executeQuery();
 
+
 			/* 카운트가 0개 = 중복아님 = 0 */
 			if(rset.next()) {
 				
@@ -54,10 +55,13 @@ public class MemberDAO {
 				} else {
 					result = 0;
 				}
+
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+
 		}
 
 		return result;

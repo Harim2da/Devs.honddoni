@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -22,8 +23,9 @@ public class PostHonddoni extends JFrame{
 	private JButton postTypebtn; // 혼또니 게시판 버튼
 	private JTextField postTitle; // 게시글 제목
 	private JButton localSelectbtn; // 지역선택 버튼
-	private JPanel popupPanel; //팝업시 레이어할 패널
+	private JLayeredPane pann; // 레이어 가능한 팝업 팬
 	private JLabel koreaMapLabel; //지도 라벨
+	private JButton closeMap;
 	private JTextField joinmember; // 모일 인원 
 	private JTextArea postContents; // 게시글 내용 
 	private JComboBox selectCategorycombo = PostActionCategory.getInstance(); //카테고리 콤보박스
@@ -79,11 +81,10 @@ public class PostHonddoni extends JFrame{
 	
 	/* 팝업 시 반투명 패널 생성 */
 	public void popupPanel() {
-		popupPanel = new JPanel();
-		popupPanel.setBounds(0, 30, 500, 670);
-		popupPanel.setLayout(null);
-		popupPanel.setBackground(new Color(0,0,0,122)); //반투명 설정
-		bottomPanel.add(popupPanel);
+
+		pann = new JLayeredPane();
+		pann.setBounds(0, 30, 500, 670);
+		mainFrame.add(pann);
 	
 	}
 
@@ -100,8 +101,8 @@ public class PostHonddoni extends JFrame{
 		bottomPanel.add(postContents);
 		bottomPanel.add(postbtn);
 		bottomPanel.add(bottomLabel);
-		//		this.repaint();
-		//		this.revalidate();
+				this.repaint();
+				this.revalidate();
 
 	}
 
@@ -146,13 +147,19 @@ public class PostHonddoni extends JFrame{
 		
 //		bottomPanel.add(popupPanel);
 		
+		pann = new JLayeredPane();
+		pann.setBounds(0, 30, 500, 670);
+		this.add(pann);
+		
 		
 		localSelectbtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				popupPanel();
+				//popupPanel();
 				koreaMap();
+				btnstop();
+				
 				// 지도 팝업
 				
 				
@@ -163,21 +170,78 @@ public class PostHonddoni extends JFrame{
 
 	}
 
-	/* 지도 관련 라벨과 버튼 등 */
+	/* 지도 관련 라벨과 버튼 등 실행*/
 	private void koreaMap() {
+		
 		koreaMapLabel = new JLabel();
 		koreaMapLabel.setBackground(Color.WHITE);
 		koreaMapLabel.setLayout(null);
-		koreaMapLabel.setBounds(29, 65, 443, 596);
+		koreaMapLabel.setBounds(29, 65, 442, 595);
 		koreaMapLabel.setIcon(new ImageIcon("image/post/matchlocal.png"));
-		popupPanel.add(koreaMapLabel);
+		pann.add(koreaMapLabel, JLayeredPane.DRAG_LAYER);
+		
+		closeMap = new JButton();
+		closeMap.setBounds(423, 2, 15, 15);
+		closeMap.setBorderPainted(false);
+		closeMap.setOpaque(false);
+		closeMap.setContentAreaFilled(false);
+		closeMap.setIcon(new ImageIcon("image/post/canclebtn.png"));
+		koreaMapLabel.add(closeMap);
+		
+		this.repaint();
+//		this.revalidate();
 		System.out.println("지도팝업");
+		
+		closeMap.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				change();
+				btnstart();
+			}
+
+			
+		});
            
 	}
+	/* 팝업 종료 */
+	public void change() {
+		koreaMapLabel.setVisible(false);
+		pann.setVisible(false);
+		
+	}
 	
+	/*팝업 화면 실행 시 버튼 및 기타 비활성화*/
+	private void btnstop() {
+		postTitle.setVisible(false);
+		localSelectbtn.setVisible(false);
+		joinmember.setVisible(false);
+		selectCategorycombo.setVisible(false);
+		meetingYear.setVisible(false);
+		meetingMonth.setVisible(false);
+		meetingDay.setVisible(false);
+		meetingHour.setVisible(false);
+		meetingMinutes.setVisible(false);
+		postContents.setVisible(false);
+		postTypebtn.setVisible(false);
+		System.out.println("실행확인");
+	}
 	
-	
-	
+	/*기존 게시글 작성 화면 재활성화*/
+	private void btnstart() {
+		postTitle.setVisible(true);
+		localSelectbtn.setVisible(true);
+		joinmember.setVisible(true);
+		selectCategorycombo.setVisible(true);
+		meetingYear.setVisible(true);
+		meetingMonth.setVisible(true);
+		meetingDay.setVisible(true);
+		meetingHour.setVisible(true);
+		meetingMinutes.setVisible(true);
+		postContents.setVisible(true);
+		postTypebtn.setVisible(true);
+		System.out.println("실행확인");
+	}
 	
 	/*모집 인원 기입*/
 	private void insertJoinMember() {

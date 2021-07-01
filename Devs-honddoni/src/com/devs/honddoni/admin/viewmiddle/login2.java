@@ -5,25 +5,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class login2 extends JFrame {
+public class login2 extends JPanel {
 	
     private JButton b1, b2, b3, b4, b5;
 
    public login2()
    {
-       super("로그인성공"); //프레임의 타이틀
-   	   setBounds(100, 100, 516, 909); //컨테이너 크기
-       setDefaultCloseOperation(EXIT_ON_CLOSE);
-       setLocationRelativeTo(null);
-
-       
        //버튼을 넣기 위한 패널 생성
        JPanel jp = new JPanel();
-//     setBounds(0, 0, 498, 862);
+       jp.setBounds(0, 0, 498, 862);
        jp.setLayout(null);
+       jp.setBounds(100, 100, 516, 909); //컨테이너 크기
        
        //이미지 버튼 생성
        ImageIcon  img1 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");

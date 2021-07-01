@@ -11,7 +11,7 @@ public class CommentView {
 		
 		jf.setBounds(100, 100, 516, 909);
 		jf.setLayout(null);
-		jf.setResizable(false);
+//		jf.setResizable(true);
 		
 		CommentMain cm = new CommentMain();
 		cm.collect();
