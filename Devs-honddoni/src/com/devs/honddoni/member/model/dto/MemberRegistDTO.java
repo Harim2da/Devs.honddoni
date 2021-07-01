@@ -18,13 +18,14 @@ public class MemberRegistDTO implements java.io.Serializable{
 	private String memRegistDate;
 	private String memWithdrawDate;
 	private String memberCharacter;
+	private int profileCode;
 	
 	public MemberRegistDTO() {}
-	
+
 	public MemberRegistDTO(int memberNo, String memberId, String memberPassword, String memberName, String memberBirth,
 			String memberGender, String memberAddress, String memberNickname, String memberPhone, String memberEmail,
 			String memberStatus, String memberProfile, String memberAccess, String memRegistDate,
-			String memWithdrawDate, String memberCharacter) {
+			String memWithdrawDate, String memberCharacter, int profileCode) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
@@ -42,6 +43,7 @@ public class MemberRegistDTO implements java.io.Serializable{
 		this.memRegistDate = memRegistDate;
 		this.memWithdrawDate = memWithdrawDate;
 		this.memberCharacter = memberCharacter;
+		this.profileCode = profileCode;
 	}
 
 	public int getMemberNo() {
@@ -163,13 +165,21 @@ public class MemberRegistDTO implements java.io.Serializable{
 	public void setMemWithdrawDate(String memWithdrawDate) {
 		this.memWithdrawDate = memWithdrawDate;
 	}
-	
+
 	public String getMemberCharacter() {
 		return memberCharacter;
 	}
 
 	public void setMemberCharacter(String memberCharacter) {
 		this.memberCharacter = memberCharacter;
+	}
+
+	public int getProfileCode() {
+		return profileCode;
+	}
+
+	public void setProfileCode(int profileCode) {
+		this.profileCode = profileCode;
 	}
 
 	@Override
@@ -179,8 +189,10 @@ public class MemberRegistDTO implements java.io.Serializable{
 				+ ", memberAddress=" + memberAddress + ", memberNickname=" + memberNickname + ", memberPhone="
 				+ memberPhone + ", memberEmail=" + memberEmail + ", memberStatus=" + memberStatus + ", memberProfile="
 				+ memberProfile + ", memberAccess=" + memberAccess + ", memRegistDate=" + memRegistDate
-				+ ", memWithdrawDate=" + memWithdrawDate + "]";
+				+ ", memWithdrawDate=" + memWithdrawDate + ", memberCharacter=" + memberCharacter + ", profileCode="
+				+ profileCode + "]";
 	}
+	
 	
 	
 	

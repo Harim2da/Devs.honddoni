@@ -1,6 +1,7 @@
 package com.devs.honddoni.member.model.service;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.devs.honddoni.member.model.dao.MemberDAO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
@@ -45,6 +46,17 @@ public class MemberService {
 		}
 		
 		return result;
+	}
+
+	public List<MemberRegistDTO> writtenCommentsUser(int commentsNo, int postNo) {
+		
+		Connection con = getConnection();
+		
+		List<MemberRegistDTO> memberList = memberDAO.writtenCommentsUser(con, commentsNo, postNo);
+		
+		close(con);
+		
+		return memberList;
 	}
 
 }

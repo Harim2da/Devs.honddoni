@@ -1,5 +1,7 @@
 package com.devs.honddoni.member.controller;
 
+import java.util.List;
+
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.member.model.service.MemberService;
 import com.devs.honddoni.member.view.DuplCheckResult;
@@ -30,6 +32,14 @@ public class MemberController {
 		} else {
 			System.out.println("등록실패!");
 		}
+		
+	}
+	
+	public List<MemberRegistDTO> writtenCommentsUser(int commentsNo, int postNo){
+		
+		List<MemberRegistDTO> memberList = memberService.writtenCommentsUser(commentsNo, postNo);
+		
+		return memberList;
 		
 	}
 
