@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment/>	
+	<entry key="getMemberPassword">
+	  SELECT /*com.greedy.memberlog.model.dao.MemberLogDAO#userLogin()*/
+	        A.MEMBER_PASSWORD
+	   FROM TBL_MEMBER A
+	  WHERE A.MEMBER_ID = ?
+	</entry>
+	
+	
+	
+	<entry key="searchById">
+	  SELECT /*com.greedy.member.model.dao.MemberDAO#searchById()*/
+	        C.*
+	   FROM TBL_MEMBER C
+	   WHERE MEMBER_ID = ?
+	</entry>
+	<entry key="searchByGender">
+	  SELECT /*com.greedy.member.model.dao.MemberDAO#searchByGender()*/
+	        D.*
+	    FROM TBL_MEMBER D
+	    WHERE D.GENDER = ?
+	</entry>
+	<entry key="modifyPassword">
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#modifyPassword()*/
+	        TBL_MEMBER E
+	     SET E.MEMBER_PWD = ?
+	   WHERE E.MEMBER_ID = ?
+	</entry>
+	<entry key="modifyEmail">
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#modifyEmail()*/
+	        TBL_MEMBER F
+	     SET F.EMAIL = ?
+	   WHERE F.MEMBER_ID = ?
+	</entry>
+	<entry key="modifyPhone">
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#modifyPhone()*/
+	        TBL_MEMBER G
+	     SET G.PHONE = ?
+	   WHERE G.MEMBER_ID = ?
+	</entry>
+	<entry key="modifyAddress">
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#modifyAddress()*/
+	        TBL_MEMBER H
+	     SET H.ADDRESS = ?
+	   WHERE H.MEMBER_ID = ?
+	</entry>
+	<entry key="deleteMember">
+	  DELETE /*com.greedy.member.model.dao.MemberDAO#deleteMember()*/
+	    FROM TBL_MEMBER I
+	   WHERE I.MEMBER_ID = ?
+	</entry>
+</properties>

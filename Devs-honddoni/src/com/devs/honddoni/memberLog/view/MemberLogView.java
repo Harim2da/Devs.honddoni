@@ -1,10 +1,12 @@
 package com.devs.honddoni.memberLog.view;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -15,17 +17,32 @@ import com.devs.honddoni.member.view.RegistMember;
 import com.devs.honddoni.memberLog.controller.LoginController;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 
-public class MemberLogView extends JPanel {
+public class MemberLogView extends JFrame { //나중에 JPanel로 바꿔야 함
 	
 	private LoginController loginController;
+	private LoginDataDTO loginDataDTO;
+	private RegistMember registMember;
 	
-	private MainFrame mf;
+	private JFrame mf; //나중에는 private MainFrame mf;로 바꿔야 됨
 	private JPanel bottomPanel = new JPanel();	
+	
+	/* 확인용 메소드 */
+	public static void main(String[] args) {
+		new MemberLogView(); 
+	}
 
 	public MemberLogView() {
+		
+		//확인용프레임설정
+		mf = this;
+		mf.setForeground(Color.WHITE);
+		mf.setBounds(100, 100, 516, 870);
+		//여기까지는 나중에 지울 거
+		
 
 		//로그인창 전체패널 생성		
 		bottomPanel.setBounds(0, 0, 500, 870);
+		bottomPanel.setForeground(Color.WHITE);
 		bottomPanel.setLayout(null);
 		
 		//로고이자 관리자로 가는 버튼
@@ -39,6 +56,7 @@ public class MemberLogView extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				//관리자 로그인쪽으로 뺀다
+				System.out.println("관리자 로그인창으로 이동");
 				// 창 바꾸기...?
 //				mf.changePanel(bottomPanel, 관리자로그인패널)..?
 				
@@ -46,8 +64,8 @@ public class MemberLogView extends JPanel {
 		});
 		
 		JLabel honddoniLogo = new JLabel();
-		honddoniLogo.setBounds(130, 443, 241, 99);
-		honddoniLogo.setIcon(new ImageIcon("image/common/honddoniLogo.png"));
+		honddoniLogo.setBounds(130, 258, 241, 99);
+		honddoniLogo.setIcon(new ImageIcon("image/memberLog/login/login_2_logo2.png"));
 		
 		//아이디, 비밀번호 구역
 		JLabel idPwdArea = new JLabel();
@@ -55,13 +73,10 @@ public class MemberLogView extends JPanel {
 		idPwdArea.setIcon(new ImageIcon("image/memberLog/login/login_3_id_and_password.png"));
 		
 		JTextField idTf = new JTextField();
-		idTf.setBounds(130, 453, 200, 26);
-		
+		idTf.setBounds(130, 453, 200, 26);		
 		JPasswordField pwPf = new JPasswordField();
-		pwPf.setBounds(130, 453, 200, 26);
+		pwPf.setBounds(130, 535, 200, 26);
 		
-		idPwdArea.add(idTf);
-		idPwdArea.add(pwPf);
 		
 		//로그인 버튼
 		JButton loginBtn = new JButton();
@@ -73,7 +88,7 @@ public class MemberLogView extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//로그인정보를 넘길 DTO를 생성
-				LoginDataDTO loginDataDTO = new LoginDataDTO();
+				loginDataDTO = new LoginDataDTO();
 				
 				//아이디와 비밀번호를 받아서 DTO로 뭉침
 				loginDataDTO.setMemberId(idTf.getText());
@@ -86,8 +101,12 @@ public class MemberLogView extends JPanel {
 				}					
 				loginDataDTO.setMemberPassword(password);
 				
+				System.out.println(loginDataDTO);
+				
 				//로그인 메소드 실행 
 				loginController.userLogin(loginDataDTO);
+				
+				//아무것도 입력하지 않은 채로 로그인버튼을 눌렀을 때도 만들어야 하나...?
 				
 			}
 		});
@@ -100,6 +119,7 @@ public class MemberLogView extends JPanel {
 		searchIdBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("아이디찾기 패널로");
 				// 아이디 찾기쪽으로 간다
 				// 창 바꾸기...?
 //				mf.changePanel(bottomPanel, 아이디찾기패널)..?
@@ -109,13 +129,14 @@ public class MemberLogView extends JPanel {
 		
 		//비밀번호찾기버튼
 		JButton searchPasswordBtn = new JButton();
-		searchPasswordBtn.setBounds(58, 725, 111, 41);
+		searchPasswordBtn.setBounds(196, 725, 111, 41);
 		searchPasswordBtn.setBorderPainted(false);
-		searchIdBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_password_btn.png"));
+		searchPasswordBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_password_btn.png"));
 		searchPasswordBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//비밀번호 찾기쪽으로 간다
+				System.out.println("비밀번호 찾기 쪽으로");
 				// 창 바꾸기...?
 //				mf.changePanel(bottomPanel, 비밀번호찾기패널)..?
 				
@@ -124,14 +145,17 @@ public class MemberLogView extends JPanel {
 		
 		//회원가입버튼
 		JButton registBtn = new JButton();
-		registBtn.setBounds(58, 725, 111, 41);
+		registBtn.setBounds(334, 725, 111, 41);
 		registBtn.setBorderPainted(false);
 		registBtn.setIcon(new ImageIcon("image/memberLog/login/login_6_regist_btn.png"));
 		registBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 회원가입 쪽으로 간다
-				RegistMember registMember = new RegistMember();
+				
+				System.out.println("회원가입쪽으로");
+//				registMember = new RegistMember(); 체인지 패널로 하려면 이렇게 해야할듯
+				new RegistMember();
+				
 				// 창 바꾸기...?
 //				mf.changePanel(bottomPanel, 비밀번호찾기패널)..?
 				
@@ -149,6 +173,14 @@ public class MemberLogView extends JPanel {
 		bottomPanel.add(searchIdBtn);
 		bottomPanel.add(searchPasswordBtn);
 		bottomPanel.add(registBtn);
+		bottomPanel.add(idTf);
+		bottomPanel.add(pwPf);
+		
+		
+		//확인용 프레임에 올리기
+		mf.add(bottomPanel);
+		mf.setVisible(true);
+		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
 	}		
