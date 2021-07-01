@@ -1,5 +1,7 @@
 package com.devs.honddoni.member.model.dao;
 
+import static com.devs.honddoni.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,11 +9,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
+import java.util.List;
 import java.util.Properties;
 
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
-import static com.devs.honddoni.common.JDBCTemplate.close;
 
 public class MemberDAO {
 
@@ -99,6 +102,41 @@ public class MemberDAO {
 		}
 
 		return result;
+	}
+
+	public List<MemberRegistDTO> writtenCommentsUser(Connection con, int commentsNo, int postNo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<MemberRegistDTO> memberList = null;
+		
+		String query = prop.getProperty("writtenCommentsUser");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, postNo);
+			pstmt.setInt(2, commentsNo);
+			
+			rset = pstmt.executeQuery();
+			
+			memberList = new ArrayList<>();
+			if(rset.next()) {
+				MemberRegistDTO row = new MemberRegistDTO();
+				
+				row.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
+				row.setMemberProfile(rset.getString("MEMBER_PROFILE"));
+				
+				memberList.add(row);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return memberList;
 	}
 
 }
