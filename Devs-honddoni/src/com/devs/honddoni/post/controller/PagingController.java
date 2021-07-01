@@ -49,9 +49,9 @@ public class PagingController {
 		
 	}
 
-	public void selectWholeCommentsNum() {
+	public void selectWholeCommentsNum(int postNo) {
 
-		int result = pagingService.selectWholeCommentsNum();
+		int result = pagingService.selectWholeCommentsNum(postNo);
 
 		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
 

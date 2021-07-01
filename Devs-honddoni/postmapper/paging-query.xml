@@ -23,6 +23,7 @@
 	  SELECT
 	         COUNT(*)
 	    FROM TBL_COMMENT
+	   WHERE POST_NO = ?
 	</entry>
 	
 	<entry key="selectPostList">

@@ -44,8 +44,8 @@
 	<entry key="idDuplCheck">
 	  SELECT /*com.devs.honddoni.member.model.dao.MemberDAO#idDuplCheck()*/
 	        COUNT(*)
-	   FROM TBL_MEMBER B
-	  WHERE B.MEMBER_ID = ?
+	   FROM TBL_MEMBER 
+	  WHERE MEMBER_ID = ?
 	</entry>
 	
 	
