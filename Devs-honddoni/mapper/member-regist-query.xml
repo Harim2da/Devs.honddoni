@@ -71,13 +71,5 @@
 	    FROM TBL_MEMBER I
 	   WHERE I.MEMBER_ID = ?
 	</entry>
-	<entry key="writtenCommentsUser">
-	  SELECT /* com.devs.honddoni.member.model.dao.MemberDAO#writtenCommentsUser*/
-	         M.MEMBER_NICKNAME
-	       , M.MEMBER_PROFILE
-	    FROM TBL_MEMBER M
-	    JOIN TBL_COMMENT C ON (M.MEMBER_NO = C.MEMBER_NO)
-	   WHERE C.POST_NO = ?
-	     AND C.COMMENTS_NO = ? 	       
-	</entry>
+	
 </properties>

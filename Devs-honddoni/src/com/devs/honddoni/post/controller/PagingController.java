@@ -19,9 +19,10 @@ public class PagingController {
 		this.pagingService = new PagingService();
 	}
 	
-	public void selectWholePostNum() {
+	/* 혼또니 게시판 */
+	public void selectWholePostNum(String categoryName) {
 
-		int result = pagingService.selectWholePostNum();
+		int result = pagingService.selectWholePostNum(categoryName);
 
 		PageInfoPostDTO dto = new PageInfoPostDTO();
 

@@ -104,39 +104,6 @@ public class MemberDAO {
 		return result;
 	}
 
-	public List<MemberRegistDTO> writtenCommentsUser(Connection con, int commentsNo, int postNo) {
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		List<MemberRegistDTO> memberList = null;
-		
-		String query = prop.getProperty("writtenCommentsUser");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, postNo);
-			pstmt.setInt(2, commentsNo);
-			
-			rset = pstmt.executeQuery();
-			
-			memberList = new ArrayList<>();
-			if(rset.next()) {
-				MemberRegistDTO row = new MemberRegistDTO();
-				
-				row.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
-				row.setMemberProfile(rset.getString("MEMBER_PROFILE"));
-				
-				memberList.add(row);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-			close(rset);
-		}
-		
-		return memberList;
-	}
+	
 
 }
