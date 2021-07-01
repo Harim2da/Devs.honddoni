@@ -1,0 +1,95 @@
+package com.devs.honddoni.admin.viewpenel;
+
+import java.awt.Color;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import com.devs.honddoni.common.mainframe.MainFrame;
+
+public class AdminList {
+	
+	MainFrame MainFrame = new MainFrame();
+		
+	public void bottomPanel() {
+
+		/* 상단 패널 생성 */
+		JPanel bottomPanel = new JPanel();
+
+		bottomPanel.setBounds(100, 100, 16, 809);
+		bottomPanel.setLayout(null);
+		bottomPanel.setBackground(Color.WHITE);
+		MainFrame.add(bottomPanel);
+		
+
+		ImageIcon  img1 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
+	       JButton btn1 = new JButton("탈퇴요청 데이터확인");
+	       
+	       ImageIcon  img2 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
+	       JButton btn2 = new JButton("회원가입자 전체데이터");
+	       
+	       ImageIcon  img3 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
+	       JButton btn3 = new JButton("회원 업적 관리");
+	       
+	       ImageIcon  img4 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
+	       JButton btn4 = new JButton("공지사항 관리");
+	       
+	       ImageIcon  img5 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
+	       JButton btn5 = new JButton("S");
+	       
+	       ImageIcon  img6 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
+	       JButton btn6 = new JButton("B");
+	       
+	       ImageIcon  img7 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
+	       JButton btn7 = new JButton("N");
+
+	       //패널에 버튼 추가
+	       bottomPanel.add(btn1);
+	       bottomPanel.add(btn2);
+	       bottomPanel.add(btn3);
+	       bottomPanel.add(btn4);
+	       bottomPanel.add(btn5);
+	       bottomPanel.add(btn6);
+	       bottomPanel.add(btn7);
+	       
+	       
+	       
+	       //버튼 위치 조정
+	       btn1.setBounds(35, 129, 430, 121);
+	       btn2.setBounds(34, 293, 430, 121);
+	       btn3.setBounds(34, 456, 430, 121);
+	       btn4.setBounds(33, 620, 430, 121);
+	       btn5.setBounds(34, 36, 36, 16);
+	       btn6.setBounds(303, 27, 172, 70);
+	       btn7.setBounds(221, 798, 56, 25);
+	       
+	       public static JFrame getFrame() {
+	   		return AdminList;
+	   	}
+	   	
+	   	public static void initPanel(JFrame frame, JPanel panel) {
+	   		if(mainframe == null) {
+	   			mainframe = frame;
+	   		}
+	   		
+	   		mainframe.add(panel);
+	   		
+	   		mainframe.setVisible(true);
+	   		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	   	}
+	   	public static void changePanel(JPanel oldPanel, JPanel newPanel) {
+	   		mainframe.remove(oldPanel);
+	   		mainframe.add(newPanel);
+	   		mainframe.repaint();
+	   		mainframe.revalidate();
+	   	}
+	   	
+	   	public static void refresh() {
+	   		AdminList.repaint();
+	   		AdminList.revalidate();
+	   	}	   	
+}
+
+		
