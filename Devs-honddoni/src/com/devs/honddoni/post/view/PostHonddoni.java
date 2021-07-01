@@ -3,6 +3,7 @@ package com.devs.honddoni.post.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +14,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
 public class PostHonddoni extends JFrame{
 
@@ -35,6 +39,7 @@ public class PostHonddoni extends JFrame{
 	private JComboBox meetingDay; // 만남 일 콤보박스
 	private JComboBox meetingHour; // 만남 시간 콤보박스
 	private JComboBox meetingMinutes; // 만남 분 콤보박스
+	private PostDTO postDTO;
 
 	/*혼또니 게시글 작성 화면 불러오기*/
 	public PostHonddoni() {
@@ -281,8 +286,10 @@ public class PostHonddoni extends JFrame{
 		for(int i = 0; i <month.length; i++) {
 			if(i == 0) {
 				month[i] ="";
+			} else if(i < 10) {
+				month[i] = "0" + i ;
 			} else {
-				month[i] = i +"";
+				month[i] = i + "";
 			}
 		}
 		meetingMonth = new JComboBox(month);
@@ -294,6 +301,8 @@ public class PostHonddoni extends JFrame{
 		for(int i = 0; i <day.length; i++) {
 			if(i == 0) {
 				month[i] ="";
+			} else if(i < 10) {
+				day[i] = "0" + i +"";
 			} else {
 				day[i] = i +"";
 			}
@@ -307,6 +316,8 @@ public class PostHonddoni extends JFrame{
 		for(int i = 0; i <hour.length; i++) {
 			if(i == 0) {
 				hour[i] ="";
+			} else if(i < 10){
+				hour[i] = "0" + i +"";
 			} else {
 				hour[i] = i +"";
 			}
@@ -316,7 +327,7 @@ public class PostHonddoni extends JFrame{
 		meetingHour.setSelectedIndex(0);
 
 
-		String[] min = {"00", "30"};
+		String[] min = {"", "00", "30"};
 		meetingMinutes = new JComboBox(min);
 		meetingMinutes.setBounds(396, 211, 39, 28);
 		meetingMinutes.setSelectedIndex(0);
@@ -341,8 +352,72 @@ public class PostHonddoni extends JFrame{
 		postbtn.setContentAreaFilled(false);
 		postbtn.setBorderPainted(false);
 		postbtn.setOpaque(false);
+		
+		
+		postbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == postbtn) {
+					postDTO = new PostDTO();
+					
+					
+					/* 게시글 정보 담기 */
+					postDTO.setPostName(postTitle.getText()); //게시글 제목
+					postDTO.setPostContents(postContents.getText()); // 게시글 내용
+//					postDTO.setPostCategory(); 게시글 구분 - 혼또니냐 자유냐
+					
+					/* 만남 일자 6글자 형식으로 합치기 */
+					String meetDay = (String)meetingYear.getSelectedItem() + (String)meetingMonth.getSelectedItem()
+									+ (String)meetingDay.getSelectedItem();
+					
+					postDTO.setPostMeetingDate(meetDay);
+					
+					/* 만남일시 */
+					 String meetTime = (String)meetingHour.getSelectedItem() + ":" + (String)meetingMinutes.getSelectedItem();
+					 postDTO.setPostMeetingDate(meetTime);
+					
+					 
+//					 postDTO.setLocalName(); 지도에서 지역선택 후 받아오기 - DB는 숫자
+					 
+					 /* 카테고리(맛집 탐방 등) 일단 받아오고 컨트롤러에서 코드로 변환해주기*/
+					 postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
+					memberRegistDTO.setMemberAddress(addressTf.getText());
+					memberRegistDTO.setMemberNickname(nicknameTf.getText());
+					memberRegistDTO.setMemberPhone(phoneTf.getText());
+					memberRegistDTO.setMemberEmail(emailTf.getText());
+					memberRegistDTO.setMemberCharacter(character);
+					
+					/* 등록하는 오늘 날짜 추출 */
+					java.util.Date today = new java.util.Date(System.currentTimeMillis());
+					SimpleDateFormat registFormat = new SimpleDateFormat("yyMMdd");
+					String registDate = registFormat.format(today);
+					memberRegistDTO.setMemRegistDate(registDate);
+					
+					System.out.println(memberRegistDTO);
+					
+					memberController.registMember(memberRegistDTO);
+				}
+				
+			}
+		});
 				
 	}
 
 
 }
+
+//private JComboBox meetingYear; // 만남 년도 콤보박스
+//private JComboBox meetingMonth; // 만남 월 콤보박스
+//private JComboBox meetingDay; // 만남 일 콤보박스
+//private JComboBox meetingHour; // 만남 시간 콤보박스
+//private JComboBox meetingMinutes; // 만남 분 콤보박스
+
+//private JButton postTypebtn; // 혼또니 게시판 버튼
+//private JTextField postTitle; // 게시글 제목
+//private JButton localSelectbtn; // 지역선택 버튼
+
+//private JTextField joinmember; // 모일 인원 
+//private JTextArea postContents; // 게시글 내용 
+//private JComboBox selectCategorycombo = PostActionCategory.getInstance(); //카테고리 콤보박스
+//private JButton postbtn; //게시글 작성 완료 버튼

@@ -5,7 +5,7 @@ public class PostDTO implements java.io.Serializable {
 	private int postNo;
 	private String postName;
 	private String postContents;
-	private String postCategory;
+	private String postCategory; 
 	private int postMemberNo;
 	private String postMeetingDate;
 	private String postMeetingTime;
