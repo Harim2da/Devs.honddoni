@@ -1,17 +1,14 @@
 package com.devs.honddoni.run;
 
-
-import com.devs.honddoni.memberLog.view.MemberLogView;
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class Application {
 
 	public static void main(String[] args) {
 		
+		new MainFrame();
+	
 
-		
-		
-		MemberLogView memberLogView = new MemberLogView();
-		memberLogView.FirstView();
 
 	}
 
