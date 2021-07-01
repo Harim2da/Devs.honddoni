@@ -57,6 +57,10 @@ public class PostView extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(106, 311, 37, 28);
+		panel.add(comboBox);
+		
 		JButton postconfirm = new JButton("");
 		postconfirm.setBounds(129, 784, 263, 41);
 		postconfirm.setIcon(new ImageIcon(PostView.class.getResource("/post/postbutton.png")));
@@ -135,10 +139,6 @@ public class PostView extends JFrame {
 		postContents.setOpaque(false);
 		postContents.setBounds(59, 405, 399, 273);
 		panel.add(postContents);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(106, 311, 37, 28);
-		panel.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(170, 311, 39, 28);

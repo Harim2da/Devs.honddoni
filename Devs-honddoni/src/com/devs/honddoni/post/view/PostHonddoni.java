@@ -73,17 +73,17 @@ public class PostHonddoni extends JFrame{
 		bottomLabel.setBackground(Color.WHITE);
 		bottomLabel.setLayout(null);
 		bottomLabel.setBounds(35, 14, 431, 648);            
-		bottomLabel.setIcon(new ImageIcon(PostView.class.getResource("/post/postbtmpanel.png")));
+		bottomLabel.setIcon(new ImageIcon("image/post/postbtmpanel.png"));
 
 	}
 	
 	/* 팝업 시 반투명 패널 생성 */
 	public void popupPanel() {
 		popupPanel = new JPanel();
-		popupPanel.setBounds(0, 100, 500, 770);
+		popupPanel.setBounds(0, 30, 500, 670);
 		popupPanel.setLayout(null);
 		popupPanel.setBackground(new Color(0,0,0,122)); //반투명 설정
-
+		bottomPanel.add(popupPanel);
 	
 	}
 
@@ -109,7 +109,7 @@ public class PostHonddoni extends JFrame{
 	private void selectPost() {
 		bottomPanel();
 		postTypebtn = new JButton();
-		postTypebtn.setIcon(new ImageIcon(PostView.class.getResource("/post/postcategory.png")));
+		postTypebtn.setIcon(new ImageIcon("image/post/postcategory.png"));
 		postTypebtn.setContentAreaFilled(false);
 		postTypebtn.setBorderPainted(false);
 		postTypebtn.setBounds(43, 20, 56, 30);
@@ -145,16 +145,18 @@ public class PostHonddoni extends JFrame{
 		
 		
 //		bottomPanel.add(popupPanel);
-//		koreaMap();
+		
 		
 		localSelectbtn.addActionListener(new ActionListener() {
-
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				popupPanel();
+				koreaMap();
 				// 지도 팝업
 				
 				
-				System.out.println("지도팝업");
+				
 			}
 		});
 		
@@ -167,7 +169,9 @@ public class PostHonddoni extends JFrame{
 		koreaMapLabel.setBackground(Color.WHITE);
 		koreaMapLabel.setLayout(null);
 		koreaMapLabel.setBounds(29, 65, 443, 596);
+		koreaMapLabel.setIcon(new ImageIcon("image/post/matchlocal.png"));
 		popupPanel.add(koreaMapLabel);
+		System.out.println("지도팝업");
            
 	}
 	
