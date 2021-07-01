@@ -39,20 +39,23 @@ public class MemberDAO {
 		int result = 0;
 
 		String query = prop.getProperty("idDuplCheck");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, getUserId);
-			
+
 			rset = pstmt.executeQuery();
-			System.out.println(rset.getInt("COUNT(*)"));
-			/* 아님 rset.next()로 해서 count로 해야되나... 일단 고민 */
-			/* 카운트가 0 = 중복아님 = 0 */
-			if(rset.getInt("COUNT(*)") == 0) {
-				result = 0;
+
+
+			/* 카운트가 0개 = 중복아님 = 0 */
+			if(rset.next()) {
 				
-			} else {
-				result = 1;
+				if(rset.getInt("COUNT(*)") == 1) {
+					result = 1;
+				} else {
+					result = 0;
+				}
+
 			}
 			
 		} catch (SQLException e) {
@@ -63,7 +66,7 @@ public class MemberDAO {
 
 		return result;
 	}
-	
+
 
 	public int registNewMember(Connection con, MemberRegistDTO member) {
 
@@ -85,8 +88,10 @@ public class MemberDAO {
 			pstmt.setString(8, member.getMemberPhone());
 			pstmt.setString(9, member.getMemberEmail());
 			pstmt.setString(10, member.getMemRegistDate());
-			
+			pstmt.setString(11, member.getMemberCharacter());
+
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
