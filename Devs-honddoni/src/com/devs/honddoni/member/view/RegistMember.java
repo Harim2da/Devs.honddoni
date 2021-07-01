@@ -161,6 +161,7 @@ public class RegistMember extends JFrame {
 		JLabel characterSelectLb = new JLabel();
 		characterSelectLb.setBounds(92, 572, 316, 41);
 		characterSelectLb.setIcon(new ImageIcon("image/member/regist/regist_7_character_select.png"));
+		
 		JButton characterSelectBtn = new JButton();
 		characterSelectBtn.setBounds(360, 580, 20, 20);
 		characterSelectBtn.setBackground(Color.CYAN);
@@ -169,18 +170,18 @@ public class RegistMember extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == characterSelectBtn) {
-					//성향파악
-//					new CharacterSelect();
+					//성향파악 패널을.. 올리자...
+//					CharacterSelect();
 					
 					//성향파악해서 DB에서 왔다갔다해서, 캐릭터 코드를 받아와야 함....
+					
 				}
 				
 			}
 		});
 		
 		
-		/* 버튼 추가 */
-		/* 중복확인 */
+		/* 중복확인 버튼 */
 		JButton checkDuplBtn = new JButton();
 		checkDuplBtn.setBounds(325, 67, 111, 41);
 		checkDuplBtn.setIcon(new ImageIcon("image/member/regist/regist_8_DuplCheck_btn.png"));
@@ -212,7 +213,9 @@ public class RegistMember extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(e.getSource() == agreeBtn) {
+					/* 회원정보를 넘길 DTO 생성 */
 					memberRegistDTO = new MemberRegistDTO();
+					
 					memberRegistDTO.setMemberId(idTf.getText());
 					
 					/* 비밀번호 추출 */
@@ -284,7 +287,21 @@ public class RegistMember extends JFrame {
 		this.revalidate();	
 	}	
 	
+	public void characterSelect() {
+		
+		//지도라벨생성
+		JLabel koreaMapLabel = new JLabel();
+		
+		
+	}
 	
+	public void change() {}
+	
+	private void btnstop() {}
+	
+	private void btnstart() {}
+	
+	private void character() {}
 	
 
 }

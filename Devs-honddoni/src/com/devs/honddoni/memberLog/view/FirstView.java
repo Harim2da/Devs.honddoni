@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.devs.honddoni.admin.view.MainFrame;
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class FirstView extends JPanel{
 	
@@ -54,7 +54,6 @@ public class FirstView extends JPanel{
 
 		firstViewPanel.setVisible(true);
 		
-		//메인프레임에 전체패널을 올려야..?
 		
 	}
 	
