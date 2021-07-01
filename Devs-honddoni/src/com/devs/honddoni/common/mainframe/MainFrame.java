@@ -11,51 +11,55 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.devs.honddoni.member.view.MyPage;
+import com.devs.honddoni.memberLog.view.FirstView;
 
-public class MainFrame {
-	
+public class MainFrame extends JFrame{
 
-	private static JFrame mainframe = new JFrame();
-
+	private JPanel topPanel = new JPanel();
+	private JLabel backgroundImage = new JLabel();
+	private JButton myHonddoniBtn = new JButton();
+	private JButton searchHonddoniBtn = new JButton();
+	private JButton homeBtn = new JButton();
+	private JButton interestingBtn = new JButton();
+	private JButton noticeBtn = new JButton();
 	
 	public MainFrame() {
-		mainframe.setBounds(100, 100, 516, 909);
-		mainframe.setLayout(null);
-		mainframe.setTitle("혼또니(혼자 또 여행왔니?)");
+		this.setBounds(100, 100, 516, 909);
+		this.setLayout(null);
+		this.setTitle("혼또니(혼자 또 여행왔니?)");
 		
 		topPanel();
+		myHonddoniBtnClick();
+		searchHonddoniBtnClick();
+		homeBtnClick();
+		interestingBtnClick();
+		noticeBtnClick();
 		
-		mainframe.setVisible(true);
-		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		FrameManager.initPanel(this, new FirstView());
 	}
 	
 	
 	public void topPanel() {
 
 		/* 상단 패널 생성 */
-		JPanel topPanel = new JPanel();
 
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		mainframe.add(topPanel);
-		
-//		JPanel bottomPanel = new JPanel();
-//		bottomPanel.setBounds(0, 100, 500, 770);
-//		bottomPanel.setLayout(null);
-//		bottomPanel.setBackground(Color.WHITE);
-//		mainframe.add(bottomPanel);
+		this.add(topPanel);
 		
 		/* 상단 패널 뒷배경 생성 */
-		JLabel backgroundImage = new JLabel();
 		backgroundImage.setBounds(0, 0, 500, 100);
 		backgroundImage.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
 		backgroundImage.setVisible(true); 
 		topPanel.add(backgroundImage);
-		
-		
+
+	}
+	
+	public void myHonddoniBtnClick() {
 		/* My혼또니 버튼 생성 */
-		JButton myHonddoniBtn = new JButton();
 		myHonddoniBtn.setBounds(171,23,56,56);
 		myHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
 		myHonddoniBtn.setBorderPainted(false);
@@ -65,12 +69,15 @@ public class MainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("my혼또니 버튼 클릭");
+//				FrameManager.changePanel(, new MyPage());
 			}
 		});
 		backgroundImage.add(myHonddoniBtn);
 		
+	}
+	
+	public void searchHonddoniBtnClick() {
 		/* 혼또니 찾기 버튼 생성*/
-		JButton searchHonddoniBtn = new JButton();
 		searchHonddoniBtn.setBounds(234,23,56,56);
 		searchHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/SearchHonddoniBtn.png"));
 		searchHonddoniBtn.setBorderPainted(false);
@@ -84,8 +91,9 @@ public class MainFrame {
 		});
 		backgroundImage.add(searchHonddoniBtn);
 
+	}
+	public void homeBtnClick() {
 		/* Home 버튼 생성 */
-		JButton homeBtn = new JButton();
 		homeBtn.setBounds(298,23,56,56);
 		homeBtn.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));
 		homeBtn.setBorderPainted(false);
@@ -99,8 +107,9 @@ public class MainFrame {
 		});
 		backgroundImage.add(homeBtn);
 		
+	}
+	public void interestingBtnClick() {
 		/* 관심금 목록 버튼 생성 */
-		JButton interestingBtn = new JButton();
 		interestingBtn.setBounds(362,23,56,56);
 		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
 		interestingBtn.setBorderPainted(false);
@@ -112,10 +121,10 @@ public class MainFrame {
 				System.out.println("관심글 목록 버튼 클릭");
 			}
 		});
-		backgroundImage.add(interestingBtn);
-		
+		backgroundImage.add(interestingBtn);	
+	}
+	public void noticeBtnClick() {
 		/* 공지사항 버튼 생성 */
-		JButton noticeBtn = new JButton();
 		noticeBtn.setBounds(426,23,56,56);
 		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
 		noticeBtn.setBorderPainted(false);
@@ -129,36 +138,7 @@ public class MainFrame {
 		});
 		backgroundImage.add(noticeBtn);
 		
-		
-
 	}
-	public static JFrame getFrame() {
-		return mainframe;
-	}
-	
-	public static void initPanel(JFrame frame, JPanel panel) {
-		if(mainframe == null) {
-			mainframe = frame;
-		}
-		
-		mainframe.add(panel);
-		
-		mainframe.setVisible(true);
-		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-	public static void changePanel(JPanel oldPanel, JPanel newPanel) {
-		mainframe.remove(oldPanel);
-		mainframe.add(newPanel);
-		mainframe.repaint();
-		mainframe.revalidate();
-	}
-	
-	public static void refresh() {
-		mainframe.repaint();
-		mainframe.revalidate();
-	}
-	
-	
 	
 	
 }
