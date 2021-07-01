@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class MainFrame extends JFrame{
 	
-	private JPanel topPanel;
+	private JPanel topPanel = new JPanel();
 	
 	public MainFrame() {
 		this.setBounds(100, 100, 516, 909);
@@ -22,7 +22,7 @@ public class MainFrame extends JFrame{
 	
 	
 	public void topPanel() {
-		topPanel = new JPanel();
+		//topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
