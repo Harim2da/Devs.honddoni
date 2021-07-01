@@ -3,7 +3,6 @@ package com.devs.honddoni.post.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,10 +15,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
-import com.devs.honddoni.member.model.dto.MemberRegistDTO;
+import com.devs.honddoni.post.controller.ContactController;
 
 public class PostHonddoni extends JFrame{
-
+	
 	private JFrame mainFrame; // 메인프레임
 	private JPanel topPanel;  // 상단 패널
 	private JPanel bottomPanel; // 하단 패널
@@ -40,7 +39,10 @@ public class PostHonddoni extends JFrame{
 	private JComboBox meetingHour; // 만남 시간 콤보박스
 	private JComboBox meetingMinutes; // 만남 분 콤보박스
 	private PostDTO postDTO;
-
+	private ContactController contactController;
+	
+	
+	
 	/*혼또니 게시글 작성 화면 불러오기*/
 	public PostHonddoni() {
 		this.setBounds(100, 100, 516, 909);
@@ -362,10 +364,10 @@ public class PostHonddoni extends JFrame{
 					postDTO = new PostDTO();
 					
 					
-					/* 게시글 정보 담기 */
+					/* 게시글 정보 담기 : 게시글 제목, 내용, 게시판 종류, 모임일자, 모임시간, 지역코드, 카테고리코드,모임인원 */
 					postDTO.setPostName(postTitle.getText()); //게시글 제목
 					postDTO.setPostContents(postContents.getText()); // 게시글 내용
-//					postDTO.setPostCategory(); 게시글 구분 - 혼또니냐 자유냐
+					postDTO.setPostCategory("혼또니");
 					
 					/* 만남 일자 6글자 형식으로 합치기 */
 					String meetDay = (String)meetingYear.getSelectedItem() + (String)meetingMonth.getSelectedItem()
@@ -382,21 +384,13 @@ public class PostHonddoni extends JFrame{
 					 
 					 /* 카테고리(맛집 탐방 등) 일단 받아오고 컨트롤러에서 코드로 변환해주기*/
 					 postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
-					memberRegistDTO.setMemberAddress(addressTf.getText());
-					memberRegistDTO.setMemberNickname(nicknameTf.getText());
-					memberRegistDTO.setMemberPhone(phoneTf.getText());
-					memberRegistDTO.setMemberEmail(emailTf.getText());
-					memberRegistDTO.setMemberCharacter(character);
+					 
+					 /* 텍스트 필드로 받은 모임인원, int로 전환 */
+					 int numberOfJoin = Integer.parseInt(joinmember.getText());
+					 postDTO.setPostNumberOfPeopleNumber(numberOfJoin);
+	
+					 contactController.writeHonddoniBoardPost(postDTO);
 					
-					/* 등록하는 오늘 날짜 추출 */
-					java.util.Date today = new java.util.Date(System.currentTimeMillis());
-					SimpleDateFormat registFormat = new SimpleDateFormat("yyMMdd");
-					String registDate = registFormat.format(today);
-					memberRegistDTO.setMemRegistDate(registDate);
-					
-					System.out.println(memberRegistDTO);
-					
-					memberController.registMember(memberRegistDTO);
 				}
 				
 			}
@@ -407,17 +401,9 @@ public class PostHonddoni extends JFrame{
 
 }
 
-//private JComboBox meetingYear; // 만남 년도 콤보박스
-//private JComboBox meetingMonth; // 만남 월 콤보박스
-//private JComboBox meetingDay; // 만남 일 콤보박스
-//private JComboBox meetingHour; // 만남 시간 콤보박스
-//private JComboBox meetingMinutes; // 만남 분 콤보박스
 
-//private JButton postTypebtn; // 혼또니 게시판 버튼
-//private JTextField postTitle; // 게시글 제목
+
+
 //private JButton localSelectbtn; // 지역선택 버튼
 
-//private JTextField joinmember; // 모일 인원 
-//private JTextArea postContents; // 게시글 내용 
-//private JComboBox selectCategorycombo = PostActionCategory.getInstance(); //카테고리 콤보박스
-//private JButton postbtn; //게시글 작성 완료 버튼
+
