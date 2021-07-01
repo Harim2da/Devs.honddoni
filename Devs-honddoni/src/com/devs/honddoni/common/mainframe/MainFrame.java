@@ -15,6 +15,7 @@ public class MainFrame extends JFrame{
 		
 		this.add(topPanel);
 		
+		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
