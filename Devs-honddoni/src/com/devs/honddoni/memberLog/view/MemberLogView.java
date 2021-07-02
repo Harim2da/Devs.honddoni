@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.RegistMember;
 import com.devs.honddoni.memberLog.controller.LoginController;
@@ -20,11 +21,16 @@ import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 public class MemberLogView extends JPanel { //나중에 JPanel로 바꿔야 함
 	
 	MainFrame frame = new MainFrame();
-
+//	FrameManager fm = new FrameManager();
+	
+	SearchId searchId = new SearchId(); //newPanel로 사용할 것
+	SearchPwd searchPwd = new SearchPwd(); //newPanel로 사용할 것
+	LoginSuccess loginSuccess = new LoginSuccess(); //newPanel로 사용할 것
+	LoginFail loginFail = new LoginFail(); //newPanel로 사용할 것
+	
 	private LoginController loginController = new LoginController();
 	private LoginDataDTO loginDataDTO;
 	private RegistMember registMember;
-
 	
 	private JPanel bottomPanel = new JPanel();	
 	private JTextField idTf;
@@ -61,7 +67,7 @@ public class MemberLogView extends JPanel { //나중에 JPanel로 바꿔야 함
 				//관리자 로그인쪽으로 뺀다
 				System.out.println("관리자 로그인창으로 이동");
 				// 창 바꾸기...?
-				// mf.changePanel(bottomPanel, 관리자로그인패널)..?
+				// fm.changePanel(bottomPanel, 관리자로그인패널)..?
 
 			}
 		});
@@ -93,17 +99,26 @@ public class MemberLogView extends JPanel { //나중에 JPanel로 바꿔야 함
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				if(e.getSource() == loginBtn) {
-
-					makeDTO();
 					
-					System.out.println(loginDataDTO);
-					System.out.println(loginController);
+					makeDTO(); //DTO생성					
+//					System.out.println(loginDataDTO);  //DTO가 잘 만들어졌는지 확인
+//					System.out.println(loginController); //컨트롤러가 null인지 확인
 
-					//로그인 메소드 실행 
-					loginController.userLogin(loginDataDTO);
+					//한번 실행할 때 마다 텍필 칸의 내용을 지워야줘야 함...
 					
-					//한번 실행하고나서 칸을 지워야...
+					int result = loginController.userLogin(loginDataDTO); //로그인 메소드 실행 
+					
+					//로그인실패 : 0, 로그인성공(일반사용자 : 1, 관리자 : 2) 반환함
+					if(result == 0) {
+						FrameManager.changePanel(bottomPanel, loginFail);
+					} else if(result == 1) {
+						FrameManager.changePanel(bottomPanel, loginSuccess);
+					} else {
+						//관리자 쪽으로 패널교체
+//						FrameManager.changePanel(bottomPanel, newPanel);
+					}
 					
 				}
 			}
@@ -118,9 +133,9 @@ public class MemberLogView extends JPanel { //나중에 JPanel로 바꿔야 함
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("아이디찾기 패널로");
-				// 아이디 찾기쪽으로 간다
-				// 창 바꾸기...?
-				//				mf.changePanel(bottomPanel, 아이디찾기패널)..?
+				
+				// 아이디 찾기쪽으로 간다. 창 바꾸기...?
+				FrameManager.changePanel(bottomPanel, searchId);
 
 			}
 		});
@@ -135,8 +150,9 @@ public class MemberLogView extends JPanel { //나중에 JPanel로 바꿔야 함
 			public void actionPerformed(ActionEvent e) {
 				//비밀번호 찾기쪽으로 간다
 				System.out.println("비밀번호 찾기 쪽으로");
+				
 				// 창 바꾸기...?
-				//				mf.changePanel(bottomPanel, 비밀번호찾기패널)..?
+				FrameManager.changePanel(bottomPanel, searchPwd);
 
 			}
 		});
@@ -177,6 +193,8 @@ public class MemberLogView extends JPanel { //나중에 JPanel로 바꿔야 함
 		frame.add(bottomPanel);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+//		FrameManager.refresh();
 
 	}
 

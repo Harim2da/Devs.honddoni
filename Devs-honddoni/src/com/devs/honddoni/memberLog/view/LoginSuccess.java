@@ -1,5 +1,7 @@
 package com.devs.honddoni.memberLog.view;
 
-public class LoginSuccess {
+import javax.swing.JPanel;
+
+public class LoginSuccess extends JPanel {
 
 }
