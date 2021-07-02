@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.devs.honddoni.common.PagenationComments;
@@ -17,7 +18,7 @@ import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.PagingController;
 
-public class CommentMain extends JFrame {
+public class SelectedComment extends JFrame {
 
 	private JPanel upPanel; 					//상단패널
 	private JPanel downPanel;					//하단패널
@@ -38,12 +39,12 @@ public class CommentMain extends JFrame {
 	private JLabel commentsDate;				//댓글 작성 날짜
 	private JLabel commentsTime;				//댓글 작성 시간
 	private JLabel profilePictrue;				//프로필 사진
-	private JButton myHonddoniBtn;
-	private JButton searchHonddoniBtn;
-	private JButton homeBtn;
-	private JButton interestingBtn;
-	private JButton noticeBtn;
-	private JButton logoBtn;
+	private JButton myHonddoniBtn;				//마이페이지 이동
+	private JButton searchHonddoniBtn;			//게시글 작성페이지 이동
+	private JButton homeBtn;					//메인화면이동
+	private JButton interestingBtn;				//관심글 목록 이동
+	private JButton noticeBtn;					//공지사항 목록 이동
+	private JLabel backgroundImage;				//로고 포함 테두리 배경
 
 	/* 프레임에서 패널을 더해주기 위한 getter */
 	public JPanel getUpPanel() {
@@ -94,7 +95,6 @@ public class CommentMain extends JFrame {
 		
 		upPanel();
 		downPanel();
-		logoBtn();
 		myHonddoniBtn();
 		searchHonddoniBtn();
 		homeBtn();
@@ -108,12 +108,12 @@ public class CommentMain extends JFrame {
 		beforeBtn(1);
 		afterBtn(1);
 		commentList(1);
-		upPanel.add(logoBtn);
 		upPanel.add(myHonddoniBtn);
 		upPanel.add(searchHonddoniBtn);
 		upPanel.add(homeBtn);
 		upPanel.add(interestingBtn);
 		upPanel.add(noticeBtn);
+		upPanel.add(backgroundImage);
 		downPanel.add(commentWriteBtn);
 		downPanel.add(commentLongbarLabel);
 		downPanel.add(backBtn);		
@@ -130,6 +130,12 @@ public class CommentMain extends JFrame {
 		upPanel.setBounds(0, 0, 500, 100);
 		upPanel.setLayout(null);
 		upPanel.setBackground(Color.WHITE);
+		
+		/* 상단 패널 뒷배경 생성 */
+		backgroundImage = new JLabel("");
+		backgroundImage.setBounds(0, 0, 500, 100);
+		backgroundImage.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
+		backgroundImage.setVisible(true); 
 
 	}
 
@@ -144,26 +150,8 @@ public class CommentMain extends JFrame {
 
 	}
 	
-	public void logoBtn() {
-		
-		logoBtn = new JButton("");
-		logoBtn.setBounds(21,22,136,56);
-		logoBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
-		logoBtn.setBorderPainted(false);
-		logoBtn.setContentAreaFilled(false);
-		logoBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("메인페이지 이동");
-				
-			}
-		});
-		
-	}
-	
+	/* My혼또니 버튼 생성 */
 	public void myHonddoniBtn() {
-		/* My혼또니 버튼 생성 */
 		
 		myHonddoniBtn = new JButton("");
 		myHonddoniBtn.setBounds(171,23,56,56);
@@ -253,11 +241,10 @@ public class CommentMain extends JFrame {
 		
 	}
 
-	
-
 	/* 댓글 작성 버튼 */
 	public void commentWriteBtn() {
 
+//		MainFrame mf = new MainFrame();
 		commentWriteBtn = new JButton("");
 		commentWriteBtn.setIcon(new ImageIcon("image/post/commentWriteButton.png"));
 		commentWriteBtn.setContentAreaFilled(false);
@@ -268,7 +255,9 @@ public class CommentMain extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("댓글 작성란 호출");
-				/* 댓글 작성란 호출 */
+				String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
+				System.out.println(text);
+				
 			}
 		});
 
@@ -404,7 +393,6 @@ public class CommentMain extends JFrame {
 			for(int i = 0; i < commentListDTO.size(); i++) {
 				
 					commentInfo = commentListDTO.get(i);
-
 
 					commentList = new JLabel("");
 					commentList.setLayout(null);
