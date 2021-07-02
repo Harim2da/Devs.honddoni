@@ -6,21 +6,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import com.devs.honddoni.admin.viewmiddle.login2;
 import com.devs.honddoni.common.mainframe.MainFrame;
 
-public class AdminList {
+public class AdminUser {
 	
 	MainFrame MainFrame = new MainFrame();
 	
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
-	public AdminList() {
+	public AdminUser() {
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -30,20 +28,24 @@ public class AdminList {
 		bottomPanel.setBackground(Color.WHITE);
 		MainFrame.add(bottomPanel);
 		
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\Admin1-1.png");
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\Side.png");
 	       JButton btn1 = new JButton(img1);
 	       
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Admin1-2.png");
+	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Side.png");
 	       JButton btn2 = new JButton(img2);
 	       
-	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Admin1-3.png");
+	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Side.png");
 	       JButton btn3 = new JButton(img3);
 	       
-	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\Admin1-4.png");
+	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\Side.png");
 	       JButton btn4 = new JButton(img4);
 	       
-	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AdminNext.png");
+	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Side.png");
 	       JButton btn5 = new JButton(img5);
+	       
+	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
+	       JLabel lb1 = new JLabel();
+	       
 	       
 	   
 	  
@@ -53,13 +55,15 @@ public class AdminList {
 	       bottomPanel.add(btn3);
 	       bottomPanel.add(btn4);
 	       bottomPanel.add(btn5);
+	       bottomPanel.add(lb1);
 	    
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 29, 430, 121);
 	       btn2.setBounds(34, 193, 430, 121);
 	       btn3.setBounds(34, 356, 430, 121);
 	       btn4.setBounds(33, 520, 430, 121);
-	       btn5.setBounds(221, 698, 56, 25);
+	       btn5.setBounds(34, 616, 430, 104);
+	       lb1.setBounds(56, 0, 263, 33);
 	   
 	     
 	       //컨테이너에 패널 추가
@@ -81,9 +85,3 @@ public class AdminList {
 	       });
 	}
 }
-
-		
-
-	
-
-		
