@@ -59,8 +59,7 @@ public class PostDAO {
 			pstmt.setString(8, post.getPostWritingTime());
 			pstmt.setInt(9, post.getLocalCode());
 			pstmt.setInt(10, post.getCategoryCode()); 
-			pstmt.setString(11, post.getPostDelStatus());
-			pstmt.setInt(12, post.getPostNumberOfPeopleNumber());
+			pstmt.setInt(11, post.getPostNumberOfPeopleNumber());
 			
 			result = pstmt.executeUpdate();
 			

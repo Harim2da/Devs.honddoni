@@ -41,8 +41,6 @@ public class ContactController {
 		int categoryCode = postService.searchCategoryCode(categoryName);
 		
 		
-		
-		String postDelStatus = "N";
 		int postNumberOfPeopleNumber = postDTO.getPostNumberOfPeopleNumber();
 		
 		
@@ -59,7 +57,6 @@ public class ContactController {
 		post.setPostWritingTime(postWritingTime);
 		post.setLocalCode(localCode);
 		post.setCategoryCode(categoryCode);
-		post.setPostDelStatus(postDelStatus);
 		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
 		
 		System.out.println(post);
