@@ -16,7 +16,7 @@ public class ContactController {
 		String postName = postDTO.getPostName();
 		String postContents = postDTO.getPostContents();
 		String postCategory = postDTO.getPostCategory();
-		
+		int postMemberNo = 6; //임시값
 		
 		String postMeetingDate = postDTO.getPostMeetingDate();
 		String postMeetingTime = postDTO.getPostMeetingTime();
@@ -24,7 +24,7 @@ public class ContactController {
 		/* 등록하는 오늘 날짜 추출 */
 		java.util.Date today = new java.util.Date(System.currentTimeMillis());
 		SimpleDateFormat postdayFormat = new SimpleDateFormat("yyMMdd");
-		SimpleDateFormat postTimeFormat = new SimpleDateFormat("hh:mm");
+		SimpleDateFormat postTimeFormat = new SimpleDateFormat("HH:mm");
 		
 		String postWritingDate = postdayFormat.format(today);
 		postDTO.setPostWritingDate(postWritingDate);
@@ -52,6 +52,7 @@ public class ContactController {
 		post.setPostName(postName);
 		post.setPostContents(postContents);
 		post.setPostCategory(postCategory);	
+		post.setPostMemberNo(postMemberNo);
 		post.setPostMeetingDate(postMeetingDate);
 		post.setPostMeetingTime(postMeetingTime);
 		post.setPostWritingDate(postWritingDate);
@@ -61,7 +62,7 @@ public class ContactController {
 		post.setPostDelStatus(postDelStatus);
 		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
 		
-		
+		System.out.println(post);
 		/* 서비스 호출 결과 리턴 받기 */
 		int result = postService.insertHonddoniPost(post);
 		

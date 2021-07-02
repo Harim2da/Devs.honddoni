@@ -44,7 +44,7 @@ public class PostDAO {
 //		int categoryCode = Integer.parseInt(prop.getProperty("searchCategoryCode"));
 		
 		String query = prop.getProperty("insertNewHonPost");
-	
+		System.out.println(post);
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -86,10 +86,15 @@ public class PostDAO {
 			pstmt = con.prepareStatement(localCode);
 			pstmt.setString(1, localName);
 			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("LOCAL_CODE");			
+			}
 			
-			result = rset.getInt("LOCAL_CODE");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 	
 		return result;
@@ -107,11 +112,17 @@ public int searchCategoryCode(Connection con, String categoryName) {
 			pstmt = con.prepareStatement(categoryCode);
 			pstmt.setString(1, categoryName);
 			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("CATEGORY_CODE");
+			}
 			
-			result = rset.getInt("CATEGORY_CODE");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
+	
 	
 		return result;
 	}

@@ -22,7 +22,7 @@
 	    )
 	    VALUES
 	    (
-	    SEQ_MEMBER_NO.NEXTVAL
+	    SEQ_POST_NO.NEXTVAL
 	    ,?
 	    ,?
 	    ,?
@@ -33,7 +33,7 @@
 	    ,?
 	    ,?
 	    ,?
-	    ,?
+	    ,DEFAULT
 	    ,?
 	    )
 	</entry>
