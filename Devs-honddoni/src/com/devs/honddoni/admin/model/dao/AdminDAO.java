@@ -10,9 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.devs.honddoni.admin.view123.MemberDTO;
+
 import static com.devs.honddoni.common.JDBCTemplate.close;
 
-import com.devs.honddoni.common.dto.MemberDTO;
+
 
 public class AdminDAO {
 	
@@ -44,10 +46,12 @@ public class AdminDAO {
 			
 			while(rset.next()) {
 			MemberDTO member = new MemberDTO();
-			member.setMemberNo(rset.getInt("MEMBER_NO"));
 			member.setMemberId(rset.getString("MEMBER_ID"));
-			member.setEmrollDate(rset.getString("ENROLL_DATE"));
-			member.setMemberImage(rset.getString("MEMBER_IMAGE"));
+			member.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
+			member.setMemberProfile(rset.getString("MEMBER_PROFILE"));
+			member.setMemberRegistDate(rset.getString("MEM_REGIST_DATE"));
+			
+			
 			
 			memberList.add(member);
 			}

@@ -23,22 +23,21 @@ public class MemberResultView {
 		
 	}
 	
-}
 	
-//	public void display(List<MemberDTO> list) {
-//		
-//		for(MemberDTO m : list) {
-//			System.out.println(m);
-//		}
-//		
-//	}
-//	
-//	public void display(MemberDTO m) {
-//		
-//		System.out.println(m);
-//	}
-//	
-//}
+	public void display(List<MemberDTO> list) {
+		
+		for(MemberDTO m : list) {
+			System.out.println(m);
+		}
+		
+	}
+	
+	public void display(MemberDTO m) {
+		
+		System.out.println(m);
+	}
+	
+}
 
 
 

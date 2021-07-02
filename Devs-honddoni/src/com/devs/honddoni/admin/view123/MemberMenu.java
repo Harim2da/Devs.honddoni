@@ -29,14 +29,9 @@ public class MemberMenu {
 			}
 		}while(true);
 		
-	}
+}
 	
 }
-
-
-
-
-
 
 
 
