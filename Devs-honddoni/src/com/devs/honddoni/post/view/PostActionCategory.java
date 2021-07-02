@@ -14,7 +14,7 @@ public class PostActionCategory {
 	
 	public PostActionCategory() {
 		
-		String[] actioncategory = {" "," 맛집탐방", " 활동", " 취미", " 산책", " 스터디", " 게임"};
+		String[] actioncategory = {" ","맛집탐방", "활동", "취미", "산책", "스터디", "게임"};
 		selectCategorycombo = new JComboBox(actioncategory);
 
 		selectCategorycombo.setBounds(139, 145, 306, 28);

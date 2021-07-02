@@ -391,6 +391,7 @@ public class PostHonddoni extends JFrame{
 					 
 					 /* 텍스트 필드로 받은 모임인원, int로 전환 */
 					 int numberOfJoin = Integer.parseInt(joinmember.getText());
+//					 int numberOfJoin = Integer.parseInt("1");
 					 postDTO.setPostNumberOfPeopleNumber(numberOfJoin);
 					 System.out.println(postDTO);
 					 
