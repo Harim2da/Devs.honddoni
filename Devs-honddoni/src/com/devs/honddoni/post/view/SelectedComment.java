@@ -25,12 +25,12 @@ public class SelectedComment extends JFrame {
 	private JButton commentWriteBtn;			//댓글 작성 버튼
 	private JLabel commentLongbarLabel;			//페이지를 나타낼때 아래 깔래는 바
 	private JButton backBtn;        			//뒤로 가기
-	private JLabel beforeNumber;	 		    //페이지를 나타내는 앞의 숫자
+	private JLabel beforeNumber = new JLabel("");	 		    //페이지를 나타내는 앞의 숫자
 	private JLabel afterNumber;					//페이지를 나타내는 뒤의 숫자
 	private int frontPage = 1;					//현재 페이지
-	private JButton beforeBtn;					//페이지를 앞으로 이동하는 버튼
+	private JButton beforeBtn;				//페이지를 앞으로 이동하는 버튼
 	private JButton afterBtn;					//페이지를 뒤로 이동하는 버튼
-	private JLabel commentList;   				//댓글리스트의 밑바탕
+	private JLabel commentList;				//댓글리스트의 밑바탕
 	List<CommentsDTO> commentListDTO = null;
 	private JLabel nickName;					//유저 닉네임
 	private JLabel content;						//댓글 내용
@@ -265,9 +265,9 @@ public class SelectedComment extends JFrame {
 				
 				ContactController2 contactController2 = new ContactController2();
 				contactController2.communicationComment(newComment);
-
-				downPanel.repaint();
-				downPanel.revalidate();
+//
+//				downPanel.repaint();
+//				downPanel.revalidate();
 			
 			}
 		});
@@ -339,11 +339,13 @@ public class SelectedComment extends JFrame {
 		
 		int pageNo = frontPage;
 		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
-		new PagingController().selectWholeCommentsNum(postNo);
-		int totalCount = dto.getTotalCount();	
+		int totalCount = new PagingController().selectWholeCommentsNum(postNo);
+		
 		PagenationComments pagenationComments = new PagenationComments();
-		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 2, 5);
+		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
 
+//		contactController.writeHonddoniBoardPost(postDTO);
+		
 		afterBtn = new JButton("");
 		afterBtn.setIcon(new ImageIcon("image/post/afterPageButton.png"));
 		afterBtn.setContentAreaFilled(false);
@@ -356,8 +358,30 @@ public class SelectedComment extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("다음페이지 호출");
-				/* 다음페이지 호출*/
+				
+				
+				
+				for(int i = 0; i < 10; i++) {
+					
+					remove(commentList);
+					remove(nickName);
+					remove(content);
+					remove(updateBtn);
+					remove(reportBtn);
+					remove(commentsDate);
+					remove(commentsTime);
+					remove(profilePictrue);
+					
+				}
+				frontPage++;
+				beforeNumber();		
+				for(int i = 0 ; i < commentListDTO.size(); i++) {
+					
+					commentList(postNo);
+					
+				}
+//				System.out.println("comment : " + commentListDTO.size());
+				
 			}
 		});
 	}
@@ -367,10 +391,11 @@ public class SelectedComment extends JFrame {
 
 
 		String frontPageString = Integer.valueOf(frontPage).toString();
-
-		beforeNumber = new JLabel(frontPageString);
+		
+		beforeNumber.setText(frontPageString);
 		beforeNumber.setLayout(null);
 		beforeNumber.setBounds(50, 4, 14, 14);
+		System.out.println(frontPageString);
 
 	}
 
@@ -379,12 +404,10 @@ public class SelectedComment extends JFrame {
 
 		int pageNo = frontPage;
 
-		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
-		new PagingController().selectWholeCommentsNum(postNo);
-		int totalCount = dto.getTotalCount();
+		int totalCount = new PagingController().selectWholeCommentsNum(postNo);
+		
 		PagenationComments pagenationComments = new PagenationComments();
-		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 2, 5);
-
+		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
 		String backPageString = Integer.valueOf(pageInfo.getMaxPage()).toString();
 
 		afterNumber = new JLabel(backPageString);
