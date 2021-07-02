@@ -11,6 +11,8 @@ public class MemberController {
 	
 	private MemberService memberService = new MemberService();
 	private DuplCheckResult duplCheckResult = new DuplCheckResult();
+	
+	private int pwdCheckSign = 0;
 
 	public void idDuplCheck(String getUserId) {
 		
@@ -36,17 +38,38 @@ public class MemberController {
 		
 	}
 
-	public void pwdCheck(ChangePwdDTO changePwd) {
+	public boolean pwdCheck(ChangePwdDTO changePwd) {
 		
 		int result = memberService.pwdCheck(changePwd);
 		
-		int num = 0;
-		
 		if(result > 0) {
 			System.out.println("일치");
-			num++;
 		} else {
 			System.out.println("불일치");
+		}
+		
+		return result > 0 ? true : false;
+	}
+
+	public void newPwdEqualCheck(ChangePwdDTO changePwd) {
+		
+		String newPwd = changePwd.getMemberNewPassword();	//새 비번
+		String newPwdRe = changePwd.getMemberNewPassword();	//새 비번 확인
+		
+		if(newPwd.equals(newPwdRe)){
+			System.out.println("새비번 일치");
+			updateMemberPwd(changePwd);
+		}		
+	}
+	
+	public void updateMemberPwd(ChangePwdDTO changePwd) {
+		
+		int result = memberService.updateMemberPwd(changePwd);
+		
+		if(result > 0) {
+			System.out.println("비번변경 성공");
+		} else {
+			System.out.println("비번변경 실패");
 		}
 	}
 }

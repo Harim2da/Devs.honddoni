@@ -62,5 +62,16 @@ public class MemberService {
 		return pwdCheck;
 	}
 
+	public int updateMemberPwd(ChangePwdDTO changePwd) {
+		
+		Connection con = getConnection();
+		
+		int result = memberDAO.updateMemberPwd(con, changePwd);
+		
+		close(con);
+		
+		return result;
+	}
+
 
 }
