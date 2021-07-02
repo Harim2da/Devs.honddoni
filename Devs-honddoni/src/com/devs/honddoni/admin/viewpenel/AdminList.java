@@ -75,9 +75,64 @@ public class AdminList {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1();
-	    		   bottomPanel.setVisible(false);
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn4.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
 	    		   
-//	    		  MainFrame.setVisible(false);
+	    		   new Notice();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn1.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new Delite();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn2.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AllData();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn3.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new Honnest();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	       
