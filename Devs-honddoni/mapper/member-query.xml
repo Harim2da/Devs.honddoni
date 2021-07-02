@@ -2,47 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment/>
-	<entry key="registNewMember"> 
-	  INSERT /*com.devs.honddoni.member.model.dao.MemberDAO#registNewMember()*/
-	   INTO TBL_MEMBER A
-	   (
-	    A.MEMBER_NO
-	   ,A.MEMBER_ID
-	   ,A.MEMBER_PASSWORD
-	   ,A.MEMBER_NAME
-	   ,A.MEMBER_BIRTH
-	   ,A.MEMBER_GENDER
-	   ,A.MEMBER_ADDRESS
-	   ,A.MEMBER_NICKNAME
-	   ,A.MEMBER_PHONE
-	   ,A.MEMBER_EMAIL
-	   ,A.MEMBER_STATUS
-	   ,A.MEMBER_PROFILE
-	   ,A.MEMBER_ACCESS
-	   ,A.MEM_REGIST_DATE
-	   ,A.MEM_WITHDRAW_DATE
-       ,A.MEM_CHARACTER_CODE
-	   )
-	   VALUES
-	   (
-	   SEQ_MEMBER_NO.NEXTVAL
-	   ,?
-	   ,?
-	   ,?
-	   ,?
-	   ,?
-	   ,?
-	   ,?
-	   ,?
-	   ,?
-	   ,DEFAULT
-	   ,'1'
-	   ,DEFAULT
-	   ,?
-	   ,NULL
-	   ,?
-	   )
-	</entry>
+	
 	<entry key="idDuplCheck">
 	  SELECT /*com.devs.honddoni.member.model.dao.MemberDAO#idDuplCheck()*/
 	        COUNT(*)
@@ -57,10 +17,5 @@
 	   WHERE MEMBER_ID = ?
 	</entry>
 	
-	<entry key="checkPassword">
-        SELECT
-        	   A.MEMBER_PASSWORD
-          FROM TBL_MEMBER A
-         WHERE A.MEMBER_ID = ?
-	</entry>
+
 </properties>
