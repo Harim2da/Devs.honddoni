@@ -3,22 +3,20 @@ package com.devs.honddoni.post.controller;
 import java.text.SimpleDateFormat;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.post.model.service.PostService;
 
 public class ContactController {
-
+	
+	private PostService postService;
 	
 	
 	public void writeHonddoniBoardPost(PostDTO postDTO) {
 		
-//		private int postNo;
 
 //		private int postMemberNo;
-
-
 //		private String localName;
 //		private String categoryName;		//맛집탐방, 산책 등등
-//		private String postDelStatus;
-//		private int postNumberOfPeopleNumber;
+
 		
 		
 		// 시퀀스로 db에 있는 postNO 가져오기
@@ -52,6 +50,34 @@ public class ContactController {
 		int postNumberOfPeopleNumber = postDTO.getPostNumberOfPeopleNumber();
 		
 		
+		
+		/* 서비스 전달용  DTO 담기 */
+		PostDTO post = new PostDTO();
+		post.setPostName(postName);
+		post.setPostContents(postContents);
+		post.setPostCategory(postCategory);
+//		post.setPostMemberNo();		
+		post.setPostMeetingDate(postMeetingDate);
+		post.setPostMeetingTime(postMeetingTime);
+		post.setPostWritingDate(postWritingDate);
+		post.setPostWritingTime(postWritingTime);
+//		post.setLocalName();
+//		post.setCategoryName();
+		post.setPostDelStatus(postDelStatus);
+		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
+		
+		
+		/* 서비스 호출 결과 리턴 받기 */
+		int result = postService.insertHonddoniPost(post);
+		
+		if(result > 0) {
+			System.out.println("등록 성공");
+		} else {
+			System.out.println("등록 실패");
+		}
+		
 	}
 
+	
+	
 }
