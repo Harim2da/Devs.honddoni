@@ -7,11 +7,11 @@ import com.devs.honddoni.common.dto.MemberDTO;
 
 public class ManagementController {
 	
-	private AdminService memberService = new AdminService();
+	private AdminService adminService = new AdminService();
 	
-	public void selectAllPosts() {
+	public void selectAllMembers() {
 		
-		List<MemberDTO> memberList = AdminService.selectAllPosts();
+		List<MemberDTO> memberList = adminService.selectAllMembers();
 		
 //		memberResultView.display(memberList);
 	}

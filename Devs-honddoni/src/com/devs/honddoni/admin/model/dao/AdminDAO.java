@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import static com.greedy.common.JDBCTemplate.close;
+import static com.devs.honddoni.common.JDBCTemplate.close;
 
 import com.devs.honddoni.common.dto.MemberDTO;
 
@@ -26,7 +26,7 @@ public class AdminDAO {
 			e.printStackTrace();
 		}
 	}
-	public List<MemberDTO> selectAllPosts(Connection con) {
+	public List<MemberDTO> selectAllMembers(Connection con) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -60,5 +60,4 @@ public class AdminDAO {
 		}
 		return memberList;
 	}
-	
 }
