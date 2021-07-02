@@ -3,15 +3,15 @@ package com.devs.honddoni.memberLog.view;
 import javax.swing.JPanel;
 
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.controller.MemberController;
 
-public class LoginFail extends JPanel {
+public class SearchId extends JPanel{
 	
 	MainFrame frame = new MainFrame();
-//	FrameManager fm = new FrameManager();
 	
-	public LoginFail() {
-		
-	}
+	private MemberController memberController;
+	
+	public SearchId() {}
 	
 	
 
