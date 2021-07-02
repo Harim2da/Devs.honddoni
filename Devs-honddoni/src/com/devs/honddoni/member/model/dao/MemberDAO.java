@@ -140,6 +140,26 @@ public class MemberDAO {
 		return result;
 	}
 
+	public int updateMemberPwd(Connection con, ChangePwdDTO changePwd) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updatePassword");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, changePwd.getMemberNewPassword());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return 0;
+	}
+
 	
 
 }

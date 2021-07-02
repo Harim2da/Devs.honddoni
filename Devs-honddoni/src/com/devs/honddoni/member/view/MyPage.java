@@ -82,6 +82,7 @@ public class MyPage {
 		changePwdButton.setBorderPainted(false);
 		changePwdButton.setIcon(new ImageIcon("image/member/myPage/pwdchange.png"));
 		changePwdButton.setBounds(92, 53, 137, 137);
+		downsidePanel.add(changePwdButton);
 		changePwdButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -145,36 +146,53 @@ public class MyPage {
 				cpB2.setVisible(true);
 				cpB2.setBounds(264, 595, 178, 63);
 				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
+				changePwdPanel.add(cpB2); 
 				cpB2.addActionListener(new ActionListener() {
 					
 					@Override
 					/* 입력한 비밀번호가 현재 비밀번호와 일치하는치 확인 */
 					public void actionPerformed(ActionEvent e) {
 						
-						int result = 0;
-						
 						if(e.getSource() == cpB2) {
 							memberController = new MemberController();
-							String password = "";
+							 	String password = "";
 							   char[] pass = cpPF1.getPassword();
 							   for(int i = 0; i < pass.length; i++) {
 							      password += pass[i];
 							   }         
 							   changePwdDTO = new ChangePwdDTO();
 							   changePwdDTO.setMemberOldPassword(password);
-							   memberController.pwdCheck(changePwdDTO);		//입력값 일치 확인
-							   result++;
-							   /* 새로 입력한 비밀번호와 비밀번호 재확인이 일치한지 확인*/
+							   boolean checkP = memberController.pwdCheck(changePwdDTO);		 //입력값 일치 확인
 							   
-							   System.out.println(result);
+							   if(checkP) {
+								   /* 새로 입력한 비밀번호와 비밀번호 재확인이 일치한지 확인*/
+								   String newPassword = "";
+								   char[] newPass = cpPF2.getPassword();
+								   for(int i = 0; i < newPass.length; i++) {
+									   newPassword += newPass[i];
+								   }         
+								   
+								   String newPasswordReCheck = "";
+								   char[] newPassRc = cpPF3.getPassword();
+								   for(int i = 0; i < newPassRc.length; i++) {
+									   newPasswordReCheck += newPassRc[i];
+								   }         
+								   changePwdDTO.setMemberNewPassword(newPassword);
+								   System.out.println(newPassword);
+								   changePwdDTO.setMemberNewPasswordRecheck(newPasswordReCheck);
+								   System.out.println(newPasswordReCheck);
+								   
+								   memberController.newPwdEqualCheck(changePwdDTO);
+								   
+							   } 
+							   
+							   
 						}
 					}
 				});
-				changePwdPanel.add(cpB2); 
 				
 			}
 		});
-		downsidePanel.add(changePwdButton);
 		
 		
 /*================================== 개인정보 변경 버튼   ================================================== */			

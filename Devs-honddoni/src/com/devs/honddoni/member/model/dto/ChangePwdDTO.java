@@ -4,6 +4,7 @@ public class ChangePwdDTO implements java.io.Serializable {
 
 	private String memberOldPassword;
 	private String memberNewPassword;
+	private String memberNewPasswordRecheck;
 	private String userId;
 	
 	public ChangePwdDTO() {}
@@ -12,6 +13,7 @@ public class ChangePwdDTO implements java.io.Serializable {
 		super();
 		this.memberOldPassword = memberOldPassword;
 		this.memberNewPassword = memberNewPassword;
+		this.memberNewPasswordRecheck = memberNewPasswordRecheck;
 		this.userId = userId;
 	}
 
@@ -40,11 +42,20 @@ public class ChangePwdDTO implements java.io.Serializable {
 		this.userId = userId;
 	}
 
+	public String getMemberNewPasswordRecheck() {
+		return memberNewPasswordRecheck;
+	}
+
+	public void setMemberNewPasswordRecheck(String memberNewPasswordRecheck) {
+		this.memberNewPasswordRecheck = memberNewPasswordRecheck;
+	}
+
 	@Override
 	public String toString() {
 		return "ChangePwdDTO [memberOldPassword=" + memberOldPassword + ", memberNewPassword=" + memberNewPassword
-				+ ", userId=" + userId + "]";
+				+ ", memberNewPasswordRecheck=" + memberNewPasswordRecheck + ", userId=" + userId + "]";
 	}
+
 
 	
 	
