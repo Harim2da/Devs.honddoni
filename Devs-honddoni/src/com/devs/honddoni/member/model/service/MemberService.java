@@ -50,5 +50,18 @@ public class MemberService {
 		return result;
 	}
 
+	public int pwdCheck(String oldPwd) {
+		
+		Connection con = getConnection();
+		
+		int result = 0;
+		
+		int pwdCheck = memberDAO.pwdCheck(con, oldPwd);
+		
+		close(con);
+		
+		return result;
+	}
+
 
 }

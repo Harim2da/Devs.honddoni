@@ -35,7 +35,14 @@ public class MemberController {
 		
 	}
 
-	public void modifyPassword(String getUserPwd) {
+	public void pwdCheck(String oldPwd) {
 		
+		int result = memberService.pwdCheck(oldPwd);
+		
+		if(result > 0) {
+			System.out.println("일치");
+		} else {
+			System.out.println("불일치");
+		}
 	}
 }
