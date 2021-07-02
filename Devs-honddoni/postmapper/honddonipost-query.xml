@@ -37,16 +37,17 @@
 	    ,?
 	    )
 	</entry>
-	<entry key="freeWholePostNum">
+	<entry key="searchLocalCode">
 	  SELECT
-	         COUNT(*)
-	    FROM TBL_POST
-	   WHERE POST_CATEGORY = '자유'
+	         B.LOCAL_CODE
+	    FROM TBL_LOCAL B
+	   WHERE B.LOCAL_NAME = ?
 	</entry>
-	<entry key="totalWholePostNum">
+	<entry key="searchCategoryCode">
 	  SELECT
-	         COUNT(*)
-	    FROM TBL_POST
+	         C.CATEGORY_CODE
+	    FROM TBL_CATEGORY C
+	   WHERE C.CATEGORY_NAME = ?
 	</entry>
 	<entry key="selectWholeCommentsNum">
 	  SELECT
