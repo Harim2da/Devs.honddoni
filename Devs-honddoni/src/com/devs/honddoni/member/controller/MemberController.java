@@ -35,4 +35,7 @@ public class MemberController {
 		
 	}
 
+	public void modifyPassword(String getUserPwd) {
+		
+	}
 }
