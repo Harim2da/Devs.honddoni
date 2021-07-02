@@ -8,19 +8,22 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.model.dto.ChangePwdDTO;
+import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
-public class MyPage extends JPanel{
+public class MyPage {
 	
 	MainFrame frame = new MainFrame();
+	
+	private MemberRegistDTO memberRegistDTO;
+	private ChangePwdDTO changePwdDTO;
 	
 	/* 비밀번호변경 */
 	private JButton cpB1 = new JButton();					//비밀번호 변경 취소버튼
@@ -90,41 +93,6 @@ public class MyPage extends JPanel{
 				downsidePanel.setVisible(false);
 				frame.add(changePwdPanel);
 				
-				/* 취소 버튼 */
-				MyPage.btnRemove(cpB1);
-				cpB1.setVisible(true);
-				cpB1.setBounds(58, 595, 178, 63);
-				cpB1.setIcon(new ImageIcon("image/member/updatePwd/Group 677.png"));
-				cpB1.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						System.out.println("취소 버튼 클릭");
-						
-						/* 마이페이지로 돌아가기 */
-//						FrameManager.changePanel(changePwdPanel, downsidePanel);
-					}
-				});
-				changePwdPanel.add(cpB1);
-				
-				/* 변경 버튼 */
-				MyPage.btnRemove(cpB2);
-				cpB2.setVisible(true);
-				cpB2.setBounds(264, 595, 178, 63);
-				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
-				cpB2.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						System.out.println("변경 버튼 클릭");
-						
-						/* 비밀번호 확인 후 다를 시 팝업*/
-						
-						/* 비밀번호 변경 완료 팝업*/
-					}
-				});
-				changePwdPanel.add(cpB2); 
-				
 				/* 기존 비밀번호 입력창 */
 				cpPF1.setBorder(null);
 				cpPF1.setOpaque(false);
@@ -152,6 +120,58 @@ public class MyPage extends JPanel{
 				
 				changePwdPanel.revalidate();
 				changePwdPanel.repaint();
+
+				/* 취소 버튼 */
+				MyPage.btnRemove(cpB1);
+				cpB1.setVisible(true);
+				cpB1.setBounds(58, 595, 178, 63);
+				cpB1.setIcon(new ImageIcon("image/member/updatePwd/Group 677.png"));
+				cpB1.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("취소 버튼 클릭");
+						
+						/* 마이페이지로 돌아가기 */
+//						FrameManager.changePanel(changePwdPanel, downsidePanel);
+					}
+				});
+				changePwdPanel.add(cpB1);
+				
+				/* 변경 버튼 */
+				MyPage.btnRemove(cpB2);
+				cpB2.setVisible(true);
+				cpB2.setBounds(264, 595, 178, 63);
+				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
+				cpB2.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if(e.getSource() == cpB2) {
+//							ChangePwdDTO cpDTO = new ChangePwdDTO();
+//							System.out.println("변경 버튼 클릭");
+//							String password = "";
+//							   char[] pass = cpPF1.getPassword();
+//							   for(int i = 0; i < pass.length; i++) {
+//							      password += pass[i];
+//							   }         
+//							cpDTO.setMemberOldPassword(password);
+							changePwdDTO = new ChangePwdDTO();
+							String password = "";
+							   char[] pass = cpPF1.getPassword();
+							   for(int i = 0; i < pass.length; i++) {
+							      password += pass[i];
+							   }         
+							   changePwdDTO.setMemberOldPassword(password);
+						}
+						
+						/* 비밀번호 확인 후 다를 시 팝업*/
+						
+						/* 비밀번호 변경 완료 팝업*/
+					}
+				});
+				changePwdPanel.add(cpB2); 
+				
 			}
 		});
 		downsidePanel.add(changePwdButton);
@@ -168,7 +188,7 @@ public class MyPage extends JPanel{
 		changeMemberinfo.setBounds(272, 53, 137, 137);
 		changeMemberinfo.addActionListener(new ActionListener() {
 			
-			@Override
+			@Override 	
 			public void actionPerformed(ActionEvent e) {
 				
 				/* 개인정보 변경 호출 */
@@ -285,7 +305,7 @@ public class MyPage extends JPanel{
 				/* 개인정보 변경 입력창 라벨 */
 				ciL3.setBounds(0, 0, 500, 770);
 				ciL3.setVisible(true);
-				ciL3.setIcon(new ImageIcon("image/member/updateInfo/G  roup 1073.png"));
+				ciL3.setIcon(new ImageIcon("image/member/updateInfo/Group 1073.png"));
 				changeMemberinfoPanel.add(ciL3);
 				
 				/* 본인 성향 선택 콤보박스 */
@@ -452,6 +472,65 @@ public class MyPage extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				/* 업적 & 포인트 호출 */
 				System.out.println("업적 & 포인트 호출");
+				JPanel rewardPanel = new JPanel();
+				rewardPanel.setLayout(null);
+				rewardPanel.setBounds(0, 100, 500, 770);
+				rewardPanel.setVisible(true);
+				rewardPanel.setBackground(Color.white);
+				downsidePanel.setVisible(false);
+				frame.add(rewardPanel);
+				
+				/* 업적 관리 버튼*/
+				JButton rewardManageBtn = new JButton();
+				btnRemove(rewardManageBtn);
+				rewardManageBtn.setBounds(35, 24, 431, 322);
+				rewardManageBtn.setIcon(new ImageIcon("image/member/reward/rewarManagerBtn.png"));
+				rewardPanel.add(rewardManageBtn);
+				rewardManageBtn.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						/* 업적관리 준비중 */
+						JPanel rewardManagerPanel = new JPanel();
+						rewardManagerPanel.setLayout(null);
+						rewardManagerPanel.setBounds(0, 0, 500, 770);
+						rewardManagerPanel.setVisible(true);
+						rewardManagerPanel.setBackground(Color.white);
+						rewardPanel.setVisible(false);
+						frame.add(rewardManagerPanel);
+						
+						JLabel rewardManageLabel = new JLabel();
+						rewardManageLabel.setBounds(0, 100, 500, 770);
+						rewardManageLabel.setIcon(new ImageIcon("image/member/reward/rewardManageLabel.png"));
+						rewardManagerPanel.add(rewardManageLabel);
+					}
+				});
+				
+				/* 포인트 관리 버튼 */
+				JButton pointManageBtn = new JButton();
+				btnRemove(pointManageBtn);
+				pointManageBtn.setBounds(35, 371, 431, 322);
+				pointManageBtn.setIcon(new ImageIcon("image/member/reward/pointManageBtn.png"));
+				pointManageBtn.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						/* 포인트 관리 준비중 */
+						JPanel pointManagePanel = new JPanel();
+						pointManagePanel.setLayout(null);
+						pointManagePanel.setBounds(0, 0, 500, 770);
+						pointManagePanel.setVisible(true);
+						pointManagePanel.setBackground(Color.white);
+						rewardPanel.setVisible(false);
+						frame.add(pointManagePanel);
+						
+						JLabel pointManageLabel = new JLabel();
+						pointManageLabel.setBounds(0, 100, 500, 770);
+						pointManageLabel.setIcon(new ImageIcon("image/member/reward/pointManageLabel.png"));
+						pointManagePanel.add(pointManageLabel);
+					}
+				});
+				rewardPanel.add(pointManageBtn);
 			}
 		});
 		downsidePanel.add(rewardButton);
@@ -472,6 +551,19 @@ public class MyPage extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				/* 내글 모아보기 호출 */
 				System.out.println("내글 모아보기 호출");
+				JPanel myPostPanel = new JPanel();
+				myPostPanel.setLayout(null);
+				myPostPanel.setBounds(0, 100, 500, 770);
+				myPostPanel.setVisible(true);
+				myPostPanel.setBackground(Color.white);
+				downsidePanel.setVisible(false);
+				frame.add(myPostPanel);  
+				
+				JLabel myPostLabel = new JLabel();
+				myPostLabel.setBounds(0, 100, 500, 770);
+				myPostLabel.setIcon(new ImageIcon("image/member/selectMyPost/myPostLabel.png"));
+				myPostPanel.add(myPostLabel);
+				
 			}
 		});
 		downsidePanel.add(writtenPostButton);
