@@ -24,7 +24,7 @@ public class MemberDAO {
 		this.prop = new Properties();
 
 		try {
-			prop.loadFromXML(new FileInputStream("mapper/member-regist-query.xml"));
+			prop.loadFromXML(new FileInputStream("mapper/member-query.xml"));
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -101,6 +101,19 @@ public class MemberDAO {
 			close(pstmt);
 		}
 
+		return result;
+	}
+
+	public int pwdCheck(Connection con, String oldPwd) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("checkPassword");
+		
+		
 		return result;
 	}
 

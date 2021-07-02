@@ -9,12 +9,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
@@ -22,6 +24,7 @@ public class MyPage {
 	
 	MainFrame frame = new MainFrame();
 	
+	private MemberController memberController;
 	private MemberRegistDTO memberRegistDTO;
 	private ChangePwdDTO changePwdDTO;
 	
@@ -148,21 +151,13 @@ public class MyPage {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						if(e.getSource() == cpB2) {
-//							ChangePwdDTO cpDTO = new ChangePwdDTO();
-//							System.out.println("변경 버튼 클릭");
-//							String password = "";
-//							   char[] pass = cpPF1.getPassword();
-//							   for(int i = 0; i < pass.length; i++) {
-//							      password += pass[i];
-//							   }         
-//							cpDTO.setMemberOldPassword(password);
-							changePwdDTO = new ChangePwdDTO();
+							memberController = new MemberController();
 							String password = "";
 							   char[] pass = cpPF1.getPassword();
 							   for(int i = 0; i < pass.length; i++) {
 							      password += pass[i];
 							   }         
-							   changePwdDTO.setMemberOldPassword(password);
+							   memberController.pwdCheck(password);
 						}
 						
 						/* 비밀번호 확인 후 다를 시 팝업*/
