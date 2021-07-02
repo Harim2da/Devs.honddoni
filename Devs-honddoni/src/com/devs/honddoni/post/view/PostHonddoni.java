@@ -38,8 +38,8 @@ public class PostHonddoni extends JFrame{
 	private JComboBox meetingDay; // 만남 일 콤보박스
 	private JComboBox meetingHour; // 만남 시간 콤보박스
 	private JComboBox meetingMinutes; // 만남 분 콤보박스
-	private PostDTO postDTO;
-	private ContactController contactController;
+	private PostDTO postDTO = new PostDTO();
+	private ContactController contactController = new ContactController();
 	
 	
 	
@@ -275,7 +275,7 @@ public class PostHonddoni extends JFrame{
 			if(i == 0) {
 				year[i] ="";
 			} else {
-				year[i] = 20 + i +"";
+				year[i] = 20 + i + "" ;
 			}
 		}
 		meetingYear = new JComboBox(year);	
@@ -354,13 +354,15 @@ public class PostHonddoni extends JFrame{
 		postbtn.setContentAreaFilled(false);
 		postbtn.setBorderPainted(false);
 		postbtn.setOpaque(false);
-		
+
 		
 		postbtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(e.getSource() == postbtn) {
+				collect();
+
+					
 					postDTO = new PostDTO();
 					
 					
@@ -370,17 +372,19 @@ public class PostHonddoni extends JFrame{
 					postDTO.setPostCategory("혼또니");
 					
 					/* 만남 일자 6글자 형식으로 합치기 */
-					String meetDay = (String)meetingYear.getSelectedItem() + (String)meetingMonth.getSelectedItem()
-									+ (String)meetingDay.getSelectedItem();
-					
-					postDTO.setPostMeetingDate(meetDay);
-					
+					String meetYear = (String)meetingYear.getSelectedItem(); 
+				    String meetMonth = (String)meetingMonth.getSelectedItem();
+					String meetDay = (String)meetingDay.getSelectedItem();
+					String meetingDay = meetYear + meetMonth + meetDay;
+					postDTO.setPostMeetingDate(meetingDay);
+
 					/* 만남일시 */
-					 String meetTime = (String)meetingHour.getSelectedItem() + ":" + (String)meetingMinutes.getSelectedItem();
-					 postDTO.setPostMeetingDate(meetTime);
-					
+					 String meetHour = (String)meetingHour.getSelectedItem();  
+					 String meetMin =  (String)meetingMinutes.getSelectedItem();
+				     String meetTime = meetHour + ":" + meetMin ;
+					 postDTO.setPostMeetingTime(meetTime);
 					 
-//					 postDTO.setLocalName(); 지도에서 지역선택 후 받아오기 - DB는 숫자
+					 postDTO.setLocalName("부산"); //일단 임의의 값 지도에서 지역선택 후 받아오기 - DB는 숫자
 					 
 					 /* 카테고리(맛집 탐방 등) 일단 받아오고 컨트롤러에서 코드로 변환해주기*/
 					 postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
@@ -388,22 +392,63 @@ public class PostHonddoni extends JFrame{
 					 /* 텍스트 필드로 받은 모임인원, int로 전환 */
 					 int numberOfJoin = Integer.parseInt(joinmember.getText());
 					 postDTO.setPostNumberOfPeopleNumber(numberOfJoin);
-	
+					 System.out.println(postDTO);
+					 
+					 System.out.println(contactController);
 					 contactController.writeHonddoniBoardPost(postDTO);
 					
-				}
+				
 				
 			}
 		});
-				
+		
+
 	}
-
-
+	
+	private void collect() {
+		String meetY = (String)meetingYear.getSelectedItem(); 
+		String meetM = (String)meetingMonth.getSelectedItem();
+		String meetDay = meetY + meetM;
+		System.out.println(meetDay);
+		}
+	
+	
+	
+//	private void submit() {
+//		postDTO = new PostDTO();
+//		
+//		
+//		/* 게시글 정보 담기 : 게시글 제목, 내용, 게시판 종류, 모임일자, 모임시간, 지역코드, 카테고리코드,모임인원 */
+//		postDTO.setPostName(postTitle.getText()); //게시글 제목
+//		postDTO.setPostContents(postContents.getText()); // 게시글 내용
+//		postDTO.setPostCategory("혼또니");
+//		
+//		/* 만남 일자 6글자 형식으로 합치기 */
+//		String meetYear = meetingYear.getSelectedItem() 
+//	    String meetMonth = (String)meetingMonth.getSelectedItem()
+//		String meetDay = (String)meetingDay.getSelectedItem();
+//		String meetingDay = meetYear + meetMonth + meetDay;
+//		postDTO.setPostMeetingDate(meetingDay);
+//		
+//		/* 만남일시 */
+//		 String meetHour = (String)meetingHour.getSelectedItem()  
+//		 String meetMin =  (String)meetingMinutes.getSelectedItem();
+//	     String meetTime = meetHour + ":" + meetMin ;
+//		 postDTO.setPostMeetingDate(meetTime);
+//		
+//		 
+//		 postDTO.setLocalName("부산"); //일단 임의의 값 지도에서 지역선택 후 받아오기 - DB는 숫자
+//		 
+//		 /* 카테고리(맛집 탐방 등) 일단 받아오고 컨트롤러에서 코드로 변환해주기*/
+//		 postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
+//		 
+//		 /* 텍스트 필드로 받은 모임인원, int로 전환 */
+//		 int numberOfJoin = Integer.parseInt(joinmember.getText());
+//		 postDTO.setPostNumberOfPeopleNumber(numberOfJoin);
+//
+//		 contactController.writeHonddoniBoardPost(postDTO);
+//	}
+//
 }
-
-
-
-
-//private JButton localSelectbtn; // 지역선택 버튼
 
 

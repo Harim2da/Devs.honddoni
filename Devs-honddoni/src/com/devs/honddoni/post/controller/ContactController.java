@@ -7,26 +7,17 @@ import com.devs.honddoni.post.model.service.PostService;
 
 public class ContactController {
 	
-	private PostService postService;
+	private PostService postService = new PostService();
 	
 	
 	public void writeHonddoniBoardPost(PostDTO postDTO) {
 		
 
-//		private int postMemberNo;
-//		private String localName;
-//		private String categoryName;		//맛집탐방, 산책 등등
-
-		
-		
-		// 시퀀스로 db에 있는 postNO 가져오기
-
 		String postName = postDTO.getPostName();
 		String postContents = postDTO.getPostContents();
 		String postCategory = postDTO.getPostCategory();
 		
-		// db에 있는 회원번호 가져오기
-
+		
 		String postMeetingDate = postDTO.getPostMeetingDate();
 		String postMeetingTime = postDTO.getPostMeetingTime();
 		
@@ -41,9 +32,14 @@ public class ContactController {
 		String postWritingTime = postTimeFormat.format(today);
 		postDTO.setPostWritingTime(postWritingTime);
 		
-		// db에 있는 지역코드 받아와서 콤보박스에서 선택한 것과 대조 후, 진행
+		/*선택한 지역명의 코드를 조회*/		
+		String localName= postDTO.getLocalName();
+		int localCode = postService.searchLocalCode(localName);
 		
-		// db에 있는 카테고리코드(맛집 탐방 등) 받아와서 콤보박스에서 선택한 것과 대조 후, 진행
+		/*선택한 카테고리명의 코드를 조회*/
+		String categoryName = postDTO.getCategoryName();
+		int categoryCode = postService.searchCategoryCode(categoryName);
+		
 		
 		
 		String postDelStatus = "N";
@@ -55,14 +51,13 @@ public class ContactController {
 		PostDTO post = new PostDTO();
 		post.setPostName(postName);
 		post.setPostContents(postContents);
-		post.setPostCategory(postCategory);
-//		post.setPostMemberNo();		
+		post.setPostCategory(postCategory);	
 		post.setPostMeetingDate(postMeetingDate);
 		post.setPostMeetingTime(postMeetingTime);
 		post.setPostWritingDate(postWritingDate);
 		post.setPostWritingTime(postWritingTime);
-//		post.setLocalName();
-//		post.setCategoryName();
+		post.setLocalCode(localCode);
+		post.setCategoryCode(categoryCode);
 		post.setPostDelStatus(postDelStatus);
 		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
 		

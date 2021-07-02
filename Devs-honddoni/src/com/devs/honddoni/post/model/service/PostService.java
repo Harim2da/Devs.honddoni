@@ -13,7 +13,10 @@ import com.devs.honddoni.post.model.dao.PostDAO;
 public class PostService {
 
 	private PostDAO postDAO;
-	// 작성자 회원번호, 지역번호 및 카테고리 받아오는 메소드 작성
+		
+	public PostService() {
+		postDAO = new PostDAO();
+	}
 
 	/* DB에 게시글 등록하기 위한 부분*/
 	public int insertHonddoniPost(PostDTO post) {
@@ -36,5 +39,24 @@ public class PostService {
 		return result;
 
 	}
+	
+	public int searchLocalCode(String localName) {
+		Connection con = getConnection();
 
+		int searchLocalCode = postDAO.searchLocalCode(con, localName);
+			
+		close(con);
+		
+		return searchLocalCode;
+	}
+
+	public int searchCategoryCode(String categoryName) {
+		Connection con = getConnection();
+
+		int searchCategoryCode = postDAO.searchCategoryCode(con, categoryName);
+			
+		close(con);
+		
+		return searchCategoryCode;
+	}
 }

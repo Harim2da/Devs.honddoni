@@ -12,7 +12,9 @@ public class PostDTO implements java.io.Serializable {
 	private String postWritingDate;
 	private String postWritingTime;
 	private String localName;
-	private String categoryName;		//맛집탐방, 산책 등등
+	private int localCode;
+	private String categoryName; //맛집탐방, 산책 등등
+	private int categoryCode;
 	private String postDelStatus;
 	private int postNumberOfPeopleNumber;
 	
@@ -20,7 +22,8 @@ public class PostDTO implements java.io.Serializable {
 
 	public PostDTO(int postNo, String postName, String postContents, String postCategory, int postMemberNo,
 			String postMeetingDate, String postMeetingTime, String postWritingDate, String postWritingTime,
-			String localName, String categoryName, String postDelStatus, int postNumberOfPeopleNumber) {
+			String localName, String categoryName, String postDelStatus, int postNumberOfPeopleNumber,int localCode,
+			int categoryCode) {
 		super();
 		this.postNo = postNo;
 		this.postName = postName;
@@ -35,6 +38,25 @@ public class PostDTO implements java.io.Serializable {
 		this.categoryName = categoryName;
 		this.postDelStatus = postDelStatus;
 		this.postNumberOfPeopleNumber = postNumberOfPeopleNumber;
+		this.localCode = localCode;
+		this.categoryCode = categoryCode;
+	}
+
+	
+	public int getLocalCode() {
+		return localCode;
+	}
+
+	public void setLocalCode(int localCode) {
+		this.localCode = localCode;
+	}
+
+	public int getCategoryCode() {
+		return categoryCode;
+	}
+
+	public void setCategoryCode(int categoryCode) {
+		this.categoryCode = categoryCode;
 	}
 
 	public int getPostNo() {
@@ -146,9 +168,12 @@ public class PostDTO implements java.io.Serializable {
 		return "PostDTO [postNo=" + postNo + ", postName=" + postName + ", postContents=" + postContents
 				+ ", postCategory=" + postCategory + ", postMemberNo=" + postMemberNo + ", postMeetingDate="
 				+ postMeetingDate + ", postMeetingTime=" + postMeetingTime + ", postWritingDate=" + postWritingDate
-				+ ", postWritingTime=" + postWritingTime + ", localName=" + localName + ", categoryName=" + categoryName
-				+ ", postDelStatus=" + postDelStatus + ", postNumberOfPeopleNumber=" + postNumberOfPeopleNumber + "]";
+				+ ", postWritingTime=" + postWritingTime + ", localName=" + localName + ", localCode=" + localCode
+				+ ", categoryName=" + categoryName + ", categoryCode=" + categoryCode + ", postDelStatus="
+				+ postDelStatus + ", postNumberOfPeopleNumber=" + postNumberOfPeopleNumber + "]";
 	}
+
+	
 
 	
 	
