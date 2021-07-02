@@ -1,6 +1,8 @@
 package com.devs.honddoni.admin.viewpenel;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -84,5 +86,20 @@ public class AdminList2 {
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);
 	       MainFrame.setVisible(true); //창을 보이게함
+	       
+	       btn5.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new Login();
+	    		   bottomPanel.setVisible(false);
+	    		   
+//	    		  MainFrame.setVisible(false);
+	    	   }
+	       });
 	}
 }

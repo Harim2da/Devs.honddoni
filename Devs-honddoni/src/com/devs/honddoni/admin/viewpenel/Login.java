@@ -28,11 +28,11 @@ public class Login {
 		bottomPanel.setBackground(Color.WHITE);
 		MainFrame.add(bottomPanel);
 		
-		ImageIcon  img1 = new ImageIcon ("/imag/admin/admin123/Check withdrawal request member data.png");
-	       JButton btn1 = new JButton("로그인");
+		ImageIcon  img1 = new ImageIcon ("image\\admin\\Login.png");
+	       JButton btn1 = new JButton(img1);
 	       
-	       ImageIcon  img2 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
-	       JButton btn2 = new JButton("아이디 찾기");
+	       ImageIcon  img2 = new ImageIcon ("image\\admin\\FindId.png");
+	       JButton btn2 = new JButton(img2);
 	       
 	       ImageIcon  img3 = new ImageIcon ("/admin/admin123/Check withdrawal request member data.png");
 	       JButton btn3 = new JButton("비밀번호 찾기");
