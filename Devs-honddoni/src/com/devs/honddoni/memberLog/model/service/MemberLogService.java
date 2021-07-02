@@ -10,7 +10,7 @@ import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 
 public class MemberLogService {
 	
-	private MemberLogDAO memberLogDAO;
+	private MemberLogDAO memberLogDAO = new MemberLogDAO();
 
 	public String userLogin(LoginDataDTO loginDataDTO) {
 		

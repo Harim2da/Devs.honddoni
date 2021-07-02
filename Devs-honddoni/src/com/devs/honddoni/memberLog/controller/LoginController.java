@@ -23,10 +23,22 @@ public class LoginController {
 		}
 			
 		if(result == 1) {
-			//로그인 성공 패널로 이동... 아님 다이얼로그?!
-			
+			//로그인 성공 패널로 이동... 아님 다이얼로그?!			
 			LoginSuccess loginSuccess = new LoginSuccess();
+			
 			System.out.println("로그인 완료~");
+			
+			//로그인 성공했을 때, 아이디가 어드민인 경우, 관리자로그인쪽으로 전달
+			if((loginDataDTO.getMemberId()).equals("admin")) {
+				//관리자로그인페이지로 이동
+				System.out.println("관리자페이지로 이동~");
+			}
+			
+			//로그인 아이디를... 싱글톤 쓰기...?
+			GetLoginMemberId getLoginMemberId = GetLoginMemberId.getInstance();
+			String loginMemberId = loginDataDTO.getMemberId();
+			
+			
 		} else {
 			//로그인 실패 패널로 이동
 			LoginFail loginFail = new LoginFail();
@@ -34,5 +46,6 @@ public class LoginController {
 		}
 		
 	}
+	
 
 }
