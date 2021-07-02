@@ -47,7 +47,7 @@ public class MemberLogDAO {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				userPassword = rset.getString("A.MEMBER_PASSWORD");
+				userPassword = rset.getString("MEMBER_PASSWORD");
 			} else {
 				System.out.println("Password 값없음");
 			}

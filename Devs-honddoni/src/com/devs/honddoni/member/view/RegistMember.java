@@ -1,10 +1,16 @@
 package com.devs.honddoni.member.view;
 
 import java.awt.Color;
+import java.awt.Dialog;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -171,7 +177,8 @@ public class RegistMember extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == characterSelectBtn) {
 					//성향파악 패널을.. 올리자...
-//					CharacterSelect();
+					
+					
 					
 					//성향파악해서 DB에서 왔다갔다해서, 캐릭터 코드를 받아와야 함....
 					
@@ -208,11 +215,12 @@ public class RegistMember extends JFrame {
 		agreeBtn.setBorderPainted(false);
 		agreeBtn.addActionListener(new ActionListener() {
 			
-			/* DTO 만들고 정보 전달...? */
+			/* DTO 만들고 정보 전달 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				if(e.getSource() == agreeBtn) {
+					
 					/* 회원정보를 넘길 DTO 생성 */
 					memberRegistDTO = new MemberRegistDTO();
 					
@@ -295,13 +303,43 @@ public class RegistMember extends JFrame {
 		
 	}
 	
-	public void change() {}
-	
-	private void btnstop() {}
-	
-	private void btnstart() {}
-	
-	private void character() {}
+	public void selectCharacterDialog() {
+		
+		//다이얼로그 생성
+		Dialog selectChaDl = new Dialog(registFrame, "본인의 성향을 입력해주세요"); //나중에는 메인프레임인 mf로 바꿔야
+		selectChaDl.setBounds(30, 320, 443, 263);
+		
+		
+		//이미지들어간 라벨 만들기
+		BufferedImage backImage = null; 
+		try {
+			backImage = ImageIO.read(new File("image/member/regist/regist_10_cancel_btn.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		JLabel picLabel = new JLabel(new ImageIcon(backImage));
+		
+		//콤보박스 생성
+		String[] character = {"리더형", "팔로워형", "계획적", "즉흥적", "외향적", "내향적", "감성적", "이성적"};
+		int[] characterCode = {1, 2, 3, 4, 5, 6, 7, 8}; //일단은 야매로...
+		JComboBox sc = new JComboBox(character);
+		sc.setEditable(true);
+		
+		JButton acceptBtn = new JButton();
+		acceptBtn.setBounds(118, 300, 110, 41);
+		acceptBtn.setIcon(new ImageIcon("image/member/regist/regist_11_agree_btn_grey"));
+		
+		JButton cancelBtn = new JButton();
+		cancelBtn.setBounds(250, 300, 110, 41);
+		cancelBtn.setIcon(new ImageIcon("image/member/regist/regist_12_cancel_btn_grey"));
+		
+		selectChaDl.add(picLabel);
+		selectChaDl.add(acceptBtn);
+		selectChaDl.add(cancelBtn);
+		selectChaDl.add(sc);
+		
+	}
 	
 
 }
