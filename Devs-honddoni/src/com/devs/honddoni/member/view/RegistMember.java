@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -30,11 +31,14 @@ public class RegistMember extends JFrame {
 	private MemberController memberController;
 	private MemberRegistDTO memberRegistDTO;
 
-	private JFrame registFrame;
+	private JFrame registFrame; //나중엔 지워야 함
 	private JPanel firstPanel;
 	
 	private String gender = "여";
-	private JComboBox characterSelectCombo = CharacterSelectCategory.getInstance();
+	
+	private JLayeredPane pann; // 레이어 가능한 팝업 팬
+	private JLabel selectChartLb; //성향선택 이미지 라벨
+	private JComboBox characterSelectCombo; //성향선택 콤보박스
 	
 	/* 확인용 메소드 */
 	public static void main(String[] args) {
@@ -50,8 +54,7 @@ public class RegistMember extends JFrame {
 		
 		setPanel();
 		
-		registFrame.add(firstPanel);		 
-		
+		registFrame.add(firstPanel);			
 		
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -294,6 +297,17 @@ public class RegistMember extends JFrame {
 		this.repaint();
 		this.revalidate();	
 	}	
+	
+	public void popupPanel() {
+
+		//팝업시 반투명 패널생성
+		pann = new JLayeredPane();
+		pann.setBounds(0, 30, 500, 670);
+		mainFrame.add(pann);
+		
+		
+	
+	}
 	
 	public void characterSelect() {
 		

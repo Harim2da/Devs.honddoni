@@ -4,11 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
-import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 
-public class CharacterSelectCategory {
+public class CharacterSelectCategory extends JFrame{
 	
-	private static JComboBox characterSelectCombo;
+	private JFrame mainFrame; //메인프레임... 아마 나중엔 지워야 할듯
+	private JComboBox characterSelectCombo;
+	private JLayeredPane pann; // 레이어 가능한 팝업 팬
 	
 	public CharacterSelectCategory() {
 		//패널 생성
@@ -29,6 +32,14 @@ public class CharacterSelectCategory {
 			}
 		});
 		
+	}
+	
+	public void popupPanel() {
+
+		pann = new JLayeredPane();
+		pann.setBounds(0, 30, 500, 670);
+		mainFrame.add(pann);
+	
 	}
 	
 	public static JComboBox getInstance() {
