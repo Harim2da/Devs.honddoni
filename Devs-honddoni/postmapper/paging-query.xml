@@ -113,4 +113,25 @@
            ) V
       WHERE V.순서 BETWEEN ? AND ?
 	</entry>
+	<entry key="communicationComment">
+	  INSERT /*com.devs.honddoni.post.model.dao.PostDAO#communicationComment()*/
+	    INTO TBL_COMMENT C
+	    (
+	      C.COMMENTS_NO
+	    , C.COMMENTS_DATE
+	    , C.COMMENTS_TIME
+	    , C.COMMENTS_CONTENTS
+	    , C.POST_NO
+	    , C.MEMBER_NO
+	    )
+	    VALUES
+	    (
+	      SEQ_COMMENT_NO.NEXTVAL
+	    , ?
+	    , ?
+	    , ?
+	    , ?
+	    , ? 
+	    )    
+	</entry>
 </properties>
