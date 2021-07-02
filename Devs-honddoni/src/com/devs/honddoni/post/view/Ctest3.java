@@ -11,6 +11,6 @@ public class Ctest3 {
 //		new MemberController().writtenCommentsUser(1, 1);
 //		new PagingController().selectCommentsList(1, 1);
 //		new PagingController().selectWholePostNum("맛집탐방");
-		
+		new PagingController().selectWholeCommentsNum(1);
 	}
 }

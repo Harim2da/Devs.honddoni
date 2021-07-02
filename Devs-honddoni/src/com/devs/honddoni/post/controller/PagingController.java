@@ -9,6 +9,7 @@ import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.post.model.service.PagingService;
+import com.devs.honddoni.post.view.SelectedComment;
 
 
 public class PagingController {
@@ -50,14 +51,15 @@ public class PagingController {
 		
 	}
 
-	public void selectWholeCommentsNum(int postNo) {
+	public int selectWholeCommentsNum(int postNo) {
 
 		int result = pagingService.selectWholeCommentsNum(postNo);
 
 		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
+//		dto.setTotalCount(result);
+//		System.out.println("totalCOunt : " + dto.getTotalCount());
 
-		dto.setTotalCount(result);
-
+		return result;
 	}
 
 	public List<PostDTO> selectPostList(int pageNo, String area, String category) {
