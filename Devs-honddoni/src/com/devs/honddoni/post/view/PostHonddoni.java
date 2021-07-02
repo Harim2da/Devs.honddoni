@@ -18,7 +18,7 @@ import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.post.controller.ContactController;
 
 public class PostHonddoni extends JFrame{
-	
+
 	private JFrame mainFrame; // 메인프레임
 	private JPanel topPanel;  // 상단 패널
 	private JPanel bottomPanel; // 하단 패널
@@ -41,8 +41,8 @@ public class PostHonddoni extends JFrame{
 	private PostDTO postDTO = new PostDTO();
 	private ContactController contactController = new ContactController();
 	private String localpick = "";  // 지도 위 선택한 지역
-	
-	
+
+
 	/*혼또니 게시글 작성 화면 불러오기*/
 	public PostHonddoni() {
 		this.setBounds(100, 100, 516, 909);
@@ -85,17 +85,17 @@ public class PostHonddoni extends JFrame{
 		bottomLabel.setIcon(new ImageIcon("image/post/postbtmpanel.png"));
 
 	}
-	
-	/* 팝업 시 반투명 패널 생성 */
+
+	/* 팝업용 패널 생성 */
 	public void popupPanel() {
 
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
 		mainFrame.add(pann);
-	
+
 	}
 
-	/* 게시글 작성 화면 내 쌓아올리기 - 순서 중요 */
+	/* 게시글 작성 화면 내 쌓아올리기  */
 	public void addPostComponent() {
 
 		this.add(topPanel);
@@ -108,8 +108,8 @@ public class PostHonddoni extends JFrame{
 		bottomPanel.add(postContents);
 		bottomPanel.add(postbtn);
 		bottomPanel.add(bottomLabel);
-				this.repaint();
-				this.revalidate();
+		this.repaint();
+		this.revalidate();
 
 	}
 
@@ -151,29 +151,29 @@ public class PostHonddoni extends JFrame{
 		localSelectbtn.setBorderPainted(false);
 		localSelectbtn.setBounds(105, 78, 125, 31);
 
-		
+
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
 		this.add(pann);
-		
-		
-		
+
+
+
 		localSelectbtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				btnstop();
 				koreaMap();
-				
+
 			}
 		});
-		
+
 
 	}
 
 	/* 지도 관련 라벨과 버튼 등 실행*/
 	private void koreaMap() {
-		
+
 		/*지도 패널 생성*/
 		koreaMapLabel = new JLabel();
 		koreaMapLabel.setBackground(Color.WHITE);
@@ -181,7 +181,7 @@ public class PostHonddoni extends JFrame{
 		koreaMapLabel.setBounds(29, 65, 442, 595);
 		koreaMapLabel.setIcon(new ImageIcon("image/post/matchlocal.png"));
 		pann.add(koreaMapLabel, JLayeredPane.DRAG_LAYER);
-		
+
 		/*패널 창 닫기 버튼*/
 		closeMap = new JButton();
 		closeMap.setBounds(423, 2, 15, 15);
@@ -190,30 +190,29 @@ public class PostHonddoni extends JFrame{
 		closeMap.setContentAreaFilled(false);
 		closeMap.setIcon(new ImageIcon("image/post/canclebtn.png"));
 		koreaMapLabel.add(closeMap);
-		
+
 		this.repaint();
-		
+
 		closeMap.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				change();
 				btnstart();
 			}
 
-			
 		});
-         
+
 		/* 지역 선택 버튼 */
-		 JButton btn1 = new JButton();   
-		 btn1.setBounds(350, 70, 65, 65);
-		 btn1.setBorderPainted(false);
-		 btn1.setOpaque(false);
-		 btn1.setContentAreaFilled(false);
-		 koreaMapLabel.add(btn1);
-		 
-		 btn1.addActionListener(new ActionListener() {
-			
+		JButton btn1 = new JButton();   
+		btn1.setBounds(350, 70, 65, 65);
+		btn1.setBorderPainted(false);
+		btn1.setOpaque(false);
+		btn1.setContentAreaFilled(false);
+		koreaMapLabel.add(btn1);
+
+		btn1.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				localpick = "강릉";
@@ -221,17 +220,17 @@ public class PostHonddoni extends JFrame{
 				btnstart();
 			}
 		});
-		
-		 /*지도 위 담양 버튼*/
-		 JButton btn2 = new JButton();   
-		 btn2.setBounds(50, 400, 65, 65);
-		 btn2.setBorderPainted(false);
-		 btn2.setOpaque(false);
-		 btn2.setContentAreaFilled(false);
-		 koreaMapLabel.add(btn2);
-		 
-		 btn2.addActionListener(new ActionListener() {
-			
+
+		/*지도 위 담양 버튼*/
+		JButton btn2 = new JButton();   
+		btn2.setBounds(50, 400, 65, 65);
+		btn2.setBorderPainted(false);
+		btn2.setOpaque(false);
+		btn2.setContentAreaFilled(false);
+		koreaMapLabel.add(btn2);
+
+		btn2.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				localpick = "담양";
@@ -239,168 +238,160 @@ public class PostHonddoni extends JFrame{
 				btnstart();
 			}
 		});
-		 
-		 JButton btn3 = new JButton();   
-		 btn3.setBounds(350, 70, 65, 65);
-		 btn3.setBorderPainted(false);
-		 btn3.setOpaque(false);
-		 btn3.setContentAreaFilled(false);
-		 koreaMapLabel.add(btn3);
-		 
-		 btn3.addActionListener(new ActionListener() {
-			
+
+		/*지도 위 대구 버튼*/
+		JButton btn3 = new JButton();   
+		btn3.setBounds(355, 300, 65, 65);
+		btn3.setBorderPainted(false);
+		btn3.setOpaque(false);
+		btn3.setContentAreaFilled(false);
+		koreaMapLabel.add(btn3);
+
+		btn3.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				localpick = "대구";
-				System.out.println("대구");
-//				change();
-//				btnstart();
-//			}
-//		});
-//		 
-//		 JButton btn1 = new JButton();   
-//		 btn1.setBounds(350, 70, 65, 65);
-//		 btn1.setBorderPainted(false);
-//		 btn1.setOpaque(false);
-//		 btn1.setContentAreaFilled(false);
-//		 btn1.setBackground(Color.CYAN);
-//		 koreaMapLabel.add(btn1);
-//		 
-//		 btn1.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				localpick = "강릉";
-//				System.out.println("강릉");
-//				change();
-//				btnstart();
-//			}
-//		});
-//		 
-//		 JButton btn1 = new JButton();   
-//		 btn1.setBounds(350, 70, 65, 65);
-//		 btn1.setBorderPainted(false);
-//		 btn1.setOpaque(false);
-//		 btn1.setContentAreaFilled(false);
-//		 btn1.setBackground(Color.CYAN);
-//		 koreaMapLabel.add(btn1);
-//		 
-//		 btn1.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				localpick = "강릉";
-//				System.out.println("강릉");
-//				change();
-//				btnstart();
-//			}
-//		});
-//		 
-//		 JButton btn1 = new JButton();   
-//		 btn1.setBounds(350, 70, 65, 65);
-//		 btn1.setBorderPainted(false);
-//		 btn1.setOpaque(false);
-//		 btn1.setContentAreaFilled(false);
-//		 btn1.setBackground(Color.CYAN);
-//		 koreaMapLabel.add(btn1);
-//		 
-//		 btn1.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				localpick = "강릉";
-//				System.out.println("강릉");
-//				change();
-//				btnstart();
-//			}
-//		});
-//		 
-//		 JButton btn1 = new JButton();   
-//		 btn1.setBounds(350, 70, 65, 65);
-//		 btn1.setBorderPainted(false);
-//		 btn1.setOpaque(false);
-//		 btn1.setContentAreaFilled(false);
-//		 btn1.setBackground(Color.CYAN);
-//		 koreaMapLabel.add(btn1);
-//		 
-//		 btn1.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				localpick = "강릉";
-//				System.out.println("강릉");
-//				change();
-//				btnstart();
-//			}
-//		});
-//		 
-//		 JButton btn1 = new JButton();   
-//		 btn1.setBounds(350, 70, 65, 65);
-//		 btn1.setBorderPainted(false);
-//		 btn1.setOpaque(false);
-//		 btn1.setContentAreaFilled(false);
-//		 btn1.setBackground(Color.CYAN);
-//		 koreaMapLabel.add(btn1);
-//		 
-//		 btn1.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				localpick = "강릉";
-//				System.out.println("강릉");
-//				change();
-//				btnstart();
-//			}
-//		});
-//		 
-//		 JButton btn1 = new JButton();   
-//		 btn1.setBounds(350, 70, 65, 65);
-//		 btn1.setBorderPainted(false);
-//		 btn1.setOpaque(false);
-//		 btn1.setContentAreaFilled(false);
-//		 btn1.setBackground(Color.CYAN);
-//		 koreaMapLabel.add(btn1);
-//		 
-//		 btn1.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				localpick = "강릉";
-//				System.out.println("강릉");
-//				change();
-//				btnstart();
-//			}
-//		});
-//		 
-//		 JButton btn1 = new JButton();   
-//		 btn1.setBounds(350, 70, 65, 65);
-//		 btn1.setBorderPainted(false);
-//		 btn1.setOpaque(false);
-//		 btn1.setContentAreaFilled(false);
-//		 btn1.setBackground(Color.CYAN);
-//		 koreaMapLabel.add(btn1);
-//		 
-//		 btn1.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				localpick = "강릉";
-//				System.out.println("강릉");
-//				change();
-//				btnstart();
-//			}
-//		});
-		
+				change();
+				btnstart();
+			}
+		});
+		/*지도 위 부산 버튼*/
+		JButton btn4 = new JButton();   
+		btn4.setBounds(350, 410, 65, 65);
+		btn4.setBorderPainted(false);
+		btn4.setOpaque(false);
+		btn4.setContentAreaFilled(false);
+		koreaMapLabel.add(btn4);
+
+		btn4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				localpick = "부산";
+				change();
+				btnstart();
+			}
+		});
+
+		/*지도 위 서울 버튼*/
+		JButton btn5 = new JButton();   
+		btn5.setBounds(80, 72, 63, 63);
+		btn5.setBorderPainted(false);
+		btn5.setOpaque(false);
+		btn5.setContentAreaFilled(false);
+		koreaMapLabel.add(btn5);
+
+		btn5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				localpick = "서울";
+				change();
+				btnstart();
+			}
+		});
+
+		/*지도 위 인천 버튼*/
+		JButton btn6 = new JButton();   
+		btn6.setBounds(15, 125, 60, 60);
+		btn6.setBorderPainted(false);
+		btn6.setOpaque(false);
+		btn6.setContentAreaFilled(false);
+		koreaMapLabel.add(btn6);
+
+		btn6.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				localpick = "인천";
+				change();
+				btnstart();
+			}
+		});
+
+		/*지도 위 순천 버튼*/
+		JButton btn7 = new JButton();   
+		btn7.setBounds(242, 440, 60, 60);
+		btn7.setBorderPainted(false);
+		btn7.setOpaque(false);
+		btn7.setContentAreaFilled(false);
+		koreaMapLabel.add(btn7);
+
+		btn7.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				localpick = "순천";
+				change();
+				btnstart();
+			}
+		});
+
+		/*지도 위 전주 버튼*/
+		JButton btn8 = new JButton();   
+		btn8.setBounds(38, 310, 63, 63);
+		btn8.setBorderPainted(false);
+		btn8.setOpaque(false);
+		btn8.setContentAreaFilled(false);
+		koreaMapLabel.add(btn8);
+
+		btn8.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				localpick = "전주";
+				change();
+				btnstart();
+			}
+		});
+
+		/*지도 위 제주 버튼*/
+		JButton btn9 = new JButton();   
+		btn9.setBounds(195, 510, 63, 63);
+		btn9.setBorderPainted(false);
+		btn9.setOpaque(false);
+		btn9.setContentAreaFilled(false);
+		koreaMapLabel.add(btn9);
+
+		btn9.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				localpick = "제주";
+				change();
+				btnstart();
+			}
+		});
+
+		/*지도 위 천안 버튼*/
+		JButton btn10 = new JButton();   
+		btn10.setBounds(77, 223, 63, 63);
+		btn10.setBorderPainted(false);
+		btn10.setOpaque(false);
+		btn10.setContentAreaFilled(false);
+		koreaMapLabel.add(btn10);
+
+		btn10.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				localpick = "천안";
+				change();
+				btnstart();
+			}
+		});
+
 	} // 지도 메소드 종료
 
-	
+
 	/* 팝업 종료 */
 	public void change() {
 		koreaMapLabel.setVisible(false);
 		pann.setVisible(false);
-		
+
 	}
-	
+
 	/*팝업 화면 실행 시 버튼 및 기타 비활성화*/
 	private void btnstop() {
 		postTitle.setVisible(false);
@@ -416,7 +407,7 @@ public class PostHonddoni extends JFrame{
 		postTypebtn.setVisible(false);
 		postbtn.setEnabled(false);
 	}
-	
+
 	/*기존 게시글 작성 화면 재활성화*/
 	private void btnstart() {
 		postTitle.setVisible(true);
@@ -432,9 +423,9 @@ public class PostHonddoni extends JFrame{
 		postTypebtn.setVisible(true);
 		postbtn.setEnabled(true);
 		localSelectbtn.setText(localpick);
-		System.out.println("실행확인");
+		//		System.out.println("실행확인");
 	}
-	
+
 	/*모집 인원 기입*/
 	private void insertJoinMember() {
 		joinmember = new JTextField();
@@ -537,52 +528,53 @@ public class PostHonddoni extends JFrame{
 		postbtn.setBorderPainted(false);
 		postbtn.setOpaque(false);
 
-		
+
 		postbtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					
-					postDTO = new PostDTO();
-					
-					
-					/* 게시글 정보 담기 : 게시글 제목, 내용, 게시판 종류, 모임일자, 모임시간, 지역코드, 카테고리코드,모임인원 */
-					postDTO.setPostName(postTitle.getText()); //게시글 제목
-					postDTO.setPostContents(postContents.getText()); // 게시글 내용
-					postDTO.setPostCategory("혼또니");
-					
-					/* 만남 일자 6글자 형식으로 합치기 */
-					String meetYear = (String)meetingYear.getSelectedItem(); 
-				    String meetMonth = (String)meetingMonth.getSelectedItem();
-					String meetDay = (String)meetingDay.getSelectedItem();
-					String meetingDay = meetYear + meetMonth + meetDay;
-					postDTO.setPostMeetingDate(meetingDay);
 
-					/* 만남일시 */
-					 String meetHour = (String)meetingHour.getSelectedItem();  
-					 String meetMin =  (String)meetingMinutes.getSelectedItem();
-				     String meetTime = meetHour + ":" + meetMin ;
-					 postDTO.setPostMeetingTime(meetTime);
-					 
-					 postDTO.setLocalName(localSelectbtn.getText()); //일단 임의의 값 지도에서 지역선택 후 받아오기 - DB는 숫자
-					 
-					 /* 카테고리(맛집 탐방 등) 일단 받아오고 컨트롤러에서 코드로 변환해주기*/
-					 postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
-					 
-					 /* 텍스트 필드로 받은 모임인원, int로 전환 */
-					 int numberOfJoin = Integer.parseInt(joinmember.getText());
-					 postDTO.setPostNumberOfPeopleNumber(numberOfJoin);
-					 System.out.println(postDTO);
-					 
-//					 contactController.writeHonddoniBoardPost(postDTO);
-			
+				postDTO = new PostDTO();
+
+
+				/* 게시글 정보 담기 : 게시글 제목, 내용, 게시판 종류, 모임일자, 모임시간, 지역코드, 카테고리코드,모임인원 */
+				postDTO.setPostName(postTitle.getText()); //게시글 제목
+				postDTO.setPostContents(postContents.getText()); // 게시글 내용
+				postDTO.setPostCategory("혼또니");
+
+				/* 만남 일자 6글자 형식으로 합치기 */
+				String meetYear = (String)meetingYear.getSelectedItem(); 
+				String meetMonth = (String)meetingMonth.getSelectedItem();
+				String meetDay = (String)meetingDay.getSelectedItem();
+				String meetingDay = meetYear + meetMonth + meetDay;
+				postDTO.setPostMeetingDate(meetingDay);
+
+				/* 만남일시 */
+				String meetHour = (String)meetingHour.getSelectedItem();  
+				String meetMin =  (String)meetingMinutes.getSelectedItem();
+				String meetTime = meetHour + ":" + meetMin ;
+				postDTO.setPostMeetingTime(meetTime);
+
+				postDTO.setLocalName(localSelectbtn.getText()); //일단 임의의 값 지도에서 지역선택 후 받아오기 - DB는 숫자
+
+				/* 카테고리(맛집 탐방 등) 일단 받아오고 컨트롤러에서 코드로 변환해주기*/
+				postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
+
+				/* 텍스트 필드로 받은 모임인원, int로 전환 */
+				int numberOfJoin = Integer.parseInt(joinmember.getText());
+				postDTO.setPostNumberOfPeopleNumber(numberOfJoin);
+				System.out.println(postDTO);
+
+				contactController.writeHonddoniBoardPost(postDTO);
+
 			}
 		});
-		
+
 
 	}
-	
 
 }
+
+
 
 
