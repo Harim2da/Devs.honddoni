@@ -17,31 +17,31 @@ import com.devs.honddoni.member.view.RegistMember;
 import com.devs.honddoni.memberLog.controller.LoginController;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 
-public class MemberLogView extends JFrame { //나중에 JPanel로 바꿔야 함
+public class MemberLogView extends JPanel { //나중에 JPanel로 바꿔야 함
+	
+	MainFrame frame = new MainFrame();
 
 	private LoginController loginController = new LoginController();
 	private LoginDataDTO loginDataDTO;
 	private RegistMember registMember;
 
-	private JFrame mf; //나중에는 private MainFrame mf;로 바꿔야 됨
+	
 	private JPanel bottomPanel = new JPanel();	
 	private JTextField idTf;
 	private JPasswordField pwPf;
 	private String password = "";
 
-	/* 확인용 메소드 */
-	public static void main(String[] args) {
-		new MemberLogView(); 
-	}
+//	/* 확인용 메소드 */
+//	public static void main(String[] args) {
+//		new MemberLogView(); 
+//	}
 
 	public MemberLogView() {
 
-		//확인용프레임설정
-		mf = this;
-		mf.setForeground(Color.WHITE);
-		mf.setBounds(100, 100, 516, 870);
-		//여기까지는 나중에 지울 거
-
+//		mf = this;
+//		mf.setForeground(Color.WHITE);
+//		mf.setBounds(100, 100, 516, 870);
+//		//여기까지는 나중에 지울 거
 
 		//로그인창 전체패널 생성		
 		bottomPanel.setBounds(0, 0, 500, 870);
@@ -61,7 +61,7 @@ public class MemberLogView extends JFrame { //나중에 JPanel로 바꿔야 함
 				//관리자 로그인쪽으로 뺀다
 				System.out.println("관리자 로그인창으로 이동");
 				// 창 바꾸기...?
-				//				mf.changePanel(bottomPanel, 관리자로그인패널)..?
+				// mf.changePanel(bottomPanel, 관리자로그인패널)..?
 
 			}
 		});
@@ -174,9 +174,9 @@ public class MemberLogView extends JFrame { //나중에 JPanel로 바꿔야 함
 		bottomPanel.add(pwPf);
 
 		//확인용 프레임에 올리기
-		mf.add(bottomPanel);
-		mf.setVisible(true);
-		mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(bottomPanel);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
