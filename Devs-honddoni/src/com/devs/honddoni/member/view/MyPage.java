@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -19,9 +20,12 @@ import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
+import oracle.net.aso.j;
+
 public class MyPage {
 	
-	MainFrame frame = new MainFrame();
+//	MainFrame frame = new MainFrame();
+	JFrame frame = new JFrame();
 	
 	private MemberController memberController;
 	private MemberRegistDTO memberRegistDTO;
@@ -63,6 +67,17 @@ public class MyPage {
 	}
 
 	public MyPage() {
+//---------------------------------------------------------------------------------- 내일 삭제
+		
+		
+		frame.setBounds(100, 100, 516, 909);
+		frame.setLayout(null);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+//----------------------------------------------------------------------------------
+		
 		
 		/* 하단 패널 */
 		JPanel downsidePanel = new JPanel();

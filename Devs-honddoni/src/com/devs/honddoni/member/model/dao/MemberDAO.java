@@ -150,14 +150,20 @@ public class MemberDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, changePwd.getMemberNewPassword());
+			pstmt.setString(2, "user06");
+			
+			result = pstmt.executeUpdate();
+			System.out.println("체크");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
 		}
 		
 		
 		
-		return 0;
+		return result;
 	}
 
 	
