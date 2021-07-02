@@ -34,13 +34,5 @@ public class MemberController {
 		}
 		
 	}
-	
-	public List<MemberRegistDTO> writtenCommentsUser(int commentsNo, int postNo){
-		
-		List<MemberRegistDTO> memberList = memberService.writtenCommentsUser(commentsNo, postNo);
-		
-		return memberList;
-		
-	}
 
 }

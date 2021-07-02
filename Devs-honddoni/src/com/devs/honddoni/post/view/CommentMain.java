@@ -3,6 +3,8 @@ package com.devs.honddoni.post.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.devs.honddoni.common.PagenationComments;
+import com.devs.honddoni.common.dto.CommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.post.controller.PagingController;
 
@@ -28,6 +31,8 @@ public class CommentMain extends JFrame {
 	private int frontPage = 1;			//현재 페이지
 	private JButton beforeBtn;			//페이지를 앞으로 이동하는 버튼
 	private JButton afterBtn;			//페이지를 뒤로 이동하는 버튼
+	private JLabel commentList;    //댓글리스트의 밑바탕
+	List<CommentsDTO> commentListDTO = null;
 	
 	/* 프레임에서 패널을 더해주기 위한 getter */
 	public JPanel getUpPanel() {
@@ -69,6 +74,9 @@ public class CommentMain extends JFrame {
 	public JButton getAfterBtn() {
 		return afterBtn;
 	}
+	public JLabel getCommentList() {
+		return commentList;
+	}
 	/* 프레임을 제외한 나머지를 합친 것 */
 	public void collect() {
 		
@@ -80,18 +88,21 @@ public class CommentMain extends JFrame {
 		commentLongbarLabel();
 		backBtn();
 		beforeNumber();
-		afterNumber(1, 1);
-		beforeBtn(1, 1);
-		afterBtn(1, 1);	
+		afterNumber(1);
+		beforeBtn(1);
+		afterBtn(1);
+		commentList(1);
 		upPanel.add(sidebarBtn);
 		upPanel.add(logoBtn);
 		downPanel.add(commentWriteBtn);
 		downPanel.add(commentLongbarLabel);
-		downPanel.add(backBtn);
+		downPanel.add(backBtn);		
 		commentLongbarLabel.add(beforeNumber);
 		commentLongbarLabel.add(afterNumber);
 		commentLongbarLabel.add(beforeBtn);
 		commentLongbarLabel.add(afterBtn);
+		
+		
 		
 	}
 	/* 상단 패널 */
@@ -152,7 +163,6 @@ public class CommentMain extends JFrame {
 			}
 		});
 		
-		
 	}
 	
 	/* 댓글 작성 버튼 */
@@ -173,7 +183,6 @@ public class CommentMain extends JFrame {
 		});
 		
 	}
-	
 	
 	public void commentLongbarLabel() {
 		
@@ -201,14 +210,14 @@ public class CommentMain extends JFrame {
 		});
 	}
 	
-	public void beforeBtn(int postNo, int pageNo) {
+	public void beforeBtn(int postNo) {
 		
-		pageNo = frontPage;
-		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
-		new PagingController().selectWholeCommentsNum(postNo);
-		int totalCount = dto.getTotalCount();	
-		PagenationComments pagenationComments = new PagenationComments();
-		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 2, 5);
+		int pageNo = frontPage;
+//		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
+//		new PagingController().selectWholeCommentsNum(postNo);
+//		int totalCount = dto.getTotalCount();	
+//		PagenationComments pagenationComments = new PagenationComments();
+//		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 2, 5);
 		
 		beforeBtn = new JButton("");
 		beforeBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
@@ -230,9 +239,9 @@ public class CommentMain extends JFrame {
 		
 	}
 	
-	public void afterBtn(int postNo, int pageNo) {
+	public void afterBtn(int postNo) {
 		
-		pageNo = frontPage;
+		int pageNo = frontPage;
 		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
 		new PagingController().selectWholeCommentsNum(postNo);
 		int totalCount = dto.getTotalCount();	
@@ -245,7 +254,7 @@ public class CommentMain extends JFrame {
 		afterBtn.setBorderPainted(false);
 		afterBtn.setBounds(120, 4, 14, 14);
 		if(pageNo == pageInfo.getMaxPage()) {
-			beforeBtn.setVisible(false);
+			afterBtn.setVisible(false);
 		}
 		afterBtn.addActionListener(new ActionListener() {
 			
@@ -268,9 +277,9 @@ public class CommentMain extends JFrame {
 		
 	}
 	
-	public void afterNumber(int postNo, int pageNo) {
+	public void afterNumber(int postNo) {
 		
-		pageNo = frontPage;
+		int pageNo = frontPage;
 		
 		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
 		new PagingController().selectWholeCommentsNum(postNo);
@@ -286,5 +295,31 @@ public class CommentMain extends JFrame {
 		
 	}
 
+	public void commentList(int postNo) {
+		
+		int pageNo = frontPage;
+		int y = 52;
+		
+		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+		
+		if(commentListDTO != null) {
+			for(int i = 0; i < commentListDTO.size(); i++) {
+				
+				commentList = new JLabel("");
+				commentList.setLayout(null);
+				commentList.setIcon(new ImageIcon("image/post/commentWriteListLabelOne.png"));
+				commentList.setBounds(35, y, 431, 61);
+				
+				downPanel.add(commentList);
+				
+				y += 62;
+				
+				
+			}
+		} else {
+			commentList.setVisible(false);
+		}
+		
+	}
 	
 }

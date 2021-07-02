@@ -50,15 +50,5 @@ public class MemberService {
 		return result;
 	}
 
-	public List<MemberRegistDTO> writtenCommentsUser(int commentsNo, int postNo) {
-		
-		Connection con = getConnection();
-		
-		List<MemberRegistDTO> memberList = memberDAO.writtenCommentsUser(con, commentsNo, postNo);
-		
-		close(con);
-		
-		return memberList;
-	}
 
 }

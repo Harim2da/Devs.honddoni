@@ -8,11 +8,13 @@ public class CommentsDTO implements java.io.Serializable {
 	private String commentsContents;
 	private int postNo;
 	private int memberNo;
+	private String memberNickname;
+	private String memberProfile;
 	
 	public CommentsDTO() {}
 
 	public CommentsDTO(int commentsNo, String commentsDate, String commentsTime, String commentsContents, int postNo,
-			int memberNo) {
+			int memberNo, String memberNickname, String memberProfile) {
 		super();
 		this.commentsNo = commentsNo;
 		this.commentsDate = commentsDate;
@@ -20,6 +22,8 @@ public class CommentsDTO implements java.io.Serializable {
 		this.commentsContents = commentsContents;
 		this.postNo = postNo;
 		this.memberNo = memberNo;
+		this.memberNickname = memberNickname;
+		this.memberProfile = memberProfile;
 	}
 
 	public int getCommentsNo() {
@@ -70,12 +74,31 @@ public class CommentsDTO implements java.io.Serializable {
 		this.memberNo = memberNo;
 	}
 
+	public String getMemberNickname() {
+		return memberNickname;
+	}
+
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
+	}
+
+	public String getMemberProfile() {
+		return memberProfile;
+	}
+
+	public void setMemberProfile(String memberProfile) {
+		this.memberProfile = memberProfile;
+	}
+
 	@Override
 	public String toString() {
 		return "CommentsDTO [commentsNo=" + commentsNo + ", commentsDate=" + commentsDate + ", commentsTime="
 				+ commentsTime + ", commentsContents=" + commentsContents + ", postNo=" + postNo + ", memberNo="
-				+ memberNo + "]";
+				+ memberNo + ", memberNickname=" + memberNickname + ", memberProfile=" + memberProfile + "]";
 	}
+
+	
+	
 	
 	
 }

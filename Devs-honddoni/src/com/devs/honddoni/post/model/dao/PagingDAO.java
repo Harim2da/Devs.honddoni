@@ -36,7 +36,7 @@ public class PagingDAO {
 		}
 	}
 	
-	public int selectWholePostNum(Connection con) {
+	public int selectWholePostNum(Connection con, String CategoryName) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -44,6 +44,7 @@ public class PagingDAO {
 		String query = prop.getProperty("selectWholePostNum");
 		try {
 			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, CategoryName);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -305,6 +306,8 @@ public class PagingDAO {
 				row.setCommentsContents(rset.getString("COMMENTS_CONTENTS"));
 				row.setPostNo(rset.getInt("POST_NO"));
 				row.setMemberNo(rset.getInt("MEMBER_NO"));
+				row.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
+				row.setMemberProfile(rset.getString("MEMBER_PROFILE"));
 				
 				commentsList.add(row);
 				
@@ -320,16 +323,4 @@ public class PagingDAO {
 	}
 
 
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
 }

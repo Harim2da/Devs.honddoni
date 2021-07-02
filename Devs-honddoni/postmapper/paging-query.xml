@@ -5,8 +5,11 @@
 	<entry key="selectWholePostNum">
 	  SELECT
 	         COUNT(*)
-	    FROM TBL_POST
-	   WHERE POST_CATEGORY = '혼또니'
+	    FROM TBL_POST P
+	    JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
+	   WHERE P.POST_CATEGORY = '혼또니'
+	     AND C.CATEGORY_NAME = ?
+	     
 	</entry>
 	<entry key="freeWholePostNum">
 	  SELECT
@@ -101,8 +104,11 @@
                    , C.COMMENTS_CONTENTS
                    , C.POST_NO
                    , C.MEMBER_NO
+                   , M.MEMBER_NICKNAME
+                   , M.MEMBER_PROFILE
                    , RANK() OVER(ORDER BY COMMENTS_NO ASC) 순서
         FROM TBL_COMMENT C
+        JOIN TBL_MEMBER M ON (C.MEMBER_NO = M.MEMBER_NO)
        WHERE C.POST_NO = ?       
            ) V
       WHERE V.순서 BETWEEN ? AND ?
