@@ -319,6 +319,8 @@ public class SelectedComment extends JFrame {
 		beforeBtn.setBounds(15, 4, 14, 14);
 		if(pageNo == 1) {
 			beforeBtn.setVisible(false);
+		} else {
+			beforeBtn.setVisible(true);
 		}
 		beforeBtn.addActionListener(new ActionListener() {
 
@@ -351,36 +353,62 @@ public class SelectedComment extends JFrame {
 		afterBtn.setContentAreaFilled(false);
 		afterBtn.setBorderPainted(false);
 		afterBtn.setBounds(120, 4, 14, 14);
+		System.out.println("sdfasdf" + pageInfo.getMaxPage());
 		if(pageNo == pageInfo.getMaxPage()) {
 			afterBtn.setVisible(false);
 		}
+		
 		afterBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				remove(downPanel);
 				
-				
-				for(int i = 0; i < 10; i++) {
+//				for(int i = 0; i < 10; i++) {
+//					
+//					
+//					
+//					remove(commentList);
+//					remove(nickName);
+//					remove(content);
+//					remove(updateBtn);
+//					remove(reportBtn);
+//					remove(commentsDate);
+//					remove(commentsTime);
+//					remove(downPanel);
+//					
+//					
+//					downPanel.remove(commentList);
+//					downPanel.remove(nickName);
+//					downPanel.remove(content);
+//					downPanel.remove(updateBtn);
+//					downPanel.remove(reportBtn);
+//					downPanel.remove(commentsDate);
+//					downPanel.remove(commentsTime);
+//					downPanel.remove(profilePictrue);
+//					
+//					
+//					nickName.setVisible(false);
+//					content.setVisible(false);
+//					updateBtn.setVisible(false);
+//					reportBtn.setVisible(false);
+//					commentsDate.setVisible(false);
+//					commentsTime.setVisible(false);
+//					profilePictrue.setVisible(false);
 					
-					remove(commentList);
-					remove(nickName);
-					remove(content);
-					remove(updateBtn);
-					remove(reportBtn);
-					remove(commentsDate);
-					remove(commentsTime);
-					remove(profilePictrue);
 					
-				}
-				frontPage++;
-				beforeNumber();		
-				for(int i = 0 ; i < commentListDTO.size(); i++) {
-					
-					commentList(postNo);
-					
-				}
-//				System.out.println("comment : " + commentListDTO.size());
+//				}
+//				remove(downPanel);
+//				frontPage++;
+//				beforeNumber();		
+//				downPanel.setVisible(true);
+//				for(int i = 0 ; i < commentListDTO.size(); i++) {
+//					
+//					commentList(postNo);
+//					
+//				}
+			
 				
 			}
 		});
@@ -427,7 +455,7 @@ public class SelectedComment extends JFrame {
 
 
 		for(int i = 0; i < commentListDTO.size(); i++) {
-
+			
 			commentInfo = commentListDTO.get(i);
 
 			commentList = new JLabel("");
