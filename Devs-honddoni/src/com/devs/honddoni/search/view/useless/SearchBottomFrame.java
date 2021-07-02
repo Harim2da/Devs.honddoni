@@ -1,4 +1,4 @@
-package com.devs.honddoni.search.view;
+package com.devs.honddoni.search.view.useless;
 
 import javax.swing.JFrame;
 

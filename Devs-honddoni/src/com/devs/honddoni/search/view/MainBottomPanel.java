@@ -11,10 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-//메인프레임의 하단 프레임
-public class MainBottomPanel extends JFrame {
+import com.devs.honddoni.common.mainframe.MainFrame;
 
-	private JFrame mainFrame; //메인프레임
+//메인프레임의 하단 프레임
+public class MainBottomPanel {
+
+	MainFrame frame = new MainFrame(); //메인프레임
+	
 	private JPanel topPanel; // 상단패널
 	private JPanel bottomPanel; //하단패널
 	private JButton allListBoardBtn; //전체조회버튼
@@ -33,10 +36,10 @@ public class MainBottomPanel extends JFrame {
 	private JLabel adminEmail; // 문의메일-----------------------
 	
 	public MainBottomPanel() {
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
+//		this.setBounds(100, 100, 516, 909);
+//		this.setLayout(null);
 		
-		topPanel();
+//		topPanel();
 		bottomPanel();
 		clickAllListBoard();
 		clickHonddoniBoard();
@@ -53,14 +56,17 @@ public class MainBottomPanel extends JFrame {
 		
 		allBottomPanelComponent();
 		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(bottomPanel); // <--프레임에 하단 패널...???
+//		this.repaint();
+//		this.revalidate();
+//		this.setVisible(true);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void allBottomPanelComponent() {
 		
-		this.add(topPanel);
-		this.add(bottomPanel);
+//		this.add(topPanel);
+//		this.add(bottomPanel);
 		bottomPanel.add(allListBoardBtn);
 		bottomPanel.add(honddoniBoardBtn);
 		bottomPanel.add(freeBoardBtn);
@@ -77,44 +83,48 @@ public class MainBottomPanel extends JFrame {
 		bottomPanel.add(recommendTour);
 		bottomPanel.add(adminEmail);
 		
-		this.repaint();
-		this.revalidate();
+//		this.repaint();
+//		this.revalidate();
+		frame.repaint();
+		frame.revalidate();
 	}
 	
-	//상단패널
-	private void topPanel() {
-		topPanel = new JPanel();
-		topPanel.setBounds(0, 0, 500, 100);
-		topPanel.setLayout(null);
-		topPanel.setBackground(Color.white);
-	}
+//	//상단패널
+//	private void topPanel() {
+//		topPanel = new JPanel();
+//		topPanel.setBounds(0, 0, 500, 100);
+//		topPanel.setLayout(null);
+//		topPanel.setBackground(Color.white);
+//		}
 	
 	//하단패널
 	private void bottomPanel() {
 		bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
-		bottomPanel.setBackground(Color.WHITE);	
+		bottomPanel.setBackground(Color.white);	
+		
+//		frame.add(bottomPanel); // <--프레임에 하단 패널...???
 		
 		//검색바 라벨
 		searchBar = new JLabel();
 		searchBar.setBackground(Color.white);
 		searchBar.setLayout(null);
-		searchBar.setBounds(35, 160, 431, 63);  
+		searchBar.setBounds(35, 152, 431, 63);  
 		searchBar.setIcon(new ImageIcon("image/search/searchBar.png"));
 		
 		//추천여행지 라벨
 		recommendTour = new JLabel();
 		recommendTour.setBackground(Color.white);
 		recommendTour.setLayout(null);
-		recommendTour.setBounds(35, 238, 154, 25);  
+		recommendTour.setBounds(35, 227, 154, 25);  
 		recommendTour.setIcon(new ImageIcon("image/search/bottompanel/recommendLabelLogo.png"));
 		
 		//문의메일 라벨
 		adminEmail = new JLabel();
 		adminEmail.setBackground(Color.white);
 		adminEmail.setLayout(null);
-		adminEmail.setBounds(128, 388, 244, 20);  
+		adminEmail.setBounds(123, 733, 244, 20);  
 		adminEmail.setIcon(new ImageIcon("image/search/bottompanel/adminEmailLogo.png"));
 	}
 	
@@ -125,7 +135,7 @@ public class MainBottomPanel extends JFrame {
 		allListBoardBtn.setIcon(new ImageIcon("image/search/bottompanel/alllistboardLogo.png"));
 		allListBoardBtn.setContentAreaFilled(false);
 		allListBoardBtn.setBorderPainted(false);
-		allListBoardBtn.setBounds(57, 25, 90, 110);  
+		allListBoardBtn.setBounds(62, 23  , 90, 110);  
 		
 		allListBoardBtn.addActionListener(new ActionListener() {
 
@@ -143,7 +153,7 @@ public class MainBottomPanel extends JFrame {
 		honddoniBoardBtn.setIcon(new ImageIcon("image/search/bottompanel/honddoniboardLogo.png"));
 		honddoniBoardBtn.setContentAreaFilled(false);
 		honddoniBoardBtn.setBorderPainted(false);
-		honddoniBoardBtn.setBounds(204, 25, 90, 110);  
+		honddoniBoardBtn.setBounds(205, 23, 90, 110);  
 		
 		honddoniBoardBtn.addActionListener(new ActionListener() {
 
@@ -161,7 +171,7 @@ public class MainBottomPanel extends JFrame {
 		freeBoardBtn.setIcon(new ImageIcon("image/search/bottompanel/freeboardLogo.png"));
 		freeBoardBtn.setContentAreaFilled(false);
 		freeBoardBtn.setBorderPainted(false);
-		freeBoardBtn.setBounds(260, 25, 90, 110);  
+		freeBoardBtn.setBounds(347, 23, 90, 110);  
 		
 		freeBoardBtn.addActionListener(new ActionListener() {
 
@@ -179,7 +189,7 @@ public class MainBottomPanel extends JFrame {
 		aim.setIcon(new ImageIcon("image/search/aim.png"));
 		aim.setContentAreaFilled(false);
 		aim.setBorderPainted(false);
-		aim.setBounds(71, 177, 29, 29);  
+		aim.setBounds(59, 168, 29, 29);  
 		
 		aim.addActionListener(new ActionListener() {
 
@@ -196,7 +206,7 @@ public class MainBottomPanel extends JFrame {
 		search.setBorder(null);
 		search.setDisabledTextColor(Color.white);
 		search.setOpaque(false);
-		search.setBounds(107, 177, 326, 29);  
+		search.setBounds(106, 168, 326, 29);  
 		search.setColumns(10);
 	}
 	
@@ -225,7 +235,7 @@ public class MainBottomPanel extends JFrame {
 			localList2.setIcon(new ImageIcon("image/search/bottompanel/locallist2Logo.png"));
 			localList2.setContentAreaFilled(false);
 			localList2.setBorderPainted(false);
-			localList2.setBounds(35, 288, 430, 110);  
+			localList2.setBounds(35, 401, 430, 110);  
 			
 			localList1.addActionListener(new ActionListener() {
 
@@ -243,7 +253,7 @@ public class MainBottomPanel extends JFrame {
 			localList3.setIcon(new ImageIcon("image/search/bottompanel/locallist3Logo.png"));
 			localList3.setContentAreaFilled(false);
 			localList3.setBorderPainted(false);
-			localList3.setBounds(35, 313, 430, 110);  
+			localList3.setBounds(35, 539, 430, 110);  
 			
 			localList3.addActionListener(new ActionListener() {
 
@@ -261,7 +271,7 @@ public class MainBottomPanel extends JFrame {
 			covid.setIcon(new ImageIcon("image/search/bottompanel/covidLogo.png"));
 			covid.setContentAreaFilled(false);
 			covid.setBorderPainted(false);
-			covid.setBounds(54, 363, 125, 26);  
+			covid.setBounds(90, 697, 125, 26);  
 			
 			covid.addActionListener(new ActionListener() {
 
@@ -279,7 +289,7 @@ public class MainBottomPanel extends JFrame {
 		    guide.setIcon(new ImageIcon("image/search/bottompanel/guideLogo.png"));
 			guide.setContentAreaFilled(false);
 			guide.setBorderPainted(false);
-		    guide.setBounds(233, 363, 73, 26);  
+		    guide.setBounds(238, 697, 73, 26);  
 
 			guide.addActionListener(new ActionListener() {
 
@@ -297,7 +307,7 @@ public class MainBottomPanel extends JFrame {
 		    logout.setIcon(new ImageIcon("image/search/bottompanel/logoutLogo.png"));
 			logout.setContentAreaFilled(false);
 			logout.setBorderPainted(false);
-		    logout.setBounds(360, 363, 73, 26);  
+		    logout.setBounds(337, 697, 73, 26);  
 
 			logout.addActionListener(new ActionListener() {
 
@@ -309,8 +319,9 @@ public class MainBottomPanel extends JFrame {
 		}
 		
 		
-		
-		
+//		frame.repaint();
+//		fram.revalidate();
+//		
 	
 //	JPanel mainBottomPanel = new JPanel();
 	

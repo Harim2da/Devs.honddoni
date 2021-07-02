@@ -1,6 +1,7 @@
 package com.devs.honddoni.common.mainframe;
 
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 
 public class FrameManager {
