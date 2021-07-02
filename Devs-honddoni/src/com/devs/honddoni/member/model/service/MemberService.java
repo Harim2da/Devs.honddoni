@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.devs.honddoni.member.model.dao.MemberDAO;
+import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
 import static com.devs.honddoni.common.JDBCTemplate.getConnection;
@@ -50,17 +51,15 @@ public class MemberService {
 		return result;
 	}
 
-	public int pwdCheck(String oldPwd) {
+	public int pwdCheck(ChangePwdDTO changePwd) {
 		
 		Connection con = getConnection();
 		
-		int result = 0;
-		
-		int pwdCheck = memberDAO.pwdCheck(con, oldPwd);
+		int pwdCheck = memberDAO.pwdCheck(con, changePwd);
 		
 		close(con);
 		
-		return result;
+		return pwdCheck;
 	}
 
 
