@@ -114,19 +114,19 @@ public class Notice {
 	       MainFrame.add(bottomPanel);
 	       MainFrame.setVisible(true); //창을 보이게함
 	       
-	       btn1.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
+//	       btn1.addActionListener(new ActionListener() {
+//	    	   @Override
+//	    	   public void actionPerformed(ActionEvent e) {
+////	    		   login2 login2 = new login2();
+////	    		   JPanel.add(login2);
+////	    		   new login2();
+////	    		   bottomPanel.setVisible(false);
+//	    		   
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   new login2();
-	    		   bottomPanel.setVisible(false);
-//	    		  MainFrame.setVisible(false);
-	    	   }
-	       });
+////	    		  MainFrame.setVisible(false);
+//	    	   }
+//	       });
 	}
 }
 

@@ -41,7 +41,7 @@ public class AdminList1 {
 	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Admin2-5.png");
 	       JButton btn5 = new JButton(img5);
 	       
-	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AdminNext.png");
+	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Next2.png");
 	       JButton btn6 = new JButton(img6);
 	       
 	       //패널에 버튼 추가
@@ -74,8 +74,63 @@ public class AdminList1 {
 	    		   
 	    		   new AdminList2();
 	    		   bottomPanel.setVisible(false);
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn6.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
 	    		   
-//	    		  MainFrame.setVisible(false);
+	    		   new AdminList();
+	    		   bottomPanel.setVisible(false);
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn1.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminPost();
+	    		   bottomPanel.setVisible(false);
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn2.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminUser();
+	    		   bottomPanel.setVisible(false);
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn3.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminComment();
+	    		   bottomPanel.setVisible(false);
+	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	}

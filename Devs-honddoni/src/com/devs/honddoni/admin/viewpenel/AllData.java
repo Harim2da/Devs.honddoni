@@ -58,10 +58,10 @@ public class AllData {
 	       bottomPanel.add(lb1);
 	    
 	       //버튼 위치 조정
-	       btn1.setBounds(35, 29, 430, 121);
-	       btn2.setBounds(34, 193, 430, 121);
-	       btn3.setBounds(34, 356, 430, 121);
-	       btn4.setBounds(33, 520, 430, 121);
+	       btn1.setBounds(35, 143, 430, 121);
+	       btn2.setBounds(34, 262, 430, 121);
+	       btn3.setBounds(34, 380, 430, 121);
+	       btn4.setBounds(33, 498, 430, 121);
 	       btn5.setBounds(34, 616, 430, 104);
 	       lb1.setBounds(56, 0, 263, 33);
 	   
