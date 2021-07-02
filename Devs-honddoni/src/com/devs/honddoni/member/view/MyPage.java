@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -149,7 +148,11 @@ public class MyPage {
 				cpB2.addActionListener(new ActionListener() {
 					
 					@Override
+					/* 입력한 비밀번호가 현재 비밀번호와 일치하는치 확인 */
 					public void actionPerformed(ActionEvent e) {
+						
+						int result = 0;
+						
 						if(e.getSource() == cpB2) {
 							memberController = new MemberController();
 							String password = "";
@@ -157,12 +160,14 @@ public class MyPage {
 							   for(int i = 0; i < pass.length; i++) {
 							      password += pass[i];
 							   }         
-							   memberController.pwdCheck(password);
+							   changePwdDTO = new ChangePwdDTO();
+							   changePwdDTO.setMemberOldPassword(password);
+							   memberController.pwdCheck(changePwdDTO);		//입력값 일치 확인
+							   result++;
+							   /* 새로 입력한 비밀번호와 비밀번호 재확인이 일치한지 확인*/
+							   
+							   System.out.println(result);
 						}
-						
-						/* 비밀번호 확인 후 다를 시 팝업*/
-						
-						/* 비밀번호 변경 완료 팝업*/
 					}
 				});
 				changePwdPanel.add(cpB2); 

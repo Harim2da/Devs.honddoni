@@ -2,6 +2,7 @@ package com.devs.honddoni.member.controller;
 
 import java.util.List;
 
+import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.member.model.service.MemberService;
 import com.devs.honddoni.member.view.DuplCheckResult;
@@ -35,12 +36,15 @@ public class MemberController {
 		
 	}
 
-	public void pwdCheck(String oldPwd) {
+	public void pwdCheck(ChangePwdDTO changePwd) {
 		
-		int result = memberService.pwdCheck(oldPwd);
+		int result = memberService.pwdCheck(changePwd);
+		
+		int num = 0;
 		
 		if(result > 0) {
 			System.out.println("일치");
+			num++;
 		} else {
 			System.out.println("불일치");
 		}

@@ -14,6 +14,7 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
+import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
 public class MemberDAO {
@@ -104,7 +105,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int pwdCheck(Connection con, String oldPwd) {
+	public int pwdCheck(Connection con, ChangePwdDTO changePwd) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -113,6 +114,28 @@ public class MemberDAO {
 		
 		String query = prop.getProperty("checkPassword");
 		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "user06");
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				System.out.println("rset.getStr : " + rset.getString("MEMBER_PASSWORD"));
+				System.out.println("oldPwd");
+				if(rset.getString("MEMBER_PASSWORD").equals(changePwd.getMemberOldPassword())) {
+					result = 1;
+				} else {
+					result = 0;
+				}
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
 		
 		return result;
 	}
