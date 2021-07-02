@@ -12,10 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.view.PostView;
 
-public class FreeBoard extends JFrame {
+public class FreeBoard  {
 
+	MainFrame frame = new MainFrame(); //메인프레임
+	
 	private JPanel mainPanel;
 	private JPanel topPanel;
 	private JPanel bottomPanel;
@@ -28,9 +31,9 @@ public class FreeBoard extends JFrame {
 	
 	// 자유게시글 작성 화면 불러오기
 	public FreeBoard() {
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
-		topPanel();
+//		this.setBounds(100, 100, 516, 909);
+//		this.setLayout(null);
+//		topPanel();
 		selectBoard();
 		createFreeBoardTitle();
 		freeBoardContents();
@@ -38,17 +41,17 @@ public class FreeBoard extends JFrame {
 		
 		addFreeBoardComponent();
 		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.setVisible(true);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	// 상단 패널 생성
-	public void topPanel() {
-		topPanel = new JPanel();
-		topPanel.setBounds(0, 0, 500, 100);
-		topPanel.setLayout(null);
-		topPanel.setBackground(Color.white);
-	}
+//	// 상단 패널 생성
+//	public void topPanel() {
+//		topPanel = new JPanel();
+//		topPanel.setBounds(0, 0, 500, 100);
+//		topPanel.setLayout(null);
+//		topPanel.setBackground(Color.white);
+//	}
 	
 	// 하단 패널 생성
 	public void bottomPanel() {
@@ -62,6 +65,9 @@ public class FreeBoard extends JFrame {
 		bottomLabel.setLayout(null);
 		bottomLabel.setBackground(Color.white);
 		bottomLabel.setIcon(new ImageIcon(FreeBoardView.class.getResource("/post/postbtmpanel.png")));
+		
+		frame.repaint();
+		frame.revalidate();
 	}
 	
 	// 게시판 종류 선택
@@ -112,15 +118,18 @@ public class FreeBoard extends JFrame {
 	
 	public void addFreeBoardComponent() {
 		
-		this.add(topPanel);
-		this.add(bottomPanel);
+//		this.add(topPanel);
+//		this.add(bottomPanel);
 		bottomPanel.add(selectBoardType);
 		bottomPanel.add(freeBoardTitle);
 		bottomPanel.add(freeBoardContents);
 		
 		bottomPanel.add(bottomLabel);
-		this.getIgnoreRepaint();
-		this.revalidate();
+//		this.getIgnoreRepaint();
+//		this.revalidate();
+		
+		frame.repaint();
+		frame.revalidate();
 	}
 	
 	

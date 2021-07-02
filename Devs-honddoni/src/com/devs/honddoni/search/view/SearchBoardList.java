@@ -6,14 +6,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.mainframe.MainFrame;
 
-public class AllBoardList {
+public class SearchBoardList {
 	
 	MainFrame frame = new MainFrame();
 	
@@ -66,7 +65,7 @@ public class AllBoardList {
 	private JLabel article5; //100byte  //게시물 제목
 	
 	//전체게시물 조회 화면 불러오기
-	public AllBoardList() {
+	public SearchBoardList() {
 		bottomPanel();
 		clickAim();
 //		writeKeyword();
@@ -397,37 +396,6 @@ public class AllBoardList {
 		
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
