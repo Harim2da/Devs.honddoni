@@ -18,10 +18,10 @@ import com.devs.honddoni.member.view.RegistMember;
 import com.devs.honddoni.memberLog.controller.LoginController;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 
-public class MemberLogView extends JPanel { //나중에 JPanel로 바꿔야 함
+public class MemberLogView extends JPanel {
 	
 	MainFrame frame = new MainFrame();
-//	FrameManager fm = new FrameManager();
+	FrameManager fm = new FrameManager();
 	
 	SearchId searchId = new SearchId(); //newPanel로 사용할 것
 	SearchPwd searchPwd = new SearchPwd(); //newPanel로 사용할 것

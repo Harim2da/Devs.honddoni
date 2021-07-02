@@ -15,6 +15,8 @@ import com.devs.honddoni.memberLog.view.FirstView;
 
 public class MainFrame extends JFrame{
 
+	FirstView firstView;
+	
 	private JPanel topPanel = new JPanel();
 	private JLabel backgroundImage = new JLabel();
 	private JButton myHonddoniBtn = new JButton();
@@ -37,7 +39,13 @@ public class MainFrame extends JFrame{
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		FrameManager.initPanel(this, new FirstView());
+		
+		//시작화면으로 가기 전에 상단패널을 멈춰준다.
+//		topPannelBtnStop();
+		
+		firstView = new FirstView();
+		
+		FrameManager.initPanel(this, firstView);
 	}
 	
 	
@@ -138,6 +146,28 @@ public class MainFrame extends JFrame{
 		});
 		backgroundImage.add(noticeBtn);
 		
+	}
+	
+	//로그인 이전까지는 상단패널 및 버튼들을 멈춰야 함
+	public void topPannelBtnStop() {
+		myHonddoniBtn.setVisible(false);
+		searchHonddoniBtn.setVisible(false);
+		homeBtn.setVisible(false);
+		interestingBtn.setVisible(false);
+		noticeBtn.setVisible(false);
+		backgroundImage.setVisible(false);
+		topPanel.setVisible(false);
+	}
+	
+	//로그인 이후, 상단패널 및 버튼들을 활성화 해야 함
+	public void topPannelBtnStart() {
+		myHonddoniBtn.setVisible(true);
+		searchHonddoniBtn.setVisible(true);
+		homeBtn.setVisible(true);
+		interestingBtn.setVisible(true);
+		noticeBtn.setVisible(true);
+		backgroundImage.setVisible(true);
+		topPanel.setVisible(true);
 	}
 	
 	
