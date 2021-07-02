@@ -66,7 +66,7 @@ public class AdminList {
 	       MainFrame.add(bottomPanel);
 	       MainFrame.setVisible(true); //창을 보이게함
 	       
-	       btn1.addActionListener(new ActionListener() {
+	       btn5.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
 //	    		   login2 login2 = new login2();
@@ -74,11 +74,13 @@ public class AdminList {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new login2();
+	    		   new AdminList1();
 	    		   bottomPanel.setVisible(false);
+	    		   
 //	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
+	       
 	}
 }
 
