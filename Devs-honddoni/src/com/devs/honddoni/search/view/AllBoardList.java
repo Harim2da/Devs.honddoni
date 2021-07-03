@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.PagenationComments;
+import com.devs.honddoni.common.dto.CommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
@@ -420,6 +421,7 @@ public class AllBoardList {
 	private int nowPage = 1; // 현재페이지========================
 	private JButton beforeBtn; //앞페이지로 이동버튼
 	private JButton afterBtn; //뒷페이지로 이동버튼
+	private JLabel postList; //게시글리스트의 밑바탕
 	List<PostDTO> postListDTO = null; //=-=-=-=-=-=-=-=-=-=-=-=-=
 	
 	//게시물 리스트
@@ -457,7 +459,8 @@ public class AllBoardList {
 	}
 		
 	//하단패널
-	private void bottomPanel() {
+	public void bottomPanel() {
+		System.out.println("넘어왓니");
 		bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
@@ -530,7 +533,7 @@ public class AllBoardList {
 	}	
 	
 	//검색돋보기 클릭
-	private void aim() {
+	public void aim() {
 		bottomPanel();
 		aim = new JButton();
 		aim.setIcon(new ImageIcon("image/search/aim.png"));
@@ -549,7 +552,7 @@ public class AllBoardList {
 	
 	
 	//키워드입력 텍스트필드
-	private void search() {
+	public void search() {
 		search = new JTextField();
 		search.setBorder(null);
 		search.setDisabledTextColor(Color.white);
@@ -651,6 +654,49 @@ public class AllBoardList {
 //
 //	}
 	
+	/* 게시글 내용을  나타냄 */
+	public void allBoardList(int postNo) {
+		
+		int pageNo = nowPage;
+		int y =  152;
+		
+//		postListDTO = new PagingController().selectPostList(pageNo, postNo);
+//		PostDTO commentInfo = null;
+//
+//
+//		for(int i = 0; i < commentListDTO.size(); i++) {
+//			
+//			commentInfo = commentListDTO.get(i);
+//
+//			commentList = new JLabel("");
+//			commentList.setLayout(null);
+//			commentList.setIcon(new ImageIcon("image/post/commentWriteListLabelOne.png"));
+//			commentList.setBounds(35, y, 431, 61);
+//
+//			nickName = new JLabel(commentInfo.getMemberNickname());
+//			nickName.setLayout(null);
+//			nickName.setBounds(110, y + 10, 720, 35); 
+//
+//			content = new JLabel(commentInfo.getCommentsContents());
+//			content.setLayout(null);
+//			content.setBounds(187, y + 10, 250, 35); 
+//
+//			updateBtn = new JButton("");
+//			updateBtn.setIcon(new ImageIcon("image/post/commentUpdateButton.png"));
+//			updateBtn.setContentAreaFilled(false);
+//			updateBtn.setBorderPainted(false);
+//			updateBtn.setBounds(415, y + 37, 23, 23);
+//			updateBtn.addActionListener(new ActionListener() {
+//
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					/* 글 수정(글 작성 패널 불러오기) */
+//					System.out.println("글 작성 패널 불러오기");
+//
+//				}
+//			}); 
+//		
+//	}
 	
 	
 	
@@ -663,7 +709,7 @@ public class AllBoardList {
 	
 	
 	
-}
+//  }
 
 
 
