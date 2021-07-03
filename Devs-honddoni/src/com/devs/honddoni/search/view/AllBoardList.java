@@ -18,6 +18,7 @@ import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.PagingController;
+import com.devs.honddoni.search.controller.SearchController;
 
 public class AllBoardList {
 	
@@ -406,7 +407,7 @@ public class AllBoardList {
 //		
 		
 	//MainFrame frame = new MainFrame();
-	
+	SearchController se ;
 	private JPanel topPanel; // 상단패널
 	private JPanel bottomPanel; //하단패널
 //	private JLabel bottomLabel;
@@ -436,6 +437,7 @@ public class AllBoardList {
 	
 	public AllBoardList() {
 		
+		
 		bottomPanel();
 		aim();
 		search();
@@ -460,6 +462,7 @@ public class AllBoardList {
 		
 	//하단패널
 	public void bottomPanel() {
+		;
 		System.out.println("다음페이지와?");
 		bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 770);

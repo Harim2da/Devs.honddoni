@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.search.controller.SearchController;
+
 //메인프레임의 하단 프레임
 public class MainBottomPanel /*extends JFrame*/{
 
@@ -34,7 +36,7 @@ public class MainBottomPanel /*extends JFrame*/{
 	private JButton guide; // 이용약관버튼
 	private JButton logout; // 로그아웃버튼
 	private JLabel adminEmail; // 문의메일-----------------------
-	
+	private SearchController searchController;
 	public MainBottomPanel() {
 		//this.setBounds(100, 100, 516, 909);
 	//	this.setLayout(null);
@@ -44,7 +46,7 @@ public class MainBottomPanel /*extends JFrame*/{
 		frame.setLayout(null);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+//		searchController.selectSearch();
 //		topPanel();
 		bottomPanel();
 		clickAllListBoard();
@@ -147,6 +149,7 @@ public class MainBottomPanel /*extends JFrame*/{
 		
 		
 		
+		
 		allListBoardBtn.addActionListener(new ActionListener() {
 
 			
@@ -159,7 +162,6 @@ public class MainBottomPanel /*extends JFrame*/{
 				changeBoardList.setBounds(0,100,500,770);
 				changeBoardList.setVisible(true);
 				changeBoardList.setBackground(Color.white);
-			
 				frame.add(changeBoardList);
 				
 				AllBoardList allBoardList = new AllBoardList();
