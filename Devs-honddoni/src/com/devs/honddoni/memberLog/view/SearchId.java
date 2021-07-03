@@ -7,11 +7,17 @@ import com.devs.honddoni.member.controller.MemberController;
 
 public class SearchId extends JPanel{
 	
-	MainFrame frame = new MainFrame();
+	MainFrame frame;
 	
 	private MemberController memberController;
 	
-	public SearchId() {}
+	public SearchId(MainFrame mainFrame) {
+		
+		this.frame = mainFrame;
+		
+		
+		
+	}
 	
 	
 
