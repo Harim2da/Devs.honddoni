@@ -82,7 +82,7 @@ public class MyPage extends JPanel {
 	public MyPage(FrameTestYoon frame) {
 		this.frame = frame;
 		this.myPage = this;
-//		this.frame = frame;
+		topPanel(frame, this);
 		
 //		frameTest();
 		
