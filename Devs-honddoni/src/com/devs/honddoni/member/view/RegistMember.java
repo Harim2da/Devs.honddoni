@@ -280,6 +280,7 @@ public class RegistMember extends JPanel {
 		downsidePanel.add(agreeBtn);
 		downsidePanel.add(cancelBtn);
 		
+		
 		firstPanel.add(upsidePanel);
 		firstPanel.add(downsidePanel);	
 		
