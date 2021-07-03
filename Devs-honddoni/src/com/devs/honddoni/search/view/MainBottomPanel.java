@@ -164,7 +164,7 @@ public class MainBottomPanel /*extends JFrame*/{
 				
 				AllBoardList allBoardList = new AllBoardList();
 				allBoardList.bottomPanel();
-				
+//				0987ㅛㅅ654
 				
 				
 				// 패널이 넘어가서 그 전체조회 해당하는 이미지
