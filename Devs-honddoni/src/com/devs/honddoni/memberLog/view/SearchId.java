@@ -10,16 +10,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.mainframe.FrameManager;
-import com.devs.honddoni.member.controller.MemberController;
+import com.devs.honddoni.memberLog.controller.MemberLogController;
+import com.devs.honddoni.memberLog.model.dto.SearchIdDTO;
 
 public class SearchId extends JPanel{
 	
-	private MemberController memberController = new MemberController();
-	private MemberLogView memberLogView;
-	
 //	MainFrame frame; 나중엔 여기로 이동
 	TestFrame frame; //임시
+	
+	private MemberLogController memberLogController = new MemberLogController();
+	private MemberLogView memberLogView;
+	private SearchIdDTO searchIdDTO;
 	
 	private JPanel firstPanel;
 	
@@ -76,6 +77,23 @@ public class SearchId extends JPanel{
 				
 				//아이디 조회기능
 				System.out.println("아이디 조회기능으로~");
+				
+				searchIdDTO = new SearchIdDTO();
+				
+				searchIdDTO.setName(nameTf.getText());
+				searchIdDTO.setPhone(phoneTf.getText());
+				
+				System.out.println("searchIdDTO 입력값 : " + searchIdDTO); //아무것도 입력 안 하면 null인가?
+				
+				//실행하고나서, 맞다면 해당하는 아이디를, 아니라면 "입력오류"를 돌려줌
+				String result = memberLogController.searchId(searchIdDTO);
+				
+				//제대로 일치하면 아이디를 출력해주기
+				if(result.equals("입력오류")) {
+					System.out.println("이름 또는 핸드폰 번호가 잘못입력되었습니다.");
+				} else {
+					System.out.println("회원님의 아이디는" + result + "입니다.");					
+				}				
 				
 			}
 		});

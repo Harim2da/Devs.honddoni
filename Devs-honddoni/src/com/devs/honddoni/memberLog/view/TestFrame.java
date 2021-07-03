@@ -6,10 +6,13 @@ import com.devs.honddoni.common.mainframe.FrameManager;
 
 public class TestFrame extends JFrame{
 	
+	TestFrame testFrame;
 	private FirstView firstView;
 	private SearchId searchId;
 	
 	public TestFrame() {
+		
+		this.testFrame = this;
 		
 		this.setBounds(100, 100, 516, 909);
 		this.setLayout(null);
@@ -20,11 +23,13 @@ public class TestFrame extends JFrame{
 		
 		
 //		firstView = new FirstView(this);
+//		this.add(searchId);
 		
 		searchId = new SearchId(this);
-		System.out.println(searchId);
+		System.out.println(searchId); //확인용출력
 		
-		this.add(searchId);
+		FrameManager.initPanel(testFrame, searchId);
+		
 		
 //		new SearchPwd(this);
 		

@@ -7,49 +7,18 @@
 	        A.MEMBER_PASSWORD
 	   FROM TBL_MEMBER A
 	  WHERE A.MEMBER_ID = ?
+	</entry>	
+	<entry key="searchByPhone">
+	  SELECT /*com.greedy.member.model.dao.MemberLogDAO#searchById()*/
+	        B.*
+	   FROM TBL_MEMBER B
+	   WHERE B.MEMBER_PHONE = ?
 	</entry>
-	
-	
-	
 	<entry key="searchById">
-	  SELECT /*com.greedy.member.model.dao.MemberDAO#searchById()*/
+	  SELECT /*com.greedy.member.model.dao.MemberLogDAO#searchByGender()*/
 	        C.*
-	   FROM TBL_MEMBER C
-	   WHERE MEMBER_ID = ?
-	</entry>
-	<entry key="searchByGender">
-	  SELECT /*com.greedy.member.model.dao.MemberDAO#searchByGender()*/
-	        D.*
-	    FROM TBL_MEMBER D
-	    WHERE D.GENDER = ?
-	</entry>
-	<entry key="modifyPassword">
-	  UPDATE /*com.greedy.member.model.dao.MemberDAO#modifyPassword()*/
-	        TBL_MEMBER E
-	     SET E.MEMBER_PWD = ?
-	   WHERE E.MEMBER_ID = ?
-	</entry>
-	<entry key="modifyEmail">
-	  UPDATE /*com.greedy.member.model.dao.MemberDAO#modifyEmail()*/
-	        TBL_MEMBER F
-	     SET F.EMAIL = ?
-	   WHERE F.MEMBER_ID = ?
-	</entry>
-	<entry key="modifyPhone">
-	  UPDATE /*com.greedy.member.model.dao.MemberDAO#modifyPhone()*/
-	        TBL_MEMBER G
-	     SET G.PHONE = ?
-	   WHERE G.MEMBER_ID = ?
-	</entry>
-	<entry key="modifyAddress">
-	  UPDATE /*com.greedy.member.model.dao.MemberDAO#modifyAddress()*/
-	        TBL_MEMBER H
-	     SET H.ADDRESS = ?
-	   WHERE H.MEMBER_ID = ?
-	</entry>
-	<entry key="deleteMember">
-	  DELETE /*com.greedy.member.model.dao.MemberDAO#deleteMember()*/
-	    FROM TBL_MEMBER I
-	   WHERE I.MEMBER_ID = ?
+	    FROM TBL_MEMBER C
+	    WHERE C.MEMBER_ID = ?
+	
 	</entry>
 </properties>

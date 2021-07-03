@@ -11,6 +11,10 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
+import com.devs.honddoni.memberLog.model.dto.SearchIdDTO;
+import com.devs.honddoni.memberLog.model.dto.SearchPwdDTO;
+
+import static com.devs.honddoni.common.JDBCTemplate.close;
 
 public class MemberLogDAO {
 	
@@ -54,9 +58,75 @@ public class MemberLogDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
 		}
 				
 		return userPassword;
+	}
+
+	public String searchId(Connection con, SearchIdDTO searchIdDTO) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String userId = "";
+		
+		String query = prop.getProperty("searchByPhone");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchIdDTO.getPhone());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				userId = rset.getString("MEMBER_ID");
+			} else {
+				userId = "입력오류";
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+				
+		
+		return userId;
+	}
+
+	public int searchPwd(Connection con, SearchPwdDTO searchPwdDTO) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int result = 0;
+		
+		String query = prop.getProperty("searchById");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchPwdDTO.getId());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				System.out.println("기존 비밀번호는 : ");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return result;
 	}
 
 }
