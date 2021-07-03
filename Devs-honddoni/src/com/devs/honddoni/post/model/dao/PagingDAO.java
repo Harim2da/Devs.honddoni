@@ -238,7 +238,8 @@ public class PagingDAO {
 		List<PostDTO> postList = null;
 		
 		String query = prop.getProperty("wholePostList");
-		
+		System.out.println(pageInfo.getEndRow());
+
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, pageInfo.getStartRow());
