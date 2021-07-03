@@ -14,12 +14,11 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class FirstView extends JPanel{
 	
-	private MemberLogView memberLogView;
-	
-	private FirstView firstView; //4조참조
 	private MainFrame frame; //4조참조
+	private FirstView firstView; //4조참조
 	
-//	private JPanel firstViewPanel;
+	private MemberLogView memberLogView;	
+	
 	private JButton btnNewButton;
 	private JLabel honttoniLb;
 	
@@ -32,7 +31,7 @@ public class FirstView extends JPanel{
 //		firstViewPanel = new JPanel();
 		firstView.setBounds(0, 0, 500, 870);
 		firstView.setLayout(null);
-		firstView.setBackground(Color.red);
+		firstView.setBackground(Color.yellow);
 		
 		//로고버튼
 		btnNewButton = new JButton("");
@@ -57,18 +56,14 @@ public class FirstView extends JPanel{
 		//그냥 혼또니 로고버튼
 		honttoniLb = new JLabel();
 		honttoniLb.setBounds(130, 443, 241, 99);
-//		honttoniLb.setBorderPainted(false);  //선 어떻게 없애드라..
 		honttoniLb.setIcon(new ImageIcon("image/memberLog/login/login_2_logo2.png"));
 		
-		
-		
+				
 		//전체패널에 컴포넌트 2개 올리기
 		firstView.add(btnNewButton);
 		firstView.add(honttoniLb);
 
 		firstView.setVisible(true);
-		
-		frame.add(firstView);
 		
 	}
 	

@@ -2,9 +2,12 @@ package com.devs.honddoni.memberLog.view;
 
 import javax.swing.JFrame;
 
+import com.devs.honddoni.common.mainframe.FrameManager;
+
 public class TestFrame extends JFrame{
 	
-	FirstView firstView;
+	private FirstView firstView;
+	private SearchId searchId;
 	
 	public TestFrame() {
 		
@@ -16,9 +19,12 @@ public class TestFrame extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-//		new FirstView(this);
+//		firstView = new FirstView(this);
 		
-		new SearchId(this);
+		searchId = new SearchId(this);
+		System.out.println(searchId);
+		
+		this.add(searchId);
 		
 //		new SearchPwd(this);
 		

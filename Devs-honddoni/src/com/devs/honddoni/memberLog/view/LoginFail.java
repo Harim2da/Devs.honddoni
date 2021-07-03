@@ -53,10 +53,7 @@ public class LoginFail extends JPanel {
 		memberDataLb.setIcon(new ImageIcon("image/member/regist/regist_1.png"));
 		
 		
-		
-		
-		
-		frame.add(firstPanel);	
+//		frame.add(firstPanel);	
 		
 	}
 	
