@@ -12,10 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 //메인프레임의 하단 프레임
-public class MainBottomPanel extends JFrame{
+public class MainBottomPanel /*extends JFrame*/{
 
+	JFrame frame  = new JFrame();
 //MainFrame frame; //메인프레임
-	private JFrame frame;
+	//private JFrame frame;
 	
 	private JPanel topPanel; // 상단패널
 	private JPanel bottomPanel; //하단패널
@@ -35,8 +36,14 @@ public class MainBottomPanel extends JFrame{
 	private JLabel adminEmail; // 문의메일-----------------------
 	
 	public MainBottomPanel() {
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
+		//this.setBounds(100, 100, 516, 909);
+	//	this.setLayout(null);
+		
+		/*수정한부분*/
+		frame.setBounds(100, 100, 516, 909);
+		frame.setLayout(null);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 //		topPanel();
 		bottomPanel();
@@ -55,11 +62,12 @@ public class MainBottomPanel extends JFrame{
 		
 		allBottomPanelComponent();
 		
+		frame.getContentPane().add(bottomPanel);
 		frame.add(bottomPanel); // <--프레임에 하단 패널...???
-		this.repaint();
-		this.revalidate();
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.repaint();
+//		this.revalidate();
+//		this.setVisible(true);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void allBottomPanelComponent() {
@@ -138,13 +146,30 @@ public class MainBottomPanel extends JFrame{
 		allListBoardBtn.setBounds(62, 23  , 90, 110);  
 		
 		
-		AllBoardList allBoardList = new AllBoardList();
+		
 		allListBoardBtn.addActionListener(new ActionListener() {
 
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+//				allBoardList.bottomPanel();
+			
+				JPanel changeBoardList = new JPanel();
+				changeBoardList.setLayout(null);
+				changeBoardList.setBounds(0,100,500,770);
+				changeBoardList.setVisible(true);
+				changeBoardList.setBackground(Color.white);
+			
+				frame.add(changeBoardList);
+				
+				AllBoardList allBoardList = new AllBoardList();
 				allBoardList.bottomPanel();
+				
+				
+				
+				// 패널이 넘어가서 그 전체조회 해당하는 이미지
+				changeBoardList.revalidate();
+				changeBoardList.repaint();
 				// 전체조회 게시판으로
 				// DB연결 (MVC)
 				

@@ -405,7 +405,7 @@ public class AllBoardList {
 //		
 //		
 		
-	MainFrame frame = new MainFrame();
+	//MainFrame frame = new MainFrame();
 	
 	private JPanel topPanel; // 상단패널
 	private JPanel bottomPanel; //하단패널
@@ -460,7 +460,7 @@ public class AllBoardList {
 		
 	//하단패널
 	public void bottomPanel() {
-		System.out.println("넘어왓니");
+		System.out.println("다음페이지와?");
 		bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
@@ -637,6 +637,7 @@ public class AllBoardList {
 
 	}	
 	
+	
 	/* 최종페이지를 나타내는 숫자 */
 //	public void afterNum(int postNo) {
 //
@@ -711,6 +712,8 @@ public class AllBoardList {
 	
 //  }
 
+	}
+}
 
 
 
