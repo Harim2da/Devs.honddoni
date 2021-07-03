@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color; 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,12 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
-import com.devs.honddoni.common.mainframe.MainFrame;
+//모든회원정보 조회 화면
 
 public class AllData {
 	
-	MainFrame MainFrame = new MainFrame();
+	MainFrame1 MainFrame = new MainFrame1();
 	
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
@@ -27,6 +26,8 @@ public class AllData {
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
 		MainFrame.add(bottomPanel);
+		
+			//탈퇴 회원 전체데이터 조회 화면
 		
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\Side.png");
 	       JButton btn1 = new JButton(img1);

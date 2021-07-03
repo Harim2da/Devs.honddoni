@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,11 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-import com.devs.honddoni.common.mainframe.MainFrame;
+//신고된 사용자
 
 public class AdminUser {
 	
-	MainFrame MainFrame = new MainFrame();
+	MainFrame1 MainFrame = new MainFrame1();
 	
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	

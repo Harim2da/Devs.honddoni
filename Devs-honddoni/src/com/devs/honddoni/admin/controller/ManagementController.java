@@ -4,8 +4,9 @@ import java.util.List;
 
 import com.devs.honddoni.admin.model.service.AdminService;
 import com.devs.honddoni.admin.view123.MemberDTO;
+import com.devs.honddoni.admin.view123.TotalDTO;
 
-import com.devs.honddoni.admin.view123.PostDTO;
+
 
 
 public class ManagementController {
@@ -21,9 +22,7 @@ public class ManagementController {
       
    public void selectAllPosts() {
    
-      List<PostDTO> memberList = adminService.selectAllPosts();
+      List<TotalDTO> TotalList = adminService.totalPostList();
    }
    
-
-
 }

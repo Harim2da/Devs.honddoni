@@ -9,11 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.devs.honddoni.common.mainframe.MainFrame;
+//신고된 게시글 관리
 
 public class AdminPost {
 	
-	MainFrame MainFrame = new MainFrame();
+	MainFrame1 MainFrame = new MainFrame1();
 	
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	

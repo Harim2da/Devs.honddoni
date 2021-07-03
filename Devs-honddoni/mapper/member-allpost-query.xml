@@ -7,31 +7,7 @@
 	            *
 	       FROM TBL_MEMBER
 	</entry>
-	
-	<entry key="selectAllPosts">
-		SELECT
-             V.*
-        FROM (SELECT P.POST_NO
-                   , P.POST_NAME
-                   , P.POST_CONTENTS
-                   , P.POST_CATEGORY
-                   , P.POST_MEMBER_NO
-                   , P.POST_MEETINGDATE
-                   , P.POST_MEETINGTIME
-                   , P.POST_WRITINGDATE
-                   , P.POST_WRITINGTIME
-                   , L.LOCAL_NAME
-				   , C.CATEGORY_NAME
-                   , P.POST_DEL_STATUS
-                   , P.POST_NUMBER_OF_PEOPLE
-                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
-        FROM TBL_POST P
-        JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
-        JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
-           ) V
-      WHERE V.순서 BETWEEN ? AND ?
-	</entry>
-	
+
 	<entry key="totalPostList">
 	  SELECT
              V.*
