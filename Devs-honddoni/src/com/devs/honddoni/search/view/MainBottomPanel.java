@@ -11,12 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.mainframe.MainFrame;
-
 //메인프레임의 하단 프레임
-public class MainBottomPanel {
+public class MainBottomPanel extends JFrame{
 
-	MainFrame frame = new MainFrame(); //메인프레임
+//MainFrame frame; //메인프레임
+	private JFrame frame;
 	
 	private JPanel topPanel; // 상단패널
 	private JPanel bottomPanel; //하단패널
@@ -36,8 +35,8 @@ public class MainBottomPanel {
 	private JLabel adminEmail; // 문의메일-----------------------
 	
 	public MainBottomPanel() {
-//		this.setBounds(100, 100, 516, 909);
-//		this.setLayout(null);
+		this.setBounds(100, 100, 516, 909);
+		this.setLayout(null);
 		
 //		topPanel();
 		bottomPanel();
@@ -57,10 +56,10 @@ public class MainBottomPanel {
 		allBottomPanelComponent();
 		
 		frame.add(bottomPanel); // <--프레임에 하단 패널...???
-//		this.repaint();
-//		this.revalidate();
-//		this.setVisible(true);
-//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.repaint();
+		this.revalidate();
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void allBottomPanelComponent() {
@@ -85,8 +84,9 @@ public class MainBottomPanel {
 		
 //		this.repaint();
 //		this.revalidate();
+		
 		frame.repaint();
-		frame.revalidate();
+//		frame.revalidate();
 	}
 	
 //	//상단패널
@@ -98,7 +98,7 @@ public class MainBottomPanel {
 //		}
 	
 	//하단패널
-	private void bottomPanel() {
+	public void bottomPanel() {
 		bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
@@ -129,26 +129,34 @@ public class MainBottomPanel {
 	}
 	
 	//전체조회버튼 클릭
-	private void clickAllListBoard() {
-		bottomPanel();
+	public void clickAllListBoard() {
+		//bottomPanel();
 		allListBoardBtn = new JButton();
 		allListBoardBtn.setIcon(new ImageIcon("image/search/bottompanel/alllistboardLogo.png"));
 		allListBoardBtn.setContentAreaFilled(false);
 		allListBoardBtn.setBorderPainted(false);
 		allListBoardBtn.setBounds(62, 23  , 90, 110);  
 		
+		
+		AllBoardList allBoardList = new AllBoardList();
 		allListBoardBtn.addActionListener(new ActionListener() {
 
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				allBoardList.bottomPanel();
 				// 전체조회 게시판으로
+				// DB연결 (MVC)
+				
+				// 패널이 넘어가서 그 전체조회 해당하는 이미지
+				
 				System.out.println("전체조회 게시판으로");
 			}});
 	}
 	
 	//혼또니게시판조회버튼 클릭
-	private void clickHonddoniBoard() {
-		bottomPanel();
+	public void clickHonddoniBoard() {
+//		bottomPanel();
 		honddoniBoardBtn = new JButton();
 		honddoniBoardBtn.setIcon(new ImageIcon("image/search/bottompanel/honddoniboardLogo.png"));
 		honddoniBoardBtn.setContentAreaFilled(false);
@@ -165,8 +173,8 @@ public class MainBottomPanel {
 	}
 	
 	//자유게시판조회 버튼 클릭
-	private void clickFreeBoard() {
-		bottomPanel();
+	public void clickFreeBoard() {
+//		bottomPanel();
 		freeBoardBtn = new JButton();
 		freeBoardBtn.setIcon(new ImageIcon("image/search/bottompanel/freeboardLogo.png"));
 		freeBoardBtn.setContentAreaFilled(false);
@@ -183,8 +191,8 @@ public class MainBottomPanel {
 	}
 	
 	//검색돋보기 클릭
-	private void clickAim() {
-		bottomPanel();
+	public void clickAim() {
+//		bottomPanel();
 		aim = new JButton();
 		aim.setIcon(new ImageIcon("image/search/aim.png"));
 		aim.setContentAreaFilled(false);
@@ -201,7 +209,7 @@ public class MainBottomPanel {
 	}
 	
 	//키워드입력 텍스트필드
-	private void writeKeyword() {
+	public void writeKeyword() {
 		search = new JTextField();
 		search.setBorder(null);
 		search.setDisabledTextColor(Color.white);
@@ -211,8 +219,8 @@ public class MainBottomPanel {
 	}
 	
 	//지역게시판 리스트1번으로 이동하는 버튼
-	private void clickLocalList1() {
-		bottomPanel();
+	public void clickLocalList1() {
+//		bottomPanel();
 		localList1 = new JButton();
 		localList1.setIcon(new ImageIcon("image/search/bottompanel/locallist1Logo.png"));
 		localList1.setContentAreaFilled(false);
@@ -229,8 +237,8 @@ public class MainBottomPanel {
 	}
 	
 	//지역게시판 리스트2번으로 이동하는 버튼
-		private void clickLocalList2() {
-			bottomPanel();
+	public void clickLocalList2() {
+//			bottomPanel();
 			localList2 = new JButton();
 			localList2.setIcon(new ImageIcon("image/search/bottompanel/locallist2Logo.png"));
 			localList2.setContentAreaFilled(false);
@@ -247,8 +255,8 @@ public class MainBottomPanel {
 		}
 		
 		//지역게시판 리스트3번으로 이동하는 버튼
-		private void clickLocalList3() {
-			bottomPanel();
+	public void clickLocalList3() {
+//			bottomPanel();
 			localList3 = new JButton();
 			localList3.setIcon(new ImageIcon("image/search/bottompanel/locallist3Logo.png"));
 			localList3.setContentAreaFilled(false);
@@ -265,8 +273,8 @@ public class MainBottomPanel {
 		}
 	
 		//코로나 안전수칙 버튼
-		private void clickCovid() {
-			bottomPanel();
+	public void clickCovid() {
+//			bottomPanel();
 			covid = new JButton();
 			covid.setIcon(new ImageIcon("image/search/bottompanel/covidLogo.png"));
 			covid.setContentAreaFilled(false);
@@ -283,8 +291,8 @@ public class MainBottomPanel {
 		}	
 		
 		//이용약관 버튼
-		private void clickGuide() {
-			bottomPanel();
+	public void clickGuide() {
+//			bottomPanel();
 			guide = new JButton();
 		    guide.setIcon(new ImageIcon("image/search/bottompanel/guideLogo.png"));
 			guide.setContentAreaFilled(false);
@@ -301,8 +309,8 @@ public class MainBottomPanel {
 		}	
 
 		//로그아웃 버튼
-		private void clickLogout() {
-			bottomPanel();
+	public void clickLogout() {
+//			bottomPanel();
 			logout = new JButton();
 		    logout.setIcon(new ImageIcon("image/search/bottompanel/logoutLogo.png"));
 			logout.setContentAreaFilled(false);

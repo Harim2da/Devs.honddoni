@@ -1,6 +1,6 @@
 package com.devs.honddoni.search.view;
 
-public class Application {
+public class TestTaehun {
 
 	public static void main(String[] args) {
 		
@@ -8,7 +8,7 @@ public class Application {
 		new MainBottomPanel();
 		
 //		new AllBoardList();
-		
+//		
 //		new FreeBoard();
 //
 //		new SearchBoard();

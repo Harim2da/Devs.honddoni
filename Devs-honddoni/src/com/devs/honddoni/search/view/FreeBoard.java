@@ -71,7 +71,7 @@ public class FreeBoard  {
 	}
 	
 	// 게시판 종류 선택
-	private void selectBoard() {
+	public void selectBoard() {
 		bottomPanel();
 		selectBoardType = new JButton();
 		selectBoardType.setIcon(new ImageIcon(PostView.class.getResource("/search/freeboardtype.png")));
@@ -89,7 +89,7 @@ public class FreeBoard  {
 	}
 	
 	// 자유게시판 제목 작성
-	private void createFreeBoardTitle() {
+	public void createFreeBoardTitle() {
 		freeBoardTitle = new JTextField();
 		freeBoardTitle.setBorder(null);
 		freeBoardTitle.setDisabledTextColor(Color.white);
@@ -99,7 +99,7 @@ public class FreeBoard  {
 	}
 	
 	// 게시글 작성
-	private void freeBoardContents() {
+	public void freeBoardContents() {
 		freeBoardContents = new JTextArea();
 		freeBoardContents.setOpaque(false);
 		freeBoardContents.setBounds(59, 305, 399, 273);
@@ -107,7 +107,7 @@ public class FreeBoard  {
 	}
 	
 	/* 게시글 작성 완료 버튼*/
-	private void uploadButton() {
+	public void uploadButton() {
 		uploadBtn = new JButton();
 		uploadBtn.setBounds(129, 684, 263, 41);
 		uploadBtn.setIcon(new ImageIcon(PostView.class.getResource("/post/postbutton.png")));
