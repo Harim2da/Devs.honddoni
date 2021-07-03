@@ -219,6 +219,7 @@ public class MyPage {
 		changeMemberinfo.setContentAreaFilled(false);
 		changeMemberinfo.setBorderPainted(false);
 		changeMemberinfo.setBounds(272, 53, 137, 137);
+		downsidePanel.add(changeMemberinfo);
 		changeMemberinfo.addActionListener(new ActionListener() {
 			
 			@Override 	
@@ -361,7 +362,7 @@ public class MyPage {
 			}
 				
 		});
-		downsidePanel.add(changeMemberinfo);
+
 		
 		
 		
@@ -375,6 +376,7 @@ public class MyPage {
 		resignMemberButton.setContentAreaFilled(false);
 		resignMemberButton.setBorderPainted(false);
 		resignMemberButton.setBounds(92, 280, 137, 137);
+		downsidePanel.add(resignMemberButton);
 		resignMemberButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -388,6 +390,22 @@ public class MyPage {
 				resignMemberPanel.setBackground(Color.white);
 				downsidePanel.setVisible(false);
 				frame.add(resignMemberPanel);
+				
+				/* 비밀번호 입력창 */
+				rmPF1.setBorder(null);
+				rmPF1.setOpaque(false);
+				rmPF1.setBounds(195, 300, 270, 45);
+				resignMemberPanel.add(rmPF1);
+				
+				/* 회원탈퇴 비밀번호 입력창 라벨 */
+				rmL1.setBounds(0, 0, 500, 770);
+				rmL1.setVisible(true);
+				rmL1.setIcon(new ImageIcon("image/member/deleteMember/delete.png"));
+				resignMemberPanel.add(rmL1);
+				
+				
+				resignMemberPanel.revalidate();
+				resignMemberPanel.repaint();
 				
 				/* 취소 버튼 */
 				btnRemove(rmB1);
@@ -411,37 +429,19 @@ public class MyPage {
 				rmB2.setVisible(true);
 				rmB2.setBounds(264, 595, 178, 63);
 				rmB2.setIcon(new ImageIcon("image/member/deleteMember/resign.png"));
+				resignMemberPanel.add(rmB2); 
 				rmB2.addActionListener(new ActionListener() {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("탈퇴 버튼 클릭");
+
 						
-						/* 비밀번호 확인 후 다를 시 팝업*/
-						
-						/* 비밀번호 환인 후 일치시 탈퇴 완료 팝업*/
 					}
 				}); 
-				resignMemberPanel.add(rmB2); 
 				
-				/* 비밀번호 입력창 */
-				rmPF1.setBorder(null);
-				rmPF1.setOpaque(false);
-				rmPF1.setBounds(195, 300, 270, 45);
-				resignMemberPanel.add(rmPF1);
-				
-				/* 회원탈퇴 비밀번호 입력창 라벨 */
-				rmL1.setBounds(0, 0, 500, 770);
-				rmL1.setVisible(true);
-				rmL1.setIcon(new ImageIcon("image/member/deleteMember/delete.png"));
-				resignMemberPanel.add(rmL1);
-				
-				
-				resignMemberPanel.revalidate();
-				resignMemberPanel.repaint();
 			}
 		});
-		downsidePanel.add(resignMemberButton);
 		
 	
 /*==================================  관심글 모아보기 버튼   ================================================== */
@@ -453,6 +453,7 @@ public class MyPage {
 		interestingPostButton.setContentAreaFilled(false);
 		interestingPostButton.setBorderPainted(false);
 		interestingPostButton.setBounds(272, 280, 137, 137);
+		downsidePanel.add(interestingPostButton);
 		interestingPostButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -467,11 +468,14 @@ public class MyPage {
 				downsidePanel.setVisible(false);
 				frame.add(interestingPostPanel);  
 				
+				/* 관심을 패널에 올릴 이미지 */
 				JLabel interestingPostLabel = new JLabel();
 				interestingPostLabel.setBounds(0, 100, 500, 770);
 				interestingPostLabel.setIcon(new ImageIcon("image/member/AllInteresting/qq.png"));
 				interestingPostPanel.add(interestingPostLabel);
 				
+				
+				/* 분류 구분 콤보박스 위에 이미지라벨 덧씌우기 (고민중) */
 				JLabel qqqq = new JLabel();
 				
 				String[] qq = {"지역별(가나다)", "활동 카테고리별"};
@@ -480,7 +484,6 @@ public class MyPage {
 				qqq.setVisible(true);
 				interestingPostPanel.add(qqq);
 				
-				
 				JLabel asdasd = new JLabel();
 				asdasd.setBounds(276, 40, 187, 36);
 				asdasd.setIcon(new ImageIcon("image/member/AllInteresting/qqq.png"));
@@ -488,7 +491,6 @@ public class MyPage {
 				
 			}
 		});
-		downsidePanel.add(interestingPostButton);
 		
 		
 /*==================================  업적 & 포인트 버튼   ================================================== */		
@@ -499,6 +501,7 @@ public class MyPage {
 		rewardButton.setContentAreaFilled(false);
 		rewardButton.setBorderPainted(false);
 		rewardButton.setBounds(92, 501, 137, 137);
+		downsidePanel.add(rewardButton);
 		rewardButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -544,6 +547,7 @@ public class MyPage {
 				btnRemove(pointManageBtn);
 				pointManageBtn.setBounds(35, 371, 431, 322);
 				pointManageBtn.setIcon(new ImageIcon("image/member/reward/pointManageBtn.png"));
+				rewardPanel.add(pointManageBtn);
 				pointManageBtn.addActionListener(new ActionListener() {
 					
 					@Override
@@ -563,10 +567,8 @@ public class MyPage {
 						pointManagePanel.add(pointManageLabel);
 					}
 				});
-				rewardPanel.add(pointManageBtn);
 			}
 		});
-		downsidePanel.add(rewardButton);
 		
 		
 /*==================================  내글 모아보기 버튼   ================================================== */
@@ -578,6 +580,7 @@ public class MyPage {
 		writtenPostButton.setContentAreaFilled(false);
 		writtenPostButton.setBorderPainted(false);
 		writtenPostButton.setBounds(272, 501, 137, 137);
+		downsidePanel.add(writtenPostButton);
 		writtenPostButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -599,7 +602,7 @@ public class MyPage {
 				
 			}
 		});
-		downsidePanel.add(writtenPostButton);
+		
 		
 		
 /*==================================  마이페이지에 있는 버튼 밑에 글씨들   ================================================== */
