@@ -16,7 +16,7 @@ public class Application {
 	
 	public static void main(String[] args) {
 		
-		new AdminList();
+		new AdminList(); //관리자 목록 실행
 		
 		
 	}

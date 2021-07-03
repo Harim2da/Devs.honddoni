@@ -10,12 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+//관리자 로그인 성공화면
 
-import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class Login2 {
 	
-	MainFrame MainFrame = new MainFrame();
+	MainFrame1 MainFrame = new MainFrame1();
 	
 	public Login2() {
 

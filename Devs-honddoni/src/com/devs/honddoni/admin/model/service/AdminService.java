@@ -11,6 +11,7 @@ import com.devs.honddoni.admin.model.dao.AdminDAO;
 import com.devs.honddoni.admin.view123.MemberDTO;
 
 import com.devs.honddoni.admin.view123.PostDTO;
+import com.devs.honddoni.admin.view123.TotalDTO;
 
 
 
@@ -37,17 +38,29 @@ public class AdminService {
    }
    
    
-   public List<PostDTO> selectAllPosts() {
-      
-      Connection con = getConnection();
-      
-      List<com.devs.honddoni.admin.view123.PostDTO> postList = adminDao.selectAllPosts(con);
-      
-      
-      close(con);
-      
-      return postList;
-   }
+//   public List<PostDTO> selectAllPosts() {
+//      
+//      Connection con = getConnection();
+//      
+//      List<com.devs.honddoni.admin.view123.PostDTO> postList = adminDao.selectAllPosts(con);
+//      
+//      
+//      close(con);
+//      
+//      return postList;
+//   }
+   
+   public List<TotalDTO> totalPostList() {
+	      
+	      Connection con = getConnection();
+	      
+	      List<com.devs.honddoni.admin.view123.TotalDTO> TotalList = adminDao.totalPostList(con);
+	      
+	      
+	      close(con);
+	      
+	      return TotalList;
    
 }
 
+}

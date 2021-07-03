@@ -62,6 +62,7 @@ public class MainFrame1 extends JFrame{
 		backgroundImage.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
 		backgroundImage.setVisible(true); 
 		topPanel.add(backgroundImage);
+		
 
 	}
 	
