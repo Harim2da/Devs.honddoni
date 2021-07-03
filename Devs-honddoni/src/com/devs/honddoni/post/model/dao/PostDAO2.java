@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.InvalidPropertiesFormatException;
+import java.util.List;
 import java.util.Properties;
 
 import com.devs.honddoni.common.dto.CommentsDTO;
@@ -47,6 +48,55 @@ public class PostDAO2 {
 			
 			result = pstmt.executeUpdate();
 			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteComment(Connection con, List<CommentsDTO> deleteCommentList) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("deleteComment");
+		System.out.println();
+		
+			try {
+				pstmt = con.prepareStatement(query);
+				for(int i = 0; i < deleteCommentList.size(); i++) {
+					
+					pstmt.setInt(1, deleteCommentList.get(i).getCommentsNo());
+					System.out.println(deleteCommentList.get(i).getCommentsNo());
+				}
+				
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			
+			
+		
+		return result;
+	}
+
+	public int updateComment(Connection con, CommentsDTO updateComment) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateComment");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, updateComment.getCommentsContents());
+			pstmt.setInt(2, updateComment.getCommentsNo());
+			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
