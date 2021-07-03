@@ -62,7 +62,7 @@ public class MemberService {
 		return pwdCheck;
 	}
 
-	public int updateMemberPwd(ChangePwdDTO changePwd) {
+	public int modifyPassword(ChangePwdDTO changePwd) {
 		
 		Connection con = getConnection();
 		
