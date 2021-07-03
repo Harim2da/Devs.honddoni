@@ -170,8 +170,8 @@ public class MainBottomPanel /*extends JFrame*/{
 				
 				
 				// 패널이 넘어가서 그 전체조회 해당하는 이미지
-				changeBoardList.revalidate();
 				changeBoardList.repaint();
+				changeBoardList.revalidate();
 				// 전체조회 게시판으로
 				// DB연결 (MVC)
 				
