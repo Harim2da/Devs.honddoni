@@ -38,17 +38,6 @@ public class AdminService {
    }
    
    
-//   public List<PostDTO> selectAllPosts() {
-//      
-//      Connection con = getConnection();
-//      
-//      List<com.devs.honddoni.admin.view123.PostDTO> postList = adminDao.selectAllPosts(con);
-//      
-//      
-//      close(con);
-//      
-//      return postList;
-//   }
    
    public List<TotalDTO> totalPostList() {
 	      

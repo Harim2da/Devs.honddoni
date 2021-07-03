@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.view.SelectedComment;
 
@@ -17,9 +18,11 @@ public class Application {
 	
 	public static void main(String[] args) {
 		
-//		new AdminList(); //관리자 목록 실행
+		new AdminList(); //관리자 목록 실행
 		
-		new AllData();
+//		new AllData(); // 전체데이터 조회
+		
+		
 		
 		
 	}

@@ -20,9 +20,11 @@ public class ManagementController {
       
 //      memberResultView.display(memberList);
       
-   public void selectAllPosts() {
+//   public void selectAllPosts() {
+//   
+//      List<TotalDTO> TotalList = adminService.totalPostList();
    
-      List<TotalDTO> TotalList = adminService.totalPostList();
+   
    }
    
 }
