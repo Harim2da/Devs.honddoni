@@ -4,7 +4,7 @@ public class TestTaehun {
 
 	public static void main(String[] args) {
 		
-		
+	
 		new MainBottomPanel();
 		
 //		new AllBoardList();
