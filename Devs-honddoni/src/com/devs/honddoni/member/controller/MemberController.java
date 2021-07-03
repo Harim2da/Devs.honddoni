@@ -56,13 +56,13 @@ public class MemberController {
 		
 		if(newPwd.equals(newPwdRe)){
 			System.out.println("새비번 일치");
-			updateMemberPwd(changePwd);
+			modifyPassword(changePwd);
 		}		
 	}
 	
-	public void updateMemberPwd(ChangePwdDTO changePwd) {
+	public void modifyPassword(ChangePwdDTO changePwd) {
 		
-		int result = memberService.updateMemberPwd(changePwd);
+		int result = memberService.modifyPassword(changePwd);
 		
 		if(result > 0) {
 			System.out.println("비번변경 성공");
