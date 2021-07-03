@@ -134,4 +134,15 @@
 	    , ? 
 	    )    
 	</entry>
+	<entry key="deleteComment">
+	  DELETE
+	    FROM TBL_COMMENT
+	   WHERE COMMENTS_NO = ?
+	</entry>
+	<entry key="updateComment">
+	  UPDATE
+	         TBL_COMMENT
+	     SET COMMENTS_CONTENTS = ?
+	   WHERE COMMENTS_NO = ?
+	</entry>
 </properties>

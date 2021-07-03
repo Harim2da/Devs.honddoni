@@ -3,6 +3,7 @@ package com.devs.honddoni.post.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -123,7 +124,7 @@ public class SelectedComment extends JFrame {
 		commentLongbarLabel.add(afterNumber);
 		commentLongbarLabel.add(beforeBtn);
 		commentLongbarLabel.add(afterBtn);
-		
+
 
 	}
 	/* 상단 패널 */
@@ -152,14 +153,14 @@ public class SelectedComment extends JFrame {
 
 
 	}
-	
+
 	public void nextPanel() {
-		
+
 		downPanel = new JPanel();
 		downPanel.setBounds(0, 100, 500, 770);
 		downPanel.setLayout(null);
 		downPanel.setBackground(Color.WHITE);
-		
+
 	}
 
 	/* My혼또니 버튼 생성 */
@@ -308,7 +309,6 @@ public class SelectedComment extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("게시글 조회 호출");
-				remove(downPanel);
 			}
 		});
 	}
@@ -327,28 +327,28 @@ public class SelectedComment extends JFrame {
 		} else {
 			beforeBtn.setVisible(true);
 		}
-		
+
 		System.out.println("frontPage : " + frontPage);
 		beforeBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if(frontPage >= 2 ) {
 					frontPage--;
 				}
-				
-//				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
-//				commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
-//				commentList(postNo);
-				
-				
+
+				//				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
+				commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+				commentList(postNo);
+
+
 				beforeBtn();
 				beforeNumber();
 				afterBtn(1);
 				System.out.println("frontPage : " + frontPage);
 
-		
+
 			}
 		});
 
@@ -371,7 +371,7 @@ public class SelectedComment extends JFrame {
 		afterBtn.setContentAreaFilled(false);
 		afterBtn.setBorderPainted(false);
 		afterBtn.setBounds(120, 4, 14, 14);
-		
+
 		if(pageNo == pageInfo.getMaxPage()) {
 			afterBtn.setVisible(false);
 		} else {
@@ -387,14 +387,14 @@ public class SelectedComment extends JFrame {
 				if(frontPage < pageInfo.getMaxPage()) {
 					frontPage++;
 				}
-				
-				
-				
-;
-				
+
+
+				downPanel.remove(commentList);
+
+
 				for(int i = 0; i < 10; i++) {
 
-					
+
 					downPanel.remove(commentList);
 					downPanel.remove(nickName);
 					downPanel.remove(content);
@@ -404,11 +404,11 @@ public class SelectedComment extends JFrame {
 					downPanel.remove(commentsTime);
 					downPanel.remove(profilePictrue);
 					downPanel.remove(deleteBtn);
-					
+
 				}
-				
-//				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
-//				commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+
+				//				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
+				//				commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
 				commentList(postNo);
 
 				afterBtn(1);
@@ -484,8 +484,21 @@ public class SelectedComment extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					/* 글 수정(글 작성 패널 불러오기) */
-					System.out.println("글 작성 패널 불러오기");
+					System.out.println("댓글 수정란 호출");
+					String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
+					System.out.println(text);
+					CommentsDTO updateComment = new CommentsDTO();
+
+					for(int i = 0; i < commentListDTO.size(); i++) {
+
+						updateComment.setCommentsNo(commentListDTO.get(i).getCommentsNo());
+						updateComment.setMemberNo(commentListDTO.get(i).getMemberNo());
+						updateComment.setCommentsContents(text);
+
+					}
+					ContactController2 contactController2 = new ContactController2();
+					contactController2.updateComment(updateComment);
+
 
 				}
 			});
@@ -541,7 +554,6 @@ public class SelectedComment extends JFrame {
 				profilePictrue.setVisible(false);
 			}
 
-			
 			deleteBtn = new JButton("");
 			deleteBtn.setIcon(new ImageIcon("image/post/commentDeleteButton.png"));
 			deleteBtn.setContentAreaFilled(false);
@@ -551,12 +563,27 @@ public class SelectedComment extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-				
+
 					System.out.println("댓글 삭제");
+					CommentsDTO deleteComment = new CommentsDTO();
+					List<CommentsDTO> deleteCommentList = new ArrayList<>();
+
+					for(int i = 0; i < commentListDTO.size(); i++) {
+
+						deleteComment.setCommentsNo(commentListDTO.get(i).getCommentsNo());
+						deleteComment.setMemberNo(commentListDTO.get(i).getMemberNo());
+						deleteCommentList.add(deleteComment);
+					}
+
+					ContactController2 contactController2 = new ContactController2();
+					contactController2.deleteComment(deleteCommentList);
+
+
 
 				}
 			});
-			
+
+
 			downPanel.add(deleteBtn);
 			downPanel.add(profilePictrue);
 			downPanel.add(nickName);
