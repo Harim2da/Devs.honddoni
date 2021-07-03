@@ -457,7 +457,7 @@ public class SelectedComment extends JFrame {
 		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
 		CommentsDTO commentInfo = null;
 
-
+		
 		for(int i = 0; i < commentListDTO.size(); i++) {
 
 			commentInfo = commentListDTO.get(i);
@@ -475,12 +475,18 @@ public class SelectedComment extends JFrame {
 			content.setLayout(null);
 			content.setBounds(187, y + 10, 250, 35); 
 
-			updateBtn = new JButton("");
-			updateBtn.setIcon(new ImageIcon("image/post/commentUpdateButton.png"));
-			updateBtn.setContentAreaFilled(false);
-			updateBtn.setBorderPainted(false);
-			updateBtn.setBounds(415, y + 37, 23, 23);
-			updateBtn.addActionListener(new ActionListener() {
+			JButton[] updateBtn = new JButton[commentListDTO.size()];
+			updateBtn[i] = new JButton();
+			updateBtn[i].setIcon(new ImageIcon("image/post/commentUpdateButton.png"));
+			updateBtn[i].setContentAreaFilled(false);
+			updateBtn[i].setBorderPainted(false);
+			updateBtn[i].setBounds(415, y + 37, 23, 23);
+			System.out.println("updateBtn[" + i + "] : " + commentListDTO.get(i).getCommentsNo());
+			
+			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
+			int getMemberNo = commentListDTO.get(i).getMemberNo();
+			
+			updateBtn[i].addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -488,21 +494,23 @@ public class SelectedComment extends JFrame {
 					String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
 					System.out.println(text);
 					CommentsDTO updateComment = new CommentsDTO();
-
-					for(int i = 0; i < commentListDTO.size(); i++) {
-
-						updateComment.setCommentsNo(commentListDTO.get(i).getCommentsNo());
-						updateComment.setMemberNo(commentListDTO.get(i).getMemberNo());
+					
+						
+						updateComment.setCommentsNo(getCommentsNo);
+						updateComment.setMemberNo(getMemberNo);
 						updateComment.setCommentsContents(text);
+//						System.out.println("conmmentListDTO CommentNo  : " + commentListDTO.get(i).getCommentsNo());
+//						System.out.println("conmmentListDTO MemberNo  : " + commentListDTO.get(i).getMemberNo());
 
-					}
+						
+					
 					ContactController2 contactController2 = new ContactController2();
 					contactController2.updateComment(updateComment);
-
+					
 
 				}
 			});
-
+			
 			reportBtn = new JButton("");
 			reportBtn.setIcon(new ImageIcon("image/post/commentReportButton.png"));
 			reportBtn.setContentAreaFilled(false);
@@ -583,12 +591,11 @@ public class SelectedComment extends JFrame {
 				}
 			});
 
-
+			downPanel.add(updateBtn[i]);
 			downPanel.add(deleteBtn);
 			downPanel.add(profilePictrue);
 			downPanel.add(nickName);
 			downPanel.add(content);
-			downPanel.add(updateBtn);
 			downPanel.add(reportBtn);
 			downPanel.add(commentsDate);
 			downPanel.add(commentsTime);

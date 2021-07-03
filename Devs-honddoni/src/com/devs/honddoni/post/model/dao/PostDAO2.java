@@ -71,9 +71,9 @@ public class PostDAO2 {
 					pstmt.setInt(1, deleteCommentList.get(i).getCommentsNo());
 					System.out.println(deleteCommentList.get(i).getCommentsNo());
 				}
-				
-				
+
 				result = pstmt.executeUpdate();
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
@@ -90,7 +90,7 @@ public class PostDAO2 {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = prop.getProperty("updateComment");
-		
+		System.out.println("dao : " + updateComment.getCommentsNo());
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, updateComment.getCommentsContents());
