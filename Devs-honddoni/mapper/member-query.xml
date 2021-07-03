@@ -16,7 +16,7 @@
 	   WHERE MEMBER_ID = ?
 	</entry>
 	
-	<entry key="updatePassword">
+	<entry key="modifyPassword">
 	  UPDATE /*com.greedy.member.model.dao.MemberDAO#updateMemberPwd()*/
 	         TBL_MEMBER A
 	     SET A.MEMBER_PASSWORD = ?

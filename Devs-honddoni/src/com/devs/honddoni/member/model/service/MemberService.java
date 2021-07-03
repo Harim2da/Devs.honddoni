@@ -66,7 +66,7 @@ public class MemberService {
 		
 		Connection con = getConnection();
 		
-		int result = memberDAO.updateMemberPwd(con, changePwd);
+		int result = memberDAO.modifyPassword(con, changePwd);
 		
 		close(con);
 		

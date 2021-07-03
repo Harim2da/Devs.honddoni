@@ -15,12 +15,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
-
-import oracle.net.aso.j;
 
 public class MyPage {
 	
@@ -151,11 +149,22 @@ public class MyPage {
 						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
-//						FrameManager.changePanel(changePwdPanel, downsidePanel);
+//						JFrame mm = new JFrame();
+//						JPanel jp = new JPanel();
+//						mm.setVisible(true); 
+//						mm.setBounds(130,400,458,271);
+//						JLabel jl = new JLabel();
+//						jl.setSize(458,271);
+//						ImageIcon popup = new ImageIcon("image/member/myPage/test.png");
+//						jl.setIcon(popup);
+//						mm.add(jp);
+//						mm.add(jl);
+					  PopupFrame.popup("image/member/myPage/test.png");
 					}
 				});
 				changePwdPanel.add(cpB1);
 				
+		
 				/* 변경 버튼 */
 				MyPage.btnRemove(cpB2);
 				cpB2.setVisible(true);
@@ -179,8 +188,8 @@ public class MyPage {
 							   changePwdDTO.setMemberOldPassword(password);
 							   boolean checkP = memberController.pwdCheck(changePwdDTO);		 //입력값 일치 확인
 							   
+							   /* 새로 입력한 비밀번호와 비밀번호 재확인이 일치한지 확인*/
 							   if(checkP) {
-								   /* 새로 입력한 비밀번호와 비밀번호 재확인이 일치한지 확인*/
 								   String newPassword = "";
 								   char[] newPass = cpPF2.getPassword();
 								   for(int i = 0; i < newPass.length; i++) {
@@ -193,13 +202,14 @@ public class MyPage {
 									   newPasswordReCheck += newPassRc[i];
 								   }         
 								   changePwdDTO.setMemberNewPassword(newPassword);
-								   System.out.println(newPassword);
 								   changePwdDTO.setMemberNewPasswordRecheck(newPasswordReCheck);
-								   System.out.println(newPasswordReCheck);
 								   
 								   memberController.newPwdEqualCheck(changePwdDTO);
 								   
-							   } 
+							   } else {
+								   System.out.println("여기까지?");
+								   
+							   }
 							   
 							   
 						}
@@ -246,7 +256,6 @@ public class MyPage {
 						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
-						new MyPage();
 					}
 				});
 				changeMemberinfoPanel.add(cpB1);
@@ -387,9 +396,11 @@ public class MyPage {
 				resignMemberPanel.setLayout(null);
 				resignMemberPanel.setBounds(0, 100, 500, 770);
 				resignMemberPanel.setVisible(true);
-				resignMemberPanel.setBackground(Color.white);
+				resignMemberPanel.setBackground(Color.red);
 				downsidePanel.setVisible(false);
 				frame.add(resignMemberPanel);
+				
+				
 				
 				/* 비밀번호 입력창 */
 				rmPF1.setBorder(null);
@@ -397,21 +408,13 @@ public class MyPage {
 				rmPF1.setBounds(195, 300, 270, 45);
 				resignMemberPanel.add(rmPF1);
 				
-				/* 회원탈퇴 비밀번호 입력창 라벨 */
-				rmL1.setBounds(0, 0, 500, 770);
-				rmL1.setVisible(true);
-				rmL1.setIcon(new ImageIcon("image/member/deleteMember/delete.png"));
-				resignMemberPanel.add(rmL1);
-				
-				
-				resignMemberPanel.revalidate();
-				resignMemberPanel.repaint();
 				
 				/* 취소 버튼 */
 				btnRemove(rmB1);
 				rmB1.setVisible(true);
 				rmB1.setBounds(58, 595, 178, 63);
 				rmB1.setIcon(new ImageIcon("image/member/deleteMember/cancleButton.png"));
+				resignMemberPanel.add(rmB1);
 				rmB1.addActionListener(new ActionListener() {
 					
 					@Override
@@ -419,15 +422,15 @@ public class MyPage {
 						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
-						new MyPage();
+						
 					}
 				});
-				resignMemberPanel.add(rmB1);
 				
 				/* 탈퇴 버튼 */
 				btnRemove(rmB2);
 				rmB2.setVisible(true);
 				rmB2.setBounds(264, 595, 178, 63);
+				rmB2.setBackground(Color.black);
 				rmB2.setIcon(new ImageIcon("image/member/deleteMember/resign.png"));
 				resignMemberPanel.add(rmB2); 
 				rmB2.addActionListener(new ActionListener() {
@@ -435,10 +438,31 @@ public class MyPage {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("탈퇴 버튼 클릭");
-
+						/* 입력받은 비밀번호가 사용자의 비밀번호와 일치하는지 체크 (비밀번호 변경 재활용)*/
+						if(e.getSource() == rmB2) {
+							memberController = new MemberController();
+							 	String password = "";
+							   char[] pass = rmPF1.getPassword();
+							   for(int i = 0; i < pass.length; i++) {
+							      password += pass[i];
+							   }         
+							   changePwdDTO = new ChangePwdDTO();
+							   changePwdDTO.setMemberOldPassword(password);
+							   boolean checkP = memberController.pwdCheck(changePwdDTO);
+							   System.out.println(checkP);
+							   
+						}
 						
 					}
 				}); 
+				/* 회원탈퇴 비밀번호 입력창 라벨 */
+				rmL1.setBounds(0, 0, 500, 770);
+				rmL1.setVisible(true);
+				rmL1.setIcon(new ImageIcon("image/member/deleteMember/delete.png"));
+				resignMemberPanel.add(rmL1);
+				
+				resignMemberPanel.revalidate();
+				resignMemberPanel.repaint();
 				
 			}
 		});
@@ -623,6 +647,8 @@ public class MyPage {
 		
 		
 		
+		
 	}
+	
 	
 }
