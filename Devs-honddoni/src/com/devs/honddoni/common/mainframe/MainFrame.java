@@ -26,6 +26,7 @@ public class MainFrame extends JFrame{
 	private JButton noticeBtn = new JButton();
 	
 	public MainFrame() {
+		
 		this.setBounds(100, 100, 516, 909);
 		this.setLayout(null);
 		this.setTitle("혼또니(혼자 또 여행왔니?)");
@@ -38,15 +39,18 @@ public class MainFrame extends JFrame{
 		noticeBtnClick();
 		
 		
-//		FrameManager.initPanel(this, firstView);
-		new FirstView(this);
-		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		//시작화면으로 가기 전에 상단패널을 멈춰준다.
 		topPannelBtnStop();		
 		
+//		firstView = new FirstView(this);
+//		this.add(firstView);
+		
+//		this.setVisible(true);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//프레임이 자꾸 두개가 생겨서 이닛패널로 함 써보자
+		firstView = new FirstView(this);
+		FrameManager.initPanel(this, firstView);
 	}
 	
 	
@@ -132,6 +136,7 @@ public class MainFrame extends JFrame{
 		});
 		backgroundImage.add(interestingBtn);	
 	}
+	
 	public void noticeBtnClick() {
 		/* 공지사항 버튼 생성 */
 		noticeBtn.setBounds(426,23,56,56);

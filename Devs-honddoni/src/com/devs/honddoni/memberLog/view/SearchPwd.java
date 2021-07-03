@@ -1,18 +1,122 @@
 package com.devs.honddoni.memberLog.view;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.controller.MemberController;
 
 public class SearchPwd extends JPanel{
 	
-	MainFrame frame = new MainFrame();
+//	MainFrame frame; 나중엔 여기로 이동
+	TestFrame frame; //임시	
 	
-	private MemberController memberController;
+	private MemberController memberController = new MemberController();
+	private MemberLogView memberLogView;
 	
-	public SearchPwd() {}
+	private JPanel firstPanel;
 	
+	public SearchPwd(TestFrame testFrame) {	
 	
+		this.frame = testFrame;
+		this.firstPanel = this;
+						
+		/* 제일 기본 패널 */
+		firstPanel = new JPanel();
+		firstPanel.setBounds(0, 0, 500, 870);
+		firstPanel.setLayout(null);
+		firstPanel.setBackground(Color.YELLOW);
+		
+		
+		/* 혼또니 로고버튼(오른쪽 상단) */
+		JButton honddoniBtn = new JButton("");
+		honddoniBtn.setBounds(303, 29, 173, 71);
+		honddoniBtn.setIcon(new ImageIcon("image/common/honddoniLogo.png"));
+		honddoniBtn.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				/* 로고버튼 누를 시, 로그인 창으로 이동 */			
+				if(e.getSource() == honddoniBtn) {
+					System.out.println("로그인창으로 이동");
+										
+//					FrameManager.changePanel(mainframe, firstPanel, newPanel);
+				}
+				
+			}
+		});
+		
+		/* 이름과 핸드폰번호 적을 공간 라벨 */
+		JLabel searchPwdLb = new JLabel();
+		searchPwdLb.setBounds(35, 145, 431, 641);
+		searchPwdLb.setBackground(null);
+		searchPwdLb.setIcon(new ImageIcon("image/memberLog/findPassword/findpassword_1.png"));
+		
+		//이름입력과 휴대폰번호입력 텍필
+		JTextField nameTf = new JTextField();
+		nameTf.setBounds(214, 368, 180, 26);	
+		JTextField idTf = new JTextField();
+		idTf.setBounds(214, 456, 180, 26);
+		JTextField phoneTf = new JTextField();		
+		phoneTf.setBounds(214, 543, 180, 26);
+		
+		
+		JButton agreeBtn = new JButton();
+		agreeBtn.setBounds(123, 644, 111, 41);
+		agreeBtn.setIcon(new ImageIcon("image/memberLog/findPassword/findpassword_2_accept_btn.png"));
+		agreeBtn.setContentAreaFilled(false);
+		agreeBtn.setBorderPainted(false);
+		agreeBtn.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				//비밀번호 조회기능
+				System.out.println("비밀번호 조회기능으로~");
+				
+//				FrameManager.changePanel(frame, firstPanel, MemberLogView);				
+				
+			}
+		});
+		
+		JButton cancelBtn = new JButton();
+		cancelBtn.setBounds(266, 643, 111, 41);
+		cancelBtn.setIcon(new ImageIcon("image/memberLog/findPassword/findpassword_3_cancel_btn.png"));
+		cancelBtn.setContentAreaFilled(false);
+		cancelBtn.setBorderPainted(false);
+		cancelBtn.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				
+				//로그인창으로 나감
+				System.out.println("로그인 창으로~");
+				
+//				FrameManager.changePanel(frame, firstPanel, MemberLogView);
+				
+			}
+		});
+		
+		
+		/* 컴포넌트 붙이기 */
+		firstPanel.add(honddoniBtn);
+		firstPanel.add(searchPwdLb);
+		
+		firstPanel.add(nameTf);
+		firstPanel.add(idTf);		
+		firstPanel.add(phoneTf);
+		firstPanel.add(agreeBtn);
+		firstPanel.add(cancelBtn);		
+				
+		firstPanel.setVisible(true);
+		
+//		frame.add(firstPanel);		
+		
+	}
 
 }

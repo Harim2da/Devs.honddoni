@@ -21,18 +21,17 @@ import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 public class MemberLogView extends JPanel {
 	
 	MainFrame frame;
-	FrameManager fm;
 	
 	SearchId searchId; //newPanel로 사용할 것
 	SearchPwd searchPwd; //newPanel로 사용할 것
 	LoginFail loginFail; //newPanel로 사용할 것
-	//메인화면도 필드로 넣어줘야 함
+	RegistMember registMember; //newPanel로 사용할 것
+	//newPanel로 쓸 메인화면도 필드로 넣어줘야 함
 	
 	private LoginController loginController = new LoginController(); //MVC에서 다음으로 넘길 컨트롤러
 	private LoginDataDTO loginDataDTO; //컨트롤러에 넘겨줄 DTO
-	private RegistMember registMember;
 	
-	private JPanel panel = new JPanel();	
+	private JPanel panel;	
 	private JTextField idTf;
 	private JPasswordField pwPf;
 	private String password = "";
@@ -41,6 +40,7 @@ public class MemberLogView extends JPanel {
 	public MemberLogView(MainFrame Mainframe) {
 
 		this.frame = Mainframe;
+		this.panel = this;
 
 		//로그인창 전체패널 생성		
 		panel.setBounds(0, 0, 500, 870);
@@ -168,11 +168,10 @@ public class MemberLogView extends JPanel {
 				registMember = new RegistMember(frame);
 				
 				// 창 바꾸기...?
-				//FrameManager.changePanel(frame, bottomPanel, 비밀번호찾기패널)..?
+				FrameManager.changePanel(frame, panel, registMember);
 
 			}
 		});
-
 
 
 		//한 패널에 컴포넌트올리기		
@@ -185,17 +184,18 @@ public class MemberLogView extends JPanel {
 		panel.add(registBtn);
 		panel.add(idTf); //이래야 되더라... idPwdArea에 올리면 안 보임
 		panel.add(pwPf);
+		
+		panel.setVisible(true);
 
 		//확인용 프레임에 올리기
-		frame.add(panel);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.add(panel);
+//		frame.setVisible(true);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		FrameManager.refresh();
-
 	}
 
 	public void makeDTO() {
+		
 		//로그인정보를 넘길 DTO를 생성함
 		loginDataDTO = new LoginDataDTO();
 		

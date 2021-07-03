@@ -15,8 +15,8 @@ import com.devs.honddoni.member.controller.MemberController;
 
 public class SearchId extends JPanel{
 	
-	MemberLogView memberLogView;
 	private MemberController memberController = new MemberController();
+	private MemberLogView memberLogView;
 	
 //	MainFrame frame; 나중엔 여기로 이동
 	TestFrame frame; //임시
@@ -26,6 +26,7 @@ public class SearchId extends JPanel{
 	public SearchId(TestFrame testFrame) {
 		
 		this.frame = testFrame;
+		this.firstPanel = this;
 						
 		/* 제일 기본 패널 */
 		firstPanel = new JPanel();
@@ -34,7 +35,7 @@ public class SearchId extends JPanel{
 		firstPanel.setBackground(Color.YELLOW);
 		
 		
-		/* 혼또니 로고버튼 */
+		/* 혼또니 로고버튼(오른쪽 상단) */
 		JButton honddoniBtn = new JButton("");
 		honddoniBtn.setBounds(303, 29, 173, 71);
 		honddoniBtn.setIcon(new ImageIcon("image/common/honddoniLogo.png"));
@@ -60,9 +61,9 @@ public class SearchId extends JPanel{
 		
 		//이름입력과 휴대폰번호입력 텍필
 		JTextField nameTf = new JTextField();
-		nameTf.setBounds(267, 453, 105, 26);		
+		nameTf.setBounds(267, 453, 150, 26);		
 		JTextField phoneTf = new JTextField();		
-		phoneTf.setBounds(267, 453, 105, 26);
+		phoneTf.setBounds(267, 453, 150, 26);
 		
 		JButton agreeBtn = new JButton();
 		agreeBtn.setBounds(123, 773, 111, 41);
@@ -86,8 +87,7 @@ public class SearchId extends JPanel{
 		cancelBtn.setBorderPainted(false);
 		cancelBtn.addActionListener(new ActionListener() {			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {				
 				
 				//로그인창으로 나감
 				System.out.println("로그인 창으로~");
@@ -105,9 +105,10 @@ public class SearchId extends JPanel{
 		firstPanel.add(phoneTf);
 		firstPanel.add(agreeBtn);
 		firstPanel.add(cancelBtn);		
+				
+		firstPanel.setVisible(true);
 		
-		
-		frame.add(firstPanel);		
+//		frame.add(firstPanel);		
 		
 	}
 	

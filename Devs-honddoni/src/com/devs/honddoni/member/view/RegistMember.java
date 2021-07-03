@@ -23,15 +23,16 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
-public class RegistMember extends JFrame {
+public class RegistMember extends JPanel {
 	
-	private MemberController memberController;
+	private MemberController memberController = new MemberController();;
 	private MemberRegistDTO memberRegistDTO;
 
-	private JFrame registFrame; //나중엔 지워야 함
+	MainFrame frame;
 	private JPanel firstPanel;
 	
 	private String gender = "여";
@@ -40,40 +41,29 @@ public class RegistMember extends JFrame {
 	private JLabel selectChartLb; //성향선택 이미지 라벨
 	private JComboBox characterSelectCombo; //성향선택 콤보박스
 	
-	/* 확인용 메소드 */
-	public static void main(String[] args) {
-		new RegistMember(); 
-	}
+//	/* 확인용 메소드 */
+//	public static void main(String[] args) {
+//		new RegistMember(); 
+//	}
 	
-	public RegistMember() {
+	public RegistMember(MainFrame mainframe) {
+		
+		this.frame = mainframe;
 		
 		/* 프레임 설정 */
-		registFrame = this;		//new Frame(); 을 하면, 기존에 만들어둔 프레임을 싹 무시하고 새 프레임을 올리는게 된다.
-		registFrame.setForeground(Color.red);
-		registFrame.setBounds(100, 100, 516, 909);
+//		registFrame = this;		//new Frame(); 을 하면, 기존에 만들어둔 프레임을 싹 무시하고 새 프레임을 올리는게 된다.
+//		registFrame.setForeground(Color.red);
+//		registFrame.setBounds(100, 100, 516, 909);
 		
-		setPanel();
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.setVisible(true);
 		
-		registFrame.add(firstPanel);			
-		
-
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
-
-		
-		this.repaint();
-		this.revalidate();		
-	}
-	
-	public void setPanel() {
-		
-		memberController = new MemberController();
-		
+				
+				
 		/* 제일 기본 패널 */
 		firstPanel = new JPanel();
 		firstPanel.setBounds(0, 0, 500, 870);
 		firstPanel.setLayout(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		/* 로고 들어갈 상단부 패널 */
 		JPanel upsidePanel = new JPanel();
@@ -166,10 +156,11 @@ public class RegistMember extends JFrame {
 		emailTf.setBounds(80, 514, 348, 26);
 		
 		/* 라벨위에 라벨 & 버튼을 각각 올릴 것 */
-		String character = "외향"; //일단 이렇게 설정
 		JLabel characterSelectLb = new JLabel();
 		characterSelectLb.setBounds(92, 572, 316, 41);
 		characterSelectLb.setIcon(new ImageIcon("image/member/regist/regist_7_character_select.png"));
+		
+		String character = "외향"; //일단 이렇게 설정
 		
 		JButton characterSelectBtn = new JButton();
 		characterSelectBtn.setBounds(360, 580, 20, 20);
@@ -210,7 +201,7 @@ public class RegistMember extends JFrame {
 			}
 		});
 		
-		
+		/* '혼또니 로그인' 버튼 */
 		JButton agreeBtn = new JButton();
 		agreeBtn.setBounds(123, 773, 111, 41);
 		agreeBtn.setIcon(new ImageIcon("image/member/regist/regist_9_agree_btn.png"));
@@ -272,9 +263,7 @@ public class RegistMember extends JFrame {
 		memberDataLb.add(idTf);
 		memberDataLb.add(passwordPf);
 		memberDataLb.add(passwordRePf);
-
 		memberDataLb.add(birthdayTf);
-
 		memberDataLb.add(genderFRb);
 		memberDataLb.add(genderMRb);
 		memberDataLb.add(nicknameTf);
@@ -294,8 +283,11 @@ public class RegistMember extends JFrame {
 		firstPanel.add(upsidePanel);
 		firstPanel.add(downsidePanel);	
 		
-		this.repaint();
-		this.revalidate();	
+//		frame.add(firstPanel);	
+		
+//		this.repaint();
+//		this.revalidate();	
+		
 	}	
 	
 	public void popupPanel() {
@@ -303,8 +295,7 @@ public class RegistMember extends JFrame {
 		//팝업시 반투명 패널생성
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
-		registFrame.add(pann);
-		
+		frame.add(pann);		
 		
 	
 	}
@@ -320,7 +311,7 @@ public class RegistMember extends JFrame {
 	public void selectCharacterDialog() {
 		
 		//다이얼로그 생성
-		Dialog selectChaDl = new Dialog(registFrame, "본인의 성향을 입력해주세요"); //나중에는 메인프레임인 mf로 바꿔야
+		Dialog selectChaDl = new Dialog(frame, "본인의 성향을 입력해주세요"); 
 		selectChaDl.setBounds(30, 320, 443, 263);
 		
 		

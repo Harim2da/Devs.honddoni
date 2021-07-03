@@ -12,16 +12,16 @@ private static JFrame frame = new MainFrame();
 		return FrameManager.frame;
 	}
 	
-//	public static void initPanel(JFrame frame, JPanel panel) {
-//		if(FrameManager.frame == null) {
-//			FrameManager.frame = frame;
-//		}
-//		
-//		FrameManager.frame.add(panel);
-//		
-//		FrameManager.frame.setVisible(true);
-//		FrameManager.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	}
+	public static void initPanel(JFrame frame, JPanel panel) {
+		if(FrameManager.frame == null) {
+			FrameManager.frame = frame;
+		}
+		
+		FrameManager.frame.add(panel);
+		
+		FrameManager.frame.setVisible(true);
+		FrameManager.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 	
 	public static void changePanel(MainFrame main, JPanel oldPanel, JPanel newPanel) {
 		frame.remove(oldPanel);
