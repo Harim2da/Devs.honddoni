@@ -45,8 +45,9 @@ public class PostHonddoni extends JFrame{
 
 
 	/*혼또니 게시글 작성 화면 불러오기*/
-	public PostHonddoni(MainFrame frame) {
-		this.mainFrame = frame;
+	public PostHonddoni() {
+		this.setBounds(100, 100, 516, 909);
+		this.setLayout(null);
 		topPanel();
 		selectPost();
 		createPostTitle();
@@ -56,7 +57,9 @@ public class PostHonddoni extends JFrame{
 		postButton();
 		postMeetingTime();
 		addPostComponent();
-
+		
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/*상단 패널 생성*/
@@ -89,15 +92,15 @@ public class PostHonddoni extends JFrame{
 
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
-		mainFrame.add(pann);
+		this.add(pann);
 
 	}
 
 	/* 게시글 작성 화면 내 쌓아올리기  */
 	public void addPostComponent() {
 
-		mainFrame.add(topPanel);
-		mainFrame.add(bottomPanel);
+		this.add(topPanel);
+		this.add(bottomPanel);
 		bottomPanel.add(postTypebtn);
 		bottomPanel.add(postTitle);
 		bottomPanel.add(localSelectbtn);
@@ -152,7 +155,7 @@ public class PostHonddoni extends JFrame{
 
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
-		mainFrame.add(pann);
+		this.add(pann);
 
 
 
