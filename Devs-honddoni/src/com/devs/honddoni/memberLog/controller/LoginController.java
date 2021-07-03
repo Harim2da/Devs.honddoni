@@ -31,9 +31,28 @@ public class LoginController {
 				result = 2;
 			}
 			
-			//로그인 성공시, 로그인 아이디를... 싱글톤으로 쓰기...?
-			GetLoginMemberId getLoginMemberId = GetLoginMemberId.getInstance();
+			//로그인한 이 유저의 Id를 저장하기
 			String loginMemberId = loginDataDTO.getMemberId();
+			
+			//DB에서 로그인 유저Id를 회원번호로 조회해오기(MVC)
+//			int loginMemberNo = memberLogService.getLoginMemberNo(loginMemberId);
+			int loginMemberNo = 1;
+			
+			
+			//로그인 성공시, 로그인유저No를 ... 싱글톤으로 작성
+			GetLoginMemberId getLoginMemberId = GetLoginMemberId.getInstance();
+//			GetLoginMemberId getLoginMemberId = new GetLoginMemberId();
+			getLoginMemberId.setLoginMemberNo(loginMemberNo);
+			getLoginMemberId.setLoginMemberId(loginMemberId);
+			
+			
+			//가져다 쓰실 때			
+//			GetLoginMemberId getLoginMemberId = GetLoginMemberId.getInstance();
+			int memberNo = getLoginMemberId.getLoginMemberNo();
+			String memberId = getLoginMemberId.getLoginMemberId();
+			//확인용
+			System.out.println(memberNo);
+			System.out.println(memberId);
 			
 			
 			
