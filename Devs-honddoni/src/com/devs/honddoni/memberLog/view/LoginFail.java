@@ -6,11 +6,12 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class LoginFail extends JPanel {
 	
-	MainFrame frame = new MainFrame();
+	MainFrame frame;
 //	FrameManager fm = new FrameManager();
 	
-	public LoginFail() {
+	public LoginFail(MainFrame mainframe) {
 		
+		this.frame = mainframe;
 	}
 	
 	

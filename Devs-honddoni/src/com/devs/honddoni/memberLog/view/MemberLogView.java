@@ -20,11 +20,11 @@ import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 
 public class MemberLogView extends JPanel {
 	
-	MainFrame frame = new MainFrame();
-	FrameManager fm = new FrameManager();
+	MainFrame frame;
+	FrameManager fm;
 	
-	SearchId searchId = new SearchId(); //newPanel로 사용할 것
-	SearchPwd searchPwd = new SearchPwd(); //newPanel로 사용할 것
+	SearchId searchId; //newPanel로 사용할 것
+	SearchPwd searchPwd; //newPanel로 사용할 것
 	LoginSuccess loginSuccess = new LoginSuccess(); //newPanel로 사용할 것
 	LoginFail loginFail = new LoginFail(); //newPanel로 사용할 것
 	
@@ -37,17 +37,10 @@ public class MemberLogView extends JPanel {
 	private JPasswordField pwPf;
 	private String password = "";
 
-//	/* 확인용 메소드 */
-//	public static void main(String[] args) {
-//		new MemberLogView(); 
-//	}
 
-	public MemberLogView() {
+	public MemberLogView(MainFrame Mainframe) {
 
-//		mf = this;
-//		mf.setForeground(Color.WHITE);
-//		mf.setBounds(100, 100, 516, 870);
-//		//여기까지는 나중에 지울 거
+		this.frame = Mainframe;
 
 		//로그인창 전체패널 생성		
 		bottomPanel.setBounds(0, 0, 500, 870);
@@ -103,18 +96,22 @@ public class MemberLogView extends JPanel {
 				if(e.getSource() == loginBtn) {
 					
 					makeDTO(); //DTO생성					
-//					System.out.println(loginDataDTO);  //DTO가 잘 만들어졌는지 확인
-//					System.out.println(loginController); //컨트롤러가 null인지 확인
+					System.out.println(loginDataDTO);  //DTO가 잘 만들어졌는지 확인
+					System.out.println(loginController); //컨트롤러가 null인지 확인
 
 					//한번 실행할 때 마다 텍필 칸의 내용을 지워야줘야 함...
 					
 					int result = loginController.userLogin(loginDataDTO); //로그인 메소드 실행 
 					
+					//바꿀 다음패널들을 초기화
+					loginFail = new LoginFail(frame);
+					loginSuccess = new LoginSuccess(frame);
+					
 					//로그인실패 : 0, 로그인성공(일반사용자 : 1, 관리자 : 2) 반환함
 					if(result == 0) {
-						FrameManager.changePanel(bottomPanel, loginFail);
+						FrameManager.changePanel(frame, bottomPanel, loginFail);
 					} else if(result == 1) {
-						FrameManager.changePanel(bottomPanel, loginSuccess);
+						FrameManager.changePanel(frame, bottomPanel, loginSuccess);
 					} else {
 						//관리자 쪽으로 패널교체
 //						FrameManager.changePanel(bottomPanel, newPanel);
@@ -129,13 +126,16 @@ public class MemberLogView extends JPanel {
 		searchIdBtn.setBounds(58, 725, 111, 41);
 		searchIdBtn.setBorderPainted(false);
 		searchIdBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_id_btn.png"));
-		searchIdBtn.addActionListener(new ActionListener() {			
+		searchIdBtn.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("아이디찾기 패널로");
+				
+				//아이디찾기 패널로				
+				searchId = new SearchId(frame);	
 				
 				// 아이디 찾기쪽으로 간다. 창 바꾸기...?
-				FrameManager.changePanel(bottomPanel, searchId);
+				FrameManager.changePanel(frame, bottomPanel, searchId);
 
 			}
 		});
@@ -145,14 +145,16 @@ public class MemberLogView extends JPanel {
 		searchPasswordBtn.setBounds(196, 725, 111, 41);
 		searchPasswordBtn.setBorderPainted(false);
 		searchPasswordBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_password_btn.png"));
-		searchPasswordBtn.addActionListener(new ActionListener() {			
+		searchPasswordBtn.addActionListener(new ActionListener() {	
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				//비밀번호 찾기쪽으로 간다
 				System.out.println("비밀번호 찾기 쪽으로");
 				
 				// 창 바꾸기...?
-				FrameManager.changePanel(bottomPanel, searchPwd);
+				FrameManager.changePanel(frame, bottomPanel, searchPwd);
 
 			}
 		});
@@ -162,19 +164,19 @@ public class MemberLogView extends JPanel {
 		registBtn.setBounds(334, 725, 111, 41);
 		registBtn.setBorderPainted(false);
 		registBtn.setIcon(new ImageIcon("image/memberLog/login/login_6_regist_btn.png"));
-		registBtn.addActionListener(new ActionListener() {			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				System.out.println("회원가입쪽으로");
-				//				registMember = new RegistMember(); 체인지 패널로 하려면 이렇게 해야할듯
-				new RegistMember();
-
-				// 창 바꾸기...?
-				//				mf.changePanel(bottomPanel, 비밀번호찾기패널)..?
-
-			}
-		});
+//		registBtn.addActionListener(new ActionListener() {			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//
+//				System.out.println("회원가입쪽으로");
+//				//				registMember = new RegistMember(); 체인지 패널로 하려면 이렇게 해야할듯
+//				new RegistMember();
+//
+//				// 창 바꾸기...?
+//				//				mf.changePanel(bottomPanel, 비밀번호찾기패널)..?
+//
+//			}
+//		});
 
 
 

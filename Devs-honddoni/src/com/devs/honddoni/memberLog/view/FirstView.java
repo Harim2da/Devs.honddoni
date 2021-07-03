@@ -14,19 +14,27 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class FirstView extends JPanel{
 	
-	MemberLogView memberLogView = new MemberLogView();
+	private MemberLogView memberLogView;
 	
-	private JPanel firstViewPanel;
+	private FirstView firstView; //4조참조
+	private MainFrame frame; //4조참조
+	
+//	private JPanel firstViewPanel;
 	private JButton btnNewButton;
 	private JLabel honttoniLb;
 	
-	public FirstView(MainFrame mainFrame) {		
+	public FirstView(MainFrame mainFrame) {	
+		
+		this.frame = mainFrame; //4조참조
+		this.firstView = this; //4조참조
+		
+//		MemberLogView memberLogView = new MemberLogView(frame);
 		
 		//시작화면에 올릴 전체크기패널 
 //		firstViewPanel = new JPanel();
-		firstViewPanel.setBounds(0, 0, 500, 870);
-		firstViewPanel.setLayout(null);
-		firstViewPanel.setBackground(Color.red);
+		firstView.setBounds(0, 0, 500, 870);
+		firstView.setLayout(null);
+		firstView.setBackground(Color.red);
 		
 		//로고버튼
 		btnNewButton = new JButton("");
@@ -38,8 +46,10 @@ public class FirstView extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				memberLogView = new MemberLogView(frame);
+				
 				//로그인창으로 바꾸기...?
-				FrameManager.changePanel(mainFrame, firstViewPanel, memberLogView);
+//				FrameManager.changePanel(mainFrame, firstViewPanel, memberLogView);
 				
 				//혹시 몰라서 프레임 리프레쉬
 //				FrameManager.refresh();
@@ -54,10 +64,12 @@ public class FirstView extends JPanel{
 		
 		
 		//전체패널에 컴포넌트 2개 올리기
-		firstViewPanel.add(btnNewButton);
-		firstViewPanel.add(honttoniLb);
+		firstView.add(btnNewButton);
+		firstView.add(honttoniLb);
 
-		firstViewPanel.setVisible(true);
+		firstView.setVisible(true);
+		
+		frame.add(firstView);
 		
 	}
 	
