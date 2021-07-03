@@ -2,6 +2,7 @@ package com.devs.honddoni.member.controller;
 
 import java.util.List;
 
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.member.model.service.MemberService;
@@ -41,10 +42,11 @@ public class MemberController {
 		int result = memberService.pwdCheck(changePwd);
 		
 		if(result > 0) {
-			System.out.println("일치");
+			System.out.println("비밀번호 일치");
 		} else {
-			System.out.println("불일치");
+			System.out.println("비밀번호 불일치");
 		}
+		
 		
 		return result > 0 ? true : false;
 	}
@@ -52,12 +54,15 @@ public class MemberController {
 	public void newPwdEqualCheck(ChangePwdDTO changePwd) {
 		
 		String newPwd = changePwd.getMemberNewPassword();	//새 비번
-		String newPwdRe = changePwd.getMemberNewPassword();	//새 비번 확인
+		String newPwdRe = changePwd.getMemberNewPasswordRecheck();	//새 비번 확인
 		
 		if(newPwd.equals(newPwdRe)){
 			System.out.println("새비번 일치");
 			modifyPassword(changePwd);
-		}		
+		} else {
+			System.out.println("새비번 불일치");
+			PopupFrame.popup("image/popup/FailMessage.png");
+		}
 	}
 	
 	public void modifyPassword(ChangePwdDTO changePwd) {
@@ -66,8 +71,10 @@ public class MemberController {
 		
 		if(result > 0) {
 			System.out.println("비번변경 성공");
+			PopupFrame.popup("image/popup/modifySuccess.png");
 		} else {
 			System.out.println("비번변경 실패");
+			PopupFrame.popup("image/popup/FailMessage.png");
 		}
 	}
 }

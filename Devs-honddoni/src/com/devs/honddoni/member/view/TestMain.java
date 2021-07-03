@@ -6,10 +6,11 @@ public class TestMain {
 
 	public static void main(String[] args) {
 
-		new MyPage();
+//		new MyPage();
 		
 //		new FrameManager();
 		
+		new FrameTestYoon();
 	}
 
 }

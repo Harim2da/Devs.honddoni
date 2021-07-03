@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,15 +17,28 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
-public class MyPage {
+public class MyPage extends JPanel {
 	
-//	MainFrame frame = new MainFrame();
-	JFrame frame = new JFrame();
+	private MyPage myPage;
+//	private MainFrame frame;
+//	JFrame frame = new JFrame();
+	private FrameTestYoon frame;
+//---------------------------------------------------------------------------------- 내일 삭제
+	
+//	public void frameTest() {
+//		frame.setBounds(100, 100, 516, 909);
+//		frame.setLayout(null);
+//		frame.setVisible(true);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	}
+	
+//----------------------------------------------------------------------------------
 	
 	private MemberController memberController;
 	private MemberRegistDTO memberRegistDTO;
@@ -64,27 +79,25 @@ public class MyPage {
 		return jbtn;
 	}
 
-	public MyPage() {
-//---------------------------------------------------------------------------------- 내일 삭제
+	public MyPage(FrameTestYoon frame) {
+		this.frame = frame;
+		this.myPage = this;
+//		this.frame = frame;
 		
-		
-		frame.setBounds(100, 100, 516, 909);
-		frame.setLayout(null);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-//----------------------------------------------------------------------------------
-		
+//		frameTest();
 		
 		/* 하단 패널 */
-		JPanel downsidePanel = new JPanel();
-		downsidePanel.setBounds(0, 100, 500, 770);
-		downsidePanel.setBackground(Color.white);
-		downsidePanel.setLayout(null);
-//		downsidePanel.setOpaque(false);	//배경 투명
+//		JPanel downsidePanel = new JPanel();
+//		downsidePanel.setBounds(0, 100, 500, 770);
+//		downsidePanel.setBackground(Color.white);
+//		downsidePanel.setLayout(null);
+//		
+//		frame.add(downsidePanel);
 		
-		frame.add(downsidePanel);
+		this.setBounds(0, 100, 500, 770);
+		this.setBackground(Color.white);
+		this.setLayout(null);
+		frame.add(this);
 		
 		
 /*==================================  비밀번호 변경 버튼   ================================================== */		
@@ -95,7 +108,8 @@ public class MyPage {
 		changePwdButton.setBorderPainted(false);
 		changePwdButton.setIcon(new ImageIcon("image/member/myPage/pwdchange.png"));
 		changePwdButton.setBounds(92, 53, 137, 137);
-		downsidePanel.add(changePwdButton);
+//		downsidePanel.add(changePwdButton);
+		this.add(changePwdButton);
 		changePwdButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -106,7 +120,8 @@ public class MyPage {
 				changePwdPanel.setBounds(0, 100, 500, 770);
 				changePwdPanel.setVisible(true);
 				changePwdPanel.setBackground(Color.white);
-				downsidePanel.setVisible(false);
+//				downsidePanel.setVisible(false);
+				myPage.setVisible(false);
 				frame.add(changePwdPanel);
 				
 				/* 기존 비밀번호 입력창 */
@@ -147,19 +162,13 @@ public class MyPage {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("취소 버튼 클릭");
+//						frame.remove(changePwdPanel);
+//						frame.add(new MyPage(frame));
+////						frame.add(downsidePanel);
+//						frame.repaint();
+//						frame.revalidate();
+						FrameManager.changePanel(frame, changePwdPanel, new MyPage(frame));
 						
-						/* 마이페이지로 돌아가기 */
-//						JFrame mm = new JFrame();
-//						JPanel jp = new JPanel();
-//						mm.setVisible(true); 
-//						mm.setBounds(130,400,458,271);
-//						JLabel jl = new JLabel();
-//						jl.setSize(458,271);
-//						ImageIcon popup = new ImageIcon("image/member/myPage/test.png");
-//						jl.setIcon(popup);
-//						mm.add(jp);
-//						mm.add(jl);
-					  PopupFrame.popup("image/member/myPage/test.png");
 					}
 				});
 				changePwdPanel.add(cpB1);
@@ -207,7 +216,8 @@ public class MyPage {
 								   memberController.newPwdEqualCheck(changePwdDTO);
 								   
 							   } else {
-								   System.out.println("여기까지?");
+								   /* 입력정보 다를 시 팝업 출력 */
+								   PopupFrame.popup("image/popup/FailMessage.png");
 								   
 							   }
 							   
@@ -229,7 +239,8 @@ public class MyPage {
 		changeMemberinfo.setContentAreaFilled(false);
 		changeMemberinfo.setBorderPainted(false);
 		changeMemberinfo.setBounds(272, 53, 137, 137);
-		downsidePanel.add(changeMemberinfo);
+//		downsidePanel.add(changeMemberinfo);
+		myPage.add(changeMemberinfo);
 		changeMemberinfo.addActionListener(new ActionListener() {
 			
 			@Override 	
@@ -241,7 +252,8 @@ public class MyPage {
 				changeMemberinfoPanel.setBounds(0, 100, 500, 770);
 				changeMemberinfoPanel.setVisible(true);
 				changeMemberinfoPanel.setBackground(Color.white);
-				downsidePanel.setVisible(false);
+//				downsidePanel.setVisible(false);
+				myPage.setVisible(false);
 				frame.add(changeMemberinfoPanel);
 				
 				/* 취소 버튼 */
@@ -256,6 +268,7 @@ public class MyPage {
 						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
+						FrameManager.changePanel(frame, changeMemberinfoPanel, new MyPage(frame));
 					}
 				});
 				changeMemberinfoPanel.add(cpB1);
@@ -385,7 +398,8 @@ public class MyPage {
 		resignMemberButton.setContentAreaFilled(false);
 		resignMemberButton.setBorderPainted(false);
 		resignMemberButton.setBounds(92, 280, 137, 137);
-		downsidePanel.add(resignMemberButton);
+		myPage.add(resignMemberButton);
+//		downsidePanel.add(resignMemberButton);
 		resignMemberButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -397,7 +411,8 @@ public class MyPage {
 				resignMemberPanel.setBounds(0, 100, 500, 770);
 				resignMemberPanel.setVisible(true);
 				resignMemberPanel.setBackground(Color.red);
-				downsidePanel.setVisible(false);
+				myPage.setVisible(false);
+//				downsidePanel.setVisible(false);
 				frame.add(resignMemberPanel);
 				
 				
@@ -422,7 +437,7 @@ public class MyPage {
 						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
-						
+						FrameManager.changePanel(frame, resignMemberPanel, new MyPage(frame));
 					}
 				});
 				
@@ -451,6 +466,7 @@ public class MyPage {
 							   boolean checkP = memberController.pwdCheck(changePwdDTO);
 							   System.out.println(checkP);
 							   
+							   
 						}
 						
 					}
@@ -477,7 +493,8 @@ public class MyPage {
 		interestingPostButton.setContentAreaFilled(false);
 		interestingPostButton.setBorderPainted(false);
 		interestingPostButton.setBounds(272, 280, 137, 137);
-		downsidePanel.add(interestingPostButton);
+		myPage.add(interestingPostButton);
+//		downsidePanel.add(interestingPostButton);
 		interestingPostButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -489,7 +506,8 @@ public class MyPage {
 				interestingPostPanel.setBounds(0, 100, 500, 770);
 				interestingPostPanel.setVisible(true);
 				interestingPostPanel.setBackground(Color.white);
-				downsidePanel.setVisible(false);
+				myPage.setVisible(false);
+//				downsidePanel.setVisible(false);
 				frame.add(interestingPostPanel);  
 				
 				/* 관심을 패널에 올릴 이미지 */
@@ -525,7 +543,8 @@ public class MyPage {
 		rewardButton.setContentAreaFilled(false);
 		rewardButton.setBorderPainted(false);
 		rewardButton.setBounds(92, 501, 137, 137);
-		downsidePanel.add(rewardButton);
+		myPage.add(rewardButton);
+//		downsidePanel.add(rewardButton);
 		rewardButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -537,7 +556,8 @@ public class MyPage {
 				rewardPanel.setBounds(0, 100, 500, 770);
 				rewardPanel.setVisible(true);
 				rewardPanel.setBackground(Color.white);
-				downsidePanel.setVisible(false);
+				myPage.setVisible(false);
+//				downsidePanel.setVisible(false);
 				frame.add(rewardPanel);
 				
 				/* 업적 관리 버튼*/
@@ -563,6 +583,37 @@ public class MyPage {
 						rewardManageLabel.setBounds(0, 100, 500, 770);
 						rewardManageLabel.setIcon(new ImageIcon("image/member/reward/rewardManageLabel.png"));
 						rewardManagerPanel.add(rewardManageLabel);
+						rewardManageLabel.addMouseListener(new MouseListener() {
+							
+							@Override
+							public void mouseClicked(MouseEvent e) {
+							FrameManager.changePanel(frame, rewardManagerPanel, new MyPage(frame));
+							}
+
+							@Override
+							public void mousePressed(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void mouseReleased(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void mouseEntered(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void mouseExited(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+						});
 					}
 				});
 				
@@ -589,6 +640,37 @@ public class MyPage {
 						pointManageLabel.setBounds(0, 100, 500, 770);
 						pointManageLabel.setIcon(new ImageIcon("image/member/reward/pointManageLabel.png"));
 						pointManagePanel.add(pointManageLabel);
+						pointManageLabel.addMouseListener(new MouseListener() {
+							
+							@Override
+							public void mouseClicked(MouseEvent e) {
+							FrameManager.changePanel(frame, pointManagePanel, new MyPage(frame));
+							}
+
+							@Override
+							public void mousePressed(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void mouseReleased(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void mouseEntered(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void mouseExited(MouseEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+						});
 					}
 				});
 			}
@@ -604,7 +686,8 @@ public class MyPage {
 		writtenPostButton.setContentAreaFilled(false);
 		writtenPostButton.setBorderPainted(false);
 		writtenPostButton.setBounds(272, 501, 137, 137);
-		downsidePanel.add(writtenPostButton);
+		myPage.add(writtenPostButton);
+//		downsidePanel.add(writtenPostButton);
 		writtenPostButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -616,7 +699,8 @@ public class MyPage {
 				myPostPanel.setBounds(0, 100, 500, 770);
 				myPostPanel.setVisible(true);
 				myPostPanel.setBackground(Color.white);
-				downsidePanel.setVisible(false);
+				myPage.setVisible(false);
+//				downsidePanel.setVisible(false);
 				frame.add(myPostPanel);  
 				
 				JLabel myPostLabel = new JLabel();
@@ -635,7 +719,8 @@ public class MyPage {
 		JLabel menuNameLabel = new JLabel("");
 		menuNameLabel.setIcon(new ImageIcon("image/member/myPage/myPageName.png"));
 		menuNameLabel.setBounds(111, 10, 500, 870);
-		downsidePanel.add(menuNameLabel);
+		myPage.add(menuNameLabel);
+//		downsidePanel.add(menuNameLabel);
 		
 
 
