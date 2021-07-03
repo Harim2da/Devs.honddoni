@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.dto.PostDTO;
+
 public class SelectAllHonPost extends JFrame{
 
 	private JFrame frame = new JFrame();
@@ -19,8 +21,8 @@ public class SelectAllHonPost extends JFrame{
 	private JLabel searchLabel; // 검색창 라벨
 	private JButton aim;        // 검색 버튼
 	private JTextField searching; // 검색어 입력창
-	String localpick = "";  // 검색어 저장
 	private JLabel categoryPick; // 카테고리 선택 라벨
+	private PostDTO postDTO = new PostDTO();
 
 	
 	public SelectAllHonPost() {
@@ -30,6 +32,7 @@ public class SelectAllHonPost extends JFrame{
 		addComponents();
 		searching();
 		selectLocal();
+		
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,7 +103,10 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("강릉");
 				System.out.println("강릉");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 			}
 		});
 
@@ -116,7 +122,10 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("담양");
 				System.out.println("담양");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 			}
 		});
 
@@ -132,7 +141,10 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("대구");
 				System.out.println("대구");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 			}
 		});
 		/*지도 위 부산 버튼*/
@@ -147,7 +159,10 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("부산");
 				System.out.println("부산");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 			}
 		});
 
@@ -163,7 +178,10 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("서울");
 				System.out.println("서울");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 			}
 		});
 
@@ -179,7 +197,10 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("인천");
 				System.out.println("인천");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 			}
 		});
 
@@ -195,7 +216,10 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("순천");
 				System.out.println("순천");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 			}
 		});
 
@@ -211,7 +235,10 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("전주");
 				System.out.println("전주");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 			}
 		});
 
@@ -227,7 +254,10 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("제주");
 				System.out.println("제주");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 			}
 		});
 
@@ -243,15 +273,144 @@ public class SelectAllHonPost extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				postDTO.setLocalName("천안");
 				System.out.println("천안");
+				categoryPick();
+				bottomPanel.remove(mapLabel);
 
 			}
 		});
 	} // 지역 선택 종료
-	
+
 	
 	/* 카테고리 선택 */
-	
+	private void categoryPick() {
+		bottomPanel.repaint();
+		bottomPanel.add(searchLabel);
+		categoryPick = new JLabel();
+		categoryPick.setBackground(Color.WHITE);
+		categoryPick.setLayout(null);
+		categoryPick.setBounds(25, 125, 450, 596);      
+		bottomPanel.add(categoryPick);
+		
+		
+		JButton eatbtn = new JButton();
+		JButton walkbtn = new JButton();
+		JButton activebtn = new JButton();
+		JButton hobbybtn = new JButton();
+		JButton gamebtn = new JButton();
+		JButton studybtn = new JButton();
+		
+		/* 맛집 탐방 */
+		eatbtn.setBounds(50, 23, 137, 137);
+		eatbtn.setIcon(new ImageIcon("image/post/categoryfood.png"));
+		eatbtn.setBorderPainted(false);
+		eatbtn.setOpaque(false);
+		eatbtn.setContentAreaFilled(false);
+		categoryPick.add(eatbtn);
+		
+		eatbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postDTO.setCategoryName("맛집탐방");
+				System.out.println("맛집 탐방 선택");
+				
+			}
+		});
+		
+		/* 산책 */
+		walkbtn.setBounds(255, 23, 137, 137);
+		walkbtn.setIcon(new ImageIcon("image/post/categorysports.png"));
+		walkbtn.setBorderPainted(false);
+		walkbtn.setOpaque(false);
+		walkbtn.setContentAreaFilled(false);
+		categoryPick.add(walkbtn);
+		
+		walkbtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postDTO.setCategoryName("산책");
+				System.out.println("산책 선택");
+				
+			}
+		});
+		
+		/* 활동 */
+		activebtn.setBounds(50, 203, 137, 137);
+		activebtn.setIcon(new ImageIcon("image/post/categoryhonddoni.png"));
+		activebtn.setBorderPainted(false);
+		activebtn.setOpaque(false);
+		activebtn.setContentAreaFilled(false);
+		categoryPick.add(activebtn);
+		
+		activebtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postDTO.setCategoryName("활동");
+				System.out.println("활동 선택");
+				
+			}
+		});
+		
+		/* 취미 */
+		hobbybtn.setBounds(255, 203, 137, 137);
+		hobbybtn.setIcon(new ImageIcon("image/post/categorypuzzle.png"));
+		hobbybtn.setBorderPainted(false);
+		hobbybtn.setOpaque(false);
+		hobbybtn.setContentAreaFilled(false);
+		categoryPick.add(hobbybtn);
+		
+		hobbybtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postDTO.setCategoryName("취미");
+				System.out.println("취미 선택");
+				
+			}
+		});
+		
+		/* 게임 */
+		gamebtn.setBounds(50, 383, 137, 137);
+		gamebtn.setIcon(new ImageIcon("image/post/categoryminigame.png"));
+		gamebtn.setBorderPainted(false);
+		gamebtn.setOpaque(false);
+		gamebtn.setContentAreaFilled(false);
+		categoryPick.add(gamebtn);
+		
+		gamebtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postDTO.setCategoryName("게임");
+				System.out.println("게임 선택");
+				
+			}
+		});
+		
+		/* 스터디 */
+		studybtn.setBounds(255, 383, 137, 137);
+		studybtn.setIcon(new ImageIcon("image/post/categorystudy.png"));
+		studybtn.setBorderPainted(false);
+		studybtn.setOpaque(false);
+		studybtn.setContentAreaFilled(false);
+		categoryPick.add(studybtn);
+		
+		studybtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postDTO.setCategoryName("스터디");
+				System.out.println("스터디 선택");
+				
+			}
+		});
+		
+		
+	}
 	
 	
 	
