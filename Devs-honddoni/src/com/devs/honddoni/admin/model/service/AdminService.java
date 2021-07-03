@@ -1,13 +1,15 @@
 package com.devs.honddoni.admin.model.service;
 
 import java.sql.Connection;
+
 import java.util.List;
 
-import static com.devs.common.JDBCTemplate.close;
-import static com.devs.common.JDBCTemplate.getConnection;
+import static com.devs.honddoni.common.JDBCTemplate.getConnection;
+import static com.devs.honddoni.common.JDBCTemplate.close;
 
 import com.devs.honddoni.admin.model.dao.AdminDAO;
-import com.devs.honddoni.common.dto.MemberDTO;
+import com.devs.honddoni.admin.view123.MemberDTO;
+
 
 public class AdminService {
 	
@@ -17,13 +19,12 @@ public class AdminService {
 		this.adminDao = new AdminDAO();
 	}
 
-	public List<MemberDTO> selectAllPosts() {
+	public List<MemberDTO> selectAllMembers() {
 		
 		Connection con = getConnection();
 		
-		List <MemberDTO> memberList = null;
+		List<com.devs.honddoni.admin.view123.MemberDTO> memberList = adminDao.selectAllMembers(con);
 		
-		memberList = adminDao.selectAllPosts(con);
 		
 		close(con);
 		
