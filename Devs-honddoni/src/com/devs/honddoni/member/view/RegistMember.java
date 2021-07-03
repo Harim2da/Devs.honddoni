@@ -49,6 +49,7 @@ public class RegistMember extends JPanel {
 	public RegistMember(MainFrame mainframe) {
 		
 		this.frame = mainframe;
+		this.firstPanel = this;
 		
 		/* 프레임 설정 */
 //		registFrame = this;		//new Frame(); 을 하면, 기존에 만들어둔 프레임을 싹 무시하고 새 프레임을 올리는게 된다.

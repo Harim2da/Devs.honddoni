@@ -7,6 +7,8 @@ import java.sql.Connection;
 
 import com.devs.honddoni.memberLog.model.dao.MemberLogDAO;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
+import com.devs.honddoni.memberLog.model.dto.SearchIdDTO;
+import com.devs.honddoni.memberLog.model.dto.SearchPwdDTO;
 
 public class MemberLogService {
 	
@@ -22,6 +24,28 @@ public class MemberLogService {
 		close(con);
 				
 		return userPassword;
+	}
+
+	public String searchId(SearchIdDTO searchIdDTO) {
+		
+		Connection con = getConnection();
+		
+		String result = memberLogDAO.searchId(con, searchIdDTO);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int searchPwd(SearchPwdDTO searchPwdDTO) {
+		
+		Connection con = getConnection();
+		
+		int result = memberLogDAO.searchPwd(con, searchPwdDTO);
+		
+		close(con);
+		
+		return 0;
 	}
 
 }

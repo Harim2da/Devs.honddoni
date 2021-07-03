@@ -14,7 +14,8 @@ import com.devs.honddoni.memberLog.view.FirstView;
 import com.devs.honddoni.post.view.PostHonddoni;
 
 public class MainFrame extends JFrame{
-
+	
+	MainFrame mainFrame;
 	FirstView firstView;
 	
 	private JPanel topPanel = new JPanel();
@@ -26,6 +27,8 @@ public class MainFrame extends JFrame{
 	private JButton noticeBtn = new JButton();
 	
 	public MainFrame() {
+		
+		this.mainFrame = this; //왜 하는지는 모르겠지만, 이게 있어야 프레임이 2개가 생성되지 않는다
 		
 		this.setBounds(100, 100, 516, 909);
 		this.setLayout(null);
@@ -43,14 +46,15 @@ public class MainFrame extends JFrame{
 		topPannelBtnStop();		
 		
 //		firstView = new FirstView(this);
-//		this.add(firstView);
-		
+//		this.add(firstView);		
 //		this.setVisible(true);
 //		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//프레임이 자꾸 두개가 생겨서 이닛패널로 함 써보자
 		firstView = new FirstView(this);
-		FrameManager.initPanel(this, firstView);
+		System.out.println(firstView); //확인용출력
+		
+		FrameManager.initPanel(mainFrame, firstView);
 	}
 	
 	

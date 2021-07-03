@@ -10,16 +10,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.mainframe.MainFrame;
-import com.devs.honddoni.member.controller.MemberController;
+import com.devs.honddoni.memberLog.controller.MemberLogController;
+import com.devs.honddoni.memberLog.model.dto.SearchPwdDTO;
 
 public class SearchPwd extends JPanel{
 	
 //	MainFrame frame; 나중엔 여기로 이동
 	TestFrame frame; //임시	
 	
-	private MemberController memberController = new MemberController();
+	private MemberLogController memberLogController = new MemberLogController();
 	private MemberLogView memberLogView;
+	private SearchPwdDTO searchPwdDTO;
 	
 	private JPanel firstPanel;
 	
@@ -47,7 +48,7 @@ public class SearchPwd extends JPanel{
 				if(e.getSource() == honddoniBtn) {
 					System.out.println("로그인창으로 이동");
 										
-//					FrameManager.changePanel(mainframe, firstPanel, newPanel);
+//					FrameManager.changePanel(frame, firstPanel, newPanel);
 				}
 				
 			}
@@ -80,7 +81,44 @@ public class SearchPwd extends JPanel{
 				//비밀번호 조회기능
 				System.out.println("비밀번호 조회기능으로~");
 				
-//				FrameManager.changePanel(frame, firstPanel, MemberLogView);				
+				searchPwdDTO = new SearchPwdDTO();
+				
+				searchPwdDTO.setName(nameTf.getText());
+				searchPwdDTO.setId(idTf.getText());
+				searchPwdDTO.setPhone(phoneTf.getText());
+				
+				System.out.println("searchPwdDTO 입력값 : " + searchPwdDTO);
+				
+				int result = memberLogController.searchPwd(searchPwdDTO);
+				
+				if(result > 0) {
+					
+					System.out.println("입력값들이 일치합니다.");
+					
+					//난수발생시켜 무작위 비밀번호 만들어주자...
+					String newPwd = "";
+					
+					for(int i = 0; i < 6; i++) {
+						int randomNum = (int)(Math.random() * 10);
+						newPwd += randomNum;
+					}
+					
+					System.out.println("새로운 비밀번호 : " + newPwd);
+					
+					int result2 = memberLogController.modifyPwd(newPwd);
+					
+					if(result2 > 0) {
+						System.out.println("새 비밀번호가 잘 저장되었습니다.");
+					} else {
+						System.out.println("새 비밀번호 수정 오류!");
+					}
+					
+					
+				} else {
+					
+					System.out.println("입력값들이 일치하지 않습니다.");
+					
+				}
 				
 			}
 		});
