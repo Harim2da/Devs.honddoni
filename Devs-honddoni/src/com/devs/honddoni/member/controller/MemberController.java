@@ -12,8 +12,6 @@ public class MemberController {
 	private MemberService memberService = new MemberService();
 	private DuplCheckResult duplCheckResult = new DuplCheckResult();
 	
-	private int pwdCheckSign = 0;
-
 	public void idDuplCheck(String getUserId) {
 		
 		int result = memberService.idDuplCheck(getUserId);

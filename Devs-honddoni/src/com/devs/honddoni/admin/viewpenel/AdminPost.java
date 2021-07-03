@@ -78,7 +78,7 @@ public class AdminPost {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new login2();
+	    		   new Login2();
 	    		   bottomPanel.setVisible(false);
 //	    		  MainFrame.setVisible(false);
 	    	   }

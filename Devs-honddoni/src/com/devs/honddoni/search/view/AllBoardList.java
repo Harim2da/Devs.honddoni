@@ -439,10 +439,21 @@ public class AllBoardList {
 		search();
 		beforeBtn();
 //		afterBtn(1);  <----에러
+//		allBoardList(1); <----- commentList와 같은...
 		
 		
 		
 		bottomPanel.add(searchBar);
+		bottomPanel.add(pageBar);
+		bottomPanel.add(listFrame);
+		
+		pageBar.add(beforeNum);
+		pageBar.add(afterNum);
+		
+		listFrame.add(profile);
+		listFrame.add(nickName);
+		listFrame.add(location);
+		listFrame.add(listTitle);
 	}
 		
 	//하단패널
@@ -459,6 +470,62 @@ public class AllBoardList {
 		searchBar.setLayout(null);
 		searchBar.setBounds(35, 152, 431, 63);  
 		searchBar.setIcon(new ImageIcon("image/search/searchBar.png"));
+		
+		//페이지바 라벨
+		pageBar = new JLabel();
+		pageBar.setBackground(Color.white);
+		pageBar.setLayout(null);
+		pageBar.setBounds(182, 105, 137, 22);  
+		pageBar.setIcon(new ImageIcon("image/post/nextPageButton.png"));
+		
+		//앞페이지로 이동 버튼
+		beforeNum = new JLabel();
+		beforeNum.setBackground(Color.white);
+		beforeNum.setLayout(null);
+		beforeNum.setBounds(188, 109, 13, 13);  
+		beforeNum.setIcon(new ImageIcon("image/post/leftpagebutton.png"));
+		
+		//뒷페이지로 이동 버튼
+		afterNum = new JLabel();
+		afterNum.setBackground(Color.white);
+		afterNum.setLayout(null);
+ 		afterNum.setBounds(300, 109, 13, 13);  
+		afterNum.setIcon(new ImageIcon("image/post/ringhtpagebutton.png"));
+		
+		//게시글 프레임
+		listFrame = new JLabel();
+		listFrame.setBackground(Color.white);
+		listFrame.setLayout(null);
+		listFrame.setBounds(35, 152, 431, 105);  
+		listFrame.setIcon(new ImageIcon("image/search/boardlistframe.png"));
+		
+		//프로필 사진
+		profile = new JLabel();
+		profile.setBackground(Color.white);
+		profile.setLayout(null);
+		profile.setBounds(35, 164, 37, 40);  
+		profile.setIcon(new ImageIcon("image/post/commentPf1.png"));
+		
+		//닉네임
+		nickName = new JLabel();
+		nickName.setBackground(Color.white);
+		nickName.setLayout(null);
+		nickName.setBounds(89, 164, 101, 44);  
+		nickName.setIcon(new ImageIcon("image/search/nicknameEx.png"));
+		
+		//지역
+		location = new JLabel();
+		location.setBackground(Color.white);
+		location.setLayout(null);
+		location.setBounds(383, 152, 46, 25);  
+		location.setIcon(new ImageIcon("image/search/Rectangle30.png"));
+		
+		//게시글 타이틀
+		listTitle = new JLabel();
+		listTitle.setBackground(Color.white);
+		listTitle.setLayout(null);
+		listTitle.setBounds(55, 212, 396, 29);  
+		listTitle.setIcon(new ImageIcon("image/search/textBar.png"));
 		
 	}	
 	
@@ -500,7 +567,7 @@ public class AllBoardList {
 		beforeBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
 		beforeBtn.setContentAreaFilled(false);
 		beforeBtn.setBorderPainted(false);
-//		beforeBtn.setBounds();  <----------미지정
+		beforeBtn.setBounds(188, 109, 13, 13);  
 		if(pageNo == 1) {
 			beforeBtn.setVisible(false);
 		}
@@ -513,6 +580,7 @@ public class AllBoardList {
 			}
 		});
 			
+	}
 			
 	//게시글 다음페이지로 이동		
 //		public void afterBtn(int postNo) {
@@ -520,8 +588,8 @@ public class AllBoardList {
 //			this.postNo = postNo;
 //			
 //			int pageNo = nowPage;
-//			ageInfoPostDTO() dto = new PageInfoPostDTO();
-//			new PagingController().selectWholePostNum(postNo);
+//			PageInfoPostDTO() dto = new PageInfoPostDTO();
+//			new PagingController().totalWholePostNum(postNo);
 //			int totalCount = dto.getTotalCount();	
 //			PagenationPost pagenationPost = new PagenationPost();
 //			PageInfoPostDTO() pageInfo = pagenationPost.getPostPageInfo(pageNo, totalCount, 2, 5);
@@ -544,24 +612,44 @@ public class AllBoardList {
 //			});
 //		}
 			
+		/* 현재페이지, 전체페이지, 페이지이동 버튼이 위치한 라벨 */
+	public void commentLongbarLabel() {
+
+		searchBar = new JLabel("");
+		searchBar.setLayout(null);
+		searchBar.setIcon(new ImageIcon("image/post/nextPageButton.png"));
+		searchBar.setBounds(182, 17, 137, 22);
 	
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		
 	}
 	
+	/* 현재페이지를 나타내는 숫자 */
+	public void beforeNum() {
+
+		String frontPageString = Integer.valueOf(nowPage).toString();
+		
+		beforeNum.setText(frontPageString);
+		beforeNum.setLayout(null);
+		beforeNum.setBounds(233, 108, 44, 14);
+		System.out.println(frontPageString);
+
+	}	
+	
+	/* 최종페이지를 나타내는 숫자 */
+//	public void afterNum(int postNo) {
+//
+//		int pageNo = nowPage;
+//
+//		int totalCount = new PagingController().totalWholePostNum(postNo);
+//		
+//		PagenationPost PagenationPost = new PagenationPost();
+//		PageInfoPostDTO() pageInfo = PagenationPost.getPagenationPost(pageNo, totalCount, 5, 5);
+//		String backPageString = Integer.valueOf(pageInfo.getMaxPage()).toString();
+//
+//		afterNum = new JLabel(backPageString);
+//		afterNum.setLayout(null);
+//		afterNum.setBounds(85, 4, 14, 14);
+//
+//	}
 	
 	
 	
@@ -571,16 +659,7 @@ public class AllBoardList {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	

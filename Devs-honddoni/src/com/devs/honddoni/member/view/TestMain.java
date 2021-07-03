@@ -1,6 +1,6 @@
 package com.devs.honddoni.member.view;
 
-import com.devs.honddoni.common.mainframe.FrameManager;
+import com.devs.honddoni.admin.viewpenel.AllData;
 
 public class TestMain {
 

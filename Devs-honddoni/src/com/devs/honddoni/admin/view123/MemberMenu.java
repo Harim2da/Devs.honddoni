@@ -14,6 +14,7 @@ public class MemberMenu {
 
 	public void displayMenu() {
 		
+
 		ManagementController managementController = new ManagementController();
 		
 		do {
@@ -132,26 +133,6 @@ public class MemberMenu {
 		
 		return sc.nextLine();
 	}
+
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

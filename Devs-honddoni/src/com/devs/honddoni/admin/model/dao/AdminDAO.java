@@ -11,13 +11,16 @@ import java.util.List;
 import java.util.Properties;
 
 import com.devs.honddoni.admin.view123.MemberDTO;
+
 import com.devs.honddoni.admin.view123.PostDTO;
+
 
 import static com.devs.honddoni.common.JDBCTemplate.close;
 
 
 
 public class AdminDAO {
+
    
    private Properties prop;
    
@@ -103,4 +106,5 @@ public class AdminDAO {
    }
    return postList;
 }
+
 }

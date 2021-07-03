@@ -1,10 +1,13 @@
 package com.devs.honddoni.admin.view123;
 
+
 public class MemberDTO {
+
 	
 	private String memberId;
 	private String memberNickname;
 	private String memberProfile;
+
 	private String memRegistdate;
 	
 	public MemberDTO () {
@@ -12,13 +15,15 @@ public class MemberDTO {
 	}
 
 	public MemberDTO(String memberId, String memberNickname, String memberProfile, String memRegistdate) {
+r
 		super();
 		this.memberId = memberId;
 		this.memberNickname = memberNickname;
 		this.memberProfile = memberProfile;
+
 		this.memRegistdate = memRegistdate;
 		
-		
+
 	}
 
 	/**
@@ -43,10 +48,12 @@ public class MemberDTO {
 	}
 
 	/**
+
 	 * @return the memRegistdate
 	 */
 	public String getMemRegistdate() {
 		return memRegistdate;
+
 	}
 
 	/**
@@ -71,16 +78,19 @@ public class MemberDTO {
 	}
 
 	/**
+
 	 * @param memRegistdate the memRegistdate to set
 	 */
 	public void setMemRegistdate(String memRegistdate) {
 		this.memRegistdate = memRegistdate;
 		
+
 	}
 
 	@Override
 	public String toString() {
 		return "MemberDTO [memberId=" + memberId + ", memberNickname=" + memberNickname + ", memberProfile="
+
 				+ memberProfile + ", memRegistdate=" + memRegistdate + "]";
 	}
 

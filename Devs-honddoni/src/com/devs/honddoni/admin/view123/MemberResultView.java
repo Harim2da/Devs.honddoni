@@ -23,6 +23,7 @@ public class MemberResultView {
 		
 	}
 	
+
 	public void display(List<MemberDTO> list) {
 		
 		for(MemberDTO m : list) {
