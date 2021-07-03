@@ -15,7 +15,7 @@ public class MemberDTO {
 	}
 
 	public MemberDTO(String memberId, String memberNickname, String memberProfile, String memRegistdate) {
-r
+
 		super();
 		this.memberId = memberId;
 		this.memberNickname = memberNickname;

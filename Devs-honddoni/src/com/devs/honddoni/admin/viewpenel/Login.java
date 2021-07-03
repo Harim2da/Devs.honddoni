@@ -10,8 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.admin.viewmiddle.AdminList2;
-import com.devs.honddoni.admin.viewmiddle.login2;
+
 import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class Login {

@@ -6,17 +6,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.admin.viewmiddle.login2;
-import com.devs.honddoni.common.mainframe.MainFrame;
+//import com.devs.honddoni.admin.viewmiddle.login2;
+import com.devs.honddoni.admin.viewpenel.MainFrame1;
 
 public class AdminList {
 	
-	MainFrame MainFrame = new MainFrame();
+	
+	MainFrame mainFrame = new MainFrame();
 	
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
@@ -28,10 +29,10 @@ public class AdminList {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		MainFrame.add(bottomPanel);
+		mainFrame.add(bottomPanel);
 		
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\Admin1-1.png");
-	       JButton btn1 = new JButton(img1);
+		   JButton btn1 = new JButton(img1);
 	       
 	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Admin1-2.png");
 	       JButton btn2 = new JButton(img2);
@@ -63,8 +64,8 @@ public class AdminList {
 	   
 	     
 	       //컨테이너에 패널 추가
-	       MainFrame.add(bottomPanel);
-	       MainFrame.setVisible(true); //창을 보이게함
+	       mainFrame.add(bottomPanel);
+	       mainFrame.setVisible(true); //창을 보이게함
 	       
 	       btn5.addActionListener(new ActionListener() {
 	    	   @Override
@@ -76,7 +77,7 @@ public class AdminList {
 	    		   
 	    		   new AdminList1();
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   mainFrame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -90,7 +91,7 @@ public class AdminList {
 	    		   
 	    		   new Notice();
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   mainFrame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -104,7 +105,7 @@ public class AdminList {
 	    		   
 	    		   new Delite();
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   mainFrame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -118,7 +119,7 @@ public class AdminList {
 	    		   
 	    		   new AllData();
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   mainFrame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -132,7 +133,7 @@ public class AdminList {
 	    		   
 	    		   new Honnest();
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   mainFrame.setVisible(false);
 	    	   }
 	       });
 	       
