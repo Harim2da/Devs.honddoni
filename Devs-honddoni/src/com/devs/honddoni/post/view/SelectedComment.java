@@ -337,7 +337,12 @@ public class SelectedComment extends JFrame {
 				if(frontPage >= 2 ) {
 					frontPage--;
 				}
-
+				
+//				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
+//				commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+//				commentList(postNo);
+				
+				
 				beforeBtn();
 				beforeNumber();
 				afterBtn(1);
@@ -379,11 +384,13 @@ public class SelectedComment extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
-
 				if(frontPage < pageInfo.getMaxPage()) {
 					frontPage++;
 				}
+				
+				
+				
+;
 				
 				for(int i = 0; i < 10; i++) {
 
@@ -399,6 +406,10 @@ public class SelectedComment extends JFrame {
 					downPanel.remove(deleteBtn);
 					
 				}
+				
+//				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
+//				commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+				commentList(postNo);
 
 				afterBtn(1);
 				beforeBtn();
