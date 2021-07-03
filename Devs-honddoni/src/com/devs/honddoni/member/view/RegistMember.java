@@ -2,7 +2,6 @@ package com.devs.honddoni.member.view;
 
 import java.awt.Color;
 import java.awt.Dialog;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -15,7 +14,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -26,14 +24,17 @@ import javax.swing.JTextField;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
+import com.devs.honddoni.memberLog.view.MemberLogView;
 
 public class RegistMember extends JPanel {
 	
+	MainFrame frame;
+	RegistMember registMember;
+	
+	private MemberLogView memberLogView; //newPanel로 쓸 것
+	
 	private MemberController memberController = new MemberController();;
 	private MemberRegistDTO memberRegistDTO;
-
-	MainFrame frame;
-	private JPanel firstPanel;
 	
 	private String gender = "여";
 	
@@ -49,22 +50,14 @@ public class RegistMember extends JPanel {
 	public RegistMember(MainFrame mainframe) {
 		
 		this.frame = mainframe;
-		this.firstPanel = this;
+		this.registMember = this;
 		
-		/* 프레임 설정 */
-//		registFrame = this;		//new Frame(); 을 하면, 기존에 만들어둔 프레임을 싹 무시하고 새 프레임을 올리는게 된다.
-//		registFrame.setForeground(Color.red);
-//		registFrame.setBounds(100, 100, 516, 909);
+		frame.add(registMember);
 		
-//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		this.setVisible(true);
-		
-				
-				
 		/* 제일 기본 패널 */
-		firstPanel = new JPanel();
-		firstPanel.setBounds(0, 0, 500, 870);
-		firstPanel.setLayout(null);
+//		registMember = new JPanel(); // 빼는게 맞다.
+		registMember.setBounds(0, 0, 500, 870);
+		registMember.setLayout(null);
 		
 		/* 로고 들어갈 상단부 패널 */
 		JPanel upsidePanel = new JPanel();
@@ -87,7 +80,13 @@ public class RegistMember extends JPanel {
 			/* 로고버튼 누를 시, 로그인 창으로 이동 */			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				memberLogView = new MemberLogView(frame);
+				
+				frame.remove(registMember);
+				frame.add(memberLogView);
+				frame.repaint();
+				frame.revalidate();
 				
 			}
 		});
@@ -282,11 +281,11 @@ public class RegistMember extends JPanel {
 		downsidePanel.add(cancelBtn);
 		
 		
-		firstPanel.add(upsidePanel);
-		firstPanel.add(downsidePanel);	
+		registMember.add(upsidePanel);
+		registMember.add(downsidePanel);
 		
-//		frame.add(firstPanel);	
-		
+		registMember.setVisible(true);
+				
 //		this.repaint();
 //		this.revalidate();	
 		

@@ -32,12 +32,12 @@ public class FrameManager {
 //	}
 //	
 	/* 패널 변경 메소드 */
-//	public static void changePanel(MainFrame main, JPanel oldPanel, JPanel newPanel) {	
-	public static void changePanel(FrameTestYoon frame, JPanel oldPanel, JPanel newPanel) {	//현기 테스트중 
-		frame.remove(oldPanel);
-		frame.add(newPanel);
-		frame.repaint();
-		frame.revalidate();
+	public static void changePanel(MainFrame main, JPanel oldPanel, JPanel newPanel) {	
+//	public static void changePanel(FrameTestYoon frame, JPanel oldPanel, JPanel newPanel) {	//현기 테스트중 
+		main.remove(oldPanel);
+		main.add(newPanel);
+		main.repaint();
+		main.revalidate();
 	}
 	
 	
