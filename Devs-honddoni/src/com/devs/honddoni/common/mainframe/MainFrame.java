@@ -15,8 +15,10 @@ import com.devs.honddoni.post.view.PostHonddoni;
 
 public class MainFrame extends JFrame{
 	
+
 	FirstView firstView;
 	MainFrame mainFrame;
+
 	
 	private JPanel topPanel;
 	private JLabel backgroundImage = new JLabel();
@@ -50,13 +52,12 @@ public class MainFrame extends JFrame{
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-//		//프레임이 자꾸 두개가 생겨서 이닛패널로 함 써보자
-//		firstView = new FirstView(this);
-//		System.out.println(firstView); //확인용출력
-//		
-//		FrameManager.initPanel(mainFrame, firstView);
+
+		
+
 		
 		new FirstView(this);
+
 	}
 	
 	

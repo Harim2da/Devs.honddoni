@@ -10,19 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.memberLog.controller.MemberLogController;
 import com.devs.honddoni.memberLog.model.dto.SearchIdDTO;
 
 public class SearchId extends JPanel{
 	
-//	MainFrame frame; 나중엔 여기로 이동
-	TestFrame frame; //임시
-	
-	private MemberLogController memberLogController = new MemberLogController();
-	private MemberLogView memberLogView;
-	private SearchIdDTO searchIdDTO;
-	
+//	private MainFrame frame; //나중엔 여기로 이동
+	private TestFrame frame; //임시
 	private JPanel firstPanel;
+	
+	private MemberLogController memberLogController;
+	private MemberLogView memberLogView;
+	private SearchIdDTO searchIdDTO;	
 	
 	public SearchId(TestFrame testFrame) {
 		
@@ -75,10 +75,11 @@ public class SearchId extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//아이디 조회기능
+				memberLogController = new MemberLogController();
+				
 				System.out.println("아이디 조회기능으로~");
 				
-				searchIdDTO = new SearchIdDTO();
+				searchIdDTO = new SearchIdDTO();				
 				
 				searchIdDTO.setName(nameTf.getText());
 				searchIdDTO.setPhone(phoneTf.getText());
@@ -110,7 +111,7 @@ public class SearchId extends JPanel{
 				//로그인창으로 나감
 				System.out.println("로그인 창으로~");
 				
-//				FrameManager.changePanel(frame, firstPanel, MemberLogView);
+//				FrameManager.changePanel(frame, firstPanel, new MemberLogView(frame));
 				
 			}
 		});
