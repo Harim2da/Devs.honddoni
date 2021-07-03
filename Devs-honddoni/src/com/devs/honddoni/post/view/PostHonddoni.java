@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.ContactController;
 
 public class PostHonddoni extends JFrame{
@@ -44,9 +45,8 @@ public class PostHonddoni extends JFrame{
 
 
 	/*혼또니 게시글 작성 화면 불러오기*/
-	public PostHonddoni() {
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
+	public PostHonddoni(MainFrame frame) {
+		this.mainFrame = frame;
 		topPanel();
 		selectPost();
 		createPostTitle();
@@ -57,8 +57,6 @@ public class PostHonddoni extends JFrame{
 		postMeetingTime();
 		addPostComponent();
 
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/*상단 패널 생성*/
@@ -98,8 +96,8 @@ public class PostHonddoni extends JFrame{
 	/* 게시글 작성 화면 내 쌓아올리기  */
 	public void addPostComponent() {
 
-		this.add(topPanel);
-		this.add(bottomPanel);
+		mainFrame.add(topPanel);
+		mainFrame.add(bottomPanel);
 		bottomPanel.add(postTypebtn);
 		bottomPanel.add(postTitle);
 		bottomPanel.add(localSelectbtn);
@@ -154,7 +152,7 @@ public class PostHonddoni extends JFrame{
 
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
-		this.add(pann);
+		mainFrame.add(pann);
 
 
 

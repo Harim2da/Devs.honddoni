@@ -10,8 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.view.FirstView;
+import com.devs.honddoni.post.view.PostHonddoni;
 
 public class MainFrame extends JFrame{
 
