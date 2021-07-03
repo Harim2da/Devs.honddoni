@@ -9,41 +9,45 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class SelectAllHonPost extends JFrame{
 
-	private static final Color Color = null;
 	private JFrame frame = new JFrame();
-	private JPanel bottomPanel = new JPanel(); 
-	private JLabel mapLabel;
-	private JLabel searchLabel;
-	private JButton aim;
-	
+	private JPanel bottomPanel = new JPanel(); //하단 패널
+	private JLabel mapLabel;	// 지역선택용 라벨 
+	private JLabel searchLabel; // 검색창 라벨
+	private JButton aim;        // 검색 버튼
+	private JTextField searching; // 검색어 입력창
+	String localpick = "";  // 검색어 저장
+	private JLabel categoryPick; // 카테고리 선택 라벨
+
 	
 	public SelectAllHonPost() {
 		this.setBounds(100, 100, 516, 909);
 		this.setLayout(null);
 		BottomPanel();
 		addComponents();
+		searching();
 		selectLocal();
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	
+	/* 하단 패널 */
 	public void BottomPanel() {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);	
 		
-		searchLabel = new JLabel();
+		searchLabel = new JLabel();   // 하단 패널 위 검색창
 		searchLabel.setBackground(Color.WHITE);
 		searchLabel.setLayout(null);
 		searchLabel.setBounds(25, 15, 450, 63); 
 		searchLabel.setIcon(new ImageIcon("image/search/searchBar.png"));
 		
-		mapLabel = new JLabel("");
+		mapLabel = new JLabel(""); // 하단 패널 위 지역 선택
 		mapLabel.setBackground(Color.WHITE);
 		mapLabel.setLayout(null);
 		mapLabel.setBounds(25, 125, 450, 596);            
@@ -51,6 +55,7 @@ public class SelectAllHonPost extends JFrame{
 		
 	}
 	
+	/* 패널과 라벨들 얹기 */
 	private void addComponents() {
 		this.add(bottomPanel);
 		bottomPanel.add(searchLabel);
@@ -60,20 +65,28 @@ public class SelectAllHonPost extends JFrame{
 		this.revalidate();
 	}
 	
+	/* 검색창 처리 */
+	private void searching() {
+		
+		searching = new JTextField();
+		searching.setBorder(null);
+		searching.setOpaque(false);
+		searching.setBounds(80, 16, 315, 28);
+		searching.setColumns(20);
+		searchLabel.add(searching);
+		
+		aim = new JButton();
+		aim.setBounds(22, 13, 41, 41);
+		aim.setBorderPainted(false);
+		aim.setOpaque(false);
+		aim.setContentAreaFilled(false);
+		searchLabel.add(aim);
+	 
+		
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/* 조회할 지역 선택 */
 	private void selectLocal() {
 		/* 지역 선택 버튼 */
 		JButton btn1 = new JButton();   
@@ -234,7 +247,15 @@ public class SelectAllHonPost extends JFrame{
 
 			}
 		});
-	}
+	} // 지역 선택 종료
+	
+	
+	/* 카테고리 선택 */
+	
+	
+	
+	
+	
 	
 	
 	
