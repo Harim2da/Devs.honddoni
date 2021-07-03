@@ -49,7 +49,7 @@ public class FirstView extends JPanel{
 				memberLogView = new MemberLogView(frame);
 				
 				//로그인창으로 바꾸기...?
-//				FrameManager.changePanel(mainFrame, firstViewPanel, memberLogView);
+				FrameManager.changePanel(mainFrame, firstView, memberLogView);
 				
 				//혹시 몰라서 프레임 리프레쉬
 //				FrameManager.refresh();

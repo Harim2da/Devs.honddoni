@@ -25,8 +25,8 @@ public class MemberLogView extends JPanel {
 	
 	SearchId searchId; //newPanel로 사용할 것
 	SearchPwd searchPwd; //newPanel로 사용할 것
-	LoginSuccess loginSuccess = new LoginSuccess(); //newPanel로 사용할 것
-	LoginFail loginFail = new LoginFail(); //newPanel로 사용할 것
+	LoginSuccess loginSuccess; //newPanel로 사용할 것
+	LoginFail loginFail; //newPanel로 사용할 것
 	
 	private LoginController loginController = new LoginController();
 	private LoginDataDTO loginDataDTO;
