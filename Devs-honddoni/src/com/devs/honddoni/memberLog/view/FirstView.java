@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.devs.honddoni.common.mainframe.FrameManager;
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class FirstView extends JPanel{
 	
@@ -19,7 +20,7 @@ public class FirstView extends JPanel{
 	private JButton btnNewButton;
 	private JLabel honttoniLb;
 	
-	public FirstView() {		
+	public FirstView(MainFrame mainFrame) {		
 		
 		//시작화면에 올릴 전체크기패널 
 //		firstViewPanel = new JPanel();
@@ -38,7 +39,7 @@ public class FirstView extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				
 				//로그인창으로 바꾸기...?
-				FrameManager.changePanel(firstViewPanel, memberLogView);
+				FrameManager.changePanel(mainFrame, firstViewPanel, memberLogView);
 				
 				//혹시 몰라서 프레임 리프레쉬
 //				FrameManager.refresh();
