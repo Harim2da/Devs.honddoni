@@ -43,10 +43,10 @@ public class FirstView extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				memberLogView = new MemberLogView(frame);
+//				memberLogView = new MemberLogView(frame);
 				
 				//로그인창으로 바꾸기...?
-				FrameManager.changePanel(mainFrame, firstView, memberLogView);
+				FrameManager.changePanel(mainFrame, firstView, new MemberLogView(frame));
 				
 				//혹시 몰라서 프레임 리프레쉬
 //				FrameManager.refresh();
@@ -64,6 +64,7 @@ public class FirstView extends JPanel{
 		firstView.add(honttoniLb);
 
 		firstView.setVisible(true);
+		mainFrame.add(this);
 		
 	}
 	

@@ -20,7 +20,8 @@ import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 
 public class MemberLogView extends JPanel {
 	
-	MainFrame frame;
+	private MainFrame frame;
+	private JPanel panel;	
 	
 	SearchId searchId; //newPanel로 사용할 것
 	SearchPwd searchPwd; //newPanel로 사용할 것
@@ -31,7 +32,6 @@ public class MemberLogView extends JPanel {
 	private LoginController loginController = new LoginController(); //MVC에서 다음으로 넘길 컨트롤러
 	private LoginDataDTO loginDataDTO; //컨트롤러에 넘겨줄 DTO
 	
-	private JPanel panel;	
 	private JTextField idTf;
 	private JPasswordField pwPf;
 	private String password = "";
@@ -165,10 +165,10 @@ public class MemberLogView extends JPanel {
 				
 				//회원가입 쪽으로 간다
 				System.out.println("회원가입쪽으로");
-				registMember = new RegistMember(frame);
+//				registMember = new RegistMember(frame);
 				
 				// 창 바꾸기...?
-				FrameManager.changePanel(frame, panel, registMember);
+				FrameManager.changePanel(frame, panel, new RegistMember(frame));
 
 			}
 		});

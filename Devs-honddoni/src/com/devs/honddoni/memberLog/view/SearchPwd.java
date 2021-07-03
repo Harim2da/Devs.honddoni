@@ -95,9 +95,8 @@ public class SearchPwd extends JPanel{
 					
 					System.out.println("입력값들이 일치합니다.");
 					
-					//난수발생시켜 무작위 비밀번호 만들어주자...
-					String newPwd = "";
-					
+					//난수발생시켜 6자리의 무작위 비밀번호(String) 만들어주자...
+					String newPwd = "";					
 					for(int i = 0; i < 6; i++) {
 						int randomNum = (int)(Math.random() * 10);
 						newPwd += randomNum;
@@ -105,8 +104,9 @@ public class SearchPwd extends JPanel{
 					
 					System.out.println("새로운 비밀번호 : " + newPwd);
 					
+					//새 비밀번호를 수정하
 					int result2 = memberLogController.modifyPwd(newPwd);
-					
+										
 					if(result2 > 0) {
 						System.out.println("새 비밀번호가 잘 저장되었습니다.");
 					} else {
