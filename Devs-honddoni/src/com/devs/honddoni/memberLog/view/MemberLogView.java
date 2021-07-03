@@ -25,50 +25,39 @@ public class MemberLogView extends JPanel {
 	
 	SearchId searchId; //newPanel로 사용할 것
 	SearchPwd searchPwd; //newPanel로 사용할 것
-	LoginSuccess loginSuccess; //newPanel로 사용할 것
 	LoginFail loginFail; //newPanel로 사용할 것
+	//메인화면도 필드로 넣어줘야 함
 	
-	private LoginController loginController = new LoginController();
-	private LoginDataDTO loginDataDTO;
+	private LoginController loginController = new LoginController(); //MVC에서 다음으로 넘길 컨트롤러
+	private LoginDataDTO loginDataDTO; //컨트롤러에 넘겨줄 DTO
 	private RegistMember registMember;
 	
-	private JPanel bottomPanel = new JPanel();	
+	private JPanel panel = new JPanel();	
 	private JTextField idTf;
 	private JPasswordField pwPf;
 	private String password = "";
 
-
+	//로그인창 패널이다
 	public MemberLogView(MainFrame Mainframe) {
 
 		this.frame = Mainframe;
 
 		//로그인창 전체패널 생성		
-		bottomPanel.setBounds(0, 0, 500, 870);
-		bottomPanel.setForeground(Color.WHITE);
-		bottomPanel.setLayout(null);
+		panel.setBounds(0, 0, 500, 870);
+		panel.setForeground(Color.WHITE);
+		panel.setLayout(null);
 
-		//로고이자 관리자로 가는 버튼
+		//로고버튼 - 나중에 JLabel로 바꿔야 함
 		JButton adminLoginBtn = new JButton();
 		adminLoginBtn.setBounds(174, 82, 152, 154);
 		adminLoginBtn.setBorderPainted(false);
 		adminLoginBtn.setIcon(new ImageIcon("image/memberLog/login/login_1_logo.png"));
-		adminLoginBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				//관리자 로그인쪽으로 뺀다
-				System.out.println("관리자 로그인창으로 이동");
-				// 창 바꾸기...?
-				// fm.changePanel(bottomPanel, 관리자로그인패널)..?
-
-			}
-		});
-
+		
 		JLabel honddoniLogo = new JLabel();
 		honddoniLogo.setBounds(130, 258, 241, 99);
 		honddoniLogo.setIcon(new ImageIcon("image/memberLog/login/login_2_logo2.png"));
 
+		
 		//아이디, 비밀번호 구역
 		JLabel idPwdArea = new JLabel();
 		idPwdArea.setBounds(35, 432, 431, 143);
@@ -87,9 +76,7 @@ public class MemberLogView extends JPanel {
 		loginBtn.setBorderPainted(false);
 		loginBtn.setIcon(new ImageIcon("image/memberLog/login/login_4_login_btn.png"));
 
-
 		loginBtn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -105,16 +92,24 @@ public class MemberLogView extends JPanel {
 					
 					//바꿀 다음패널들을 초기화
 					loginFail = new LoginFail(frame);
-					loginSuccess = new LoginSuccess(frame);
 					
 					//로그인실패 : 0, 로그인성공(일반사용자 : 1, 관리자 : 2) 반환함
 					if(result == 0) {
-						FrameManager.changePanel(frame, bottomPanel, loginFail);
+						FrameManager.changePanel(frame, panel, loginFail);
+						System.out.println("LoginFail 패널로 교체");
+						
 					} else if(result == 1) {
-						FrameManager.changePanel(frame, bottomPanel, loginSuccess);
+						//메인화면 쪽으로 패널교체
+//						frame.topPannelBtnStart();
+
+//						FrameManager.changePanel(frame, bottomPanel, newPanel);
+						System.out.println("로그인 성공~ 메인화면 패널로 교체");
+						
 					} else {
 						//관리자 쪽으로 패널교체
 //						FrameManager.changePanel(bottomPanel, newPanel);
+						System.out.println("로그인 성공~ 관리자메인화면 패널로 교체");
+						
 					}
 					
 				}
@@ -126,16 +121,16 @@ public class MemberLogView extends JPanel {
 		searchIdBtn.setBounds(58, 725, 111, 41);
 		searchIdBtn.setBorderPainted(false);
 		searchIdBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_id_btn.png"));
-		searchIdBtn.addActionListener(new ActionListener() {
-			
+		searchIdBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				//아이디찾기 패널로				
-				searchId = new SearchId(frame);	
+				System.out.println("아이디 찾기 패널로~");
 				
-				// 아이디 찾기쪽으로 간다. 창 바꾸기...?
-				FrameManager.changePanel(frame, bottomPanel, searchId);
+				// 아이디 찾기로 패널교체
+//				searchId = new SearchId(frame);	
+//				FrameManager.changePanel(frame, bottomPanel, searchId);
 
 			}
 		});
@@ -145,16 +140,16 @@ public class MemberLogView extends JPanel {
 		searchPasswordBtn.setBounds(196, 725, 111, 41);
 		searchPasswordBtn.setBorderPainted(false);
 		searchPasswordBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_password_btn.png"));
-		searchPasswordBtn.addActionListener(new ActionListener() {	
-			
+		searchPasswordBtn.addActionListener(new ActionListener() {				
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				//비밀번호 찾기쪽으로 간다
 				System.out.println("비밀번호 찾기 쪽으로");
+//				searchPwd = new SearchPwd(frame);
 				
 				// 창 바꾸기...?
-				FrameManager.changePanel(frame, bottomPanel, searchPwd);
+//				FrameManager.changePanel(frame, bottomPanel, searchPwd);
 
 			}
 		});
@@ -164,39 +159,39 @@ public class MemberLogView extends JPanel {
 		registBtn.setBounds(334, 725, 111, 41);
 		registBtn.setBorderPainted(false);
 		registBtn.setIcon(new ImageIcon("image/memberLog/login/login_6_regist_btn.png"));
-//		registBtn.addActionListener(new ActionListener() {			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//
-//				System.out.println("회원가입쪽으로");
-//				//				registMember = new RegistMember(); 체인지 패널로 하려면 이렇게 해야할듯
-//				new RegistMember();
-//
-//				// 창 바꾸기...?
-//				//				mf.changePanel(bottomPanel, 비밀번호찾기패널)..?
-//
-//			}
-//		});
+		registBtn.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				//회원가입 쪽으로 간다
+				System.out.println("회원가입쪽으로");
+				registMember = new RegistMember(frame);
+				
+				// 창 바꾸기...?
+				//FrameManager.changePanel(frame, bottomPanel, 비밀번호찾기패널)..?
+
+			}
+		});
 
 
 
 		//한 패널에 컴포넌트올리기		
-		bottomPanel.add(adminLoginBtn);
-		bottomPanel.add(honddoniLogo);
-		bottomPanel.add(idPwdArea);
-		bottomPanel.add(loginBtn);
-		bottomPanel.add(searchIdBtn);
-		bottomPanel.add(searchPasswordBtn);
-		bottomPanel.add(registBtn);
-		bottomPanel.add(idTf); //이래야 되더라... idPwdArea에 올리면 안 보임
-		bottomPanel.add(pwPf);
+		panel.add(adminLoginBtn);
+		panel.add(honddoniLogo);
+		panel.add(idPwdArea);
+		panel.add(loginBtn);
+		panel.add(searchIdBtn);
+		panel.add(searchPasswordBtn);
+		panel.add(registBtn);
+		panel.add(idTf); //이래야 되더라... idPwdArea에 올리면 안 보임
+		panel.add(pwPf);
 
 		//확인용 프레임에 올리기
-		frame.add(bottomPanel);
+		frame.add(panel);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-//		FrameManager.refresh();
+		FrameManager.refresh();
 
 	}
 

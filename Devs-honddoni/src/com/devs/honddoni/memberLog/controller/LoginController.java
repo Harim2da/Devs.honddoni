@@ -3,7 +3,6 @@ package com.devs.honddoni.memberLog.controller;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 import com.devs.honddoni.memberLog.model.service.MemberLogService;
 import com.devs.honddoni.memberLog.view.LoginFail;
-import com.devs.honddoni.memberLog.view.LoginSuccess;
 
 public class LoginController {
 	
@@ -24,14 +23,17 @@ public class LoginController {
 			
 		}
 			
-		//로그인 성공시, 아이디가 어드민인 경우, 관리자로 그인쪽으로 전달
+		//로그인 성공시 
 		if(result == 1) {			
 			
-			if((loginDataDTO.getMemberId()).equals("admin")) {				
+			System.out.println("로그인 성공~");
+			
+			// 아이디가 어드민인 경우, 관리자로 그인쪽으로 전달
+			if((loginDataDTO.getMemberId()).equals("admin01")) {				
 				result = 2;
 			}
 			
-			//로그인한 이 유저의 Id를 저장하기
+			/* 로그인한 이 유저의 Id를 저장하기 */
 			String loginMemberId = loginDataDTO.getMemberId();
 			
 			//DB에서 로그인 유저Id를 회원번호로 조회해오기(MVC)

@@ -110,7 +110,7 @@ public class RegistMember extends JFrame {
 		/* 입력받는 텍스트필드들 */
 		JTextField nameTf = new JTextField();
 		nameTf.setBounds(80, 12, 348, 26);
-//		nameTf.setContentAreaFilled(F2, F2, F2);
+//		nameTf.setContentAreaFilled(color(f2, f2, f2, 0.5));
 		
 		JTextField idTf = new JTextField();
 		idTf.setBounds(80, 74, 200, 26);
@@ -303,7 +303,7 @@ public class RegistMember extends JFrame {
 		//팝업시 반투명 패널생성
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
-		mainFrame.add(pann);
+		registFrame.add(pann);
 		
 		
 	
