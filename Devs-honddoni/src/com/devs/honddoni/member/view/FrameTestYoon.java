@@ -115,7 +115,7 @@ public class FrameTestYoon extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("홈  버튼 클릭");
 				frame.remove();
-				frame.add(new MyPage(frame));
+				frame.add(new Main(frame));
 				frame.repaint();
 				frame.revalidate();
 			}
