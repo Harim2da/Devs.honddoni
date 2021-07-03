@@ -17,6 +17,8 @@ public class Ctest2 {
 		
 		jf.add(cm.getUpPanel());
 		jf.add(cm.getDownPanel());
+		
+		
 		jf.setVisible(true);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

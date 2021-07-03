@@ -27,7 +27,7 @@ public class SelectedComment extends JFrame {
 	private JButton backBtn;        			//뒤로 가기
 	private JLabel beforeNumber = new JLabel("");	 		    //페이지를 나타내는 앞의 숫자
 	private JLabel afterNumber;					//페이지를 나타내는 뒤의 숫자
-	private int frontPage = 1;					//현재 페이지
+	public static int frontPage = 1;					//현재 페이지
 	private JButton beforeBtn = new JButton();				//페이지를 앞으로 이동하는 버튼
 	private JButton afterBtn = new JButton();					//페이지를 뒤로 이동하는 버튼
 	private JLabel commentList;				//댓글리스트의 밑바탕
@@ -46,6 +46,7 @@ public class SelectedComment extends JFrame {
 	private JButton noticeBtn;					//공지사항 목록 이동
 	private JLabel backgroundImage;				//로고 포함 테두리 배경
 	private int postNo;							//게시글 번호
+	private JButton deleteBtn;					//게시글 삭제
 
 	/* 프레임에서 패널을 더해주기 위한 getter */
 	public JPanel getUpPanel() {
@@ -122,6 +123,7 @@ public class SelectedComment extends JFrame {
 		commentLongbarLabel.add(afterNumber);
 		commentLongbarLabel.add(beforeBtn);
 		commentLongbarLabel.add(afterBtn);
+		
 
 	}
 	/* 상단 패널 */
@@ -146,9 +148,18 @@ public class SelectedComment extends JFrame {
 		downPanel = new JPanel();
 		downPanel.setBounds(0, 100, 500, 770);
 		downPanel.setLayout(null);
-		downPanel.setBackground(Color.black);
+		downPanel.setBackground(Color.WHITE);
 
 
+	}
+	
+	public void nextPanel() {
+		
+		downPanel = new JPanel();
+		downPanel.setBounds(0, 100, 500, 770);
+		downPanel.setLayout(null);
+		downPanel.setBackground(Color.WHITE);
+		
 	}
 
 	/* My혼또니 버튼 생성 */
@@ -261,15 +272,13 @@ public class SelectedComment extends JFrame {
 
 				newComment.setCommentsContents(text);
 				newComment.setPostNo(postNo);
-				
+
 				/* 싱글톤으로 샏ㅇ성된 멤버넘버 받아와야댐 */
 				newComment.setMemberNo(1);
 
 				ContactController2 contactController2 = new ContactController2();
 				contactController2.communicationComment(newComment);
-				//
-				//				downPanel.repaint();
-				//				downPanel.revalidate();
+
 
 			}
 		});
@@ -308,12 +317,6 @@ public class SelectedComment extends JFrame {
 	public void beforeBtn() {
 
 		int pageNo = frontPage;
-		//		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
-		//		new PagingController().selectWholeCommentsNum(postNo);
-		//		int totalCount = dto.getTotalCount();	
-		//		PagenationComments pagenationComments = new PagenationComments();
-		//		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 2, 5);
-
 
 		beforeBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
 		beforeBtn.setContentAreaFilled(false);
@@ -324,53 +327,23 @@ public class SelectedComment extends JFrame {
 		} else {
 			beforeBtn.setVisible(true);
 		}
+		
+		System.out.println("frontPage : " + frontPage);
 		beforeBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				downPanel.setVisible(false);
-				
-				JPanel otherPanel = new JPanel();
-				otherPanel = new JPanel();
-				otherPanel.setBounds(0, 100, 500, 770);
-				otherPanel.setLayout(null);
-				otherPanel.setBackground(Color.white);
-				
-				
-				for(int i = 0; i < 10; i++) {
-
-					remove(commentList);
-					remove(nickName);
-					remove(content);
-					remove(updateBtn);
-					remove(reportBtn);
-					remove(commentsDate);
-					remove(commentsTime);
-					remove(downPanel);
-
-
-					downPanel.remove(commentList);
-					downPanel.remove(nickName);
-					downPanel.remove(content);
-					downPanel.remove(updateBtn);
-					downPanel.remove(reportBtn);
-					downPanel.remove(commentsDate);
-					downPanel.remove(commentsTime);
-					downPanel.remove(profilePictrue);
-
+				if(frontPage >= 2 ) {
+					frontPage--;
 				}
-					
 
+				beforeBtn();
+				beforeNumber();
+				afterBtn(1);
+				System.out.println("frontPage : " + frontPage);
 
-				for(int i = 0 ; i < commentListDTO.size(); i++) {
-
-					commentList(postNo);
-
-				}
-				
-			
-
+		
 			}
 		});
 
@@ -393,30 +366,28 @@ public class SelectedComment extends JFrame {
 		afterBtn.setContentAreaFilled(false);
 		afterBtn.setBorderPainted(false);
 		afterBtn.setBounds(120, 4, 14, 14);
-		System.out.println("sdfasdf" + pageInfo.getMaxPage());
+		
 		if(pageNo == pageInfo.getMaxPage()) {
 			afterBtn.setVisible(false);
+		} else {
+			afterBtn.setVisible(true);
 		}
-		System.out.println("pageNo : " + pageNo);
-		System.out.println("pageInfo : " + pageInfo.getMaxPage());
+
 
 		afterBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
+
+				if(frontPage < pageInfo.getMaxPage()) {
+					frontPage++;
+				}
+				
 				for(int i = 0; i < 10; i++) {
 
-					remove(commentList);
-					remove(nickName);
-					remove(content);
-					remove(updateBtn);
-					remove(reportBtn);
-					remove(commentsDate);
-					remove(commentsTime);
-					remove(downPanel);
-
-
+					
 					downPanel.remove(commentList);
 					downPanel.remove(nickName);
 					downPanel.remove(content);
@@ -425,27 +396,13 @@ public class SelectedComment extends JFrame {
 					downPanel.remove(commentsDate);
 					downPanel.remove(commentsTime);
 					downPanel.remove(profilePictrue);
-
-				}
-
-				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
-
-				if(frontPage < pageInfo.getMaxPage()) {
-					frontPage++;
-				} else {
-					System.out.println("불가능");
+					downPanel.remove(deleteBtn);
+					
 				}
 
 				afterBtn(1);
 				beforeBtn();
 				beforeNumber();		
-
-
-				for(int i = 0 ; i < commentListDTO.size(); i++) {
-
-					commentList(postNo);
-
-				}
 
 			}
 		});
@@ -453,7 +410,6 @@ public class SelectedComment extends JFrame {
 
 	/* 현재페이지를 나타내는 숫자 */
 	public void beforeNumber() {
-
 
 		String frontPageString = Integer.valueOf(frontPage).toString();
 
@@ -574,6 +530,23 @@ public class SelectedComment extends JFrame {
 				profilePictrue.setVisible(false);
 			}
 
+			
+			deleteBtn = new JButton("");
+			deleteBtn.setIcon(new ImageIcon("image/post/commentDeleteButton.png"));
+			deleteBtn.setContentAreaFilled(false);
+			deleteBtn.setBorderPainted(false);
+			deleteBtn.setBounds(390, y + 37, 23, 23);
+			deleteBtn.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+				
+					System.out.println("댓글 삭제");
+
+				}
+			});
+			
+			downPanel.add(deleteBtn);
 			downPanel.add(profilePictrue);
 			downPanel.add(nickName);
 			downPanel.add(content);
