@@ -2,9 +2,39 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment/>	
-	<entry key="selectAllPosts">
+	<entry key="selectAllMembers">
 	     SELECT
 	            *
 	       FROM TBL_MEMBER
+	</entry>
+	
+	<entry key="selectAllPosts">
+	    SELECT
+	            A1.ACHIV_TYPE  
+	          , L1.LOCAL_NAME
+	          , P1.POST_NAME
+	          , M1.MEMBER_NICKNAME
+	          , M1.MEMBER_PROFILE
+	          , C1.CATEGORY_NAME
+	       FROM TBL_MEMBER M1
+	       JOIN TBL_LOCAL L1 ON (M1.MEMBER_NAME = L1.LOCAL_NAME)
+	       JOIN TBL_POST P1 ON (M1.MEMBER_NO = P1.POST_NO)
+	       JOIN TBL_ACHIEVEMENT A1 ON (M1.MEM_CHARCTER_CODE = A1.ACHIV_CODE) 
+	       JOIN TBL_CATEGORY C1 ON (C1.CATEGORY_NAME = M1.MEMBER_NAME)
+	</entry>
+	
+	<entry key="selectAllPosts">
+		SELECT
+				 A1.ACHIV_TYPE  
+	          , L1.LOCAL_NAME
+	          , P1.POST_NAME
+	          , M1.MEMBER_NICKNAME
+	          , M1.MEMBER_PROFILE
+	          , C1.CATEGORY_NAME
+	        FROM TBL_MEMBER M1.
+	        JOIN TBL_POST M1 ON (M1.MEMBER_NO = P1.POST_MEMBER_NO)
+	        JOIN TBL_LOCAL L1 ON (P1.LOCAL_CODE = L1.LOCAL_CODE )
+	        
+				
 	</entry>
 </properties>

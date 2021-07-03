@@ -1,22 +1,29 @@
 package com.devs.honddoni.admin.view123;
 
-import java.io.Serializable;
 
-public class MemberDTO implements Serializable{
+public class MemberDTO {
+
 	
 	private String memberId;
 	private String memberNickname;
 	private String memberProfile;
-	private String memberRegistDate;
-	
-	public MemberDTO() {}
 
-	public MemberDTO(String memberId, String memberNickname, String memberProfile, String memberRegistDate) {
+	private String memRegistdate;
+	
+	public MemberDTO () {
+		
+	}
+
+	public MemberDTO(String memberId, String memberNickname, String memberProfile, String memRegistdate) {
+r
 		super();
 		this.memberId = memberId;
 		this.memberNickname = memberNickname;
 		this.memberProfile = memberProfile;
-		this.memberRegistDate = memberRegistDate;
+
+		this.memRegistdate = memRegistdate;
+		
+
 	}
 
 	/**
@@ -41,10 +48,12 @@ public class MemberDTO implements Serializable{
 	}
 
 	/**
-	 * @return the memberRegistDate
+
+	 * @return the memRegistdate
 	 */
-	public String getMemberRegistDate() {
-		return memberRegistDate;
+	public String getMemRegistdate() {
+		return memRegistdate;
+
 	}
 
 	/**
@@ -69,23 +78,20 @@ public class MemberDTO implements Serializable{
 	}
 
 	/**
-	 * @param memberRegistDate the memberRegistDate to set
+
+	 * @param memRegistdate the memRegistdate to set
 	 */
-	public void setMemberRegistDate(String memberRegistDate) {
-		this.memberRegistDate = memberRegistDate;
+	public void setMemRegistdate(String memRegistdate) {
+		this.memRegistdate = memRegistdate;
+		
+
 	}
 
 	@Override
 	public String toString() {
 		return "MemberDTO [memberId=" + memberId + ", memberNickname=" + memberNickname + ", memberProfile="
-				+ memberProfile + ", memberRegistDate=" + memberRegistDate + "]";
+
+				+ memberProfile + ", memRegistdate=" + memRegistdate + "]";
 	}
-	
+
 }
-
-	
-	
-
-	
-	
-	
