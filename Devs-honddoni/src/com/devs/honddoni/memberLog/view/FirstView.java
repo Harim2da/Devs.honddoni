@@ -27,9 +27,7 @@ public class FirstView extends JPanel{
 		
 		this.frame = mainFrame; //4조참조
 		this.firstView = this; //4조참조
-		
-//		MemberLogView memberLogView = new MemberLogView(frame);
-		
+				
 		//시작화면에 올릴 전체크기패널 
 //		firstViewPanel = new JPanel();
 		firstView.setBounds(0, 0, 500, 870);
@@ -60,7 +58,8 @@ public class FirstView extends JPanel{
 		honttoniLb = new JLabel();
 		honttoniLb.setBounds(130, 443, 241, 99);
 //		honttoniLb.setBorderPainted(false);  //선 어떻게 없애드라..
-		honttoniLb.setIcon(new ImageIcon("image/common/honddoniLogo.png"));
+		honttoniLb.setIcon(new ImageIcon("image/memberLog/login/login_2_logo2.png"));
+		
 		
 		
 		//전체패널에 컴포넌트 2개 올리기

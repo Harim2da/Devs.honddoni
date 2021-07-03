@@ -38,15 +38,15 @@ public class MainFrame extends JFrame{
 		noticeBtnClick();
 		
 		
+//		FrameManager.initPanel(this, firstView);
 		new FirstView(this);
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		//시작화면으로 가기 전에 상단패널을 멈춰준다.
-//		topPannelBtnStop();
+		topPannelBtnStop();		
 		
-		
-//		FrameManager.initPanel(this, firstView);
 	}
 	
 	
