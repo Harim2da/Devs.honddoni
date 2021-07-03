@@ -43,7 +43,7 @@ public class FrameManager {
 	
 static JButton home;
 
-	public static void homeBtnChangePanel(FrameTestYoon frame, JPanel oldPanel) {	//현기 테스트중 
+	public static void homeBtnChangePanel(FrameTestYoon frame, ) {	//현기 테스트중 
 			home = new JButton();
 			home.setBounds(298,23,56,56);
 			home.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));

@@ -15,10 +15,12 @@ import com.devs.honddoni.post.view.PostHonddoni;
 
 public class MainFrame extends JFrame{
 	
-	private FirstView firstView;
-	private MainFrame mainFrame;
+
+	FirstView firstView;
+	MainFrame mainFrame;
+
 	
-	private JPanel topPanel = new JPanel();
+	private JPanel topPanel;
 	private JLabel backgroundImage = new JLabel();
 	private JButton myHonddoniBtn = new JButton();
 	private JButton searchHonddoniBtn = new JButton();
@@ -43,24 +45,26 @@ public class MainFrame extends JFrame{
 		
 		
 		//시작화면으로 가기 전에 상단패널을 멈춰준다.
-		topPannelBtnStop();		
+//		topPannelBtnStop();		
 		
 //		firstView = new FirstView(this);
 //		this.add(firstView);		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//프레임이 자꾸 두개가 생겨서 이닛패널로 함 써보자
-		new FirstView(this);
-		System.out.println(firstView); //확인용출력
+
 		
+
+		
+		new FirstView(this);
+
 	}
 	
 	
 	public void topPanel() {
 
 		/* 상단 패널 생성 */
-
+		topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
