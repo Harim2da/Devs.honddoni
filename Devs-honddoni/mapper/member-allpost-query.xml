@@ -9,32 +9,49 @@
 	</entry>
 	
 	<entry key="selectAllPosts">
-	    SELECT
-	            A1.ACHIV_TYPE  
-	          , L1.LOCAL_NAME
-	          , P1.POST_NAME
-	          , M1.MEMBER_NICKNAME
-	          , M1.MEMBER_PROFILE
-	          , C1.CATEGORY_NAME
-	       FROM TBL_MEMBER M1
-	       JOIN TBL_LOCAL L1 ON (M1.MEMBER_NAME = L1.LOCAL_NAME)
-	       JOIN TBL_POST P1 ON (M1.MEMBER_NO = P1.POST_NO)
-	       JOIN TBL_ACHIEVEMENT A1 ON (M1.MEM_CHARCTER_CODE = A1.ACHIV_CODE) 
-	       JOIN TBL_CATEGORY C1 ON (C1.CATEGORY_NAME = M1.MEMBER_NAME)
+		SELECT
+             V.*
+        FROM (SELECT P.POST_NO
+                   , P.POST_NAME
+                   , P.POST_CONTENTS
+                   , P.POST_CATEGORY
+                   , P.POST_MEMBER_NO
+                   , P.POST_MEETINGDATE
+                   , P.POST_MEETINGTIME
+                   , P.POST_WRITINGDATE
+                   , P.POST_WRITINGTIME
+                   , L.LOCAL_NAME
+				   , C.CATEGORY_NAME
+                   , P.POST_DEL_STATUS
+                   , P.POST_NUMBER_OF_PEOPLE
+                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
+        FROM TBL_POST P
+        JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
+        JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
+           ) V
+      WHERE V.순서 BETWEEN ? AND ?
 	</entry>
 	
-	<entry key="selectAllPosts">
-		SELECT
-				 A1.ACHIV_TYPE  
-	          , L1.LOCAL_NAME
-	          , P1.POST_NAME
-	          , M1.MEMBER_NICKNAME
-	          , M1.MEMBER_PROFILE
-	          , C1.CATEGORY_NAME
-	        FROM TBL_MEMBER M1.
-	        JOIN TBL_POST M1 ON (M1.MEMBER_NO = P1.POST_MEMBER_NO)
-	        JOIN TBL_LOCAL L1 ON (P1.LOCAL_CODE = L1.LOCAL_CODE )
-	        
-				
-	</entry>
+	<entry key="totalPostList">
+	  SELECT
+             V.*
+        FROM (SELECT P.POST_NO
+                   , P.POST_NAME
+                   , P.POST_CONTENTS
+                   , P.POST_CATEGORY
+                   , P.POST_MEMBER_NO
+                   , P.POST_MEETINGDATE
+                   , P.POST_MEETINGTIME
+                   , P.POST_WRITINGDATE
+                   , P.POST_WRITINGTIME
+                   , L.LOCAL_NAME
+				   , C.CATEGORY_NAME
+                   , P.POST_DEL_STATUS
+                   , P.POST_NUMBER_OF_PEOPLE
+                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
+        FROM TBL_POST P
+        JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
+        JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
+           ) V
+      WHERE V.순서 BETWEEN ? AND ?
 </properties>

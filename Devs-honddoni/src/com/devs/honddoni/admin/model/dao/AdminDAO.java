@@ -13,7 +13,7 @@ import java.util.Properties;
 import com.devs.honddoni.admin.view123.MemberDTO;
 
 import com.devs.honddoni.admin.view123.PostDTO;
-
+import com.devs.honddoni.common.dto.PageInfoPostDTO;
 
 import static com.devs.honddoni.common.JDBCTemplate.close;
 
@@ -107,4 +107,51 @@ public class AdminDAO {
    return postList;
 }
 
+   public List<PostDTO> totalPostList(Connection con, PageInfoPostDTO pageInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		PostDTO row = null;
+		List<PostDTO> postList = null;
+		
+		String query = prop.getProperty("wholePostList");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartRow());
+			pstmt.setInt(2, pageInfo.getEndRow());
+			
+			rset = pstmt.executeQuery();
+			
+			postList = new ArrayList<>();
+			
+			while(rset.next()) {
+				row = new PostDTO();
+				
+				row.setPostNo(rset.getInt("POST_NO"));
+				row.setPostName(rset.getString("POST_NAME"));
+				row.setPostContents(rset.getString("POST_CONTENTS"));
+				row.setPostCategory(rset.getString("POST_CATEGORY"));
+				row.setPostMemberNo(rset.getInt("POST_MEMBER_NO"));
+				row.setPostMeetingDate(rset.getString("POST_MEETINGDATE"));
+				row.setPostMeetingTime(rset.getString("POST_MEETINGTIME"));
+				row.setPostWritingDate(rset.getString("POST_WRITINGDATE"));
+				row.setPostWritingTime(rset.getString("POST_WRITINGTIME"));
+				row.setLocalName(rset.getString("LOCAL_NAME"));
+				row.setCategoryName(rset.getString("CATEGORY_NAME"));
+				row.setPostDelStatus(rset.getString("POST_DEL_STATUS"));
+				row.setPostNumberOfPeopleNumber(rset.getInt("POST_NUMBER_OF_PEOPLE"));
+		
+				postList.add(row);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return postList;
+	}
 }
