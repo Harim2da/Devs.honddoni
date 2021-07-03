@@ -93,7 +93,7 @@
         LEFT JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
         LEFT JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
            ) V
-      WHERE V.순서 BETWEEN ? AND ?
+     <!--  WHERE V.순서 BETWEEN ? AND ? -->
 	</entry>
 	<entry key="selectCommentsList">
 	  SELECT
