@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +8,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.devs.honddoni.admin.controller.ManagementController;
+import com.devs.honddoni.admin.model.dao.AdminDAO;
 
 //모든회원정보 조회 화면
 
@@ -29,7 +32,11 @@ public class AllData {
 		bottomPanel.setBackground(Color.WHITE);
 		MainFrame.add(bottomPanel);
 		
-			//탈퇴 회원 전체데이터 조회 화면
+		
+
+
+		
+			
 		
 //		   ImageIcon img1 = new ImageIcon ("image\\admin\\Side.png");
 //	       JButton btn1 = new JButton(img1);
@@ -84,17 +91,19 @@ public class AllData {
 	       
 	       JLabel lb17 = new JLabel("가입일:");//가입일
 	       
-	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
+	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Squrd.png");
 	       JLabel lb18 = new JLabel();//네모
 	       
-	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
+	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Squrd.png");
 	       JLabel lb19 = new JLabel();//네모
 	       
-	       ImageIcon  img9 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
+	       ImageIcon  img9 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Squrd.png");
 	       JLabel lb20 = new JLabel();//네모
 	       
-	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
+	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Squrd.png");
 	       JLabel lb21 = new JLabel();//네모
+	       
+
 	       
 
 	       //패널에 버튼 추가
@@ -142,30 +151,28 @@ public class AllData {
 	       lb6.setBounds(53, 290, 36, 39);//프로필 위치
 	       lb7.setBounds(92, 286, 100, 43);//닉네임 위치
 	       lb8.setBounds(250, 286, 200, 24);//id 위치
-	       lb9.setBounds(250, 298, 136, 24);//가입일 위치 위치
+	       lb9.setBounds(250, 316, 136, 24);//가입일 위치 위치
 	       
 	       lb10.setBounds(53, 390, 36, 39);//프로필 위치
 	       lb11.setBounds(92, 386, 100, 43);//닉네임 위치
-	       lb12.setBounds(250, 386, 200, 24);//id 위치
-	       lb13.setBounds(250, 398, 136, 24);//가입일 위치 위치
+	       lb12.setBounds(250, 404, 200, 24);//id 위치
+	       lb13.setBounds(250, 434, 136, 24);//가입일 위치 위치
 	       
 	       lb14.setBounds(53, 490, 36, 39);//프로필 위치
 	       lb15.setBounds(92, 486, 100, 43);//닉네임 위치
-	       lb16.setBounds(250, 486, 200, 24);//id 위치
-	       lb17.setBounds(250, 498, 136, 24);//가입일 위치 위치
+	       lb16.setBounds(250, 522, 200, 24);//id 위치
+	       lb17.setBounds(250, 553, 136, 24);//가입일 위치 위치
 	       
-	       lb18.setBounds(34, 143, 430, 104);//프로필 위치
-	       lb19.setBounds(34, 262, 430, 104);//닉네임 위치
-	       lb20.setBounds(34, 380, 430, 104);//id 위치
-	       lb21.setBounds(34, 498, 430, 104);//가입일 위치 위치
+	       lb18.setBounds(34, 143, 430, 104);//네모
+	       lb19.setBounds(34, 262, 430, 104);//네모
+	       lb20.setBounds(34, 380, 430, 104);//네모
+	       lb21.setBounds(34, 498, 430, 104);//네모
 	       
-	       
-	       
-	   
-	     
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);
 	       MainFrame.setVisible(true); //창을 보이게함
+	       
+//	       poupfrome.pup 이미지넣기
 	       
 ////	       btn1.addActionListener(new ActionListener() {
 //	    	   @Override

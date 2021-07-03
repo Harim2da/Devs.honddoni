@@ -70,43 +70,6 @@ public class AdminDAO {
       return memberList;
    }
 
-//
-//   public List<PostDTO> selectAllPosts(Connection con) {
-//   
-//   PreparedStatement pstmt = null;
-//   ResultSet rset = null;
-//   
-//   List<PostDTO> postList = null;
-//   
-//   String query = prop.getProperty("selectAllPosts");
-//   
-//   try {
-//      pstmt = con.prepareStatement(query);
-//      
-//      rset = pstmt.executeQuery();
-//      
-//      postList = new ArrayList<>();
-//      
-//      while(rset.next()) {
-//      PostDTO post = new PostDTO();
-//      post.setPostName(rset.getString("POST_NAME"));
-//      post.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
-//      post.setMemberProfile(rset.getString("MEMBER_PROFILE"));
-//      post.setLocalName(rset.getString("LOCAL_NAME"));
-//      post.setCategoryName(rset.getString("CATEGORY_NAME"));
-//      post.setAchivType(rset.getString("ACHIV_TYPE"));
-//      
-//      postList.add(post);
-//      }
-//   } catch (SQLException e) {
-//      // TODO Auto-generated catch block
-//      e.printStackTrace();
-//   } finally {
-//      close(rset);
-//      close(pstmt);
-//   }
-//   return postList;
-//}
 
    public List<TotalDTO> totalPostList(Connection con, PageInfoPostDTO pageInfo) {
 		
