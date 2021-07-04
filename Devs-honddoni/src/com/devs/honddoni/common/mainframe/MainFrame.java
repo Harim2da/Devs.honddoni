@@ -45,7 +45,7 @@ public class MainFrame extends JFrame{
 		
 		
 		//시작화면으로 가기 전에 상단패널을 멈춰준다.
-//		topPannelBtnStop();		
+		topPannelBtnStop();		
 		
 //		firstView = new FirstView(this);
 //		this.add(firstView);		

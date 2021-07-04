@@ -45,7 +45,7 @@ public class MemberLogService {
 		
 		close(con);
 		
-		return 0;
+		return result;
 	}
 
 }
