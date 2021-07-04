@@ -8,15 +8,13 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.PagenationComments;
 import com.devs.honddoni.common.dto.CommentsDTO;
-import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
-import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
-import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.post.controller.ContactController2;
 import com.devs.honddoni.post.controller.PagingController;
 import com.devs.honddoni.search.controller.SearchController;
 
@@ -665,43 +663,71 @@ public class AllBoardList {
 		int pageNo = nowPage;
 		int y =  152;
 		
-//		postListDTO = new PagingController().selectPostList(pageNo, postNo);
-//		PostDTO commentInfo = null;
+//		postListDTO = new PagingController().wholePostList(int pageNo);
+//		PostDTO postInfo = null;
 //
 //
-//		for(int i = 0; i < commentListDTO.size(); i++) {
+//		for(int i = 0; i < postListDTO.size(); i++) {
 //			
-//			commentInfo = commentListDTO.get(i);
+//			postInfo = postListDTO.get(i);
+//			
+//			postList = new JLabel[postListDTO.size()];
+//			postList[i] = new JLabel();
+//			postList[i].setLayout(null);
+//			postList[i].setIcon(new ImageIcon("image/post/commentWriteListLabelOne.png"));
+//			postList[i].setBounds(35, y, 431, 61);
 //
-//			commentList = new JLabel("");
-//			commentList.setLayout(null);
-//			commentList.setIcon(new ImageIcon("image/post/commentWriteListLabelOne.png"));
-//			commentList.setBounds(35, y, 431, 61);
+//			nickName = new JLabel[postListDTO.size()];
+//			nickName[i] = new JLabel();
+//			nickName[i].setLayout(null);
+//			nickName[i].setBounds(110, y + 10, 720, 35);
+//			nickName[i].setText(postInfo.getMemberNickname());
 //
-//			nickName = new JLabel(commentInfo.getMemberNickname());
-//			nickName.setLayout(null);
-//			nickName.setBounds(110, y + 10, 720, 35); 
+//			content = new JLabel[postListDTO.size()];
+//			content[i] = new JLabel();
+//			content[i].setLayout(null);
+//			content[i].setBounds(187, y + 10, 250, 35);
+//			content[i].setText(postInfo.getCommentsContents());
 //
-//			content = new JLabel(commentInfo.getCommentsContents());
-//			content.setLayout(null);
-//			content.setBounds(187, y + 10, 250, 35); 
+//			updateBtn = new JButton[postListDTO.size()];
+//			updateBtn[i] = new JButton();
+//			updateBtn[i].setIcon(new ImageIcon("image/post/commentUpdateButton.png"));
+//			updateBtn[i].setContentAreaFilled(false);
+//			updateBtn[i].setBorderPainted(false);
+//			updateBtn[i].setBounds(415, y + 37, 23, 23);
+//			System.out.println("updateBtn[" + i + "] : " + postListDTO.get(i).getCommentsNo());
 //
-//			updateBtn = new JButton("");
-//			updateBtn.setIcon(new ImageIcon("image/post/commentUpdateButton.png"));
-//			updateBtn.setContentAreaFilled(false);
-//			updateBtn.setBorderPainted(false);
-//			updateBtn.setBounds(415, y + 37, 23, 23);
-//			updateBtn.addActionListener(new ActionListener() {
+//			int getCommentsNo = postListDTO.get(i).getCommentsNo();
+//			int getMemberNo = postListDTO.get(i).getMemberNo();
 //
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//					/* 글 수정(글 작성 패널 불러오기) */
-//					System.out.println("글 작성 패널 불러오기");
 //
-//				}
-//			}); 
-//		
-//	}
+//			if(getMemberNo == 1 /* 로그인된 번호 */) {
+//				updateBtn[i].addActionListener(new ActionListener() {
+//
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//						System.out.println("댓글 수정란 호출");
+//						String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
+//						System.out.println(text);
+//						CommentsDTO updateComment = new CommentsDTO();
+//
+//
+//						updateComment.setCommentsNo(getCommentsNo);
+//						updateComment.setMemberNo(getMemberNo);
+//						updateComment.setCommentsContents(text);
+//						//						System.out.println("conmmentListDTO CommentNo  : " + commentListDTO.get(i).getCommentsNo());
+//						//						System.out.println("conmmentListDTO MemberNo  : " + commentListDTO.get(i).getMemberNo());
+//						System.out.println("getCommentsNo : " + getCommentsNo);
+//
+//
+//						ContactController2 contactController2 = new ContactController2();
+//						contactController2.updateComment(updateComment);
+//
+//
+//					}
+//				});
+//			}
+
 	
 	
 	

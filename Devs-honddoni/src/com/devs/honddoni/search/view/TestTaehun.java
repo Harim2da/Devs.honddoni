@@ -17,8 +17,8 @@ public class TestTaehun {
 //		
 //		new AllBoardListView();
 		
-		SearchController sc = new SearchController();
-		sc.selectSearch();
+//		SearchController sc = new SearchController();
+//		sc.selectSearch();
 	}
 
 }
