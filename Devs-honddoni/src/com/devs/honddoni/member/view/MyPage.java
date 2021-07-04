@@ -25,13 +25,10 @@ import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
 public class MyPage extends JPanel {
 	
-	private TestYOON test;
-	
-	
 	private MyPage myPage;
 	private MainFrame frame;
 	
-	private MemberController memberController;
+	private MemberController memberController = new MemberController();;
 	private MemberRegistDTO memberRegistDTO;
 	private ChangePwdDTO changePwdDTO;
 	
@@ -75,9 +72,8 @@ public class MyPage extends JPanel {
 		this.myPage = this;
 		
 		
-		FrameManager.topPanel(frame, this);
-		FrameManager.myHonddoniBtnClick(frame, this, myPage);
-		FrameManager.searchHonddoniBtnClick(frame, this, test);
+//		FrameManager.topPanel(frame, this);
+//		FrameManager.myHonddoniBtnClick(frame, this, myPage);
 		
 		this.setBounds(0, 100, 500, 770);
 		this.setBackground(Color.white);
@@ -147,12 +143,9 @@ public class MyPage extends JPanel {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("취소 버튼 클릭");
-//						frame.remove(changePwdPanel);
-//						frame.add(new MyPage(frame));
-////						frame.add(downsidePanel);
-//						frame.repaint();
-//						frame.revalidate();
-						FrameManager.changePanel(frame, changePwdPanel, new MyPage(frame));
+						changePwdPanel.setVisible(false);
+						myPage.setVisible(true);
+//						FrameManager.changePanel(frame, changePwdPanel, new MyPage(frame));
 						
 					}
 				});
@@ -172,7 +165,7 @@ public class MyPage extends JPanel {
 					public void actionPerformed(ActionEvent e) {
 						
 						if(e.getSource() == cpB2) {
-							memberController = new MemberController();
+						
 							 	String password = "";
 							   char[] pass = cpPF1.getPassword();
 							   for(int i = 0; i < pass.length; i++) {
@@ -240,6 +233,8 @@ public class MyPage extends JPanel {
 //				downsidePanel.setVisible(false);
 				myPage.setVisible(false);
 				frame.add(changeMemberinfoPanel);
+				memberController.
+				
 				
 				/* 취소 버튼 */
 				btnRemove(cpB1);
@@ -253,26 +248,11 @@ public class MyPage extends JPanel {
 						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
-						FrameManager.changePanel(frame, changeMemberinfoPanel, new MyPage(frame));
+//						FrameManager.changePanel(frame, changeMemberinfoPanel, new MyPage(frame));
 					}
 				});
 				changeMemberinfoPanel.add(cpB1);
 				
-				/* 변경 버튼 */
-				btnRemove(cpB2);
-				cpB2.setVisible(true);
-				cpB2.setBounds(264, 670, 178, 63);
-				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
-				cpB2.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						System.out.println("변경 버튼 클릭");
-						
-					}
-				});
-				changeMemberinfoPanel.add(cpB2); 
-
 				
 				/* 프로필 변경 버튼 */
 				btnRemove(ciB1);
@@ -355,14 +335,33 @@ public class MyPage extends JPanel {
 				
 				characterSelectCombo.setBounds(110, 600, 360, 47);
 				characterSelectCombo.setSelectedIndex(0);
+				changeMemberinfoPanel.add(characterSelectCombo);
 				characterSelectCombo.addActionListener(new ActionListener() {
+//					characterSelectCombo.setBounds(110, 600, 360, 47);
+//					characterSelectCombo.setSelectedIndex(0);
+//					changeMemberinfoPanel.add(characterSelectCombo);
+//					characterSelectCombo.addActionListener(new ActionListener() {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("콤보박스 동작");				
 					}
 				});
-				changeMemberinfoPanel.add(characterSelectCombo);
+				
+				/* 변경 버튼 */
+				btnRemove(cpB2);
+				cpB2.setVisible(true);
+				cpB2.setBounds(264, 670, 178, 63);
+				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
+				changeMemberinfoPanel.add(cpB2); 
+				cpB2.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("변경 버튼 클릭");
+						
+					}
+				});
 				
 				changeMemberinfoPanel.revalidate();
 				changeMemberinfoPanel.repaint();
