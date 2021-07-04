@@ -10,20 +10,20 @@ public class Ctest3 {
 		
 //		JFrame jf = new JFrame();
 
-		
-		jf.setBounds(100, 100, 516, 909);
-		jf.setLayout(null);
-		
-		SelectedComment2 cm = new SelectedComment2();
-		cm.collect();
-		
-//		jf.add(cm.getUpPanel());
-		jf.add(cm.getDownPanel2());
-		
-		
-		
-		jf.setVisible(true);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		
+//		jf.setBounds(100, 100, 516, 909);
+//		jf.setLayout(null);
+//		
+//		SelectedComment2 cm = new SelectedComment2();
+//		cm.collect();
+//		
+////		jf.add(cm.getUpPanel());
+//		jf.add(cm.getDownPanel2());
+//		
+//		
+//		
+//		jf.setVisible(true);
+//		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
 	}
@@ -35,11 +35,11 @@ public class Ctest3 {
 //		jf.revalidate();
 //	}
 
-	public static void changePanel(JPanel downPanel, JPanel downPanel2) {
-		jf.remove(downPanel);
-		jf.add(downPanel2);
-		jf.repaint();
-		jf.revalidate();
-		
-	}
+//	public static void changePanel(JPanel downPanel, JPanel downPanel2) {
+//		jf.remove(downPanel);
+//		jf.add(downPanel2);
+//		jf.repaint();
+//		jf.revalidate();
+//		
+//	}
 }

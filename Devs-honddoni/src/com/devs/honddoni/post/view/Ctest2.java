@@ -4,11 +4,11 @@ import javax.swing.JFrame;
 
 public class Ctest2 {
 
-	static JFrame jf = new JFrame();
+//		static JFrame jf = new JFrame();
 	
 	public static void main(String[] args) {
 		
-//		JFrame jf = new JFrame();
+		JFrame jf = new JFrame();
 
 		
 	
