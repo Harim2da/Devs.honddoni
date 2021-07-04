@@ -145,7 +145,7 @@ public class MainBottomPanel /*extends JFrame*/{
 		allListBoardBtn.setIcon(new ImageIcon("image/search/bottompanel/alllistboardLogo.png"));
 		allListBoardBtn.setContentAreaFilled(false);
 		allListBoardBtn.setBorderPainted(false);
-		allListBoardBtn.setBounds(62, 23  , 90, 110);  
+		allListBoardBtn.setBounds(62, 23, 90, 110);  
 		
 		
 		
@@ -163,6 +163,9 @@ public class MainBottomPanel /*extends JFrame*/{
 				changeBoardList.setVisible(true);
 				changeBoardList.setBackground(Color.white);
 				frame.add(changeBoardList);
+				
+//				searchController = new SearchController();
+//				searchController.selectSearch();
 				
 				AllBoardList allBoardList = new AllBoardList();
 				allBoardList.bottomPanel();
