@@ -362,6 +362,7 @@ public class MainBottomPanel /*extends JFrame*/{
 //		
 	
 //	JPanel mainBottomPanel = new JPanel();
+//	JPanel mainBottomPanel = new JPanel();
 	
 	
 }

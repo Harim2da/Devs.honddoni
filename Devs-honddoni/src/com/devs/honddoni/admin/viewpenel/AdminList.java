@@ -31,6 +31,19 @@ public class AdminList {
 		bottomPanel.setBackground(Color.WHITE);
 		mainFrame.add(bottomPanel);
 		
+		/* 상단 패널 생성 */
+		JPanel topPanel = new JPanel();
+		topPanel.setBounds(0, 0, 500, 100);
+		topPanel.setLayout(null);
+		topPanel.setBackground(Color.WHITE);
+		mainFrame.add(topPanel);
+		
+		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
+	     JButton btn0 = new JButton(img0);
+	     
+	     topPanel.add(btn0);
+	     btn0.setBounds(303, 27, 172, 70);
+		
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\Admin1-1.png");
 		   JButton btn1 = new JButton(img1);
 	       
@@ -132,6 +145,20 @@ public class AdminList {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new Honnest();
+	    		   bottomPanel.setVisible(false); 
+	    		   mainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn0.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminList();
 	    		   bottomPanel.setVisible(false); 
 	    		   mainFrame.setVisible(false);
 	    	   }
