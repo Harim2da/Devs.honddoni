@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
+import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
 public class MemberDAO {
@@ -165,6 +166,45 @@ public class MemberDAO {
 		
 		
 		return result;
+	}
+
+	public MemberInfoDTO callMemberInfo(Connection con, String testId) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		MemberInfoDTO memberInfo = null;
+		
+		String query = prop.getProperty("callMemberInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, testId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				memberInfo = new MemberInfoDTO();
+				memberInfo.setProfile(rset.getString("MEMBER_PROFILE"));
+				memberInfo.setName(rset.getString("MEMBER_NAME"));
+				memberInfo.setId(rset.getString("MEMBER_ID"));
+				memberInfo.setBirth(rset.getString("MEMBER_BIRTH"));
+				memberInfo.setGender(rset.getString("MEMBER_GENDER"));
+				memberInfo.setNickName(rset.getString("MEMBER_NICKNAME"));
+				memberInfo.setAddress(rset.getString("MEMBER_ADDRESS"));
+				memberInfo.setPhone(rset.getString("MEMBER_PHONE"));
+				memberInfo.setEmail(rset.getString("MEMBER_EMAIL"));
+				memberInfo.setCharacterCode(rset.getInt("MEM_CHARACTER_CODE"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return memberInfo;
 	}
 
 	
