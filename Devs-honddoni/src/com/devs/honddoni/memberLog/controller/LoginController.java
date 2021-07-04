@@ -19,8 +19,7 @@ public class LoginController {
 		int result = 0;		
 		if(userPassword.equals(getPassword)) {
 			
-			result = 1; //일치한다면 로그인 성공
-			
+			result = 1; //일치한다면 로그인 성공			
 		}
 			
 		//로그인 성공시 
@@ -53,8 +52,8 @@ public class LoginController {
 			int memberNo = getLoginMemberId.getLoginMemberNo();
 			String memberId = getLoginMemberId.getLoginMemberId();
 			//확인용
-			System.out.println(memberNo);
-			System.out.println(memberId);
+			System.out.println("싱글톤에 저장된 회원번호 : " + memberNo);
+			System.out.println("싱글톤에 저장된 회원id : " + memberId);
 			
 			
 			

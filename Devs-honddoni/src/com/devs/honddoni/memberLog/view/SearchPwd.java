@@ -10,30 +10,30 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.memberLog.controller.MemberLogController;
 import com.devs.honddoni.memberLog.model.dto.SearchPwdDTO;
 
 public class SearchPwd extends JPanel{
 	
-//	MainFrame frame; 나중엔 여기로 이동
-	TestFrame frame; //임시	
+	MainFrame frame; 
+//	TestFrame frame; //임시	
+	SearchPwd searchPwd;
 	
-	private MemberLogController memberLogController = new MemberLogController();
-	private MemberLogView memberLogView;
+	private MemberLogView memberLogView; //newPanel로 쓸 것
+	
+	private MemberLogController memberLogController;
 	private SearchPwdDTO searchPwdDTO;
 	
-	private JPanel firstPanel;
+	public SearchPwd(MainFrame mainFrame) {	
 	
-	public SearchPwd(TestFrame testFrame) {	
-	
-		this.frame = testFrame;
-		this.firstPanel = this;
+		this.frame = mainFrame;
+		this.searchPwd = this;
 						
 		/* 제일 기본 패널 */
-		firstPanel = new JPanel();
-		firstPanel.setBounds(0, 0, 500, 870);
-		firstPanel.setLayout(null);
-		firstPanel.setBackground(Color.YELLOW);
+		searchPwd.setBounds(0, 0, 500, 870);
+		searchPwd.setLayout(null);
+		searchPwd.setBackground(Color.YELLOW);
 		
 		
 		/* 혼또니 로고버튼(오른쪽 상단) */
@@ -47,8 +47,13 @@ public class SearchPwd extends JPanel{
 				/* 로고버튼 누를 시, 로그인 창으로 이동 */			
 				if(e.getSource() == honddoniBtn) {
 					System.out.println("로그인창으로 이동");
-										
+					
+					memberLogView = new MemberLogView(frame);
 //					FrameManager.changePanel(frame, firstPanel, newPanel);
+					frame.remove(searchPwd);
+					frame.add(memberLogView);
+					frame.repaint();
+					frame.revalidate();
 				}
 				
 			}
@@ -80,6 +85,7 @@ public class SearchPwd extends JPanel{
 				
 				//비밀번호 조회기능
 				System.out.println("비밀번호 조회기능으로~");
+				memberLogController = new MemberLogController();
 				
 				searchPwdDTO = new SearchPwdDTO();
 				
@@ -105,13 +111,13 @@ public class SearchPwd extends JPanel{
 					System.out.println("새로운 비밀번호 : " + newPwd);
 					
 					//새 비밀번호를 수정하
-					int result2 = memberLogController.modifyPwd(newPwd);
-										
-					if(result2 > 0) {
-						System.out.println("새 비밀번호가 잘 저장되었습니다.");
-					} else {
-						System.out.println("새 비밀번호 수정 오류!");
-					}
+//					int result2 = memberLogController.modifyPwd(newPwd);
+//										
+//					if(result2 > 0) {
+//						System.out.println("새 비밀번호가 잘 저장되었습니다.");
+//					} else {
+//						System.out.println("새 비밀번호 수정 오류!");
+//					}
 					
 					
 				} else {
@@ -133,27 +139,33 @@ public class SearchPwd extends JPanel{
 			public void actionPerformed(ActionEvent e) {				
 				
 				//로그인창으로 나감
-				System.out.println("로그인 창으로~");
+				System.out.println("로그인창으로 이동");
 				
-//				FrameManager.changePanel(frame, firstPanel, MemberLogView);
-				
+				memberLogView = new MemberLogView(frame);
+//				FrameManager.changePanel(frame, firstPanel, newPanel);
+				frame.remove(searchPwd);
+				frame.add(memberLogView);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 		
 		
 		/* 컴포넌트 붙이기 */
-		firstPanel.add(honddoniBtn);
-		firstPanel.add(searchPwdLb);
-		
-		firstPanel.add(nameTf);
-		firstPanel.add(idTf);		
-		firstPanel.add(phoneTf);
-		firstPanel.add(agreeBtn);
-		firstPanel.add(cancelBtn);		
+		searchPwd.add(honddoniBtn);
+		searchPwd.add(searchPwdLb);		
+		searchPwd.add(nameTf);
+		searchPwd.add(idTf);		
+		searchPwd.add(phoneTf);
+		searchPwd.add(agreeBtn);
+		searchPwd.add(cancelBtn);		
 				
-		firstPanel.setVisible(true);
+		searchPwd.setVisible(true);
 		
-//		frame.add(firstPanel);		
+		frame.add(searchPwd);
+		frame.repaint();
+		frame.revalidate();
+		
 		
 	}
 

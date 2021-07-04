@@ -389,23 +389,23 @@ public class SelectedComment extends JFrame {
 				}
 
 
-				downPanel.remove(commentList);
-
-
-				for(int i = 0; i < 10; i++) {
-
-
-					downPanel.remove(commentList);
-					downPanel.remove(nickName);
-					downPanel.remove(content);
-					downPanel.remove(updateBtn);
-					downPanel.remove(reportBtn);
-					downPanel.remove(commentsDate);
-					downPanel.remove(commentsTime);
-					downPanel.remove(profilePictrue);
-					downPanel.remove(deleteBtn);
-
-				}
+//				downPanel.remove(commentList);
+//
+//
+//				for(int i = 0; i < 10; i++) {
+//
+//
+////					downPanel.remove(commentList);
+////					downPanel.remove(nickName);
+////					downPanel.remove(content);
+////					downPanel.remove(updateBtn);
+////					downPanel.remove(reportBtn);
+////					downPanel.remove(commentsDate);
+////					downPanel.remove(commentsTime);
+////					downPanel.remove(profilePictrue);
+////					downPanel.remove(deleteBtn);
+//
+//				}
 
 				//				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
 				//				commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
@@ -561,30 +561,31 @@ public class SelectedComment extends JFrame {
 			} else if(commentInfo.getMemberProfile() == null) {
 				profilePictrue.setVisible(false);
 			}
+			JButton[] deleteBtn = new JButton[commentListDTO.size()];
+			deleteBtn[i] = new JButton("");
+			deleteBtn[i].setIcon(new ImageIcon("image/post/commentDeleteButton.png"));
+			deleteBtn[i].setContentAreaFilled(false);
+			deleteBtn[i].setBorderPainted(false);
+			deleteBtn[i].setBounds(390, y + 37, 23, 23);
+			
 
-			deleteBtn = new JButton("");
-			deleteBtn.setIcon(new ImageIcon("image/post/commentDeleteButton.png"));
-			deleteBtn.setContentAreaFilled(false);
-			deleteBtn.setBorderPainted(false);
-			deleteBtn.setBounds(390, y + 37, 23, 23);
-			deleteBtn.addActionListener(new ActionListener() {
+			
+			deleteBtn[i].addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 
 					System.out.println("댓글 삭제");
 					CommentsDTO deleteComment = new CommentsDTO();
-					List<CommentsDTO> deleteCommentList = new ArrayList<>();
 
-					for(int i = 0; i < commentListDTO.size(); i++) {
-
-						deleteComment.setCommentsNo(commentListDTO.get(i).getCommentsNo());
-						deleteComment.setMemberNo(commentListDTO.get(i).getMemberNo());
-						deleteCommentList.add(deleteComment);
-					}
+						deleteComment.setCommentsNo(getCommentsNo);
+						deleteComment.setMemberNo(getMemberNo);
+						
+					
 
 					ContactController2 contactController2 = new ContactController2();
-					contactController2.deleteComment(deleteCommentList);
+					contactController2.deleteComment(deleteComment);
+
 
 
 
@@ -592,7 +593,7 @@ public class SelectedComment extends JFrame {
 			});
 
 			downPanel.add(updateBtn[i]);
-			downPanel.add(deleteBtn);
+			downPanel.add(deleteBtn[i]);
 			downPanel.add(profilePictrue);
 			downPanel.add(nickName);
 			downPanel.add(content);

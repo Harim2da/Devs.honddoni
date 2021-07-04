@@ -114,17 +114,18 @@ public class MemberLogDAO {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				System.out.println("기존 비밀번호는 : ");
+				System.out.println("기존 비밀번호는 : " + rset.getString("MEMBER_PASSWORD"));
+				result = 1;
 			}
 			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		
-		
+		} finally {
+			close(pstmt);
+			close(rset);
+		}		
 		
 		return result;
 	}

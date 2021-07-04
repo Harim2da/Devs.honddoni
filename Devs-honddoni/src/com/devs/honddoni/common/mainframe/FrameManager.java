@@ -31,11 +31,13 @@ public class FrameManager {
 	
 	
 	/* 패널 변경 메소드 */
+
 	public static void changePanel(MainFrame frame, JPanel oldPanel, JPanel newPanel) {	
 		frame.remove(oldPanel);
 		frame.add(newPanel);
 		frame.repaint();
 		frame.revalidate();
+
 	}
 	
 	

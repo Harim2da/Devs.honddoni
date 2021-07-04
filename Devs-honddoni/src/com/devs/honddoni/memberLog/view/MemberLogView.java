@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.view.RegistMember;
 import com.devs.honddoni.memberLog.controller.LoginController;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
@@ -46,12 +47,12 @@ public class MemberLogView extends JPanel {
 		panel.setBounds(0, 0, 500, 870);
 		panel.setForeground(Color.WHITE);
 		panel.setLayout(null);
+		
 
-		//로고버튼 - 나중에 JLabel로 바꿔야 함
-		JButton adminLoginBtn = new JButton();
-		adminLoginBtn.setBounds(174, 82, 152, 154);
-		adminLoginBtn.setBorderPainted(false);
-		adminLoginBtn.setIcon(new ImageIcon("image/memberLog/login/login_1_logo.png"));
+		//로고라벨
+		JLabel adminLoginlb = new JLabel();
+		adminLoginlb.setBounds(174, 82, 152, 154);
+		adminLoginlb.setIcon(new ImageIcon("image/memberLog/login/login_1_logo.png"));
 		
 		JLabel honddoniLogo = new JLabel();
 		honddoniLogo.setBounds(130, 258, 241, 99);
@@ -95,8 +96,9 @@ public class MemberLogView extends JPanel {
 					
 					//로그인실패 : 0, 로그인성공(일반사용자 : 1, 관리자 : 2) 반환함
 					if(result == 0) {
-						FrameManager.changePanel(frame, panel, loginFail);
-						System.out.println("LoginFail 패널로 교체");
+//						FrameManager.changePanel(frame, panel, loginFail);
+						PopupFrame.popup("image/popup/checkidAndPwd.png");
+						System.out.println("LoginFail팝업");
 						
 					} else if(result == 1) {
 						//메인화면 쪽으로 패널교체
@@ -129,8 +131,12 @@ public class MemberLogView extends JPanel {
 				System.out.println("아이디 찾기 패널로~");
 				
 				// 아이디 찾기로 패널교체
-//				searchId = new SearchId(frame);	
+				searchId = new SearchId(frame);	
 //				FrameManager.changePanel(frame, bottomPanel, searchId);
+				frame.remove(panel);
+				frame.add(searchId);
+				frame.repaint();
+				frame.revalidate();
 
 			}
 		});
@@ -146,11 +152,15 @@ public class MemberLogView extends JPanel {
 				
 				//비밀번호 찾기쪽으로 간다
 				System.out.println("비밀번호 찾기 쪽으로");
-//				searchPwd = new SearchPwd(frame);
 				
 				// 창 바꾸기...?
+				searchPwd = new SearchPwd(frame);
 //				FrameManager.changePanel(frame, bottomPanel, searchPwd);
-
+				frame.remove(searchPwd);
+				frame.add(searchPwd);
+				frame.repaint();
+				frame.revalidate();
+				
 			}
 		});
 
@@ -165,17 +175,21 @@ public class MemberLogView extends JPanel {
 				
 				//회원가입 쪽으로 간다
 				System.out.println("회원가입쪽으로");
-//				registMember = new RegistMember(frame);
 				
 				// 창 바꾸기...?
-				FrameManager.changePanel(frame, panel, new RegistMember(frame));
+				registMember = new RegistMember(frame);
+//				FrameManager.changePanel(frame, panel, registMember);
+				frame.remove(panel);
+				frame.add(registMember);
+				frame.repaint();
+				frame.revalidate();
 
 			}
 		});
 
 
 		//한 패널에 컴포넌트올리기		
-		panel.add(adminLoginBtn);
+		panel.add(adminLoginlb);
 		panel.add(honddoniLogo);
 		panel.add(idPwdArea);
 		panel.add(loginBtn);

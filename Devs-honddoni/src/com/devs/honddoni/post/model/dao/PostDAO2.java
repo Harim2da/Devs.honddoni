@@ -57,7 +57,7 @@ public class PostDAO2 {
 		return result;
 	}
 
-	public int deleteComment(Connection con, List<CommentsDTO> deleteCommentList) {
+	public int deleteComment(Connection con,CommentsDTO deleteComment) {
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -66,11 +66,11 @@ public class PostDAO2 {
 		
 			try {
 				pstmt = con.prepareStatement(query);
-				for(int i = 0; i < deleteCommentList.size(); i++) {
+				
 					
-					pstmt.setInt(1, deleteCommentList.get(i).getCommentsNo());
-					System.out.println(deleteCommentList.get(i).getCommentsNo());
-				}
+					pstmt.setInt(1, deleteComment.getCommentsNo());
+//					System.out.println(deleteCommentList.get(i).getCommentsNo());
+				
 
 				result = pstmt.executeUpdate();
 				

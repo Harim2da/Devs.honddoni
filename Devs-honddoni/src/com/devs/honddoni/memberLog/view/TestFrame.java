@@ -24,7 +24,9 @@ public class TestFrame extends JFrame{
 //		searchId = new SearchId(this);
 //		this.add(searchId);
 		
-		new SearchId(this);
+		searchId= new SearchId(this);
+		
+		this.add(searchId);
 		System.out.println(searchId); //확인용출력
 		
 //		new SearchPwd(this);

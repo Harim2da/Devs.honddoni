@@ -37,9 +37,9 @@ public class ContactController2 {
 
 	}
 
-	public void deleteComment(List<CommentsDTO> deleteCommentList) {
+	public void deleteComment(CommentsDTO deleteComment) {
 	
-		int result = postService2.deleteComment(deleteCommentList);
+		int result = postService2.deleteComment(deleteComment);
 
 		if(result > 0 ) {
 			System.out.println("댓글 삭제 성공");

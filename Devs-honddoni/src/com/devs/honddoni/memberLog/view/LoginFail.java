@@ -17,6 +17,8 @@ public class LoginFail extends JPanel {
 	MainFrame frame;
 //	FrameManager fm = new FrameManager();
 	
+	//팝업으로 쓸거라 안씀
+	
 	private JPanel firstPanel;
 	
 	public LoginFail(MainFrame mainframe) {
