@@ -1,4 +1,4 @@
-package com.devs.honddoni.admin.view123;
+package com.devs.honddoni.admin.dto;
 
 public class AdminDTO {
 	

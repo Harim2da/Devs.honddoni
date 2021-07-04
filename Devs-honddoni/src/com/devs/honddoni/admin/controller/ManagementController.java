@@ -2,22 +2,21 @@ package com.devs.honddoni.admin.controller;
 
 import java.util.List;
 
+import com.devs.honddoni.admin.dto.AdminDTO;
 import com.devs.honddoni.admin.model.service.AdminService;
-import com.devs.honddoni.admin.view123.MemberDTO;
-import com.devs.honddoni.admin.view123.TotalDTO;
+
+
 
 public class ManagementController {
    
-   private AdminService adminService = new AdminService();
-   
-//   public void selectAllMembers() {
-//      
-//      List<MemberDTO> memberList = adminService.selectAllMembers();
-//   }
+	private AdminService adminService = new AdminService();
 
-   public void totalPostList() {
-	   List<TotalDTO> totalList = adminService.totalPostList();
-   }
-   
+	
+	/* 모든 회원 정보 조회용 메소드(List로 조회할 것) */
+	public void totalUserList() {
+		
+		List<AdminDTO> adminList = adminService.totalUserList();
+		
+//		memberResultView.display(memberList);
+	}
 }
-   
