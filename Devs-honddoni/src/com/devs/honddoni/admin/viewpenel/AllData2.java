@@ -32,6 +32,19 @@ public class AllData2 {
 		bottomPanel.setBackground(Color.WHITE);
 		MainFrame.add(bottomPanel);
 		
+		/* 상단 패널 생성 */
+		JPanel topPanel = new JPanel();
+		topPanel.setBounds(0, 0, 500, 100);
+		topPanel.setLayout(null);
+		topPanel.setBackground(Color.WHITE);
+		MainFrame.add(topPanel);
+		
+		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
+	     JButton btn0 = new JButton(img0);
+	     
+	     topPanel.add(btn0);
+	     btn0.setBounds(303, 27, 172, 70);
+		
 		
 
 
@@ -207,6 +220,20 @@ public class AllData2 {
 	    		   new AdminList();
 	    		   bottomPanel.setVisible(false);
 //	    		  MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn0.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminList();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	}

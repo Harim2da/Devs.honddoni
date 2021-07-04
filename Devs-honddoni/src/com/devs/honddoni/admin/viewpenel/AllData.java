@@ -32,6 +32,18 @@ public class AllData {
 		bottomPanel.setBackground(Color.WHITE);
 		MainFrame.add(bottomPanel);
 		
+		/* 상단 패널 생성 */
+		JPanel topPanel = new JPanel();
+		topPanel.setBounds(0, 0, 500, 100);
+		topPanel.setLayout(null);
+		topPanel.setBackground(Color.WHITE);
+		MainFrame.add(topPanel);
+		
+		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
+	     JButton btn0 = new JButton(img0);
+	     
+	     topPanel.add(btn0);
+	     btn0.setBounds(303, 27, 172, 70);
 		
 
 
@@ -56,11 +68,14 @@ public class AllData {
 	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
 	       JLabel lb1 = new JLabel();
 	       
-	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기버튼
-	       JButton btn7 = new JButton(img7);
+//	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기버튼
+//	       JButton btn7 = new JButton(img7);
 	       
 	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기버튼
 	       JButton btn8 = new JButton(img8);
+	       
+	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
+	       JButton btn10 = new JButton(img10);
 	       
 	       
 	       
@@ -121,7 +136,8 @@ public class AllData {
 	       bottomPanel.add(btn4);
 	       bottomPanel.add(btn5);
 	       bottomPanel.add(lb1);//
-	       bottomPanel.add(btn7);//뒤로가기버튼
+	       bottomPanel.add(btn10);
+//	       bottomPanel.add(btn7);//뒤로가기버튼
 	       
 //	       bottomPanel.add(lb2);//프로필
 //	       bottomPanel.add(lb3);//닉네임
@@ -152,7 +168,9 @@ public class AllData {
 	       btn3.setBounds(34, 380, 430, 121);
 	       btn4.setBounds(33, 498, 430, 121);
 	       btn5.setBounds(34, 616, 430, 104);
-	       btn7.setBounds(226, 724, 56, 25);
+	       btn10.setBounds(31, 19, 430, 62);
+	       
+//	       btn7.setBounds(226, 724, 56, 25);
 //	       lb1.setBounds(56, 0, 263, 33);
 //	       lb2.setBounds(53, 172, 36, 39);//프로필 위치
 //	       lb3.setBounds(92, 168, 100, 43);//닉네임 위치
@@ -199,7 +217,21 @@ public class AllData {
 	    	   }
 	       });
 	       
-	       btn7.addActionListener(new ActionListener() {
+//	       btn7.addActionListener(new ActionListener() {
+//	    	   @Override
+//	    	   public void actionPerformed(ActionEvent e) {
+////	    		   login2 login2 = new login2();
+////	    		   JPanel.add(login2);
+////	    		   new login2();
+////	    		   bottomPanel.setVisible(false);
+//	    		   
+//	    		   new AdminList();
+//	    		   bottomPanel.setVisible(false);
+////	    		  MainFrame.setVisible(false);
+//	    	   }
+//	       });
+	       
+	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
 //	    		   login2 login2 = new login2();
@@ -208,8 +240,8 @@ public class AllData {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList();
-	    		   bottomPanel.setVisible(false);
-//	    		  MainFrame.setVisible(false);
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	}
