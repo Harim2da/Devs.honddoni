@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.member.controller.MemberController;
-import com.devs.honddoni.memberLog.view.MemberLogView;
 
 //공지사항 화면
 
