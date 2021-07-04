@@ -116,7 +116,7 @@ public class SelectAllHonPost2 extends JPanel{
 
 					
 					postListDTO = new PagingController().selectPostList(pageNo, postDTO.getLocalName(), postDTO.getCategoryName());
-					postList(postNo); 게시글 타이틀 띄우기
+					postList(postNo); 
 
 					prePageBtn();
 					prePageNumber();
@@ -182,6 +182,10 @@ public class SelectAllHonPost2 extends JPanel{
 		
 	}
 	
+
+
+	
+
 	protected void prePageNumber() {
 		String frontPageString = Integer.valueOf(frontPage).toString();
 
@@ -196,18 +200,40 @@ public class SelectAllHonPost2 extends JPanel{
 		
 		int pageNo = frontPage;
 
-		int totalCount = new PagingController().selectWholeCommentsNum(postNo);
+		int totalCount = new PagingController().selectWholePostNum(postDTO.getLocalName(), postDTO.getCategoryName());
 
-		PagenationComments pagenationComments = new PagenationComments();
-		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
+		PagenationPost pagenationPost = new PagenationPost();
+		PageInfoPostDTO pageInfo = pagenationPost.getPostPageInfo(pageNo, totalCount, 5, 5);
 		String backPageString = Integer.valueOf(pageInfo.getMaxPage()).toString();
 
-		afterNumber = new JLabel(backPageString);
-		afterNumber.setLayout(null);
-		afterNumber.setBounds(85, 4, 14, 14);
+		commingNumber = new JLabel(backPageString);
+		commingNumber.setLayout(null);
+		commingNumber.setBounds(85, 4, 14, 14);
 
 		
 	}
+	
+	protected void postList(int postNo) {
+		int pageNo = frontPage;
+		int y = 153;
+		
+			postListDTO = new PagingController().selectPostList(pageNo, postDTO.getLocalName(), postDTO.getCategoryName());
+			PostDTO postInfo = null;
+			
+			for(int i = 0; i < postListDTO.size(); i++) {
+				
+				postInfo = postListDTO.get(i);
+				
+				postList = new JLabel("");
+				postList.setLayout(null);
+				postList.setIcon(new ImageIcon("image/post/postlist1"));
+				
+			}
+		
+	}
+	
+	
+	
 	
 	
 }
