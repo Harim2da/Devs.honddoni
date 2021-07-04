@@ -21,13 +21,13 @@ public class PagingController {
 	}
 	
 	/* 혼또니 게시판 */
-	public void selectWholePostNum(String categoryName) {
+	public int selectWholePostNum(String localName, String categoryName) {
 
-		int result = pagingService.selectWholePostNum(categoryName);
+		int result = pagingService.selectWholePostNum(localName, categoryName);
 
-		PageInfoPostDTO dto = new PageInfoPostDTO();
+	//	PageInfoPostDTO dto = new PageInfoPostDTO();
 
-		dto.setTotalCount(result);
+		return result;
 		
 	}
 	

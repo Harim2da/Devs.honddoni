@@ -15,7 +15,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
-import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.ContactController;
 
 public class PostHonddoni extends JFrame{

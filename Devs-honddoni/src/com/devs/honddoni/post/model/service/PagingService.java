@@ -21,11 +21,11 @@ public class PagingService {
 	}
 
 
-	public int selectWholePostNum(String categoryName) {
+	public int selectWholePostNum(String localName, String categoryName) {
 
 		Connection con = getConnection();
 
-		int result = pagingDAO.selectWholePostNum(con, categoryName);
+		int result = pagingDAO.selectWholePostNum(con, localName, categoryName);
 
 		close(con);
 

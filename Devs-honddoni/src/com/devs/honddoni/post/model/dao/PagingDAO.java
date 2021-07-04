@@ -36,7 +36,7 @@ public class PagingDAO {
 		}
 	}
 	
-	public int selectWholePostNum(Connection con, String CategoryName) {
+	public int selectWholePostNum(Connection con, String LocalName, String CategoryName) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -44,7 +44,8 @@ public class PagingDAO {
 		String query = prop.getProperty("selectWholePostNum");
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, CategoryName);
+			pstmt.setString(1, LocalName);
+			pstmt.setString(2, CategoryName);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
