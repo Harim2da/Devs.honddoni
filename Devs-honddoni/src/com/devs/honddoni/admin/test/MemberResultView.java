@@ -1,10 +1,11 @@
-package com.devs.honddoni.admin.view123;
+package com.devs.honddoni.admin.test;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import com.greedy.member.model.dto.MemberDTO;
+import com.devs.honddoni.admin.view123.TotalDTO;
+import com.devs.honddoni.admin.test.*;
 
 public class MemberResultView {
 	
@@ -23,7 +24,6 @@ public class MemberResultView {
 		
 	}
 	
-
 //	public void display(List<MemberDTO> list) {
 //		
 //		for(MemberDTO m : list) {
@@ -36,22 +36,25 @@ public class MemberResultView {
 //		
 //		System.out.println(m);
 //	}
-//	
-
-
-	public void display(List<TotalDTO> list) {
+//}
 	
-	for(TotalDTO t : list) {
+
+	
+
+	public void display(List<TotalDTO> totalList) {
+	
+	for(TotalDTO t : totalList) {
 		System.out.println(t);
+		
 	}
-	
 }
-
-	public void display(TotalDTO m) {
 	
-	System.out.println(m);
-}
 
+	public void display(TotalDTO t) {
+	
+	System.out.println(t);
+	
+	}
 }
 
 

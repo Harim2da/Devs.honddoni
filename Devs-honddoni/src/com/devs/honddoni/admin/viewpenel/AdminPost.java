@@ -27,16 +27,16 @@ public class AdminPost {
 		bottomPanel.setBackground(Color.WHITE);
 		MainFrame.add(bottomPanel);
 		
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\Side.png");
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\AdminPost1.png");
 	       JButton btn1 = new JButton(img1);
 	       
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Side.png");
+	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\AdminPost2.png");
 	       JButton btn2 = new JButton(img2);
 	       
-	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Side.png");
+	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\AdminPost3.png");
 	       JButton btn3 = new JButton(img3);
 	       
-	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\Side.png");
+	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\AdminPost4.png");
 	       JButton btn4 = new JButton(img4);
 	       
 	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Side.png");

@@ -16,7 +16,7 @@ public class TotalDTO {
 	private String postmeetingTime;
 	private String postwritingDate;
 	private String postwritingTime;
-	private int localCode;
+	private String localName;
 	private String categoryName;
 	private String postdelStatus;
 	private int postnumberofPeople;
@@ -28,8 +28,8 @@ public class TotalDTO {
 
 	public TotalDTO(String memberId, String memberNickname, String memberProfile, String memRegistdate, int postNo,
 			String postName, String postContents, String postCategory, String postMemberno, String postmeetingDate,
-			String postmeetingTime, String postwritingDate, String postwritingTime, int localCode, String categoryName,
-			String postdelStatus, int postnumberofPeople) {
+			String postmeetingTime, String postwritingDate, String postwritingTime, String localName,
+			String categoryName, String postdelStatus, int postnumberofPeople) {
 		super();
 		this.memberId = memberId;
 		this.memberNickname = memberNickname;
@@ -44,7 +44,7 @@ public class TotalDTO {
 		this.postmeetingTime = postmeetingTime;
 		this.postwritingDate = postwritingDate;
 		this.postwritingTime = postwritingTime;
-		this.localCode = localCode;
+		this.localName = localName;
 		this.categoryName = categoryName;
 		this.postdelStatus = postdelStatus;
 		this.postnumberofPeople = postnumberofPeople;
@@ -144,10 +144,10 @@ public class TotalDTO {
 	}
 
 	/**
-	 * @return the localCode
+	 * @return the localName
 	 */
-	public int getLocalCode() {
-		return localCode;
+	public String getLocalName() {
+		return localName;
 	}
 
 	/**
@@ -263,10 +263,10 @@ public class TotalDTO {
 	}
 
 	/**
-	 * @param localCode the localCode to set
+	 * @param localName the localName to set
 	 */
-	public void setLocalCode(int localCode) {
-		this.localCode = localCode;
+	public void setLocalName(String localName) {
+		this.localName = localName;
 	}
 
 	/**
@@ -298,19 +298,10 @@ public class TotalDTO {
 				+ memberProfile + ", memRegistdate=" + memRegistdate + ", postNo=" + postNo + ", postName=" + postName
 				+ ", postContents=" + postContents + ", postCategory=" + postCategory + ", postMemberno=" + postMemberno
 				+ ", postmeetingDate=" + postmeetingDate + ", postmeetingTime=" + postmeetingTime + ", postwritingDate="
-				+ postwritingDate + ", postwritingTime=" + postwritingTime + ", localCode=" + localCode
+				+ postwritingDate + ", postwritingTime=" + postwritingTime + ", localName=" + localName
 				+ ", categoryName=" + categoryName + ", postdelStatus=" + postdelStatus + ", postnumberofPeople="
 				+ postnumberofPeople + "]";
 	}
-
-	public int getStartRow() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int getEndRow() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }
+	
 	

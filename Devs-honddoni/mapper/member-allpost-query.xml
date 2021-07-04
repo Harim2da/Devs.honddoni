@@ -8,7 +8,7 @@
 	       FROM TBL_MEMBER
 	</entry>
 
-	<entry key="totalPostList">
+	<entry key="list">
 	  SELECT
              V.*
         FROM (SELECT P.POST_NO
@@ -30,4 +30,17 @@
         JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
            ) V
       WHERE V.순서 BETWEEN ? AND ?
+      </entry>
+      
+      	<entry key="totalPostList">
+	     SELECT
+	     		M.MEMBER_NICKNAME
+	     		M.MEMBER_PROFILE
+	     		L.LOCAL_NAME
+	     		P.POST__NAME
+	       FROM TBL_LOCAL
+	       JOIN TBL_POST P ON (P.LOCAL_CODE = L.LOCAL_CODE)
+	       JOIN TBL_MEMBER M ON (M.MEMBER_NO = P.POST_MEMBER_NO)
+		</entry>
+      
 </properties>
