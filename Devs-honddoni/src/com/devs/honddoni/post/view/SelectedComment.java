@@ -486,6 +486,8 @@ public class SelectedComment extends JFrame {
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 			
+			
+			if(getMemberNo == 1 /* 로그인된 번호 */) {
 			updateBtn[i].addActionListener(new ActionListener() {
 
 				@Override
@@ -501,7 +503,7 @@ public class SelectedComment extends JFrame {
 						updateComment.setCommentsContents(text);
 //						System.out.println("conmmentListDTO CommentNo  : " + commentListDTO.get(i).getCommentsNo());
 //						System.out.println("conmmentListDTO MemberNo  : " + commentListDTO.get(i).getMemberNo());
-
+						System.out.println("getCommentsNo : " + getCommentsNo);
 						
 					
 					ContactController2 contactController2 = new ContactController2();
@@ -510,7 +512,9 @@ public class SelectedComment extends JFrame {
 
 				}
 			});
-			
+			} else {
+				System.out.println("본인 글만 수정할 수 있습니다.");
+			}
 			reportBtn = new JButton("");
 			reportBtn.setIcon(new ImageIcon("image/post/commentReportButton.png"));
 			reportBtn.setContentAreaFilled(false);
@@ -569,7 +573,7 @@ public class SelectedComment extends JFrame {
 			deleteBtn[i].setBounds(390, y + 37, 23, 23);
 			
 
-			
+			if(getMemberNo == 1 /* 로그인된 번호 */) {
 			deleteBtn[i].addActionListener(new ActionListener() {
 
 				@Override
@@ -591,7 +595,7 @@ public class SelectedComment extends JFrame {
 
 				}
 			});
-
+			}
 			downPanel.add(updateBtn[i]);
 			downPanel.add(deleteBtn[i]);
 			downPanel.add(profilePictrue);
