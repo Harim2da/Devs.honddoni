@@ -36,6 +36,7 @@ public class PagingDAO {
 		}
 	}
 	
+	/* 혼또니 게시판 갯수 불러오기 DAO */
 	public int selectWholePostNum(Connection con, String LocalName, String CategoryName) {
 		
 		PreparedStatement pstmt = null;
@@ -63,6 +64,7 @@ public class PagingDAO {
 		return result;
 	}
 	
+	/* 자유 게시판 갯수 불러오기 DAO */
 	public int freeWholePostNum(Connection con) {
 		
 		PreparedStatement pstmt = null;
@@ -88,6 +90,7 @@ public class PagingDAO {
 		return result;
 	}
 	
+	/* 전체 게시판 갯수 불러오기 DAO */
 	public int totalWholePostNum(Connection con) {
 		
 		PreparedStatement pstmt = null;
@@ -112,6 +115,7 @@ public class PagingDAO {
 		return result;
 	}
 	
+	/* 댓글 갯수 불러오기 DAO */
 	public int selectWholeCommentsNum(Connection con, int postNo) {
 		
 		PreparedStatement pstmt = null;
@@ -137,6 +141,7 @@ public class PagingDAO {
 		return result;
 	}
 
+	/* 혼또니 게시판 리스트 불러오기 DAO */
 	public List<PostDTO> selectPostList(Connection con, PageInfoPostDTO pageInfo, String area, String category) {
 		
 		PreparedStatement pstmt = null;
@@ -189,6 +194,7 @@ public class PagingDAO {
 		return postList;
 	}
 	
+	/* 자유게시판 리스트 불러오기 DAO */
 	public List<PostDTO> freePostList(Connection con, PageInfoPostDTO pageInfo) {
 		
 		PreparedStatement pstmt = null;
@@ -233,6 +239,7 @@ public class PagingDAO {
 		
 	}
 	
+	/* 전체게시판 리스트 불러오기 DAO */
 	public List<PostDTO> totalPostList(Connection con, PageInfoPostDTO pageInfo) {
 		
 		PreparedStatement pstmt = null;
@@ -281,7 +288,8 @@ public class PagingDAO {
 		
 		return postList;
 	}
-
+	
+	/* 댓글 리스트 불러오기 DAO */
 	public List<CommentsDTO> selectCommentsList(Connection con, PageInfoCommentsDTO pageInfo, int postNo) {
 		
 		PreparedStatement pstmt = null;

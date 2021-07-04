@@ -18,7 +18,8 @@ public class PostService2 {
 	public PostService2() {
 		this.postDAO2 = new PostDAO2();
 	}
-
+	
+	/* 댓글 작성하여 DB에 저장하기위한 service 단계 */
 	public int communicationComment(CommentsDTO newComment) {
 
 		Connection con = getConnection();
@@ -36,6 +37,7 @@ public class PostService2 {
 		return result;
 	}
 
+	/* 댓글 삭제하여 DB에 저장하기위한 service 단계 */
 	public int deleteComment(CommentsDTO deleteComment) {
 
 		Connection con = getConnection();
@@ -52,7 +54,8 @@ public class PostService2 {
 
 		return result;
 	}
-
+	
+	/* 댓글 수정하여 DB에 저장하기위한 service 단계 */
 	public int updateComment(CommentsDTO updateComment) {
 
 		Connection con = getConnection();

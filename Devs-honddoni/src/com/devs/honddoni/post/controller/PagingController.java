@@ -20,17 +20,16 @@ public class PagingController {
 		this.pagingService = new PagingService();
 	}
 	
-	/* 혼또니 게시판 */
+	/* 혼또니 게시판 갯수 불러오기 컨트롤러*/
 	public int selectWholePostNum(String localName, String categoryName) {
 
 		int result = pagingService.selectWholePostNum(localName, categoryName);
-
-	//	PageInfoPostDTO dto = new PageInfoPostDTO();
 
 		return result;
 		
 	}
 	
+	/* 자유 게시판 갯수 불러오기 컨트롤러*/
 	public void freeWholePostNum() {
 
 		int result = pagingService.freeWholePostNum();
@@ -41,6 +40,7 @@ public class PagingController {
 		
 	}
 	
+	/* 전체 게시판 갯수 불러오기 컨트롤러*/
 	public void totalWholePostNum() {
 
 		int result = pagingService.totalWholePostNum();
@@ -50,18 +50,16 @@ public class PagingController {
 		dto.setTotalCount(result);
 		
 	}
-
+	
+	/* 댓글 갯수 불러오기 컨트롤러*/
 	public int selectWholeCommentsNum(int postNo) {
 
 		int result = pagingService.selectWholeCommentsNum(postNo);
 
-		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
-//		dto.setTotalCount(result);
-//		System.out.println("totalCOunt : " + dto.getTotalCount());
-
 		return result;
 	}
-
+	
+	/* 혼또니 게시판 리스트 불러오기 컨트롤러*/
 	public List<PostDTO> selectPostList(int pageNo, String area, String category) {
 
 		/* Notice List를 조회하던 것과 동일하다. 하지만 이번에는 페이징에 대해 처리를 하면서 리스트를 조회해보자
@@ -109,6 +107,7 @@ public class PagingController {
 		
 	}
 	
+	/* 자유 게시판 리스트 불러오기 컨트롤러*/
 	public List<PostDTO> freePostList(int pageNo){
 		
 		PageInfoPostDTO dto = new PageInfoPostDTO();
@@ -127,6 +126,7 @@ public class PagingController {
 		
 	}
 	
+	/* 전체 게시판 리스트 불러오기 컨트롤러*/
 	public List<PostDTO> wholePostList(int pageNo) {
 		
 		PageInfoPostDTO dto = new PageInfoPostDTO();
@@ -144,6 +144,7 @@ public class PagingController {
 		return postList;
 	}
 
+	/* 댓글 리스트 불러오기 컨트롤러*/
 	public List<CommentsDTO> selectCommentsList(int pageNo, int postNo) {
 
 		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();

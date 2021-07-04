@@ -2,14 +2,14 @@ package com.devs.honddoni.common.dto;
 
 public class CommentsDTO implements java.io.Serializable {
 
-	private int commentsNo;
-	private String commentsDate;
-	private String commentsTime;
-	private String commentsContents;
-	private int postNo;
-	private int memberNo;
-	private String memberNickname;
-	private String memberProfile;
+	private int commentsNo;					//댓글 번호(식별자)
+	private String commentsDate;			//댓글 작성 날짜
+	private String commentsTime;			//댓글 작성 시간
+	private String commentsContents;		//댓글 내용
+	private int postNo;						//게시글 번호
+	private int memberNo;					//작성자 번호
+	private String memberNickname;			//작성자 닉네임
+	private String memberProfile;			//작성자 프로필 사진
 	
 	public CommentsDTO() {}
 

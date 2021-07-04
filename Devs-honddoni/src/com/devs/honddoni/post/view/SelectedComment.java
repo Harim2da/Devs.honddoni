@@ -1,7 +1,6 @@
 package com.devs.honddoni.post.view;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -16,40 +15,40 @@ import javax.swing.JPanel;
 import com.devs.honddoni.common.PagenationComments;
 import com.devs.honddoni.common.dto.CommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
+import com.devs.honddoni.common.dto.reportDTO;
 import com.devs.honddoni.post.controller.ContactController2;
 import com.devs.honddoni.post.controller.PagingController;
 
 public class SelectedComment extends JFrame {
 
-
-	private JPanel upPanel; 					//상단패널
-	private JPanel downPanel;					//하단패널
-	//	private JPanel nextPanel;					//하단패널
-	private JButton commentWriteBtn;			//댓글 작성 버튼
-	private JLabel commentLongbarLabel;			//페이지를 나타낼때 아래 깔래는 바
-	private JButton backBtn;        			//뒤로 가기
+	private JPanel upPanel; 									//상단패널
+	private JPanel downPanel;									//하단패널
+	//	private JPanel nextPanel;					
+	private JButton commentWriteBtn;							//댓글 작성
+	private JLabel commentLongbarLabel;							//페이지를 나타낼때 아래 깔래는 바(디자인 용도)
+	private JButton backBtn;        							//뒤로 가기
 	private JLabel beforeNumber = new JLabel("");	 		    //페이지를 나타내는 앞의 숫자
-	private JLabel afterNumber;					//페이지를 나타내는 뒤의 숫자
-	public static int frontPage = 1;					//현재 페이지
-	private JButton beforeBtn = new JButton();				//페이지를 앞으로 이동하는 버튼
+	private JLabel afterNumber;									//페이지를 나타내는 뒤의 숫자
+	public static int frontPage = 1;							//현재 페이지
+	private JButton beforeBtn = new JButton();					//페이지를 앞으로 이동하는 버튼
 	private JButton afterBtn = new JButton();					//페이지를 뒤로 이동하는 버튼
-	private JLabel[] commentList;				//댓글리스트의 밑바탕
-	List<CommentsDTO> commentListDTO = null;
-	private JLabel[] nickName;					//유저 닉네임
-	private JLabel[] content;						//댓글 내용
-	private JButton[] updateBtn;					//댓글 수정 버튼
-	private JButton[] reportBtn;					//댓글 신고 버튼
-	private JLabel[] commentsDate;				//댓글 작성 날짜
-	private JLabel[] commentsTime;				//댓글 작성 시간
-	private JLabel[] profilePictrue;				//프로필 사진
-	private JButton myHonddoniBtn;				//마이페이지 이동
-	private JButton searchHonddoniBtn;			//게시글 작성페이지 이동
-	private JButton homeBtn;					//메인화면이동
-	private JButton interestingBtn;				//관심글 목록 이동
-	private JButton noticeBtn;					//공지사항 목록 이동
-	private JLabel backgroundImage;				//로고 포함 테두리 배경
-	private int postNo;							//게시글 번호
-	private JButton[] deleteBtn;					//게시글 삭제
+	private JLabel[] commentList;								//댓글리스트의 밑바탕(디자인 용도)
+	private List<CommentsDTO> commentListDTO = null;			//댓글리스트 저장할 List
+	private JLabel[] nickName;									//유저 닉네임
+	private JLabel[] content;									//댓글 내용
+	private JButton[] updateBtn;								//댓글 수정 버튼
+	private JButton[] reportBtn;								//댓글 신고 버튼
+	private JLabel[] commentsDate;								//댓글 작성 날짜
+	private JLabel[] commentsTime;								//댓글 작성 시간
+	private JLabel[] profilePictrue;							//프로필 사진
+	private JButton myHonddoniBtn;								//마이페이지 이동 버튼
+	private JButton searchHonddoniBtn;							//게시글 작성페이지 이동 버튼
+	private JButton homeBtn;									//메인화면이동 버튼
+	private JButton interestingBtn;								//관심글 목록 이동 버튼
+	private JButton noticeBtn;									//공지사항 목록 이동 버튼
+	private JLabel backgroundImage;								//로고 포함 테두리 배경 (디자인용)
+	private int postNo;											//게시글 번호
+	private JButton[] deleteBtn;								//게시글 삭제 버튼
 
 	/* 프레임에서 패널을 더해주기 위한 getter */
 	public JPanel getUpPanel() {
@@ -58,59 +57,22 @@ public class SelectedComment extends JFrame {
 	public JPanel getDownPanel() {
 		return downPanel;
 	}
-	//	public JPanel getNextPanel() {
-	//		return nextPanel;
-	//	}
-	//	public JButton getSidebarBtn() {
-	//		return sidebarBtn;
-	//	}
-	//	public JButton getLogoBtn() {
-	//		return logoBtn;
-	//	}
-	//	public JButton getCommentWriteBtn() {
-	//		return commentWriteBtn;
-	//	}
-	//	public JLabel getCommentLongbarLabel() {
-	//		return commentLongbarLabel;
-	//	}
-	//	public JButton getBackBtn() {
-	//		return backBtn;
-	//	}
-	//	public JLabel getBeforeNumber() {
-	//		return beforeNumber;
-	//	}
-	//	public JLabel getAfterNumber() {
-	//		return afterNumber;
-	//	}
-	//	public int getFrontPage() {
-	//		return frontPage;
-	//	}
-	//	public void setFrontPage(int frontPage) {
-	//		this.frontPage = frontPage;
-	//	}
-	//	public JButton getBeforeBtn() {
-	//		return beforeBtn;
-	//	}
-	//	public JButton getAfterBtn() {
-	//		return afterBtn;
-	//	}
-	//	public JLabel getCommentList() {
-	//		return commentList;
-	//	}
 
 	/* 프레임을 제외한 나머지를 합친 것 */
 	public void collect() {
-
+		/* 패널 */
 		upPanel();
 		downPanel();
-		//		nextPanel();
-
+//      nextPanel();
+		
+		/* 상단패널에 포함될 버튼 */
 		myHonddoniBtn();
 		searchHonddoniBtn();
 		homeBtn();
 		interestingBtn();
 		noticeBtn();
 
+		/* 하단패널에 포함될 버튼, 라벨*/
 		commentWriteBtn();
 		commentLongbarLabel();
 		backBtn();
@@ -127,20 +89,24 @@ public class SelectedComment extends JFrame {
 		profilePictrue(1);
 		deleteBtn(1);
 		commentList(1);
-
+		
+		/* 버튼들을 상단패널에 더해줌 */
 		upPanel.add(myHonddoniBtn);
 		upPanel.add(searchHonddoniBtn);
 		upPanel.add(homeBtn);
 		upPanel.add(interestingBtn);
 		upPanel.add(noticeBtn);
 		upPanel.add(backgroundImage);
+		
+		/* 반복문이 필요없는 버튼, 라벨을 하단패널에 더해줌 */
 		downPanel.add(commentWriteBtn);
 		downPanel.add(commentLongbarLabel);
 		downPanel.add(backBtn);
 		//		nextPanel.add(commentWriteBtn);
 		//		nextPanel.add(commentLongbarLabel);
 		//		nextPanel.add(backBtn);
-
+		
+		/* 디자인용도의 lonbar에 라벨, 버튼을 더해줌 */
 		commentLongbarLabel.add(beforeNumber);
 		commentLongbarLabel.add(afterNumber);
 		commentLongbarLabel.add(beforeBtn);
@@ -148,6 +114,35 @@ public class SelectedComment extends JFrame {
 
 
 	}
+	
+//	public void reset() {
+//
+//		myHonddoniBtn.setVisible(false);
+//		searchHonddoniBtn.setVisible(false);
+//		homeBtn.setVisible(false);
+//		interestingBtn.setVisible(false);
+//		noticeBtn.setVisible(false);
+//		backgroundImage.setVisible(false);
+//
+//		commentWriteBtn.setVisible(false);
+//		commentLongbarLabel.setVisible(false);
+//		backBtn.setVisible(false);
+//		beforeNumber.setVisible(false);
+//		afterNumber.setVisible(false);
+//		beforeBtn.setVisible(false);
+//		afterBtn.setVisible(false);
+//		nickName.setVisible(false);
+//		content.setVisible(false);
+//		updateBtn.setVisible(false);
+//		commentsDate.setVisible(false);
+//		reportBtn.setVisible(false);
+//		commentsTime.setVisible(false);
+//		profilePictrue.setVisible(false);
+//		deleteBtn.setVisible(false);
+//		commentList.setVisible(false);
+//		
+//	}
+	
 	/* 상단 패널 */
 	public void upPanel() {
 
@@ -186,7 +181,7 @@ public class SelectedComment extends JFrame {
 	//
 	//	}
 
-	/* My혼또니 버튼 생성 */
+	/* My혼또니(마이페이지 화면으로 이동) 버튼 */
 	public void myHonddoniBtn() {
 
 		myHonddoniBtn = new JButton("");
@@ -205,7 +200,7 @@ public class SelectedComment extends JFrame {
 
 	}
 
-	/* 혼또니 찾기 버튼 생성*/
+	/* 혼또니 찾기(게시글 작성) 버튼 */
 	public void searchHonddoniBtn() {
 
 		searchHonddoniBtn = new JButton("");
@@ -222,7 +217,7 @@ public class SelectedComment extends JFrame {
 		});
 
 	}
-	/* Home 버튼 생성 */
+	/* Home(메인화면으로 이동) 버튼 생성 */
 	public void homeBtn() {
 
 		homeBtn = new JButton("");
@@ -241,7 +236,7 @@ public class SelectedComment extends JFrame {
 
 	}
 
-	/* 관심금 목록 버튼 생성 */
+	/* 관심금 목록페이지로 이동하는 버튼 생성 */
 	public void interestingBtn() {
 
 		interestingBtn = new JButton("");
@@ -259,7 +254,7 @@ public class SelectedComment extends JFrame {
 
 	}
 
-	/* 공지사항 버튼 생성 */
+	/* 공지사항목록을 조회할 수 있는 버튼 생성 */
 	public void noticeBtn() {
 
 		noticeBtn = new JButton("");
@@ -309,7 +304,7 @@ public class SelectedComment extends JFrame {
 
 	}
 
-	/* 현재페이지, 전체페이지, 페이지이동 버튼가 위치한 라벨 */
+	/* 현재페이지, 전체페이지, 페이지이동 버튼이 위치한 라벨 (디자인 용도) */
 	public void commentLongbarLabel() {
 
 		commentLongbarLabel = new JLabel("");
@@ -319,7 +314,7 @@ public class SelectedComment extends JFrame {
 
 	}
 
-	/* 뒤로가기 */
+	/* 뒤로가기(게시글 상세조회로 이동) 버튼 */
 	public void backBtn() {
 
 		backBtn = new JButton("");
@@ -462,7 +457,7 @@ public class SelectedComment extends JFrame {
 
 	}
 
-	/* 댓글내용을 나타내는 양식 */
+	/* 댓글내용을 나타내는 밑바탕 (디자인용도) */
 	public void commentList(int postNo) {
 
 		int pageNo = frontPage;
@@ -485,7 +480,8 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-
+	
+	/* 유저 닉네임 나타내는 라벨 */
 	public void nickName(int postNo) {
 
 		int pageNo = frontPage;
@@ -507,7 +503,8 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-
+	
+	/* 댓글 내용 나타내는 라벨 */
 	public void content(int postNo) {
 
 		int pageNo = frontPage;
@@ -527,7 +524,8 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-
+	
+	/* 댓글 수정 버튼 */
 	public void updateBtn(int postNo) {
 
 		int pageNo = frontPage;
@@ -582,7 +580,8 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-
+	
+	/* 댓글작성 일자 나타내는 라벨 */
 	public void commentsDate(int postNo) {
 
 		int pageNo = frontPage;
@@ -604,7 +603,8 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-
+	
+	/* 댓글신고 버튼 */
 	public void reportBtn(int postNo) {
 
 		int pageNo = frontPage;
@@ -623,15 +623,32 @@ public class SelectedComment extends JFrame {
 			reportBtn[i].setContentAreaFilled(false);
 			reportBtn[i].setBorderPainted(false);
 			reportBtn[i].setBounds(440, y + 37, 23, 23);
+			
+			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
+			int getMemberNo = commentListDTO.get(i).getMemberNo();
+			
 			reportBtn[i].addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					//					for(int i = 0; i < commentListDTO.size(); i++) {
-					//						
-					//						commentsDate.setVisible(false);
-					//					}
-					System.out.println("신고 팝업창 띄우기");
+//					System.out.println("댓글 수정란 호출");
+//					String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
+//					System.out.println(text);
+//					reportDTO reportDTO = new reportDTO();
+//
+//
+//					reportDTO.setCategory(text);
+//					reportDTO.setMemberNo(getMemberNo);
+//					reportDTO.setCommentsContents(text);
+//					//						System.out.println("conmmentListDTO CommentNo  : " + commentListDTO.get(i).getCommentsNo());
+//					//						System.out.println("conmmentListDTO MemberNo  : " + commentListDTO.get(i).getMemberNo());
+//					System.out.println("getCommentsNo : " + getCommentsNo);
+//
+//
+//					ContactController2 contactController2 = new ContactController2();
+//					contactController2.updateComment(updateComment);
+//
+//					System.out.println("신고 팝업창 띄우기");
 
 				}
 			});
@@ -639,7 +656,8 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-
+	
+	/* 댓글작성 시간 나타내는 라벨 */
 	public void commentsTime(int postNo) {
 
 		int pageNo = frontPage;
@@ -707,7 +725,8 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-
+	
+	/* 댓글삭제하는 버튼 */
 	public void deleteBtn(int postNo) {
 
 		int pageNo = frontPage;

@@ -22,7 +22,7 @@ public class PagingService {
 		this.pagingDAO = new PagingDAO();
 	}
 
-
+	/* 혼또니게시판 갯수 불러오기 service */
 	public int selectWholePostNum(String localName, String categoryName) {
 
 		Connection con = getConnection();
@@ -34,6 +34,7 @@ public class PagingService {
 		return result;
 	}
 
+	/* 자유게시판 갯수 불러오기 service */
 	public int freeWholePostNum() {
 
 		Connection con = getConnection();
@@ -45,6 +46,7 @@ public class PagingService {
 		return result;
 	}
 
+	/* 전체게시판 갯수 불러오기 service */
 	public int totalWholePostNum() {
 
 		Connection con = getConnection();
@@ -56,6 +58,7 @@ public class PagingService {
 		return result;
 	}
 
+	/* 댓글 갯수 불러오기 service */
 	public int selectWholeCommentsNum(int postNo) {
 
 		Connection con = getConnection();
@@ -66,7 +69,8 @@ public class PagingService {
 
 		return result;
 	}
-
+	
+	/* 혼또니 게시판 리스트 불러오기 service */
 	public List<PostDTO> selectPostList(PageInfoPostDTO pageInfo, String area, String category) {
 
 		Connection con = getConnection();
@@ -84,6 +88,7 @@ public class PagingService {
 		return postList;
 	}
 
+	/* 자유 게시판 리스트 불러오기 service */
 	public List<PostDTO> freePostList(PageInfoPostDTO pageInfo) {
 
 		Connection con = getConnection();
@@ -101,6 +106,7 @@ public class PagingService {
 		return postList;
 	}
 
+	/* 전체 게시판 리스트 불러오기 service */
 	public List<PostDTO> totalPostList(PageInfoPostDTO pageInfo) {
 
 		Connection con = getConnection();
@@ -119,7 +125,7 @@ public class PagingService {
 	}
 
 
-
+	/* 댓글 리스트 불러오기 service */
 	public List<CommentsDTO> selectCommentsList(PageInfoCommentsDTO pageInfo, int postNo) {
 
 		Connection con = getConnection();

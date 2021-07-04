@@ -2,23 +2,23 @@ package com.devs.honddoni.common.dto;
 
 public class PostDTO implements java.io.Serializable {
 	
-	private int postNo;
-	private String postName;
-	private String postContents;
-	private String postCategory;		//게시글분류 (자유, 혼또니)
-	private int postMemberNo;
-	private String postMeetingDate;
-	private String postMeetingTime;
-	private String postWritingDate;
-	private String postWritingTime;
-	private String localName;
-	private int localCode;
-	private String categoryName; //맛집탐방, 산책 등등
-	private int categoryCode;
-	private String postDelStatus;
-	private int postNumberOfPeopleNumber;
-	private String memberNickname;
-	private String memberProfile;
+	private int postNo;							//게시글 번호
+	private String postName;					//게시글 제목
+	private String postContents;				//게시글 내용
+	private String postCategory;				//게시글분류 (자유, 혼또니)
+	private int postMemberNo;					//게시글 작성자 번호
+	private String postMeetingDate;				//모임 일자
+	private String postMeetingTime;				//모임 시간
+	private String postWritingDate;				//작성 일자
+	private String postWritingTime;				//작성 시간
+	private String localName;					//지역 이름
+	private int localCode;						//지역 코드
+	private String categoryName; 				//혼또니게시판 카테고리 분류(맛집탐방, 산책 등등)
+	private int categoryCode;					//혼또니게시판 카테고리 코드
+	private String postDelStatus;				//게시글 삭제 여부
+	private int postNumberOfPeopleNumber;		//모임인원
+	private String memberNickname;				//닉네임
+	private String memberProfile;				//프로필 사진
 	
 	public PostDTO() {}
 

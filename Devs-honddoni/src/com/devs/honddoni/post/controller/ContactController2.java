@@ -13,7 +13,8 @@ public class ContactController2 {
 	public ContactController2() {
 		this.postService2 = new PostService2();
 	}
-
+	
+	/* 댓글작성 컨트롤러 */
 	public void communicationComment(CommentsDTO newComment) {
 
 
@@ -37,6 +38,7 @@ public class ContactController2 {
 
 	}
 
+	/* 댓글삭제 컨트롤러 */
 	public void deleteComment(CommentsDTO deleteComment) {
 	
 		int result = postService2.deleteComment(deleteComment);
@@ -48,7 +50,7 @@ public class ContactController2 {
 		}
 
 	}
-
+	/* 댓글수정 컨트롤러 */
 	public void updateComment(CommentsDTO updateComment) {
 
 		int result = postService2.updateComment(updateComment);
