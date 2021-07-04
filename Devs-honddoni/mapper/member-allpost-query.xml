@@ -42,5 +42,27 @@
 	       JOIN TBL_POST P ON (P.LOCAL_CODE = L.LOCAL_CODE)
 	       JOIN TBL_MEMBER M ON (M.MEMBER_NO = P.POST_MEMBER_NO)
 		</entry>
+		
+		<entry key=totalUserList">
+		SELECT
+				P.POST_NO
+			 ,	P.POST_NAME
+			 ,	P.POST_CONTENTS
+			 ,	P.POST_CATEGORY
+			 ,	P.POST_MEMBER_NO
+			 ,	P.POST_MEETINGDATE
+			 ,	P.POST_MEETINGTIME
+			 ,	P.POST_WRITINGDATE
+			 ,	P.POST_WRITINGTIME
+			 ,	P.LOCAL_CODE
+			 ,	P.CATEGORY_CODE
+			 ,	P.POST_DEL_STATUS
+			 ,	P.POST_NUMBER_OF_PEOPLE
+				
+				
+				
+		
+
+		</entry>
       
 </properties>

@@ -39,6 +39,7 @@ public class Notice extends JPanel{
 
 		frame.add(notice);
 		
+
 		/* 혼또니 로고버튼 */
 		JButton honddoniBtn = new JButton("");
 		honddoniBtn.setBounds(305, 29, 173, 71);
@@ -99,6 +100,7 @@ public class Notice extends JPanel{
 	   
 	     
 	     
+
 	}
 }
 
