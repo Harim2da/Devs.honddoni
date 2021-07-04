@@ -239,6 +239,15 @@ public class MyPage extends JPanel {
 				frame.add(changeMemberinfoPanel);
 				MemberInfoDTO memberInfo = memberController.callMemberInfo(테스트아이디);
 				String profile = memberInfo.getProfile();
+				String name = memberInfo.getName();
+				String id = memberInfo.getId();
+				String birth = memberInfo.getBirth();
+				String gender = memberInfo.getGender();
+				String nickName = memberInfo.getNickName();
+				String address = memberInfo.getAddress();
+				String phone = memberInfo.getPhone();
+				String email = memberInfo.getEmail();
+				int characterCode = memberInfo.getCharacterCode();
 				
 				
 				/* 취소 버튼 */
@@ -258,17 +267,35 @@ public class MyPage extends JPanel {
 				});
 				changeMemberinfoPanel.add(cpB1);
 				
+				/* 변경 버튼 */
+				btnRemove(cpB2);
+				cpB2.setVisible(true);
+				cpB2.setBounds(264, 670, 178, 63);
+				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
+				changeMemberinfoPanel.add(cpB2); 
+				cpB2.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("변경 버튼 클릭");
+						
+					}
+				});
 				
 				/* 프로필 변경 버튼 */
 				btnRemove(ciB1);
 				ciB1.setVisible(true);
 				ciB1.setBounds(54, 10, 126, 129);
-				ciB1.setIcon(new ImageIcon("image/member/updateinfo/Group 884.png"));
 				changeMemberinfoPanel.add(ciB1);
-				JLabel profileImage = new JLabel();
-				profileImage.setBounds(55, 10, 126, 129);
+				
+				/* 접속한 사용자의 프로필 사진을 셋팅 해줌 */
 				switch(profile) {
-					case "1" : profileImage.setIcon(new ImageIcon("image/member/updateInfo/pf1.png"));
+					case "1" : ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb1.png")); break;
+					case "2" : ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb2.png")); break;
+					case "3" : ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb3.png")); break;
+					case "4" : ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb4.png")); break;
+					case "5" : ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb5.png")); break;
+					default : System.out.println("프로필 없음");
 				}
 				
 				ciB1.addActionListener(new ActionListener() {
@@ -276,6 +303,7 @@ public class MyPage extends JPanel {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("프로필 변경 버튼 클릭"); 
+						PopupFrame.popup("");
 						
 					}
 				});
@@ -326,18 +354,18 @@ public class MyPage extends JPanel {
 				
 				/* DB에서 이름 불러와서 표시 */
 				ciL1.setBounds(130, 153, 220, 45);
-				ciL1.setText("이름");
+				ciL1.setText(name);
 				changeMemberinfoPanel.add(ciL1);
 				
 				/* DB에서 아이디 불러와서 표시 */
 				ciL2.setBounds(130, 219, 220, 45);
-				ciL2.setText("아이디");
+				ciL2.setText(id);
 				changeMemberinfoPanel.add(ciL2);
 				
 				/* 개인정보 변경 입력창 라벨 */
 				ciL3.setBounds(0, 0, 500, 770);
 				ciL3.setVisible(true);
-				ciL3.setIcon(new ImageIcon("image/member/updateInfo/Group 1073.png"));
+				ciL3.setIcon(new ImageIcon("image/member/updateInfo/changeInfoBackground.png"));
 				changeMemberinfoPanel.add(ciL3);
 				
 				/* 본인 성향 선택 콤보박스 */
@@ -355,20 +383,6 @@ public class MyPage extends JPanel {
 					}
 				});
 				
-				/* 변경 버튼 */
-				btnRemove(cpB2);
-				cpB2.setVisible(true);
-				cpB2.setBounds(264, 670, 178, 63);
-				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
-				changeMemberinfoPanel.add(cpB2); 
-				cpB2.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						System.out.println("변경 버튼 클릭");
-						
-					}
-				});
 				
 				changeMemberinfoPanel.revalidate();
 				changeMemberinfoPanel.repaint();

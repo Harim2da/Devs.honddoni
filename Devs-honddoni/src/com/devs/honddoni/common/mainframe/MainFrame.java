@@ -1,9 +1,13 @@
 package com.devs.honddoni.common.mainframe;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.view.FirstView;
-import com.devs.honddoni.post.view.SelectAllHonPost;
 
 public class MainFrame extends JFrame{
 	
@@ -16,13 +20,17 @@ public class MainFrame extends JFrame{
 		this.setBounds(100, 100, 516, 909);
 		this.setLayout(null);
 		this.setTitle("혼또니(혼자 또 여행왔니?)");
-		
+		try {
+			this.setIconImage(ImageIO.read(new File("image/memberLog/login/login_1_logo.png")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 //		new FirstView(this);
-//		new MyPage(this);
-		new SelectAllHonPost(this);
+		new MyPage(this);
+//		new SelectAllHonPost(this);
 		
 //		FrameManager.initPanel(this, new SelectAllHonPost());
 	}
