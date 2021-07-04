@@ -17,13 +17,43 @@ public class PostDTO implements java.io.Serializable {
 	private int categoryCode;
 	private String postDelStatus;
 	private int postNumberOfPeopleNumber;
+	private String memberNickname;
+	private String memberProfile;
 	
 	public PostDTO() {}
 
+	public String getMemberNickname() {
+		return memberNickname;
+	}
+
+
+
+
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
+	}
+
+
+
+
+	public String getMemberProfile() {
+		return memberProfile;
+	}
+
+
+
+
+	public void setMemberProfile(String memberProfile) {
+		this.memberProfile = memberProfile;
+	}
+
+
+
+
 	public PostDTO(int postNo, String postName, String postContents, String postCategory, int postMemberNo,
 			String postMeetingDate, String postMeetingTime, String postWritingDate, String postWritingTime,
-			String localName, String categoryName, String postDelStatus, int postNumberOfPeopleNumber,int localCode,
-			int categoryCode) {
+			String localName, int localCode, String categoryName, int categoryCode, String postDelStatus,
+			int postNumberOfPeopleNumber, String memberNickname, String memberProfile) {
 		super();
 		this.postNo = postNo;
 		this.postName = postName;
@@ -35,14 +65,18 @@ public class PostDTO implements java.io.Serializable {
 		this.postWritingDate = postWritingDate;
 		this.postWritingTime = postWritingTime;
 		this.localName = localName;
+		this.localCode = localCode;
 		this.categoryName = categoryName;
+		this.categoryCode = categoryCode;
 		this.postDelStatus = postDelStatus;
 		this.postNumberOfPeopleNumber = postNumberOfPeopleNumber;
-		this.localCode = localCode;
-		this.categoryCode = categoryCode;
+		this.memberNickname = memberNickname;
+		this.memberProfile = memberProfile;
 	}
 
-	
+
+
+
 	public int getLocalCode() {
 		return localCode;
 	}
@@ -170,9 +204,11 @@ public class PostDTO implements java.io.Serializable {
 				+ postMeetingDate + ", postMeetingTime=" + postMeetingTime + ", postWritingDate=" + postWritingDate
 				+ ", postWritingTime=" + postWritingTime + ", localName=" + localName + ", localCode=" + localCode
 				+ ", categoryName=" + categoryName + ", categoryCode=" + categoryCode + ", postDelStatus="
-				+ postDelStatus + ", postNumberOfPeopleNumber=" + postNumberOfPeopleNumber + "]";
+				+ postDelStatus + ", postNumberOfPeopleNumber=" + postNumberOfPeopleNumber + ", memberNickname="
+				+ memberNickname + ", memberProfile=" + memberProfile + "]";
 	}
 
+	
 	
 
 	
