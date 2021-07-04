@@ -12,8 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.devs.honddoni.member.view.MyPage;
-import com.devs.honddoni.member.view.TestMyPage;
-import com.devs.honddoni.member.view.TestYOON;
 
 public class FrameManager {
 
@@ -25,9 +23,9 @@ public class FrameManager {
 	static JButton interestingBtn;			//관심글 찾기 버튼
 	static JButton noticeBtn;				//공지사항 조회 버튼
 	
-	TestMyPage testMyPage;
-	TestYOON test;
-	
+
+	MyPage myPage;
+
 	
 	
 	/* 패널 변경 메소드 */
@@ -54,7 +52,7 @@ public class FrameManager {
 	public static void topPanel(MainFrame frame, JPanel presentPage) {
 
 		/* 상단 패널 생성 */
-//		topPanel = new JPanel();
+		topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
@@ -69,7 +67,7 @@ public class FrameManager {
 
 	}
 	
-	MyPage myPage;
+//	MyPage myPage;
 	public static void myHonddoniBtnClick(MainFrame frame, JPanel presentPage, MyPage myPage) {
 		
 		/* My혼또니 버튼 생성 */
@@ -94,7 +92,7 @@ public class FrameManager {
 		
 	}
 	
-	public static void searchHonddoniBtnClick(MainFrame frame, JPanel presentPage, TestYOON test) {
+	public static void searchHonddoniBtnClick(MainFrame frame, JPanel presentPage, 혼또니찾기) {
 		/* 혼또니 찾기 버튼 생성*/
 //		searchHonddoniBtn = new JButton();
 		searchHonddoniBtn.setBounds(234,23,56,56);
@@ -106,8 +104,7 @@ public class FrameManager {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("혼또니 찾기 버튼 클릭");
-				System.out.println("//frame// : " + frame + ", " + "//presentPage //: " + presentPage + ", " +"//myPage//" + new TestYOON(frame));
-				FrameManager.changePanel(frame, presentPage, new TestYOON(frame));
+				FrameManager.changePanel(frame, presentPage, 혼또니찾기);
 				presentPage.repaint();
 				presentPage.revalidate();
 			}

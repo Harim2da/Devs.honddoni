@@ -2,7 +2,7 @@ package com.devs.honddoni.common.mainframe;
 
 import javax.swing.JFrame;
 
-import com.devs.honddoni.member.view.TestMyPage;
+import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.view.FirstView;
 
 public class MainFrame extends JFrame{
@@ -21,8 +21,9 @@ public class MainFrame extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 //		new FirstView(this);
-		new TestMyPage(this);
-//		new MyPage(this);
+		new MyPage(this);
+		
+//		FrameManager.initPanel(this, new TestMyPage());
 	}
 	
 }
