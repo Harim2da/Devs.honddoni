@@ -35,7 +35,7 @@ public class SelectedComment extends JFrame {
 	List<CommentsDTO> commentListDTO = null;
 	private JLabel nickName;					//유저 닉네임
 	private JLabel content;						//댓글 내용
-	private JButton updateBtn;					//댓글 수정 버튼
+	private JButton[] updateBtn;					//댓글 수정 버튼
 	private JButton reportBtn;					//댓글 신고 버튼
 	private JLabel commentsDate;				//댓글 작성 날짜
 	private JLabel commentsTime;				//댓글 작성 시간
@@ -47,7 +47,7 @@ public class SelectedComment extends JFrame {
 	private JButton noticeBtn;					//공지사항 목록 이동
 	private JLabel backgroundImage;				//로고 포함 테두리 배경
 	private int postNo;							//게시글 번호
-	private JButton deleteBtn;					//게시글 삭제
+	private JButton[] deleteBtn;					//게시글 삭제
 
 	/* 프레임에서 패널을 더해주기 위한 getter */
 	public JPanel getUpPanel() {
@@ -389,27 +389,27 @@ public class SelectedComment extends JFrame {
 				}
 
 
-//				downPanel.remove(commentList);
-//
-//
-//				for(int i = 0; i < 10; i++) {
-//
-//
-////					downPanel.remove(commentList);
-////					downPanel.remove(nickName);
-////					downPanel.remove(content);
-////					downPanel.remove(updateBtn);
-////					downPanel.remove(reportBtn);
-////					downPanel.remove(commentsDate);
-////					downPanel.remove(commentsTime);
-////					downPanel.remove(profilePictrue);
-////					downPanel.remove(deleteBtn);
-//
-//				}
+//								downPanel.remove(commentList);
+				
+				
+								for(int i = 0; i < 10; i++) {
+//				
+//				
+//									downPanel.remove(commentList);
+//									downPanel.remove(nickName);
+//									downPanel.remove(content);
+									downPanel.remove(updateBtn[i]);
+//									downPanel.remove(reportBtn);
+//									downPanel.remove(commentsDate);
+//									downPanel.remove(commentsTime);
+//									downPanel.remove(profilePictrue);
+									downPanel.remove(deleteBtn[i]);
+//				
+								}
 
 				//				PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
 				//				commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
-				commentList(postNo);
+//				commentList(postNo);
 
 				afterBtn(1);
 				beforeBtn();
@@ -457,7 +457,7 @@ public class SelectedComment extends JFrame {
 		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
 		CommentsDTO commentInfo = null;
 
-		
+
 		for(int i = 0; i < commentListDTO.size(); i++) {
 
 			commentInfo = commentListDTO.get(i);
@@ -475,46 +475,45 @@ public class SelectedComment extends JFrame {
 			content.setLayout(null);
 			content.setBounds(187, y + 10, 250, 35); 
 
-			JButton[] updateBtn = new JButton[commentListDTO.size()];
+			updateBtn = new JButton[commentListDTO.size()];
 			updateBtn[i] = new JButton();
 			updateBtn[i].setIcon(new ImageIcon("image/post/commentUpdateButton.png"));
 			updateBtn[i].setContentAreaFilled(false);
 			updateBtn[i].setBorderPainted(false);
 			updateBtn[i].setBounds(415, y + 37, 23, 23);
 			System.out.println("updateBtn[" + i + "] : " + commentListDTO.get(i).getCommentsNo());
-			
+
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
-			
-			
-			if(getMemberNo == 1 /* 로그인된 번호 */) {
-			updateBtn[i].addActionListener(new ActionListener() {
 
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					System.out.println("댓글 수정란 호출");
-					String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
-					System.out.println(text);
-					CommentsDTO updateComment = new CommentsDTO();
-					
-						
+
+			if(getMemberNo == 1 /* 로그인된 번호 */) {
+				updateBtn[i].addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("댓글 수정란 호출");
+						String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
+						System.out.println(text);
+						CommentsDTO updateComment = new CommentsDTO();
+
+
 						updateComment.setCommentsNo(getCommentsNo);
 						updateComment.setMemberNo(getMemberNo);
 						updateComment.setCommentsContents(text);
-//						System.out.println("conmmentListDTO CommentNo  : " + commentListDTO.get(i).getCommentsNo());
-//						System.out.println("conmmentListDTO MemberNo  : " + commentListDTO.get(i).getMemberNo());
+						//						System.out.println("conmmentListDTO CommentNo  : " + commentListDTO.get(i).getCommentsNo());
+						//						System.out.println("conmmentListDTO MemberNo  : " + commentListDTO.get(i).getMemberNo());
 						System.out.println("getCommentsNo : " + getCommentsNo);
-						
-					
-					ContactController2 contactController2 = new ContactController2();
-					contactController2.updateComment(updateComment);
-					
 
-				}
-			});
-			} else {
-				System.out.println("본인 글만 수정할 수 있습니다.");
+
+						ContactController2 contactController2 = new ContactController2();
+						contactController2.updateComment(updateComment);
+
+
+					}
+				});
 			}
+
 			reportBtn = new JButton("");
 			reportBtn.setIcon(new ImageIcon("image/post/commentReportButton.png"));
 			reportBtn.setContentAreaFilled(false);
@@ -565,36 +564,37 @@ public class SelectedComment extends JFrame {
 			} else if(commentInfo.getMemberProfile() == null) {
 				profilePictrue.setVisible(false);
 			}
-			JButton[] deleteBtn = new JButton[commentListDTO.size()];
+
+			deleteBtn = new JButton[commentListDTO.size()];
 			deleteBtn[i] = new JButton("");
 			deleteBtn[i].setIcon(new ImageIcon("image/post/commentDeleteButton.png"));
 			deleteBtn[i].setContentAreaFilled(false);
 			deleteBtn[i].setBorderPainted(false);
 			deleteBtn[i].setBounds(390, y + 37, 23, 23);
-			
+
 
 			if(getMemberNo == 1 /* 로그인된 번호 */) {
-			deleteBtn[i].addActionListener(new ActionListener() {
+				deleteBtn[i].addActionListener(new ActionListener() {
 
-				@Override
-				public void actionPerformed(ActionEvent e) {
+					@Override
+					public void actionPerformed(ActionEvent e) {
 
-					System.out.println("댓글 삭제");
-					CommentsDTO deleteComment = new CommentsDTO();
+						System.out.println("댓글 삭제");
+						CommentsDTO deleteComment = new CommentsDTO();
 
 						deleteComment.setCommentsNo(getCommentsNo);
 						deleteComment.setMemberNo(getMemberNo);
-						
-					
-
-					ContactController2 contactController2 = new ContactController2();
-					contactController2.deleteComment(deleteComment);
 
 
 
+						ContactController2 contactController2 = new ContactController2();
+						contactController2.deleteComment(deleteComment);
 
-				}
-			});
+
+
+
+					}
+				});
 			}
 			downPanel.add(updateBtn[i]);
 			downPanel.add(deleteBtn[i]);
