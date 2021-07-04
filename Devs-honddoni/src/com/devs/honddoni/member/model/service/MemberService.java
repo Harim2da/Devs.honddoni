@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.devs.honddoni.member.model.dao.MemberDAO;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
+import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
 import static com.devs.honddoni.common.JDBCTemplate.getConnection;
@@ -71,6 +72,17 @@ public class MemberService {
 		close(con);
 		
 		return result;
+	}
+
+	public MemberInfoDTO callMemberInfo(String testId) {
+		
+		Connection con = getConnection();
+		
+		MemberInfoDTO memberInfo = memberDAO.callMemberInfo(con, testId);
+		
+		close(con);
+		
+		return memberInfo;
 	}
 
 

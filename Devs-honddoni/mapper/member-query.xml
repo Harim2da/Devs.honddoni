@@ -17,7 +17,7 @@
 	</entry>
 	
 	<entry key="modifyPassword">
-	  UPDATE /*com.greedy.member.model.dao.MemberDAO#updateMemberPwd()*/
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#modifyPassword()*/
 	         TBL_MEMBER A
 	     SET A.MEMBER_PASSWORD = ?
 	   WHERE A.MEMBER_ID = ?
@@ -68,6 +68,12 @@
 	<entry key="checkPassword">
         SELECT
         	   A.MEMBER_PASSWORD
+          FROM TBL_MEMBER A
+         WHERE A.MEMBER_ID = ?
+	</entry>
+	<entry key="callMemberInfo">
+        SELECT
+        	   A.*
           FROM TBL_MEMBER A
          WHERE A.MEMBER_ID = ?
 	</entry>

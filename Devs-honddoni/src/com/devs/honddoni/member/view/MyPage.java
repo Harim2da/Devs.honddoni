@@ -21,6 +21,7 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
+import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
 public class MyPage extends JPanel {
@@ -59,6 +60,9 @@ public class MyPage extends JPanel {
 	private JLabel ciL2 = new JLabel();						//개인정보변경 아이디 라벨
 	private JLabel ciL3 = new JLabel();						//개인정보변경 입력창 라벨
 	private JComboBox characterSelectCombo;
+	
+	
+	static String 테스트아이디 = "user06";
 	
 	
 	public static JButton btnRemove(JButton jbtn) {
@@ -233,7 +237,8 @@ public class MyPage extends JPanel {
 //				downsidePanel.setVisible(false);
 				myPage.setVisible(false);
 				frame.add(changeMemberinfoPanel);
-				memberController.
+				MemberInfoDTO memberInfo = memberController.callMemberInfo(테스트아이디);
+				String profile = memberInfo.getProfile();
 				
 				
 				/* 취소 버튼 */
@@ -260,6 +265,12 @@ public class MyPage extends JPanel {
 				ciB1.setBounds(54, 10, 126, 129);
 				ciB1.setIcon(new ImageIcon("image/member/updateinfo/Group 884.png"));
 				changeMemberinfoPanel.add(ciB1);
+				JLabel profileImage = new JLabel();
+				profileImage.setBounds(55, 10, 126, 129);
+				switch(profile) {
+					case "1" : profileImage.setIcon(new ImageIcon("image/member/updateInfo/pf1.png"));
+				}
+				
 				ciB1.addActionListener(new ActionListener() {
 					
 					@Override
@@ -337,10 +348,6 @@ public class MyPage extends JPanel {
 				characterSelectCombo.setSelectedIndex(0);
 				changeMemberinfoPanel.add(characterSelectCombo);
 				characterSelectCombo.addActionListener(new ActionListener() {
-//					characterSelectCombo.setBounds(110, 600, 360, 47);
-//					characterSelectCombo.setSelectedIndex(0);
-//					changeMemberinfoPanel.add(characterSelectCombo);
-//					characterSelectCombo.addActionListener(new ActionListener() {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
+import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.member.model.service.MemberService;
 import com.devs.honddoni.member.view.DuplCheckResult;
@@ -76,5 +77,17 @@ public class MemberController {
 			System.out.println("비번변경 실패");
 			PopupFrame.popup("image/popup/FailMessage.png");
 		}
+	}
+
+	public MemberInfoDTO callMemberInfo(String testId) {
+		
+		MemberInfoDTO memberInfo = new MemberInfoDTO();
+		System.out.println("테스트아이디 컨트롤러 : " + testId);
+		memberInfo = memberService.callMemberInfo(testId);
+		System.out.println(memberInfo);
+		
+		
+		return memberInfo;
+		
 	}
 }
