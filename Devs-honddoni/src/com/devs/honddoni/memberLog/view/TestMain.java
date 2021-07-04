@@ -6,6 +6,8 @@ public class TestMain {
 		// TODO Auto-generated method stub
 		
 		new TestFrame();
+		
+		
 	}
 
 }
