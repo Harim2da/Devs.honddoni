@@ -663,18 +663,18 @@ public class AllBoardList {
 		int pageNo = nowPage;
 		int y =  152;
 		
-//		postListDTO = new PagingController().wholePostList(int pageNo);
-//		PostDTO postInfo = null;
-//
-//
-//		for(int i = 0; i < postListDTO.size(); i++) {
-//			
-//			postInfo = postListDTO.get(i);
-//			
+		postListDTO = new PagingController().wholePostList(int pageNo);
+		PostDTO postInfo = null;
+
+
+		for(int i = 0; i < postListDTO.size(); i++) {
+			
+			postInfo = postListDTO.get(i);
+			
 //			postList = new JLabel[postListDTO.size()];
 //			postList[i] = new JLabel();
 //			postList[i].setLayout(null);
-//			postList[i].setIcon(new ImageIcon("image/post/commentWriteListLabelOne.png"));
+//			postList[i].setIcon(new ImageIcon(""));
 //			postList[i].setBounds(35, y, 431, 61);
 //
 //			nickName = new JLabel[postListDTO.size()];
@@ -727,8 +727,8 @@ public class AllBoardList {
 //					}
 //				});
 //			}
-
-	
+//
+//	
 	
 	
 	
