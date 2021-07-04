@@ -21,10 +21,10 @@ import com.devs.honddoni.post.controller.PagingController;
 
 public class SelectedComment extends JFrame {
 
-	
+
 	private JPanel upPanel; 					//상단패널
 	private JPanel downPanel;					//하단패널
-//	private JPanel nextPanel;					//하단패널
+	//	private JPanel nextPanel;					//하단패널
 	private JButton commentWriteBtn;			//댓글 작성 버튼
 	private JLabel commentLongbarLabel;			//페이지를 나타낼때 아래 깔래는 바
 	private JButton backBtn;        			//뒤로 가기
@@ -58,9 +58,9 @@ public class SelectedComment extends JFrame {
 	public JPanel getDownPanel() {
 		return downPanel;
 	}
-	public JPanel getNextPanel() {
-		return nextPanel;
-	}
+	//	public JPanel getNextPanel() {
+	//		return nextPanel;
+	//	}
 	//	public JButton getSidebarBtn() {
 	//		return sidebarBtn;
 	//	}
@@ -103,14 +103,14 @@ public class SelectedComment extends JFrame {
 
 		upPanel();
 		downPanel();
-//		nextPanel();
-		
+		//		nextPanel();
+
 		myHonddoniBtn();
 		searchHonddoniBtn();
 		homeBtn();
 		interestingBtn();
 		noticeBtn();
-		
+
 		commentWriteBtn();
 		commentLongbarLabel();
 		backBtn();
@@ -118,8 +118,16 @@ public class SelectedComment extends JFrame {
 		afterNumber(1);
 		beforeBtn();
 		afterBtn(1);
+		nickName(1);
+		content(1);
+		updateBtn(1);
+		commentsDate(1);
+		reportBtn(1);
+		commentsTime(1);
+		profilePictrue(1);
+		deleteBtn(1);
 		commentList(1);
-		
+
 		upPanel.add(myHonddoniBtn);
 		upPanel.add(searchHonddoniBtn);
 		upPanel.add(homeBtn);
@@ -129,9 +137,9 @@ public class SelectedComment extends JFrame {
 		downPanel.add(commentWriteBtn);
 		downPanel.add(commentLongbarLabel);
 		downPanel.add(backBtn);
-//		nextPanel.add(commentWriteBtn);
-//		nextPanel.add(commentLongbarLabel);
-//		nextPanel.add(backBtn);
+		//		nextPanel.add(commentWriteBtn);
+		//		nextPanel.add(commentLongbarLabel);
+		//		nextPanel.add(backBtn);
 
 		commentLongbarLabel.add(beforeNumber);
 		commentLongbarLabel.add(afterNumber);
@@ -167,16 +175,16 @@ public class SelectedComment extends JFrame {
 
 	}
 
-//	public void nextPanel() {
-//
-//		nextPanel = new JPanel();
-//		nextPanel.setBounds(0, 100, 500, 770);
-//		nextPanel.setLayout(null);
-//		nextPanel.setBackground(Color.WHITE);
-//		nextPanel.setVisible(false);
-//		
-//
-//	}
+	//	public void nextPanel() {
+	//
+	//		nextPanel = new JPanel();
+	//		nextPanel.setBounds(0, 100, 500, 770);
+	//		nextPanel.setLayout(null);
+	//		nextPanel.setBackground(Color.WHITE);
+	//		nextPanel.setVisible(false);
+	//		
+	//
+	//	}
 
 	/* My혼또니 버튼 생성 */
 	public void myHonddoniBtn() {
@@ -403,21 +411,24 @@ public class SelectedComment extends JFrame {
 					frontPage++;
 				}
 				
-//				if(frontPage == 2) {
-//					downPanel.setVisible(false);
-//					nextPanel.setVisible(true);
+//				remove(downPanel);
+//				
+//				for(int i = 0; i < commentListDTO.size()) {
+//					
+//					downPanel.remove(commentList[i]);
+//					
 //				}
-				
-				
+
+
 				afterBtn(1);
 				beforeBtn();
 				beforeNumber();		
 
-//				SelectedComment2 sc = new SelectedComment2();
-//				sc.collect();
-//				Ctest3.changePanel(downPanel, sc.getDownPanel2());
-//				downPanel.setVisible(false);
-//				sc.getDownPanel2().setVisible(true);
+				//				SelectedComment2 sc = new SelectedComment2();
+				//				sc.collect();
+				//				Ctest3.changePanel(downPanel, sc.getDownPanel2());
+				//				downPanel.setVisible(false);
+				//				sc.getDownPanel2().setVisible(true);
 			}
 		});
 	}
@@ -470,19 +481,65 @@ public class SelectedComment extends JFrame {
 			commentList[i].setLayout(null);
 			commentList[i].setIcon(new ImageIcon("image/post/commentWriteListLabelOne.png"));
 			commentList[i].setBounds(35, y, 431, 61);
+			downPanel.add(commentList[i]);
+			y += 62;
+		}
+	}
+
+	public void nickName(int postNo) {
+
+		int pageNo = frontPage;
+		int y = 52;
+
+		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+		CommentsDTO commentInfo = null;
+
+		for(int i = 0; i < commentListDTO.size(); i++) {
+
+			commentInfo = commentListDTO.get(i);	
 
 			nickName = new JLabel[commentListDTO.size()];
 			nickName[i] = new JLabel();
 			nickName[i].setLayout(null);
 			nickName[i].setBounds(110, y + 10, 720, 35);
 			nickName[i].setText(commentInfo.getMemberNickname());
+			downPanel.add(nickName[i]);
+			y += 62;
+		}
+	}
 
+	public void content(int postNo) {
+
+		int pageNo = frontPage;
+		int y = 52;
+
+		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+		CommentsDTO commentInfo = null;
+
+		for(int i = 0; i < commentListDTO.size(); i++) {
+			commentInfo = commentListDTO.get(i);
 			content = new JLabel[commentListDTO.size()];
 			content[i] = new JLabel();
 			content[i].setLayout(null);
 			content[i].setBounds(187, y + 10, 250, 35);
 			content[i].setText(commentInfo.getCommentsContents());
+			downPanel.add(content[i]);
+			y += 62;
+		}
+	}
 
+	public void updateBtn(int postNo) {
+
+		int pageNo = frontPage;
+		int y = 52;
+
+		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+		CommentsDTO commentInfo = null;
+
+		for(int i = 0; i < commentListDTO.size(); i++) {
+			
+			commentInfo = commentListDTO.get(i);
+			
 			updateBtn = new JButton[commentListDTO.size()];
 			updateBtn[i] = new JButton();
 			updateBtn[i].setIcon(new ImageIcon("image/post/commentUpdateButton.png"));
@@ -521,7 +578,45 @@ public class SelectedComment extends JFrame {
 					}
 				});
 			}
+			downPanel.add(updateBtn[i]);
+			y += 62;
+		}
+	}
 
+	public void commentsDate(int postNo) {
+
+		int pageNo = frontPage;
+		int y = 52;
+
+		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+		CommentsDTO commentInfo = null;
+
+		for(int i = 0; i < commentListDTO.size(); i++) {
+
+			commentInfo = commentListDTO.get(i);
+			
+			commentsDate = new JLabel[commentListDTO.size()];
+			commentsDate[i] = new JLabel();
+			commentsDate[i].setLayout(null);
+			commentsDate[i].setBounds(418, y - 7 , 250, 35);
+			commentsDate[i].setText(commentInfo.getCommentsDate());
+			downPanel.add(commentsDate[i]);
+			y += 62;
+		}
+	}
+
+	public void reportBtn(int postNo) {
+
+		int pageNo = frontPage;
+		int y = 52;
+
+		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+		CommentsDTO commentInfo = null;
+
+		for(int i = 0; i < commentListDTO.size(); i++) {
+
+			commentInfo = commentListDTO.get(i);
+			
 			reportBtn = new JButton[commentListDTO.size()];
 			reportBtn[i] = new JButton();
 			reportBtn[i].setIcon(new ImageIcon("image/post/commentReportButton.png"));
@@ -532,29 +627,58 @@ public class SelectedComment extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					/* 신고 팝업창 띄우기 */
+					//					for(int i = 0; i < commentListDTO.size(); i++) {
+					//						
+					//						commentsDate.setVisible(false);
+					//					}
 					System.out.println("신고 팝업창 띄우기");
 
 				}
 			});
-			
-			commentsDate = new JLabel[commentListDTO.size()];
-			commentsDate[i] = new JLabel();
-			commentsDate[i].setLayout(null);
-			commentsDate[i].setBounds(418, y - 7 , 250, 35);
-			commentsDate[i].setText(commentInfo.getCommentsDate());
+			downPanel.add(reportBtn[i]);
+			y += 62;
+		}
+	}
 
+	public void commentsTime(int postNo) {
+
+		int pageNo = frontPage;
+		int y = 52;
+
+		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+		CommentsDTO commentInfo = null;
+
+		for(int i = 0; i < commentListDTO.size(); i++) {
+
+			commentInfo = commentListDTO.get(i);
+			
 			commentsTime = new JLabel[commentListDTO.size()];
 			commentsTime[i] = new JLabel();
 			commentsTime[i].setLayout(null);
 			commentsTime[i].setBounds(422, y + 7 , 250, 35);
 			commentsTime[i].setText(commentInfo.getCommentsTime());
+			downPanel.add(commentsTime[i]);
+			y += 62;
+		}
+	}
 
+	public void profilePictrue(int postNo) {
+
+		int pageNo = frontPage;
+		int y = 52;
+
+		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+		CommentsDTO commentInfo = null;
+
+		for(int i = 0; i < commentListDTO.size(); i++) {
+			
+			commentInfo = commentListDTO.get(i);
+			
 			profilePictrue = new JLabel[commentListDTO.size()];
 			profilePictrue[i] = new JLabel();
 			profilePictrue[i].setLayout(null);
 			profilePictrue[i].setBounds(45, y - 10, 75, 75);
-			
+
 
 			if(commentInfo.getMemberProfile().equals("1")) {
 
@@ -579,6 +703,22 @@ public class SelectedComment extends JFrame {
 			} else if(commentInfo.getMemberProfile() == null) {
 				profilePictrue[i].setVisible(false);
 			}
+			downPanel.add(profilePictrue[i]);
+			y += 62;
+		}
+	}
+
+	public void deleteBtn(int postNo) {
+
+		int pageNo = frontPage;
+		int y = 52;
+
+		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
+		CommentsDTO commentInfo = null;
+
+		for(int i = 0; i < commentListDTO.size(); i++) {
+			
+			commentInfo = commentListDTO.get(i);
 
 			deleteBtn = new JButton[commentListDTO.size()];
 			deleteBtn[i] = new JButton("");
@@ -587,6 +727,8 @@ public class SelectedComment extends JFrame {
 			deleteBtn[i].setBorderPainted(false);
 			deleteBtn[i].setBounds(390, y + 37, 23, 23);
 
+			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
+			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
 			if(getMemberNo == 1 /* 로그인된 번호 */) {
 				deleteBtn[i].addActionListener(new ActionListener() {
@@ -605,33 +747,30 @@ public class SelectedComment extends JFrame {
 						ContactController2 contactController2 = new ContactController2();
 						contactController2.deleteComment(deleteComment);
 
-
-
-
 					}
 				});
 			}
-			downPanel.add(updateBtn[i]);
 			downPanel.add(deleteBtn[i]);
-			downPanel.add(profilePictrue[i]);
-			downPanel.add(nickName[i]);
-			downPanel.add(content[i]);
-			downPanel.add(reportBtn[i]);
-			downPanel.add(commentsDate[i]);
-			downPanel.add(commentsTime[i]);
-			downPanel.add(commentList[i]);
-//			nextPanel.add(updateBtn[i]);
-//			nextPanel.add(deleteBtn[i]);
-//			nextPanel.add(profilePictrue[i]);
-//			nextPanel.add(nickName[i]);
-//			nextPanel.add(content[i]);
-//			nextPanel.add(reportBtn[i]);
-//			nextPanel.add(commentsDate[i]);
-//			nextPanel.add(commentsTime[i]);
-//			nextPanel.add(commentList[i]);
-
 			y += 62;
-
 		}
 	}
+	
+
+	
+
+	
+	//			nextPanel.add(updateBtn[i]);
+	//			nextPanel.add(deleteBtn[i]);
+	//			nextPanel.add(profilePictrue[i]);
+	//			nextPanel.add(nickName[i]);
+	//			nextPanel.add(content[i]);
+	//			nextPanel.add(reportBtn[i]);
+	//			nextPanel.add(commentsDate[i]);
+	//			nextPanel.add(commentsTime[i]);
+	//			nextPanel.add(commentList[i]);
+
+	
+
+
+
 }
