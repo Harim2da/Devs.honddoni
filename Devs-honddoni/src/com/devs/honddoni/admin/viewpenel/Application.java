@@ -22,6 +22,8 @@ public class Application {
 		
 //		new AllData(); // 전체데이터 조회
 		
+		new Notice(); //공지사항게시판 실행
+		
 		
 		
 		
