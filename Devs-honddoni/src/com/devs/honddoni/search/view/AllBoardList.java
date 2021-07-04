@@ -462,7 +462,7 @@ public class AllBoardList {
 		
 	//하단패널
 	public void bottomPanel() {
-		;
+		
 		System.out.println("다음페이지와?");
 		bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 770);
@@ -660,6 +660,7 @@ public class AllBoardList {
 	
 	/* 게시글 내용을  나타냄 */
 	public void allBoardList(int postNo) {
+
 		
 		int pageNo = nowPage;
 		int y =  152;

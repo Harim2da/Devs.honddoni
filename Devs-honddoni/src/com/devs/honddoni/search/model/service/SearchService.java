@@ -2,6 +2,7 @@ package com.devs.honddoni.search.model.service;
 
 import static com.devs.honddoni.common.JDBCTemplate.getConnection;
 
+
 import java.sql.Connection;
 import java.util.List;
 
