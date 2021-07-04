@@ -27,7 +27,7 @@ public class FrameManager {
 	
 	TestMyPage testMyPage;
 	TestYOON test;
-	
+	MyPage myPage = new MyPage();
 	
 	
 	/* 패널 변경 메소드 */

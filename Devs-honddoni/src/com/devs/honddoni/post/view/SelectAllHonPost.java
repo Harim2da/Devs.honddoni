@@ -315,6 +315,10 @@ public class SelectAllHonPost extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				postDTO.setCategoryName("맛집탐방");
 				System.out.println("맛집 탐방 선택");
+				frame.remove(bottomPanel);
+				
+				
+				
 				
 			}
 		});
