@@ -28,7 +28,7 @@ public class MainFrame1 extends JFrame{
 		this.setLayout(null);
 		this.setTitle("혼또니(혼자 또 여행왔니?)");
 		
-		topPanel();
+//		topPanel();
 //		myHonddoniBtnClick();
 //		searchHonddoniBtnClick();
 //		homeBtnClick();
@@ -48,20 +48,29 @@ public class MainFrame1 extends JFrame{
 	}
 	
 	
-	public void topPanel() {
-
-		/* 상단 패널 생성 */
-
-		topPanel.setBounds(0, 0, 500, 100);
-		topPanel.setLayout(null);
-		topPanel.setBackground(Color.WHITE);
-		this.add(topPanel);
+//	public void topPanel() {
+//
+//		/* 상단 패널 생성 */
+//
+//		topPanel.setBounds(0, 0, 500, 100);
+//		topPanel.setLayout(null);
+//		topPanel.setBackground(Color.WHITE);
+//		this.add(topPanel);
+//		
+//		 ImageIcon img1 = new ImageIcon ("image\\admin\\HondoniWrite.png");//탈퇴회원정보
+//	     JButton btn1 = new JButton(img1);
+//	     
+//	     topPanel.add(btn1);
+//	     btn1.setBounds(303, 27, 172, 70);
+	       
+	     
 		
 		/* 상단 패널 뒷배경 생성 */
-		backgroundImage.setBounds(0, 0, 500, 100);
-		backgroundImage.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
-		backgroundImage.setVisible(true); 
-		topPanel.add(backgroundImage);
+		
+//		backgroundImage.setBounds(0, 0, 500, 100);
+//		backgroundImage.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
+//		backgroundImage.setVisible(true); 
+//		topPanel.add(backgroundImage);
 		
 
 	}
@@ -168,4 +177,4 @@ public class MainFrame1 extends JFrame{
 //		noticeBtn.setVisible(true);
 //		backgroundImage.setVisible(true);
 //		topPanel.setVisible(true);
-	}
+
