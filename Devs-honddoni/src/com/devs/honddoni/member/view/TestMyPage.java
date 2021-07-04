@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -23,13 +24,13 @@ import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 
-public class MyPage extends JPanel {
+public class TestMyPage extends JPanel {
 	
 	private TestYOON test;
+	private TestMyPage testMyPage;
 	
-	
-	private MyPage myPage;
 	private MainFrame frame;
+	private MyPage myPage;
 	
 	private MemberController memberController;
 	private MemberRegistDTO memberRegistDTO;
@@ -70,17 +71,27 @@ public class MyPage extends JPanel {
 		return jbtn;
 	}
 
-	public MyPage(MainFrame frame) {
+	public TestMyPage(MainFrame frame) {
 		this.frame = frame;
-		this.myPage = this;
+		this.testMyPage = this;
 		
 		
 		FrameManager.topPanel(frame, this);
 		FrameManager.myHonddoniBtnClick(frame, this, myPage);
 		FrameManager.searchHonddoniBtnClick(frame, this, test);
 		
+//		frameTest();
+		
+		/* 하단 패널 */
+//		JPanel downsidePanel = new JPanel();
+//		downsidePanel.setBounds(0, 100, 500, 770);
+//		downsidePanel.setBackground(Color.white);
+//		downsidePanel.setLayout(null);
+//		
+//		frame.add(downsidePanel);
+		
 		this.setBounds(0, 100, 500, 770);
-		this.setBackground(Color.white);
+		this.setBackground(Color.black);
 		this.setLayout(null);
 		frame.add(this);
 		
@@ -106,7 +117,7 @@ public class MyPage extends JPanel {
 				changePwdPanel.setVisible(true);
 				changePwdPanel.setBackground(Color.white);
 //				downsidePanel.setVisible(false);
-				myPage.setVisible(false);
+				testMyPage.setVisible(false);
 				frame.add(changePwdPanel);
 				
 				/* 기존 비밀번호 입력창 */
@@ -225,7 +236,7 @@ public class MyPage extends JPanel {
 		changeMemberinfo.setBorderPainted(false);
 		changeMemberinfo.setBounds(272, 53, 137, 137);
 //		downsidePanel.add(changeMemberinfo);
-		myPage.add(changeMemberinfo);
+		testMyPage.add(changeMemberinfo);
 		changeMemberinfo.addActionListener(new ActionListener() {
 			
 			@Override 	
@@ -238,7 +249,7 @@ public class MyPage extends JPanel {
 				changeMemberinfoPanel.setVisible(true);
 				changeMemberinfoPanel.setBackground(Color.white);
 //				downsidePanel.setVisible(false);
-				myPage.setVisible(false);
+				testMyPage.setVisible(false);
 				frame.add(changeMemberinfoPanel);
 				
 				/* 취소 버튼 */
@@ -250,10 +261,11 @@ public class MyPage extends JPanel {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						myPage = new MyPage(frame);
 						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
-						FrameManager.changePanel(frame, changeMemberinfoPanel, new MyPage(frame));
+						FrameManager.changePanel(frame, changeMemberinfoPanel, myPage);
 					}
 				});
 				changeMemberinfoPanel.add(cpB1);
@@ -383,7 +395,7 @@ public class MyPage extends JPanel {
 		resignMemberButton.setContentAreaFilled(false);
 		resignMemberButton.setBorderPainted(false);
 		resignMemberButton.setBounds(92, 280, 137, 137);
-		myPage.add(resignMemberButton);
+		testMyPage.add(resignMemberButton);
 //		downsidePanel.add(resignMemberButton);
 		resignMemberButton.addActionListener(new ActionListener() {
 			
@@ -396,7 +408,7 @@ public class MyPage extends JPanel {
 				resignMemberPanel.setBounds(0, 100, 500, 770);
 				resignMemberPanel.setVisible(true);
 				resignMemberPanel.setBackground(Color.red);
-				myPage.setVisible(false);
+				testMyPage.setVisible(false);
 //				downsidePanel.setVisible(false);
 				frame.add(resignMemberPanel);
 				
@@ -478,7 +490,7 @@ public class MyPage extends JPanel {
 		interestingPostButton.setContentAreaFilled(false);
 		interestingPostButton.setBorderPainted(false);
 		interestingPostButton.setBounds(272, 280, 137, 137);
-		myPage.add(interestingPostButton);
+		testMyPage.add(interestingPostButton);
 //		downsidePanel.add(interestingPostButton);
 		interestingPostButton.addActionListener(new ActionListener() {
 			
@@ -491,7 +503,7 @@ public class MyPage extends JPanel {
 				interestingPostPanel.setBounds(0, 100, 500, 770);
 				interestingPostPanel.setVisible(true);
 				interestingPostPanel.setBackground(Color.white);
-				myPage.setVisible(false);
+				testMyPage.setVisible(false);
 //				downsidePanel.setVisible(false);
 				frame.add(interestingPostPanel);  
 				
@@ -528,7 +540,7 @@ public class MyPage extends JPanel {
 		rewardButton.setContentAreaFilled(false);
 		rewardButton.setBorderPainted(false);
 		rewardButton.setBounds(92, 501, 137, 137);
-		myPage.add(rewardButton);
+		testMyPage.add(rewardButton);
 //		downsidePanel.add(rewardButton);
 		rewardButton.addActionListener(new ActionListener() {
 			
@@ -541,7 +553,7 @@ public class MyPage extends JPanel {
 				rewardPanel.setBounds(0, 100, 500, 770);
 				rewardPanel.setVisible(true);
 				rewardPanel.setBackground(Color.white);
-				myPage.setVisible(false);
+				testMyPage.setVisible(false);
 //				downsidePanel.setVisible(false);
 				frame.add(rewardPanel);
 				
@@ -662,16 +674,16 @@ public class MyPage extends JPanel {
 		});
 		
 		
-
-/* 내글 모아보기 */
+/*==================================  내글 모아보기 버튼   ================================================== */
 		
 		
-		JButton writtenPostButton = new JButton(""); /* 내글 모아보기 버튼 */
+		/* 내글 모아보기 버튼 */
+		JButton writtenPostButton = new JButton("");
 		writtenPostButton.setIcon(new ImageIcon("image/member/myPage/moabogi.png"));
 		writtenPostButton.setContentAreaFilled(false);
 		writtenPostButton.setBorderPainted(false);
 		writtenPostButton.setBounds(272, 501, 137, 137);
-		myPage.add(writtenPostButton);
+		testMyPage.add(writtenPostButton);
 //		downsidePanel.add(writtenPostButton);
 		writtenPostButton.addActionListener(new ActionListener() {
 			
@@ -684,7 +696,7 @@ public class MyPage extends JPanel {
 				myPostPanel.setBounds(0, 100, 500, 770);
 				myPostPanel.setVisible(true);
 				myPostPanel.setBackground(Color.white);
-				myPage.setVisible(false);
+				testMyPage.setVisible(false);
 //				downsidePanel.setVisible(false);
 				frame.add(myPostPanel);  
 				
@@ -704,7 +716,7 @@ public class MyPage extends JPanel {
 		JLabel menuNameLabel = new JLabel("");
 		menuNameLabel.setIcon(new ImageIcon("image/member/myPage/myPageName.png"));
 		menuNameLabel.setBounds(111, 10, 500, 870);
-		myPage.add(menuNameLabel);
+		testMyPage.add(menuNameLabel);
 //		downsidePanel.add(menuNameLabel);
 		
 
@@ -720,6 +732,6 @@ public class MyPage extends JPanel {
 		
 	}
 
-
+	
 	
 }
