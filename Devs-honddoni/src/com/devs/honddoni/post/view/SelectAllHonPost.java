@@ -12,37 +12,42 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.mainframe.FrameManager;
+import com.devs.honddoni.common.mainframe.MainFrame;
 
-public class SelectAllHonPost extends JFrame{
+public class SelectAllHonPost extends JPanel{
 
-	private JFrame frame = new JFrame();
-	private JPanel bottomPanel = new JPanel(); //하단 패널
+//	private JFrame frame = new JFrame();
+	private JPanel bottomPanel;  //하단 패널 = new JPanel();
 	private JLabel mapLabel;	// 지역선택용 라벨 
 	private JLabel searchLabel; // 검색창 라벨
 	private JButton aim;        // 검색 버튼
 	private JTextField searching; // 검색어 입력창
 	private JLabel categoryPick; // 카테고리 선택 라벨
 	private PostDTO postDTO = new PostDTO();
-
+	MainFrame frame;
 	
-	public SelectAllHonPost() {
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
+	public SelectAllHonPost(MainFrame frame) {
+//		this.setBounds(100, 100, 516, 909);
+//		this.setLayout(null);
+		this.frame = frame;
+		this.bottomPanel = this;
 		BottomPanel();
 		addComponents();
 		searching();
 		selectLocal();
 		
+		frame.add(bottomPanel);
 		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.setVisible(true);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	/* 하단 패널 */
 	public void BottomPanel() {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
-		bottomPanel.setBackground(Color.WHITE);	
+		bottomPanel.setBackground(Color.CYAN);	
 		
 		searchLabel = new JLabel();   // 하단 패널 위 검색창
 		searchLabel.setBackground(Color.WHITE);
@@ -60,7 +65,7 @@ public class SelectAllHonPost extends JFrame{
 	
 	/* 패널과 라벨들 얹기 */
 	private void addComponents() {
-		this.add(bottomPanel);
+		//frame.add(bottomPanel);
 		bottomPanel.add(searchLabel);
 		bottomPanel.add(mapLabel);
 	
@@ -316,9 +321,10 @@ public class SelectAllHonPost extends JFrame{
 				postDTO.setCategoryName("맛집탐방");
 				System.out.println("맛집 탐방 선택");
 				frame.remove(bottomPanel);
-				
-				
-				
+//				FrameManager.changePanel(frame, bottomPanel, SelectAllHonPost3.bottomPanel());
+				frame.add(new SelectAllHonPost3());
+				frame.repaint();
+				frame.revalidate();
 				
 			}
 		});

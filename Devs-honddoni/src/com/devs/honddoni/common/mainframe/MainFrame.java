@@ -2,8 +2,8 @@ package com.devs.honddoni.common.mainframe;
 
 import javax.swing.JFrame;
 
-import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.view.FirstView;
+import com.devs.honddoni.post.view.SelectAllHonPost;
 
 public class MainFrame extends JFrame{
 	
@@ -21,9 +21,10 @@ public class MainFrame extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 //		new FirstView(this);
-		new MyPage(this);
+//		new MyPage(this);
+		new SelectAllHonPost(this);
 		
-//		FrameManager.initPanel(this, new TestMyPage());
+//		FrameManager.initPanel(this, new SelectAllHonPost());
 	}
 	
 }

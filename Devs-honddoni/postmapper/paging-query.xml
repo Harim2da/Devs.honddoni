@@ -10,7 +10,7 @@
 	    JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
 	   WHERE P.POST_CATEGORY = '혼또니'
 	   	 AND L.LOCAL_NAME = ?
-	     AND C.CATEGORY_NAME = ? 
+	     AND C.CATEGORY_NAME = ?
 	</entry>
 	
 	<entry key="freeWholePostNum">

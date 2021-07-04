@@ -9,22 +9,22 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.PagenationComments;
 import com.devs.honddoni.common.PagenationPost;
-import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
-import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.PagingController;
 
-public class SelectAllHonPost2 extends JPanel{
 
-	private MainFrame frame;
-	private SelectAllHonPost2 bottomPanel;
+
+public class SelectAllHonPost3 extends JPanel{
+	SelectAllHonPost frame;
+//	private JFrame frame = new JFrame();
+	private JPanel bottomPanel;
 	private JLabel searchLabel;
 	private JButton aim;
 	private JTextField searching;
@@ -44,72 +44,83 @@ public class SelectAllHonPost2 extends JPanel{
 	private int postNo; //게시글 번호
 	private int totalPostNum;
 	private PostDTO postDTO = new PostDTO();
-	
-	
-	
-	
-	public SelectAllHonPost2() {
-		//frame = new Jframe;
-		this.bottomPanel = this;
-		
+
+
+
+
+	public SelectAllHonPost3(SelectAllHonPost frame) {
+		this.frame = mainFrame;
+//		this.setBounds(100, 100, 516, 909);
+//		this.setLayout(null);
+//		bottomPanel = new JPanel();
+
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
-		bottomPanel.setBackground(Color.CYAN);	
-		frame.add(bottomPanel);
-		
+		bottomPanel.setBackground(Color.white);	
+//		this.add(bottomPanel);
+
 		addComponents();
 		prePageBtn();
-		
-		
+
+		commingPageBtn(1);
+		prePageNumber(); 
+		//commingPageNumber();
+
+
+//		this.setVisible(true);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		System.out.println("호출됨");
 	}
 
+
+
 	private void addComponents() {
-	
+
 		searchLabel = new JLabel();   // 하단 패널 위 검색창
 		searchLabel.setBackground(Color.white);
 		searchLabel.setLayout(null);
 		searchLabel.setBounds(25, 15, 450, 63); 
 		searchLabel.setIcon(new ImageIcon("image/search/searchBar.png"));
 		bottomPanel.add(searchLabel);
-		
+
 		searching = new JTextField(); // 검색창 텍필
 		searching.setBorder(null);
 		searching.setOpaque(false);
 		searching.setBounds(80, 16, 315, 28);
 		searching.setColumns(20);
 		searchLabel.add(searching);
-		
+
 		aim = new JButton();		// 검색 버튼
 		aim.setBounds(22, 13, 41, 41);
 		aim.setBorderPainted(false);
 		aim.setOpaque(false);
 		aim.setContentAreaFilled(false);
 		searchLabel.add(aim);
-		
+
 		pagebarLabel = new JLabel("");		//페이지 표기 바
 		pagebarLabel.setLayout(null);
 		pagebarLabel.setIcon(new ImageIcon("image/post/nextPageButton.png"));
 		pagebarLabel.setBounds(182, 112, 137, 22);
 		bottomPanel.add(pagebarLabel);
 		System.out.println("add 호출됨");
-		
+
 	}
-	
+
 	/* 이전 페이지 */
 	private void prePageBtn() {
 		int pageNo = frontPage;
-		
+
 		preBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
 		preBtn.setContentAreaFilled(false);
-		preBtn.setBorderPainted(false);
+		preBtn.setBorderPainted(true);
 		preBtn.setBounds(15, 4, 14, 14);
-		
+
 		if(pageNo < 2) {
 			preBtn.setVisible(false);
 		} else {
 			preBtn.setVisible(true);
-			
+
 			System.out.println("frontPage : " + frontPage);
 			preBtn.addActionListener(new ActionListener() {
 
@@ -120,7 +131,7 @@ public class SelectAllHonPost2 extends JPanel{
 						frontPage--;
 					}
 
-					
+
 					postListDTO = new PagingController().selectPostList(pageNo, postDTO.getLocalName(), postDTO.getCategoryName());
 					postList(postNo); 
 
@@ -134,42 +145,42 @@ public class SelectAllHonPost2 extends JPanel{
 			});
 		}	
 	}
-	
-	
+
+
 
 	private void commingPageBtn(int postNo) {
-		
+
 		this.postNo = postNo;
 
 		int pageNo = frontPage;
-		
+
 		int totalCount = new PagingController().selectWholePostNum(postDTO.getLocalName(), postDTO.getCategoryName());
-		
+
 		PagenationPost pagenationpost = new PagenationPost();
 		PageInfoPostDTO pageInfo = pagenationpost.getPostPageInfo(pageNo, totalCount, 5, 5);
 
 		commingBtn.setIcon(new ImageIcon("image/post/afterPageButton.png"));
 		commingBtn.setContentAreaFilled(false);
-		commingBtn.setBorderPainted(false);
+		commingBtn.setBorderPainted(true);
 		commingBtn.setBounds(120, 4, 14, 14);
-		
+
 		if(pageNo == pageInfo.getMaxPage()) {
 			commingBtn.setVisible(false);
 		} else {
 			commingBtn.setVisible(true);
 		}
-		
+
 		commingBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if(frontPage < pageInfo.getMaxPage()) {
 					frontPage++;
 				}
 
 				bottomPanel.remove(postList);
-				
+
 				for(int i = 0; i < 5; i++) {
 					bottomPanel.remove(postList);
 					bottomPanel.remove(profile);
@@ -177,24 +188,24 @@ public class SelectAllHonPost2 extends JPanel{
 					bottomPanel.remove(postTitle);
 					bottomPanel.remove(categoryName);
 				}
-				
+
 				postList(postNo);
-				
+
 				commingPageBtn(1);
 				prePageBtn();
 				prePageNumber();
-				
+
 			}
 		});
-		
+
 		pagebarLabel.add(commingBtn);
-		
-		
+
+
 	}
-	
 
 
-	
+
+
 
 	protected void prePageNumber() {
 		String frontPageString = Integer.valueOf(frontPage).toString();
@@ -203,11 +214,11 @@ public class SelectAllHonPost2 extends JPanel{
 		preNumber.setLayout(null);
 		preNumber.setBounds(50, 4, 14, 14);
 		System.out.println(frontPageString);
-		
+
 	}
-	
+
 	protected void commingPageNumber(int postNo) {
-		
+
 		int pageNo = frontPage;
 
 		int totalCount = new PagingController().selectWholePostNum(postDTO.getLocalName(), postDTO.getCategoryName());
@@ -220,148 +231,148 @@ public class SelectAllHonPost2 extends JPanel{
 		commingNumber.setLayout(null);
 		commingNumber.setBounds(85, 4, 14, 14);
 
-		
+
 	}
-	
+
 	protected void postList(int postNo) {
 		System.out.println("postList 호출됨");
 		int pageNo = frontPage;
 		int y = 153;
-		
-			postListDTO = new PagingController().selectPostList(pageNo, postDTO.getLocalName(), postDTO.getCategoryName());
-			PostDTO postInfo = null;
-			
-			for(int i = 0; i < postListDTO.size(); i++) {
-				
-				postInfo = postListDTO.get(i);
-				
-				postList = new JLabel("");
-				postList.setLayout(null);
-				postList.setIcon(new ImageIcon("image/post/postlist1"));
-				postList.setBounds(35, y, 432, 105);
-				bottomPanel.add(postList);
-				
-				profile = new JLabel("");
-				profile.setLayout(null);
-				profile.setBounds(53, y + 12, 37, 37);
-				
-				
-				if(postInfo.getMemberProfile().equals("1")) {
 
-					profile.setIcon(new ImageIcon("image/post/commentPf1.png"));
+		postListDTO = new PagingController().selectPostList(pageNo, postDTO.getLocalName(), postDTO.getCategoryName());
+		PostDTO postInfo = null;
 
-				} else if(postInfo.getMemberProfile().equals("2")) {
+		for(int i = 0; i < postListDTO.size(); i++) {
 
-					profile.setIcon(new ImageIcon("image/post/commentPf2.png"));
+			postInfo = postListDTO.get(i);
 
-				} else if(postInfo.getMemberProfile().equals("3")) {
+			postList = new JLabel("");
+			postList.setLayout(null);
+			postList.setIcon(new ImageIcon("image/post/postlist1"));
+			postList.setBounds(35, y, 432, 105);
+			bottomPanel.add(postList);
 
-					profile.setIcon(new ImageIcon("image/post/commentPf3.png"));
+			profile = new JLabel("");
+			profile.setLayout(null);
+			profile.setBounds(53, y + 12, 37, 37);
 
-				} else if(postInfo.getMemberProfile().equals("4")) {
 
-					profile.setIcon(new ImageIcon("image/post/commentPf4.png"));
+			if(postInfo.getMemberProfile().equals("1")) {
 
-				} else if(postInfo.getMemberProfile().equals("5")) {
+				profile.setIcon(new ImageIcon("image/post/commentPf1.png"));
 
-					profile.setIcon(new ImageIcon("image/post/commentPf5.png"));
+			} else if(postInfo.getMemberProfile().equals("2")) {
 
-				} else if(postInfo.getMemberProfile() == null) {
-					profile.setVisible(false);
-				}
-				bottomPanel.add(profile);
-				
-				nickName = new JLabel(postInfo.getMemberNickname());
-				nickName.setLayout(null);
-				nickName.setBounds(92, y + 15, 100, 43);
-				bottomPanel.add(nickName);
-				
-				categoryName = new JLabel("");
-				categoryName.setLayout(null);
-				categoryName.setBounds(188, y + 21, 70, 34);
-				
-				if(postInfo.getCategoryName().equals("맛집탐방")) {
-					categoryName.setIcon(new ImageIcon("image/post/eat.png"));
-					
-				} else if(postInfo.getCategoryName().equals("활동")) {
-					categoryName.setIcon(new ImageIcon("image/post/active.png"));
-					
-				} else if(postInfo.getCategoryName().equals("취미")) {
-					categoryName.setIcon(new ImageIcon("image/post/hobby.png"));
-					
-				} else if(postInfo.getCategoryName().equals("산책")) {
-					categoryName.setIcon(new ImageIcon("image/post/walk.png"));
-					
-				} else if(postInfo.getCategoryName().equals("스터디")) {
-					categoryName.setIcon(new ImageIcon("image/post/study.png"));
-					
-				} else if(postInfo.getCategoryName().equals("게임")) {
-					categoryName.setIcon(new ImageIcon("image/post/game.png"));
-				} else {
-					categoryName.setVisible(false);
-				}
-				
-				bottomPanel.add(categoryName);
-				
-				postTitle = new JLabel(postInfo.getPostName());
-				postTitle.setLayout(null);
-				postTitle.setBounds(62, y + 10, 395, 28);
-				bottomPanel.add(postTitle);
-				
-				postTitle.addMouseListener(new MouseListener() {
-					
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						// 게시판 세부내용 보이게 설정
-						
-					}
-					@Override
-					public void mouseReleased(MouseEvent e) {}
-					@Override
-					public void mousePressed(MouseEvent e) {}
-					@Override
-					public void mouseExited(MouseEvent e) {}
-					@Override
-					public void mouseEntered(MouseEvent e) {}
-				});
-				
-				
-				localName = new JLabel();
-				localName.setLayout(null);
-				localName.setBounds(383, y + 6, 46, 25);
-				
-				if(postInfo.getLocalName().equals("강릉")) {
-					localName.setIcon(new ImageIcon("image/post/gangneung.png"));
-				} else if(postInfo.getLocalName().equals("담양")) {
-					localName.setIcon(new ImageIcon("image/post/damyang.png"));
-				} else if(postInfo.getLocalName().equals("대구")) {
-					localName.setIcon(new ImageIcon("image/post/daegu.png"));
-				} else if(postInfo.getLocalName().equals("부산")) {
-					localName.setIcon(new ImageIcon("image/post/busan.png"));
-				} else if(postInfo.getLocalName().equals("서울")) {
-					localName.setIcon(new ImageIcon("image/post/seoul.png"));
-				} else if(postInfo.getLocalName().equals("인천")) {
-					localName.setIcon(new ImageIcon("image/post/incheon.png"));
-				} else if(postInfo.getLocalName().equals("순천")) {
-					localName.setIcon(new ImageIcon("image/post/sooncheon.png"));
-				} else if(postInfo.getLocalName().equals("전주")) {
-					localName.setIcon(new ImageIcon("image/post/jeonju.png"));
-				} else if(postInfo.getLocalName().equals("제주")) {
-					localName.setIcon(new ImageIcon("image/post/jeju.png"));
-				} else if(postInfo.getLocalName().equals("천안")) {
-					localName.setIcon(new ImageIcon("image/post/cheonan.png"));
-				} else if (postInfo.getLocalName() == null) {
-					localName.setVisible(false);
-				}
-				
-				bottomPanel.add(localName);
-				
+				profile.setIcon(new ImageIcon("image/post/commentPf2.png"));
+
+			} else if(postInfo.getMemberProfile().equals("3")) {
+
+				profile.setIcon(new ImageIcon("image/post/commentPf3.png"));
+
+			} else if(postInfo.getMemberProfile().equals("4")) {
+
+				profile.setIcon(new ImageIcon("image/post/commentPf4.png"));
+
+			} else if(postInfo.getMemberProfile().equals("5")) {
+
+				profile.setIcon(new ImageIcon("image/post/commentPf5.png"));
+
+			} else if(postInfo.getMemberProfile() == null) {
+				profile.setVisible(false);
 			}
-		
+			bottomPanel.add(profile);
+
+			nickName = new JLabel(postInfo.getMemberNickname());
+			nickName.setLayout(null);
+			nickName.setBounds(92, y + 15, 100, 43);
+			bottomPanel.add(nickName);
+
+			categoryName = new JLabel("");
+			categoryName.setLayout(null);
+			categoryName.setBounds(188, y + 21, 70, 34);
+
+			if(postInfo.getCategoryName().equals("맛집탐방")) {
+				categoryName.setIcon(new ImageIcon("image/post/eat.png"));
+
+			} else if(postInfo.getCategoryName().equals("활동")) {
+				categoryName.setIcon(new ImageIcon("image/post/active.png"));
+
+			} else if(postInfo.getCategoryName().equals("취미")) {
+				categoryName.setIcon(new ImageIcon("image/post/hobby.png"));
+
+			} else if(postInfo.getCategoryName().equals("산책")) {
+				categoryName.setIcon(new ImageIcon("image/post/walk.png"));
+
+			} else if(postInfo.getCategoryName().equals("스터디")) {
+				categoryName.setIcon(new ImageIcon("image/post/study.png"));
+
+			} else if(postInfo.getCategoryName().equals("게임")) {
+				categoryName.setIcon(new ImageIcon("image/post/game.png"));
+			} else {
+				categoryName.setVisible(false);
+			}
+
+			bottomPanel.add(categoryName);
+
+			postTitle = new JLabel(postInfo.getPostName());
+			postTitle.setLayout(null);
+			postTitle.setBounds(62, y + 10, 395, 28);
+			bottomPanel.add(postTitle);
+
+			postTitle.addMouseListener(new MouseListener() {
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// 게시판 세부내용 보이게 설정
+
+				}
+				@Override
+				public void mouseReleased(MouseEvent e) {}
+				@Override
+				public void mousePressed(MouseEvent e) {}
+				@Override
+				public void mouseExited(MouseEvent e) {}
+				@Override
+				public void mouseEntered(MouseEvent e) {}
+			});
+
+
+			localName = new JLabel();
+			localName.setLayout(null);
+			localName.setBounds(383, y + 6, 46, 25);
+
+			if(postInfo.getLocalName().equals("강릉")) {
+				localName.setIcon(new ImageIcon("image/post/gangneung.png"));
+			} else if(postInfo.getLocalName().equals("담양")) {
+				localName.setIcon(new ImageIcon("image/post/damyang.png"));
+			} else if(postInfo.getLocalName().equals("대구")) {
+				localName.setIcon(new ImageIcon("image/post/daegu.png"));
+			} else if(postInfo.getLocalName().equals("부산")) {
+				localName.setIcon(new ImageIcon("image/post/busan.png"));
+			} else if(postInfo.getLocalName().equals("서울")) {
+				localName.setIcon(new ImageIcon("image/post/seoul.png"));
+			} else if(postInfo.getLocalName().equals("인천")) {
+				localName.setIcon(new ImageIcon("image/post/incheon.png"));
+			} else if(postInfo.getLocalName().equals("순천")) {
+				localName.setIcon(new ImageIcon("image/post/sooncheon.png"));
+			} else if(postInfo.getLocalName().equals("전주")) {
+				localName.setIcon(new ImageIcon("image/post/jeonju.png"));
+			} else if(postInfo.getLocalName().equals("제주")) {
+				localName.setIcon(new ImageIcon("image/post/jeju.png"));
+			} else if(postInfo.getLocalName().equals("천안")) {
+				localName.setIcon(new ImageIcon("image/post/cheonan.png"));
+			} else if (postInfo.getLocalName() == null) {
+				localName.setVisible(false);
+			}
+
+			bottomPanel.add(localName);
+
+		}
+
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }
