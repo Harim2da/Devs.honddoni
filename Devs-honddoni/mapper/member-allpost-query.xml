@@ -43,7 +43,7 @@
 	       JOIN TBL_MEMBER M ON (M.MEMBER_NO = P.POST_MEMBER_NO)
 		</entry>
 		
-		<entry key=totalUserList">
+		<entry key="123">
 		SELECT
 				P.POST_NO
 			 ,	P.POST_NAME
@@ -58,11 +58,14 @@
 			 ,	P.CATEGORY_CODE
 			 ,	P.POST_DEL_STATUS
 			 ,	P.POST_NUMBER_OF_PEOPLE
-				
-				
-				
-		
-
+		FROM TBL_POST
 		</entry>
+		
+		<entry key="totalUserList">
+		SELECT
+				*
+		FROM TBL_MEMBER
+		</entry>
+		
       
 </properties>
