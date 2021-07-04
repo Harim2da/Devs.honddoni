@@ -11,6 +11,8 @@ import com.devs.honddoni.post.model.dao.PagingDAO;
 
 import static com.devs.honddoni.common.JDBCTemplate.getConnection;
 import static com.devs.honddoni.common.JDBCTemplate.close;
+import static com.devs.honddoni.common.JDBCTemplate.commit;
+import static com.devs.honddoni.common.JDBCTemplate.rollback;
 
 public class PagingService {
 
@@ -59,7 +61,7 @@ public class PagingService {
 		Connection con = getConnection();
 
 		int result = pagingDAO.selectWholeCommentsNum(con, postNo);
-
+		
 		close(con);
 
 		return result;
@@ -71,6 +73,12 @@ public class PagingService {
 
 		List<PostDTO> postList = pagingDAO.selectPostList(con, pageInfo, area, category);
 
+		if(postList != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
 		close(con);
 
 		return postList;
@@ -82,6 +90,12 @@ public class PagingService {
 
 		List<PostDTO> postList = pagingDAO.freePostList(con, pageInfo);
 
+		if(postList != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
 		close(con);
 
 		return postList;
@@ -93,6 +107,12 @@ public class PagingService {
 
 		List<PostDTO> postList = pagingDAO.totalPostList(con, pageInfo);
 
+		if(postList != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
 		close(con);
 
 		return postList;
@@ -103,9 +123,15 @@ public class PagingService {
 	public List<CommentsDTO> selectCommentsList(PageInfoCommentsDTO pageInfo, int postNo) {
 
 		Connection con = getConnection();
-
+		
 		List<CommentsDTO> commentsList = pagingDAO.selectCommentsList(con, pageInfo, postNo);
-
+		
+		if(commentsList != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
 		close(con);
 
 		return commentsList;
