@@ -1,5 +1,7 @@
 package com.devs.honddoni.search.view;
 
+import com.devs.honddoni.search.controller.SearchController;
+
 public class TestTaehun {
 
 	public static void main(String[] args) {
@@ -14,6 +16,9 @@ public class TestTaehun {
 //		new SearchBoard();
 //		
 //		new AllBoardListView();
+		
+		SearchController sc = new SearchController();
+		sc.selectSearch();
 	}
 
 }
