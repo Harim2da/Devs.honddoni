@@ -1,6 +1,7 @@
 package com.devs.honddoni.search.model.dao;
 
 import java.io.FileInputStream;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -72,9 +73,10 @@ public class SearchDAO {
 		} finally {
 			close(rset);
 			close(stmt);
-		}
-		
-				return postList;
+		} 
+		return postList;
 	}
+		
+				
 
 }
