@@ -28,11 +28,11 @@ public class PostService2 {
 		return result;
 	}
 
-	public int deleteComment(List<CommentsDTO> deleteCommentList) {
+	public int deleteComment(CommentsDTO deleteComment) {
 
 		Connection con = getConnection();
 
-		int result = postDAO2.deleteComment(con, deleteCommentList);
+		int result = postDAO2.deleteComment(con, deleteComment);
 
 		close(con);
 
