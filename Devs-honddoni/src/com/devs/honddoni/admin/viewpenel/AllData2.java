@@ -14,7 +14,7 @@ import com.devs.honddoni.admin.model.dao.AdminDAO;
 
 //모든회원정보 조회 화면
 
-public class AllData {
+public class AllData2 {
 	
 	MainFrame1 MainFrame = new MainFrame1();
 	
@@ -22,7 +22,7 @@ public class AllData {
 	private JLabel lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11, lb12, lb13, lb14, lb15, lb16,
 	lb17, lb18, lb19, lb20, lb21; 
 	
-	public AllData() {
+	public AllData2() {
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -58,9 +58,6 @@ public class AllData {
 	       
 	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기버튼
 	       JButton btn7 = new JButton(img7);
-	       
-	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기버튼
-	       JButton btn8 = new JButton(img8);
 	       
 	       
 	       
@@ -216,5 +213,3 @@ public class AllData {
 }
 
 		
-
-	

@@ -114,7 +114,7 @@ public class AdminList1 {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminUser();
+	    		   new AdminAll();
 	    		   bottomPanel.setVisible(false);
 	    		   MainFrame.setVisible(false);
 	    	   }

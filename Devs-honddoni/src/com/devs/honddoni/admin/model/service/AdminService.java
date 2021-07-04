@@ -24,32 +24,31 @@ public class AdminService {
    }
 
 
-   public List<MemberDTO> selectAllMembers() {
-      
-	   Connection con = getConnection();
- 
-      List<com.devs.honddoni.admin.view123.MemberDTO> memberList = adminDao.selectAllMembers(con);
-      
-      
-      close(con);
-      
-      return memberList;
-      
-   }
-   
+//   public List<MemberDTO> selectAllMembers() {
+//      
+//	   Connection con = getConnection();
+// 
+//      List<com.devs.honddoni.admin.view123.MemberDTO> memberList = adminDao.selectAllMembers(con);
+//      
+//      
+//      close(con);
+//      
+//      return memberList;
+//      
+//   }
+//   
    
    
    public List<TotalDTO> totalPostList() {
 	      
 	      Connection con = getConnection();
 	      
-	      List<com.devs.honddoni.admin.view123.TotalDTO> TotalList = adminDao.totalPostList(con);
+	      List<com.devs.honddoni.admin.view123.TotalDTO> totalList = adminDao.totalPostList(con);
 	      
 	      
 	      close(con);
 	      
-	      return TotalList;
+	      return totalList;
+   }
    
-}
-
 }

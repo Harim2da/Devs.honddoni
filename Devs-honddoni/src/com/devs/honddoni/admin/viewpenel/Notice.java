@@ -61,6 +61,11 @@ public class Notice {
 	       JTextField tex4 = new JTextField();
 	       
 	       JTextField tex5 = new JTextField();
+	       //뒤로가기버튼//
+	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");
+	       JButton btn8 = new JButton(img8);
+	       
+	       
 	       
 	       
 	       
@@ -87,9 +92,12 @@ public class Notice {
 	       bottomPanel.add(tex3);
 	       bottomPanel.add(tex4);
 	       bottomPanel.add(tex5);
+	       
+	       bottomPanel.add(btn8);//뒤로가기
+	       
 	    
 	       //버튼 위치 조정
-	       btn1.setBounds(35, 153, 433, 105);
+	       btn1.setBounds(35, 153, 433, 105);//탈퇴회원1
 	       btn2.setBounds(35, 272, 433, 105);
 	       btn3.setBounds(35, 381, 433, 105);
 	       btn4.setBounds(35, 510, 433, 105);
@@ -107,25 +115,42 @@ public class Notice {
 	       tex1.setBounds(54, 571, 398, 29);
 	       tex1.setBounds(54, 690, 398, 29);
 	       
+	       btn8.setBounds(226, 724, 56, 25);//뒤로가기
+	       
+	       
 	   
 	     
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);
 	       MainFrame.setVisible(true); //창을 보이게함
 	       
-//	       btn1.addActionListener(new ActionListener() {
-//	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
-////	    		   login2 login2 = new login2();
-////	    		   JPanel.add(login2);
-////	    		   new login2();
-////	    		   bottomPanel.setVisible(false);
-//	    		   
+	       btn1.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
-////	    		  MainFrame.setVisible(false);
-//	    	   }
-//	       });
+	    		   
+	    		   new AdminList();
+	    		   bottomPanel.setVisible(false);
+//	    		  MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn8.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminList();
+	    		   bottomPanel.setVisible(false);
+//	    		  MainFrame.setVisible(false);
+	    	   }
+	       });
 	}
 }
 
