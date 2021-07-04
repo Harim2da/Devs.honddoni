@@ -33,7 +33,7 @@ public class RegistMember extends JPanel {
 	
 	private MemberLogView memberLogView; //newPanel로 쓸 것
 	
-	private MemberController memberController = new MemberController();;
+	private MemberController memberController = new MemberController();
 	private MemberRegistDTO memberRegistDTO;
 	
 	private String gender = "여";
@@ -95,13 +95,13 @@ public class RegistMember extends JPanel {
 		JLabel memberDataLb = new JLabel();
 		memberDataLb.setBounds(29, 125, 443, 617);
 		memberDataLb.setBackground(null);
-		memberDataLb.setIcon(new ImageIcon("image/member/regist/regist_1.png"));
-		
+		memberDataLb.setIcon(new ImageIcon("image/member/regist/regist_1.png")); // 이거쓰지말아야 할듯
+				
 		/* 입력받는 텍스트필드들 */
 		JTextField nameTf = new JTextField();
 		nameTf.setBounds(80, 12, 348, 26);
-//		nameTf.setContentAreaFilled(color(f2, f2, f2, 0.5));
-		
+//		nameTf.setContentAreaFilled(color(f2, f2, f2, 0.5));		
+			
 		JTextField idTf = new JTextField();
 		idTf.setBounds(80, 74, 200, 26);
 		
