@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,13 +13,15 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
-import com.devs.honddoni.post.controller.ContactController;
-import com.devs.honddoni.post.view.PostActionCategory;
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 
-public class PostFreeBoard extends JFrame {
+public class PostFreeBoard extends JPanel {
+	
+		private PostFreeBoard postFreeBoard;
+		private MainFrame frame;
 
-		private JFrame mainFrame; // 메인프레임
+//		private JFrame mainFrame; // 메인프레임
 		private JPanel topPanel;  // 상단 패널
 		private JPanel bottomPanel; // 하단 패널
 		private JLabel bottomLabel; // 하단 게시판 라벨
@@ -34,10 +35,15 @@ public class PostFreeBoard extends JFrame {
 
 
 		/*자유 게시글 작성 화면 불러오기*/
-		public PostFreeBoard() {
-			this.setBounds(100, 100, 516, 909);
-			this.setLayout(null);
-			topPanel();
+		public PostFreeBoard(MainFrame frame) {
+			
+			
+			postFreeBoard = this;
+			this.frame = frame;
+			this.postFreeBoard = this;
+//			this.setBounds(100, 100, 516, 909);
+//			this.setLayout(null);
+//			topPanel();
 			selectPost();
 			createPostTitle();
 			postContents();
@@ -46,17 +52,18 @@ public class PostFreeBoard extends JFrame {
 			addPostComponent();
 			
 			this.setVisible(true);
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		}
-
-		/*상단 패널 생성*/
-		public void topPanel() {
-			topPanel = new JPanel();
-			topPanel.setBounds(0, 0, 500, 100);
-			topPanel.setLayout(null);
-			topPanel.setBackground(Color.WHITE);
+//			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		}
+
+//		/*상단 패널 생성*/
+//		public void topPanel() {
+//			topPanel = new JPanel();
+//			topPanel.setBounds(0, 0, 500, 100);
+//			topPanel.setLayout(null);
+//			topPanel.setBackground(Color.WHITE);
+//
+//		}
 
 		/*하단 패널 생성*/
 		public void bottomPanel() {

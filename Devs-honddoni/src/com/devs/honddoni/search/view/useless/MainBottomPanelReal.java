@@ -11,19 +11,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.search.controller.SearchController;
 
 //메인프레임의 하단 프레임
-public class MainBottomPanel extends JPanel{
+public class MainBottomPanelReal /*extends JFrame*/{
 
-	private MainBottomPanel mainBottomPanel;
-	private MainFrame frame;
+	JFrame frame = new JFrame();
 	//MainFrame frame; //메인프레임
 	//private JFrame frame;
 	
-	private JPanel upPanel; 	
-	private JPanel bottomPanel;
+	private JPanel topPanel; // 상단패널
+	private JPanel bottomPanel; //하단패널
 	private JButton allListBoardBtn; //전체조회버튼
 	private JButton honddoniBoardBtn; //혼또니게시판버튼
 	private JButton freeBoardBtn; //자유게시판버튼
@@ -40,56 +38,19 @@ public class MainBottomPanel extends JPanel{
 	private JLabel adminEmail; // 문의메일-----------------------
 	private SearchController searchController;
 	
-	private JButton myHonddoniBtn;								//마이페이지 이동 버튼
-	private JButton searchHonddoniBtn;							//게시글 작성페이지 이동 버튼
-	private JButton homeBtn;									//메인화면이동 버튼
-	private JButton interestingBtn;								//관심글 목록 이동 버튼
-	private JButton noticeBtn;									//공지사항 목록 이동 버튼
-	private JLabel backgroundImage;								//로고 포함 테두리 배경 (디자인용)
 	
-	
-	public MainBottomPanel(MainFrame frame) {
+	public MainBottomPanelReal() {
 		//this.setBounds(100, 100, 516, 909);
 	//	this.setLayout(null);
-		mainBottomPanel = this;
-		this.frame = frame;
-		this.mainBottomPanel = this;
 		
-		this.setBounds(0, 100, 500, 770);
-		this.setBackground(Color.white);
-		this.setLayout(null);
-		frame.add(this);
-		
-		
-//		/*수정한부분*/
-//		frame.setBounds(100, 100, 516, 909);
-//		frame.setLayout(null);
-//		frame.setVisible(true);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		/*수정한부분*/
+		frame.setBounds(100, 100, 516, 909);
+		frame.setLayout(null);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		searchController.selectSearch();
 //		topPanel();
-//		bottomPanel();
-		
-		/* 패널 */
-		upPanel();
 		bottomPanel();
-
-		/* 상단패널에 포함될 버튼 */
-		myHonddoniBtn();
-		searchHonddoniBtn();
-		homeBtn();
-		interestingBtn();
-		noticeBtn();
-		
-		/* 버튼들을 상단패널에 더해줌 */
-		upPanel.add(myHonddoniBtn);
-		upPanel.add(searchHonddoniBtn);
-		upPanel.add(homeBtn);
-		upPanel.add(interestingBtn);
-		upPanel.add(noticeBtn);
-		upPanel.add(backgroundImage);
-		
 		clickAllListBoard();
 		clickHonddoniBoard();
 		clickFreeBoard();
@@ -137,7 +98,7 @@ public class MainBottomPanel extends JPanel{
 //		this.revalidate();
 		
 		frame.repaint();
-		frame.revalidate();
+//		frame.revalidate();
 	}
 	
 //	//상단패널
@@ -147,22 +108,6 @@ public class MainBottomPanel extends JPanel{
 //		topPanel.setLayout(null);
 //		topPanel.setBackground(Color.white);
 //		}
-	
-	/* 상단 패널 */
-	public void upPanel() {
-
-		upPanel = new JPanel();
-		upPanel.setBounds(0, 0, 500, 100);
-		upPanel.setLayout(null);
-		upPanel.setBackground(Color.WHITE);
-
-		/* 상단 패널 뒷배경 생성 */
-		backgroundImage = new JLabel("");
-		backgroundImage.setBounds(0, 0, 500, 100);
-		backgroundImage.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
-		backgroundImage.setVisible(true); 
-
-	}
 	
 	//하단패널
 	public void bottomPanel() {
@@ -195,99 +140,9 @@ public class MainBottomPanel extends JPanel{
 		adminEmail.setIcon(new ImageIcon("image/search/bottompanel/adminEmailLogo.png"));
 	}
 	
-	/* My혼또니(마이페이지 화면으로 이동) 버튼 */
-	public void myHonddoniBtn() {
-
-		myHonddoniBtn = new JButton("");
-		myHonddoniBtn.setBounds(171,23,56,56);
-		myHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
-		myHonddoniBtn.setBorderPainted(false);
-		myHonddoniBtn.setContentAreaFilled(false);
-		myHonddoniBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("my혼또니 버튼 클릭");
-			}
-		});
-
-	}
-
-	/* 혼또니 찾기(게시글 작성) 버튼 */
-	public void searchHonddoniBtn() {
-
-		searchHonddoniBtn = new JButton("");
-		searchHonddoniBtn.setBounds(234,23,56,56);
-		searchHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/SearchHonddoniBtn.png"));
-		searchHonddoniBtn.setBorderPainted(false);
-		searchHonddoniBtn.setContentAreaFilled(false);
-		searchHonddoniBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("혼또니 찾기 버튼 클릭");
-			}
-		});
-
-	}
-	
-	/* Home(메인화면으로 이동) 버튼 생성 */
-	public void homeBtn() {
-
-		homeBtn = new JButton("");
-		homeBtn.setBounds(298,23,56,56);
-		homeBtn.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));
-		homeBtn.setBorderPainted(false);
-		homeBtn.setContentAreaFilled(false);
-		homeBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("홈  버튼 클릭");
-			}
-		});
-
-	}
-
-	/* 관심금 목록페이지로 이동하는 버튼 생성 */
-	public void interestingBtn() {
-
-		interestingBtn = new JButton("");
-		interestingBtn.setBounds(362,23,56,56);
-		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
-		interestingBtn.setBorderPainted(false);
-		interestingBtn.setContentAreaFilled(false);
-		interestingBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("관심글 목록 버튼 클릭");
-			}
-		});
-
-	}
-
-	/* 공지사항목록을 조회할 수 있는 버튼 생성 */
-	public void noticeBtn() {
-
-		noticeBtn = new JButton("");
-		noticeBtn.setBounds(426,23,56,56);
-		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
-		noticeBtn.setBorderPainted(false);
-		noticeBtn.setContentAreaFilled(false);
-		noticeBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("공지사항 버튼 클릭");
-			}
-		});
-
-	}
-	
 	//전체조회버튼 클릭
 	public void clickAllListBoard() {
-		//downPanel();
+		//bottomPanel();
 		allListBoardBtn = new JButton();
 		allListBoardBtn.setIcon(new ImageIcon("image/search/bottompanel/alllistboardLogo.png"));
 		allListBoardBtn.setContentAreaFilled(false);
@@ -314,8 +169,9 @@ public class MainBottomPanel extends JPanel{
 //				searchController = new SearchController();
 //				searchController.selectSearch();
 				
-				AllBoardList allBoardList = new AllBoardList();
+				AllBoardListReal allBoardList = new AllBoardListReal();
 				allBoardList.bottomPanel();
+//				0987ㅛㅅ654
 				
 				
 				// 패널이 넘어가서 그 전체조회 해당하는 이미지
@@ -370,7 +226,7 @@ public class MainBottomPanel extends JPanel{
 				changeFreeList.setBackground(Color.white);
 				frame.add(changeFreeList);
 				
-				AllBoardList allBoardList = new AllBoardList();
+				AllBoardListReal allBoardList = new AllBoardListReal();
 				allBoardList.bottomPanel();
 
 				// 패널이 넘어가서  자유 게시판에 해당하는 이미지
@@ -530,12 +386,3 @@ public class MainBottomPanel extends JPanel{
 	
 	
 }
-
-
-
-
-
-
-
-
-
