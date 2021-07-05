@@ -12,6 +12,7 @@ public class FontManager {
 	public Font customFont1;//
 	public Font customFont2;
 	public Font customFont3;
+	public Font customFont12;
 
 	private GraphicsEnvironment ge = // 폰트 가져오기
 	GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -31,6 +32,10 @@ public class FontManager {
 		this.customFont3 = 
 			Font.createFont(
 			Font.TRUETYPE_FONT, new File("font/BMDOHYEON.ttf")).deriveFont(5f);
+		
+		this.customFont12 = 
+			Font.createFont(
+			Font.TRUETYPE_FONT, new File("font/BMDOHYEON.ttf")).deriveFont(12f);
 		
 		} catch (Exception e) {
 			System.out.println("폰트 로딩에 실패했습니다.");
