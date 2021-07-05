@@ -1,9 +1,10 @@
 package com.devs.honddoni.member.view;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -18,6 +19,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.dto.MemberDTO;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
@@ -88,7 +90,6 @@ public class MyPage extends JPanel {
 		this.frame = frame;
 		this.myPage = this;
 		
-		FontManager.setUIFont(new Font("나눔고딕",0,20));
 		
 //		FrameManager.topPanel(frame, this);
 //		FrameManager.myHonddoniBtnClick(frame, this, myPage);
@@ -97,6 +98,7 @@ public class MyPage extends JPanel {
 		this.setBackground(Color.white);
 		this.setLayout(null);
 		frame.add(this);
+		
 		
 		
 /*==================================  비밀번호 변경 버튼   ================================================== */		
@@ -284,21 +286,6 @@ public class MyPage extends JPanel {
 				});
 				changeMemberinfoPanel.add(cpB1);
 				
-				/* 변경 버튼 */
-				btnRemove(cpB2);
-				cpB2.setVisible(true);
-				cpB2.setBounds(264, 670, 178, 63);
-				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
-				changeMemberinfoPanel.add(cpB2); 
-				cpB2.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						System.out.println("변경 버튼 클릭");
-						
-					}
-				});
-				
 				/* 프로필 변경 버튼 */
 				btnRemove(ciB1);
 				ciB1.setVisible(true);
@@ -430,6 +417,23 @@ public class MyPage extends JPanel {
 				ciTp2.setText(nickName);
 				ciTp2.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciTp2);
+				ciTp2.addFocusListener(new FocusListener() {
+				String newNickName = null;
+					
+					@Override
+					public void focusLost(FocusEvent e) {
+						
+						ciTp2.setText("1");
+					}
+					
+					@Override
+					public void focusGained(FocusEvent e) {
+					ciTp2.setText(newNickName);
+						System.out.println("/////////new : " + newNickName);
+						
+					}
+				});
+				String newNickName = ciTp2.getText();
 				
 				/* 주소 입력창 */
 				ciTp3.setBorder(null);
@@ -438,7 +442,8 @@ public class MyPage extends JPanel {
 				ciTp3.setText(address);
 				ciTp3.setFont(font.customFont2);
 				changeMemberinfoPanel.add(ciTp3);
-				
+				String newAddress = ciTp3.getText();
+				 
 				/* 휴대전화 입력창 */
 				ciTp4.setBorder(null);
 				ciTp4.setOpaque(false);
@@ -446,6 +451,8 @@ public class MyPage extends JPanel {
 				ciTp4.setText(phone);
 				ciTp4.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciTp4);
+				String newPhone = ciTp4.getText();
+				
 				
 				/* 이메일 입력창 */
 				ciTp1.setBorder(null);
@@ -454,6 +461,7 @@ public class MyPage extends JPanel {
 				ciTp1.setText(email);
 				ciTp1.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciTp1);
+				String newEmail = ciTp1.getText();
 				
 				/* DB에서 이름 불러와서 표시 */
 				ciL1.setBounds(130, 153, 220, 45);
@@ -495,6 +503,7 @@ public class MyPage extends JPanel {
 				case 7: character = "감성적"; break;
 				case 8: character = "이성적"; break;
 				}
+				
 				String[] characterCategory = {"현재 " + nickName + "님이 선택하신 성향은 " + character + "입니다.", "리더형", "팔로워형", "계획적", "즉흥적", "외향적", "내향적", "감성적", "이성적"};
 				characterSelectCombo = new JComboBox(characterCategory);
 				
@@ -506,16 +515,52 @@ public class MyPage extends JPanel {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("콤보박스 동작");				
+						JComboBox<String> comboBox = (JComboBox<String>) e.getSource();
+						String characterCategory = (String) comboBox.getSelectedItem();
+						Integer newCharacterCode = null;
+						switch(characterCategory) {
+							case "리더형" : newCharacterCode = 1; break;
+							case "팔로워형": newCharacterCode = 2; break;
+							case "계획적" : newCharacterCode = 3; break;
+							case "즉흥적" : newCharacterCode = 4; break;
+							case "외향적" : newCharacterCode = 5; break;
+							case "내향적" : newCharacterCode = 6; break;
+							case "감성적" : newCharacterCode = 7; break;
+							case "이성적" : newCharacterCode = 8; break;
+							default : newCharacterCode = 1; break;
+						}
+						
+						/* 콤보박스에서 선택한 것으로 성향 변경 */
+						memberController.changeCharacter(newCharacterCode);
 					}
 				});
 				
+				/* 변경 버튼 */
+				btnRemove(cpB2);
+				cpB2.setVisible(true);
+				cpB2.setBounds(264, 670, 178, 63);
+				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
+				changeMemberinfoPanel.add(cpB2); 
+				cpB2.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						memberInfo.setNickName(newNickName);
+						System.out.println("처음에 닉네임 " + newNickName);
+						memberInfo.setAddress(newAddress);
+						memberInfo.setPhone(newPhone);
+						memberInfo.setEmail(newEmail);
+						memberController.changeInfo(memberInfo);
+						
+						
+					}
+				});
 				/* 개인정보 변경 입력창 라벨 */
 				ciL5.setBounds(0, 0, 500, 770);
 				ciL5.setVisible(true); 
 				ciL5.setIcon(new ImageIcon("image/member/updateInfo/changeInfoBackground.png"));
 				changeMemberinfoPanel.add(ciL5);
-				
 				
 				
 				
@@ -625,8 +670,7 @@ public class MyPage extends JPanel {
 		});
 		
 	
-/*==================================  관심글 모아보기 버튼   ================================================== */
-		
+/* 관심글 */		
 		
 		/* 관심글 모아보기 버튼 */
 		JButton interestingPostButton = new JButton("");

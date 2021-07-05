@@ -235,6 +235,63 @@ public class MemberDAO {
 		
 	}
 
+	public int changeCharacter(Connection con, Integer newCharacterCode) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("changeCharacter");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, newCharacterCode);
+			pstmt.setString(2, "user06");
+			
+			result = pstmt.executeUpdate();
+			System.out.println("체크");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		
+		return result;
+	}
+
+	public int changeInfo(Connection con, MemberInfoDTO memberInfo) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("changeInfo");
+		
+		try {
+			memberInfo = new MemberInfoDTO();
+			pstmt = con.prepareStatement(query);
+			System.out.println("memberInfo.getNickName()" + memberInfo.getNickName());
+			pstmt.setString(1, memberInfo.getNickName());
+			pstmt.setString(2, memberInfo.getAddress());
+			pstmt.setString(3, memberInfo.getPhone());
+			pstmt.setString(4, memberInfo.getEmail());
+			pstmt.setString(5, "user06");
+			
+			result = pstmt.executeUpdate();
+			System.out.println("체크");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		
+		return result;
+	}
+
 	
 
 }

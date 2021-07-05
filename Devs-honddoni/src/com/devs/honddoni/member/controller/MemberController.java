@@ -104,4 +104,31 @@ public class MemberController {
 		}
 		
 	}
+
+	public void changeCharacter(Integer newCharacterCode) {
+
+		int result = 0;
+		
+		result = memberService.changeCharacter(newCharacterCode);
+		
+		if(result > 0) {
+			System.out.println("성향 변경 성공");
+		} else {
+			System.out.println("성향 변경 실패");
+		}
+		
+	}
+
+	public void changeInfo(MemberInfoDTO memberInfo) {
+		int result = 0;
+		
+		result = memberService.changeInfo(memberInfo);
+		
+		if(result > 0) {
+			System.out.println("정보 변경 성공");
+		} else {
+			System.out.println("정보 변경 실패");
+		}
+	}
+
 }
