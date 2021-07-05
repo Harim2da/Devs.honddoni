@@ -1,22 +1,22 @@
 package com.devs.honddoni.memberLog.controller;
 
-public class GetLoginMemberId {
+public class GetLoginMember {
 	
-	private static GetLoginMemberId getLoginMemberId;
+	private static GetLoginMember getLoginMember;
 	
 	private String loginMemberId;
 	private int loginMemberNo;
 	
-	private GetLoginMemberId() {}
+	private GetLoginMember() {}
 	
-	public static GetLoginMemberId getInstance() {
+	public static GetLoginMember getInstance() {
 		
 		//LazySingleton (chap06/section06/singleton/LazySingleton.java 강의)
-		if(getLoginMemberId == null) {
-			getLoginMemberId = new GetLoginMemberId();
+		if(getLoginMember == null) {
+			getLoginMember = new GetLoginMember();
 		}		
 		
-		return getLoginMemberId;
+		return getLoginMember;
 	}
 	
 	

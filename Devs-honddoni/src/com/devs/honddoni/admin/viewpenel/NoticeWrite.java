@@ -8,27 +8,28 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class WriteNotice extends JPanel{
+public class NoticeWrite extends JPanel{
 	
-	MainFrame1 frame;
-	WriteNotice writeNotice;
+//	MainFrame1 frame;
+	NoticeWrite NoticeWrite;
 	
-	public WriteNotice() {
+	public NoticeWrite() {
+		
 //		this.frame = mainFrame1;
-		this.writeNotice = this;
+		this.NoticeWrite = this;
 		
 		
 		/* 제일 기본 패널 */
-		writeNotice.setBounds(0, 0, 500, 870);
-		writeNotice.setLayout(null);
-		writeNotice.setBackground(Color.yellow);
+		NoticeWrite.setBounds(0, 0, 500, 870);
+		NoticeWrite.setLayout(null);
+		NoticeWrite.setBackground(Color.yellow);
 
-		frame.add(writeNotice);
+//		frame.add(NoticeWrite); //필요없나
 		
 		/* 혼또니 로고버튼 */
 		JButton honddoniBtn = new JButton("");
 		honddoniBtn.setBounds(305, 29, 173, 71);
-		honddoniBtn.setIcon(new ImageIcon("image/admin/Mark.png"));
+		honddoniBtn.setIcon(new ImageIcon("image/admin/HondoniWrite.png"));
 		honddoniBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -37,10 +38,11 @@ public class WriteNotice extends JPanel{
 //				frame.remove(notice);
 //				frame.add(adminList);
 //				frame.repaint();
-//				frame.revalidate();
-				
+//				frame.revalidate();				
 			}
 		});
+		
+		
 		
 	}
 	

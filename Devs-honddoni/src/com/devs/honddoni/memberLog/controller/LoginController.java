@@ -41,16 +41,16 @@ public class LoginController {
 			
 			
 			//로그인 성공시, 로그인유저No를 ... 싱글톤으로 작성
-			GetLoginMemberId getLoginMemberId = GetLoginMemberId.getInstance();
+			GetLoginMember getLoginMember = GetLoginMember.getInstance();
 //			GetLoginMemberId getLoginMemberId = new GetLoginMemberId();
-			getLoginMemberId.setLoginMemberNo(loginMemberNo);
-			getLoginMemberId.setLoginMemberId(loginMemberId);
+			getLoginMember.setLoginMemberNo(loginMemberNo);
+			getLoginMember.setLoginMemberId(loginMemberId);
 			
 			
 			//가져다 쓰실 때			
 //			GetLoginMemberId getLoginMemberId = GetLoginMemberId.getInstance();
-			int memberNo = getLoginMemberId.getLoginMemberNo();
-			String memberId = getLoginMemberId.getLoginMemberId();
+			int memberNo = getLoginMember.getLoginMemberNo();
+			String memberId = getLoginMember.getLoginMemberId();
 			//확인용
 			System.out.println("싱글톤에 저장된 회원번호 : " + memberNo);
 			System.out.println("싱글톤에 저장된 회원id : " + memberId);
