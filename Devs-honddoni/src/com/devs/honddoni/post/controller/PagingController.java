@@ -61,7 +61,7 @@ public class PagingController {
 	}
 	
 	/* 혼또니 게시판 리스트 불러오기 컨트롤러*/
-	public List<PostDTO> selectPostList(int pageNo, String area, String category) {
+	public List<PostDTO> selectPostList(int pageNo, String area, String  category) {
 
 		/* Notice List를 조회하던 것과 동일하다. 하지만 이번에는 페이징에 대해 처리를 하면서 리스트를 조회해보자
 		 * */
@@ -85,7 +85,7 @@ public class PagingController {
 		 * 데이터베이스에서 먼저 전체 게시물 수를 조회해올 것이다.
 		 * */
 		PageInfoPostDTO dto = new PageInfoPostDTO();
-		int totalCount = dto.getTotalCount();
+		int totalCount = pagingService.selectWholePostNum(area, category);
 		PagenationPost pagenationPost = new PagenationPost();
 
 		//	      System.out.println("totalBoardCount : " + totalCount);

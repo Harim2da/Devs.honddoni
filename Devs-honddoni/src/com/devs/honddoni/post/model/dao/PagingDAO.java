@@ -50,7 +50,7 @@ public class PagingDAO {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				result = rset.getInt("POST_CATEGORY");
+				result = rset.getInt("COUNT(*)");
 				
 			}
 		} catch (SQLException e) {
