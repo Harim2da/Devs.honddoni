@@ -12,7 +12,14 @@ public class PostActionCategory {
 	
 	private static JComboBox selectCategorycombo;
 	
-	public PostActionCategory() {
+	public PostActionCategory() {}
+	
+	
+	public PostActionCategory(int num) {
+		/* 매개변수가 0이면 새 글 쓰기 , 1~6이면 게시글 수정 */
+		
+		if(num == 0) {
+		
 		
 		String[] actioncategory = {" ","맛집탐방", "활동", "취미", "산책", "스터디", "게임"};
 		selectCategorycombo = new JComboBox(actioncategory);
@@ -27,6 +34,11 @@ public class PostActionCategory {
 
 			}
 		});
+		} else {
+			
+		}
+		
+		
 		
 	}
 	

@@ -558,6 +558,7 @@ public class PostHonddoni extends JFrame{
 				postDTO.setLocalName(localSelectbtn.getText()); //일단 임의의 값 지도에서 지역선택 후 받아오기 - DB는 숫자
 
 				/* 카테고리(맛집 탐방 등) 일단 받아오고 컨트롤러에서 코드로 변환해주기*/
+				
 				postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
 
 				/* 텍스트 필드로 받은 모임인원, int로 전환 */
