@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.model.service;
 
-import java.sql.Connection; 
+import java.sql.Connection;  
 
 import java.util.List;
 
@@ -20,17 +20,17 @@ public class AdminService {
    
 private AdminDAO adminDao;
 	
-	public totalUserList() {
+	public onlyNicname() {
 		this.adminDao = new AdminDAO();
 	}
 
-	public List<AdminDTO> totalUserList() {
+	public List<AdminDTO> onlyNicnamet() {
 		
 		Connection con = getConnection();
 		
 		List <AdminDTO> adminList = null;
 		
-		adminList = adminDao.totalUserList(con);
+		adminList = adminDao.onlyNicname(con);
 		
 		close(con);
 		

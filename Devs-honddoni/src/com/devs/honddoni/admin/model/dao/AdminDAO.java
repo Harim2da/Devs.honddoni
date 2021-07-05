@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.model.dao;
 
-import java.io.FileInputStream; 
+import java.io.FileInputStream;  
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,20 +26,20 @@ public class AdminDAO {
 	public AdminDAO() {
 		try {
 			prop = new Properties();
-			prop.loadFromXML(new FileInputStream("mapper/member-query.xml"));
+			prop.loadFromXML(new FileInputStream("mapper/member-allpost-query.xml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public List<AdminDTO> totalUserList(Connection con) {
+	public List<AdminDTO> onlyNicname(Connection con) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		List<AdminDTO> adminList = null;
 		
-		String query = prop.getProperty("totalUserList");
+		String query = prop.getProperty("onlyNicname");
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -51,8 +51,8 @@ public class AdminDAO {
 			while(rset.next()) {
 			AdminDTO admin = new AdminDTO();
 			admin.setMEMBER_NICKNAME(rset.getString("MEMBER_NICKNAME"));
-			admin.setMEMBER_ID(rset.getString("MEMBER_ID"));
-			admin.setMEM_REGIST_DATE(rset.getString("MEM_REGIST_DATE"));
+//			admin.setMEMBER_ID(rset.getString("MEMBER_ID"));
+//			admin.setMEM_REGIST_DATE(rset.getString("MEM_REGIST_DATE"));
 			
 			adminList.add(admin);
 			}

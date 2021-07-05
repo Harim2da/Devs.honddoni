@@ -26,6 +26,8 @@ public class Application {
 		
 		new AdminList();
 		
+//		new AllDataTest();
+		
 		
 		
 		
