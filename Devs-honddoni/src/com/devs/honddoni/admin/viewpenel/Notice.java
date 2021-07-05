@@ -92,8 +92,7 @@ public class Notice extends JPanel{
 				frame.repaint();
 				frame.revalidate();
 			}
-		});
-		
+		});		
 		
 		/* 공지사항 작성 버튼 */
 		JButton writeNoticeBtn = new JButton();
@@ -107,18 +106,7 @@ public class Notice extends JPanel{
 		PagingController pagingController = new PagingController();		
 		pagingController.NoticeWholePostNum();
 		
-		
-		
-		//반복문
-		//패널깔기
-		//패널이미지는 "image/admin/NoticeButton.png"
-		
-		//제목라벨생성(좌표에 +100정도)
-		//제목라벨붙이기
-		//해당공지로 넘어가는 버튼 - 액션리스너 - noticeContentView로 넘어가야
-		
-		
-		
+				
 		
 		
 	    //패널에 버튼 추가
@@ -132,6 +120,16 @@ public class Notice extends JPanel{
 //	    frame.add(notice);
 	    
 	    this.setVisible(true);
+	}
+	
+	public void component() {
+		//반복문
+		//패널깔기
+		//패널이미지는 "image/admin/NoticeButton.png"
+				
+		//제목라벨생성(좌표에 +100정도)
+		//제목라벨붙이기
+		//해당공지로 넘어가는 버튼 - 액션리스너 - noticeContentView로 넘어가야
 	}
 }
 
