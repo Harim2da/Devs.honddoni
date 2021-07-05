@@ -6,15 +6,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.view.FirstView;
 
 public class MainFrame extends JFrame{
 	
 
-	FirstView firstView;
-	MainFrame mainFrame;
+//	FirstView firstView;
+	public static MainFrame mf;
 	
 	public MainFrame() {
 		
@@ -26,18 +25,20 @@ public class MainFrame extends JFrame{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		new MyPage(this);
+//		new FirstView(this);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 //		this.add(new FirstView());
-		this.add(new MyPage());
+//		this.add(new MyPage());
 		
 //		new SelectAllHonPost(this);
 		
 //		FrameManager.initPanel(this, new SelectAllHonPost());
 		
 		//예슬 실험중
-		new Notice(this);
+//		new Notice(this);
 	}
 	
 }
