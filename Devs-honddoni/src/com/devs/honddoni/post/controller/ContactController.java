@@ -71,6 +71,16 @@ public class ContactController {
 		
 	}
 
+	/* 선택한 게시글 세부 내용 조회 */
+	public PostDTO selectThePost(int postNo) {
+		
+		PostDTO postDTO = new PostDTO();
+		
+		postDTO = postService.selectThePostList(postNo);
+		
+		return postDTO;
+	}
+	
 	
 	
 }

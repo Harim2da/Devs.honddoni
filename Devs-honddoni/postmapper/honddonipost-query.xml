@@ -49,14 +49,8 @@
 	    FROM TBL_CATEGORY C
 	   WHERE C.CATEGORY_NAME = ?
 	</entry>
-	<entry key="selectWholeCommentsNum">
-	  SELECT
-	         COUNT(*)
-	    FROM TBL_COMMENT
-	   WHERE POST_NO = ?
-	</entry>
 	
-	<entry key="selectPostList">
+	<entry key="selectThePostList">
 	  SELECT
              V.*
         FROM (SELECT P.POST_NO
@@ -72,15 +66,17 @@
 				   , C.CATEGORY_NAME
                    , P.POST_DEL_STATUS
                    , P.POST_NUMBER_OF_PEOPLE
+                   , M.MEMBER_NICKNAME
+                   , M.MEMBER_PROFILE
                    , RANK() OVER(ORDER BY POST_NO DESC) 순서
         FROM TBL_POST P
         JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
         JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
+        JOIN TBL_MEMBER M ON (P.POST_MEMBER_NO = M.MEMBER_NO)
        WHERE P.POST_CATEGORY = '혼또니'
-         AND L.LOCAL_NAME = ?
-         AND CATEGORY_NAME = ?
+         AND P.POST_NO = ?
            ) V
-      WHERE V.순서 BETWEEN ? AND ?
+  
 	</entry>
 	<entry key="freePostList">
 	  SELECT

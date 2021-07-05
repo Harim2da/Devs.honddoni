@@ -59,4 +59,21 @@ public class PostService {
 		
 		return searchCategoryCode;
 	}
+	
+	/* 선택한 게시글 세부 내용 조회 */
+	public PostDTO selectThePostList(int postNo) {
+		
+		Connection con = getConnection();
+		
+		PostDTO postDTO = new PostDTO();
+		
+		postDTO = postDAO.selectPost(con, postNo);
+		
+		return postDTO;
+	}
+	
+	
+	
+	
+	
 }
