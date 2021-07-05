@@ -77,4 +77,11 @@
           FROM TBL_MEMBER A
          WHERE A.MEMBER_ID = ?
 	</entry>
+	
+	<entry key="changeProfile">
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#changeProfile()*/
+	         TBL_MEMBER A
+	     SET A.MEMBER_PROFILE = ?
+	   WHERE A.MEMBER_ID = ?
+	</entry>
 </properties>

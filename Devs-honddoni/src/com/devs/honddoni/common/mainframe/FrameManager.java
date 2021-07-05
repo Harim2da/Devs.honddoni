@@ -24,7 +24,7 @@ public class FrameManager {
 	static JButton noticeBtn;				//공지사항 조회 버튼
 	
 
-	MyPage myPage;
+//	MyPage myPage;
 
 	
 	
