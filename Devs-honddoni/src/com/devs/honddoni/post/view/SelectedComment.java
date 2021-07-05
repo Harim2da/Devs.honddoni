@@ -16,11 +16,16 @@ import com.devs.honddoni.common.PagenationComments;
 import com.devs.honddoni.common.dto.CommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.reportDTO;
+import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.ContactController2;
 import com.devs.honddoni.post.controller.PagingController;
 
-public class SelectedComment extends JFrame {
+public class SelectedComment extends JPanel {
 
+	private SelectedComment selectedComment;
+	private MainFrame frame;
+	
 	private JPanel upPanel; 									//상단패널
 	private JPanel downPanel;									//하단패널					
 	private JButton commentWriteBtn;							//댓글 작성
@@ -51,7 +56,10 @@ public class SelectedComment extends JFrame {
 	private int userNum = 1;									//로그인된 유저 번호
 
 	/* 프레임을 제외한 나머지를 합친 것 */
-	public SelectedComment() {
+	public SelectedComment(MainFrame frame) {
+		
+		this.frame = frame;
+		this.selectedComment = this;
 		
 		/* 패널 */
 		upPanel();
@@ -100,7 +108,11 @@ public class SelectedComment extends JFrame {
 		commentLongbarLabel.add(afterNumber);
 		commentLongbarLabel.add(beforeBtn);
 		commentLongbarLabel.add(afterBtn);
+		
+		frame.add(upPanel);
+		frame.add(downPanel);
 	}
+	
 	
 	/* 프레임에서 패널을 더해주기 위한 getter */
 	public JPanel getUpPanel() {
@@ -314,8 +326,8 @@ public class SelectedComment extends JFrame {
 				}
 
 				downPanel.setVisible(false);
-				SelectedComment2 cm = new SelectedComment2();
-				Ctest2.frame1.add(cm.getDownPanel1());
+				SelectedComment2 cm = new SelectedComment2(frame);
+				frame.add(cm.getDownPanel1());
 
 				beforeBtn();
 				beforeNumber();
@@ -363,8 +375,8 @@ public class SelectedComment extends JFrame {
 				}
 
 				downPanel.setVisible(false);
-				SelectedComment2 cm = new SelectedComment2();
-				Ctest2.frame1.add(cm.getDownPanel1());
+				SelectedComment2 cm = new SelectedComment2(frame);
+				frame.add(cm.getDownPanel1());
 
 				afterBtn(postNo);
 				beforeBtn();
