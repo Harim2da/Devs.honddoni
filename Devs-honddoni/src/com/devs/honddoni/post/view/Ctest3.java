@@ -10,7 +10,7 @@ public class Ctest3 {
 		
 //		JFrame jf = new JFrame();
 
-//		
+		new SelectAllHonPost2();
 //		jf.setBounds(100, 100, 516, 909);
 //		jf.setLayout(null);
 //		
