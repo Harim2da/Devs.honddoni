@@ -173,6 +173,27 @@ public class PostDAO {
 		return postDTO;
 	}
 
+	/* 게시글 삭제 */
+	public int deleteThePost(Connection con, int postNo) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
 
+		String query = prop.getProperty("deleteThePost");
+
+		try {
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setInt(1, postNo);
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
 }	

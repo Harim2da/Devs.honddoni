@@ -40,6 +40,7 @@ public class PostService {
 
 	}
 	
+	/* 지역코드 조회 */
 	public int searchLocalCode(String localName) {
 		Connection con = getConnection();
 
@@ -50,6 +51,7 @@ public class PostService {
 		return searchLocalCode;
 	}
 
+	/* 카테고리 코드 조회*/
 	public int searchCategoryCode(String categoryName) {
 		Connection con = getConnection();
 
@@ -69,10 +71,22 @@ public class PostService {
 		
 		postDTO = postDAO.selectPost(con, postNo);
 		
+		close(con);
+		
 		return postDTO;
 	}
 	
-	
+	/* 게시글 삭제 (DB상 상태변경) */
+	public int deleteThePost(int postNo) {
+		
+		Connection con = getConnection();
+		System.out.println("삭제용 DAO작동");
+		int result = postDAO.deleteThePost(con, postNo);
+		
+		close(con);
+		
+		return result;
+	}
 	
 	
 	
