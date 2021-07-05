@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 public class AdminAll {
 	
-		//신고당한게시글 조회
+		//전체게시글 조회
 		
 		MainFrame1 MainFrame = new MainFrame1();
 		
@@ -47,6 +47,8 @@ public class AdminAll {
 		     //상단패널 뒤로가기버튼
 		     topPanel.add(btn0);
 		     btn0.setBounds(303, 27, 172, 70);
+		     btn0.setContentAreaFilled(false);
+		     btn0.setBorderPainted(false);
 		     
 		     //버튼만들기
 		     	
@@ -119,10 +121,10 @@ public class AdminAll {
 //			    bottomPanel.add(t4);//글제목
 		    
 		       //첫번째부터 다섯번째까지 게시글버튼
-		       btn1.setBounds(35, 143, 430, 121);
-		       btn2.setBounds(34, 262, 430, 121);
-		       btn3.setBounds(34, 380, 430, 121);
-		       btn4.setBounds(33, 498, 430, 121);
+		       btn1.setBounds(35, 144, 430, 104);
+		       btn2.setBounds(34, 262, 430, 104);
+		       btn3.setBounds(34, 380, 430, 104);
+		       btn4.setBounds(33, 498, 430, 104);
 		       btn5.setBounds(34, 616, 430, 104);
 //		       lb1.setBounds(56, 0, 263, 33);
 			    

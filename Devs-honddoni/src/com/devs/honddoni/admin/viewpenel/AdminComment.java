@@ -1,6 +1,7 @@
 package com.devs.honddoni.admin.viewpenel;
 
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -40,17 +41,26 @@ public class AdminComment {
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
 	     
+	     //뒤로가기 버튼
 	     topPanel.add(btn0);
 	     btn0.setBounds(303, 27, 172, 70);
-		
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\Side.png");
+	     btn0.setContentAreaFilled(false);
+	     btn0.setBorderPainted(false);
+	       //첫번쨰신고 댓글
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\CommentList1.png");
 	       JButton btn1 = new JButton(img1);
-	       
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Side.png");
+	       //두번쨰 신고 댓글
+	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\CommentList2.png");
 	       JButton btn2 = new JButton(img2);
-	       
-	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Side.png");
+	       //세번째 신고 댓글
+	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\CommentList3.png");
 	       JButton btn3 = new JButton(img3);
+	       //댓글작성 버튼
+	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\CommentWriteNew.png");
+	       JButton btn4 = new JButton(img4);
+	       
+	       ImageIcon img01 = new ImageIcon ("image\\admin\\Emergency.png");
+	       JLabel btn01 = new JLabel(img01);
 
 	       
 	       
@@ -60,6 +70,8 @@ public class AdminComment {
 	       bottomPanel.add(btn1);
 	       bottomPanel.add(btn2);
 	       bottomPanel.add(btn3);
+	       bottomPanel.add(btn4);
+	       bottomPanel.add(btn01);
 	      
 	       
 	    
@@ -67,6 +79,8 @@ public class AdminComment {
 	       btn1.setBounds(35, 52, 433, 61);
 	       btn2.setBounds(35, 119, 433, 61);
 	       btn3.setBounds(34, 186, 433, 61);
+	       btn4.setBounds(35, 17, 71, 21);
+	       btn01.setBounds(437, 78, 22, 22);
 	      
 	   
 	     
@@ -82,7 +96,7 @@ public class AdminComment {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Login2();
+	    		   new AdminComment2();
 	    		   bottomPanel.setVisible(false);
 //	    		  MainFrame.setVisible(false);
 	    	   }
