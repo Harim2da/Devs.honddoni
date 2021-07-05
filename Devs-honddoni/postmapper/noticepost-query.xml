@@ -2,151 +2,48 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment/>
-	<entry key="selectWholeNoticeNum">
-	  SELECT
-	         COUNT(*)
-	    FROM TBL_POST P
-	    JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
-	    JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
-	   WHERE P.POST_CATEGORY = '자유'
-	   	 AND L.LOCAL_NAME = ?
-	     AND C.CATEGORY_NAME = ? 
-	</entry>
-	
-	<entry key="totalWholePostNum">
-	  SELECT
-	         COUNT(*)
-	    FROM TBL_POST
-	</entry>
-	
-	<entry key="selectWholeCommentsNum">
-	  SELECT
-	         COUNT(*)
-	    FROM TBL_COMMENT
-	   WHERE POST_NO = ?
-	</entry>
-	<entry key="selectPostList">
-	  SELECT
-             V.*
-        FROM (SELECT P.POST_NO
-                   , P.POST_NAME
-                   , P.POST_CONTENTS
-                   , P.POST_CATEGORY
-                   , P.POST_MEMBER_NO
-                   , P.POST_MEETINGDATE
-                   , P.POST_MEETINGTIME
-                   , P.POST_WRITINGDATE
-                   , P.POST_WRITINGTIME
-                   , L.LOCAL_NAME
-				   , C.CATEGORY_NAME
-                   , P.POST_DEL_STATUS
-                   , P.POST_NUMBER_OF_PEOPLE
-                   , M.MEMBER_NICKNAME
-                   , M.MEMBER_PROFILE
-                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
-        FROM TBL_POST P
-        JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
-        JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
-        JOIN TBL_MEMBER M ON (P.POST_MEMBER_NO = M.MEMBER_NO)
-       WHERE P.POST_CATEGORY = '혼또니'
-         AND L.LOCAL_NAME = ?
-         AND CATEGORY_NAME = ?
-         AND POST_DEL_STATUS = 'N'
-           ) V
-      WHERE V.순서 BETWEEN ? AND ?
-	</entry>
-	<entry key="freePostList">
-	  SELECT
-             V.*
-        FROM (SELECT P.POST_NO
-                   , P.POST_NAME
-                   , P.POST_CONTENTS
-                   , P.POST_CATEGORY
-                   , P.POST_MEMBER_NO
-                   , P.POST_WRITINGDATE
-                   , P.POST_WRITINGTIME
-                   , P.POST_DEL_STATUS
-                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
-        FROM TBL_POST P
-       WHERE P.POST_CATEGORY = '자유'
-           ) V
-      WHERE V.순서 BETWEEN ? AND ?
-	</entry>
-	<entry key="wholePostList">
-	  SELECT
-             V.*
-        FROM (SELECT P.POST_NO
-                   , P.POST_NAME
-                   , P.POST_CONTENTS
-                   , P.POST_CATEGORY
-                   , P.POST_MEMBER_NO
-                   , P.POST_MEETINGDATE
-                   , P.POST_MEETINGTIME
-                   , P.POST_WRITINGDATE
-                   , P.POST_WRITINGTIME
-                   , L.LOCAL_NAME
-				   , C.CATEGORY_NAME
-                   , P.POST_DEL_STATUS
-                   , P.POST_NUMBER_OF_PEOPLE
-                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
-        FROM TBL_POST P
-        LEFT JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
-        LEFT JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
-           ) V
-     <!--  WHERE V.순서 BETWEEN ? AND ? -->
-	</entry>
-	<entry key="selectCommentsList">
-	  SELECT
-             V.*
-        FROM (SELECT C.COMMENTS_NO
-                   , C.COMMENTS_DATE
-                   , C.COMMENTS_TIME
-                   , C.COMMENTS_CONTENTS
-                   , C.POST_NO
-                   , C.MEMBER_NO
-                   , M.MEMBER_NICKNAME
-                   , M.MEMBER_PROFILE
-                   , RANK() OVER(ORDER BY COMMENTS_NO ASC) 순서
-        FROM TBL_COMMENT C
-        JOIN TBL_MEMBER M ON (C.MEMBER_NO = M.MEMBER_NO)
-       WHERE C.POST_NO = ?       
-           ) V
-      WHERE V.순서 BETWEEN ? AND ?
-      
-	</entry>
-	<entry key="communicationComment">
-	  INSERT /*com.devs.honddoni.post.model.dao.PostDAO#communicationComment()*/
-	    INTO TBL_COMMENT C
+	<entry key="insertNoticePost">
+	INSERT /*com.devs.honddoni.admin.model.dao.AdminDao#insertNoticePost()*/
+	    INTO TBL_POST A
 	    (
-	      C.COMMENTS_NO
-	    , C.COMMENTS_DATE
-	    , C.COMMENTS_TIME
-	    , C.COMMENTS_CONTENTS
-	    , C.POST_NO
-	    , C.MEMBER_NO
+	     A.POST_NO
+	    ,A.POST_NAME
+	    ,A.POST_CONTENTS
+	    ,A.POST_CATEGORY
+	    ,A.POST_MEMBER_NO
+	    ,A.POST_MEETINGDATE
+	    ,A.POST_MEETINGTIME
+	    ,A.POST_WRITINGDATE
+	    ,A.POST_WRITINGTIME
+	    ,A.LOCAL_CODE
+	    ,A.CATEGORY_CODE
+	    ,A.POST_DEL_STATUS
+	    ,A.POST_NUMBER_OF_PEOPLE 
 	    )
 	    VALUES
 	    (
-	      SEQ_COMMENT_NO.NEXTVAL
-	    , ?
-	    , ?
-	    , ?
-	    , ?
-	    , ? 
+	    SEQ_POST_NO.NEXTVAL
+	    ,?
+	    ,?
+	    ,NULL
+	    ,NULL
+	    ,NULL
+	    ,NULL
+	    ,?
+	    ,?
+	    ,NULL
+	    ,NULL
+	    ,DEFAULT
+	    ,NULL
 	    )
-	   
 	</entry>
-	<entry key="deleteComment">
-	  DELETE
-	    FROM TBL_COMMENT
-	   WHERE COMMENTS_NO = ?
-	   
+	
+	<entry key="selectTheNoticePost">
+	  SELECT
+             P.*
+        FROM TBL_POST P
+       WHERE P.POST_CATEGORY = '자유'
+         AND P.POST_NO = ?
 	</entry>
-	<entry key="updateComment">
-	  UPDATE
-	         TBL_COMMENT
-	     SET COMMENTS_CONTENTS = ?
-	   WHERE COMMENTS_NO = ?
-	   
-	</entry>
+	
 </properties>
