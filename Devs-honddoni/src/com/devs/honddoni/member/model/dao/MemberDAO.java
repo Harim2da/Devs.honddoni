@@ -155,7 +155,6 @@ public class MemberDAO {
 			pstmt.setString(2, "user06");
 			
 			result = pstmt.executeUpdate();
-			System.out.println("체크");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -220,7 +219,6 @@ public class MemberDAO {
 			pstmt.setString(2, "user06");
 			
 			result = pstmt.executeUpdate();
-			System.out.println("체크");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -248,7 +246,6 @@ public class MemberDAO {
 			pstmt.setString(2, "user06");
 			
 			result = pstmt.executeUpdate();
-			System.out.println("체크");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -265,13 +262,10 @@ public class MemberDAO {
 
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
 		String query = prop.getProperty("changeInfo");
 		
 		try {
-			memberInfo = new MemberInfoDTO();
 			pstmt = con.prepareStatement(query);
-			System.out.println("memberInfo.getNickName()" + memberInfo.getNickName());
 			pstmt.setString(1, memberInfo.getNickName());
 			pstmt.setString(2, memberInfo.getAddress());
 			pstmt.setString(3, memberInfo.getPhone());
@@ -279,7 +273,6 @@ public class MemberDAO {
 			pstmt.setString(5, "user06");
 			
 			result = pstmt.executeUpdate();
-			System.out.println("체크");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

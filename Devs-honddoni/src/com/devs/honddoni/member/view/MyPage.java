@@ -278,10 +278,11 @@ public class MyPage extends JPanel {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
-//						FrameManager.changePanel(frame, changeMemberinfoPanel, new MyPage(frame));
+						changeMemberinfoPanel.setVisible(false);
+						myPage.setVisible(true);
+						
 					}
 				});
 				changeMemberinfoPanel.add(cpB1);
@@ -409,59 +410,96 @@ public class MyPage extends JPanel {
 					}
 				});
 				
+				/* 기존 닉네임 보여주는 라벨 */
+				JLabel oldNickName = new JLabel();
+				oldNickName.setBounds(130, 348, 330, 45);
+				oldNickName.setText(nickName);
+				oldNickName.setFont(font.customFont12);
+				changeMemberinfoPanel.add(oldNickName);
+				oldNickName.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mousePressed(MouseEvent e) {
+						changeMemberinfoPanel.remove(oldNickName);
+						changeMemberinfoPanel.repaint();
+						changeMemberinfoPanel.revalidate();
+					}
+				});
 				
 				/* 닉네임 입력창 */
 				ciTp2.setBorder(null);
 				ciTp2.setOpaque(false);
 				ciTp2.setBounds(130, 348, 330, 45);
-				ciTp2.setText(nickName);
 				ciTp2.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciTp2);
-				ciTp2.addFocusListener(new FocusListener() {
-				String newNickName = null;
-					
+				
+				
+				
+				/* 기존 주소 보여주는 라벨 */
+				JLabel oldAddress = new JLabel();
+				oldAddress.setBounds(130, 411, 330, 45);
+				oldAddress.setText(address);
+				oldAddress.setFont(font.customFont12);
+				changeMemberinfoPanel.add(oldAddress);
+				oldAddress.addMouseListener(new MouseAdapter() {
 					@Override
-					public void focusLost(FocusEvent e) {
-						
-						ciTp2.setText("1");
-					}
-					
-					@Override
-					public void focusGained(FocusEvent e) {
-					ciTp2.setText(newNickName);
-						System.out.println("/////////new : " + newNickName);
-						
+					public void mousePressed(MouseEvent e) {
+						changeMemberinfoPanel.remove(oldAddress);
+						changeMemberinfoPanel.repaint();
+						changeMemberinfoPanel.revalidate();
 					}
 				});
-				String newNickName = ciTp2.getText();
 				
 				/* 주소 입력창 */
 				ciTp3.setBorder(null);
 				ciTp3.setOpaque(false);
 				ciTp3.setBounds(130, 411, 330, 45);
-				ciTp3.setText(address);
-				ciTp3.setFont(font.customFont2);
+				ciTp3.setFont(font.customFont12);
 				changeMemberinfoPanel.add(ciTp3);
-				String newAddress = ciTp3.getText();
 				 
+				
+				/* 기존 휴대전화 보여주는 라벨 */
+				JLabel oldPhone = new JLabel();
+				oldPhone.setBounds(130, 474,  330, 45);
+				oldPhone.setText(phone);
+				oldPhone.setFont(font.customFont12);
+				changeMemberinfoPanel.add(oldPhone);
+				oldPhone.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mousePressed(MouseEvent e) {
+						changeMemberinfoPanel.remove(oldPhone);
+						changeMemberinfoPanel.repaint();
+						changeMemberinfoPanel.revalidate();
+					}
+				});
+				
 				/* 휴대전화 입력창 */
 				ciTp4.setBorder(null);
 				ciTp4.setOpaque(false);
 				ciTp4.setBounds(130, 474, 330, 45);
-				ciTp4.setText(phone);
 				ciTp4.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciTp4);
-				String newPhone = ciTp4.getText();
 				
+				/* 기존 이메일 보여주는 라벨 */
+				JLabel oldEmail = new JLabel();
+				oldEmail.setBounds(130, 538,  330, 45);
+				oldEmail.setText(email);
+				oldEmail.setFont(font.customFont12);
+				changeMemberinfoPanel.add(oldEmail);
+				oldEmail.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mousePressed(MouseEvent e) {
+						changeMemberinfoPanel.remove(oldEmail);
+						changeMemberinfoPanel.repaint();
+						changeMemberinfoPanel.revalidate();
+					}
+				});
 				
 				/* 이메일 입력창 */
 				ciTp1.setBorder(null);
 				ciTp1.setOpaque(false);
 				ciTp1.setBounds(130, 538, 330, 45);
-				ciTp1.setText(email);
 				ciTp1.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciTp1);
-				String newEmail = ciTp1.getText();
 				
 				/* DB에서 이름 불러와서 표시 */
 				ciL1.setBounds(130, 153, 220, 45);
@@ -546,8 +584,11 @@ public class MyPage extends JPanel {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						
+						String newNickName = ciTp2.getText();
+						String newAddress = ciTp3.getText();
+						String newPhone = ciTp4.getText();
+						String newEmail = ciTp1.getText();
 						memberInfo.setNickName(newNickName);
-						System.out.println("처음에 닉네임 " + newNickName);
 						memberInfo.setAddress(newAddress);
 						memberInfo.setPhone(newPhone);
 						memberInfo.setEmail(newEmail);
@@ -595,7 +636,7 @@ public class MyPage extends JPanel {
 				resignMemberPanel.setLayout(null);
 				resignMemberPanel.setBounds(0, 100, 500, 770);
 				resignMemberPanel.setVisible(true);
-				resignMemberPanel.setBackground(Color.red);
+				resignMemberPanel.setBackground(Color.white);
 				myPage.setVisible(false);
 //				downsidePanel.setVisible(false);
 				frame.add(resignMemberPanel);
@@ -621,9 +662,10 @@ public class MyPage extends JPanel {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("취소 버튼 클릭");
+						resignMemberPanel.setVisible(false);
+						myPage.setVisible(true);
 						
 						/* 마이페이지로 돌아가기 */
-						FrameManager.changePanel(frame, resignMemberPanel, myPage);
 					}
 				});
 				
@@ -669,8 +711,7 @@ public class MyPage extends JPanel {
 			}
 		});
 		
-	
-/* 관심글 */		
+/*==================================  관심글 버튼   ================================================== */	
 		
 		/* 관심글 모아보기 버튼 */
 		JButton interestingPostButton = new JButton("");
@@ -768,40 +809,17 @@ public class MyPage extends JPanel {
 						rewardManageLabel.setBounds(0, 100, 500, 770);
 						rewardManageLabel.setIcon(new ImageIcon("image/member/reward/rewardManageLabel.png"));
 						rewardManagerPanel.add(rewardManageLabel);
-						rewardManageLabel.addMouseListener(new MouseListener() {
-							
+						rewardManageLabel.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
-							FrameManager.changePanel(frame, rewardManagerPanel, new MyPage(frame));
+								FrameManager.changePanel(frame, rewardManagerPanel, new MyPage(frame));
 							}
-
-							@Override
-							public void mousePressed(MouseEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
-
-							@Override
-							public void mouseReleased(MouseEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
-
-							@Override
-							public void mouseEntered(MouseEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
-
-							@Override
-							public void mouseExited(MouseEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
+							
 						});
+							
+				
 					}
 				});
-				
 				/* 포인트 관리 버튼 */
 				JButton pointManageBtn = new JButton();
 				btnRemove(pointManageBtn);
@@ -825,36 +843,12 @@ public class MyPage extends JPanel {
 						pointManageLabel.setBounds(0, 100, 500, 770);
 						pointManageLabel.setIcon(new ImageIcon("image/member/reward/pointManageLabel.png"));
 						pointManagePanel.add(pointManageLabel);
-						pointManageLabel.addMouseListener(new MouseListener() {
-							
+						pointManageLabel.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
-							FrameManager.changePanel(frame, pointManagePanel, new MyPage(frame));
+								FrameManager.changePanel(frame, pointManagePanel, new MyPage(frame));
 							}
-
-							@Override
-							public void mousePressed(MouseEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
-
-							@Override
-							public void mouseReleased(MouseEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
-
-							@Override
-							public void mouseEntered(MouseEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
-
-							@Override
-							public void mouseExited(MouseEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
+							
 						});
 					}
 				});
