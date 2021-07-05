@@ -7,7 +7,9 @@ public class TestTaehun {
 	public static void main(String[] args) {
 		
 	
-		new MainBottomPanel();
+//		new MainBottomPanel();
+		
+//		new AllBoardList11();
 		
 //		new AllBoardList();
 //		
@@ -17,8 +19,8 @@ public class TestTaehun {
 //		
 //		new AllBoardListView();
 		
-//		SearchController sc = new SearchController();
-//		sc.selectSearch();
+		SearchController sc = new SearchController();
+		sc.selectSearch();
 	}
 
 }
