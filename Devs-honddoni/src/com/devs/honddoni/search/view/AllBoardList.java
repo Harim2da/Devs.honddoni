@@ -11,24 +11,24 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.PagenationPost;
-import com.devs.honddoni.common.dto.CommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
-import com.devs.honddoni.post.controller.ContactController2;
+import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.GetFilter;
 import com.devs.honddoni.post.controller.PagingController;
-import com.devs.honddoni.search.controller.SearchController;
 
-public class AllBoardList {
+public class AllBoardList extends JPanel {
 	
-	JFrame frame = new JFrame();
+//	JFrame frame = new JFrame();	
+//	private JFrame mainframe = new JFrame(); 
 	
-	private JFrame mainframe = new JFrame(); 
+	private AllBoardList allBoardList;
+	private MainFrame frame;
+	
 	private JPanel bottomPanel = new JPanel();
 	private JLabel searchLabel;
 	private JButton aim;
@@ -49,18 +49,30 @@ public class AllBoardList {
 	private int postNo; //게시글 번호
 	private int totalPostNum;
 	private PostDTO postDTO = new PostDTO();
+	
+	
+	
 	GetFilter getName = GetFilter.getInstance();
 	
 	
 	
-	public AllBoardList() {
+	public AllBoardList(MainFrame frame) {
 //		this.setBounds(100, 100, 516, 909);
 //		this.setLayout(null);
 		
-		frame.setBounds(100, 100, 516, 909);
-		frame.setLayout(null);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		allBoardList = this;
+		this.frame = frame;
+		this.allBoardList = this;
+		
+		this.setBounds(0, 100, 500, 770);
+		this.setBackground(Color.white);
+		this.setLayout(null);
+		frame.add(this);
+		
+//		frame.setBounds(100, 100, 516, 909);
+//		frame.setLayout(null);
+//		frame.setVisible(true);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		bottomPanel.setBounds(0, 100, 500, 770);
@@ -81,11 +93,15 @@ public class AllBoardList {
 		
 		localName(1);
 		
+		this.repaint();
+		this.revalidate();
 //		this.setVisible(true);
 //		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 	
+	
+
 	public void bottomPanel() {
 		bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 770);
