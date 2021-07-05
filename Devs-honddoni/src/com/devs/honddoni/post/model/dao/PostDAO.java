@@ -195,5 +195,39 @@ public class PostDAO {
 		
 		return result;
 	}
+	
+	public int updateThePost(Connection con, PostDTO post) {
+		//게시글 번호 - DB에서 받, 카테고리명 /지역명은 DTO에서 String으로 받아서 여기서 int로 변환 
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = prop.getProperty("updateThePost");
+		System.out.println(post);
+
+		try {
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setString(1, post.getPostName());
+			pstmt.setString(2, post.getPostContents());
+			pstmt.setString(3, post.getPostCategory());
+			pstmt.setString(4, post.getPostMeetingDate());
+			pstmt.setString(5, post.getPostMeetingTime());
+			pstmt.setInt(6, post.getLocalCode());
+			pstmt.setInt(7, post.getCategoryCode()); 
+			pstmt.setInt(8, post.getPostNumberOfPeopleNumber());
+			pstmt.setInt(9, post.getPostNo());
+
+			result = pstmt.executeUpdate();
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
 
 }	

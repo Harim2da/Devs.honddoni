@@ -47,6 +47,7 @@ public class PostModify extends JFrame{
 	private JLabel meetdate;
 	private JLabel profile;
 	private JLabel nickName;
+	
 
 
 	public PostModify() {
@@ -60,14 +61,14 @@ public class PostModify extends JFrame{
 		modifyPostTitle();
 		modifyPostContents();
 		modifyJoinmember();
-		selectBtn();
 		modifyLocal();
 		modifyCategory();
 		modifyDate();
 		profile();
-		addComponents();
+		nickName();
 		
-		
+		selectBtn();
+		addComponents(); //반드시 제일 밑에 있을 것!
 		
 		
 		this.setVisible(true);
@@ -83,7 +84,7 @@ public class PostModify extends JFrame{
 		postLabel.setBackground(Color.white);
 		postLabel.setLayout(null);
 		postLabel.setBounds(35, 0, 500, 724); 
-		postLabel.setIcon(new ImageIcon("image/post/Group 9001.png"));
+		postLabel.setIcon(new ImageIcon("image/post/Group999.png"));
 		bottomPanel.add(postLabel);
 
 		//		pagebarLabel = new JLabel("");		//페이지 표기 바
@@ -140,43 +141,6 @@ public class PostModify extends JFrame{
 		joinmember.setText(join);
 		joinmember.setEditable(false);
 		bottomPanel.add(joinmember);
-	}
-	/* 하단 버튼 세 개 - 댓글확인, 게시글 수정, 게시글 삭제 */
-	private void selectBtn() {
-		commentcheck = new JButton();
-		commentcheck.setBounds(35, 683, 140,41);
-		commentcheck.setContentAreaFilled(false);
-		commentcheck.setBorderPainted(true);
-		commentcheck.setOpaque(false);
-		bottomPanel.add(commentcheck);
-		
-		
-		modify = new JButton();
-		modify.setBounds(180, 683, 140,41);
-		modify.setContentAreaFilled(false);
-		modify.setBorderPainted(true);
-		modify.setOpaque(false);
-		bottomPanel.add(modify);
-		
-		
-		
-		delete = new JButton();
-		delete.setBounds(326, 683, 140,41);
-		delete.setContentAreaFilled(false);
-		delete.setBorderPainted(true);
-		delete.setOpaque(false);
-		bottomPanel.add(delete);
-		
-		delete.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int postNo = postDTO.getPostNo();
-			//	int postNo = 10; 테스트용
-				contactController.deleteThePost(postNo);
-			}
-		});
-		
 	}
 	
 	
@@ -238,7 +202,6 @@ public class PostModify extends JFrame{
 		bottomPanel.add(meetdate);
 	}
 
-	/*하단 작성자 정보*/
 	private void profile() {
 		postDTO = contactController.selectThePost(10); //괄호 속 게시글 번호 입력받기
 		String profilenum = postDTO.getMemberProfile();
@@ -263,7 +226,161 @@ public class PostModify extends JFrame{
 	}
 
 	private void nickName() {
+		postDTO = contactController.selectThePost(10); //괄호 속 게시글 번호 입력받기
+		String nick = postDTO.getMemberNickname();
+		
+		nickName = new JLabel();
+		nickName.setBounds(105, 612, 91, 40);
+		nickName.setLayout(null);
+		nickName.setText(nick);
+		
+		bottomPanel.add(nickName);
 		
 	}
 
+	
+	/*하단 작성자 정보*/
+	/* 하단 버튼 세 개 - 댓글확인, 게시글 수정, 게시글 삭제 */
+	private void selectBtn() {
+		commentcheck = new JButton();
+		commentcheck.setBounds(35, 683, 140,41);
+		commentcheck.setContentAreaFilled(false);
+		commentcheck.setBorderPainted(true);
+		commentcheck.setOpaque(false);
+		bottomPanel.add(commentcheck);
+		
+		commentcheck.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// 게시글 번호 넘기고, 댓글 확인과 연결하기
+				
+			}
+		});
+		
+		
+		modify = new JButton();
+		modify.setBounds(180, 683, 140,41);
+		modify.setContentAreaFilled(false);
+		modify.setBorderPainted(true);
+		modify.setOpaque(false);
+		modify.setIcon(new ImageIcon("image/post/modifypost.png"));
+		bottomPanel.add(modify);
+		
+		modify.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postTitle.setEditable(true);
+				postContents.setEditable(true);
+				joinmember.setEditable(true);
+				// 지역 수정은 고민
+				
+				postMeetingTime();
+				
+//				modify.setEnabled(false);
+//				modify.setEnabled(true);
+//				modify.setIcon(new ImageIcon("image/post/modifyend.png"));
+			}
+		});
+		
+		
+		/* 삭제 */
+		delete = new JButton();
+		delete.setBounds(326, 683, 140,41);
+		delete.setContentAreaFilled(false);
+		delete.setBorderPainted(true);
+		delete.setOpaque(false);
+		bottomPanel.add(delete);
+		
+		delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int postNo = postDTO.getPostNo();
+				//	int postNo = 10; 테스트용
+				contactController.deleteThePost(postNo);
+			}
+		});
+	}
+	
+	/*수정 시 콤보박스 생성*/
+	private void postMeetingTime() {
+		meetdate.setText("");
+		
+		String[] year = new String[16];
+		for(int i = 0; i <year.length; i++) {
+			if(i == 0) {
+				year[i] ="";
+			} else {
+				year[i] = 20 + i + "" ;
+			}
+		}
+		meetingYear = new JComboBox(year);	
+		meetingYear.setBounds(102, 214, 42, 28);
+		meetingYear.setSelectedIndex(0);
+
+
+
+		String[] month = new String[13];
+		for(int i = 0; i <month.length; i++) {
+			if(i == 0) {
+				month[i] ="";
+			} else if(i < 10) {
+				month[i] = "0" + i ;
+			} else {
+				month[i] = i + "";
+			}
+		}
+		meetingMonth = new JComboBox(month);
+		meetingMonth.setBounds(170, 214, 39, 28);
+		meetingMonth.setSelectedIndex(0);
+
+
+		String[] day = new String[32];
+		for(int i = 0; i <day.length; i++) {
+			if(i == 0) {
+				month[i] ="";
+			} else if(i < 10) {
+				day[i] = "0" + i +"";
+			} else {
+				day[i] = i +"";
+			}
+		}
+		meetingDay = new JComboBox(day);
+		meetingDay.setBounds(238, 214, 39, 28);
+		meetingDay.setSelectedIndex(0);
+
+
+		String[] hour = new String[25];
+		for(int i = 0; i <hour.length; i++) {
+			if(i == 0) {
+				hour[i] ="";
+			} else if(i < 10){
+				hour[i] = "0" + i +"";
+			} else {
+				hour[i] = i +"";
+			}
+		}
+		meetingHour = new JComboBox(hour);
+		meetingHour.setBounds(327, 214, 39, 28);
+		meetingHour.setSelectedIndex(0);
+
+
+		String[] min = {"", "00", "30"};
+		meetingMinutes = new JComboBox(min);
+		meetingMinutes.setBounds(396, 214, 39, 28);
+		meetingMinutes.setSelectedIndex(0);
+
+		bottomPanel.add(meetingYear);
+		bottomPanel.add(meetingMonth);
+		bottomPanel.add(meetingDay);
+		bottomPanel.add(meetingHour);
+		bottomPanel.add(meetingMinutes);
+
+	} // 만날 일시 콤보박스 메소드 종료
+	
+	
+	
+	
 }
