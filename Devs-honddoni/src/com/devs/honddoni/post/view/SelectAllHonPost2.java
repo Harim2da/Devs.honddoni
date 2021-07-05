@@ -33,7 +33,7 @@ public class SelectAllHonPost2 extends JFrame{
 	private JLabel pagebarLabel;	//페이지표기 바
 	private JLabel preNumber = new JLabel("");
 	private JLabel commingNumber;
-	public static int frontPage = 1;
+//	public static int frontPage = 1;
 	private JButton preBtn = new JButton(); // 앞페이지 버튼
 	private JButton commingBtn = new JButton(); // 뒷 페이지 버튼
 	private JLabel[] postList;	
