@@ -663,14 +663,29 @@ public class AllBoardList {
 		int pageNo = nowPage;
 		int y =  152;
 		
-		postListDTO = new PagingController().wholePostList(int pageNo);
+		postListDTO = new PagingController().wholePostList(pageNo);
 		PostDTO postInfo = null;
-
 
 		for(int i = 0; i < postListDTO.size(); i++) {
 			
 			postInfo = postListDTO.get(i);
 			
+			postList = new JLabel[postListDTO.size()] {
+				postList[i] = new JLabel();
+				postList[i].
+				
+			}
+			
+		}
+		
+		
+//		118
+		
+//
+//		for(int i = 0; i < postListDTO.size(); i++) {
+//			
+//			postInfo = postListDTO.get(i);
+//			
 //			postList = new JLabel[postListDTO.size()];
 //			postList[i] = new JLabel();
 //			postList[i].setLayout(null);
@@ -727,9 +742,7 @@ public class AllBoardList {
 //					}
 //				});
 //			}
-//
-//	
-	
+
 	
 	
 	
@@ -737,11 +750,8 @@ public class AllBoardList {
 	
 	
 
-	
-	
-	
-//  }
 
+		
 	}
 }
 
