@@ -14,7 +14,7 @@ public class GetFilter {
 		if(getFilter == null) {
 			getFilter = new GetFilter();
 		}
-		
+		System.out.println("싱글톤호출완료");
 		
 		return getFilter;
 	}
