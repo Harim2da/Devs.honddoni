@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.devs.honddoni.admin.dto.AdminDTO;
+import com.devs.honddoni.admin.model.dto.*;
 import com.devs.honddoni.admin.viewpenel.AdminList;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 

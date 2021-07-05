@@ -72,6 +72,12 @@ public class AdminAll {
 		       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllPost5.png");
 		       JButton btn5 = new JButton(img5);
 		       
+		       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
+		       JButton btn10 = new JButton(img10);
+		       
+		       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findnext.png");//다음페이지
+		       JButton btn11 = new JButton(img11);
+		       
 //		       //전체게시글 조회 라벨
 //		       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
 //		       JLabel lb1 = new JLabel();
@@ -101,6 +107,8 @@ public class AdminAll {
 		       bottomPanel.add(btn3);
 		       bottomPanel.add(btn4);
 		       bottomPanel.add(btn5);
+		       bottomPanel.add(btn10);
+		       bottomPanel.add(btn11);
 //		       topPanel.add(lb1);
 			    
 //			    bottomPanel.add(lb2);//프로필
@@ -126,6 +134,10 @@ public class AdminAll {
 		       btn3.setBounds(34, 380, 430, 104);
 		       btn4.setBounds(33, 498, 430, 104);
 		       btn5.setBounds(34, 616, 430, 104);
+		       btn10.setBounds(31, 19, 430, 62);
+		       btn11.setBounds(181, 95, 136, 21);
+		       
+		       
 //		       lb1.setBounds(56, 0, 263, 33);
 			    
 //			    lb2.setBounds(53, 172, 36, 39);//프로필 위치
@@ -160,6 +172,20 @@ public class AdminAll {
 //		    		   bottomPanel.setVisible(false);
 		    		   
 		    		   new AdminList1();
+		    		   bottomPanel.setVisible(false);
+//		    		  MainFrame.setVisible(false);
+		    	   }
+		       });
+		       
+		       btn11.addActionListener(new ActionListener() {
+		    	   @Override
+		    	   public void actionPerformed(ActionEvent e) {
+//		    		   login2 login2 = new login2();
+//		    		   JPanel.add(login2);
+//		    		   new login2();
+//		    		   bottomPanel.setVisible(false);
+		    		   
+		    		   new AdminAll2();
 		    		   bottomPanel.setVisible(false);
 //		    		  MainFrame.setVisible(false);
 		    	   }

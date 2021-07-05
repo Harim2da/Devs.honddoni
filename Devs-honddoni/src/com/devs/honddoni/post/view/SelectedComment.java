@@ -464,7 +464,7 @@ public class SelectedComment extends JFrame {
 		int y = 52;
 
 		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
-		CommentsDTO commentInfo = null;
+		CommentsDTO commentInfo = null; 
 
 
 		for(int i = 0; i < commentListDTO.size(); i++) {
