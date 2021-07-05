@@ -3,7 +3,7 @@
 <properties>
 <comment/>
 	<entry key="selectWholePostNum">
-	  SELECT
+	  SELECT /* com.devs.honddoni.post.model.dao.PagingDAO#selectWholePostNum() */
 	         COUNT(*)
 	    FROM TBL_POST P
 	    JOIN TBL_LOCAL L ON (P.LOCAL_CODE = L.LOCAL_CODE)
@@ -14,24 +14,24 @@
 	</entry>
 	
 	<entry key="freeWholePostNum">
-	  SELECT
+	  SELECT /* com.devs.honddoni.post.model.dao.PagingDAO#freeWholePostNum() */
 	         COUNT(*)
 	    FROM TBL_POST
 	   WHERE POST_CATEGORY = '자유'
 	</entry>
 	<entry key="totalWholePostNum">
-	  SELECT
+	  SELECT /* com.devs.honddoni.post.model.dao.PagingDAO#totalWholePostNum() */
 	         COUNT(*)
 	    FROM TBL_POST
 	</entry>
 	<entry key="selectWholeCommentsNum">
-	  SELECT
+	  SELECT /* com.devs.honddoni.post.model.dao.PagingDAO#selectWholeCommentsNum() */
 	         COUNT(*)
 	    FROM TBL_COMMENT
 	   WHERE POST_NO = ?
-	</entry>
+	</entry> 
 	<entry key="selectPostList">
-	  SELECT
+	  SELECT /* com.devs.honddoni.post.model.dao.PagingDAO#selectPostList() */
              V.*
         FROM (SELECT P.POST_NO
                    , P.POST_NAME
@@ -61,7 +61,7 @@
       WHERE V.순서 BETWEEN ? AND ?
 	</entry>
 	<entry key="freePostList">
-	  SELECT
+	  SELECT /* com.devs.honddoni.post.model.dao.PagingDAO#freePostList() */
              V.*
         FROM (SELECT P.POST_NO
                    , P.POST_NAME
@@ -78,7 +78,7 @@
       WHERE V.순서 BETWEEN ? AND ?
 	</entry>
 	<entry key="wholePostList">
-	  SELECT
+	  SELECT /* com.devs.honddoni.post.model.dao.PagingDAO#wholePostList() */
              V.*
         FROM (SELECT P.POST_NO
                    , P.POST_NAME
@@ -99,59 +99,5 @@
         LEFT JOIN TBL_CATEGORY C ON (P.CATEGORY_CODE = C.CATEGORY_CODE)
            ) V
      <!--  WHERE V.순서 BETWEEN ? AND ? -->
-	</entry>
-	<entry key="selectCommentsList">
-	  SELECT
-             V.*
-        FROM (SELECT C.COMMENTS_NO
-                   , C.COMMENTS_DATE
-                   , C.COMMENTS_TIME
-                   , C.COMMENTS_CONTENTS
-                   , C.POST_NO
-                   , C.MEMBER_NO
-                   , M.MEMBER_NICKNAME
-                   , M.MEMBER_PROFILE
-                   , RANK() OVER(ORDER BY COMMENTS_NO ASC) 순서
-        FROM TBL_COMMENT C
-        JOIN TBL_MEMBER M ON (C.MEMBER_NO = M.MEMBER_NO)
-       WHERE C.POST_NO = ?       
-           ) V
-      WHERE V.순서 BETWEEN ? AND ?
-      
-	</entry>
-	<entry key="communicationComment">
-	  INSERT /*com.devs.honddoni.post.model.dao.PostDAO#communicationComment()*/
-	    INTO TBL_COMMENT C
-	    (
-	      C.COMMENTS_NO
-	    , C.COMMENTS_DATE
-	    , C.COMMENTS_TIME
-	    , C.COMMENTS_CONTENTS
-	    , C.POST_NO
-	    , C.MEMBER_NO
-	    )
-	    VALUES
-	    (
-	      SEQ_COMMENT_NO.NEXTVAL
-	    , ?
-	    , ?
-	    , ?
-	    , ?
-	    , ? 
-	    )
-	   
-	</entry>
-	<entry key="deleteComment">
-	  DELETE
-	    FROM TBL_COMMENT
-	   WHERE COMMENTS_NO = ?
-	   
-	</entry>
-	<entry key="updateComment">
-	  UPDATE
-	         TBL_COMMENT
-	     SET COMMENTS_CONTENTS = ?
-	   WHERE COMMENTS_NO = ?
-	   
 	</entry>
 </properties>

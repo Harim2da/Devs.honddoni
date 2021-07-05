@@ -21,7 +21,7 @@ public class PostDAO2 {
 	public PostDAO2() {
 		this.prop = new Properties();
 		try {
-			prop.loadFromXML(new FileInputStream("postmapper/paging-query.xml"));
+			prop.loadFromXML(new FileInputStream("postmapper/commnet-query.xml"));
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -31,78 +31,76 @@ public class PostDAO2 {
 		}
 	}
 
+	/* 댓글 작성하여 DB에 저장하는 DAO */
 	public int communicationComment(Connection con, CommentsDTO newComment) {
 
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = prop.getProperty("communicationComment");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, newComment.getCommentsDate());
 			pstmt.setString(2, newComment.getCommentsTime());
 			pstmt.setString(3, newComment.getCommentsContents());
 			pstmt.setInt(4, newComment.getPostNo());
 			pstmt.setInt(5, newComment.getMemberNo());
-			
+
 			result = pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-		
+
 		return result;
 	}
 
+	/* 댓글 삭제하여 DB에 저장하는 DAO */
 	public int deleteComment(Connection con,CommentsDTO deleteComment) {
-		
+
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = prop.getProperty("deleteComment");
-		System.out.println();
-		
-			try {
-				pstmt = con.prepareStatement(query);
-				
-					
-					pstmt.setInt(1, deleteComment.getCommentsNo());
-//					System.out.println(deleteCommentList.get(i).getCommentsNo());
-				
 
-				result = pstmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(pstmt);
-			}
-			
-			
-		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, deleteComment.getCommentsNo());
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+
+
 		return result;
 	}
 
+	/* 댓글 수정하여 DB에 저장하는 DAO */
 	public int updateComment(Connection con, CommentsDTO updateComment) {
 
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = prop.getProperty("updateComment");
-		System.out.println("dao : " + updateComment.getCommentsNo());
+
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, updateComment.getCommentsContents());
 			pstmt.setInt(2, updateComment.getCommentsNo());
-			
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-		
+
 		return result;
 	}
 
