@@ -28,13 +28,17 @@
 	  DELETE /*com.devs.honddoni.post.model.dao.PostDAO#deleteComment()*/
 	    FROM TBL_COMMENT
 	   WHERE COMMENTS_NO = ?
-	   
 	</entry>
 	<entry key="updateComment">
 	  UPDATE /*com.devs.honddoni.post.model.dao.PostDAO#updateComment()*/
 	         TBL_COMMENT
 	     SET COMMENTS_CONTENTS = ?
 	   WHERE COMMENTS_NO = ?
-	   
+	</entry>
+	<entry key="selectPostCategory">
+	  SELECT /*com.devs.honddoni.post.model.dao.PostDAO#selectPostCategory()*/
+	         POST_CATEGORY
+	    FROM TBL_POST
+	   WHERE POST_NO = ?     
 	</entry>
 </properties>

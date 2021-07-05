@@ -74,4 +74,22 @@ public class PostService2 {
 			
 	}
 
+	public String selectPostCategory(int postNo) {
+		
+		Connection con = getConnection();
+
+		String result = postDAO2.selectPostCategory(con, postNo);
+
+		if(result != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+
+		return result;
+		
+	}
+
 }
