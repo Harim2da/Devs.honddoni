@@ -17,7 +17,7 @@ import com.devs.honddoni.search.controller.SearchController;
 public class MainBottomPanel /*extends JFrame*/{
 
 	JFrame frame = new JFrame();
-//MainFrame frame; //메인프레임
+	//MainFrame frame; //메인프레임
 	//private JFrame frame;
 	
 	private JPanel topPanel; // 상단패널
@@ -158,7 +158,7 @@ public class MainBottomPanel /*extends JFrame*/{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 //				allBoardList.bottomPanel();
-			
+			 
 				JPanel changeBoardList = new JPanel();
 				changeBoardList.setLayout(null);
 				changeBoardList.setBounds(0,100,500,770);
@@ -218,6 +218,24 @@ public class MainBottomPanel /*extends JFrame*/{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// 자유 게시판으로
+				
+				JPanel changeFreeList = new JPanel();
+				changeFreeList.setLayout(null);
+				changeFreeList.setBounds(0,100,500,770);
+				changeFreeList.setVisible(true);
+				changeFreeList.setBackground(Color.white);
+				frame.add(changeFreeList);
+				
+				AllBoardList allBoardList = new AllBoardList();
+				allBoardList.bottomPanel();
+
+				// 패널이 넘어가서  자유 게시판에 해당하는 이미지
+				changeFreeList.repaint();
+				changeFreeList.revalidate();
+				// 전체조회 게시판으로
+				// DB연결 (MVC)
+				
+				// 패널이 넘어가서 그 자유 게시판에 해당하는 이미지
 				System.out.println("자유 게시판으로");
 			}});
 	}

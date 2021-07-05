@@ -23,7 +23,7 @@ public class Application {
 
 		
 		PagingController freeBoardList = new PagingController();
-		List<PostDTO> freeList = freeBoardList.wholePostList(1);
+		List<PostDTO> freeList = freeBoardList.freePostList(1);
 		
 		for(PostDTO postList: freeList) {
 			System.out.println(postList);
