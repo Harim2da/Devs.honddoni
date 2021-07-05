@@ -99,4 +99,10 @@
 	       , A.MEMBER_EMAIL = ?
 	   WHERE A.MEMBER_ID = ?
 	</entry>
+	<entry key="deleteMember">
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#deleteMember()*/
+	         TBL_MEMBER A
+	     SET A.MEMBER_STATUS = ?
+	   WHERE A.MEMBER_ID = ?
+	</entry>
 </properties>

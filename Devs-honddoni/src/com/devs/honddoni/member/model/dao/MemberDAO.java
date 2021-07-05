@@ -118,7 +118,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, "user06");
+			pstmt.setString(1, "sample01");
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -271,6 +271,30 @@ public class MemberDAO {
 			pstmt.setString(3, memberInfo.getPhone());
 			pstmt.setString(4, memberInfo.getEmail());
 			pstmt.setString(5, "user06");
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		
+		return result;
+	}
+
+	public int deleteMember(Connection con, String 테스트아이디) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("deleteMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "Y");
+			pstmt.setString(2, 테스트아이디);
 			
 			result = pstmt.executeUpdate();
 			

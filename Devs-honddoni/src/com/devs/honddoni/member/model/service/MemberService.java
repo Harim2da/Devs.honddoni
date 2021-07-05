@@ -118,4 +118,14 @@ public class MemberService {
 		return result;
 	}
 
+	public int deleteMember(String 테스트아이디) {
+		Connection con = getConnection();
+		
+		int result = memberDAO.deleteMember(con, 테스트아이디);
+		
+		close(con);
+		
+		return result;
+	}
+
 }

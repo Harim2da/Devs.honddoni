@@ -2,17 +2,20 @@ package com.devs.honddoni.member.controller;
 
 import java.util.List;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.member.model.service.MemberService;
 import com.devs.honddoni.member.view.DuplCheckResult;
+import com.devs.honddoni.memberLog.view.FirstView;
 
 public class MemberController {
 	
 	private MemberService memberService = new MemberService();
 	private DuplCheckResult duplCheckResult = new DuplCheckResult();
+	private MainFrame mainFrame;
 	
 	public void idDuplCheck(String getUserId) {
 		
@@ -129,6 +132,21 @@ public class MemberController {
 		} else {
 			System.out.println("정보 변경 실패");
 		}
+	}
+
+	public void deleteMember(String 테스트아이디) {
+		
+		int result = 0;
+		
+		result = memberService.deleteMember(테스트아이디);
+		
+		if(result > 0) {
+			System.out.println("회원탈퇴 성공");
+			new FirstView(mainFrame);
+		} else {
+			System.out.println("회원탈퇴 실패");
+		}
+		
 	}
 
 }
