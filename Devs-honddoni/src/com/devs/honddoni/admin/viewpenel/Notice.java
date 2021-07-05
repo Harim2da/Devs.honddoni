@@ -9,43 +9,46 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.admin.model.dto.SearchSingletonDTO;
 import com.devs.honddoni.common.PagenationComments;
-import com.devs.honddoni.common.dto.CommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
-import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.post.controller.ContactController;
 import com.devs.honddoni.post.controller.PagingController;
 
 
 //공지사항 게시판 화면
-public class Notice extends JPanel{
+public class Notice extends JFrame{
 	
-	private JFrame frame;
+	private JFrame mainframe = new JFrame();
 	private Notice notice;
 	
 	private AdminList adminList; //newPanel로 쓸 것
 	private NoticeWrite noticeWrite; //newPanel로 쓸 것
-	private PagingController pagingController;
+	private NoticeContentView noticeContentView; //newPanel로 쓸 것
 	
-	private JLabel beforeNumberlb = new JLabel("");
-	private JLabel afterNumberlb;
-	private JLabel beforeNumber = new JLabel("");  //페이지를 나타내는 앞의 숫자
-	private JLabel afterNumber;
-	public static int frontPage = 1;
-	private JButton beforeBtn = new JButton();
-	private JButton afterBtn = new JButton();
-	private JLabel[] postListLb;
-	private JButton[] postBtn;
-	private List<PostDTO> postDTOLIst = null;
-	private JLabel[] title;	
+	private JLabel pagebarLabel;					//페이지 표기 바
+	private JLabel preNumberlb = new JLabel("");
+	private JLabel preNumber = new JLabel("");		//페이지를 나타내는 앞의 숫자
+	private JButton preBtn = new JButton();			//앞의 페이지로 가는 버튼
+	private JLabel commingNumberlb;
+	private JLabel commingNumber;					//페이지를 나타내는 뒤의 숫자
+	private JButton commingBtn = new JButton();		//뒤의 페이지로 가는 버튼
+	
+	private PagingController pagingController = new PagingController();
+	private ContactController contactController = new ContactController();
+	
+	public int frontPage = 1;
+	private List<PostDTO> postDTOList = null;		//페이지에 해당하는 게시물들의 목록
+	private PostDTO postDTO;						//해당 게시물의 정보
+	private JLabel[] postListLb;					//게시물 내용을 나타내는 밑바탕라벨 (디자인용도)
+	private JButton[] postBtn;						//해당 게시물로 가는 버튼
+	private JLabel[] title;							//해당 게시물의 제목
 	
 	private int postNo;
 	private int totalPostNum;
-	private PostDTO postDTO;
 			
 	public Notice() {
 
@@ -53,9 +56,10 @@ public class Notice extends JPanel{
 		this.notice = this;
 		
 		/* 제일 기본 패널 (init)*/
-		this.setBounds(0, 0, 500, 870);
-		this.setLayout(null);
-		this.setBackground(Color.yellow);
+		notice.setBounds(0, 0, 500, 870);
+		notice.setLayout(null);
+		notice.setBackground(Color.yellow);
+	    frame.add(notice);
 		System.out.println("Notice 패널 생성");	
 
 		/* 혼또니 로고버튼 */
@@ -77,7 +81,7 @@ public class Notice extends JPanel{
 		});
 		
 		/* 검색창 라벨 */
-		JLabel searchLb = new JLabel();
+		JLabel searchLb = new JLabel("");
 		searchLb.setBounds(35, 127, 433, 62);
 		searchLb.setBackground(null);
 		searchLb.setIcon(new ImageIcon("image/admin/notice_searchArea.png"));
@@ -94,6 +98,8 @@ public class Notice extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				System.out.println("공지게시판 검색으로 이동");
+				
 				//검색할 단어
 				String getText = searchTf.getText();
 				
@@ -105,11 +111,7 @@ public class Notice extends JPanel{
 //				SearchSingletonDTO searchSingletonDTO = SearchSingletonDTO.getInstance();
 //				searchSingletonDTO.getGetSearchWord();
 				
-//				FrameManagerYs.changePanel(notice, new NoticeWrite());
-				frame.remove(notice);
-				frame.add(new NoticeWrite());
-				frame.repaint();
-				frame.revalidate();
+//				
 			}
 		});		
 		
@@ -118,152 +120,114 @@ public class Notice extends JPanel{
 		writeNoticeBtn.setBounds(36, 228, 72, 22);
 		writeNoticeBtn.setBorderPainted(false);
 		writeNoticeBtn.setIcon(new ImageIcon("image/admin/NoticeWrite.png"));
+		writeNoticeBtn.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("NoticeWrite 패널로 이동");
+				
+			}
+		});
 		
-		
-		/* 공지사항 게시글 반복문 */
-		//페이징에서 공지게시판 전체글 수 받아오기
-		int noticeWholePostNum = pagingController.NoticeWholePostNum();
-		
-		
-		//페이징 버튼과 숫자들		
-		beforeNumber();
-		afterNumber(1);		
-		beforeBtn();
-		afterBtn(1);
-		
-		
-		
-		//다음 페이지 번호 라벨
-		
-		/* 다음 페이지로 이동 버튼*/
-		
-		
-		//반복문
-		//패널깔기
-		//패널이미지는 "image/admin/NoticeButton.png"
-						
-		//제목라벨생성(좌표에 +100정도)
-		//제목라벨붙이기
-		//해당공지로 넘어가는 버튼 - 액션리스너 - noticeContentView로 넘어가야
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	    //패널에 버튼 추가
+		//패널에 버튼 추가
 	    this.add(honddoniBtn);
 	    this.add(searchLb);
 	    this.add(searchTf);
 	    this.add(searchBtn);
 	    this.add(writeNoticeBtn);	
 	    
-	    //페이징 버튼들 추가
-	    this.add(beforeNumber);
-		this.add(afterNumber);
-		this.add(beforeBtn);
-		this.add(afterBtn);
+		
+		/* 페이지 표기 바 세팅*/
+		pagebarLabel = new JLabel("");
+		pagebarLabel.setBounds(184, 203, 138, 22);
+		pagebarLabel.setIcon(new ImageIcon("image/admin/notice_pagingArea.png"));
+		notice.add(pagebarLabel);
+		
+		//페이징 버튼과 숫자들		
+		prePageBtn();
+		commingPageBtn();	
+		prePageNumber();
+		commingPageNumber();
+		
+		
+		//게시글 내용들 세팅
+		setPostListLb();
+		postBtnAdd();
+		setTitle();	    
+		
+		//내용라벨과 버튼은 해당메소드에서 다 붙였다.
 	    
 	    System.out.println("notice패널 : " + notice); //확인용 출력
-//	    frame.add(notice);
 	    
 	    this.setVisible(true);
+	    System.out.println("notice 패널 실행됨");
+	    
+	    //실행용
+	    mainframe.setVisible(true);
+		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    
 	}
 	
-	/* 현재페이지를 나타내는 숫자 */
-	public void beforeNumber() {
-
-		String frontPageString = Integer.valueOf(frontPage).toString();
-
-		beforeNumber.setText(frontPageString);
-		beforeNumber.setLayout(null);
-		beforeNumber.setBounds(230, 206, 14, 14);
-		System.out.println(frontPageString);
-
-	}
 	
 	/* 이전페이지로 이동 버튼*/
-	public void beforeBtn() {		
+	public void prePageBtn() {		
 		int pageNo = frontPage;
 		
-		beforeBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
-		beforeBtn.setContentAreaFilled(false);
-		beforeBtn.setBorderPainted(false);
-		beforeBtn.setBounds(185, 205, 14, 14);
+		preBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
+		preBtn.setContentAreaFilled(false);
+		preBtn.setBorderPainted(false);
+		preBtn.setBounds(185, 205, 14, 14);
 
 		if(pageNo < 2) {
-			beforeBtn.setVisible(false);
+			preBtn.setVisible(false);
 		} else {
-			beforeBtn.setVisible(true);
+			preBtn.setVisible(true);
 		}
 
 		System.out.println("frontPage : " + frontPage);
-
-		beforeBtn.addActionListener(new ActionListener() {
+		preBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
 				if(frontPage >= 2 ) { //현재있는 페이지
 					frontPage--;
 				}
-
-				int noticeWholePostNum = pagingController.NoticeWholePostNum();
 				
-				postListLb(noticeWholePostNum);
+				postDTOList = new PagingController().NoticePostList(pageNo);
+								
+				setPostListLb();		//게시글 배경 틀 다시 잡기
 
-				beforeBtn();
-				beforeNumber();
-				afterBtn(1);
+				prePageBtn(); 		//이동 후에, 다시 버튼을 재설정해줘야 함
+				prePageNumber(); 	//이동 후에, 이전페이지라벨을 재설정해줘야 함
+				commingPageBtn();
 				System.out.println("frontPage : " + frontPage);
 			}
 		});
 	
+		pagebarLabel.add(preBtn);
 	}
 	
-	/* 최종페이지를 나타내는 숫자 */
-	public void afterNumber(int postNo) {
+	
+	/* 다음페이지로 이동버튼 */
+	public void commingPageBtn() {
+
 		int pageNo = frontPage;
 
 		int totalCount = new PagingController().NoticeWholePostNum();
 
 		PagenationComments pagenationComments = new PagenationComments();
-		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
-		String backPageString = Integer.valueOf(pageInfo.getMaxPage()).toString();
+		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 5, 5);
 
-		afterNumber = new JLabel(backPageString);
-		afterNumber.setLayout(null);
-		afterNumber.setBounds(85, 4, 14, 14);
-
-	}
-	
-	/* 다음페이지로 이동버튼 */
-	public void afterBtn(int postNo) {
-
-		this.postNo = postNo;
-		int pageNo = frontPage;
-
-		int totalCount = new PagingController().selectWholeCommentsNum(postNo);
-
-		PagenationComments pagenationComments = new PagenationComments();
-		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 10, 5);
-
-		afterBtn.setIcon(new ImageIcon("image/.png"));
-		afterBtn.setContentAreaFilled(false);
-		afterBtn.setBorderPainted(false);
-		afterBtn.setBounds(120, 4, 14, 14);
+		commingBtn.setIcon(new ImageIcon("image/post/afterPageButton.png"));
+		commingBtn.setContentAreaFilled(false);
+		commingBtn.setBorderPainted(false);
+		commingBtn.setBounds(120, 104, 14, 14);
 
 		if(pageNo == pageInfo.getMaxPage()) {
-			afterBtn.setVisible(false);
+			commingBtn.setVisible(false);
 		} else {
-			afterBtn.setVisible(true);
+			commingBtn.setVisible(true);
 		}
 
-
-		afterBtn.addActionListener(new ActionListener() {
-
+		commingBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -271,50 +235,131 @@ public class Notice extends JPanel{
 					frontPage++;
 				}
 				
-				afterBtn(1);
-				beforeBtn();
-				beforeNumber();		
+				commingPageBtn();
+				prePageBtn();
+				prePageNumber();		
 
 			}
 		});
+		
+		pagebarLabel.add(commingBtn);
 	}
 	
-	/* 게시물 내용을 나타내는 밑바탕라벨 (디자인용도) */
-	public void postListLb(int postNo) {
+	
+	/* 현재페이지를 나타내는 숫자 */
+	public void prePageNumber() {
+		String frontPageString = Integer.valueOf(frontPage).toString();
 
+		preNumber.setText(frontPageString);
+		preNumber.setLayout(null);
+		preNumber.setBounds(50, 104, 14, 14);
+		System.out.println("frontPage 숫자 : " + frontPageString);
+
+	}
+	
+	/* 최종페이지를 나타내는 숫자 */
+	public void commingPageNumber() {
+		int pageNo = frontPage;
+
+		int totalCount = new PagingController().NoticeWholePostNum();
+
+		PagenationComments pagenationComments = new PagenationComments();
+		PageInfoCommentsDTO pageInfo = pagenationComments.getCommentsPageInfo(pageNo, totalCount, 5, 5);
+		String backPageString = Integer.valueOf(pageInfo.getMaxPage()).toString();
+
+		commingNumber = new JLabel(backPageString);
+		commingNumber.setLayout(null);
+		commingNumber.setBounds(85, 104, 14, 14);
+
+	}
+	
+	
+	/* 게시물 내용을 나타내는 밑바탕라벨 (디자인용도) 반복 */
+	public void setPostListLb() {
 		int pageNo = frontPage;
 		int y = 254; //늘어나는 y축 값
 		
 		//해당페이지에 맞는 포스트DTO를 List에 담아온다
-		postDTOLIst = new PagingController().NoticePostList(pageNo);
+		postDTOList = new PagingController().NoticePostList(pageNo);
 
 		//반복문으로 밑바탕라벨을 깔아준다
-		for(int i = 0; i < postDTOLIst.size(); i++) {
-//			commentInfo = commentListDTO.get(i);
+		for(int i = 0; i < postDTOList.size(); i++) {			
+//			postInfo = postListDTO.get(i); 				//왜 이걸로 안 하지?
 
-			postListLb = new JLabel[postDTOLIst.size()];
+			postListLb = new JLabel[postDTOList.size()];
 			postListLb[i] = new JLabel();
 			postListLb[i].setLayout(null);
-			postListLb[i].setIcon(new ImageIcon("image//notice_postArea.png"));
-			postListLb[i].setBounds(35, y, 431, 61);
+			postListLb[i].setIcon(new ImageIcon("image/admin/notice_postArea.png"));
+			postListLb[i].setBounds(35, y, 432, 105);
 			notice.add(postListLb[i]);
-			y += 62;
+			y += 119;
 		}
 	}
 	
-	/* 해당 게시물로 가는 버튼 */
-	public void postBtnAdd(int postNo) {
+	/* 해당 게시물 제목을 나타내는 라벨 */
+	public void setTitle() {
+		int pageNo = frontPage;
+		int p = 316; //늘어나는 y축 값
+		
+		postDTOList = new PagingController().NoticePostList(pageNo);
+		PostDTO postInfo = null;
+		
+		for(int i = 0; i < postDTOList.size(); i++) {
+			System.out.println("제목: " + postInfo.getPostName());
+			
+			postInfo = postDTOList.get(i);
+			
+			title = new JLabel[postDTOList.size()];
+			title[i] = new JLabel();
+			title[i].setLayout(null);
+			title[i].setText(postInfo.getPostName());
+			title[i].setBounds(64, p, 350, 25);
+			
+			notice.add(title[i]);
+			p += 119;
+		}
+		
+		
+	}
+	
+	/* 해당 게시물로 가는 버튼 반복 */
+	public void postBtnAdd() {
 		
 		int pageNo = frontPage;
 		int j = 265; //늘어나는 y축 값
 		
-		postDTOLIst = new PagingController().NoticePostList(pageNo);
+		postDTOList = new PagingController().NoticePostList(pageNo);
 		
-		for(int i = 0; postDTOLIst.size(); i++) {
-			postBtn = new JButton[postDTOLIst.size()];
-		}
-		
+		for(int i = 0; i < postDTOList.size(); i++) {
+			postBtn = new JButton[postDTOList.size()];
+			postBtn[i] = new JButton();
+			postBtn[i].setLayout(null);
+			postBtn[i].setIcon(new ImageIcon("image/admin/notice_noticeBtn.png"));
+			postBtn[i].setBounds(54, j, 140, 45);
+			notice.add(postBtn[i]);
+			j += 119;
+			
+			//버튼 클릭시, 해당 포스트 DTO를 들고 NoticeContent로 이동			
+			postBtn[i].addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.out.println("글번호 : " + "번 포스트로 이동");
+					
+					//해당 포스트의 DTO를 가지고 오기
+					PostDTO postDTO = new PostDTO();
+					postDTO = contactController.selectThePost(i);  //이게 맞을까..?
+					
+					noticeContentView(postDTO);
+					 
+
+				}
+			});
+
+		}	
+
 	}
+	
+	
 	
 	
 	

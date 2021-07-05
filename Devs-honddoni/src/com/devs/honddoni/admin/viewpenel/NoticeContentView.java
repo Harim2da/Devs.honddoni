@@ -10,17 +10,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.dto.PostDTO;
+
 /* 공지사항 내용 확인 패널 */
 public class NoticeContentView extends JPanel{
 	
 	JFrame frame;
 	NoticeContentView noticeContentView;
 	
+	private PostDTO postDTO;
+	
 	/* 공지내용 확인 겸, 수정버튼 */
-	public NoticeContentView() {
+	public NoticeContentView(PostDTO postDTO) {
 		
 		this.frame = FrameManagerYs.getFrame();
 		this.noticeContentView = this;
+		this.postDTO = postDTO;
 		
 		
 		/* 제일 기본 패널 */
@@ -52,11 +57,13 @@ public class NoticeContentView extends JPanel{
 		searchLb.setBackground(null);
 		searchLb.setIcon(new ImageIcon("image/admin/noticeWrite_area.png"));		
 		
-		/* 제목라벨, 내용라벨 */
+		/* 제목라벨, 내용라벨 DTO에서 내용받아서 설정 */
 		JLabel titleLb = new JLabel();
 		titleLb.setBounds(107, 121, 335, 26);
+		titleLb.setText(postDTO.getPostName());
 		JLabel contentLb = new JLabel();
-		titleLb.setBounds(55, 230, 396, 515);
+		contentLb.setBounds(55, 230, 396, 515);
+		contentLb.setText(postDTO.getPostContents());
 		
 		//수정버튼으로 고쳐야 할듯
 		/* 작성완료 버튼 */
@@ -71,8 +78,7 @@ public class NoticeContentView extends JPanel{
 				//NoticeWrite으로 넘어가야
 				
 			}
-		});
-				
+		});				
 		
 		
 		/* 컴포넌트 붙이기 */
@@ -80,7 +86,7 @@ public class NoticeContentView extends JPanel{
 		this.add(searchLb);
 		this.add(titleLb);
 		this.add(contentLb);		
-		this.add(modifyBtn);		
+		this.add(modifyBtn);	
 		
 		
 	}

@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.view.FirstView;
 
@@ -33,6 +34,9 @@ public class MainFrame extends JFrame{
 //		new SelectAllHonPost(this);
 		
 //		FrameManager.initPanel(this, new SelectAllHonPost());
+		
+		//예슬 실험중
+		new Notice(this);
 	}
 	
 }
