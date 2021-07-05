@@ -77,19 +77,19 @@ public class AdminList1 {
 	       MainFrame.add(bottomPanel);
 	       MainFrame.setVisible(true); //창을 보이게함
 	       
-	       btn5.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
+//	       btn5.addActionListener(new ActionListener() {
+//	    	   @Override
+//	    	   public void actionPerformed(ActionEvent e) {
+////	    		   login2 login2 = new login2();
+////	    		   JPanel.add(login2);
+////	    		   new login2();
+////	    		   bottomPanel.setVisible(false);
+//	    		   
+//	    		   new AdminList2();
 //	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   new AdminList2();
-	    		   bottomPanel.setVisible(false);
-	    		   MainFrame.setVisible(false);
-	    	   }
-	       });
+//	    		   MainFrame.setVisible(false);
+//	    	   }
+//	       });
 	       
 	       btn6.addActionListener(new ActionListener() {
 	    	   @Override
@@ -141,7 +141,7 @@ public class AdminList1 {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminComment();
+	    		   new AdminUser();
 	    		   bottomPanel.setVisible(false);
 	    		   MainFrame.setVisible(false);
 	    	   }

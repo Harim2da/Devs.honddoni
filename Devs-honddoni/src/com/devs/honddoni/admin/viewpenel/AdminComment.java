@@ -87,5 +87,19 @@ public class AdminComment {
 //	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
+	       
+	       btn0.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminList1();
+	    		   bottomPanel.setVisible(false);
+//	    		  MainFrame.setVisible(false);
+	    	   }
+	       });
 	}
 }

@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color; 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -40,38 +40,47 @@ public class Delite {
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
 	     
+	     //상단패널에 혼또니마크로 뒤로가기 버튼
 	     topPanel.add(btn0);
 	     btn0.setBounds(303, 27, 172, 70);
 		
+	     	//첫번쨰 탈퇴회원 정보
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\DeliteData1.png");//탈퇴회원정보
 	       JButton btn1 = new JButton(img1);
 	       
+	       //두번째탈퇴회원정보
 	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\DeliteData2.png");
 	       JButton btn2 = new JButton(img2);
 	       
+	       //세번쨰 탈퇴회원 정보
 	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\DeliteData3.png");
 	       JButton btn3 = new JButton(img3);
 	       
-	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\DeliteData3.png");
-	       JButton btn4 = new JButton(img4);
+//	       ///네번쨰 탈퇴회원 정보
+//	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\DeliteData3.png");
+//	       JButton btn4 = new JButton(img4);
 	       
+//	       //네번째 탈퇴회원 정보
+//	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\DeliteData4.png");
+//	       JButton btn5 = new JButton(img5);
+	       
+	       //네섯번째 탈퇴 회원 정보
 	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\DeliteData4.png");
 	       JButton btn5 = new JButton(img5);
-	       
-	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\DeliteData5.png");
-	       JLabel lb1 = new JLabel();
 	       
 //	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기
 //	       JButton btn7 = new JButton(img7);
 	       
+	       //탈퇴회원 다음게시판넘어가기
 	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findnext.png");//다음페이지
 	       JButton btn8 = new JButton(img8);
 	       
+	       ////검색기능
 	       ImageIcon  img9 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
 	       JButton btn9 = new JButton(img9);
 	       
-	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
-	       JButton btn10 = new JButton(img10);
+//	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
+//	       JButton btn10 = new JButton(img10);
 	       
 	       
 	       
@@ -82,20 +91,20 @@ public class Delite {
 	       bottomPanel.add(btn1);//탈퇴회원 버튼
 	       bottomPanel.add(btn2);
 	       bottomPanel.add(btn3);
-	       bottomPanel.add(btn4);
+//	       bottomPanel.add(btn4);
+//	       bottomPanel.add(btn5);
 	       bottomPanel.add(btn5);
-	       bottomPanel.add(lb1);
 //	       bottomPanel.add(btn7);//뒤로가기버튼
 	       bottomPanel.add(btn8);//다음페이지
 	       bottomPanel.add(btn9);//검색버튼
-	       topPanel.add(btn10);
+//	       topPanel.add(btn10);
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 143, 430, 121);
 	       btn2.setBounds(34, 262, 430, 121);
 	       btn3.setBounds(34, 380, 430, 121);
-	       btn4.setBounds(33, 498, 430, 121);
-	       btn5.setBounds(34, 616, 430, 104);
-	       lb1.setBounds(56, -17, 263, 33);
+//	       btn4.setBounds(33, 498, 430, 121);
+//	       btn5.setBounds(34, 616, 430, 104);
+	       btn5.setBounds(34, 498, 430, 104);
 //	       btn7.setBounds(226, 724, 56, 25);//뒤로가기버튼
 	       btn8.setBounds(181, 95, 136, 21);//다음페이지
 	       btn9.setBounds(31, 19, 430, 62);//다음페이지
@@ -105,20 +114,22 @@ public class Delite {
 	       MainFrame.add(bottomPanel);
 	       MainFrame.setVisible(true); //창을 보이게함
 	       
-	       btn1.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   new Login2();
-	    		   bottomPanel.setVisible(false);
-//	    		  MainFrame.setVisible(false);
-	    	   }
-	       });
 	       
+//	       btn1.addActionListener(new ActionListener() {
+//	    	   @Override
+//	    	   public void actionPerformed(ActionEvent e) {
+////	    		   login2 login2 = new login2();
+////	    		   JPanel.add(login2);
+////	    		   new login2();
+////	    		   bottomPanel.setVisible(false);
+//	    		   
+//	    		   new Login2();
+//	    		   bottomPanel.setVisible(false);
+////	    		  MainFrame.setVisible(false);
+//	    	   }
+//	       });
+	       
+	       //뒤로가기 버튼
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
@@ -150,19 +161,32 @@ public class Delite {
 	       
 //	       btn8.addActionListener(new ActionListener() {
 //	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
+//    	   public void actionPerformed(ActionEvent e) {
+//	    		   Delite2 login2 = new Delite2();
+//	    		   JPanel.add(login2);
+//	    		   new Delite2();
+//    		   bottomPanel.setVisible(false);
+//	    		   
+//	    		   bottomPanel.setVisible(false);
+////	    		  MainFrame.setVisible(false);
+//	    	   }
+//       });
+	       //다음탈퇴게시물로 이동
+	       btn8.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
 //	    		   login2 login2 = new login2();
 //	    		   JPanel.add(login2);
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-//	    		   new Delite2();
-//	    		   bottomPanel.setVisible(false);
-////	    		  MainFrame.setVisible(false);
-//	    	   }
-//	       });
+	    		   new Delite2();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
 	       }
-	       }
+}
 
 		
 
