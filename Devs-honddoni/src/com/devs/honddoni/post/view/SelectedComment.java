@@ -63,8 +63,8 @@ public class SelectedComment extends JFrame {
 		/* 패널 */
 		upPanel();
 		downPanel();
-//      nextPanel();
-		
+		//      nextPanel();
+
 		/* 상단패널에 포함될 버튼 */
 		myHonddoniBtn();
 		searchHonddoniBtn();
@@ -89,7 +89,7 @@ public class SelectedComment extends JFrame {
 		profilePictrue(1);
 		deleteBtn(1);
 		commentList(1);
-		
+
 		/* 버튼들을 상단패널에 더해줌 */
 		upPanel.add(myHonddoniBtn);
 		upPanel.add(searchHonddoniBtn);
@@ -97,7 +97,7 @@ public class SelectedComment extends JFrame {
 		upPanel.add(interestingBtn);
 		upPanel.add(noticeBtn);
 		upPanel.add(backgroundImage);
-		
+
 		/* 반복문이 필요없는 버튼, 라벨을 하단패널에 더해줌 */
 		downPanel.add(commentWriteBtn);
 		downPanel.add(commentLongbarLabel);
@@ -105,7 +105,7 @@ public class SelectedComment extends JFrame {
 		//		nextPanel.add(commentWriteBtn);
 		//		nextPanel.add(commentLongbarLabel);
 		//		nextPanel.add(backBtn);
-		
+
 		/* 디자인용도의 lonbar에 라벨, 버튼을 더해줌 */
 		commentLongbarLabel.add(beforeNumber);
 		commentLongbarLabel.add(afterNumber);
@@ -114,35 +114,35 @@ public class SelectedComment extends JFrame {
 
 
 	}
-	
-//	public void reset() {
-//
-//		myHonddoniBtn.setVisible(false);
-//		searchHonddoniBtn.setVisible(false);
-//		homeBtn.setVisible(false);
-//		interestingBtn.setVisible(false);
-//		noticeBtn.setVisible(false);
-//		backgroundImage.setVisible(false);
-//
-//		commentWriteBtn.setVisible(false);
-//		commentLongbarLabel.setVisible(false);
-//		backBtn.setVisible(false);
-//		beforeNumber.setVisible(false);
-//		afterNumber.setVisible(false);
-//		beforeBtn.setVisible(false);
-//		afterBtn.setVisible(false);
-//		nickName.setVisible(false);
-//		content.setVisible(false);
-//		updateBtn.setVisible(false);
-//		commentsDate.setVisible(false);
-//		reportBtn.setVisible(false);
-//		commentsTime.setVisible(false);
-//		profilePictrue.setVisible(false);
-//		deleteBtn.setVisible(false);
-//		commentList.setVisible(false);
-//		
-//	}
-	
+
+	//	public void reset() {
+	//
+	//		myHonddoniBtn.setVisible(false);
+	//		searchHonddoniBtn.setVisible(false);
+	//		homeBtn.setVisible(false);
+	//		interestingBtn.setVisible(false);
+	//		noticeBtn.setVisible(false);
+	//		backgroundImage.setVisible(false);
+	//
+	//		commentWriteBtn.setVisible(false);
+	//		commentLongbarLabel.setVisible(false);
+	//		backBtn.setVisible(false);
+	//		beforeNumber.setVisible(false);
+	//		afterNumber.setVisible(false);
+	//		beforeBtn.setVisible(false);
+	//		afterBtn.setVisible(false);
+	//		nickName.setVisible(false);
+	//		content.setVisible(false);
+	//		updateBtn.setVisible(false);
+	//		commentsDate.setVisible(false);
+	//		reportBtn.setVisible(false);
+	//		commentsTime.setVisible(false);
+	//		profilePictrue.setVisible(false);
+	//		deleteBtn.setVisible(false);
+	//		commentList.setVisible(false);
+	//		
+	//	}
+
 	/* 상단 패널 */
 	public void upPanel() {
 
@@ -405,14 +405,14 @@ public class SelectedComment extends JFrame {
 				if(frontPage < pageInfo.getMaxPage()) {
 					frontPage++;
 				}
-				
-//				remove(downPanel);
-//				
-//				for(int i = 0; i < commentListDTO.size()) {
-//					
-//					downPanel.remove(commentList[i]);
-//					
-//				}
+
+				//				remove(downPanel);
+				//				
+				//				for(int i = 0; i < commentListDTO.size()) {
+				//					
+				//					downPanel.remove(commentList[i]);
+				//					
+				//				}
 
 
 				afterBtn(1);
@@ -480,7 +480,7 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-	
+
 	/* 유저 닉네임 나타내는 라벨 */
 	public void nickName(int postNo) {
 
@@ -503,7 +503,7 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-	
+
 	/* 댓글 내용 나타내는 라벨 */
 	public void content(int postNo) {
 
@@ -524,7 +524,7 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-	
+
 	/* 댓글 수정 버튼 */
 	public void updateBtn(int postNo) {
 
@@ -535,9 +535,9 @@ public class SelectedComment extends JFrame {
 		CommentsDTO commentInfo = null;
 
 		for(int i = 0; i < commentListDTO.size(); i++) {
-			
+
 			commentInfo = commentListDTO.get(i);
-			
+
 			updateBtn = new JButton[commentListDTO.size()];
 			updateBtn[i] = new JButton();
 			updateBtn[i].setIcon(new ImageIcon("image/post/commentUpdateButton.png"));
@@ -580,7 +580,7 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-	
+
 	/* 댓글작성 일자 나타내는 라벨 */
 	public void commentsDate(int postNo) {
 
@@ -593,7 +593,7 @@ public class SelectedComment extends JFrame {
 		for(int i = 0; i < commentListDTO.size(); i++) {
 
 			commentInfo = commentListDTO.get(i);
-			
+
 			commentsDate = new JLabel[commentListDTO.size()];
 			commentsDate[i] = new JLabel();
 			commentsDate[i].setLayout(null);
@@ -603,7 +603,7 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-	
+
 	/* 댓글신고 버튼 */
 	public void reportBtn(int postNo) {
 
@@ -616,51 +616,52 @@ public class SelectedComment extends JFrame {
 		for(int i = 0; i < commentListDTO.size(); i++) {
 
 			commentInfo = commentListDTO.get(i);
-			
+
 			reportBtn = new JButton[commentListDTO.size()];
 			reportBtn[i] = new JButton();
 			reportBtn[i].setIcon(new ImageIcon("image/post/commentReportButton.png"));
 			reportBtn[i].setContentAreaFilled(false);
 			reportBtn[i].setBorderPainted(false);
 			reportBtn[i].setBounds(440, y + 37, 23, 23);
-			
-			
+
+
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
-			
-			
-			reportBtn[i].addActionListener(new ActionListener() {
 
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					System.out.println("댓글 수정란 호출");
-					String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
-					System.out.println(text);
-					
-					ContactController2 contactController2 = new ContactController2();
-					
-					String postCategory = contactController2.selectPostCategory(postNo);
-					
-					
-					
-					reportDTO reportDTO = new reportDTO();
-				
-					reportDTO.setReportCategory(text);
-					reportDTO.setBroadType(postCategory);
-					reportDTO.setBroadNo(postNo);
-					reportDTO.setReportMemberNo(1 /* 싱글톤으로 저장된 로그인된 멤버 번호 */);
-					reportDTO.setReportedMemberNo(getMemberNo /* 댓글 작성자 */);
-					
-					contactController2.reportComment(reportDTO);
+			if(getMemberNo != 1 /* 로그인된 번호 */) {
+				reportBtn[i].addActionListener(new ActionListener() {
 
-					System.out.println("신고 팝업창 띄우기");
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("신고 팝업창 띄우기");
+						String report = (String)JOptionPane.showInputDialog("신고 내용을 입력하세요.");
+						System.out.println(report);
 
-				}
-			});
+						ContactController2 contactController2 = new ContactController2();
+
+						String postCategory = contactController2.selectPostCategory(postNo);
+
+
+
+						reportDTO reportDTO = new reportDTO();
+
+						reportDTO.setReportCategory(report);
+						reportDTO.setBroadType(postCategory);
+						reportDTO.setBroadNo(postNo);
+						reportDTO.setReportMemberNo(1 /* 싱글톤으로 저장된 로그인된 멤버 번호 */);
+						reportDTO.setReportedMemberNo(getMemberNo /* 댓글 작성자 */);
+
+						contactController2.reportComment(reportDTO);
+
+
+
+					}
+				});
+			}
 			downPanel.add(reportBtn[i]);
 			y += 62;
+
 		}
 	}
-	
 	/* 댓글작성 시간 나타내는 라벨 */
 	public void commentsTime(int postNo) {
 
@@ -673,7 +674,7 @@ public class SelectedComment extends JFrame {
 		for(int i = 0; i < commentListDTO.size(); i++) {
 
 			commentInfo = commentListDTO.get(i);
-			
+
 			commentsTime = new JLabel[commentListDTO.size()];
 			commentsTime[i] = new JLabel();
 			commentsTime[i].setLayout(null);
@@ -693,9 +694,9 @@ public class SelectedComment extends JFrame {
 		CommentsDTO commentInfo = null;
 
 		for(int i = 0; i < commentListDTO.size(); i++) {
-			
+
 			commentInfo = commentListDTO.get(i);
-			
+
 			profilePictrue = new JLabel[commentListDTO.size()];
 			profilePictrue[i] = new JLabel();
 			profilePictrue[i].setLayout(null);
@@ -729,7 +730,7 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-	
+
 	/* 댓글삭제하는 버튼 */
 	public void deleteBtn(int postNo) {
 
@@ -740,7 +741,7 @@ public class SelectedComment extends JFrame {
 		CommentsDTO commentInfo = null;
 
 		for(int i = 0; i < commentListDTO.size(); i++) {
-			
+
 			commentInfo = commentListDTO.get(i);
 
 			deleteBtn = new JButton[commentListDTO.size()];
@@ -777,11 +778,11 @@ public class SelectedComment extends JFrame {
 			y += 62;
 		}
 	}
-	
 
-	
 
-	
+
+
+
 	//			nextPanel.add(updateBtn[i]);
 	//			nextPanel.add(deleteBtn[i]);
 	//			nextPanel.add(profilePictrue[i]);
@@ -792,7 +793,7 @@ public class SelectedComment extends JFrame {
 	//			nextPanel.add(commentsTime[i]);
 	//			nextPanel.add(commentList[i]);
 
-	
+
 
 
 
