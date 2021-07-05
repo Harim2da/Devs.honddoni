@@ -17,7 +17,7 @@ public class MemberRegistDTO implements java.io.Serializable{
 	private String memberAccess;
 	private String memRegistDate;
 	private String memWithdrawDate;
-	private String memberCharacter;
+	private int memberCharacter;
 	private int profileCode;
 	
 	public MemberRegistDTO() {}
@@ -25,7 +25,7 @@ public class MemberRegistDTO implements java.io.Serializable{
 	public MemberRegistDTO(int memberNo, String memberId, String memberPassword, String memberName, String memberBirth,
 			String memberGender, String memberAddress, String memberNickname, String memberPhone, String memberEmail,
 			String memberStatus, String memberProfile, String memberAccess, String memRegistDate,
-			String memWithdrawDate, String memberCharacter, int profileCode) {
+			String memWithdrawDate, int memberCharacter, int profileCode) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
@@ -166,11 +166,11 @@ public class MemberRegistDTO implements java.io.Serializable{
 		this.memWithdrawDate = memWithdrawDate;
 	}
 
-	public String getMemberCharacter() {
+	public int getMemberCharacter() {
 		return memberCharacter;
 	}
 
-	public void setMemberCharacter(String memberCharacter) {
+	public void setMemberCharacter(int memberCharacter) {
 		this.memberCharacter = memberCharacter;
 	}
 

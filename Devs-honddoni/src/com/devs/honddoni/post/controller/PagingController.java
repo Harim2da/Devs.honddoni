@@ -165,14 +165,11 @@ public class PagingController {
 	// ============ 공지게시판에서 사용 ============ 
 	
 	/* 공지 게시판 갯수 불러오기 컨트롤러*/
-	public void NoticeWholePostNum() {
+	public int NoticeWholePostNum() {
 
 		int result = pagingService.NoticeWholePostNum();
 
-		PageInfoPostDTO dto = new PageInfoPostDTO();
-
-		dto.setTotalCount(result);
-		
+		return result;		
 	}
 	
 	/* 공지 게시판 리스트 불러오기 컨트롤러*/
