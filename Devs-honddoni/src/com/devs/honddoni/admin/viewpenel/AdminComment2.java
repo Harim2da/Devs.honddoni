@@ -1,6 +1,7 @@
 package com.devs.honddoni.admin.viewpenel;
 
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,17 +10,19 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//관리자 로그아웃 화면
 
-public class AdminList2 {
+
+
+public class AdminComment2 {
+	
+	//신고된 댓글 확인
 	
 	MainFrame1 MainFrame = new MainFrame1();
 	
 	private JButton btn1, btn2, btn3, btn4, btn5;
+	private JLabel lb1,lb2;
 	
-	private JLabel lb1, lb2;
-	
-	public AdminList2() {
+	public AdminComment2() {
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -44,34 +47,27 @@ public class AdminList2 {
 	     btn0.setContentAreaFilled(false);
 	     btn0.setBorderPainted(false);
 	     
-		
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\Admin2-1.png");
+	       //게시글 첫번째
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\CommentList1.png");
 	       JButton btn1 = new JButton(img1);
 	       
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Admin2-2.png");
+	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\CommentList2.png");
 	       JButton btn2 = new JButton(img2);
 	       
-	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Admin2-3.png");
-	       JButton btn3 = new JButton(img3);
+	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\CommentList3.png");
+	       JLabel btn3 = new JLabel(img3);
 	       
-	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\Admin2-4.png");
+	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\CommentWriteNew.png");
 	       JButton btn4 = new JButton(img4);
 	       
-	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Admin2-5.png");
+	       //삭제완료 팝업
+	       ImageIcon  img5 = new ImageIcon ("image\\\\admin\\\\DelitePop.png");
 	       JButton btn5 = new JButton(img5);
 	       
-	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AdminNext.png");
-	       JButton btn6 = new JButton(img6);
+	       
+	       
 	       
 
-	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\LogoutGroup.png");
-	       JButton btn7 = new JButton(img7);
-	       
-	     
-	       
-	       
-	       
-	       
 	       
 	       
 	   
@@ -82,32 +78,21 @@ public class AdminList2 {
 	       bottomPanel.add(btn3);
 	       bottomPanel.add(btn4);
 	       bottomPanel.add(btn5);
-	       bottomPanel.add(btn6);
-	       bottomPanel.add(btn7);
 	       
 	    
 	       //버튼 위치 조정
-	       btn1.setBounds(35, 24, 430, 96);
-	       btn2.setBounds(33, 153, 430, 96);
-	       btn3.setBounds(33, 283, 430, 96);
-	       btn4.setBounds(33, 413, 430, 96);
-	       btn5.setBounds(33, 543, 430, 96);
-	       btn6.setBounds(221, 698, 56, 25);
-	       btn7.setBounds(29, 218, 445, 223);
-	       btn1.setBorderPainted(false);
-	       btn2.setBorderPainted(false);
-	       btn3.setBorderPainted(false);
-	       btn4.setBorderPainted(false);
-	       
-	       
-	       
+	       btn1.setBounds(35, 52, 433, 61);
+	       btn2.setBounds(35, 119, 433, 61);
+	       btn3.setBounds(34, 186, 433, 61);
+	       btn4.setBounds(35, 17, 71, 21);
+	       btn5.setBounds(29, 205, 445, 233);//삭제완료 팝업
 	   
 	     
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);
 	       MainFrame.setVisible(true); //창을 보이게함
 	       
-	       btn7.addActionListener(new ActionListener() {
+	       btn1.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
 //	    		   login2 login2 = new login2();
@@ -115,9 +100,37 @@ public class AdminList2 {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Login();
-	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   new Login2();
+	    		   bottomPanel.setVisible(false);
+//	    		  MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn0.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminList1();
+	    		   bottomPanel.setVisible(false);
+//	    		  MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn5.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminList1();
+	    		   bottomPanel.setVisible(false);
+//	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
 	}

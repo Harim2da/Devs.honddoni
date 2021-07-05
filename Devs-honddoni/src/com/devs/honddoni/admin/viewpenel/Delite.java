@@ -40,9 +40,17 @@ public class Delite {
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
 	     
+	     ImageIcon img01 = new ImageIcon("image\\admin\\Delite.png");
+	     JLabel lb01 = new JLabel(img01);
+	     
 	     //상단패널에 혼또니마크로 뒤로가기 버튼
 	     topPanel.add(btn0);
 	     btn0.setBounds(303, 27, 172, 70);
+	     btn0.setContentAreaFilled(false);
+	     btn0.setBorderPainted(false);
+	     //상단에 페이지 이름
+	     topPanel.add(lb01);
+	     lb01.setBounds(32, 56, 263, 33);
 		
 	     	//첫번쨰 탈퇴회원 정보
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\DeliteData1.png");//탈퇴회원정보
@@ -56,9 +64,9 @@ public class Delite {
 	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\DeliteData3.png");
 	       JButton btn3 = new JButton(img3);
 	       
-//	       ///네번쨰 탈퇴회원 정보
-//	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\DeliteData3.png");
-//	       JButton btn4 = new JButton(img4);
+	       ///네번쨰 탈퇴회원 정보
+	       ImageIcon  img05 = new ImageIcon ("image\\\\admin\\\\DeliteData5.png");
+	       JButton btn05 = new JButton(img05);
 	       
 //	       //네번째 탈퇴회원 정보
 //	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\DeliteData4.png");
@@ -98,17 +106,18 @@ public class Delite {
 	       bottomPanel.add(btn8);//다음페이지
 	       bottomPanel.add(btn9);//검색버튼
 //	       topPanel.add(btn10);
+	       bottomPanel.add(btn05);//5번쨰 탈퇴회원
 	       //버튼 위치 조정
-	       btn1.setBounds(35, 143, 430, 121);
-	       btn2.setBounds(34, 262, 430, 121);
-	       btn3.setBounds(34, 380, 430, 121);
+	       btn1.setBounds(35, 143, 430, 104);
+	       btn2.setBounds(34, 262, 430, 104);
+	       btn3.setBounds(34, 380, 430, 104);
 //	       btn4.setBounds(33, 498, 430, 121);
 //	       btn5.setBounds(34, 616, 430, 104);
 	       btn5.setBounds(34, 498, 430, 104);
 //	       btn7.setBounds(226, 724, 56, 25);//뒤로가기버튼
 	       btn8.setBounds(181, 95, 136, 21);//다음페이지
 	       btn9.setBounds(31, 19, 430, 62);//다음페이지
-	   
+	       btn05.setBounds(34, 617, 430, 104);
 	     
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);

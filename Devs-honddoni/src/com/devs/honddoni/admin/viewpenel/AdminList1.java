@@ -39,6 +39,9 @@ public class AdminList1 {
 	     
 	     topPanel.add(btn0);
 	     btn0.setBounds(303, 27, 172, 70);
+	     btn0.setContentAreaFilled(false);
+	     btn0.setBorderPainted(false);
+	     
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\Admin2-1.png");
 	       JButton btn1 = new JButton(img1);
 	       
@@ -48,6 +51,7 @@ public class AdminList1 {
 	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Admin2-3.png");
 	       JButton btn3 = new JButton(img3);
 	       
+	       //신고된 댓글
 	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\Admin2-4.png");
 	       JButton btn4 = new JButton(img4);
 	       
@@ -72,6 +76,10 @@ public class AdminList1 {
 	       btn4.setBounds(33, 413, 430, 96);
 	       btn5.setBounds(33, 543, 430, 96);
 	       btn6.setBounds(221, 698, 56, 25);
+	       btn1.setBorderPainted(false);
+	       btn2.setBorderPainted(false);
+	       btn3.setBorderPainted(false);
+	       btn4.setBorderPainted(false);
 	       
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);
@@ -156,6 +164,20 @@ public class AdminList1 {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn4.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AdminComment();
 	    		   bottomPanel.setVisible(false); 
 	    		   MainFrame.setVisible(false);
 	    	   }

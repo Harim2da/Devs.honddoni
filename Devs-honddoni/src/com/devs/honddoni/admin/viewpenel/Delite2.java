@@ -37,15 +37,25 @@ public class Delite2 {
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
 	     
+	     ImageIcon img01 = new ImageIcon("image\\admin\\Delite.png");
+	     JLabel lb01 = new JLabel(img01);
+	     
+	     //상단패널에 혼또니마크로 뒤로가기 버튼
 	     topPanel.add(btn0);
 	     btn0.setBounds(303, 27, 172, 70);
+	     btn0.setContentAreaFilled(false);
+	     btn0.setBorderPainted(false);
+	     
+	     //상단에 페이지 이름
+	     topPanel.add(lb01);
+	     lb01.setBounds(32, 56, 263, 33);
 		
 	     
 	     	//첫번째 탈퇴회원
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\DeliteData1.png");//탈퇴회원정보
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\Delite2-1.png");//탈퇴회원정보
 	       JButton btn1 = new JButton(img1);
 	       	//두번째 탈퇴회원
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\DeliteData2.png");
+	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Delite2-2.png");
 	       JButton btn2 = new JButton(img2);
 	       
 	       
@@ -71,8 +81,8 @@ public class Delite2 {
 	       bottomPanel.add(btn8);//다음페이지
 	       bottomPanel.add(btn9);//검색버튼
 	       //버튼 위치 조정
-	       btn1.setBounds(35, 143, 430, 121);
-	       btn2.setBounds(34, 262, 430, 121);
+	       btn1.setBounds(32, 143, 430, 104);
+	       btn2.setBounds(32, 262, 430, 104);
 //	       lb1.setBounds(56, -17, 263, 33);
 	       btn8.setBounds(181, 95, 136, 21);//이전페이지
 	       btn9.setBounds(31, 19, 430, 62);//다음페이지

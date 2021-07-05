@@ -44,6 +44,9 @@ public class AdminList {
 	     
 	     topPanel.add(btn0);
 	     btn0.setBounds(303, 27, 172, 70);
+//	     btn0.setOpaque(false);
+	     btn0.setContentAreaFilled(false);
+	     btn0.setBorderPainted(false);
 	     
 	       //탈퇴 요청회원 데이터 확인
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\Admin1-1.png");
@@ -62,7 +65,7 @@ public class AdminList {
 	       JButton btn4 = new JButton(img4);
 	       
 	       //관리자 목록2번째로 넘거가기
-	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AdminNext.png");
+	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\NextButtonNew.png");
 	       JButton btn5 = new JButton(img5);
 	       
 	   
@@ -80,7 +83,15 @@ public class AdminList {
 	       btn3.setBounds(34, 356, 430, 121);
 	       btn4.setBounds(33, 520, 430, 121);
 	       btn5.setBounds(221, 698, 56, 25);
-	   
+	       //테두리제거
+	       btn1.setBorderPainted(false);
+	       btn2.setBorderPainted(false);
+	       btn3.setBorderPainted(false);
+	       btn4.setBorderPainted(false);
+	       btn5.setBorderPainted(false);
+	       btn5.setContentAreaFilled(false);
+	       
+	       
 	     
 	       //컨테이너에 패널 추가
 	       mainFrame.add(bottomPanel);

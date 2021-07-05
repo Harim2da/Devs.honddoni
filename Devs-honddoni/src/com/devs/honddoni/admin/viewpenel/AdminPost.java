@@ -39,6 +39,9 @@ public class AdminPost {
 	     
 	     topPanel.add(btn0);
 	     btn0.setBounds(303, 27, 172, 70);
+	     btn0.setContentAreaFilled(false);
+	     btn0.setBorderPainted(false);
+	     
 		
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\AdminPost1.png");
 	       JButton btn1 = new JButton(img1);
