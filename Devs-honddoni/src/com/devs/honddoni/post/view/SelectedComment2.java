@@ -16,10 +16,14 @@ import com.devs.honddoni.common.PagenationComments;
 import com.devs.honddoni.common.dto.CommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.reportDTO;
+import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.ContactController2;
 import com.devs.honddoni.post.controller.PagingController;
 
-public class SelectedComment2 extends JFrame {
+public class SelectedComment2 extends JPanel {
+	
+	private SelectedComment2 selectedComment2;
+	private MainFrame frame;
 
 	private JPanel downPanel1;									//하단패널
 	private JButton commentWriteBtn;							//댓글 작성
@@ -43,7 +47,10 @@ public class SelectedComment2 extends JFrame {
 	private int userNum = 1;									//로그인된 유저 번호
 
 	/* 프레임을 제외한 나머지를 합친 것 */
-	public SelectedComment2() {
+	public SelectedComment2(MainFrame frame) {
+		
+		this.frame = frame;
+		this.selectedComment2 = this;
 		
 		/* 패널 */
 		downPanel1();
@@ -76,6 +83,9 @@ public class SelectedComment2 extends JFrame {
 		commentLongbarLabel.add(afterNumber);
 		commentLongbarLabel.add(beforeBtn);
 		commentLongbarLabel.add(afterBtn);
+		
+//		frame.add(upPanel);
+		frame.add(downPanel1);
 		
 	}
 	
@@ -186,8 +196,8 @@ public class SelectedComment2 extends JFrame {
 				}
 				
 				downPanel1.setVisible(false);
-				SelectedComment2 cm = new SelectedComment2();
-				Ctest2.frame1.add(cm.getDownPanel1());
+				SelectedComment2 cm = new SelectedComment2(frame);
+				frame.add(cm.getDownPanel1());
 
 				beforeBtn();
 				beforeNumber();
@@ -234,8 +244,8 @@ public class SelectedComment2 extends JFrame {
 				}
 
 				downPanel1.setVisible(false);
-				SelectedComment2 cm = new SelectedComment2();
-				Ctest2.frame1.add(cm.getDownPanel1());
+				SelectedComment2 cm = new SelectedComment2(frame);
+				frame.add(cm.getDownPanel1());
 
 				afterBtn(postNo);
 				beforeBtn();
