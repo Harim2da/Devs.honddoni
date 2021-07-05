@@ -179,7 +179,7 @@ public class PagingDAO {
 				row.setPostDelStatus(rset.getString("POST_DEL_STATUS"));
 				row.setPostNumberOfPeopleNumber(rset.getInt("POST_NUMBER_OF_PEOPLE"));
 				row.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
-				row.setMemberNickname(rset.getString("MEMBER_PROFILE"));
+				row.setMemberProfile(rset.getString("MEMBER_PROFILE"));
 				
 				postList.add(row);
 				
