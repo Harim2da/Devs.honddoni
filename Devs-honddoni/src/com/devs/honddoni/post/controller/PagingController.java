@@ -160,5 +160,37 @@ public class PagingController {
 		
 		return commentsList;
 	}
+	
+	// ============ 공지게시판에서 사용 ============ 
+	
+	/* 공지 게시판 갯수 불러오기 컨트롤러*/
+	public void NoticeWholePostNum() {
+
+		int result = pagingService.NoticeWholePostNum();
+
+		PageInfoPostDTO dto = new PageInfoPostDTO();
+
+		dto.setTotalCount(result);
+		
+	}
+	
+	/* 공지 게시판 리스트 불러오기 컨트롤러*/
+	public List<PostDTO> NoticePostList(int pageNo){
+		
+		PageInfoPostDTO dto = new PageInfoPostDTO();
+		int totalCount = dto.getTotalCount();
+		PagenationPost pagenationPost = new PagenationPost();
+		
+		int limit = 5;
+		
+		int buttonAmount = 2;
+		
+		PageInfoPostDTO pageInfo = pagenationPost.getPostPageInfo(pageNo, totalCount, limit, buttonAmount);
+		
+		List<PostDTO> postList = pagingService.NoticePostList(pageInfo);
+
+		return postList;
+		
+	}
 
 }

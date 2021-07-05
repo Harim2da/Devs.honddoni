@@ -1,6 +1,6 @@
-package com.devs.honddoni.admin.dto;
+package com.devs.honddoni.admin.model.dto;
 
-public class AdminDTO {
+public class AdminDTO implements java.io.Serializable {
 	
 	private int POST_NO;
 	private String POST_NAME;

@@ -118,4 +118,27 @@
            ) V
       WHERE V.순서 BETWEEN ? AND ?
       </entry>
+      <entry key="selectWholeNoticePostNum">
+      SELECT /* com.devs.honddoni.post.model.dao.PagingDAO#NoticeWholePostNum() */
+	         COUNT(*)
+	    FROM TBL_POST
+	   WHERE POST_CATEGORY = '공지'
+      </entry>
+      <entry key="NoticePostList">
+      SELECT /* com.devs.honddoni.post.model.dao.PagingDAO#NoticePostList() */
+             V.*
+        FROM (SELECT P.POST_NO
+                   , P.POST_NAME
+                   , P.POST_CONTENTS
+                   , P.POST_CATEGORY
+                   , P.POST_MEMBER_NO
+                   , P.POST_WRITINGDATE
+                   , P.POST_WRITINGTIME
+                   , P.POST_DEL_STATUS
+                   , RANK() OVER(ORDER BY POST_NO DESC) 순서
+        FROM TBL_POST P
+       WHERE P.POST_CATEGORY = '공지'
+           ) V
+      WHERE V.순서 BETWEEN ? AND ?
+      </entry>
 </properties>

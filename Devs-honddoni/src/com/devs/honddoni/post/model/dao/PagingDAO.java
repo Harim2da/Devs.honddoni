@@ -334,5 +334,80 @@ public class PagingDAO {
 		return commentsList;
 	}
 
+	
+	// ============= 공지게시판 사용 ========
+	/* 공지 게시판 갯수 불러오기 DAO */
+	public int NoticeWholePostNum(Connection con) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = prop.getProperty("selectWholeNoticePostNum");
+		try {
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT(*)");
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+				
+		return result;
+	}
+	
+	/* 공지 게시판 리스트 불러오기 DAO */
+	public List<PostDTO> NoticePostList(Connection con, PageInfoPostDTO pageInfo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		PostDTO row = null;
+		List<PostDTO> postList = null;
+		
+		String query = prop.getProperty("NoticePostList");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, pageInfo.getStartRow()); 
+			pstmt.setInt(2, pageInfo.getEndRow()); 
+			
+			rset = pstmt.executeQuery();
+			
+			postList = new ArrayList<>();
+			
+			if(rset.next()) {
+				row = new PostDTO();
+				System.out.println("PostDTO() : " + row);
+				
+				row.setPostNo(rset.getInt("POST_NO"));
+				row.setPostName(rset.getString("POST_NAME"));
+				row.setPostContents(rset.getString("POST_CONTENTS"));
+				row.setPostCategory(rset.getString("POST_CATEGORY"));
+				row.setPostMemberNo(rset.getInt("POST_MEMBER_NO"));
+				row.setPostWritingDate(rset.getString("POST_WRITINGDATE"));
+				row.setPostWritingTime(rset.getString("POST_WRITINGTIME"));
+				row.setPostDelStatus(rset.getString("POST_DEL_STATUS"));
+				
+				postList.add(row);
+			}
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return postList;		
+		
+		
+	}
+
 
 }

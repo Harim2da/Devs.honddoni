@@ -143,9 +143,38 @@ public class PagingService {
 		return commentsList;
 	}
 
+	
+	// ============ 공지게시판 사용 =========
+		
+	/* 공지게시판 갯수 불러오기 service */
+	public int NoticeWholePostNum() {
+		
+		Connection con = getConnection();
 
+		int result = pagingDAO.NoticeWholePostNum(con);
 
+		close(con);
 
+		return result;
+	}
+	
+	/* 공지 게시판 리스트 불러오기 service */
+	public List<PostDTO> NoticePostList(PageInfoPostDTO pageInfo) {
+		
+		Connection con = getConnection();
+
+		List<PostDTO> postList = pagingDAO.NoticePostList(con, pageInfo);
+
+		if(postList != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+
+		return postList;
+	}
 
 
 
