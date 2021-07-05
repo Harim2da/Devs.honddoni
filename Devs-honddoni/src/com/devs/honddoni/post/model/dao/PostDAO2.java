@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
@@ -102,6 +103,30 @@ public class PostDAO2 {
 		}
 
 		return result;
+	}
+
+	public String selectPostCategory(Connection con, int postNo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = prop.getProperty("selectPostCategory");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, postNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getString("COUNT(*)");
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} close(pstmt);
+		
+		return null;
 	}
 
 }

@@ -3,23 +3,23 @@ package com.devs.honddoni.common.dto;
 public class reportDTO {
 
 	private int reportNo;				//신고번호
-	private String category;			//신고 유형
+	private String reportCategory;		//신고 유형
 	private String broadType;			//글 유형
 	private int broadNo;				//글 번호
 	private int reportMemberNo;			//신고자 회원번호
-	private int reportedMeberNo;		//피신고자 회원번호
+	private int reportedMemberNo;		//피신고자 회원번호
 	
 	public reportDTO() {}
 
-	public reportDTO(int reportNo, String category, String broadType, int broadNo, int reportMemberNo,
-			int reportedMeberNo) {
+	public reportDTO(int reportNo, String reportCategory, String broadType, int broadNo, int reportMemberNo,
+			int reportedMemberNo) {
 		super();
 		this.reportNo = reportNo;
-		this.category = category;
+		this.reportCategory = reportCategory;
 		this.broadType = broadType;
 		this.broadNo = broadNo;
 		this.reportMemberNo = reportMemberNo;
-		this.reportedMeberNo = reportedMeberNo;
+		this.reportedMemberNo = reportedMemberNo;
 	}
 
 	public int getReportNo() {
@@ -30,12 +30,12 @@ public class reportDTO {
 		this.reportNo = reportNo;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getReportCategory() {
+		return reportCategory;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setReportCategory(String reportCategory) {
+		this.reportCategory = reportCategory;
 	}
 
 	public String getBroadType() {
@@ -62,19 +62,24 @@ public class reportDTO {
 		this.reportMemberNo = reportMemberNo;
 	}
 
-	public int getReportedMeberNo() {
-		return reportedMeberNo;
+	public int getReportedMemberNo() {
+		return reportedMemberNo;
 	}
 
-	public void setReportedMeberNo(int reportedMeberNo) {
-		this.reportedMeberNo = reportedMeberNo;
+	public void setReportedMemberNo(int reportedMemberNo) {
+		this.reportedMemberNo = reportedMemberNo;
 	}
 
 	@Override
 	public String toString() {
-		return "reportDTO [reportNo=" + reportNo + ", category=" + category + ", broadType=" + broadType + ", broadNo="
-				+ broadNo + ", reportMemberNo=" + reportMemberNo + ", reportedMeberNo=" + reportedMeberNo + "]";
+		return "reportDTO [reportNo=" + reportNo + ", reportCategory=" + reportCategory + ", broadType=" + broadType
+				+ ", broadNo=" + broadNo + ", reportMemberNo=" + reportMemberNo + ", reportedMemberNo="
+				+ reportedMemberNo + "]";
 	}
+
+	
+
+	
 	
 	
 }

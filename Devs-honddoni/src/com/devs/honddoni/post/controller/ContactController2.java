@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.devs.honddoni.common.dto.CommentsDTO;
+import com.devs.honddoni.common.dto.reportDTO;
 import com.devs.honddoni.post.model.service.PostService2;
 
 public class ContactController2 {
@@ -62,4 +63,21 @@ public class ContactController2 {
 		}
 
 	}
+	
+	public String selectPostCategory(int postNo) {
+		
+		String result = postService2.selectPostCategory(postNo);
+		
+		return result;
+		
+	}
+
+	public void reportComment(reportDTO reportDTO) {
+		
+		
+		
+		
+	}
+
+
 }

@@ -624,31 +624,35 @@ public class SelectedComment extends JFrame {
 			reportBtn[i].setBorderPainted(false);
 			reportBtn[i].setBounds(440, y + 37, 23, 23);
 			
-			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
+			
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
+			
 			
 			reportBtn[i].addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-//					System.out.println("댓글 수정란 호출");
-//					String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
-//					System.out.println(text);
-//					reportDTO reportDTO = new reportDTO();
-//
-//
-//					reportDTO.setCategory(text);
-//					reportDTO.setMemberNo(getMemberNo);
-//					reportDTO.setCommentsContents(text);
-//					//						System.out.println("conmmentListDTO CommentNo  : " + commentListDTO.get(i).getCommentsNo());
-//					//						System.out.println("conmmentListDTO MemberNo  : " + commentListDTO.get(i).getMemberNo());
-//					System.out.println("getCommentsNo : " + getCommentsNo);
-//
-//
-//					ContactController2 contactController2 = new ContactController2();
-//					contactController2.updateComment(updateComment);
-//
-//					System.out.println("신고 팝업창 띄우기");
+					System.out.println("댓글 수정란 호출");
+					String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
+					System.out.println(text);
+					
+					ContactController2 contactController2 = new ContactController2();
+					
+					String postCategory = contactController2.selectPostCategory(postNo);
+					
+					
+					
+					reportDTO reportDTO = new reportDTO();
+				
+					reportDTO.setReportCategory(text);
+					reportDTO.setBroadType(postCategory);
+					reportDTO.setBroadNo(postNo);
+					reportDTO.setReportMemberNo(1 /* 싱글톤으로 저장된 로그인된 멤버 번호 */);
+					reportDTO.setReportedMemberNo(getMemberNo /* 댓글 작성자 */);
+					
+					contactController2.reportComment(reportDTO);
+
+					System.out.println("신고 팝업창 띄우기");
 
 				}
 			});
