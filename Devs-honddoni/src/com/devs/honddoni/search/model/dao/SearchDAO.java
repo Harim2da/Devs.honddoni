@@ -60,6 +60,8 @@ public class SearchDAO {
 				post.setLocalName(rset.getString("LOCAL_NAME"));  //지역
 				post.setCategoryName(rset.getString("CATEGORY_NAME"));  //카테고리이름
 				post.setPostDelStatus(rset.getString("POST_DEL_STATUS"));  
+				post.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
+				post.setMemberProfile(rset.getString("MEMBER_PROFILE"));
 				post.setPostNumberOfPeopleNumber(rset.getInt("POST_NUMBER_OF_PEOPLE"));
 				
 				

@@ -20,6 +20,7 @@ public class FreeBoard  {
 //	MainFrame frame = new MainFrame(); //메인프레임
 	
 //	JFrame frame = new JFrame();
+// 메인 프레임 말고 이 자체 하단 패널을 불러와서 집어 넣어야함	
 	
 	private JPanel mainPanel;
 	private JPanel topPanel;
@@ -68,8 +69,11 @@ public class FreeBoard  {
 		bottomLabel.setBackground(Color.white);
 		bottomLabel.setIcon(new ImageIcon("image/search/writeFreeBoard"));
 		
-		frame.repaint();
-		frame.revalidate();
+//		frame.repaint();
+//		frame.revalidate();
+		bottomPanel.repaint();
+		bottomPanel.revalidate();
+		
 	}
 	
 	// 게시판 종류 선택
@@ -130,8 +134,10 @@ public class FreeBoard  {
 //		this.getIgnoreRepaint();
 //		this.revalidate();
 		
-		frame.repaint();
-		frame.revalidate();
+//		frame.repaint();
+//		frame.revalidate();
+		bottomPanel.repaint();
+		bottomPanel.revalidate();
 	}
 	
 	
