@@ -1,5 +1,7 @@
 package com.devs.honddoni.common.mainframe;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
 
 public class FrameManager {
@@ -19,8 +21,8 @@ public class FrameManager {
 	
 	/* 패널 변경 메소드 */
 
-	public static void changePanel(MainFrame frame, JPanel oldPanel, JPanel newPanel) {	
-		frame.remove(oldPanel);
+	public static void changePanel(MainFrame frame, ActionListener actionListener, JPanel newPanel) {	
+		frame.remove(actionListener);
 		frame.add(newPanel);
 		frame.repaint();
 		frame.revalidate();
