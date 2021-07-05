@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 public class AdminAll {
 	
-		//관리자 모든 게시글 조회
+		//신고당한게시글 조회
 		
 		MainFrame1 MainFrame = new MainFrame1();
 		
@@ -40,29 +40,39 @@ public class AdminAll {
 			topPanel.setBackground(Color.WHITE);
 			MainFrame.add(topPanel);
 			
+			//상단패널의 두로가기버튼
 			 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 		     JButton btn0 = new JButton(img0);
 		     
+		     //상단패널 뒤로가기버튼
 		     topPanel.add(btn0);
 		     btn0.setBounds(303, 27, 172, 70);
-			
+		     
+		     //버튼만들기
+		     	
+		       //첫번째 게시글
 			   ImageIcon img1 = new ImageIcon ("image\\admin\\AllPost1.png");
 		       JButton btn1 = new JButton(img1);
 		       
+		       //두번째 게시글
 		       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\AllPost2.png");
 		       JButton btn2 = new JButton(img2);
 		       
+		       //세번째 게시글
 		       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\AllPost3.png");
 		       JButton btn3 = new JButton(img3);
 		       
+		       //네번째 게시글
 		       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\AllPost4.png");
 		       JButton btn4 = new JButton(img4);
 		       
+		       //5번째 게시글
 		       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllPost5.png");
 		       JButton btn5 = new JButton(img5);
 		       
-		       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
-		       JLabel lb1 = new JLabel();
+//		       //전체게시글 조회 라벨
+//		       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
+//		       JLabel lb1 = new JLabel();
 			
 //				JLabel lb2 = new JLabel("사진");//프로필사진 
 //				JLabel lb3 = new JLabel("닉네임:");//닉네임
@@ -89,7 +99,7 @@ public class AdminAll {
 		       bottomPanel.add(btn3);
 		       bottomPanel.add(btn4);
 		       bottomPanel.add(btn5);
-		       bottomPanel.add(lb1);
+//		       topPanel.add(lb1);
 			    
 //			    bottomPanel.add(lb2);//프로필
 //			    bottomPanel.add(lb3);//닉네임
@@ -108,13 +118,13 @@ public class AdminAll {
 //			    bottomPanel.add(t3);//글제목
 //			    bottomPanel.add(t4);//글제목
 		    
-		       //버튼 위치 조정
+		       //첫번째부터 다섯번째까지 게시글버튼
 		       btn1.setBounds(35, 143, 430, 121);
 		       btn2.setBounds(34, 262, 430, 121);
 		       btn3.setBounds(34, 380, 430, 121);
 		       btn4.setBounds(33, 498, 430, 121);
 		       btn5.setBounds(34, 616, 430, 104);
-		       lb1.setBounds(56, 0, 263, 33);
+//		       lb1.setBounds(56, 0, 263, 33);
 			    
 //			    lb2.setBounds(53, 172, 36, 39);//프로필 위치
 //			    lb3.setBounds(92, 168, 100, 43);//닉네임 위치
@@ -134,23 +144,24 @@ public class AdminAll {
 //			    t3.setBounds(54, 441, 395, 28);//제목위치
 //			    t4.setBounds(54, 559, 395, 28);//제목위치
 			    
-//		       //컨테이너에 패널 추가
-//		       MainFrame.add(bottomPanel);
-//		       MainFrame.setVisible(true); //창을 보이게함
-//		       
-//		       btn1.addActionListener(new ActionListener() {
-//		    	   @Override
-//		    	   public void actionPerformed(ActionEvent e) {
-////		    		   login2 login2 = new login2();
-////		    		   JPanel.add(login2);
-////		    		   new login2();
-////		    		   bottomPanel.setVisible(false);
-//		    		   
-//		    		   new Login2();
+		       //컨테이너에 패널 추가
+		       MainFrame.add(bottomPanel);
+		       MainFrame.setVisible(true); //창을 보이게함
+		       
+		       //뒤로가기 액션
+		       btn0.addActionListener(new ActionListener() {
+		    	   @Override
+		    	   public void actionPerformed(ActionEvent e) {
+//		    		   login2 login2 = new login2();
+//		    		   JPanel.add(login2);
+//		    		   new login2();
 //		    		   bottomPanel.setVisible(false);
-////		    		  MainFrame.setVisible(false);
-//		    	   }
-//		       });
+		    		   
+		    		   new AdminList1();
+		    		   bottomPanel.setVisible(false);
+//		    		  MainFrame.setVisible(false);
+		    	   }
+		       });
 		}
 	}
 

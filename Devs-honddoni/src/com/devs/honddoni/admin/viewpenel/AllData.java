@@ -43,6 +43,7 @@ public class AllData {
 		topPanel.setBackground(Color.WHITE);
 		MainFrame.add(topPanel);
 		
+		//상단 뒤로가기버튼
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
 	     
@@ -69,17 +70,27 @@ public class AllData {
 	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllData5.png");//다섯번째 회원가입자데이터
 	       JButton btn5 = new JButton(img5);
 	       
+	       //탈퇴요청 데이터확인 라벨
 	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
 	       JLabel lb1 = new JLabel();
 	       
 //	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기버튼
 //	       JButton btn7 = new JButton(img7);
 	       
-	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기버튼
-	       JButton btn8 = new JButton(img8);
+//	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기버튼
+//	       JButton btn8 = new JButton(img8);
 	       
+	       //검색마우스그림
 	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
 	       JButton btn10 = new JButton(img10);
+	       
+//	       //검색마우스그림//
+//	       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
+//	       JButton btn11 = new JButton(img11);
+	       
+	     //탈퇴회원 다음게시판넘어가기
+	       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findnext.png");//다음페이지
+	       JButton btn11 = new JButton(img11);
 	       
 	       
 	       
@@ -139,8 +150,10 @@ public class AllData {
 	       bottomPanel.add(btn3);
 	       bottomPanel.add(btn4);
 	       bottomPanel.add(btn5);
-	       bottomPanel.add(lb1);//
+	       topPanel.add(lb1);//
 	       bottomPanel.add(btn10);
+	       bottomPanel.add(btn11);
+//	       bottomPanel.add(btn11);
 //	       bottomPanel.add(btn7);//뒤로가기버튼
 	       
 //	       bottomPanel.add(lb2);//프로필
@@ -173,6 +186,9 @@ public class AllData {
 	       btn4.setBounds(33, 498, 430, 121);
 	       btn5.setBounds(34, 616, 430, 104);
 	       btn10.setBounds(31, 19, 430, 62);
+//	       btn11.setBounds(31, 19, 430, 62);
+	       lb1.setBounds(56, 83, 263, 33);
+	       btn11.setBounds(181, 95, 136, 21);
 	       
 //	       btn7.setBounds(226, 724, 56, 25);
 //	       lb1.setBounds(56, 0, 263, 33);
@@ -244,6 +260,20 @@ public class AllData {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn11.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AllData2();
 	    		   bottomPanel.setVisible(false); 
 	    		   MainFrame.setVisible(false);
 	    	   }

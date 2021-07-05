@@ -51,26 +51,32 @@ public class AllData2 {
 		
 			
 		
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\AllData1.png");//첫번째 회원가입자데이터
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\AllData2-1.png");//첫번째 회원가입자데이터
 	       JButton btn1 = new JButton(img1);
 	       
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\AllData2.png");//두번째 회원가입자데이터
-	       JButton btn2 = new JButton(img2);
-	       
-	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\AllData3.png");//세번째 회원가입자데이터
-	       JButton btn3 = new JButton(img3);
-	       
-	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\AllData4.png");//네번째 회원가입자데이터
-	       JButton btn4 = new JButton(img4);
-	       
-	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllData5.png");//다섯번째 회원가입자데이터
-	       JButton btn5 = new JButton(img5);
+//	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\AllData2.png");//두번째 회원가입자데이터
+//	       JButton btn2 = new JButton(img2);
+//	       
+//	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\AllData3.png");//세번째 회원가입자데이터
+//	       JButton btn3 = new JButton(img3);
+//	       
+//	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\AllData4.png");//네번째 회원가입자데이터
+//	       JButton btn4 = new JButton(img4);
+//	       
+//	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllData5.png");//다섯번째 회원가입자데이터
+//	       JButton btn5 = new JButton(img5);
 	       
 	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
 	       JLabel lb1 = new JLabel();
 	       
-	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");//뒤로가기버튼
-	       JButton btn7 = new JButton(img7);
+	       
+	       //첫번째 전체회원목록게시판으로 가는 버튼
+	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\FindBack.png");//다음페이지
+	       JButton btn8 = new JButton(img8);
+	       
+	       //검색마우스그림
+	       ImageIcon  img9 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
+	       JButton btn9 = new JButton(img9);
 	       
 	       
 	       
@@ -126,12 +132,14 @@ public class AllData2 {
 
 	       //패널에 버튼 추가
 	       bottomPanel.add(btn1);//회원1버튼
-	       bottomPanel.add(btn2);
-	       bottomPanel.add(btn3);
-	       bottomPanel.add(btn4);
-	       bottomPanel.add(btn5);
+//	       bottomPanel.add(btn2);
+//	       bottomPanel.add(btn3);
+//	       bottomPanel.add(btn4);
+//	       bottomPanel.add(btn5);
 	       bottomPanel.add(lb1);//
-	       bottomPanel.add(btn7);//뒤로가기버튼
+
+	       bottomPanel.add(btn8);//첫번째 회원정보 게시판으로 이동
+	       bottomPanel.add(btn9);
 	       
 //	       bottomPanel.add(lb2);//프로필
 //	       bottomPanel.add(lb3);//닉네임
@@ -158,11 +166,14 @@ public class AllData2 {
 	       
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 143, 430, 121);
-	       btn2.setBounds(34, 262, 430, 121);
-	       btn3.setBounds(34, 380, 430, 121);
-	       btn4.setBounds(33, 498, 430, 121);
-	       btn5.setBounds(34, 616, 430, 104);
-	       btn7.setBounds(226, 724, 56, 25);
+//	       btn2.setBounds(34, 262, 430, 121);
+//	       btn3.setBounds(34, 380, 430, 121);
+//	       btn4.setBounds(33, 498, 430, 121);
+//	       btn5.setBounds(34, 616, 430, 104);
+
+	       btn8.setBounds(181, 95, 136, 21);
+	       btn9.setBounds(31, 19, 430, 62);
+	       
 //	       lb1.setBounds(56, 0, 263, 33);
 //	       lb2.setBounds(53, 172, 36, 39);//프로필 위치
 //	       lb3.setBounds(92, 168, 100, 43);//닉네임 위치
@@ -209,19 +220,7 @@ public class AllData2 {
 	    	   }
 	       });
 	       
-	       btn7.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   new AdminList();
-	    		   bottomPanel.setVisible(false);
-//	    		  MainFrame.setVisible(false);
-	    	   }
-	       });
+	      
 	       
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
@@ -232,6 +231,20 @@ public class AllData2 {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn8.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new AllData();
 	    		   bottomPanel.setVisible(false); 
 	    		   MainFrame.setVisible(false);
 	    	   }
