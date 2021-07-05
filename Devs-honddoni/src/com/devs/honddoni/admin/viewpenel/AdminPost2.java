@@ -43,13 +43,13 @@ public class AdminPost2 {
 	     btn0.setBorderPainted(false);
 	     
 		
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\AdminPost1.png");
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\AdminPostNew1.png");
 	       JButton btn1 = new JButton(img1);
 	       
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\AdminPost2.png");
+	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\AdminPostNew2.png");
 	       JButton btn2 = new JButton(img2);
 	       
-	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\AdminPost3.png");
+	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\AdminPostNew3.png");
 	       JButton btn3 = new JButton(img3);
 	       
 //	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\AdminPost4.png");
@@ -64,7 +64,7 @@ public class AdminPost2 {
 	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
 	       JButton btn10 = new JButton(img10);
 	       
-	       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findnext.png");//이전페이지
+	       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findback.png");//이전페이지
 	       JButton btn11 = new JButton(img11);
 	       
 	       
@@ -81,14 +81,16 @@ public class AdminPost2 {
 	       bottomPanel.add(btn11);
 	    
 	       //버튼 위치 조정
-	       btn1.setBounds(35, 143, 430, 121);
-	       btn2.setBounds(34, 262, 430, 121);
-	       btn3.setBounds(34, 380, 430, 121);
+	       btn1.setBounds(35, 143, 430, 104);
+	       btn2.setBounds(34, 262, 430, 104);
+	       btn3.setBounds(34, 380, 430, 104);
 //	       btn4.setBounds(33, 498, 430, 121);
 //	       btn5.setBounds(34, 616, 430, 104);
 	       lb1.setBounds(56, 0, 263, 33);
 	       btn10.setBounds(31, 19, 430, 62);
 	       btn11.setBounds(181, 95, 136, 21);
+	       btn11.setContentAreaFilled(false);
+		   btn11.setBorderPainted(false);
 	     
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);

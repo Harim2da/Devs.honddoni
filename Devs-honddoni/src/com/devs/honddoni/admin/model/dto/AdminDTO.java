@@ -9,6 +9,8 @@ public class AdminDTO implements java.io.Serializable {
 		MEMBER_NICKNAME = mEMBER_NICKNAME;
 	}
 
+
+
 	/**
 	 * @return the mEMBER_NICKNAME
 	 */

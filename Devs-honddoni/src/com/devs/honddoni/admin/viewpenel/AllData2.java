@@ -183,6 +183,9 @@ public class AllData2 {
 	       btn8.setBounds(181, 95, 136, 21);
 	       btn9.setBounds(31, 19, 430, 62);
 	       
+		   btn8.setContentAreaFilled(false);
+		   btn8.setBorderPainted(false);
+	       
 //	       lb1.setBounds(56, 0, 263, 33);
 //	       lb2.setBounds(53, 172, 36, 39);//프로필 위치
 //	       lb3.setBounds(92, 168, 100, 43);//닉네임 위치

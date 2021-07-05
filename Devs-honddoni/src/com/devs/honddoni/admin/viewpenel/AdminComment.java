@@ -47,13 +47,13 @@ public class AdminComment {
 	     btn0.setContentAreaFilled(false);
 	     btn0.setBorderPainted(false);
 	       //첫번쨰신고 댓글
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\CommentList1.png");
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\AdminCommentNew1.png");
 	       JButton btn1 = new JButton(img1);
 	       //두번쨰 신고 댓글
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\CommentList2.png");
+	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\AdminCommentNew2.png");
 	       JButton btn2 = new JButton(img2);
 	       //세번째 신고 댓글
-	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\CommentList3.png");
+	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\AdminCommentNew3.png");
 	       JButton btn3 = new JButton(img3);
 	       //댓글작성 버튼
 	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\CommentWriteNew.png");
@@ -81,6 +81,8 @@ public class AdminComment {
 	       btn3.setBounds(34, 186, 433, 61);
 	       btn4.setBounds(35, 17, 71, 21);
 	       btn01.setBounds(437, 78, 22, 22);
+		   btn4.setContentAreaFilled(false);
+		   btn4.setBorderPainted(false);
 	      
 	   
 	     
