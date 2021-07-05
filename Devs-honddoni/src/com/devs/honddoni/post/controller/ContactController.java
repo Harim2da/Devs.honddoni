@@ -81,6 +81,16 @@ public class ContactController {
 		return postDTO;
 	}
 	
+	public void deleteThePost(int postNo) {
+		
+		int result = postService.deleteThePost(postNo);
+		
+		if(result > 0) {
+			System.out.println("변경 성공");
+		}
+		
+		//return result; // 결과값 관련 화면 팝업고려
+	}
 	
 	
 }

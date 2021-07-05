@@ -523,7 +523,7 @@ public class PostHonddoni extends JFrame{
 	private void postButton() {
 		postbtn = new JButton();
 		postbtn.setBounds(129, 684, 263, 41);
-		postbtn.setIcon(new ImageIcon(PostView.class.getResource("/post/postbutton.png")));
+		postbtn.setIcon(new ImageIcon("image/post/postbutton.png"));
 		postbtn.setContentAreaFilled(false);
 		postbtn.setBorderPainted(false);
 		postbtn.setOpaque(false);

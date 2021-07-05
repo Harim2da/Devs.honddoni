@@ -1,6 +1,8 @@
 package com.devs.honddoni.post.view;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -54,6 +56,7 @@ public class PostModify extends JFrame{
 		modifyPostTitle();
 		modifyPostContents();
 		modifyJoinmember();
+		selectBtn();
 		addComponents();
 		
 		
@@ -84,7 +87,7 @@ public class PostModify extends JFrame{
 
 	/* 게시글 제목 */
 	private void modifyPostTitle() {
-		postDTO = contactController.selectThePost(10);
+		postDTO = contactController.selectThePost(10); // 게시글 번호 받아오기
 
 		String title = postDTO.getPostName();
 		System.out.println(title);
@@ -102,7 +105,7 @@ public class PostModify extends JFrame{
 	}
 	/* 게시글 내용 */
 	private void modifyPostContents() {
-		postDTO = contactController.selectThePost(10);
+		postDTO = contactController.selectThePost(10); //괄호 속 게시글 번호 입력받기
 
 		String contents = postDTO.getPostContents();
 		System.out.println(contents);
@@ -118,7 +121,7 @@ public class PostModify extends JFrame{
 
 	/* 모일 인원 */
 	private void modifyJoinmember() {
-		postDTO = contactController.selectThePost(10);
+		postDTO = contactController.selectThePost(10);  //괄호 속 게시글 번호 입력받기
 		String join = Integer.valueOf(postDTO.getPostNumberOfPeopleNumber()).toString();
 		
 		joinmember = new JTextField();
@@ -130,17 +133,39 @@ public class PostModify extends JFrame{
 		joinmember.setEditable(false);
 		bottomPanel.add(joinmember);
 	}
-
+	/* 하단 버튼 세 개 - 댓글확인, 게시글 수정, 게시글 삭제 */
 	private void selectBtn() {
 		commentcheck = new JButton();
-		commentcheck.setBounds();
+		commentcheck.setBounds(35, 683, 140,41);
 		commentcheck.setContentAreaFilled(false);
 		commentcheck.setBorderPainted(true);
 		commentcheck.setOpaque(false);
+		bottomPanel.add(commentcheck);
+		
 		
 		modify = new JButton();
-		delete = new JButton();
+		modify.setBounds(180, 683, 140,41);
+		modify.setContentAreaFilled(false);
+		modify.setBorderPainted(true);
+		modify.setOpaque(false);
+		bottomPanel.add(modify);
 		
+		delete = new JButton();
+		delete.setBounds(326, 683, 140,41);
+		delete.setContentAreaFilled(false);
+		delete.setBorderPainted(true);
+		delete.setOpaque(false);
+		bottomPanel.add(delete);
+		
+		delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int postNo = postDTO.getPostNo();
+			//	int postNo = 10; 테스트용
+				contactController.deleteThePost(postNo);
+			}
+		});
 		
 	}
 	
