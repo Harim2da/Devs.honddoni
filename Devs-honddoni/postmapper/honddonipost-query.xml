@@ -133,4 +133,10 @@
            ) V
       WHERE V.순서 BETWEEN ? AND ?
 	</entry>
+	<entry key="deleteThePost">
+	  UPDATE 
+	         TBL_POST P
+	     SET P.POST_DEL_STATUS = 'Y'
+	   WHERE P.POST_NO = ?
+	</entry>
 </properties>

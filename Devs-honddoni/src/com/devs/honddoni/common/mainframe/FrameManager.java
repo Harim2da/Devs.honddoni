@@ -1,18 +1,6 @@
 package com.devs.honddoni.common.mainframe;
 
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.ObjectInputStream.GetField;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import com.devs.honddoni.member.view.MyPage;
 
 public class FrameManager {
 
@@ -27,40 +15,48 @@ public class FrameManager {
 
 //	MyPage myPage;
 
-	public static JFrame frame = new MainFrame();
+//	public static JFrame frame = new MainFrame();
 	
 	/* 패널 변경 메소드 */
 
+	public static void changePanel(MainFrame frame, JPanel oldPanel, JPanel newPanel) {	
+		frame.remove(oldPanel);
+		frame.add(newPanel);
+		frame.repaint();
+		frame.revalidate();
+
+	}
+	
 	public static void changePanel(JPanel oldPanel, JPanel newPanel) {	
-		frame.remove(oldPanel);
-		frame.add(newPanel);
-		frame.repaint();
-		frame.revalidate();
-
+		MainFrame.mf.remove(oldPanel);
+		MainFrame.mf.add(newPanel);
+		MainFrame.mf.repaint();
+		MainFrame.mf.revalidate();
+		
 	}
 	
-	public static void addPanel(JPanel oldPanel,JPanel newPanel) {
-		frame.removeAll();
-		frame.add(newPanel);
-		frame.add(oldPanel);
-		frame.repaint();
-		frame.revalidate();
-	}
-	
-	public static void removePanel(JPanel oldPanel) {
-		frame.remove(oldPanel);
-		frame.repaint();
-		frame.revalidate();
-	}
-
-	public static void refresh() {
-		frame.repaint();
-		frame.revalidate();
-	}
-	
-	public static JFrame getInstance() {
-		return frame;
-	}
+//	public static void addPanel(JPanel oldPanel,JPanel newPanel) {
+//		frame.removeAll();
+//		frame.add(newPanel);
+//		frame.add(oldPanel);
+//		frame.repaint();
+//		frame.revalidate();
+//	}
+//	
+//	public static void removePanel(JPanel oldPanel) {
+//		frame.remove(oldPanel);
+//		frame.repaint();
+//		frame.revalidate();
+//	}
+//
+//	public static void refresh() {
+//		frame.repaint();
+//		frame.revalidate();
+//	}
+//	
+//	public static JFrame getInstance() {
+//		return frame;
+//	}
 	
 
 //	public static void activeUpSidePanel(MainFrame frame, JPanel presentPage, MyPage myPage) {

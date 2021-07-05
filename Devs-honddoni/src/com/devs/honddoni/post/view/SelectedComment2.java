@@ -71,7 +71,7 @@ public class SelectedComment2 extends JFrame {
 		downPanel1.add(commentLongbarLabel);
 		downPanel1.add(backBtn);
 
-		/* 디자인용도의 lonbar에 라벨, 버튼을 더해줌 */
+		/* 디자인용도의 longbar에 라벨, 버튼을 더해줌 */
 		commentLongbarLabel.add(beforeNumber);
 		commentLongbarLabel.add(afterNumber);
 		commentLongbarLabel.add(beforeBtn);

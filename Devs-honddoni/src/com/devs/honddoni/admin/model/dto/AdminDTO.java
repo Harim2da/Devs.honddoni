@@ -11,6 +11,12 @@ public class AdminDTO implements java.io.Serializable {
 
 
 
+	public AdminDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	/**
 	 * @return the mEMBER_NICKNAME
 	 */

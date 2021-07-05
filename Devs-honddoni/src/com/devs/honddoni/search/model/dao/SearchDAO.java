@@ -106,6 +106,8 @@ public class SearchDAO {
 				post.setPostWritingDate(rset.getString("POST_WRITING_DATE"));  //게시글 작성날짜
 				post.setPostMeetingTime(rset.getString("POST_WRITING_TIME"));  //게시글 작성 시간
 				post.setPostDelStatus(rset.getString("POST_DEL_STATUS"));
+				post.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
+				post.setMemberProfile(rset.getString("MEMBER_PROFILE"));
 				post.setPostNumberOfPeopleNumber(rset.getInt("POST_NUMBER_OF_PEOPLE"));
 				
 				

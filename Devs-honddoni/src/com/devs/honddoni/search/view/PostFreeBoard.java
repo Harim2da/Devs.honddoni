@@ -153,7 +153,8 @@ public class PostFreeBoard extends JFrame {
 					postDTO.setPostName(postTitle.getText()); //게시글 제목
 					postDTO.setPostContents(postContents.getText()); // 게시글 내용
 					postDTO.setPostCategory("자유");
-
+					
+					System.out.println("호출");
 				}
 			});
 
