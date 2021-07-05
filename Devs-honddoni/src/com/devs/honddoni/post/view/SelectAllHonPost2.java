@@ -1,5 +1,6 @@
 package com.devs.honddoni.post.view;
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -19,20 +20,22 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.GetFilter;
 import com.devs.honddoni.post.controller.PagingController;
 public class SelectAllHonPost2 extends JFrame{
-	private JFrame mainframe = new JFrame(); 
-	private JPanel bottomPanel = new JPanel();
+	
+//	private JFrame mainframe = new JFrame(); 
+//	private JPanel upPanel;
+	private JPanel downPanel;
 	private JLabel searchLabel;
 	private JButton aim;
 	private JTextField searching;
-	private JLabel pagebarLabel;	//페이지표기 바
-	private JLabel preNumber = new JLabel("");
-	private JLabel commingNumber;
+	private JLabel pageLongbarLabel;	//페이지표기 바
+	private JLabel beforeNumber = new JLabel("");
+	private JLabel afterNumber;
 	private int frontPage = 1;
-	private JButton preBtn = new JButton(); // 앞페이지 버튼
-	private JButton commingBtn = new JButton(); // 뒷 페이지 버튼
+	private JButton beforeBtn = new JButton(); // 앞페이지 버튼
+	private JButton afterBtn = new JButton(); // 뒷 페이지 버튼
 	private JLabel[] postList;	
-	List<PostDTO> postListDTO = null;
-	private JLabel[] profile; //프로필
+	private List<PostDTO> postListDTO = null;
+	private JLabel[] profilePictrue; //프로필
 	private JLabel[] nickName; // 닉네임
 	private JLabel[] postTitle; // 게시글 제목
 	private JLabel[] categoryName; //카테고리명
@@ -45,82 +48,109 @@ public class SelectAllHonPost2 extends JFrame{
 
 
 	public SelectAllHonPost2() {
-		mainframe.setBounds(100, 100, 516, 909);
-		mainframe.setLayout(null);
-
-
-		bottomPanel.setBounds(0, 100, 500, 770);
-		bottomPanel.setLayout(null);
-		bottomPanel.setBackground(Color.white);	
-		mainframe.add(bottomPanel);
-
-		addComponents(); 
-		postlistbgr(); 
-		prePageBtn(); 
-		commingPageBtn(); 
-		prePageNumber(); 
-		commingPageNumber(); 
-
-		profile(); 
-		nickName(); 
-		categoryName(); 
-
+		
+		/* 패널 */
+//		upPanel();
+		downPanel();
+		
+		/* 하단패널에 포함될 버튼, 라벨 */
+		searchLabel();
+		aim();
+		searching();
+		pageLongbarLabel();
+		beforeNumber();
+		afterNumber();
+		beforeBtn();
+		afterBtn();
+		postList();
+		profilePictrue();
+		nickName();
 		postTitle();
-		localName(); //
-
-		mainframe.setVisible(true);
-		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	System.out.println("실행됨");
+		categoryName();
+		localName();
+		
+		/* 반복문이 필요없는 버튼, 라벨을 하단패널에 더해줌 */
+		downPanel.add(searchLabel);
+		downPanel.add(searching);
+		downPanel.add(aim);
+		downPanel.add(pageLongbarLabel);
+		
+		/* 디자인용도의 lonbar에 라벨, 버튼을 더해줌 */
+		pageLongbarLabel.add(beforeNumber);
+		pageLongbarLabel.add(afterNumber);
+		pageLongbarLabel.add(beforeBtn);
+		pageLongbarLabel.add(afterBtn);
 	}
+	
+	public JPanel getDownPanel() {
+		return downPanel;
+	}
+	
+	/* 하단 패널 */
+	public void downPanel() {
 
-	private void addComponents() {
+		downPanel = new JPanel();
+		downPanel.setBounds(0, 100, 500, 770);
+		downPanel.setLayout(null);
+		downPanel.setBackground(Color.WHITE);
+
+	}
+	
+	public void searchLabel() {
 	
 		searchLabel = new JLabel();   // 하단 패널 위 검색창
 		searchLabel.setBackground(Color.white);
 		searchLabel.setLayout(null);
 		searchLabel.setBounds(25, 15, 450, 63); 
 		searchLabel.setIcon(new ImageIcon("image/search/searchBar.png"));
-		bottomPanel.add(searchLabel);
+		
+	}
+	
+	public void searching() {
 		
 		searching = new JTextField(); // 검색창 텍필
 		searching.setBorder(null);
 		searching.setOpaque(false);
 		searching.setBounds(80, 16, 315, 28);
 		searching.setColumns(20);
-		searchLabel.add(searching);
+		
+	}
+	
+	public void aim() {
 		
 		aim = new JButton();		// 검색 버튼
 		aim.setBounds(22, 13, 41, 41);
 		aim.setBorderPainted(false);
 		aim.setOpaque(false);
 		aim.setContentAreaFilled(false);
-		searchLabel.add(aim);
 		
-		pagebarLabel = new JLabel("");		//페이지 표기 바
-		pagebarLabel.setLayout(null);
-		pagebarLabel.setIcon(new ImageIcon("image/post/nextPageButton.png"));
-		pagebarLabel.setBounds(182, 112, 137, 22);
-		bottomPanel.add(pagebarLabel);
-		System.out.println("add 호출됨");
+	}
+	
+	public void pageLongbarLabel() {
+		
+		pageLongbarLabel = new JLabel("");		//페이지 표기 바
+		pageLongbarLabel.setLayout(null);
+		pageLongbarLabel.setIcon(new ImageIcon("image/post/nextPageButton.png"));
+		pageLongbarLabel.setBounds(182, 112, 137, 22);
 		
 	}
 	
 	/* 이전 페이지 */
-	private void prePageBtn() {
+	private void beforeBtn() {
 		int pageNo = frontPage;
 		
-		preBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
-		preBtn.setContentAreaFilled(false);
-		preBtn.setBorderPainted(false);
-		preBtn.setBounds(15, 4, 14, 14);
+		beforeBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
+		beforeBtn.setContentAreaFilled(false);
+		beforeBtn.setBorderPainted(false);
+		beforeBtn.setBounds(15, 4, 14, 14);
 		
 		if(pageNo < 2) {
-			preBtn.setVisible(false);
+			beforeBtn.setVisible(false);
 		} else {
-			preBtn.setVisible(true);
+			beforeBtn.setVisible(true);
 			
 			System.out.println("frontPage : " + frontPage);
-			preBtn.addActionListener(new ActionListener() {
+			beforeBtn.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(frontPage >= 2 ) {
@@ -128,14 +158,13 @@ public class SelectAllHonPost2 extends JFrame{
 					}
 
 
-					postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
-					postlistbgr(); 
+ 
 
-					prePageBtn();
-					prePageNumber();
-					commingPageBtn();
-					System.out.println("frontPage : " + frontPage);
-					pagebarLabel.add(preBtn);
+					beforeBtn();
+					beforeNumber();
+					afterBtn();
+					
+					
 
 				}
 			});
@@ -144,7 +173,7 @@ public class SelectAllHonPost2 extends JFrame{
 
 
 
-	private void commingPageBtn() {
+	private void afterBtn() {
 
 		int pageNo = frontPage;
 
@@ -153,18 +182,18 @@ public class SelectAllHonPost2 extends JFrame{
 		
 		PagenationPost pagenationpost = new PagenationPost();
 		PageInfoPostDTO pageInfo = pagenationpost.getPostPageInfo(pageNo, totalCount, 5, 5);
-		commingBtn.setIcon(new ImageIcon("image/post/afterPageButton.png"));
-		commingBtn.setContentAreaFilled(false);
-		commingBtn.setBorderPainted(false);
-		commingBtn.setBounds(120, 4, 14, 14);
+		afterBtn.setIcon(new ImageIcon("image/post/afterPageButton.png"));
+		afterBtn.setContentAreaFilled(false);
+		afterBtn.setBorderPainted(false);
+		afterBtn.setBounds(120, 4, 14, 14);
 		
 		if(pageNo == pageInfo.getMaxPage()) {
-			commingBtn.setVisible(false);
+			afterBtn.setVisible(false);
 		} else {
-			commingBtn.setVisible(true);
+			afterBtn.setVisible(true);
 		}
 		
-		commingBtn.addActionListener(new ActionListener() {
+		afterBtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -178,29 +207,29 @@ public class SelectAllHonPost2 extends JFrame{
 //				
 //				}
 
-
-				commingPageBtn();
-				prePageBtn();
-				prePageNumber();
+				afterBtn();
+				beforeBtn();
+				beforeNumber();
+				
 
 			}
 		});
 		
-		pagebarLabel.add(commingBtn);
+		
 		
 		
 	}
 	
-	private void prePageNumber() {
+	private void beforeNumber() {
 		String frontPageString = Integer.valueOf(frontPage).toString();
-		preNumber.setText(frontPageString);
-		preNumber.setLayout(null);
-		preNumber.setBounds(50, 4, 14, 14);
+		beforeNumber.setText(frontPageString);
+		beforeNumber.setLayout(null);
+		beforeNumber.setBounds(50, 4, 14, 14);
 		System.out.println(frontPageString);
 
 	}
 
-	private void commingPageNumber() {
+	private void afterNumber() {
 
 		int pageNo = frontPage;
 
@@ -208,14 +237,14 @@ public class SelectAllHonPost2 extends JFrame{
 		PagenationPost pagenationPost = new PagenationPost();
 		PageInfoPostDTO pageInfo = pagenationPost.getPostPageInfo(pageNo, totalCount, 5, 5);
 		String backPageString = Integer.valueOf(pageInfo.getMaxPage()).toString();
-		commingNumber = new JLabel(backPageString);
-		commingNumber.setLayout(null);
-		commingNumber.setBounds(85, 4, 14, 14);
+		afterNumber = new JLabel(backPageString);
+		afterNumber.setLayout(null);
+		afterNumber.setBounds(85, 4, 14, 14);
 		
 	}
 
 	/* 게시글 배경 틀*/
-	private void postlistbgr() {
+	private void postList() {
 		int pageNo = frontPage;
 		int y = 153;
 
@@ -231,7 +260,7 @@ public class SelectAllHonPost2 extends JFrame{
 			postList[i].setLayout(null);
 			postList[i].setIcon(new ImageIcon("image/post/postlist1"));
 			postList[i].setBounds(35, y, 432, 105);
-			bottomPanel.add(postList[i]);
+			downPanel.add(postList[i]);
 			y += 118;
 		}
 		
@@ -239,36 +268,35 @@ public class SelectAllHonPost2 extends JFrame{
 	}
 
 	/* 게시글에 맞는 프로필 불러오기 */
-	private void profile() {
+	private void profilePictrue() {
 		int pageNo = frontPage;
 		int y = 153;
 
 			postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
-			PostDTO postInfo = null;
+			PostDTO postInfo = new PostDTO();
 			
 			for(int i = 0; i < postListDTO.size(); i++) {
 
-				System.out.println("postInfo.getMemberProfile() : " + postInfo.getMemberProfile());
 				postInfo = postListDTO.get(i);
-				profile = new JLabel[postListDTO.size()];
-				profile[i] = new JLabel();
-				profile[i].setLayout(null);
-				profile[i].setBounds(53, y + 12, 37, 37);
+				profilePictrue = new JLabel[postListDTO.size()];
+				profilePictrue[i] = new JLabel();
+				profilePictrue[i].setLayout(null);
+				profilePictrue[i].setBounds(53, y + 12, 37, 37);
 				
 				if(postInfo.getMemberProfile().equals("1")) {
-					profile[i].setIcon(new ImageIcon("image/post/commentPf1.png"));
+					profilePictrue[i].setIcon(new ImageIcon("image/post/commentPf1.png"));
 				} else if(postInfo.getMemberProfile().equals("2")) {
-					profile[i].setIcon(new ImageIcon("image/post/commentPf2.png"));
+					profilePictrue[i].setIcon(new ImageIcon("image/post/commentPf2.png"));
 				} else if(postInfo.getMemberProfile().equals("3")) {
-					profile[i].setIcon(new ImageIcon("image/post/commentPf3.png"));
+					profilePictrue[i].setIcon(new ImageIcon("image/post/commentPf3.png"));
 				} else if(postInfo.getMemberProfile().equals("4")) {
-					profile[i].setIcon(new ImageIcon("image/post/commentPf4.png"));
+					profilePictrue[i].setIcon(new ImageIcon("image/post/commentPf4.png"));
 				} else if(postInfo.getMemberProfile().equals("5")) {
-					profile[i].setIcon(new ImageIcon("image/post/commentPf5.png"));
+					profilePictrue[i].setIcon(new ImageIcon("image/post/commentPf5.png"));
 				} else if(postInfo.getMemberProfile() == null) {
-					profile[i].setVisible(false);
+					profilePictrue[i].setVisible(false);
 				}
-				bottomPanel.add(profile[i]);
+				downPanel.add(profilePictrue[i]);
 				y += 118;
 			}
 	}
@@ -290,7 +318,7 @@ public class SelectAllHonPost2 extends JFrame{
 				nickName[i].setLayout(null);
 				nickName[i].setText(postInfo.getMemberNickname());
 				nickName[i].setBounds(92, y + 15, 100, 43);
-				bottomPanel.add(nickName[i]);
+				downPanel.add(nickName[i]);
 				y += 118;
 	
 			}	
@@ -334,7 +362,7 @@ public class SelectAllHonPost2 extends JFrame{
 				} else {
 					categoryName[i].setVisible(false);
 				}
-				bottomPanel.add(categoryName[i]);
+				downPanel.add(categoryName[i]);
 				y += 118;
 			}
 
@@ -355,7 +383,7 @@ public class SelectAllHonPost2 extends JFrame{
 				postTitle[i].setText(postInfo.getPostName());
 				postTitle[i].setLayout(null);
 				postTitle[i].setBounds(62, y + 10, 395, 28);
-				bottomPanel.add(postTitle[i]);
+				downPanel.add(postTitle[i]);
 				y += 118;
 				
 				postTitle[i].addMouseListener(new MouseListener() {
@@ -417,7 +445,7 @@ public class SelectAllHonPost2 extends JFrame{
 					localName[i].setVisible(false);
 				}
 				
-				bottomPanel.add(localName[i]);
+				downPanel.add(localName[i]);
 				y += 118;
 				
 			}

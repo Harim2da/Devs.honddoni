@@ -38,16 +38,13 @@ public class SelectedComment2 extends JFrame {
 	private JLabel[] commentsDate;								//댓글 작성 날짜
 	private JLabel[] commentsTime;								//댓글 작성 시간
 	private JLabel[] profilePictrue;							//프로필 사진
-	private int postNo;											//게시글 번호
+	private int postNo = 1;	/* 게시글에서 받아올 것 */				    //게시글 번호
 	private JButton[] deleteBtn;								//게시글 삭제 버튼
-
-	/* 프레임에서 패널을 더해주기 위한 getter */
-	public JPanel getDownPanel1() {
-		return downPanel1;
-	}
+	private int userNum = 1;									//로그인된 유저 번호
 
 	/* 프레임을 제외한 나머지를 합친 것 */
-	public void collect() {
+	public SelectedComment2() {
+		
 		/* 패널 */
 		downPanel1();
 		
@@ -56,18 +53,18 @@ public class SelectedComment2 extends JFrame {
 		commentLongbarLabel();
 		backBtn();
 		beforeNumber();
-		afterNumber(1);
+		afterNumber(postNo);
 		beforeBtn();
-		afterBtn(1);
-		nickName(1);
-		content(1);
-		updateBtn(1);
-		commentsDate(1);
-		reportBtn(1);
-		commentsTime(1);
-		profilePictrue(1);
-		deleteBtn(1);
-		commentList(1);
+		afterBtn(postNo);
+		nickName(postNo);
+		content(postNo);
+		updateBtn(postNo);
+		commentsDate(postNo);
+		reportBtn(postNo);
+		commentsTime(postNo);
+		profilePictrue(postNo);
+		deleteBtn(postNo);
+		commentList(postNo);
 
 		/* 반복문이 필요없는 버튼, 라벨을 하단패널에 더해줌 */
 		downPanel1.add(commentWriteBtn);
@@ -79,8 +76,12 @@ public class SelectedComment2 extends JFrame {
 		commentLongbarLabel.add(afterNumber);
 		commentLongbarLabel.add(beforeBtn);
 		commentLongbarLabel.add(afterBtn);
-
-
+		
+	}
+	
+	/* 프레임에서 패널을 더해주기 위한 getter */
+	public JPanel getDownPanel1() {
+		return downPanel1;
 	}
 
 	/* 하단 패널 */
@@ -90,7 +91,6 @@ public class SelectedComment2 extends JFrame {
 		downPanel1.setBounds(0, 100, 500, 770);
 		downPanel1.setLayout(null);
 		downPanel1.setBackground(Color.WHITE);
-
 
 	}
 
@@ -114,12 +114,13 @@ public class SelectedComment2 extends JFrame {
 				newComment.setCommentsContents(text);
 				newComment.setPostNo(postNo);
 
-				/* 싱글톤으로 샏ㅇ성된 멤버넘버 받아와야댐 */
-				newComment.setMemberNo(1);
+				/* 로그인된 번호*/
+				newComment.setMemberNo(userNum);
 
 				ContactController2 contactController2 = new ContactController2();
 				contactController2.communicationComment(newComment);
-
+				downPanel1.repaint();
+				downPanel1.revalidate();
 
 			}
 		});
@@ -148,7 +149,11 @@ public class SelectedComment2 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				System.out.println("게시글 조회 호출");
+				downPanel1.repaint();
+				downPanel1.revalidate();
+				
 			}
 		});
 	}
@@ -175,18 +180,20 @@ public class SelectedComment2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				if(SelectedComment.frontPage >= 2 ) {
+					
 					SelectedComment.frontPage--;
+					
 				}
 				
 				downPanel1.setVisible(false);
 				SelectedComment2 cm = new SelectedComment2();
-				cm.collect();
 				Ctest2.frame1.add(cm.getDownPanel1());
 
 				beforeBtn();
 				beforeNumber();
-				afterBtn(1);
-				System.out.println("frontPage : " + SelectedComment.frontPage);
+				afterBtn(postNo);
+				downPanel1.repaint();
+				downPanel1.revalidate();
 
 			}
 		});
@@ -217,7 +224,6 @@ public class SelectedComment2 extends JFrame {
 			afterBtn.setVisible(true);
 		}
 
-
 		afterBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -229,12 +235,13 @@ public class SelectedComment2 extends JFrame {
 
 				downPanel1.setVisible(false);
 				SelectedComment2 cm = new SelectedComment2();
-				cm.collect();
 				Ctest2.frame1.add(cm.getDownPanel1());
 
-				afterBtn(1);
+				afterBtn(postNo);
 				beforeBtn();
 				beforeNumber();		
+				downPanel1.repaint();
+				downPanel1.revalidate();
 
 			}
 		});
@@ -266,6 +273,7 @@ public class SelectedComment2 extends JFrame {
 		afterNumber = new JLabel(backPageString);
 		afterNumber.setLayout(null);
 		afterNumber.setBounds(85, 4, 14, 14);
+		
 
 	}
 
@@ -279,11 +287,7 @@ public class SelectedComment2 extends JFrame {
 
 		CommentsDTO commentInfo = null; 
 
-
-
 		for(int i = 0; i < commentListDTO.size(); i++) {
-
-//			commentInfo = commentListDTO.get(i);
 
 			commentList = new JLabel[commentListDTO.size()];
 			commentList[i] = new JLabel();
@@ -292,6 +296,8 @@ public class SelectedComment2 extends JFrame {
 			commentList[i].setBounds(35, y, 431, 61);
 			downPanel1.add(commentList[i]);
 			y += 62;
+			downPanel1.repaint();
+			downPanel1.revalidate();
 		}
 	}
 
@@ -315,6 +321,8 @@ public class SelectedComment2 extends JFrame {
 			nickName[i].setText(commentInfo.getMemberNickname());
 			downPanel1.add(nickName[i]);
 			y += 62;
+			
+			
 		}
 	}
 
@@ -336,6 +344,8 @@ public class SelectedComment2 extends JFrame {
 			content[i].setText(commentInfo.getCommentsContents());
 			downPanel1.add(content[i]);
 			y += 62;
+			downPanel1.repaint();
+			downPanel1.revalidate();
 		}
 	}
 
@@ -363,8 +373,7 @@ public class SelectedComment2 extends JFrame {
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-
-			if(getMemberNo == 1 /* 로그인된 번호 */) {
+			if(getMemberNo == userNum /* 로그인된 번호 */) {
 				updateBtn[i].addActionListener(new ActionListener() {
 
 					@Override
@@ -374,24 +383,20 @@ public class SelectedComment2 extends JFrame {
 						System.out.println(text);
 						CommentsDTO updateComment = new CommentsDTO();
 
-
 						updateComment.setCommentsNo(getCommentsNo);
 						updateComment.setMemberNo(getMemberNo);
 						updateComment.setCommentsContents(text);
-						//						System.out.println("conmmentListDTO CommentNo  : " + commentListDTO.get(i).getCommentsNo());
-						//						System.out.println("conmmentListDTO MemberNo  : " + commentListDTO.get(i).getMemberNo());
-						System.out.println("getCommentsNo : " + getCommentsNo);
-
 
 						ContactController2 contactController2 = new ContactController2();
 						contactController2.updateComment(updateComment);
-
 
 					}
 				});
 			}
 			downPanel1.add(updateBtn[i]);
 			y += 62;
+			downPanel1.repaint();
+			downPanel1.revalidate();
 		}
 	}
 
@@ -415,6 +420,8 @@ public class SelectedComment2 extends JFrame {
 			commentsDate[i].setText(commentInfo.getCommentsDate());
 			downPanel1.add(commentsDate[i]);
 			y += 62;
+			downPanel1.repaint();
+			downPanel1.revalidate();
 		}
 	}
 
@@ -441,7 +448,7 @@ public class SelectedComment2 extends JFrame {
 
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo != 1 /* 로그인된 번호 */) {
+			if(getMemberNo != userNum /* 로그인된 번호 */) {
 				reportBtn[i].addActionListener(new ActionListener() {
 
 					@Override
@@ -454,8 +461,6 @@ public class SelectedComment2 extends JFrame {
 
 						String postCategory = contactController2.selectPostCategory(postNo);
 
-
-
 						reportDTO reportDTO = new reportDTO();
 
 						reportDTO.setReportCategory(report);
@@ -465,14 +470,17 @@ public class SelectedComment2 extends JFrame {
 						reportDTO.setReportedMemberNo(getMemberNo /* 댓글 작성자 */);
 
 						contactController2.reportComment(reportDTO);
-
-
+						downPanel1.repaint();
+						downPanel1.revalidate();
+						
 
 					}
 				});
 			}
 			downPanel1.add(reportBtn[i]);
 			y += 62;
+			downPanel1.repaint();
+			downPanel1.revalidate();
 
 		}
 	}
@@ -496,9 +504,12 @@ public class SelectedComment2 extends JFrame {
 			commentsTime[i].setText(commentInfo.getCommentsTime());
 			downPanel1.add(commentsTime[i]);
 			y += 62;
+			downPanel1.repaint();
+			downPanel1.revalidate();
 		}
 	}
-
+	
+	/* 사용자의 프로필사진을 나태타내는 라벨 */
 	public void profilePictrue(int postNo) {
 
 		int pageNo = SelectedComment.frontPage;
@@ -540,8 +551,12 @@ public class SelectedComment2 extends JFrame {
 			} else if(commentInfo.getMemberProfile() == null) {
 				profilePictrue[i].setVisible(false);
 			}
+			
 			downPanel1.add(profilePictrue[i]);
 			y += 62;
+			downPanel1.repaint();
+			downPanel1.revalidate();
+			
 		}
 	}
 
@@ -568,7 +583,7 @@ public class SelectedComment2 extends JFrame {
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo == 1 /* 로그인된 번호 */) {
+			if(getMemberNo == userNum /* 로그인된 번호 */) {
 				deleteBtn[i].addActionListener(new ActionListener() {
 
 					@Override
@@ -580,16 +595,18 @@ public class SelectedComment2 extends JFrame {
 						deleteComment.setCommentsNo(getCommentsNo);
 						deleteComment.setMemberNo(getMemberNo);
 
-
-
 						ContactController2 contactController2 = new ContactController2();
 						contactController2.deleteComment(deleteComment);
 
 					}
 				});
 			}
+			
 			downPanel1.add(deleteBtn[i]);
 			y += 62;
+			downPanel1.repaint();
+			downPanel1.revalidate();
+			
 		}
 	}
 
