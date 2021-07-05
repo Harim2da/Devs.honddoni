@@ -3,11 +3,8 @@ package com.devs.honddoni.member.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,11 +16,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.dto.MemberDTO;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.common.mainframe.PopupFrame;
+import com.devs.honddoni.common.sound.SoundManager;
 import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberInfoDTO;
@@ -32,8 +29,9 @@ import com.devs.honddoni.memberLog.view.MemberLogView;
 
 public class MyPage extends JPanel {
 	
-	private MyPage myPage;
-	private MainFrame frame;
+//	private MyPage myPage;
+//	private MainFrame frame;
+	private JPanel myPage;
 	private MemberLogView memberLogView;
 	
 	private MemberController memberController = new MemberController();;
@@ -41,12 +39,12 @@ public class MyPage extends JPanel {
 	private ChangePwdDTO changePwdDTO;
 	
 	/* 비밀번호변경 */
-	private JButton cpB1 = new JButton();					//비밀번호 변경 취소버튼
-	private JButton cpB2 = new JButton();					//비밀번호 변경 변경버튼
-	private JLabel cpL1 = new JLabel(); 					//비밀번호 변경 입력창 이미지
-	private JPasswordField cpPF1 = new JPasswordField();	//비밀번호 변경 기존비번 입력창
-	private JPasswordField cpPF2 = new JPasswordField();	//비밀번호 변경 새비번 입력창
-	private JPasswordField cpPF3 = new JPasswordField();	//비밀번호 변경 새비번 확인창
+//	private JButton cpB1 = new JButton();					//비밀번호 변경 취소버튼
+//	private JButton cpB2 = new JButton();					//비밀번호 변경 변경버튼
+//	private JLabel cpL1 = new JLabel(); 					//비밀번호 변경 입력창 이미지
+//	private JPasswordField cpPF1 = new JPasswordField();	//비밀번호 변경 기존비번 입력창
+//	private JPasswordField cpPF2 = new JPasswordField();	//비밀번호 변경 새비번 입력창
+//	private JPasswordField cpPF3 = new JPasswordField();	//비밀번호 변경 새비번 확인창
 	
 	/* 회원 탈퇴 */
 	private JButton rmB1 = new JButton();					//회원탈퇴 취소버튼
@@ -77,7 +75,8 @@ public class MyPage extends JPanel {
 	FontManager font = new FontManager();
 	
 	
-	static String 테스트아이디 = "user06";
+//	static String 테스트아이디 = "user06";
+	static String 테스트아이디 = "sample01";
 	
 	
 	public static JButton btnRemove(JButton jbtn) {
@@ -86,9 +85,12 @@ public class MyPage extends JPanel {
 		return jbtn;
 	}
 
-	public MyPage(MainFrame frame) {
-		this.frame = frame;
-		this.myPage = this;
+	public MyPage() {
+//	public MyPage(MainFrame frame) {
+		
+		myPage = this;
+//		this.frame = frame;
+//		this.myPage = this;
 		
 		
 //		FrameManager.topPanel(frame, this);
@@ -97,7 +99,7 @@ public class MyPage extends JPanel {
 		this.setBounds(0, 100, 500, 770);
 		this.setBackground(Color.white);
 		this.setLayout(null);
-		frame.add(this);
+//		frame.add(this);
 		
 		
 		
@@ -116,116 +118,117 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/* 비밀번호 변경 창 패널 */
-				JPanel changePwdPanel = new JPanel();
-				changePwdPanel.setLayout(null);
-				changePwdPanel.setBounds(0, 100, 500, 770);
-				changePwdPanel.setVisible(true);
-				changePwdPanel.setBackground(Color.white);
-//				downsidePanel.setVisible(false);
-				myPage.setVisible(false);
-				frame.add(changePwdPanel);
+				JPanel changePwdPanel = new ChangePwdPanel();
+//				changePwdPanel.setLayout(null);
+//				changePwdPanel.setBounds(0, 100, 500, 770);
+//				changePwdPanel.setVisible(true);
+//				changePwdPanel.setBackground(Color.white);
+////				downsidePanel.setVisible(false);
+//				myPage.setVisible(false);
+////				frame.add(changePwdPanel);
+				FrameManager.changePanel(myPage, changePwdPanel);
 				
-				/* 기존 비밀번호 입력창 */
-				cpPF1.setBorder(null);
-				cpPF1.setOpaque(false);
-				cpPF1.setBounds(195, 288, 270, 45);
-				changePwdPanel.add(cpPF1);
-				
-				/* 새 비밀번호 입력창 */
-				cpPF2.setBorder(null);
-				cpPF2.setOpaque(false);
-				cpPF2.setBounds(195, 366, 270, 45);
-				changePwdPanel.add(cpPF2);
-				
-				/* 새 비밀번호 확인창 */
-				cpPF3.setBorder(null);
-				cpPF3.setOpaque(false);
-				cpPF3.setBounds(195, 441, 270, 45);
-				changePwdPanel.add(cpPF3);
-				
-				/* 입력창 라벨 */
-				cpL1.setBounds(0, 0, 500, 770);
-				cpL1.setVisible(true);
-				cpL1.setIcon(new ImageIcon("image/member/updatePwd/Group 878.png"));
-				changePwdPanel.add(cpL1);
-				
-				
-				changePwdPanel.revalidate();
-				changePwdPanel.repaint();
-
-				/* 취소 버튼 */
-				MyPage.btnRemove(cpB1);
-				cpB1.setVisible(true);
-				cpB1.setBounds(58, 595, 178, 63);
-				cpB1.setIcon(new ImageIcon("image/member/updatePwd/Group 677.png"));
-				cpB1.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						System.out.println("취소 버튼 클릭");
-						changePwdPanel.setVisible(false);
-						myPage.setVisible(true);
-//						FrameManager.changePanel(frame, changePwdPanel, new MyPage(frame));
-						
-					}
-				});
-				changePwdPanel.add(cpB1);
-				
-		
-				/* 변경 버튼 */
-				MyPage.btnRemove(cpB2);
-				cpB2.setVisible(true);
-				cpB2.setBounds(264, 595, 178, 63);
-				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
-				changePwdPanel.add(cpB2); 
-				cpB2.addActionListener(new ActionListener() {
-					
-					@Override
-					/* 입력한 비밀번호가 현재 비밀번호와 일치하는치 확인 */
-					public void actionPerformed(ActionEvent e) {
-						
-						if(e.getSource() == cpB2) {
-						
-							 	String password = "";
-							   char[] pass = cpPF1.getPassword();
-							   for(int i = 0; i < pass.length; i++) {
-							      password += pass[i];
-							   }         
-							   changePwdDTO = new ChangePwdDTO();
-							   changePwdDTO.setMemberOldPassword(password);
-							   boolean checkP = memberController.pwdCheck(changePwdDTO);		 //입력값 일치 확인
-							   
-							   /* 새로 입력한 비밀번호와 비밀번호 재확인이 일치한지 확인*/
-							   if(checkP) {
-								   String newPassword = "";
-								   char[] newPass = cpPF2.getPassword();
-								   for(int i = 0; i < newPass.length; i++) {
-									   newPassword += newPass[i];
-								   }         
-								   
-								   String newPasswordReCheck = "";
-								   char[] newPassRc = cpPF3.getPassword();
-								   for(int i = 0; i < newPassRc.length; i++) {
-									   newPasswordReCheck += newPassRc[i];
-								   }         
-								   changePwdDTO.setMemberNewPassword(newPassword);
-								   changePwdDTO.setMemberNewPasswordRecheck(newPasswordReCheck);
-								   
-								   memberController.newPwdEqualCheck(changePwdDTO);
-								   
-							   } else {
-								   /* 입력정보 다를 시 팝업 출력 */
-								   PopupFrame.popup("image/popup/FailMessage.png");
-								   
-							   }
-							   
-							   
-						}
-					}
-				});
-				
-			}
-		});
+//				/* 기존 비밀번호 입력창 */
+//				cpPF1.setBorder(null);
+//				cpPF1.setOpaque(false);
+//				cpPF1.setBounds(195, 288, 270, 45);
+//				changePwdPanel.add(cpPF1);
+//				
+//				/* 새 비밀번호 입력창 */
+//				cpPF2.setBorder(null);
+//				cpPF2.setOpaque(false);
+//				cpPF2.setBounds(195, 366, 270, 45);
+//				changePwdPanel.add(cpPF2);
+//				
+//				/* 새 비밀번호 확인창 */
+//				cpPF3.setBorder(null);
+//				cpPF3.setOpaque(false);
+//				cpPF3.setBounds(195, 441, 270, 45);
+//				changePwdPanel.add(cpPF3);
+//				
+//				/* 입력창 라벨 */
+//				cpL1.setBounds(0, 0, 500, 770);
+//				cpL1.setVisible(true);
+//				cpL1.setIcon(new ImageIcon("image/member/updatePwd/Group 878.png"));
+//				changePwdPanel.add(cpL1);
+//				
+//				
+//				changePwdPanel.revalidate();
+//				changePwdPanel.repaint();
+//
+//				/* 취소 버튼 */
+//				MyPage.btnRemove(cpB1);
+//				cpB1.setVisible(true);
+//				cpB1.setBounds(58, 595, 178, 63);
+//				cpB1.setIcon(new ImageIcon("image/member/updatePwd/Group 677.png"));
+//				cpB1.addActionListener(new ActionListener() {
+//					
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//						System.out.println("취소 버튼 클릭");
+//						changePwdPanel.setVisible(false);
+//						myPage.setVisible(true);
+////						FrameManager.changePanel(frame, changePwdPanel, new MyPage(frame));
+//						
+//					}
+//				});
+//				changePwdPanel.add(cpB1);
+//				
+//		
+//				/* 변경 버튼 */
+//				MyPage.btnRemove(cpB2);
+//				cpB2.setVisible(true);
+//				cpB2.setBounds(264, 595, 178, 63);
+//				cpB2.setIcon(new ImageIcon("image/member/updatePwd/Group 879.png"));
+//				changePwdPanel.add(cpB2); 
+//				cpB2.addActionListener(new ActionListener() {
+//					
+//					@Override
+//					/* 입력한 비밀번호가 현재 비밀번호와 일치하는치 확인 */
+//					public void actionPerformed(ActionEvent e) {
+//						
+//						if(e.getSource() == cpB2) {
+//						
+//							 	String password = "";
+//							   char[] pass = cpPF1.getPassword();
+//							   for(int i = 0; i < pass.length; i++) {
+//							      password += pass[i];
+//							   }         
+//							   changePwdDTO = new ChangePwdDTO();
+//							   changePwdDTO.setMemberOldPassword(password);
+//							   boolean checkP = memberController.pwdCheck(changePwdDTO);		 //입력값 일치 확인
+//							   
+//							   /* 새로 입력한 비밀번호와 비밀번호 재확인이 일치한지 확인*/
+//							   if(checkP) {
+//								   String newPassword = "";
+//								   char[] newPass = cpPF2.getPassword();
+//								   for(int i = 0; i < newPass.length; i++) {
+//									   newPassword += newPass[i];
+//								   }         
+//								   
+//								   String newPasswordReCheck = "";
+//								   char[] newPassRc = cpPF3.getPassword();
+//								   for(int i = 0; i < newPassRc.length; i++) {
+//									   newPasswordReCheck += newPassRc[i];
+//								   }         
+//								   changePwdDTO.setMemberNewPassword(newPassword);
+//								   changePwdDTO.setMemberNewPasswordRecheck(newPasswordReCheck);
+//								   
+//								   memberController.newPwdEqualCheck(changePwdDTO);
+//								   
+//							   } else {
+//								   /* 입력정보 다를 시 팝업 출력 */
+//								   PopupFrame.popup("image/popup/FailMessage.png");
+//								   
+//							   }
+//							   
+//							   
+//						}
+//					}
+//				});
+//				
+//			}
+//		});
 		
 		
 /*================================== 개인정보 변경 버튼   ================================================== */			
@@ -252,7 +255,7 @@ public class MyPage extends JPanel {
 				changeMemberinfoPanel.setBackground(Color.white);
 //				downsidePanel.setVisible(false);
 				myPage.setVisible(false);
-				frame.add(changeMemberinfoPanel);
+//				frame.add(changeMemberinfoPanel);
 				
 				/* 싱글벙글톤 */
 				MemberInfoDTO memberInfo = memberController.callMemberInfo(테스트아이디);
@@ -269,29 +272,29 @@ public class MyPage extends JPanel {
 				int characterCode = memberInfo.getCharacterCode();
 				
 				
-				/* 취소 버튼 */
-				btnRemove(cpB1);
-				cpB1.setVisible(true);
-				cpB1.setBounds(58, 670, 178, 63);
-				cpB1.setIcon(new ImageIcon("image/member/updatePwd/Group 677.png"));
-				cpB1.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						
-						/* 마이페이지로 돌아가기 */
-						changeMemberinfoPanel.setVisible(false);
-						myPage.setVisible(true);
-						
-					}
-				});
-				changeMemberinfoPanel.add(cpB1);
-				
-				/* 프로필 변경 버튼 */
-				btnRemove(ciB1);
-				ciB1.setVisible(true);
-				ciB1.setBounds(54, 10, 126, 129);
-				changeMemberinfoPanel.add(ciB1);
+//				/* 취소 버튼 */
+//				btnRemove(cpB1);
+//				cpB1.setVisible(true);
+//				cpB1.setBounds(58, 670, 178, 63);
+//				cpB1.setIcon(new ImageIcon("image/member/updatePwd/Group 677.png"));
+//				cpB1.addActionListener(new ActionListener() {
+//					
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//						
+//						/* 마이페이지로 돌아가기 */
+//						changeMemberinfoPanel.setVisible(false);
+//						myPage.setVisible(true);
+//						
+//					}
+//				});
+//				changeMemberinfoPanel.add(cpB1);
+//				
+//				/* 프로필 변경 버튼 */
+//				btnRemove(ciB1);
+//				ciB1.setVisible(true);
+//				ciB1.setBounds(54, 10, 126, 129);
+//				changeMemberinfoPanel.add(ciB1);
 				
 				/* 접속한 사용자의 프로필 사진을 셋팅 해줌 */
 				switch(profile) {
@@ -639,7 +642,7 @@ public class MyPage extends JPanel {
 				resignMemberPanel.setBackground(Color.white);
 				myPage.setVisible(false);
 //				downsidePanel.setVisible(false);
-				frame.add(resignMemberPanel);
+//				frame.add(resignMemberPanel);
 				
 //				FrameManager.changePanel(frame, myPage, resignMemberPanel);
 				
@@ -662,10 +665,10 @@ public class MyPage extends JPanel {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("취소 버튼 클릭");
+						/* 마이페이지로 돌아가기 */
 						resignMemberPanel.setVisible(false);
 						myPage.setVisible(true);
 						
-						/* 마이페이지로 돌아가기 */
 					}
 				});
 				
@@ -693,6 +696,12 @@ public class MyPage extends JPanel {
 							   changePwdDTO.setMemberOldPassword(password);
 							   boolean checkP = memberController.pwdCheck(changePwdDTO);
 							   System.out.println(checkP);
+							   
+							   if(!checkP) {
+								   PopupFrame.popup("image/popup/FailMessage.png");
+							   } else {
+								   memberController.deleteMember(테스트아이디);
+							   }
 							   
 							   
 						}
@@ -734,7 +743,7 @@ public class MyPage extends JPanel {
 				interestingPostPanel.setBackground(Color.white);
 				myPage.setVisible(false);
 //				downsidePanel.setVisible(false);
-				frame.add(interestingPostPanel);  
+//				frame.add(interestingPostPanel);  
 				
 				/* 관심을 패널에 올릴 이미지 */
 				JLabel interestingPostLabel = new JLabel();
@@ -777,6 +786,7 @@ public class MyPage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				/* 업적 & 포인트 호출 */
 				System.out.println("업적 & 포인트 호출");
+				SoundManager.playSound("image/member/wind.wav");
 				JPanel rewardPanel = new JPanel();
 				rewardPanel.setLayout(null);
 				rewardPanel.setBounds(0, 100, 500, 770);
@@ -784,7 +794,7 @@ public class MyPage extends JPanel {
 				rewardPanel.setBackground(Color.white);
 				myPage.setVisible(false);
 //				downsidePanel.setVisible(false);
-				frame.add(rewardPanel);
+//				frame.add(rewardPanel);
 				
 				/* 업적 관리 버튼*/
 				JButton rewardManageBtn = new JButton();
@@ -803,7 +813,7 @@ public class MyPage extends JPanel {
 						rewardManagerPanel.setVisible(true);
 						rewardManagerPanel.setBackground(Color.white);
 						rewardPanel.setVisible(false);
-						frame.add(rewardManagerPanel);
+//						frame.add(rewardManagerPanel);
 						
 						JLabel rewardManageLabel = new JLabel();
 						rewardManageLabel.setBounds(0, 100, 500, 770);
@@ -812,7 +822,7 @@ public class MyPage extends JPanel {
 						rewardManageLabel.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
-								FrameManager.changePanel(frame, rewardManagerPanel, new MyPage(frame));
+//								FrameManager.changePanel(frame, rewardManagerPanel, new MyPage(frame));
 							}
 							
 						});
@@ -837,7 +847,7 @@ public class MyPage extends JPanel {
 						pointManagePanel.setVisible(true);
 						pointManagePanel.setBackground(Color.white);
 						rewardPanel.setVisible(false);
-						frame.add(pointManagePanel);
+//						frame.add(pointManagePanel);
 						
 						JLabel pointManageLabel = new JLabel();
 						pointManageLabel.setBounds(0, 100, 500, 770);
@@ -846,7 +856,7 @@ public class MyPage extends JPanel {
 						pointManageLabel.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
-								FrameManager.changePanel(frame, pointManagePanel, new MyPage(frame));
+//								FrameManager.changePanel(frame, pointManagePanel, new MyPage(frame));
 							}
 							
 						});
@@ -880,7 +890,7 @@ public class MyPage extends JPanel {
 				myPostPanel.setBackground(Color.white);
 				myPage.setVisible(false);
 //				downsidePanel.setVisible(false);
-				frame.add(myPostPanel);  
+//				frame.add(myPostPanel);  
 				
 				JLabel myPostLabel = new JLabel();
 				myPostLabel.setBounds(0, 100, 500, 770);
@@ -906,8 +916,8 @@ public class MyPage extends JPanel {
 			
 		
 		/* 새로고침 */
-		frame.repaint();
-		frame.revalidate();
+//		frame.repaint();
+//		frame.revalidate();
 		
 		
 		

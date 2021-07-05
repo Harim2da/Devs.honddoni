@@ -29,8 +29,9 @@ public class MainFrame extends JFrame{
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-//		new FirstView(this);
-		new MyPage(this);
+//		this.add(new FirstView());
+		this.add(new MyPage());
+		
 //		new SelectAllHonPost(this);
 		
 //		FrameManager.initPanel(this, new SelectAllHonPost());
