@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.devs.honddoni.admin.controller.ManagementController;
+import com.devs.honddoni.admin.dto.AdminDTO;
 import com.devs.honddoni.admin.model.dao.AdminDAO;
 import com.devs.honddoni.common.dto.CommentsDTO;
 
@@ -20,7 +21,7 @@ public class AllData {
 	
 	MainFrame1 MainFrame = new MainFrame1();
 	
-	List<DTO> commentListDTO = null;
+	List<AdminDTO> commentListDTO = null;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	private JLabel lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11, lb12, lb13, lb14, lb15, lb16,
 	lb17, lb18, lb19, lb20, lb21; 
