@@ -41,13 +41,14 @@ public class PagingController {
 	}
 	
 	/* 전체 게시판 갯수 불러오기 컨트롤러*/
-	public void totalWholePostNum() {
+	public int totalWholePostNum() {
 
 		int result = pagingService.totalWholePostNum();
 
 		PageInfoCommentsDTO dto = new PageInfoCommentsDTO();
 
-		dto.setTotalCount(result);
+	//	dto.setTotalCount(result);
+		return result;
 		
 	}
 	
