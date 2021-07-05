@@ -94,7 +94,7 @@ public class MemberDAO {
 			pstmt.setString(8, member.getMemberPhone());
 			pstmt.setString(9, member.getMemberEmail());
 			pstmt.setString(10, member.getMemRegistDate());
-			pstmt.setString(11, member.getMemberCharacter());
+			pstmt.setInt(11, member.getMemberCharacter());
 
 			result = pstmt.executeUpdate();
 			
