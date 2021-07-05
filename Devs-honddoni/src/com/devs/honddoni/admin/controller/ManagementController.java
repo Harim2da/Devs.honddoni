@@ -1,8 +1,8 @@
 package com.devs.honddoni.admin.controller;
 
-import java.util.List;
+import java.util.List; 
 
-import com.devs.honddoni.admin.dto.AdminDTO;
+import com.devs.honddoni.admin.model.dto.*;
 import com.devs.honddoni.admin.model.service.AdminService;
 
 
@@ -13,9 +13,9 @@ public class ManagementController {
 
 	
 	/* 모든 회원 정보 조회용 메소드(List로 조회할 것) */
-	public void totalUserList() {
+	public void onlyNicname() {
 		
-		List<AdminDTO> adminList = adminService.totalUserList();
+		List<AdminDTO> adminList = adminService.onlyNicname();
 		
 //		memberResultView.display(memberList);
 	}

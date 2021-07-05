@@ -67,4 +67,10 @@
 		FROM TBL_MEMBER
 		</entry>
 		
+				<entry key="onlyNicname">
+		SELECT
+				*
+		FROM TBL_MEMBER
+		</entry>
+		
 </properties>
