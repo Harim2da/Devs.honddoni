@@ -149,7 +149,7 @@ public class PostFreeBoard extends JFrame {
 					postDTO = new PostDTO();
 
 
-					/* 게시글 정보 담기 : 게시글 제목, 내용, 게시판 종류, 모임일자, 모임시간, 지역코드, 카테고리코드,모임인원 */
+					/* 게시글 정보 담기 : 게시글 제목, 내용  */
 					postDTO.setPostName(postTitle.getText()); //게시글 제목
 					postDTO.setPostContents(postContents.getText()); // 게시글 내용
 					postDTO.setPostCategory("자유");
