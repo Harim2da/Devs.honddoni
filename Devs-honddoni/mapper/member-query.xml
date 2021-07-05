@@ -84,4 +84,19 @@
 	     SET A.MEMBER_PROFILE = ?
 	   WHERE A.MEMBER_ID = ?
 	</entry>
+	<entry key="changeCharacter">
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#changeCharacter()*/
+	         TBL_MEMBER A
+	     SET A.MEM_CHARACTER_CODE = ?
+	   WHERE A.MEMBER_ID = ?
+	</entry>
+	<entry key="changeInfo">
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#changeInfo()*/
+	         TBL_MEMBER A
+	     SET A.MEMBER_NICKNAME = ?
+	       , A.MEMBER_ADDRESS = ?
+	       , A.MEMBER_PHONE = ?
+	       , A.MEMBER_EMAIL = ?
+	   WHERE A.MEMBER_ID = ?
+	</entry>
 </properties>

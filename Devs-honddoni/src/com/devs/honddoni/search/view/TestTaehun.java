@@ -9,9 +9,7 @@ public class TestTaehun {
 	
 //		new MainBottomPanel();
 		
-//		new AllBoardList11();
-		
-//		new AllBoardList();
+		new AllBoardList();
 //		
 //		new FreeBoard();
 //
@@ -19,8 +17,8 @@ public class TestTaehun {
 //		
 //		new AllBoardListView();
 		
-		SearchController sc = new SearchController();
-		sc.selectSearch();
+//		SearchController sc = new SearchController();
+//		sc.selectSearch();
 	}
 
 }

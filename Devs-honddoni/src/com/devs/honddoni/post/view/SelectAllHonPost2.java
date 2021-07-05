@@ -14,9 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.PagenationComments;
 import com.devs.honddoni.common.PagenationPost;
-import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
@@ -33,7 +31,9 @@ public class SelectAllHonPost2 extends JFrame{
 	private JLabel pagebarLabel;	//페이지표기 바
 	private JLabel preNumber = new JLabel("");
 	private JLabel commingNumber;
-	public static int frontPage = 1;
+
+//	public static int frontPage = 1;
+
 	private JButton preBtn = new JButton(); // 앞페이지 버튼
 	private JButton commingBtn = new JButton(); // 뒷 페이지 버튼
 	private JLabel[] postList;	
@@ -44,37 +44,38 @@ public class SelectAllHonPost2 extends JFrame{
 	private JLabel[] categoryName; //카테고리명
 	private JLabel[] localName;
 	private int postNo; //게시글 번호
-	private int totalPostNum;
-	private PostDTO postDTO = new PostDTO();
+//	private int totalPostNum;
+//	private PostDTO postDTO = new PostDTO();
 	GetFilter getName = GetFilter.getInstance();
 	
 	
 	
 	public SelectAllHonPost2() {
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
+		mainframe.setBounds(100, 100, 516, 909);
+		mainframe.setLayout(null);
 
 		
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.white);	
-		this.add(bottomPanel);
+		mainframe.add(bottomPanel);
 		
-		addComponents();
-		postlistbgr(1);
-		prePageBtn();
-		commingPageBtn(1);
-		prePageNumber();
-		commingPageNumber(1);
+		addComponents(); 
+		postlistbgr(); 
+		prePageBtn(); 
+		commingPageBtn(); 
+		prePageNumber(); 
+		commingPageNumber(); 
+	
+		profile(); 
+		nickName(); 
+		categoryName(); 
 		
-		profile(1);
-		nickName();
-		categoryName(1);
+		postTitle();
+		localName(); //
 		
-		localName(1);
-		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainframe.setVisible(true);
+		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	System.out.println("실행됨");
 	}
 
@@ -136,11 +137,11 @@ public class SelectAllHonPost2 extends JFrame{
 
 					
 					postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
-					postlistbgr(postNo); 
+					postlistbgr(); 
 
 					prePageBtn();
 					prePageNumber();
-					commingPageBtn(1);
+					commingPageBtn();
 					System.out.println("frontPage : " + frontPage);
 					pagebarLabel.add(preBtn);
 
@@ -151,10 +152,8 @@ public class SelectAllHonPost2 extends JFrame{
 	
 	
 
-	private void commingPageBtn(int postNo) {
+	private void commingPageBtn() {
 		
-		this.postNo = postNo;
-
 		int pageNo = frontPage;
 		
 		
@@ -190,7 +189,7 @@ public class SelectAllHonPost2 extends JFrame{
 //				}
 				
 								
-				commingPageBtn(1);
+				commingPageBtn();
 				prePageBtn();
 				prePageNumber();
 				
@@ -213,7 +212,7 @@ public class SelectAllHonPost2 extends JFrame{
 		
 	}
 	
-	private void commingPageNumber(int postNo) {
+	private void commingPageNumber() {
 		
 		int pageNo = frontPage;
 
@@ -231,18 +230,19 @@ public class SelectAllHonPost2 extends JFrame{
 	}
 	
 	/* 게시글 배경 틀*/
-	private void postlistbgr(int postNo) {
+	private void postlistbgr() {
 		int pageNo = frontPage;
 		int y = 153;
 		
 		postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
-		PostDTO postInfo = null;
+//		PostDTO postInfo = null;
 		
 		for(int i = 0; i < postListDTO.size(); i++) {
 			
-			postInfo = postListDTO.get(i);
+//			postInfo = postListDTO.get(i);
 			
 			postList = new JLabel[postListDTO.size()];
+			postList[i] = new JLabel();
 			postList[i].setLayout(null);
 			postList[i].setIcon(new ImageIcon("image/post/postlist1"));
 			postList[i].setBounds(35, y, 432, 105);
@@ -254,7 +254,7 @@ public class SelectAllHonPost2 extends JFrame{
 	}
 	
 	/* 게시글에 맞는 프로필 불러오기 */
-	private void profile(int postNo) {
+	private void profile() {
 		int pageNo = frontPage;
 		int y = 153;
 		
@@ -265,6 +265,7 @@ public class SelectAllHonPost2 extends JFrame{
 				
 				postInfo = postListDTO.get(i);
 				profile = new JLabel[postListDTO.size()];
+				profile[i] = new JLabel();
 				profile[i].setLayout(null);
 				profile[i].setBounds(53, y + 12, 37, 37);
 				
@@ -321,7 +322,7 @@ public class SelectAllHonPost2 extends JFrame{
 	}
 	
 	/* 카테고리 라벨*/
-	private void categoryName(int postNo) {
+	private void categoryName() {
 		int pageNo = frontPage;
 		int y = 153;
 		
@@ -362,7 +363,7 @@ public class SelectAllHonPost2 extends JFrame{
 				
 	}
 	
-	private void postTitle(int postNo) {
+	private void postTitle() {
 		int pageNo = frontPage;
 		int y = 153;
 		
@@ -398,7 +399,7 @@ public class SelectAllHonPost2 extends JFrame{
 			}
 	}
 	
-	private void localName(int postNo) {
+	private void localName() {
 		int pageNo = frontPage;
 		int y = 153;
 		
