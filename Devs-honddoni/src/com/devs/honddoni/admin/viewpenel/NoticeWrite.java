@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.admin.controller.NoticeController;
 import com.devs.honddoni.common.dto.PostDTO;
 
 /* 공지사항 글쓰기 창 */
@@ -18,6 +19,8 @@ public class NoticeWrite extends JPanel{
 	
 	JFrame frame;
 	NoticeWrite noticeWrite;
+	
+	private NoticeController noticeController = new NoticeController();
 	
 	public NoticeWrite() {
 		
@@ -68,18 +71,13 @@ public class NoticeWrite extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//저장할 제목, 내용
-				String getTitle = titleTf.getText();
-				String getContent = contentTf.getText();				
-				
-				//DTO로 뭉친다
+				//저장할 제목, 내용을 DTO로 뭉친다
 				PostDTO postDTO = new PostDTO();
-				postDTO.setTitle(getTitle);
-				postDTO.setContent(getContent);
+				postDTO.setPostName(titleTf.getText());
+				postDTO.setPostContents(contentTf.getText());
 				
+				noticeController.writeNoticeBoardPost(postDTO);				
 				
-				
-				//작성완료 팝업
 				
 				//완료 시, 다시 공지사항게시판으로
 //				frame.remove(NoticeWrite);
@@ -88,8 +86,7 @@ public class NoticeWrite extends JPanel{
 //				frame.revalidate();
 			}
 		});
-		
-		
+				
 		
 		/* 컴포넌트 붙이기 */
 		noticeWrite.add(honddoniBtn);
@@ -97,10 +94,6 @@ public class NoticeWrite extends JPanel{
 		noticeWrite.add(titleTf);
 		noticeWrite.add(contentTf);		
 		noticeWrite.add(completeBtn);		
-		
-		
 	}
-	
-	
 
 }

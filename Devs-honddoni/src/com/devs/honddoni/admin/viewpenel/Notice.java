@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.admin.model.dto.SearchSingletonDTO;
@@ -22,8 +23,9 @@ import com.devs.honddoni.post.controller.PagingController;
 //공지사항 게시판 화면
 public class Notice extends JFrame{
 	
-	private JFrame mainframe = new JFrame();
-	private Notice notice;
+	private JFrame frame = new JFrame();
+	private JPanel notice = new JPanel();
+	
 	
 	private AdminList adminList; //newPanel로 쓸 것
 	private NoticeWrite noticeWrite; //newPanel로 쓸 것
@@ -43,24 +45,32 @@ public class Notice extends JFrame{
 	public int frontPage = 1;
 	private List<PostDTO> postDTOList = null;		//페이지에 해당하는 게시물들의 목록
 	private PostDTO postDTO;						//해당 게시물의 정보
+	
 	private JLabel[] postListLb;					//게시물 내용을 나타내는 밑바탕라벨 (디자인용도)
 	private JButton[] postBtn;						//해당 게시물로 가는 버튼
 	private JLabel[] title;							//해당 게시물의 제목
 	
 	private int postNo;
 	private int totalPostNum;
+	
+	public static void main(String[] args) {
+		new Notice();
+	}
 			
 	public Notice() {
 
-		this.frame = FrameManagerYs.getFrame(); //요래...해볼까
-		this.notice = this;
+//		this.frame = mainFrame; 
+//		this.notice = this;
+		
+		this.setBounds(100, 100, 516, 909);
+		this.setLayout(null);
 		
 		/* 제일 기본 패널 (init)*/
 		notice.setBounds(0, 0, 500, 870);
 		notice.setLayout(null);
 		notice.setBackground(Color.yellow);
-	    frame.add(notice);
 		System.out.println("Notice 패널 생성");	
+		frame.add(notice);
 
 		/* 혼또니 로고버튼 */
 		JButton honddoniBtn = new JButton("");
@@ -147,8 +157,7 @@ public class Notice extends JFrame{
 		commingPageBtn();	
 		prePageNumber();
 		commingPageNumber();
-		
-		
+				
 		//게시글 내용들 세팅
 		setPostListLb();
 		postBtnAdd();
@@ -161,9 +170,10 @@ public class Notice extends JFrame{
 	    this.setVisible(true);
 	    System.out.println("notice 패널 실행됨");
 	    
-	    //실행용
-	    mainframe.setVisible(true);
-		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    
+	    //확인용
+	    frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	}
 	
@@ -293,6 +303,9 @@ public class Notice extends JFrame{
 			postListLb[i].setBounds(35, y, 432, 105);
 			notice.add(postListLb[i]);
 			y += 119;
+			
+			notice.repaint();
+			notice.revalidate();
 		}
 	}
 	
@@ -305,9 +318,9 @@ public class Notice extends JFrame{
 		PostDTO postInfo = null;
 		
 		for(int i = 0; i < postDTOList.size(); i++) {
-			System.out.println("제목: " + postInfo.getPostName());
-			
 			postInfo = postDTOList.get(i);
+			
+			System.out.println("제목: " + postInfo.getPostName());			
 			
 			title = new JLabel[postDTOList.size()];
 			title[i] = new JLabel();
@@ -337,6 +350,11 @@ public class Notice extends JFrame{
 			postBtn[i].setIcon(new ImageIcon("image/admin/notice_noticeBtn.png"));
 			postBtn[i].setBounds(54, j, 140, 45);
 			notice.add(postBtn[i]);
+			
+			PostDTO postDTO = new PostDTO();
+			//postDTOList 중에 이번회차 내용을 DTO에 입력
+			postDTO.setPostNo(i);
+			
 			j += 119;
 			
 			//버튼 클릭시, 해당 포스트 DTO를 들고 NoticeContent로 이동			
@@ -345,11 +363,12 @@ public class Notice extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					System.out.println("글번호 : " + "번 포스트로 이동");
 					
-					//해당 포스트의 DTO를 가지고 오기
-					PostDTO postDTO = new PostDTO();
-					postDTO = contactController.selectThePost(i);  //이게 맞을까..?
+					//해당 포스트의 DTO를 가지고 오기					
+					postNo = postDTO.getPostNo();
 					
-					noticeContentView(postDTO);
+//					postDTO = contactController.selectThePost(i);  //이게 맞을까..?
+					
+//					noticeContentView(postDTO);
 					 
 
 				}
@@ -358,11 +377,6 @@ public class Notice extends JFrame{
 		}	
 
 	}
-	
-	
-	
-	
-	
 	
 	
 }
