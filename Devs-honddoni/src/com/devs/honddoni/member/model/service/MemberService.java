@@ -97,5 +97,25 @@ public class MemberService {
 		
 	}
 
+	public int changeCharacter(Integer newCharacterCode) {
+		
+		Connection con = getConnection();
+		
+		int result = memberDAO.changeCharacter(con, newCharacterCode);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int changeInfo(MemberInfoDTO memberInfo) {
+		Connection con = getConnection();
+		
+		int result = memberDAO.changeInfo(con, memberInfo);
+		
+		close(con);
+		
+		return result;
+	}
 
 }

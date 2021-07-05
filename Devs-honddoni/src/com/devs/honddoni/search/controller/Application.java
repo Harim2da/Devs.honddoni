@@ -13,14 +13,21 @@ public class Application {
 //		sc = new SearchController();
 //		sc.selectSearch();
 		
-		//pagingController에서 댁글내용쪽 commentListDTO쪽
-		PagingController pc = new PagingController();
-		List<PostDTO> post = pc.wholePostList(1);
+		//pagingController에서 댓글내용쪽 commentListDTO쪽
+		PagingController allBoardList = new PagingController();
+		List<PostDTO> allList = allBoardList.wholePostList(1);
 		
-		for(PostDTO postList: post) {
+		for(PostDTO postList: allList) {
 			System.out.println(postList);
 		} 
 
+		
+		PagingController freeBoardList = new PagingController();
+		List<PostDTO> freeList = freeBoardList.wholePostList(1);
+		
+		for(PostDTO postList: freeList) {
+			System.out.println(postList);
+		} 
 	}
 
 }

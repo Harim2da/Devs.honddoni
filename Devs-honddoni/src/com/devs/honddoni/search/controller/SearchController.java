@@ -28,6 +28,15 @@ public class  SearchController {
 	}
 	
 	//자유게시판조회하는 메소드
+	public void selectFreeSearch() {
+		// PostDTO에 대한 정보를 한개아닌 여러정보를 다 담아야하니깐 List묶고 받아온다
+		List<PostDTO> post = searchService.selectList();
+		//System.out.println(post);
+		for(PostDTO postList: post) {
+			System.out.println(postList);
+		}
+	
+	}
 	
 	
 	

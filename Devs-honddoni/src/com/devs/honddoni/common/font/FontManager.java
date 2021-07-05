@@ -38,15 +38,16 @@ public class FontManager {
 		  }
 	}
 
-	public static void setUIFont (FontUIResource f){
+	public static void setUIFont (Font font2){
 	    java.util.Enumeration keys = UIManager.getDefaults().keys();
 	    while (keys.hasMoreElements()) {
 	      Object key = keys.nextElement();
 	      Object value = UIManager.get (key);
-	      if (value instanceof javax.swing.plaf.FontUIResource)
+	      if (value instanceof FontUIResource) {
 	    	  FontUIResource orig = (FontUIResource) value;
-	      	Font font = new Font(font.getFontName()), orig.getStyle(), font.getSize());
-	        UIManager.put (key, new FontUIResource(font));
+	    	  Font font = new Font(font2.getFontName(), orig.getStyle(), font2.getSize());
+	    	  UIManager.put (key, new FontUIResource(font));
+	      	}
 	      }
 	    } 
 }

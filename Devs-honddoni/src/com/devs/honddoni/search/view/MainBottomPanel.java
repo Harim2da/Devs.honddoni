@@ -16,7 +16,7 @@ import com.devs.honddoni.search.controller.SearchController;
 //메인프레임의 하단 프레임
 public class MainBottomPanel /*extends JFrame*/{
 
-	JFrame frame  = new JFrame();
+	JFrame frame = new JFrame();
 //MainFrame frame; //메인프레임
 	//private JFrame frame;
 	
@@ -37,6 +37,8 @@ public class MainBottomPanel /*extends JFrame*/{
 	private JButton logout; // 로그아웃버튼
 	private JLabel adminEmail; // 문의메일-----------------------
 	private SearchController searchController;
+	
+	
 	public MainBottomPanel() {
 		//this.setBounds(100, 100, 516, 909);
 	//	this.setLayout(null);
