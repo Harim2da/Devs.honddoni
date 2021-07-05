@@ -19,10 +19,10 @@ public class PostDAO {
 
 	private Properties prop;
 	private PostService sv;
-	
+
 	public PostDAO() {
 		this.prop = new Properties();
-		
+
 		try {
 			prop.loadFromXML(new FileInputStream("postmapper/honddonipost-query.xml"));
 		} catch (InvalidPropertiesFormatException e) {
@@ -33,22 +33,22 @@ public class PostDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public int insertNewHonPost(Connection con, PostDTO post) {
 		//게시글 번호 - DB에서 받, 카테고리명 /지역명은 DTO에서 String으로 받아서 여기서 int로 변환 
-		
+
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
-//		String localCode = prop.getProperty("searchLocalCode");
-//		int categoryCode = Integer.parseInt(prop.getProperty("searchCategoryCode"));
-		
+
+		//		String localCode = prop.getProperty("searchLocalCode");
+		//		int categoryCode = Integer.parseInt(prop.getProperty("searchCategoryCode"));
+
 		String query = prop.getProperty("insertNewHonPost");
 		System.out.println(post);
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, post.getPostName());
 			pstmt.setString(2, post.getPostContents());
 			pstmt.setString(3, post.getPostCategory());
@@ -60,10 +60,10 @@ public class PostDAO {
 			pstmt.setInt(9, post.getLocalCode());
 			pstmt.setInt(10, post.getCategoryCode()); 
 			pstmt.setInt(11, post.getPostNumberOfPeopleNumber());
-			
+
 			result = pstmt.executeUpdate();
-			
-			
+
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -74,13 +74,13 @@ public class PostDAO {
 	}
 
 	public int searchLocalCode(Connection con, String localName) {
-		
+
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int result = 0;
-		
+
 		String localCode = prop.getProperty("searchLocalCode");
-		
+
 		try {
 			pstmt = con.prepareStatement(localCode);
 			pstmt.setString(1, localName);
@@ -88,25 +88,25 @@ public class PostDAO {
 			if(rset.next()) {
 				result = rset.getInt("LOCAL_CODE");			
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
 		}
-	
+
 		return result;
 	}
 
-public int searchCategoryCode(Connection con, String categoryName) {
-		
+	public int searchCategoryCode(Connection con, String categoryName) {
+
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int result = 0;
-		
+
 		String categoryCode = prop.getProperty("searchCategoryCode");
-		
+
 		try {
 			pstmt = con.prepareStatement(categoryCode);
 			pstmt.setString(1, categoryName);
@@ -114,17 +114,65 @@ public int searchCategoryCode(Connection con, String categoryName) {
 			if(rset.next()) {
 				result = rset.getInt("CATEGORY_CODE");
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
 		}
-	
-	
+
+
 		return result;
 	}
-	
-	
+
+
+
+	public PostDTO selectPost(Connection con, int postNo) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		PostDTO postDTO = null;
+		
+		String query = prop.getProperty("selectThePostList");
+		
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, postNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				postDTO = new PostDTO();
+				postDTO.setPostName(rset.getString("POST_NAME"));
+				postDTO.setPostContents(rset.getString("POST_CONTENTS"));
+				postDTO.setCategoryName(rset.getString("POST_CATEGORY"));
+				postDTO.setPostMemberNo(rset.getInt("POST_MEMBER_NO"));
+				postDTO.setPostMeetingDate(rset.getString("POST_MEETINGDATE"));
+				postDTO.setPostMeetingTime(rset.getString("POST_MEETINGTIME"));
+				postDTO.setPostWritingDate(rset.getString("POST_WRITINGDATE"));
+				postDTO.setPostWritingDate(rset.getString("POST_WRITINGTIME"));
+				postDTO.setLocalName(rset.getString("LOCAL_NAME"));
+				postDTO.setCategoryName(rset.getString("CATEGORY_NAME"));
+				postDTO.setPostDelStatus(rset.getString("POST_DEL_STATUS"));
+				postDTO.setPostNumberOfPeopleNumber(rset.getInt("POST_NUMBER_OF_PEOPLE"));
+				postDTO.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
+				postDTO.setMemberProfile(rset.getString("MEMBER_PROFILE"));
+			
+			
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return postDTO;
+	}
+
+
+
 }	

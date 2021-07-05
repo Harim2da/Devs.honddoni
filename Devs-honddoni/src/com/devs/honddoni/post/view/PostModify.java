@@ -37,20 +37,18 @@ public class PostModify extends JFrame{
 	
 	private void addComponents() {
 		
-		myPostLabel = new JLabel();   // 하단 패널 위 검색창
-		myPostLabel.setBackground(Color.white);
-		myPostLabel.setLayout(null);
-		myPostLabel.setBounds(50, 15, 178, 32); 
-		myPostLabel.setIcon(new ImageIcon("image/post/mypostlist.png"));
-		bottomPanel.add(myPostLabel);
+		postLabel = new JLabel();   // 하단 패널 위 게시글 라벨
+		postLabel.setBackground(Color.white);
+		postLabel.setLayout(null);
+		postLabel.setBounds(35, 0, 500, 724); 
+		postLabel.setIcon(new ImageIcon("image/post/detailpost.png"));
+		bottomPanel.add(postLabel);
 			
-		pagebarLabel = new JLabel("");		//페이지 표기 바
-		pagebarLabel.setLayout(null);
-		pagebarLabel.setIcon(new ImageIcon("image/post/nextPageButton.png"));
-		pagebarLabel.setBounds(182, 112, 137, 22);
-		bottomPanel.add(pagebarLabel);
-	
-	
+//		pagebarLabel = new JLabel("");		//페이지 표기 바
+//		pagebarLabel.setLayout(null);
+//		pagebarLabel.setIcon(new ImageIcon("image/post/nextPageButton.png"));
+//		pagebarLabel.setBounds(182, 112, 137, 22);
+//		bottomPanel.add(pagebarLabel);
 	}
 	
 	
