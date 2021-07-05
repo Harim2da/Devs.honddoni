@@ -16,15 +16,19 @@ import com.devs.honddoni.admin.model.dto.SearchSingletonDTO;
 import com.devs.honddoni.common.PagenationComments;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.font.FontManager;
+import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.view.RegistMember;
+import com.devs.honddoni.memberLog.view.MemberLogView;
 import com.devs.honddoni.post.controller.ContactController;
 import com.devs.honddoni.post.controller.PagingController;
 
 
 //공지사항 게시판 화면
-public class Notice extends JFrame{
+public class Notice extends JPanel{
 	
-	private JFrame frame = new JFrame();
-	private JPanel notice = new JPanel();
+	private MainFrame frame;
+	private Notice notice;
 	
 	
 	private AdminList adminList; //newPanel로 쓸 것
@@ -52,25 +56,18 @@ public class Notice extends JFrame{
 	
 	private int postNo;
 	private int totalPostNum;
-	
-	public static void main(String[] args) {
-		new Notice();
-	}
+	FontManager font = new FontManager();
 			
-	public Notice() {
-
-//		this.frame = mainFrame; 
-//		this.notice = this;
-		
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
+	public Notice(MainFrame frame) {
+		this.frame = frame; 
+		this.notice = this;		
 		
 		/* 제일 기본 패널 (init)*/
-		notice.setBounds(0, 0, 500, 870);
-		notice.setLayout(null);
-		notice.setBackground(Color.yellow);
+		this.setBounds(0, 0, 500, 870);
+		this.setLayout(null);
+		this.setBackground(Color.white);
+		frame.add(this);
 		System.out.println("Notice 패널 생성");	
-		frame.add(notice);
 
 		/* 혼또니 로고버튼 */
 		JButton honddoniBtn = new JButton("");
@@ -79,14 +76,15 @@ public class Notice extends JFrame{
 		honddoniBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				//관리자메인 페이지로 나감
+				System.out.println("관리자메인 페이지로 나감");
+				notice.setVisible(false);
+				adminList = new AdminList(frame);
 //				FrameManagerYs.changePanel(notice, new 관리자메인());
 //				frame.remove(notice);
 //				frame.add(adminList);
 //				frame.repaint();
-//				frame.revalidate();
-				
+//				frame.revalidate();				
 			}
 		});
 		
@@ -119,9 +117,8 @@ public class Notice extends JFrame{
 				
 				//싱글톤갖다쓸 때
 //				SearchSingletonDTO searchSingletonDTO = SearchSingletonDTO.getInstance();
-//				searchSingletonDTO.getGetSearchWord();
+//				searchSingletonDTO.getGetSearchWord();				
 				
-//				
 			}
 		});		
 		
@@ -134,7 +131,8 @@ public class Notice extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("NoticeWrite 패널로 이동");
-				
+				notice.setVisible(false);
+				noticeWrite = new NoticeWrite(frame);
 			}
 		});
 		

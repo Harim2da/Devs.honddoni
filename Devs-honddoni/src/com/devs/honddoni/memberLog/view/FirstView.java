@@ -11,30 +11,34 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class FirstView extends JPanel{
 	
-	MainFrame frame; //4조참조
-	FirstView firstView; //4조참조	
+	private MainFrame frame; //4조참조
+	private FirstView firstView; //4조참조	
 	
 	private MemberLogView memberLogView;
 	private JButton btnNewButton;
 	private JLabel honttoniLb;
 	
-	public FirstView(MainFrame mainFrame) {	
+	FontManager font = new FontManager();
+	
+	public FirstView(MainFrame frame) {	
 		
-		this.frame = mainFrame; //4조참조
+		this.frame = frame; //4조참조
 		this.firstView = this; //4조참조
 				
 		//시작화면에 올릴 전체크기패널 
-		firstView.setBounds(0, 0, 500, 870);
-		firstView.setLayout(null);
-		firstView.setBackground(Color.yellow);
+		this.setBounds(0, 0, 500, 870);
+		this.setBackground(Color.yellow);
+		this.setLayout(null);
+		frame.add(this);
 		
 		
-		//로고버튼
+		/* 로고버튼 */
 		btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon("image/memberLog/login/login_1_logo.png"));
 		btnNewButton.setBounds(174, 276, 152, 154);
@@ -42,19 +46,16 @@ public class FirstView extends JPanel{
 		
 		btnNewButton.addActionListener(new ActionListener() {			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-			
-				memberLogView = new MemberLogView(frame);
+			public void actionPerformed(ActionEvent e) {			
+				firstView.setVisible(false);
+				memberLogView = new MemberLogView(frame); //frame.add는 넘어가서 한다. 흠 this.frame일까 frame일까
 				
 				//로그인창으로 바꾸기...?
 //				FrameManager.changePanel(frame, firstView, memberLogView);
-				frame.remove(firstView);
-				frame.add(memberLogView);
-				frame.repaint();
-				frame.revalidate();
-				
-				//혹시 몰라서 프레임 리프레쉬
-//				FrameManager.refresh();
+//				frame.remove(firstView);
+//				frame.add(memberLogView);
+//				frame.repaint();
+//				frame.revalidate();				
 			}
 		});
 		
@@ -68,9 +69,7 @@ public class FirstView extends JPanel{
 		firstView.add(btnNewButton);
 		firstView.add(honttoniLb);
 		firstView.setVisible(true);
-		
-		frame.add(this);
-		
+				
 	}
 	
 }

@@ -6,29 +6,30 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.common.mainframe.FrameManager;
+import com.devs.honddoni.admin.viewpenel.AdminList;
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.view.RegistMember;
 import com.devs.honddoni.memberLog.controller.LoginController;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
+import com.devs.honddoni.search.view.MainBottomPanel;
 
 public class MemberLogView extends JPanel {
 	
 	private MainFrame frame;
-	private JPanel panel;	
+	private MemberLogView memberLogView;	
 	
 	SearchId searchId; //newPanel로 사용할 것
 	SearchPwd searchPwd; //newPanel로 사용할 것
-	LoginFail loginFail; //newPanel로 사용할 것
 	RegistMember registMember; //newPanel로 사용할 것
-	//newPanel로 쓸 메인화면도 필드로 넣어줘야 함
+	AdminList adminList; //newPanel로 사용할 것
+	MainBottomPanel mainBottomPanel;//newPanel로 쓸 메인화면도 필드로 넣어줘야 함
 	
 	private LoginController loginController = new LoginController(); //MVC에서 다음으로 넘길 컨트롤러
 	private LoginDataDTO loginDataDTO; //컨트롤러에 넘겨줄 DTO
@@ -36,17 +37,20 @@ public class MemberLogView extends JPanel {
 	private JTextField idTf;
 	private JPasswordField pwPf;
 	private String password = "";
+	
+	FontManager font = new FontManager();
 
 	//로그인창 패널이다
-	public MemberLogView(MainFrame Mainframe) {
+	public MemberLogView(MainFrame frame) {
 
-		this.frame = Mainframe;
-		this.panel = this;
+		this.frame = frame;
+		this.memberLogView = this;
 
 		//로그인창 전체패널 생성		
-		panel.setBounds(0, 0, 500, 870);
-		panel.setForeground(Color.WHITE);
-		panel.setLayout(null);
+		this.setBounds(0, 0, 500, 870);
+		this.setForeground(Color.WHITE);
+		this.setLayout(null);
+		frame.add(this);
 		
 
 		//로고라벨
@@ -89,10 +93,10 @@ public class MemberLogView extends JPanel {
 
 					//한번 실행할 때 마다 텍필 칸의 내용을 지워야줘야 함...
 					
-					int result = loginController.userLogin(loginDataDTO); //로그인 메소드 실행 
 					
-					//바꿀 다음패널들을 초기화
-					loginFail = new LoginFail(frame);
+					//로그인메소드 실행
+					int result = loginController.userLogin(loginDataDTO);
+
 					
 					//로그인실패 : 0, 로그인성공(일반사용자 : 1, 관리자 : 2) 반환함
 					if(result == 0) {
@@ -104,13 +108,15 @@ public class MemberLogView extends JPanel {
 						//메인화면 쪽으로 패널교체
 //						frame.topPannelBtnStart();
 
-//						FrameManager.changePanel(frame, bottomPanel, newPanel);
 						System.out.println("로그인 성공~ 메인화면 패널로 교체");
+						memberLogView.setVisible(false);
+						mainBottomPanel = new MainBottomPanel(frame);
 						
 					} else {
 						//관리자 쪽으로 패널교체
-//						FrameManager.changePanel(bottomPanel, newPanel);
 						System.out.println("로그인 성공~ 관리자메인화면 패널로 교체");
+						memberLogView.setVisible(false);
+						adminList = new AdminList(frame);
 						
 					}
 					
@@ -128,15 +134,14 @@ public class MemberLogView extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				//아이디찾기 패널로				
-				System.out.println("아이디 찾기 패널로~");
-				
-				// 아이디 찾기로 패널교체
+				System.out.println("아이디 찾기 패널로~");				
+				memberLogView.setVisible(false);
 				searchId = new SearchId(frame);	
 //				FrameManager.changePanel(frame, bottomPanel, searchId);
-				frame.remove(panel);
-				frame.add(searchId);
-				frame.repaint();
-				frame.revalidate();
+//				frame.remove(memberLogView);
+//				frame.add(searchId);
+//				frame.repaint();
+//				frame.revalidate();
 
 			}
 		});
@@ -152,14 +157,13 @@ public class MemberLogView extends JPanel {
 				
 				//비밀번호 찾기쪽으로 간다
 				System.out.println("비밀번호 찾기 쪽으로");
-				
-				// 창 바꾸기...?
+				memberLogView.setVisible(false);
 				searchPwd = new SearchPwd(frame);
-//				FrameManager.changePanel(frame, bottomPanel, searchPwd);
-				frame.remove(searchPwd);
-				frame.add(searchPwd);
-				frame.repaint();
-				frame.revalidate();
+//				FrameManager.changePanel(frame, memberLogView, searchPwd);
+//				frame.remove(searchPwd);
+//				frame.add(searchPwd);
+//				frame.repaint();
+//				frame.revalidate();
 				
 			}
 		});
@@ -175,36 +179,32 @@ public class MemberLogView extends JPanel {
 				
 				//회원가입 쪽으로 간다
 				System.out.println("회원가입쪽으로");
-				
-				// 창 바꾸기...?
+				memberLogView.setVisible(false);
 				registMember = new RegistMember(frame);
-//				FrameManager.changePanel(frame, panel, registMember);
-				frame.remove(panel);
-				frame.add(registMember);
-				frame.repaint();
-				frame.revalidate();
-
+//				FrameManager.changePanel(frame, memberLogView, registMember);
+//				frame.remove(memberLogView);
+//				frame.add(registMember);
+//				frame.repaint();
+//				frame.revalidate();
 			}
 		});
 
 
 		//한 패널에 컴포넌트올리기		
-		panel.add(adminLoginlb);
-		panel.add(honddoniLogo);
-		panel.add(idPwdArea);
-		panel.add(loginBtn);
-		panel.add(searchIdBtn);
-		panel.add(searchPasswordBtn);
-		panel.add(registBtn);
-		panel.add(idTf); //이래야 되더라... idPwdArea에 올리면 안 보임
-		panel.add(pwPf);
+		this.add(adminLoginlb);
+		this.add(honddoniLogo);
+		this.add(idPwdArea);
+		this.add(loginBtn);
+		this.add(searchIdBtn);
+		this.add(searchPasswordBtn);
+		this.add(registBtn);
+		this.add(idTf); //이래야 되더라... idPwdArea에 올리면 안 보임
+		this.add(pwPf);
 		
-		panel.setVisible(true);
-
-		//확인용 프레임에 올리기
-//		frame.add(panel);
-//		frame.setVisible(true);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+		
+		frame.repaint();
+		frame.revalidate();
 		
 	}
 

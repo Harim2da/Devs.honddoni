@@ -30,38 +30,33 @@ import com.devs.honddoni.common.font.FontManager;
 
 public class RegistMember extends JPanel {
 
-	MainFrame frame;
-	RegistMember registMember;
+	private MainFrame frame;
+	private RegistMember registMember;
 
 	private MemberLogView memberLogView; //newPanel로 쓸 것
 
 	private MemberController memberController = new MemberController();
 	private MemberRegistDTO memberRegistDTO;
 
+	private String gender = "여";	//actionListener에서 사용하는 것들
+	int characterNum = 0;			//actionListener에서 사용하는 것들
 
-	private String gender = "여";
-
-	private JLayeredPane pann; // 레이어 가능한 팝업 팬
-	private JLabel selectChartLb; //성향선택 이미지 라벨
+//	private JLayeredPane pann; // 레이어 가능한 팝업 팬
+//	private JLabel selectChartLb; //성향선택 이미지 라벨
 
 	FontManager font = new FontManager();
 
-		/* 확인용 메소드 */
-		public static void main(String[] args) {
-			new RegistMember(new MainFrame()); 
-		}
+	public RegistMember(MainFrame frame) {
 
-	public RegistMember(MainFrame mainframe) {
-
-		this.frame = mainframe;
+		this.frame = frame;
 		this.registMember = this;
 
-		frame.add(registMember);
-
 		/* 제일 기본 패널 */
-		//		registMember = new JPanel(); // 빼는게 맞다.
-		registMember.setBounds(0, 0, 500, 870);
-		registMember.setLayout(null);
+//		registMember = new JPanel(); // 빼는게 맞다.
+		this.setBounds(0, 0, 500, 870);
+		this.setLayout(null);
+		this.setBackground(Color.WHITE);
+		frame.add(this);
 
 		/* 로고 들어갈 상단부 패널 */
 		JPanel upsidePanel = new JPanel();
@@ -84,14 +79,15 @@ public class RegistMember extends JPanel {
 			/* 로고버튼 누를 시, 로그인 창으로 이동 */			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				//로그인창으로 나감
+				System.out.println("로그인창으로 이동");
+				registMember.setVisible(false);
 				memberLogView = new MemberLogView(frame);
-
-				frame.remove(registMember);
-				frame.add(memberLogView);
-				frame.repaint();
-				frame.revalidate();
-
+//				FrameManager.changePanel(frame, firstPanel, newPanel);
+//				frame.remove(searchPwd);
+//				frame.add(memberLogView);
+//				frame.repaint();
+//				frame.revalidate();
 			}
 		});
 
@@ -179,38 +175,35 @@ public class RegistMember extends JPanel {
 		//			}
 		//		});
 		
-		//성향선택 콤보박스
-		String character = ""; //일단 이렇게 설정
-		String[] characterCategory = {"현재 선택하신 성향은 " + character + "입니다.", "리더형", "팔로워형", "계획적", "즉흥적", "외향적", "내향적", "감성적", "이성적"};
+		//성향선택 콤보박스		
+		String[] characterCategory = {" ", "리더형", "팔로워형", "계획적", "즉흥적", "외향적", "내향적", "감성적", "이성적"};
 		JComboBox characterSelectCombo = new JComboBox(characterCategory);
-		characterSelectCombo.setBounds(178, 696, 240, 26);
-		characterSelectCombo.setSelectedIndex(0); 	
+		characterSelectCombo.setBounds(0, 0, 316, 41);
+		characterSelectCombo.setSelectedIndex(0); 	//0번째 인덱스가 맨 처음에 나오도록 선택
 		characterSelectCombo.setFont(font.customFont1);
 		characterSelectLb.add(characterSelectCombo);
+		
 		characterSelectCombo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox<String> comboBox = (JComboBox<String>) e.getSource();
 				String characterCategory = (String) comboBox.getSelectedItem();
-				Integer newCharacterCode = null;
+//				Integer newCharacterCode = null;
 				switch(characterCategory) {
-					case "리더형" : newCharacterCode = 1; break;
-					case "팔로워형": newCharacterCode = 2; break;
-					case "계획적" : newCharacterCode = 3; break;
-					case "즉흥적" : newCharacterCode = 4; break;
-					case "외향적" : newCharacterCode = 5; break;
-					case "내향적" : newCharacterCode = 6; break;
-					case "감성적" : newCharacterCode = 7; break;
-					case "이성적" : newCharacterCode = 8; break;
-				default : newCharacterCode = 1; break;
+					case "리더형" : characterNum = 1; break;
+					case "팔로워형": characterNum = 2; break;
+					case "계획적" : characterNum = 3; break;
+					case "즉흥적" : characterNum = 4; break;
+					case "외향적" : characterNum = 5; break;
+					case "내향적" : characterNum = 6; break;
+					case "감성적" : characterNum = 7; break;
+					case "이성적" : characterNum = 8; break;
+				default : characterNum = 1; break;
 				}
-				
-				//성향설정
-				memberRegistDTO.setMemberCharacter(newCharacterCode);
-				
+//				characterNum = newCharacterCode;
 			}
 		});
-
+		
 
 		/* 중복확인 버튼 */
 		JButton checkDuplBtn = new JButton();
@@ -219,7 +212,6 @@ public class RegistMember extends JPanel {
 		checkDuplBtn.setContentAreaFilled(false);
 		checkDuplBtn.setBorderPainted(false);
 		checkDuplBtn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == checkDuplBtn) {
@@ -227,7 +219,6 @@ public class RegistMember extends JPanel {
 					String getUserId = idTf.getText();
 					memberController.idDuplCheck(getUserId);
 				}
-
 			}
 		});
 
@@ -265,6 +256,7 @@ public class RegistMember extends JPanel {
 					memberRegistDTO.setMemberNickname(nicknameTf.getText());
 					memberRegistDTO.setMemberPhone(phoneTf.getText());
 					memberRegistDTO.setMemberEmail(emailTf.getText());
+					memberRegistDTO.setMemberCharacter(characterNum);
 
 					/* 등록하는 오늘 날짜 추출 */
 					java.util.Date today = new java.util.Date(System.currentTimeMillis());
@@ -285,6 +277,20 @@ public class RegistMember extends JPanel {
 		cancelBtn.setIcon(new ImageIcon("image/member/regist/regist_10_cancel_btn.png"));
 		cancelBtn.setContentAreaFilled(false);
 		cancelBtn.setBorderPainted(false);
+		cancelBtn.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//로그인창으로 나감
+				System.out.println("로그인창으로 이동");
+				registMember.setVisible(false);
+				memberLogView = new MemberLogView(frame);
+//				FrameManager.changePanel(frame, firstPanel, newPanel);
+//				frame.remove(searchPwd);
+//				frame.add(memberLogView);
+//				frame.repaint();
+//				frame.revalidate();				
+			}
+		});
 
 
 		/* 컴포넌트 올리기 */		
@@ -300,23 +306,20 @@ public class RegistMember extends JPanel {
 		memberDataLb.add(phoneTf);
 		memberDataLb.add(emailTf);
 		memberDataLb.add(characterSelectLb);
-
 		memberDataLb.add(checkDuplBtn);
-
 
 		upsidePanel.add(honddoniBtn);
 		downsidePanel.add(memberDataLb);	
 		downsidePanel.add(agreeBtn);
 		downsidePanel.add(cancelBtn);
 
-
 		registMember.add(upsidePanel);
 		registMember.add(downsidePanel);
 
 		registMember.setVisible(true);
 
-		//		this.repaint();
-		//		this.revalidate();	
+		frame.repaint();
+		frame.revalidate();
 
 	}	
 
