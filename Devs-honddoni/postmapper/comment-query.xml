@@ -41,4 +41,25 @@
 	    FROM TBL_POST
 	   WHERE POST_NO = ?     
 	</entry>
+	<entry key="reportComment">
+	  INSERT /*com.devs.honddoni.post.model.dao.PostDAO#reportComment()*/
+	    INTO TBL_REPORT R
+	    (
+	      R.REPORT_NO
+	    , R.REPORT_CATEGORY
+	    , R.BOARD_TYPE
+	    , R.BOARD_NO
+	    , R.REPORT_MEMBER_NO
+	    , R.REPORTED_MEMBER_NO
+	    )
+	    VALUES
+	    (
+	      SEQ_COMMENT_NO.NEXTVAL
+	    , ?
+	    , ?
+	    , ?
+	    , ?
+	    , ? 
+	    )
+	</entry>
 </properties>

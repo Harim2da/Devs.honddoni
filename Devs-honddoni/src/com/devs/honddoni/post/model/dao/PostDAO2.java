@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.devs.honddoni.common.dto.CommentsDTO;
+import com.devs.honddoni.common.dto.reportDTO;
 
 import static com.devs.honddoni.common.JDBCTemplate.close;
 
@@ -22,7 +23,7 @@ public class PostDAO2 {
 	public PostDAO2() {
 		this.prop = new Properties();
 		try {
-			prop.loadFromXML(new FileInputStream("postmapper/commnet-query.xml"));
+			prop.loadFromXML(new FileInputStream("postmapper/comment-query.xml"));
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -104,11 +105,13 @@ public class PostDAO2 {
 
 		return result;
 	}
-
+	
+	/* 게시글의 번호를 통해 게시글의 분류를 알아오는 DAO */
 	public String selectPostCategory(Connection con, int postNo) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		String result = "";
 		String query = prop.getProperty("selectPostCategory");
 		
 		try {
@@ -117,7 +120,7 @@ public class PostDAO2 {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				result = rset.getString("COUNT(*)");
+				result = rset.getString("POST_CATEGORY");
 				
 			}
 			
@@ -126,7 +129,34 @@ public class PostDAO2 {
 			e.printStackTrace();
 		} close(pstmt);
 		
-		return null;
+		return result;
+	}
+	
+	/* 댓글신고 등록 DAO */
+	public int reportComment(Connection con, reportDTO reportDTO) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("reportComment");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, reportDTO.getReportCategory());
+			pstmt.setString(2, reportDTO.getBroadType());
+			pstmt.setInt(3, reportDTO.getBroadNo());
+			pstmt.setInt(4, reportDTO.getReportMemberNo());
+			pstmt.setInt(5, reportDTO.getReportedMemberNo());
+
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+
 	}
 
 }

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.devs.honddoni.common.dto.CommentsDTO;
+import com.devs.honddoni.common.dto.reportDTO;
 import com.devs.honddoni.post.model.dao.PostDAO2;
 
 public class PostService2 {
@@ -73,7 +74,8 @@ public class PostService2 {
 		return result;
 			
 	}
-
+	
+	/* 게시글의 번호를 통해 게시글의 분류를 알아오는 service */
 	public String selectPostCategory(int postNo) {
 		
 		Connection con = getConnection();
@@ -81,6 +83,25 @@ public class PostService2 {
 		String result = postDAO2.selectPostCategory(con, postNo);
 
 		if(result != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+
+		return result;
+		
+	}
+	
+	/* 댓글신고 등록 service */
+	public int reportComment(reportDTO reportDTO) {
+		
+		Connection con = getConnection();
+
+		int result = postDAO2.reportComment(con, reportDTO);
+
+		if(result > 0) {
 			commit(con);
 		} else {
 			rollback(con);

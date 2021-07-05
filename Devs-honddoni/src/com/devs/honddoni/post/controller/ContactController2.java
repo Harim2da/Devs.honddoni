@@ -64,6 +64,7 @@ public class ContactController2 {
 
 	}
 	
+	/* 게시글의 번호를 통해 게시글의 분류를 알아오는 controller */
 	public String selectPostCategory(int postNo) {
 		
 		String result = postService2.selectPostCategory(postNo);
@@ -72,9 +73,16 @@ public class ContactController2 {
 		
 	}
 
+	/* 댓글신고 등록 controller */
 	public void reportComment(reportDTO reportDTO) {
 		
-		
+		int result = postService2.reportComment(reportDTO);
+
+		if(result > 0 ) {
+			System.out.println("신고 접수 성공");
+		} else {
+			System.out.println("신고 접수 실패");
+		}
 		
 		
 	}
