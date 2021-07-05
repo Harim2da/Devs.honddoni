@@ -12,39 +12,40 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
-import com.devs.honddoni.common.mainframe.FrameManager;
-import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.post.controller.GetFilter;
 
-public class SelectAllHonPost extends JPanel{
+public class SelectAllHonPost extends JFrame{
 
-//	private JFrame frame = new JFrame();
-	private JPanel bottomPanel;  //하단 패널 = new JPanel();
+	private JFrame mainframe = new JFrame(); 
+	private JPanel bottomPanel = new JPanel();  //하단 패널 = new JPanel();
 	private JLabel mapLabel;	// 지역선택용 라벨 
 	private JLabel searchLabel; // 검색창 라벨
 	private JButton aim;        // 검색 버튼
 	private JTextField searching; // 검색어 입력창
 	private JLabel categoryPick; // 카테고리 선택 라벨
 	private PostDTO postDTO = new PostDTO();
-	MainFrame frame;
+//	MainFrame frame;
 	
-	public SelectAllHonPost(MainFrame frame) {
-//		this.setBounds(100, 100, 516, 909);
-//		this.setLayout(null);
-		this.frame = frame;
-		this.bottomPanel = this;
+	public SelectAllHonPost() {
+		this.setBounds(100, 100, 516, 909);
+		this.setLayout(null);
+//		this.frame = frame;
+//		this.bottomPanel;
+		
 		BottomPanel();
 		addComponents();
 		searching();
 		selectLocal();
 		
-		frame.add(bottomPanel);
+
 		
-//		this.setVisible(true);
-//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	/* 하단 패널 */
 	public void BottomPanel() {
+	
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.CYAN);	
@@ -65,7 +66,7 @@ public class SelectAllHonPost extends JPanel{
 	
 	/* 패널과 라벨들 얹기 */
 	private void addComponents() {
-		//frame.add(bottomPanel);
+		this.add(bottomPanel);
 		bottomPanel.add(searchLabel);
 		bottomPanel.add(mapLabel);
 	
@@ -108,7 +109,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("강릉");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("강릉");
 				System.out.println("강릉");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -127,7 +129,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("담양");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("담양");
 				System.out.println("담양");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -146,7 +149,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("대구");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("대구");
 				System.out.println("대구");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -164,7 +168,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("부산");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("부산");
 				System.out.println("부산");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -183,7 +188,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("서울");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("서울");
 				System.out.println("서울");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -202,7 +208,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("인천");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("인천");
 				System.out.println("인천");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -221,7 +228,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("순천");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("순천");
 				System.out.println("순천");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -240,7 +248,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("전주");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("전주");
 				System.out.println("전주");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -259,7 +268,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("제주");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("제주");
 				System.out.println("제주");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -278,7 +288,8 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setLocalName("천안");
+				GetFilter getLocalName = GetFilter.getInstance();
+				getLocalName.setLocalName("천안");
 				System.out.println("천안");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
@@ -318,13 +329,14 @@ public class SelectAllHonPost extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setCategoryName("맛집탐방");
+				GetFilter getCategoryName = GetFilter.getInstance();
+				getCategoryName.setCategoryName("맛집탐방");
 				System.out.println("맛집 탐방 선택");
-				frame.remove(bottomPanel);
-//				FrameManager.changePanel(frame, bottomPanel, SelectAllHonPost3.bottomPanel());
-				frame.add(new SelectAllHonPost3());
-				frame.repaint();
-				frame.revalidate();
+				mainframe.remove(bottomPanel);
+//				FrameManager.changePanel(frame, bottomPanel, SelectAllHonPost2.bottomPanel());
+//				mainframe.add(new SelectAllHonPost2(mainframe));
+				mainframe.repaint();
+				mainframe.revalidate();
 				
 			}
 		});
@@ -341,7 +353,8 @@ public class SelectAllHonPost extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setCategoryName("산책");
+				GetFilter getCategoryName = GetFilter.getInstance();
+				getCategoryName.setCategoryName("산책");
 				System.out.println("산책 선택");
 				
 			}
@@ -359,7 +372,8 @@ public class SelectAllHonPost extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setCategoryName("활동");
+				GetFilter getCategoryName = GetFilter.getInstance();
+				getCategoryName.setCategoryName("활동");
 				System.out.println("활동 선택");
 				
 			}
@@ -377,7 +391,8 @@ public class SelectAllHonPost extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setCategoryName("취미");
+				GetFilter getCategoryName = GetFilter.getInstance();
+				getCategoryName.setCategoryName("취미");
 				System.out.println("취미 선택");
 				
 			}
@@ -395,7 +410,8 @@ public class SelectAllHonPost extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setCategoryName("게임");
+				GetFilter getCategoryName = GetFilter.getInstance();
+				getCategoryName.setCategoryName("게임");
 				System.out.println("게임 선택");
 				
 			}
@@ -413,7 +429,8 @@ public class SelectAllHonPost extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				postDTO.setCategoryName("스터디");
+				GetFilter getCategoryName = GetFilter.getInstance();
+				getCategoryName.setCategoryName("스터디");
 				System.out.println("스터디 선택");
 				
 			}
