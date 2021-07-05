@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -23,11 +25,13 @@ import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
+import com.devs.honddoni.memberLog.view.MemberLogView;
 
 public class MyPage extends JPanel {
 	
 	private MyPage myPage;
 	private MainFrame frame;
+	private MemberLogView memberLogView;
 	
 	private MemberController memberController = new MemberController();;
 	private MemberRegistDTO memberRegistDTO;
@@ -237,7 +241,10 @@ public class MyPage extends JPanel {
 //				downsidePanel.setVisible(false);
 				myPage.setVisible(false);
 				frame.add(changeMemberinfoPanel);
+				
+				/* 싱글벙글톤 */
 				MemberInfoDTO memberInfo = memberController.callMemberInfo(테스트아이디);
+				
 				String profile = memberInfo.getProfile();
 				String name = memberInfo.getName();
 				String id = memberInfo.getId();
@@ -303,7 +310,95 @@ public class MyPage extends JPanel {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("프로필 변경 버튼 클릭"); 
-						PopupFrame.popup("");
+						
+						
+						JFrame popupFrame = new JFrame();
+						popupFrame.setBounds(130,400,458,315);
+						popupFrame.setVisible(true); 
+						popupFrame.setLayout(null); 
+						
+						JPanel popupPanel = new JPanel();
+						popupPanel.setBounds(130,400,458,315);
+						popupPanel.setVisible(true);
+						popupPanel.setBackground(Color.white);
+						
+						JLabel profile1 = new JLabel();
+						profile1.setBounds(51,49,70,70);
+						popupPanel.add(profile1);
+						profile1.setIcon(new ImageIcon("image/member/updateInfo/pf1.png"));
+						profile1.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								memberController.changeProfile("1");
+								
+								ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb1.png"));
+							}
+						});
+						
+						JLabel profile2 = new JLabel();
+						profile2.setBounds(190,49,70,70);
+						popupPanel.add(profile2);
+						profile2.setIcon(new ImageIcon("image/member/updateInfo/pf2.png"));
+						profile2.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								memberController.changeProfile("2");
+								
+								ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb2.png"));
+							}
+						});
+						
+						JLabel profile3 = new JLabel();
+						profile3.setBounds(330,49,70,70);
+						popupPanel.add(profile3);
+						profile3.setIcon(new ImageIcon("image/member/updateInfo/pf3.png"));
+						profile3.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								memberController.changeProfile("3");
+								
+								ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb3.png"));
+							}
+						});
+						
+						JLabel profile4 = new JLabel();
+						profile4.setBounds(115,139,70,70);
+						popupPanel.add(profile4);
+						profile4.setIcon(new ImageIcon("image/member/updateInfo/pf4.png"));
+						profile4.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								memberController.changeProfile("4");
+								
+								ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb4.png"));
+							}
+						});
+						
+						JLabel profile5 = new JLabel();
+						profile5.setBounds(254,139,70,70);
+						popupPanel.add(profile5);
+						profile5.setIcon(new ImageIcon("image/member/updateInfo/pf5.png"));
+						profile5.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								memberController.changeProfile("5");
+								
+								ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb5.png"));
+							}
+						});
+						JLabel popupLabel = new JLabel();
+						popupLabel.setSize(456,276);
+						popupLabel.setIcon(new ImageIcon("image/member/updateInfo/backimage.png"));
+						
+						
+						popupFrame.add(profile1);
+						popupFrame.add(profile2);
+						popupFrame.add(profile3);
+						popupFrame.add(profile4);
+						popupFrame.add(profile5);
+						
+						popupFrame.add(popupPanel);
+						popupFrame.add(popupLabel);
 						
 					}
 				});
@@ -420,6 +515,7 @@ public class MyPage extends JPanel {
 //				downsidePanel.setVisible(false);
 				frame.add(resignMemberPanel);
 				
+//				FrameManager.changePanel(frame, myPage, resignMemberPanel);
 				
 				
 				/* 비밀번호 입력창 */
@@ -442,7 +538,7 @@ public class MyPage extends JPanel {
 						System.out.println("취소 버튼 클릭");
 						
 						/* 마이페이지로 돌아가기 */
-						FrameManager.changePanel(frame, resignMemberPanel, new MyPage(frame));
+						FrameManager.changePanel(frame, resignMemberPanel, myPage);
 					}
 				});
 				
@@ -739,7 +835,8 @@ public class MyPage extends JPanel {
 		
 		
 	}
-
+	
+	
 
 	
 }

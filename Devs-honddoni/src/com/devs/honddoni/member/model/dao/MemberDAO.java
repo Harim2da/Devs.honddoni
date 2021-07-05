@@ -207,6 +207,34 @@ public class MemberDAO {
 		return memberInfo;
 	}
 
+	public int changeProfile(Connection con, String profile) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("changeProfile");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, profile);
+			pstmt.setString(2, "user06");
+			
+			result = pstmt.executeUpdate();
+			System.out.println("체크");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		
+		return result;
+				
+		
+	}
+
 	
 
 }

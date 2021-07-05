@@ -85,5 +85,17 @@ public class MemberService {
 		return memberInfo;
 	}
 
+	public int changeProfile(String profile) {
+		
+		Connection con = getConnection();
+		
+		int result = memberDAO.changeProfile(con, profile);
+		
+		close(con);
+		
+		return result;
+		
+	}
+
 
 }

@@ -90,4 +90,18 @@ public class MemberController {
 		return memberInfo;
 		
 	}
+
+	public void changeProfile(String profile) {
+		
+		int result = 0;
+		
+		result = memberService.changeProfile(profile);
+		
+		if(result > 0) {
+			System.out.println("프로필 변경 성공");
+		} else {
+			System.out.println("프로필 변경 실패");
+		}
+		
+	}
 }
