@@ -23,6 +23,8 @@ public class MainFrame1 extends JFrame{
 	private JButton interestingBtn = new JButton();
 	private JButton noticeBtn = new JButton();
 	
+	
+	
 	public MainFrame1() {
 		this.setBounds(100, 100, 516, 909);
 		this.setLayout(null);

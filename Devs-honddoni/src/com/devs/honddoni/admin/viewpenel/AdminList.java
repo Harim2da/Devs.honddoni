@@ -12,9 +12,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.admin.viewpenel.MainFrame1;
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class AdminList {
 	
+	public AdminList(MainFrame frame) {
+		
+//		myPage = this;
+
+		
+//	}
+//
+//	this.frame = frame;
+//	this.myPage = this;
+//	
+//}
+	}
 	//관리자 목록1
 	
 	MainFrame1 mainFrame = new MainFrame1();
