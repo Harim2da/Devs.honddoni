@@ -11,24 +11,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.admin.model.dto.NoticeWriteDTO;
 import com.devs.honddoni.common.dto.PostDTO;
 
 /* 공지사항 글쓰기 창 */
-public class NoticeWrite extends JPanel{
+public class NoticeModify extends JPanel{
 	
 	JFrame frame;
-	NoticeWrite noticeWrite;
+	NoticeModify noticeModify;
 	
-	public NoticeWrite() {
+	private PostDTO postDTO;
+	
+	public NoticeModify(PostDTO postDTO) {
 		
 		this.frame = FrameManagerYs.getFrame();
-		this.noticeWrite = this;
+		this.noticeModify = this;
+		this.postDTO = postDTO;
 		
 		
 		/* 제일 기본 패널 */
-		noticeWrite.setBounds(0, 0, 500, 870);
-		noticeWrite.setLayout(null);
-		noticeWrite.setBackground(Color.yellow);
+		noticeModify.setBounds(0, 0, 500, 870);
+		noticeModify.setLayout(null);
+		noticeModify.setBackground(Color.yellow);
 
 		/* 혼또니 로고버튼 */
 		JButton honddoniBtn = new JButton("");
@@ -72,10 +76,11 @@ public class NoticeWrite extends JPanel{
 				String getTitle = titleTf.getText();
 				String getContent = contentTf.getText();				
 				
-				//DTO로 뭉친다
-				PostDTO postDTO = new PostDTO();
-				postDTO.setTitle(getTitle);
-				postDTO.setContent(getContent);
+				//수정할 내용만 DTO로 뭉친다
+				postDTO.setPostName(getTitle);
+				postDTO.setPostContents(getContent);
+				
+				//컨트롤러로 수정내용 넘김
 				
 				
 				
@@ -92,11 +97,11 @@ public class NoticeWrite extends JPanel{
 		
 		
 		/* 컴포넌트 붙이기 */
-		noticeWrite.add(honddoniBtn);
-		noticeWrite.add(searchLb);
-		noticeWrite.add(titleTf);
-		noticeWrite.add(contentTf);		
-		noticeWrite.add(completeBtn);		
+		noticeModify.add(honddoniBtn);
+		noticeModify.add(searchLb);
+		noticeModify.add(titleTf);
+		noticeModify.add(contentTf);		
+		noticeModify.add(completeBtn);		
 		
 		
 	}
