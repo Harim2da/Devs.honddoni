@@ -19,7 +19,7 @@ import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.GetFilter;
 import com.devs.honddoni.post.controller.PagingController;
-public class SelectAllHonPost2 {
+public class SelectAllHonPost3 {
 
 	//	private JFrame mainframe = new JFrame(); 
 	//	private JPanel upPanel;
@@ -30,7 +30,6 @@ public class SelectAllHonPost2 {
 	private JLabel pageLongbarLabel;	//페이지표기 바
 	private JLabel beforeNumber = new JLabel("");
 	private JLabel afterNumber;
-	public static int frontPage2 = 1;
 	private JButton beforeBtn = new JButton(); // 앞페이지 버튼
 	private JButton afterBtn = new JButton(); // 뒷 페이지 버튼
 	private JLabel[] postList;	
@@ -46,7 +45,7 @@ public class SelectAllHonPost2 {
 	GetFilter getName = GetFilter.getInstance();
 
 	/* 프레임을 제외한 나머지를 합친 것 */
-	public SelectAllHonPost2() {
+	public SelectAllHonPost3() {
 
 		/* 패널 */
 		//upPanel();
@@ -152,7 +151,6 @@ public class SelectAllHonPost2 {
 		} else {
 			beforeBtn.setVisible(true);
 
-			System.out.println("frontPage : " + SelectAllHonPost2.frontPage2);
 			beforeBtn.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -161,7 +159,7 @@ public class SelectAllHonPost2 {
 					}
 
 					downPanel.setVisible(false);
-					SelectAllHonPost3 sf = new SelectAllHonPost3();
+					SelectAllHonPost2 sf = new SelectAllHonPost2();
 					Ctest3.frame2.add(sf.getDownPanel());
 
 
@@ -208,9 +206,9 @@ public class SelectAllHonPost2 {
 				}
 
 				downPanel.setVisible(false);
-				SelectAllHonPost3 sf = new SelectAllHonPost3();
+				SelectAllHonPost2 sf = new SelectAllHonPost2();
 				Ctest3.frame2.add(sf.getDownPanel());
-				
+
 				afterBtn();
 				beforeBtn();
 				beforeNumber();
