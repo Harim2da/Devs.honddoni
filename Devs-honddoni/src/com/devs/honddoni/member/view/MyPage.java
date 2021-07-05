@@ -18,6 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.common.mainframe.PopupFrame;
@@ -62,8 +63,16 @@ public class MyPage extends JPanel {
 	private JTextField ciTp5 = new JTextField();			//개인정보변경 이메일 입력창
 	private JLabel ciL1 = new JLabel();						//개인정보변경 이름 라벨
 	private JLabel ciL2 = new JLabel();						//개인정보변경 아이디 라벨
-	private JLabel ciL3 = new JLabel();						//개인정보변경 입력창 라벨
+	private JLabel ciL3 = new JLabel();						//개인정보변경 생일 라벨
+	private JLabel ciL4 = new JLabel();						//개인정보변경 성별 라벨
+	private JLabel ciL5 = new JLabel();						//개인정보변경 성별 라벨
+	private JLabel ciL6 = new JLabel();						//개인정보변경 성별 라벨
+	private JLabel ciL7 = new JLabel();						//개인정보변경 성별 라벨
+	private JLabel ciL8 = new JLabel();						//개인정보변경 성별 라벨
+	private JLabel ciL9 = new JLabel();						//개인정보변경 입력창 라벨
 	private JComboBox characterSelectCombo;
+	
+	FontManager font = new FontManager();
 	
 	
 	static String 테스트아이디 = "user06";
@@ -79,6 +88,7 @@ public class MyPage extends JPanel {
 		this.frame = frame;
 		this.myPage = this;
 		
+		FontManager.setUIFont(new Font("나눔고딕",0,20));
 		
 //		FrameManager.topPanel(frame, this);
 //		FrameManager.myHonddoniBtnClick(frame, this, myPage);
@@ -311,17 +321,19 @@ public class MyPage extends JPanel {
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("프로필 변경 버튼 클릭"); 
 						
-						
+						/* 프로필 변경창 프레임 */
 						JFrame popupFrame = new JFrame();
 						popupFrame.setBounds(130,400,458,315);
 						popupFrame.setVisible(true); 
 						popupFrame.setLayout(null); 
 						
+						/* 프로필 변경창 패널 */
 						JPanel popupPanel = new JPanel();
 						popupPanel.setBounds(130,400,458,315);
 						popupPanel.setVisible(true);
 						popupPanel.setBackground(Color.white);
 						
+						/* 프로필 사진 1번 선택 */
 						JLabel profile1 = new JLabel();
 						profile1.setBounds(51,49,70,70);
 						popupPanel.add(profile1);
@@ -335,6 +347,7 @@ public class MyPage extends JPanel {
 							}
 						});
 						
+						/* 프로필 사진 2번 선택 */
 						JLabel profile2 = new JLabel();
 						profile2.setBounds(190,49,70,70);
 						popupPanel.add(profile2);
@@ -348,6 +361,7 @@ public class MyPage extends JPanel {
 							}
 						});
 						
+						/* 프로필 사진 3번 선택 */
 						JLabel profile3 = new JLabel();
 						profile3.setBounds(330,49,70,70);
 						popupPanel.add(profile3);
@@ -361,6 +375,7 @@ public class MyPage extends JPanel {
 							}
 						});
 						
+						/* 프로필 사진 4번 선택 */
 						JLabel profile4 = new JLabel();
 						profile4.setBounds(115,139,70,70);
 						popupPanel.add(profile4);
@@ -374,6 +389,7 @@ public class MyPage extends JPanel {
 							}
 						});
 						
+						/* 프로필 사진 5번 선택 */
 						JLabel profile5 = new JLabel();
 						profile5.setBounds(254,139,70,70);
 						popupPanel.add(profile5);
@@ -386,6 +402,9 @@ public class MyPage extends JPanel {
 								ciB1.setIcon(new ImageIcon("image/member/updateInfo/pfb5.png"));
 							}
 						});
+						
+						
+						/* 프로필 사진 배경 이미지 */
 						JLabel popupLabel = new JLabel();
 						popupLabel.setSize(456,276);
 						popupLabel.setIcon(new ImageIcon("image/member/updateInfo/backimage.png"));
@@ -403,72 +422,85 @@ public class MyPage extends JPanel {
 					}
 				});
 				
-				/* 성별 선택 라디오 버튼 (고정되나?) */
-				JRadioButton genderMRb = new JRadioButton("남");
-		        genderMRb.setBounds(345, 293, 55, 26);
-		        genderMRb.setFont(new Font("font/NotoSansKR-Bold", Font.BOLD, 17));
-		        genderMRb.setOpaque(false);
-		        changeMemberinfoPanel.add(genderMRb);
-		        /* DB에서 성별정보 받아서 고정 하기 */
-		        
-				JRadioButton genderFRb = new JRadioButton("여");
-		        genderFRb.setBounds(400, 293, 55, 26);
-		        genderFRb.setOpaque(false);
-		        genderFRb.setFont(new Font("font/NotoSansKR-Bold", Font.BOLD, 17));
-		        changeMemberinfoPanel.add(genderFRb);
-		        
-				/* 생일 입력창 */
-				ciTp1.setBorder(null);
-				ciTp1.setOpaque(false);
-				ciTp1.setBounds(130, 283, 220, 45);
-				changeMemberinfoPanel.add(ciTp1);
 				
 				/* 닉네임 입력창 */
 				ciTp2.setBorder(null);
 				ciTp2.setOpaque(false);
 				ciTp2.setBounds(130, 348, 330, 45);
+				ciTp2.setText(nickName);
+				ciTp2.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciTp2);
 				
 				/* 주소 입력창 */
 				ciTp3.setBorder(null);
 				ciTp3.setOpaque(false);
 				ciTp3.setBounds(130, 411, 330, 45);
+				ciTp3.setText(address);
+				ciTp3.setFont(font.customFont2);
 				changeMemberinfoPanel.add(ciTp3);
 				
 				/* 휴대전화 입력창 */
 				ciTp4.setBorder(null);
 				ciTp4.setOpaque(false);
 				ciTp4.setBounds(130, 474, 330, 45);
+				ciTp4.setText(phone);
+				ciTp4.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciTp4);
 				
 				/* 이메일 입력창 */
-				ciTp5.setBorder(null);
-				ciTp5.setOpaque(false);
-				ciTp5.setBounds(130, 538, 330, 45);
-				changeMemberinfoPanel.add(ciTp5);
+				ciTp1.setBorder(null);
+				ciTp1.setOpaque(false);
+				ciTp1.setBounds(130, 538, 330, 45);
+				ciTp1.setText(email);
+				ciTp1.setFont(font.customFont1);
+				changeMemberinfoPanel.add(ciTp1);
 				
 				/* DB에서 이름 불러와서 표시 */
 				ciL1.setBounds(130, 153, 220, 45);
 				ciL1.setText(name);
+				ciL1.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciL1);
 				
 				/* DB에서 아이디 불러와서 표시 */
 				ciL2.setBounds(130, 219, 220, 45);
 				ciL2.setText(id);
+				ciL2.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciL2);
 				
-				/* 개인정보 변경 입력창 라벨 */
-				ciL3.setBounds(0, 0, 500, 770);
-				ciL3.setVisible(true);
-				ciL3.setIcon(new ImageIcon("image/member/updateInfo/changeInfoBackground.png"));
+				/* DB에서 생일 불러와서 표시*/
+				ciL3.setBounds(130, 283, 220, 45);
+				ciL3.setText(birth);
+				ciL3.setFont(font.customFont1);
 				changeMemberinfoPanel.add(ciL3);
 				
+				/* DB에서 성별 불러와서 표시*/
+				ciL4.setBounds(359, 290, 94, 26);
+				if(gender.equals("남")) {
+					ciL4.setIcon(new ImageIcon("image/member/updateInfo/genderM.png"));
+				} else {
+					ciL4.setIcon(new ImageIcon("image/member/updateInfo/genderF.png"));
+				}
+				changeMemberinfoPanel.add(ciL4);
+				
 				/* 본인 성향 선택 콤보박스 */
-				String[] characterCategory = {"", "리더형", "팔로워형", "계획적", "즉흥적", "외향적", "내향적", "감성적", "이성적"};
+				
+				String character = null ;
+				switch(characterCode) {
+				case 1: character = "리더형"; break;
+				case 2: character = "팔로워형"; break;
+				case 3: character = "계획적"; break;
+				case 4: character = "즉흥적"; break;
+				case 5: character = "외향적"; break;
+				case 6: character = "내향적"; break;
+				case 7: character = "감성적"; break;
+				case 8: character = "이성적"; break;
+				}
+				String[] characterCategory = {"현재 " + nickName + "님이 선택하신 성향은 " + character + "입니다.", "리더형", "팔로워형", "계획적", "즉흥적", "외향적", "내향적", "감성적", "이성적"};
 				characterSelectCombo = new JComboBox(characterCategory);
 				
 				characterSelectCombo.setBounds(110, 600, 360, 47);
-				characterSelectCombo.setSelectedIndex(0);
+				characterSelectCombo.setSelectedIndex(0); 	
+				characterSelectCombo.setFont(font.customFont1);
 				changeMemberinfoPanel.add(characterSelectCombo);
 				characterSelectCombo.addActionListener(new ActionListener() {
 					
@@ -477,6 +509,14 @@ public class MyPage extends JPanel {
 						System.out.println("콤보박스 동작");				
 					}
 				});
+				
+				/* 개인정보 변경 입력창 라벨 */
+				ciL5.setBounds(0, 0, 500, 770);
+				ciL5.setVisible(true); 
+				ciL5.setIcon(new ImageIcon("image/member/updateInfo/changeInfoBackground.png"));
+				changeMemberinfoPanel.add(ciL5);
+				
+				
 				
 				
 				changeMemberinfoPanel.revalidate();
