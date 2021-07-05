@@ -11,13 +11,13 @@ import javax.swing.JPanel;
 
 //신고된 게시글 관리
 
-public class AdminPost {
+public class AdminPost2 {
 	
 	MainFrame1 MainFrame = new MainFrame1();
 	
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
-	public AdminPost() {
+	public AdminPost2() {
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -64,7 +64,7 @@ public class AdminPost {
 	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
 	       JButton btn10 = new JButton(img10);
 	       
-	       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findnext.png");//다음페이지
+	       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findnext.png");//이전페이지
 	       JButton btn11 = new JButton(img11);
 	       
 	       
@@ -79,7 +79,7 @@ public class AdminPost {
 	       bottomPanel.add(lb1);
 	       bottomPanel.add(btn10);
 	       bottomPanel.add(btn11);
-	       
+	    
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 143, 430, 121);
 	       btn2.setBounds(34, 262, 430, 121);
@@ -89,7 +89,6 @@ public class AdminPost {
 	       lb1.setBounds(56, 0, 263, 33);
 	       btn10.setBounds(31, 19, 430, 62);
 	       btn11.setBounds(181, 95, 136, 21);
-	   
 	     
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);
@@ -131,7 +130,7 @@ public class AdminPost {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminPost2();
+	    		   new AdminPost();
 	    		   bottomPanel.setVisible(false); 
 	    		   MainFrame.setVisible(false);
 	    	   }

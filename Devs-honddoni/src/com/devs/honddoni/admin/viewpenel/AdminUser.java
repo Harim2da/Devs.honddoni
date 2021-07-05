@@ -43,24 +43,31 @@ public class AdminUser {
 	     btn0.setContentAreaFilled(false);
 	     btn0.setBorderPainted(false);
 	     
-		
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\Side.png");
+	       //신고된 첫번째 사용자
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\AdminUser1.png");
 	       JButton btn1 = new JButton(img1);
 	       
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Side.png");
+	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\AdminUser2.png");
 	       JButton btn2 = new JButton(img2);
 	       
-	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Side.png");
+	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\AdminUser3.png");
 	       JButton btn3 = new JButton(img3);
 	       
-	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\Side.png");
+	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\AdminUser4.png");
 	       JButton btn4 = new JButton(img4);
 	       
-	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Side.png");
+	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AdminUser5.png");
 	       JButton btn5 = new JButton(img5);
 	       
-	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
+	       //누적신고관리 타이틀
+	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\UserLogo.png");
 	       JLabel lb1 = new JLabel();
+	       
+	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
+	       JButton btn10 = new JButton(img10);
+	       
+	       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findnext.png");//다음페이지
+	       JButton btn11 = new JButton(img11);
 	       
 	       
 	   
@@ -71,7 +78,9 @@ public class AdminUser {
 	       bottomPanel.add(btn3);
 	       bottomPanel.add(btn4);
 	       bottomPanel.add(btn5);
-	       bottomPanel.add(lb1);
+	       topPanel.add(lb1);
+	       bottomPanel.add(btn10);
+	       bottomPanel.add(btn11);
 	    
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 143, 430, 121);
@@ -79,7 +88,9 @@ public class AdminUser {
 	       btn3.setBounds(34, 380, 430, 121);
 	       btn4.setBounds(33, 498, 430, 121);
 	       btn5.setBounds(34, 616, 430, 104);
-	       lb1.setBounds(56, 0, 263, 33);
+	       lb1.setBounds(59, 99, 161, 33);
+	       btn10.setBounds(31, 19, 430, 62);
+	       btn11.setBounds(181, 95, 136, 21);
 	   
 	     
 	       //컨테이너에 패널 추가

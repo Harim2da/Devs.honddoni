@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color; 
+import java.awt.Color;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.devs.honddoni.admin.controller.ManagementController;
-import com.devs.honddoni.admin.dto.AdminDTO;
+import com.devs.honddoni.admin.model.dto.*;
 import com.devs.honddoni.admin.model.dao.AdminDAO;
 import com.devs.honddoni.common.dto.CommentsDTO;
 

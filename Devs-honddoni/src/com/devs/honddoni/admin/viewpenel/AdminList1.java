@@ -41,20 +41,20 @@ public class AdminList1 {
 	     btn0.setBounds(303, 27, 172, 70);
 	     btn0.setContentAreaFilled(false);
 	     btn0.setBorderPainted(false);
-	     
+	       //게시글 관리
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\Admin2-1.png");
 	       JButton btn1 = new JButton(img1);
-	       
+	       //신고처리-게시글
 	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Admin2-2.png");
 	       JButton btn2 = new JButton(img2);
-	       
+	       //신고처리-사용자
 	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Admin2-3.png");
 	       JButton btn3 = new JButton(img3);
 	       
 	       //신고된 댓글
 	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\Admin2-4.png");
 	       JButton btn4 = new JButton(img4);
-	       
+	       //관리자 로그 아웃
 	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Admin2-5.png");
 	       JButton btn5 = new JButton(img5);
 	       
@@ -135,7 +135,7 @@ public class AdminList1 {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminAll();
+	    		   new AdminPost();
 	    		   bottomPanel.setVisible(false);
 	    		   MainFrame.setVisible(false);
 	    	   }
