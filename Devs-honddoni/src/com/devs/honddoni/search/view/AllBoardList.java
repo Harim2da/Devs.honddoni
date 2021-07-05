@@ -41,7 +41,7 @@ public class AllBoardList {
 	private JButton commingBtn = new JButton(); // 뒷 페이지 버튼
 	private JLabel[] postList;	
 	List<PostDTO> postListDTO = null;
-	private JLabel[] profile; //프로필
+//--	private JLabel[] profile; //프로필
 	private JLabel[] nickName; // 닉네임
 	private JLabel[] postTitle; // 게시글 제목
 	private JLabel[] categoryName; //카테고리명
@@ -75,7 +75,7 @@ public class AllBoardList {
 		prePageNumber();
 		commingPageNumber(1);
 		
-		profile(1);
+//--		profile(1);
 		nickName();
 		categoryName(1);
 		
@@ -169,7 +169,7 @@ public class AllBoardList {
 	}
 	
 	
-
+	//다음페이지 버튼
 	private void commingPageBtn(int postNo) {
 		
 		this.postNo = postNo;
@@ -221,7 +221,7 @@ public class AllBoardList {
 		
 	}
 	
-
+	//전 페이지
 	private void prePageNumber() {
 		String frontPageString = Integer.valueOf(frontPage).toString();
 
@@ -232,6 +232,7 @@ public class AllBoardList {
 		
 	}
 	
+	//다음페이지
 	private void commingPageNumber(int postNo) {
 		
 		int pageNo = frontPage;
@@ -273,48 +274,48 @@ public class AllBoardList {
 	}
 	
 	/* 게시글에 맞는 프로필 불러오기 */
-	private void profile(int postNo) {
-		int pageNo = frontPage;
-		int y = 153;
-		
-			postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
-			PostDTO postInfo = null;
-			
-			for(int i = 0; i < postListDTO.size(); i++) {
-				
-				postInfo = postListDTO.get(i);
-				profile = new JLabel[postListDTO.size()];
-				profile[i].setLayout(null);
-				profile[i].setBounds(53, y + 12, 37, 37);
-				
-				
-				if(postInfo.getMemberProfile().equals("1")) {
-
-					profile[i].setIcon(new ImageIcon("image/post/commentPf1.png"));
-
-				} else if(postInfo.getMemberProfile().equals("2")) {
-
-					profile[i].setIcon(new ImageIcon("image/post/commentPf2.png"));
-
-				} else if(postInfo.getMemberProfile().equals("3")) {
-
-					profile[i].setIcon(new ImageIcon("image/post/commentPf3.png"));
-
-				} else if(postInfo.getMemberProfile().equals("4")) {
-
-					profile[i].setIcon(new ImageIcon("image/post/commentPf4.png"));
-
-				} else if(postInfo.getMemberProfile().equals("5")) {
-
-					profile[i].setIcon(new ImageIcon("image/post/commentPf5.png"));
-
-				} else if(postInfo.getMemberProfile() == null) {
-					profile[i].setVisible(false);
-				}
-				bottomPanel.add(profile[i]);
-				y += 118;
-			}
-	}
+//--	private void profile(int postNo) {
+//		int pageNo = frontPage;
+//		int y = 153;
+//		
+//			postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
+//			PostDTO postInfo = null;
+//			
+//			for(int i = 0; i < postListDTO.size(); i++) {
+//				
+//				postInfo = postListDTO.get(i);
+//				profile = new JLabel[postListDTO.size()];
+//				profile[i].setLayout(null);
+//				profile[i].setBounds(53, y + 12, 37, 37);
+//				
+//				
+//				if(postInfo.getMemberProfile().equals("1")) {
+//
+//					profile[i].setIcon(new ImageIcon("image/post/commentPf1.png"));
+//
+//				} else if(postInfo.getMemberProfile().equals("2")) {
+//
+//					profile[i].setIcon(new ImageIcon("image/post/commentPf2.png"));
+//
+//				} else if(postInfo.getMemberProfile().equals("3")) {
+//
+//					profile[i].setIcon(new ImageIcon("image/post/commentPf3.png"));
+//
+//				} else if(postInfo.getMemberProfile().equals("4")) {
+//
+//					profile[i].setIcon(new ImageIcon("image/post/commentPf4.png"));
+//
+//				} else if(postInfo.getMemberProfile().equals("5")) {
+//
+//					profile[i].setIcon(new ImageIcon("image/post/commentPf5.png"));
+//
+//				} else if(postInfo.getMemberProfile() == null) {
+//					profile[i].setVisible(false);
+//				}
+//				bottomPanel.add(profile[i]);
+//				y += 118;
+//			}
+//	}
 	
 	/* 게시글 별 작성자 닉네임 불러오기 */
 	private void nickName() {
