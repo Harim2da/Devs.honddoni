@@ -86,6 +86,9 @@ public class Delite2 {
 //	       lb1.setBounds(56, -17, 263, 33);
 	       btn8.setBounds(181, 95, 136, 21);//이전페이지
 	       btn9.setBounds(31, 19, 430, 62);//다음페이지
+	       
+		   btn8.setContentAreaFilled(false);
+		   btn8.setBorderPainted(false);
 	   
 	     
 	       //컨테이너에 패널 추가

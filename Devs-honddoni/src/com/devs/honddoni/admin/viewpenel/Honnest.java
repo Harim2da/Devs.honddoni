@@ -101,6 +101,8 @@ public class Honnest {
 //	       btn7.setBounds(226, 724, 56, 25);
 	       btn10.setBounds(31, 19, 430, 62);
 	       btn11.setBounds(181, 95, 136, 21);
+		   btn11.setContentAreaFilled(false);
+		   btn11.setBorderPainted(false);
 	       
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);

@@ -52,8 +52,8 @@ public class AllDataTest {
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
 	     
-	     ImageIcon img01 = new ImageIcon("image\\admin\\AllDataLogo.png");
-	     JLabel lb01 = new JLabel(img01);
+//	     ImageIcon img01 = new ImageIcon("image\\admin\\AllDataLogo.png");
+//	     JLabel lb01 = new JLabel(img01);
 	     
 	     //상단패널에 혼또니마크로 뒤로가기 버튼
 	     topPanel.add(btn0);
@@ -61,8 +61,8 @@ public class AllDataTest {
 	     btn0.setContentAreaFilled(false);
 	     btn0.setBorderPainted(false);
 	     //상단에 페이지 이름
-	     topPanel.add(lb01);
-	     lb01.setBounds(32, 56, 263, 33);
+//	     topPanel.add(lb01);
+//	     lb01.setBounds(32, 56, 263, 33);
 	     
 	     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@여기서부터는 실험페이지
 	     
@@ -74,7 +74,7 @@ public class AllDataTest {
 
 //	 		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
 	 		
-	 		ImageIcon img000 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
+	 		
 	 		AdminDTO adminDTO = null;
 
 	 		for(int i = 0; i < adminListDTO.size(); i++) {

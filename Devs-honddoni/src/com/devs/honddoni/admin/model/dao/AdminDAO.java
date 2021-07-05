@@ -49,6 +49,7 @@ public class AdminDAO {
 			adminList = new ArrayList<>();
 			
 			while(rset.next()) {
+				
 			AdminDTO admin = new AdminDTO();
 			admin.setMEMBER_NICKNAME(rset.getString("MEMBER_NICKNAME"));
 //			admin.setMEMBER_ID(rset.getString("MEMBER_ID"));

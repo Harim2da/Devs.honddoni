@@ -118,6 +118,8 @@ public class Delite {
 	       btn8.setBounds(181, 95, 136, 21);//다음페이지
 	       btn9.setBounds(31, 19, 430, 62);//다음페이지
 	       btn05.setBounds(34, 617, 430, 104);
+		   btn8.setContentAreaFilled(false);
+		   btn8.setBorderPainted(false);
 	     
 	       //컨테이너에 패널 추가
 	       MainFrame.add(bottomPanel);

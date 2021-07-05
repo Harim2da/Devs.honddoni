@@ -28,6 +28,8 @@ public class Application {
 		
 //		new AllDataTest();
 		
+//		new AdminPostDelite();
+		
 		
 		
 		

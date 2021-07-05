@@ -200,6 +200,8 @@ public class AllData {
 //	       btn11.setBounds(31, 19, 430, 62);
 	       lb1.setBounds(56, 83, 263, 33);
 	       btn11.setBounds(181, 95, 136, 21);
+		   btn11.setContentAreaFilled(false);
+		   btn11.setBorderPainted(false);
 	       
 //	       btn7.setBounds(226, 724, 56, 25);
 //	       lb1.setBounds(56, 0, 263, 33);

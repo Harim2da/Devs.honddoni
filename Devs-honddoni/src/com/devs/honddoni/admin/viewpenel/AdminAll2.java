@@ -71,7 +71,7 @@ public class AdminAll2 {
 			       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
 			       JButton btn10 = new JButton(img10);
 			       
-			       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findnext.png");//이전페이지
+			       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\FindBack.png");//이전페이지
 			       JButton btn11 = new JButton(img11);
 			       
 //			       //전체게시글 조회 라벨
@@ -132,6 +132,8 @@ public class AdminAll2 {
 			       btn5.setBounds(34, 616, 430, 104);
 			       btn10.setBounds(31, 19, 430, 62);
 			       btn11.setBounds(181, 95, 136, 21);
+				   btn11.setContentAreaFilled(false);
+				   btn11.setBorderPainted(false);
 			       
 
 //			       lb1.setBounds(56, 0, 263, 33);

@@ -48,13 +48,13 @@ public class AdminComment2 {
 	     btn0.setBorderPainted(false);
 	     
 	       //게시글 첫번째
-		   ImageIcon img1 = new ImageIcon ("image\\admin\\CommentList1.png");
+		   ImageIcon img1 = new ImageIcon ("image\\admin\\AdminCommentNew1.png");
 	       JButton btn1 = new JButton(img1);
 	       
-	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\CommentList2.png");
+	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\AdminCommentNew2.png");
 	       JButton btn2 = new JButton(img2);
 	       
-	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\CommentList3.png");
+	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\AdminCommentNew3.png");
 	       JLabel btn3 = new JLabel(img3);
 	       
 	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\CommentWriteNew.png");
@@ -86,6 +86,8 @@ public class AdminComment2 {
 	       btn3.setBounds(34, 186, 433, 61);
 	       btn4.setBounds(35, 17, 71, 21);
 	       btn5.setBounds(29, 205, 445, 233);//삭제완료 팝업
+		   btn4.setContentAreaFilled(false);
+		   btn4.setBorderPainted(false);
 	   
 	     
 	       //컨테이너에 패널 추가

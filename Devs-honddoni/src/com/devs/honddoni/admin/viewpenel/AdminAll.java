@@ -1,6 +1,6 @@
  package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color; 
+import java.awt.Color;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -136,6 +136,8 @@ public class AdminAll {
 		       btn5.setBounds(34, 616, 430, 104);
 		       btn10.setBounds(31, 19, 430, 62);
 		       btn11.setBounds(181, 95, 136, 21);
+			   btn11.setContentAreaFilled(false);
+			   btn11.setBorderPainted(false);
 		       
 		       
 //		       lb1.setBounds(56, 0, 263, 33);

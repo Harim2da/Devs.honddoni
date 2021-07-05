@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.devs.honddoni.admin.model.dto.*;
 import com.devs.honddoni.admin.model.service.AdminService;
+import com.devs.honddoni.common.dto.PostDTO;
 
 
 
@@ -12,7 +13,7 @@ public class ManagementController {
 	private AdminService adminService = new AdminService();
 
 	
-	/* 모든 회원 정보 조회용 메소드(List로 조회할 것) */
+	
 	public void onlyNicname() {
 		
 		List<AdminDTO> adminList = adminService.onlyNicname();
@@ -20,3 +21,6 @@ public class ManagementController {
 //		memberResultView.display(memberList);
 	}
 }
+
+
+
