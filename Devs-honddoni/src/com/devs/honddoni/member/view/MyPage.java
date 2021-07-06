@@ -39,6 +39,8 @@ public class MyPage extends JPanel {
 	private ChangePwdDTO changePwdDTO;
 	
 	/* 비밀번호변경 */
+	JLabel changePwdButton = new JLabel("");
+	private JPanel changePwdPanel = new JPanel();
 	private JButton cpB1 = new JButton();					//비밀번호 변경 취소버튼
 	private JButton cpB2 = new JButton();					//비밀번호 변경 변경버튼
 	private JLabel cpL1 = new JLabel(); 					//비밀번호 변경 입력창 이미지
@@ -53,6 +55,8 @@ public class MyPage extends JPanel {
 	private JPasswordField rmPF1 = new JPasswordField();	//회원탈퇴 비밀번호 입력창
 	
 	/* 개인정보 변경 */
+	JButton changeMemberinfo = new JButton("");
+	JPanel changeMemberinfoPanel = new JPanel();
 	private JButton ciB1 = new JButton();					//개인정보변경 프로필 사진 변경 버튼
 	private JButton ciB2 = new JButton();					//개인정보변경
 	private JRadioButton ciRb1 = new JRadioButton();		//개인정보변경 성별 선택 버튼
@@ -80,7 +84,7 @@ public class MyPage extends JPanel {
 	private JButton interestingBtn;							//관심글 찾기 버튼
 	static JButton noticeBtn;								//공지사항 조회 버튼
 	
-	static JPanel bottomPanel;
+	static JPanel bottomPanel = new JPanel();
 
 	
 	FontManager font = new FontManager();
@@ -109,7 +113,7 @@ public class MyPage extends JPanel {
 //		this.setLayout(null);
 //		frame.add(this);
 		
-		bottomPanel = new JPanel();
+		
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setBackground(Color.black);
 		bottomPanel.setLayout(null);
@@ -137,10 +141,26 @@ public class MyPage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("my혼또니 버튼 클릭");
 				
+				frame.remove(bottomPanel);
+				frame.remove(myPage);
+				bottomPanel.remove(changePwdPanel);
 				bottomPanel.removeAll();
+				frame.repaint();
+				frame.revalidate();
+				bottomPanel.repaint();
+				bottomPanel.revalidate();
+				myPage.repaint();
+				myPage.revalidate();
+				
 				new MyPage(frame);
+				frame.repaint();
+				frame.revalidate();
+				bottomPanel.repaint();
+				bottomPanel.revalidate();
+				myPage.repaint();
+				myPage.revalidate();
 				
-				
+
 				
 				
 			}
@@ -211,7 +231,7 @@ public class MyPage extends JPanel {
 /*==================================  비밀번호 변경 버튼   ================================================== */		
 			
 		/* 비밀번호 변경 버튼 */
-		JLabel changePwdButton = new JLabel("");
+//		JLabel changePwdButton = new JLabel("");
 //		changePwdButton.setContentAreaFilled(false);
 //		changePwdButton.setBorderPainted(false);
 		changePwdButton.setIcon(new ImageIcon("image/member/myPage/pwdchange.png"));
@@ -219,22 +239,22 @@ public class MyPage extends JPanel {
 		bottomPanel.add(changePwdButton);
 		changePwdButton.addMouseListener(new MouseAdapter() {
 			
-			public void mousePressed(ActionEvent e) {
+			public void mousePressed(MouseEvent e) {
 				/* 비밀번호 변경 창 패널 */
-				JPanel changePwdPanel = new JPanel();
+//				JPanel changePwdPanel = new JPanel();
 				changePwdPanel.setLayout(null);
 				changePwdPanel.setBounds(0, 100, 500, 770);
-				changePwdPanel.setVisible(true);
 				changePwdPanel.setBackground(Color.white);
-				bottomPanel.setVisible(false);
+				frame.remove(bottomPanel);
 				frame.add(changePwdPanel);
+				changePwdPanel.setVisible(true);
 				
 				/* 기존 비밀번호 입력창 */
 				cpPF1.setBorder(null);
 				cpPF1.setOpaque(false);
 				cpPF1.setBounds(195, 288, 270, 45);
 				changePwdPanel.add(cpPF1);
-				
+				   
 				/* 새 비밀번호 입력창 */
 				cpPF2.setBorder(null);
 				cpPF2.setOpaque(false);
@@ -269,6 +289,8 @@ public class MyPage extends JPanel {
 						System.out.println("취소 버튼 클릭");
 						changePwdPanel.setVisible(false);
 						bottomPanel.setVisible(true);
+						frame.remove(changePwdPanel);
+						frame.add(bottomPanel);
 //						FrameManager.changePanel(frame, changePwdPanel, new MyPage(frame));
 						
 					}
@@ -338,7 +360,7 @@ public class MyPage extends JPanel {
 		
 		
 		/* 개인정보 변경 버튼 */
-		JButton changeMemberinfo = new JButton("");
+		
 		changeMemberinfo.setIcon(new ImageIcon("image/member/myPage/changeInfo.png"));
 		changeMemberinfo.setContentAreaFilled(false);
 		changeMemberinfo.setBorderPainted(false);
@@ -350,12 +372,14 @@ public class MyPage extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				/* 개인정보 변경 호출 */
-				JPanel changeMemberinfoPanel = new JPanel();
+				
 				changeMemberinfoPanel.setLayout(null);
 				changeMemberinfoPanel.setBounds(0, 100, 500, 770);
-				changeMemberinfoPanel.setVisible(true);
 				changeMemberinfoPanel.setBackground(Color.white);
-				myPage.setVisible(false);
+				
+				changeMemberinfoPanel.setVisible(true);
+				bottomPanel.setVisible(false);
+				frame.remove(bottomPanel);
 				frame.add(changeMemberinfoPanel);
 				
 				/* 싱글벙글톤 */

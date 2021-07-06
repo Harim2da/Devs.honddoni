@@ -88,6 +88,25 @@ public class PostService {
 		return result;
 	}
 	
-	
+	/* 게시글 수정 */
+	public int updateThePost(PostDTO post) {
+
+		Connection con = getConnection();
+
+		int result = 0;
+
+		int updateResult = postDAO.updateThePost(con, post);
+
+		if(updateResult > 0) {
+			commit(con);
+			result = 1;
+		} else {
+			rollback(con);
+		}
+
+		close(con);
+
+		return result;
+	}	
 	
 }
