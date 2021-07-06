@@ -1,4 +1,4 @@
-package com.devs.honddoni.search.view;
+package com.devs.honddoni.search.view.useless;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -14,11 +14,6 @@ import javax.swing.JTextField;
 import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class FreeBoard extends JPanel {
-
-//	MainFrame frame = new MainFrame(); //메인프레임
-	
-//	JFrame frame = new JFrame();
-// 메인 프레임 말고 이 자체 하단 패널을 불러와서 집어 넣어야함	
 	
 	private FreeBoard freeBoard;
 	private MainFrame frame;
