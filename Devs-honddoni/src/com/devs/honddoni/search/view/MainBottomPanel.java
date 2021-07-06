@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.view.PostHonddoni;
-import com.devs.honddoni.post.view.SelectAllHonPost2;
+import com.devs.honddoni.post.view.SelectAllHonPost;
 import com.devs.honddoni.search.controller.SearchController;
 
 
@@ -376,7 +376,7 @@ public class MainBottomPanel extends JPanel{
 				frame.remove(upPanel);
 				bottomPanel.setVisible(false);
 				upPanel.setVisible(false);
-				new SelectAllHonPost2(frame);
+				new SelectAllHonPost(frame);
 				frame.repaint();
 				frame.revalidate();
 			}});

@@ -70,7 +70,9 @@ public class SelectAllHonPost extends JPanel{
 		topLabel.setBounds(0, 0, 500, 100);
 		topLabel.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
 		topLabel.setVisible(true); 
-		frame.add(topLabel);
+		topPanel.add(topLabel);
+		frame.repaint();
+		
 		
 	}
 	
@@ -82,7 +84,7 @@ public class SelectAllHonPost extends JPanel{
 		myHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
 		myHonddoniBtn.setBorderPainted(false);
 		myHonddoniBtn.setContentAreaFilled(false);
-		topPanel.add(myHonddoniBtn);
+		topLabel.add(myHonddoniBtn);
 		
 		
 		myHonddoniBtn.addActionListener(new ActionListener() {
@@ -109,7 +111,7 @@ public class SelectAllHonPost extends JPanel{
 		searchHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/SearchHonddoniBtn.png"));
 		searchHonddoniBtn.setBorderPainted(false);
 		searchHonddoniBtn.setContentAreaFilled(false);
-		topPanel.add(searchHonddoniBtn);
+		topLabel.add(searchHonddoniBtn);
 		
 		searchHonddoniBtn.addActionListener(new ActionListener() {
 
@@ -135,7 +137,7 @@ public class SelectAllHonPost extends JPanel{
 		homeBtn.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));
 		homeBtn.setBorderPainted(false);
 		homeBtn.setContentAreaFilled(false);
-		topPanel.add(homeBtn);
+		topLabel.add(homeBtn);
 		
 		
 		homeBtn.addActionListener(new ActionListener() {
@@ -165,7 +167,7 @@ public class SelectAllHonPost extends JPanel{
 		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
 		interestingBtn.setBorderPainted(false);
 		interestingBtn.setContentAreaFilled(false);
-		topPanel.add(interestingBtn);
+		topLabel.add(interestingBtn);
 		interestingBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -184,7 +186,7 @@ public class SelectAllHonPost extends JPanel{
 		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
 		noticeBtn.setBorderPainted(false);
 		noticeBtn.setContentAreaFilled(false);
-		topPanel.add(noticeBtn);
+		topLabel.add(noticeBtn);
 		
 		noticeBtn.addActionListener(new ActionListener() {
 

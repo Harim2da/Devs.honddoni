@@ -20,6 +20,7 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.post.controller.ContactController;
+import com.devs.honddoni.search.view.MainBottomPanel;
 
 public class PostModify extends JPanel{
 	/* 게시글 세부 조회
@@ -133,8 +134,8 @@ public class PostModify extends JPanel{
 				topPanel.setVisible(false);
 				bottomPanel.setVisible(false);
 				new MyPage(frame);
-				frame.repaint();
 				frame.revalidate();
+				frame.repaint();
 			}
 		});
 
@@ -357,7 +358,7 @@ public class PostModify extends JPanel{
 	
 	/* 작성자 프로필 생성 */
 	private void profile(int postNo) {
-		postDTO = contactController.selectThePost(10); //괄호 속 게시글 번호 입력받기
+		postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
 		String profilenum = postDTO.getMemberProfile();
 
 		profile = new JLabel();
@@ -381,7 +382,7 @@ public class PostModify extends JPanel{
 	
 	/*닉네임 불러오기 */
 	private void nickName(int postNo) {
-		postDTO = contactController.selectThePost(10); //괄호 속 게시글 번호 입력받기
+		postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
 		String nick = postDTO.getMemberNickname();
 
 		nickName = new JLabel();
@@ -546,6 +547,14 @@ public class PostModify extends JPanel{
 							System.out.println(postDTO);
 
 							contactController.updateThePost(postDTO);
+							
+							frame.remove(bottomPanel);
+							frame.remove(topPanel);
+							topPanel.setVisible(false);
+							bottomPanel.setVisible(false);
+							new MainBottomPanel(frame);			
+							frame.repaint();
+							frame.revalidate();
 
 						}
 						@Override
@@ -584,9 +593,19 @@ public class PostModify extends JPanel{
 				// 삭제버튼
 				
 				if(memberNo == loginNo) {
-					int postNo = postDTO.getPostNo();
 					contactController.deleteThePost(postNo);			
-			}
+			
+					frame.remove(bottomPanel);
+					frame.remove(topPanel);
+					topPanel.setVisible(false);
+					bottomPanel.setVisible(false);
+					new MainBottomPanel(frame);			
+					frame.repaint();
+					frame.revalidate();
+			
+				
+				
+				}
 				}
 		});
 
