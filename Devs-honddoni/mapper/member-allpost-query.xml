@@ -74,11 +74,45 @@
 		</entry>
 		
 		<entry key="insertNoticePost">
-		
+		INSERT
+          INTO TBL_POST A (
+               A.POST_NO
+             , A.POST_NAME
+             , A.POST_CONTENTS
+             , A.POST_CATEGORY
+             , A.POST_MEMBER_NO
+             , A.POST_MEETINGDATE
+             , A.POST_MEETINGTIME
+             , A.POST_WRITINGDATE
+             , A.POST_WRITINGTIME
+             , A.LOCAL_CODE
+             , A.CATEGORY_CODE
+             , A.POST_DEL_STATUS
+             , A.POST_NUMBER_OF_PEOPLE
+             )
+             VALUES
+             (
+              SEQ_POST_NO.NEXTVAL
+              , ?
+              , ?
+              , '공지'
+              , 16
+              , NULL
+              , NULL
+              , ?
+              , ?
+              , NULL
+              , NULL
+              , DEFAULT
+              , NULL
+              )
 		</entry>
 		
-		<entry key="insertNoticePost">
-		
+		<entry key="selectTheNoticePost">
+		SELECT 
+		       A.*
+		  FROM TBL_POST A
+		 WHERE A.POST_NO = ?
 		</entry>
 		
 </properties>
