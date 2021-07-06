@@ -3,6 +3,7 @@ package com.devs.honddoni.post.controller;
 import java.text.SimpleDateFormat;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.post.model.service.PostService;
 
@@ -10,7 +11,7 @@ public class ContactController {
 	
 	private PostService postService = new PostService();
 	GetLoginMember loginMember = GetLoginMember.getInstance();
-	
+	PopupFrame popup;
 	public void writeHonddoniBoardPost(PostDTO postDTO) {
 		
 
@@ -65,8 +66,10 @@ public class ContactController {
 		int result = postService.insertHonddoniPost(post);
 		
 		if(result > 0) {
+			popup.popup("image/post/updateSuccess.png");
 			System.out.println("등록 성공");
 		} else {
+			popup.popup("image/post/updatefail.png");
 			System.out.println("등록 실패");
 		}
 		
@@ -87,6 +90,7 @@ public class ContactController {
 		int result = postService.deleteThePost(postNo);
 		
 		if(result > 0) {
+			popup.popup("image/post/ok.png");
 			System.out.println("변경 성공");
 		}
 		
@@ -136,8 +140,10 @@ public void updateThePost(PostDTO postDTO) {
 		int result = postService.updateThePost(post);
 		
 		if(result > 0) {
+			popup.popup("image/post/updateSuccess.png");
 			System.out.println("등록 성공");
 		} else {
+			popup.popup("image/post/updatefail.png");
 			System.out.println("등록 실패");
 		}
 		

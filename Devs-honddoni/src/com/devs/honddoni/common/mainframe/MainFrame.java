@@ -7,6 +7,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 
+import com.devs.honddoni.memberLog.view.FirstView;
+import com.devs.honddoni.post.view.SelectAllHonPost;
+
+
 import com.devs.honddoni.admin.viewpenel.AdminList;
 import com.devs.honddoni.admin.viewpenel.AdminList1;
 import com.devs.honddoni.admin.viewpenel.AdminList2;
@@ -51,7 +55,9 @@ public class MainFrame extends JFrame{
 
 		
 //		new SelectedComment(this, 1);
-//		new SelectAllHonPost2(this);
+
+		new SelectAllHonPost(this);
+
 
 
 		this.setVisible(true);
@@ -74,7 +80,9 @@ public class MainFrame extends JFrame{
 //		new AllBoardList(this);
 		
 
-//		new PostHonddoni(this);
+
+	//	new PostHonddoni(this);
+
 
 
 		//명길 실험중
@@ -86,7 +94,9 @@ public class MainFrame extends JFrame{
 //		new PostFreeBoard(this);
 
 		/*하림 test*/
-//		new PostModify(this);
+
+//		new PostModify(this, 1);
+
 
 
 	}

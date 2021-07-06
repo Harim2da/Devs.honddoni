@@ -7,7 +7,7 @@ public class Application {
 //		new PostHonddoni();
 //		new SelectAllHonPost();
 
-		new PostModify(); //테스트용
+//		new PostModify(); //테스트용
 //		new MainFrame();
 	}
 }
