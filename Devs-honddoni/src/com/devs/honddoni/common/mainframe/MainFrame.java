@@ -6,8 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import com.devs.honddoni.member.view.MyPage;
-import com.devs.honddoni.memberLog.view.FirstView;
+import com.devs.honddoni.post.view.SelectAllHonPost3;
 
 public class MainFrame extends JFrame{
 	
@@ -26,7 +25,7 @@ public class MainFrame extends JFrame{
 			e.printStackTrace();
 		}
 //		new MyPage(this);
-		new FirstView(this);
+//		new FirstView(this);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -39,6 +38,11 @@ public class MainFrame extends JFrame{
 		
 		//예슬 실험중
 //		new Notice(this);
+		
+		//태훈 실험중(메인바텀패널)
+//		new MainBottomPanel(this);
+		
+//		new AllBoardList(this);
 	}
 	
 }

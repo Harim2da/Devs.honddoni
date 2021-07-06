@@ -14,6 +14,10 @@ import javax.swing.JTextField;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.search.controller.SearchController;
 
+
+//메인프레임 일단 run에서 Application에 붙임
+
+
 //메인프레임의 하단 프레임
 public class MainBottomPanel extends JPanel{
 
@@ -49,15 +53,15 @@ public class MainBottomPanel extends JPanel{
 	
 	
 	public MainBottomPanel(MainFrame frame) {
-		//this.setBounds(100, 100, 516, 909);
-	//	this.setLayout(null);
-		mainBottomPanel = this;
-		this.frame = frame;
-		this.mainBottomPanel = this;
 		
-		this.setBounds(0, 100, 500, 770);
+		this.mainBottomPanel = this;
+		this.frame = frame;
+		
+		
+		this.setBounds(0, 0, 500, 870); //<-크기조절
 		this.setBackground(Color.white);
 		this.setLayout(null);
+		
 		frame.add(this);
 		
 		
@@ -105,8 +109,13 @@ public class MainBottomPanel extends JPanel{
 		
 		allBottomPanelComponent();
 		
-		frame.getContentPane().add(bottomPanel);
-		frame.add(bottomPanel); // <--프레임에 하단 패널...???
+		this.add(upPanel);  //<-- 메인프레임에 내 클래스의 업패널, 바텀패널 붙임
+		this.add(bottomPanel);
+		
+		
+//		frame.add(bottomPanel); // <--프레임에 하단 패널...???
+		
+//		frame.getContentPane().add(bottomPanel);
 //		this.repaint();
 //		this.revalidate();
 //		this.setVisible(true);
@@ -314,7 +323,7 @@ public class MainBottomPanel extends JPanel{
 //				searchController = new SearchController();
 //				searchController.selectSearch();
 				
-				AllBoardList allBoardList = new AllBoardList();
+				AllBoardList allBoardList = new AllBoardList(frame);
 				allBoardList.bottomPanel();
 				
 				
@@ -370,7 +379,7 @@ public class MainBottomPanel extends JPanel{
 				changeFreeList.setBackground(Color.white);
 				frame.add(changeFreeList);
 				
-				AllBoardList allBoardList = new AllBoardList();
+				AllBoardList allBoardList = new AllBoardList(frame);
 				allBoardList.bottomPanel();
 
 				// 패널이 넘어가서  자유 게시판에 해당하는 이미지
