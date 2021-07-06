@@ -71,6 +71,7 @@ public class AdminService {
 	}
 
 
+
 	public List<AdminDTO> memberManagement() {
 	
 		Connection con = getConnection();
@@ -79,13 +80,16 @@ public class AdminService {
 		
 		if(adminListDTO != null) {
 			commit(con);
+
 		} else {
 			rollback(con);
 		}
 		
 		close(con);
 		
+
 		return adminListDTO;
+
 	}
 
 }

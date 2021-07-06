@@ -253,7 +253,7 @@ public class PostFreeBoard extends JPanel {
 		private void selectPost() {
 			bottomPanel();
 			postTypebtn = new JButton();
-			postTypebtn.setIcon(new ImageIcon("image/post/postcategory.png"));
+			postTypebtn.setIcon(new ImageIcon("image/post/postcategoryfree.png"));
 			postTypebtn.setContentAreaFilled(false);
 			postTypebtn.setBorderPainted(false);
 			postTypebtn.setBounds(43, 20, 56, 30);

@@ -137,6 +137,7 @@ public class AdminDAO {
 		return postDTO;
 	}
 
+
 	public List<AdminDTO> memberManagement(Connection con) {
 		
 		PreparedStatement pstmt = null;
@@ -162,14 +163,17 @@ public class AdminDAO {
 				
 				adminList.add(row);
 			}
+
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
+
 			close(rset);
 		}
 		
 		return adminList;
+
 	}
 }

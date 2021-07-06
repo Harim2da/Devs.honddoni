@@ -385,7 +385,7 @@ public class PagingDAO {
 			
 			postList = new ArrayList<>();
 			
-			if(rset.next()) {
+			while(rset.next()) {
 				row = new PostDTO();
 				System.out.println("PostDTO() : " + row);
 				
@@ -400,6 +400,7 @@ public class PagingDAO {
 				
 				postList.add(row);
 			}
+			
 			
 		} catch (SQLException e1) {
 			e1.printStackTrace();

@@ -124,19 +124,19 @@ public class AdminList extends JPanel {
 	       });
 	       
 	       //공지사항관리로 넘어가는버튼
-//	       btn4.addActionListener(new ActionListener() {
-//	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
-////	    		   login2 login2 = new login2();
-////	    		   JPanel.add(login2);
-////	    		   new login2();
-////	    		   bottomPanel.setVisible(false);
-//	    		   
-//	    		   new Notice();
-//	    		   bottomPanel.setVisible(false); 
+	       btn4.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new Notice(frame);
+	    		   bottomPanel.setVisible(false); 
 //	    		   MainFrame.setVisible(false);
-//	    	   }
-//	       });
+	    	   }
+	       });
 	       
 	       //탈퇴요청회원으로 들어가
 	       btn1.addActionListener(new ActionListener() {

@@ -76,33 +76,33 @@ public class AllDataTest {
 //	     List<AdminDTO> amdinList = new ArrayList<>();
 //	     String 
 	     
-	     Connection con = getConnection();
-			
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
-			
-			List<AdminDTO> adminList = null;
-			
-			
-			try {
-				pstmt = con.prepareStatement("SELECT MEMBER_NAME FROM TBL_MEMBER");
-				
-				rset = pstmt.executeQuery();
-				
-				adminList = new ArrayList<>();
-				
-				while(rset.next()) {
-					System.out.println(rset.getString("MEMBER_NAME"));
-				}
-				
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(rset);
-				close(pstmt);
-				close(con);
-			}
+//	     Connection con = getConnection();
+//			
+//			PreparedStatement pstmt = null;
+//			ResultSet rset = null;
+//			
+//			List<AdminDTO> adminList = null;
+//			
+//			
+//			try {
+//				pstmt = con.prepareStatement("SELECT MEMBER_NAME FROM TBL_MEMBER");
+//				
+//				rset = pstmt.executeQuery();
+//				
+//				adminList = new ArrayList<>();
+//				
+//				while(rset.next()) {
+//					System.out.println(rset.getString("MEMBER_NAME"));
+//				}
+//				
+//				
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			} finally {
+//				close(rset);
+//				close(pstmt);
+//				close(con);
+//			}
 	     ////////////여기서부터 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 //	 	 AdminDTO adminDTO = null;
 		 List<AdminDTO> adminListDTO = new ManagementController().memberManagement();
@@ -113,12 +113,14 @@ public class AllDataTest {
 	 		
 	 	 adminDTO = adminListDTO.get(i);
 	 			
+
 	 	 JLabel[] jlabel = new JLabel[adminListDTO.size()];
 	 	 jlabel[i] = new JLabel(adminDTO.getMEMBER_NICKNAME());
 //	 	 jlabel.setText(adminDTO.getMEMBER_NICKNAME());
 	 	 jlabel[i].setLayout(null);
 	 	 jlabel[i].setBounds(110, 10, 720, 35);
 	 	 bottomPanel.add(jlabel[i]);
+
 //	 			this.nickName = new JLabel[adminListDTO.size()];
 //	 			this.nickName[i] = new JLabel(img000);
 //	 	 여기까지 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★

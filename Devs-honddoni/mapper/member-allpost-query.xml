@@ -67,12 +67,6 @@
 		FROM TBL_MEMBER
 		</entry>
 		
-		<entry key="onlyNicname">
-		SELECT
-				*
-		FROM TBL_MEMBER
-		</entry>
-		
 		<entry key="insertNoticePost">
 		INSERT
           INTO TBL_POST A (
@@ -114,5 +108,26 @@
 		  FROM TBL_POST A
 		 WHERE A.POST_NO = ?
 		</entry>
+		
+		<entry key="modifyNotice">
+	INSERT /*com.devs.honddoni.admin.model.dao.AdminDao#modifyNotice()*/
+	    INTO TBL_POST A
+	    (
+	     A.POST_NAME
+	    ,A.POST_CONTENTS	    
+	    ,A.POST_WRITINGDATE
+	    ,A.POST_WRITINGTIME
+	    ,A.POST_DEL_STATUS
+	    )
+	    VALUES
+	    (
+	    ?
+	    ,?
+	    ,?
+	    ,?
+	    ,DEFAULT
+	    )
+	WHERE A.POST_NO = ?
+	</entry>
 		
 </properties>
