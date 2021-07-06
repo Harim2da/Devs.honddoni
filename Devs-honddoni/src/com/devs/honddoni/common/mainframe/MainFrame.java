@@ -20,6 +20,7 @@ import com.devs.honddoni.memberLog.view.FirstView;
 import com.devs.honddoni.post.view.PostHonddoni;
 import com.devs.honddoni.post.view.PostModify;
 import com.devs.honddoni.search.view.MainBottomPanel;
+import com.devs.honddoni.search.view.PostFreeBoard;
 
 
 
@@ -45,7 +46,9 @@ public class MainFrame extends JFrame{
 //		new MyPage(this);
 
 		new FirstView(this);
-		
+
+//		new PostFreeBoard(this);
+
 		
 //		new SelectedComment(this, 1);
 //		new SelectAllHonPost2(this);

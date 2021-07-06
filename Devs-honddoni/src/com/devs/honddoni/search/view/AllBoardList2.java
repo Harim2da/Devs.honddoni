@@ -18,16 +18,16 @@ import com.devs.honddoni.common.PagenationPost;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
-import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.GetFilter;
 import com.devs.honddoni.post.controller.PagingController;
 import com.devs.honddoni.post.view.PostHonddoni;
 import com.devs.honddoni.post.view.SelectAllHonPost2;
 import com.devs.honddoni.post.view.SelectAllHonPost3;
 
-public class AllBoardList extends JPanel {
+public class AllBoardList2 extends JPanel {
 
-	private AllBoardList allBoardList;
+	
+	private AllBoardList2 allBoardList;
 	private MainFrame frame;
 
 	private JPanel upPanel;
@@ -38,7 +38,6 @@ public class AllBoardList extends JPanel {
 	private JLabel pageLongbarLabel;	//페이지표기 바
 	private JLabel beforeNumber = new JLabel("");
 	private JLabel afterNumber;
-	public static int nowPage2 = 1;
 	private JButton beforeBtn = new JButton(); // 앞페이지 버튼
 	private JButton afterBtn = new JButton(); // 뒷 페이지 버튼
 	private JLabel[] postList;	
@@ -47,7 +46,7 @@ public class AllBoardList extends JPanel {
 	private JLabel[] nickName; // 닉네임
 	private JLabel[] postTitle; // 게시글 제목
 //	private JLabel[] categoryName; //카테고리명
-	private JLabel[] localName;
+//	private JLabel[] localName;
 	//	private int postNo; //게시글 번호
 	//	private int totalPostNum;
 	//	private PostDTO postDTO = new PostDTO();
@@ -62,7 +61,7 @@ public class AllBoardList extends JPanel {
 	GetFilter getName = GetFilter.getInstance();
 
 	/* 프레임을 제외한 나머지를 합친 것 */
-	public AllBoardList(MainFrame frame) {
+	public AllBoardList2(MainFrame frame) {
 
 		this.frame = frame;
 		this.allBoardList = this;
@@ -162,13 +161,15 @@ public class AllBoardList extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				bottomPanel.setVisible(false);
 				upPanel.setVisible(false);
 				frame.remove(upPanel);
 				frame.remove(bottomPanel);
-				MyPage mp = new MyPage(frame);
+				new PostHonddoni(frame);
 				frame.repaint();
 				frame.revalidate();
+				
 			}
 		});
 
@@ -319,7 +320,7 @@ public class AllBoardList extends JPanel {
 					}
 
 					bottomPanel.setVisible(false);
-					AllBoardList2 sf = new AllBoardList2(frame);
+					AllBoardList sf = new AllBoardList(frame);
 					frame.add(sf.getDownPanel());
 
 
@@ -366,7 +367,7 @@ public class AllBoardList extends JPanel {
 				}
 
 				bottomPanel.setVisible(false);
-				AllBoardList2 sf = new AllBoardList2(frame);
+				AllBoardList sf = new AllBoardList(frame);
 				frame.add(sf.getDownPanel());
 
 				afterBtn();
@@ -441,8 +442,8 @@ public class AllBoardList extends JPanel {
 
 		for(int i = 0; i < postListDTO.size(); i++) {
 
-			postInfo = postListDTO.get(i);
 			profilePictrue = new JLabel[postListDTO.size()];
+			postInfo = postListDTO.get(i);
 			profilePictrue[i] = new JLabel();
 			profilePictrue[i].setLayout(null);
 			profilePictrue[i].setBounds(53, y + 12, 40, 40);
@@ -489,7 +490,7 @@ public class AllBoardList extends JPanel {
 
 	}
 
-//	/* 카테고리 라벨*/
+	/* 카테고리 라벨*/
 //	public void categoryName() {
 //		int pageNo = AllBoardList.nowPage2;
 //		int y = 153;
@@ -506,6 +507,8 @@ public class AllBoardList extends JPanel {
 //			categoryName[i].setLayout(null);
 //			categoryName[i].setBounds(188, y + 21, 70, 31);
 //
+//			
+//			
 //			if(postInfo.getCategoryName().equals("맛집탐방")) {
 //				categoryName[i].setIcon(new ImageIcon("image/post/eat.png"));
 //
@@ -523,14 +526,14 @@ public class AllBoardList extends JPanel {
 //
 //			} else if(postInfo.getCategoryName().equals("게임")) {
 //				categoryName[i].setIcon(new ImageIcon("image/post/game.png"));
-//			} else {
+//			} else if(postInfo.getCategoryName() == null){
 //				categoryName[i].setVisible(false);
 //			}
 //			bottomPanel.add(categoryName[i]);
 //			y += 118;
 //		}
-//
-//	}
+
+	
 
 	public void postTitle() {
 		int pageNo = AllBoardList.nowPage2;

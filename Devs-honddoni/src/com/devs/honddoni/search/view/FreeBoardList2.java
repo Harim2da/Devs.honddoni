@@ -23,9 +23,9 @@ import com.devs.honddoni.post.controller.PagingController;
 import com.devs.honddoni.post.view.PostHonddoni;
 import com.devs.honddoni.post.view.SelectAllHonPost2;
 
-public class FreeBoardList extends JPanel {
+public class FreeBoardList2 extends JPanel {
 
-	private FreeBoardList FreeBoardList;
+	private FreeBoardList2 FreeBoardList;
 	private MainFrame frame;
 
 	private JPanel upPanel;
@@ -36,7 +36,6 @@ public class FreeBoardList extends JPanel {
 	private JLabel pageLongbarLabel;	//페이지표기 바
 	private JLabel beforeNumber = new JLabel("");
 	private JLabel afterNumber;
-	public static int presentPage2 = 1;
 	private JButton beforeBtn = new JButton(); // 앞페이지 버튼
 	private JButton afterBtn = new JButton(); // 뒷 페이지 버튼
 	private JLabel[] postList;	
@@ -58,7 +57,7 @@ public class FreeBoardList extends JPanel {
 	GetFilter getName = GetFilter.getInstance();
 
 	/* 프레임을 제외한 나머지를 합친 것 */
-	public FreeBoardList(MainFrame frame) {
+	public FreeBoardList2(MainFrame frame) {
 
 		this.frame = frame;
 		this.FreeBoardList = this;
@@ -313,7 +312,7 @@ public class FreeBoardList extends JPanel {
 					}
 
 					bottomPanel.setVisible(false);
-					FreeBoardList sf = new FreeBoardList(frame);
+					FreeBoardList2 sf = new FreeBoardList2(frame);
 					frame.add(sf.getDownPanel());
 
 
@@ -370,6 +369,9 @@ public class FreeBoardList extends JPanel {
 
 			}
 		});
+
+
+
 
 	}
 

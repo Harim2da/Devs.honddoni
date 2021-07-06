@@ -24,6 +24,7 @@ public class  SearchController {
 		for(PostDTO postList: post) {
 			System.out.println(postList);
 		}
+		
 	
 	}
 	
