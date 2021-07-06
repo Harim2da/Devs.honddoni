@@ -19,6 +19,8 @@ public class ManagementController {
 		List<AdminDTO> adminList = adminService.onlyNicname();
 		
 //		memberResultView.display(memberList);
+		
+		
 	}
 }
 

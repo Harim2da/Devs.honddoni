@@ -1,8 +1,16 @@
 package com.devs.honddoni.admin.viewpenel;
 
+import static com.devs.honddoni.common.JDBCTemplate.close;
+import static com.devs.honddoni.common.JDBCTemplate.getConnection;
+
 import java.awt.Color;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -64,7 +72,37 @@ public class AllDataTest {
 //	     topPanel.add(lb01);
 //	     lb01.setBounds(32, 56, 263, 33);
 	     
-
+	     //////////////제가생각한 코드☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+//	     List<AdminDTO> amdinList = new ArrayList<>();
+//	     String 
+	     
+	     Connection con = getConnection();
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			List<AdminDTO> adminList = null;
+			
+			
+			try {
+				pstmt = con.prepareStatement("SELECT MEMBER_NAME FROM TBL_MEMBER");
+				
+				rset = pstmt.executeQuery();
+				
+				adminList = new ArrayList<>();
+				
+				while(rset.next()) {
+					System.out.println(rset.getString("MEMBER_NAME"));
+				}
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+				close(con);
+			}
 	     ////////////여기서부터 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 //	 	 AdminDTO adminDTO = null;
 	     AdminDTO adminDTO = new AdminDTO();
@@ -80,6 +118,8 @@ public class AllDataTest {
 	 	 bottomPanel.add(jlabel);
 //	 			this.nickName = new JLabel[adminListDTO.size()];
 //	 			this.nickName[i] = new JLabel(img000);
+	 	 //여기까지 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+	 	 
 	 			
 	       //컨테이너에 패널 추가
 	 		MainFrame.add(bottomPanel);

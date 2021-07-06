@@ -66,6 +66,7 @@ public class AdminDAO {
 		return adminList;
 	}
 
+
 	public int insertNoticePost(Connection con, PostDTO postDTO) {
 		
 		PreparedStatement pstmt = null;
