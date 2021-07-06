@@ -78,8 +78,8 @@ public class Notice extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				//관리자메인 페이지로 나감
 				System.out.println("관리자메인 페이지로 나감");
-				notice.setVisible(false);
-				adminList = new AdminList(frame);
+//				notice.setVisible(false);
+//				adminList = new AdminList(frame);
 //				FrameManagerYs.changePanel(notice, new 관리자메인());
 //				frame.remove(notice);
 //				frame.add(adminList);
@@ -151,10 +151,10 @@ public class Notice extends JPanel{
 		notice.add(pagebarLabel);
 		
 		//페이징 버튼과 숫자들		
-		prePageBtn();
-		commingPageBtn();	
 		prePageNumber();
 		commingPageNumber();
+		prePageBtn();
+		commingPageBtn();	
 				
 		//게시글 내용들 세팅
 		setPostListLb();
@@ -176,43 +176,15 @@ public class Notice extends JPanel{
 	}
 	
 	
-	/* 이전페이지로 이동 버튼*/
-	public void prePageBtn() {		
-		int pageNo = frontPage;
-		
-		preBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
-		preBtn.setContentAreaFilled(false);
-		preBtn.setBorderPainted(false);
-		preBtn.setBounds(185, 205, 14, 14);
+	/* 현재페이지를 나타내는 숫자 */
+	public void prePageNumber() {
+		String frontPageString = Integer.valueOf(frontPage).toString();
 
-		if(pageNo < 2) {
-			preBtn.setVisible(false);
-		} else {
-			preBtn.setVisible(true);
-		}
-
-		System.out.println("frontPage : " + frontPage);
-		preBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-				if(frontPage >= 2 ) { //현재있는 페이지
-					frontPage--;
-				}
-				
-				postDTOList = new PagingController().NoticePostList(pageNo);
-								
-				setPostListLb();		//게시글 배경 틀 다시 잡기
-
-				prePageBtn(); 		//이동 후에, 다시 버튼을 재설정해줘야 함
-				prePageNumber(); 	//이동 후에, 이전페이지라벨을 재설정해줘야 함
-				commingPageBtn();
-				System.out.println("frontPage : " + frontPage);
-			}
-		});
-	
-		pagebarLabel.add(preBtn);
+		preNumber.setText(frontPageString);
+		preNumber.setLayout(null);
+		preNumber.setBounds(50, 104, 14, 14);
+		System.out.println("frontPage 숫자 : " + frontPageString);
 	}
-	
 	
 	/* 다음페이지로 이동버튼 */
 	public void commingPageBtn() {
@@ -253,17 +225,48 @@ public class Notice extends JPanel{
 		pagebarLabel.add(commingBtn);
 	}
 	
+	/* 이전페이지로 이동 버튼*/
+	public void prePageBtn() {		
+		int pageNo = frontPage;
+		
+		preBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
+		preBtn.setContentAreaFilled(false);
+		preBtn.setBorderPainted(false);
+		preBtn.setBounds(185, 205, 14, 14);
+
+		if(pageNo < 2) {
+			preBtn.setVisible(false);
+		} else {
+			preBtn.setVisible(true);
+		}
+
+		System.out.println("frontPage : " + frontPage);
+		preBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				if(frontPage >= 2 ) { //현재있는 페이지
+					frontPage--;
+				}
+				
+				postDTOList = new PagingController().NoticePostList(pageNo);
+								
+				setPostListLb();		//게시글 배경 틀 다시 잡기
+
+				prePageBtn(); 		//이동 후에, 다시 버튼을 재설정해줘야 함
+				prePageNumber(); 	//이동 후에, 이전페이지라벨을 재설정해줘야 함
+				commingPageBtn();
+				System.out.println("frontPage : " + frontPage);
+			}
+		});
 	
-	/* 현재페이지를 나타내는 숫자 */
-	public void prePageNumber() {
-		String frontPageString = Integer.valueOf(frontPage).toString();
-
-		preNumber.setText(frontPageString);
-		preNumber.setLayout(null);
-		preNumber.setBounds(50, 104, 14, 14);
-		System.out.println("frontPage 숫자 : " + frontPageString);
-
+		pagebarLabel.add(preBtn);
 	}
+	
+	
+	
+	
+	
+	
 	
 	/* 최종페이지를 나타내는 숫자 */
 	public void commingPageNumber() {
