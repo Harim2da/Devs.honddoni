@@ -8,17 +8,26 @@
 	   FROM TBL_MEMBER A
 	  WHERE A.MEMBER_ID = ?
 	</entry>	
+	
 	<entry key="searchByPhone">
 	  SELECT /*com.greedy.member.model.dao.MemberLogDAO#searchById()*/
 	        B.*
 	   FROM TBL_MEMBER B
 	   WHERE B.MEMBER_PHONE = ?
 	</entry>
-	<entry key="searchById">
-	  SELECT /*com.greedy.member.model.dao.MemberLogDAO#searchByGender()*/
-	        C.*
-	    FROM TBL_MEMBER C
-	    WHERE C.MEMBER_ID = ?
 	
+	<entry key="searchById">
+	  SELECT /*com.greedy.member.model.dao.MemberLogDAO#searchById()*/
+	        C.*
+	   FROM TBL_MEMBER C
+	   WHERE C.MEMBER_ID = ?
 	</entry>
+	
+	<entry key="editPwd">
+	  UPDATE /*com.greedy.member.model.dao.MemberDAO#editPwd()*/
+	         TBL_MEMBER D
+	     SET D.MEMBER_PASSWORD = ?
+	   WHERE D.MEMBER_NAME = ?
+	</entry>
+	
 </properties>

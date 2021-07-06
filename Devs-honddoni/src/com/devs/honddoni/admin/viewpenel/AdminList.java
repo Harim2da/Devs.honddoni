@@ -15,26 +15,12 @@ import com.devs.honddoni.admin.viewpenel.MainFrame1;
 import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class AdminList {
-	
-	public AdminList(MainFrame frame) {
 		
-//		myPage = this;
-
+		MainFrame1 MainFrame = new MainFrame1();
 		
-//	}
-//
-//	this.frame = frame;
-//	this.myPage = this;
-//	
-//}
-	}
-	//관리자 목록1
-	
-	MainFrame1 mainFrame = new MainFrame1();
-	
-	private JButton btn1, btn2, btn3, btn4, btn5;
-	
-	public AdminList() {
+		private JButton btn1, btn2, btn3, btn4, btn5;
+		
+		public AdminList() {
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -42,14 +28,14 @@ public class AdminList {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		mainFrame.add(bottomPanel);
+		MainFrame.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		mainFrame.add(topPanel);
+		MainFrame.add(topPanel);
 		
 		//혼또니마크(뒤로가기)
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
@@ -107,8 +93,8 @@ public class AdminList {
 	       
 	     
 	       //컨테이너에 패널 추가
-	       mainFrame.add(bottomPanel);
-	       mainFrame.setVisible(true); //창을 보이게함
+	       MainFrame.add(bottomPanel);
+	       MainFrame.setVisible(true); //창을 보이게함
 	       
 	       //관리자목록2번째로 넘어가는 버튼
 	       btn5.addActionListener(new ActionListener() {
@@ -121,24 +107,24 @@ public class AdminList {
 	    		   
 	    		   new AdminList1();
 	    		   bottomPanel.setVisible(false); 
-	    		   mainFrame.setVisible(false);
+	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	       
 	       //공지사항관리로 넘어가는버튼
-	       btn4.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   new Notice();
-	    		   bottomPanel.setVisible(false); 
-	    		   mainFrame.setVisible(false);
-	    	   }
-	       });
+//	       btn4.addActionListener(new ActionListener() {
+//	    	   @Override
+//	    	   public void actionPerformed(ActionEvent e) {
+////	    		   login2 login2 = new login2();
+////	    		   JPanel.add(login2);
+////	    		   new login2();
+////	    		   bottomPanel.setVisible(false);
+//	    		   
+//	    		   new Notice();
+//	    		   bottomPanel.setVisible(false); 
+//	    		   MainFrame.setVisible(false);
+//	    	   }
+//	       });
 	       
 	       //탈퇴요청회원으로 들어가
 	       btn1.addActionListener(new ActionListener() {
@@ -151,7 +137,7 @@ public class AdminList {
 	    		   
 	    		   new Delite();
 	    		   bottomPanel.setVisible(false); 
-	    		   mainFrame.setVisible(false);
+	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -166,7 +152,7 @@ public class AdminList {
 	    		   
 	    		   new AllData();
 	    		   bottomPanel.setVisible(false); 
-	    		   mainFrame.setVisible(false);
+	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -181,7 +167,7 @@ public class AdminList {
 	    		   
 	    		   new Honnest();
 	    		   bottomPanel.setVisible(false); 
-	    		   mainFrame.setVisible(false);
+	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -196,12 +182,14 @@ public class AdminList {
 	    		   
 	    		   new AdminList();
 	    		   bottomPanel.setVisible(false); 
-	    		   mainFrame.setVisible(false);
+	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
-	       
+		}  
 	}
-}
+	
+
+
 
 		
 

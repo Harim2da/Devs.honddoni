@@ -107,8 +107,9 @@ public class SearchPwd extends JPanel{
 					
 					System.out.println("새로운 비밀번호 : " + newPwd);
 					
-					//새 비밀번호를 수정하
-//					int result2 = memberLogController.modifyPwd(newPwd);
+					//새 비밀번호 DTO에 넣고, 수정하기
+					searchPwdDTO.setNewPwd(newPwd);
+					int result2 = memberLogController.editPwd(searchPwdDTO);
 //										
 //					if(result2 > 0) {
 //						System.out.println("새 비밀번호가 잘 저장되었습니다.");
