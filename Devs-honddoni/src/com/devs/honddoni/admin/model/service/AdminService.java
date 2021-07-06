@@ -54,7 +54,7 @@ public class AdminService {
 		return result;
 	}
 	
-}
+
 
 
 	public PostDTO selectTheNoticePost(int postNo) {

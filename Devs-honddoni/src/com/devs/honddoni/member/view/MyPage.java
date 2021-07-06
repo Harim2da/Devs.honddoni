@@ -123,7 +123,7 @@ public class MyPage extends JPanel {
 		
 		
 		bottomPanel.setBounds(0, 100, 500, 770);
-		bottomPanel.setBackground(Color.black);
+		bottomPanel.setBackground(Color.WHITE);
 		bottomPanel.setLayout(null);
 		frame.add(bottomPanel);
 		
@@ -614,9 +614,9 @@ public class MyPage extends JPanel {
 				});
 				
 				/* 주소 입력창 */
+				ciTp3.setBounds(130, 411, 330, 45);
 				ciTp3.setBorder(null);
 				ciTp3.setOpaque(false);
-				ciTp3.setBounds(130, 411, 330, 45);
 				ciTp3.setFont(font.customFont12);
 				changeMemberinfoPanel.add(ciTp3);
 				 

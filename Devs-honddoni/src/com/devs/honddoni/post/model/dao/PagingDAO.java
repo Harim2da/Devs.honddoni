@@ -224,6 +224,8 @@ public class PagingDAO {
 				row.setPostWritingDate(rset.getString("POST_WRITINGDATE"));
 				row.setPostWritingTime(rset.getString("POST_WRITINGTIME"));
 				row.setPostDelStatus(rset.getString("POST_DEL_STATUS"));
+				row.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
+				row.setMemberProfile(rset.getString("MEMBER_PROFILE"));
 				
 				postList.add(row);
 				
@@ -275,6 +277,8 @@ public class PagingDAO {
 				row.setCategoryName(rset.getString("CATEGORY_NAME"));
 				row.setPostDelStatus(rset.getString("POST_DEL_STATUS"));
 				row.setPostNumberOfPeopleNumber(rset.getInt("POST_NUMBER_OF_PEOPLE"));
+				row.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
+				row.setMemberProfile(rset.getString("MEMBER_PROFILE"));
 		
 				postList.add(row);
 				

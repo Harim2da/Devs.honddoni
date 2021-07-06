@@ -48,7 +48,7 @@ public class MemberLogView extends JPanel {
 
 		//로그인창 전체패널 생성		
 		this.setBounds(0, 0, 500, 870);
-		this.setForeground(Color.WHITE);
+		this.setBackground(Color.WHITE);
 		this.setLayout(null);
 		frame.add(this);
 		
@@ -70,15 +70,21 @@ public class MemberLogView extends JPanel {
 		idPwdArea.grabFocus();
 
 		idTf = new JTextField();
-		idTf.setBounds(130, 453, 200, 26);		
+		idTf.setBounds(100, 4, 300, 55);		
+		idTf.setBorder(null);
+		idTf.setOpaque(false);
+		idTf.setFont(font.customFont12);
 		pwPf = new JPasswordField();
-		pwPf.setBounds(130, 535, 200, 26);
+		pwPf.setBounds(100, 84, 300, 55);
+		pwPf.setBorder(null);
+		pwPf.setOpaque(false);
 
 
 		//로그인 버튼
 		JButton loginBtn = new JButton();
 		loginBtn.setBounds(35, 593, 431, 63);
 		loginBtn.setBorderPainted(false);
+		loginBtn.setContentAreaFilled(false);
 		loginBtn.setIcon(new ImageIcon("image/memberLog/login/login_4_login_btn.png"));
 
 		loginBtn.addActionListener(new ActionListener() {
@@ -128,6 +134,7 @@ public class MemberLogView extends JPanel {
 		JButton searchIdBtn = new JButton();
 		searchIdBtn.setBounds(58, 725, 111, 41);
 		searchIdBtn.setBorderPainted(false);
+		searchIdBtn.setContentAreaFilled(false);
 		searchIdBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_id_btn.png"));
 		searchIdBtn.addActionListener(new ActionListener() {			
 			@Override
@@ -150,6 +157,7 @@ public class MemberLogView extends JPanel {
 		JButton searchPasswordBtn = new JButton();
 		searchPasswordBtn.setBounds(196, 725, 111, 41);
 		searchPasswordBtn.setBorderPainted(false);
+		searchPasswordBtn.setContentAreaFilled(false);
 		searchPasswordBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_password_btn.png"));
 		searchPasswordBtn.addActionListener(new ActionListener() {				
 			@Override
@@ -172,6 +180,7 @@ public class MemberLogView extends JPanel {
 		JButton registBtn = new JButton();
 		registBtn.setBounds(334, 725, 111, 41);
 		registBtn.setBorderPainted(false);
+		registBtn.setContentAreaFilled(false);
 		registBtn.setIcon(new ImageIcon("image/memberLog/login/login_6_regist_btn.png"));
 		registBtn.addActionListener(new ActionListener() {			
 			@Override
@@ -191,6 +200,8 @@ public class MemberLogView extends JPanel {
 
 
 		//한 패널에 컴포넌트올리기		
+		idPwdArea.add(idTf); //이래야 되더라... idPwdArea에 올리면 안 보임
+		idPwdArea.add(pwPf);
 		this.add(adminLoginlb);
 		this.add(honddoniLogo);
 		this.add(idPwdArea);
@@ -198,8 +209,6 @@ public class MemberLogView extends JPanel {
 		this.add(searchIdBtn);
 		this.add(searchPasswordBtn);
 		this.add(registBtn);
-		this.add(idTf); //이래야 되더라... idPwdArea에 올리면 안 보임
-		this.add(pwPf);
 		
 		this.setVisible(true);
 		

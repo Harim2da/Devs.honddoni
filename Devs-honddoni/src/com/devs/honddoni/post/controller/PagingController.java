@@ -30,13 +30,13 @@ public class PagingController {
 	}
 	
 	/* 자유 게시판 갯수 불러오기 컨트롤러*/
-	public void freeWholePostNum() {
+	public int freeWholePostNum() {
 
 		int result = pagingService.freeWholePostNum();
 
 		PageInfoPostDTO dto = new PageInfoPostDTO();
 
-		dto.setTotalCount(result);
+		return result;
 		
 	}
 	

@@ -15,7 +15,9 @@ import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.view.PostActionCategory;
+import com.devs.honddoni.post.view.PostHonddoni;
 import com.devs.honddoni.search.controller.SearchController;
 
 
@@ -134,7 +136,13 @@ public class PostFreeBoard extends JPanel {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("my혼또니 버튼 클릭");
+					bottomPanel.setVisible(false);
+					upPanel.setVisible(false);
+					frame.remove(upPanel);
+					frame.remove(bottomPanel);
+					MyPage mp = new MyPage(frame);
+					frame.repaint();
+					frame.revalidate();
 				}
 			});
 
@@ -152,7 +160,13 @@ public class PostFreeBoard extends JPanel {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("혼또니 찾기 버튼 클릭");
+					bottomPanel.setVisible(false);
+					upPanel.setVisible(false);
+					frame.remove(upPanel);
+					frame.remove(bottomPanel);
+					new PostHonddoni(frame);
+					frame.repaint();
+					frame.revalidate();
 				}
 			});
 
@@ -170,7 +184,13 @@ public class PostFreeBoard extends JPanel {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("홈  버튼 클릭");
+					bottomPanel.setVisible(false);
+					upPanel.setVisible(false);
+					frame.remove(upPanel);
+					frame.remove(bottomPanel);
+					new MainBottomPanel(frame);
+					frame.repaint();
+					frame.revalidate();
 				}
 			});
 
