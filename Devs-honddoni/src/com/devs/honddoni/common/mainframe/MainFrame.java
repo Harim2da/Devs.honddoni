@@ -6,6 +6,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+
+import com.devs.honddoni.admin.viewpenel.AdminList;
+
 import com.devs.honddoni.memberLog.view.FirstView;
 
 import com.devs.honddoni.search.view.MainBottomPanel;
@@ -58,6 +61,10 @@ public class MainFrame extends JFrame{
 		
 //		new AllBoardList(this);
 		
+
+		//명길 실험중
+		new AdminList(this);
+
 
 //		new FreeBoardList(this);
 		

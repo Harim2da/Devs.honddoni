@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.view.MyPage;
+import com.devs.honddoni.memberLog.view.FirstView;
 import com.devs.honddoni.memberLog.view.LoginFail;
 import com.devs.honddoni.post.view.SelectedComment;
 
@@ -30,6 +31,8 @@ public class Application {
 //		new AllDataTest();
 		
 //		new AdminPostDelite();
+		
+//		new FirstView();
 		
 
 		
