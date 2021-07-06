@@ -1,14 +1,13 @@
 package com.devs.honddoni.post.view;
 import java.awt.Color;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -20,6 +19,7 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.GetFilter;
 import com.devs.honddoni.post.controller.PagingController;
+import com.devs.honddoni.search.view.MainBottomPanel;
 public class SelectAllHonPost2 extends JPanel {
 
 	private SelectAllHonPost2 selectAllHonPost2;
@@ -59,7 +59,6 @@ public class SelectAllHonPost2 extends JPanel {
 
 		this.frame = frame;
 		this.selectAllHonPost2 = this;
-		
 		
 		/* 패널 */
 		upPanel();
@@ -160,7 +159,12 @@ public class SelectAllHonPost2 extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				downPanel.setVisible(false);
+				upPanel.setVisible(false);
+				frame.remove(upPanel);
+				frame.remove(downPanel);
 				MyPage mp = new MyPage(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -178,7 +182,13 @@ public class SelectAllHonPost2 extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("혼또니 찾기 버튼 클릭");
+				downPanel.setVisible(false);
+				upPanel.setVisible(false);
+				frame.remove(upPanel);
+				frame.remove(downPanel);
+				new PostHonddoni(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -196,7 +206,13 @@ public class SelectAllHonPost2 extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("홈  버튼 클릭");
+				downPanel.setVisible(false);
+				upPanel.setVisible(false);
+				frame.remove(upPanel);
+				frame.remove(downPanel);
+				new MainBottomPanel(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
