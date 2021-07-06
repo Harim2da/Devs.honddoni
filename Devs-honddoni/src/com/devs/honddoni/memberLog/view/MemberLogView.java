@@ -116,7 +116,7 @@ public class MemberLogView extends JPanel {
 						//관리자 쪽으로 패널교체
 						System.out.println("로그인 성공~ 관리자메인화면 패널로 교체");
 						memberLogView.setVisible(false);
-						adminList = new AdminList(frame);
+//						adminList = new AdminList(frame);
 						
 					}
 					
