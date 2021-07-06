@@ -57,28 +57,20 @@ public class AllBoardList extends JPanel {
 	
 	
 	public AllBoardList(MainFrame frame) {
-//		this.setBounds(100, 100, 516, 909);
-//		this.setLayout(null);
-		
-		allBoardList = this;
+
 		this.frame = frame;
 		this.allBoardList = this;
 		
-		this.setBounds(0, 100, 500, 770);
+		this.setBounds(0, 0, 500, 870);
 		this.setBackground(Color.white);
 		this.setLayout(null);
 		frame.add(this);
-		
-//		frame.setBounds(100, 100, 516, 909);
-//		frame.setLayout(null);
-//		frame.setVisible(true);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.white);	
-//		this.add(bottomPanel);
+
 		
 		addComponents();
 		postlistbgr(1);
