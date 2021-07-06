@@ -1,10 +1,11 @@
 package com.devs.honddoni.search.model.dao;
 
+import static com.devs.honddoni.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
-
-
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,11 +14,12 @@ import java.util.List;
 import java.util.Properties;
 
 import com.devs.honddoni.common.dto.PostDTO;
-import static com.devs.honddoni.common.JDBCTemplate.close;
+import com.devs.honddoni.search.model.service.SearchService;
 
 public class SearchDAO {
 
 	private Properties prop;
+	private SearchService ss;
 
 	public SearchDAO() {
 		this.prop = new Properties();
@@ -124,6 +126,37 @@ public class SearchDAO {
 			close(stmt);
 		} 
 		return postList;
+	}
+
+
+	public int insertNewFreeBoard(Connection con, PostDTO post) {
+		
+		//게시글 번호를 DB에서 받음
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertNewFreeBoard");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, post.getPostName());
+			pstmt.setString(2, post.getPostContents());
+			pstmt.setInt(3, post.getPostMemberNo());
+			pstmt.setString(4, post.getPostWritingDate());
+			pstmt.setString(5, post.getPostWritingTime());
+			pstmt.setInt(6, post.getPostNumberOfPeopleNumber());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 	
 	
