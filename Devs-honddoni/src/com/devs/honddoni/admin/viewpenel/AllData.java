@@ -14,20 +14,30 @@ import com.devs.honddoni.admin.controller.ManagementController;
 import com.devs.honddoni.admin.model.dto.*;
 import com.devs.honddoni.admin.model.dao.AdminDAO;
 import com.devs.honddoni.common.dto.CommentsDTO;
+import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.PagingController;
 
 //모든회원정보 조회 화면
 
-public class AllData {
+public class AllData extends JPanel {
 	
-	MainFrame1 MainFrame = new MainFrame1();
-	
+	private MainFrame frame;
+	private AllData alldata;
 	List<AdminDTO> commentListDTO = null;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	private JLabel lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11, lb12, lb13, lb14, lb15, lb16,
 	lb17, lb18, lb19, lb20, lb21; 
 	
-	public AllData() {
+	public AllData(MainFrame frame) {
+		//프레임, 패널설정
+		this.frame = frame;
+		this.alldata = this;
+		
+		//전체 패널 생성
+		alldata.setBounds(0, 0, 500, 870);
+		alldata.setLayout(null);
+		alldata.setBackground(Color.white);
+		frame.add(alldata);
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -35,14 +45,14 @@ public class AllData {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		MainFrame.add(bottomPanel);
+		alldata.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		MainFrame.add(topPanel);
+		alldata.add(topPanel);
 		
 		//상단 뒤로가기버튼
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
@@ -231,24 +241,24 @@ public class AllData {
 //	       lb21.setBounds(34, 498, 430, 104);//네모
 	       
 	       //컨테이너에 패널 추가
-	       MainFrame.add(bottomPanel);
-	       MainFrame.setVisible(true); //창을 보이게함
+//	       MainFrame.add(bottomPanel);
+//	       MainFrame.setVisible(true); //창을 보이게함
 	       
 //	       poupfrome.pup 이미지넣기
 	       
-	       btn1.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
+//	       btn1.addActionListener(new ActionListener() {
+//	    	   @Override
+//	    	   public void actionPerformed(ActionEvent e) {
+////	    		   login2 login2 = new login2();
+////	    		   JPanel.add(login2);
+////	    		   new login2();
+////	    		   bottomPanel.setVisible(false);
+//	    		   
+//	    		   new Login2(frame);
 //	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   new Login2();
-	    		   bottomPanel.setVisible(false);
-//	    		  MainFrame.setVisible(false);
-	    	   }
-	       });
+////	    		  MainFrame.setVisible(false);
+//	    	   }
+//	       });
 	       
 //	       btn7.addActionListener(new ActionListener() {
 //	    	   @Override
@@ -272,9 +282,9 @@ public class AllData {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList();
+	    		   new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   alldata.setVisible(false);
 	    	   }
 	       });
 	       
@@ -286,9 +296,9 @@ public class AllData {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AllData2();
+	    		   new AllData2(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   alldata.setVisible(false);
 	    	   }
 	       });
 	}

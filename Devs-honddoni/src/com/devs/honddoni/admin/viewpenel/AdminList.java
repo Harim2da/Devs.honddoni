@@ -1,6 +1,7 @@
 package com.devs.honddoni.admin.viewpenel;
 
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,6 +34,12 @@ public class AdminList extends JPanel {
 		adminList.setBackground(Color.white);
 		frame.add(adminList);
 		
+		/* 하단 패널 생성 */
+		JPanel bottomPanel = new JPanel();
+		bottomPanel.setBounds(0, 100, 500, 770);
+		bottomPanel.setLayout(null);
+		bottomPanel.setBackground(Color.WHITE);
+		adminList.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
@@ -41,14 +48,6 @@ public class AdminList extends JPanel {
 		topPanel.setBackground(Color.WHITE);
 		adminList.add(topPanel);
 		
-		/* 하단 패널 생성 */
-		JPanel bottomPanel = new JPanel();
-		bottomPanel.setBounds(0, 100, 500, 770);
-		bottomPanel.setLayout(null);
-		bottomPanel.setBackground(Color.WHITE);
-		adminList.add(bottomPanel);
-		
-
 		
 		//혼또니마크(뒤로가기)
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
@@ -83,11 +82,11 @@ public class AdminList extends JPanel {
 	   
 	  
 	       //패널에 버튼 추가
-	       adminList.add(btn1);
-	       adminList.add(btn2);
-	       adminList.add(btn3);
-	       adminList.add(btn4);
-	       adminList.add(btn5);
+	       bottomPanel.add(btn1);
+	       bottomPanel.add(btn2);
+	       bottomPanel.add(btn3);
+	       bottomPanel.add(btn4);
+	       bottomPanel.add(btn5);
 	    
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 29, 430, 121);
@@ -118,9 +117,9 @@ public class AdminList extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList1();
+	    		   new AdminList1(frame);
 	    		   adminList.setVisible(false); 
-	    		   frame.setVisible(false);
+//	    		   frame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -164,9 +163,10 @@ public class AdminList extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AllData();
+	    		   
 	    		   adminList.setVisible(false); 
-	    		   frame.setVisible(false);
+//	    		   frame.setVisible(false);
+	    		   new AllData(frame);
 	    	   }
 	       });
 	       
@@ -179,9 +179,10 @@ public class AdminList extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Honnest();
+	    		   
 	    		   adminList.setVisible(false); 
-	    		   frame.setVisible(false);
+//	    		   frame.setVisible(false);
+	    		   new Honnest(frame);
 	    	   }
 	       });
 	       
@@ -196,7 +197,7 @@ public class AdminList extends JPanel {
 	    		   
 	    		   new AdminList(frame);
 	    		   adminList.setVisible(false); 
-	    		   frame.setVisible(false);
+//	    		   frame.setVisible(false);
 	    	   }
 	       });
 		}  

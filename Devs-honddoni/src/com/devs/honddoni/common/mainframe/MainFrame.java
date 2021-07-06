@@ -7,6 +7,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 
+import com.devs.honddoni.admin.viewpenel.AdminList;
+import com.devs.honddoni.admin.viewpenel.AdminList1;
+import com.devs.honddoni.admin.viewpenel.AdminList2;
+
 import com.devs.honddoni.memberLog.view.FirstView;
 import com.devs.honddoni.search.view.AllBoardList;
 
