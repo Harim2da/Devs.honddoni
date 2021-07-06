@@ -71,22 +71,25 @@ public class AdminService {
 	}
 
 
-	public int modifyNotice(PostDTO postDTO) {
-		
+
+	public List<AdminDTO> memberManagement() {
+	
 		Connection con = getConnection();
 		
-		int result = adminDAO.modifyNotice(con, postDTO);
+		List<AdminDTO> adminListDTO = new AdminDAO().memberManagement(con);
 		
-		if(result > 0) {
+		if(adminListDTO != null) {
 			commit(con);
-			result = 1;
+
 		} else {
 			rollback(con);
 		}
 		
 		close(con);
 		
-		return result;
+
+		return adminListDTO;
+
 	}
 
 }

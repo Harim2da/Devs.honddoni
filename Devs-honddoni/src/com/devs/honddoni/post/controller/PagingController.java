@@ -56,7 +56,7 @@ public class PagingController {
 	public int selectWholeCommentsNum(int postNo) {
 
 		int result = pagingService.selectWholeCommentsNum(postNo);
-
+		
 		return result;
 	}
 	

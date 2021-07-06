@@ -2,6 +2,10 @@ package com.devs.honddoni.admin.model.dto;
 
 public class AdminDTO implements java.io.Serializable {
 	
+
+	private String MemberNickName;
+	private String M
+
 	private String MemberNicname;
 	private String MemberProfile;
 	private String MemberId;
@@ -11,6 +15,7 @@ public class AdminDTO implements java.io.Serializable {
 		
 	
 	}
+
 
 	public AdminDTO(String memberNicname, String memberProfile, String memberId, String memRegistdate) {
 		super();

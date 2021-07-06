@@ -137,29 +137,43 @@ public class AdminDAO {
 		return postDTO;
 	}
 
-	public int modifyNotice(Connection con, PostDTO postDTO) {
+
+	public List<AdminDTO> memberManagement(Connection con) {
 		
 		PreparedStatement pstmt = null;
-		int result = 0;
+		ResultSet rset = null;
+		List<AdminDTO> adminList = null;
 		
-		String query = prop.getProperty("modifyNotice");
+		String query = prop.getProperty("memberManagement");
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, postDTO.getPostName());
-			pstmt.setString(2, postDTO.getPostContents());
-			pstmt.setString(3, postDTO.getPostWritingDate());
-			pstmt.setString(4, postDTO.getPostWritingTime());
+			rset = pstmt.executeQuery();
+			adminList = new ArrayList<>();
 			
-			result = pstmt.executeUpdate();			
+			while(rset.next()) {
+				AdminDTO row = new AdminDTO();
+				
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+				
+				adminList.add(row);
+			}
+
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
-		}		
+
+			close(rset);
+		}
 		
-		return result;
-		
+		return adminList;
+
 	}
 }

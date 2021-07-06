@@ -28,10 +28,6 @@ import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.post.view.SelectAllHonPost;
 
 
-
-
-
-
 public class MainFrame extends JFrame{
 	
 
@@ -55,8 +51,7 @@ public class MainFrame extends JFrame{
 
 //		new PostFreeBoard(this);
 
-		
-//		new SelectedComment(this, 1);
+		new SelectedComment(this, 1);
 
 //		new SelectAllHonPost(this);
 

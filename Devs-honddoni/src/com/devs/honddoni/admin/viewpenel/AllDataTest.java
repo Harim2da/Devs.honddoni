@@ -105,20 +105,25 @@ public class AllDataTest {
 //			}
 	     ////////////여기서부터 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 //	 	 AdminDTO adminDTO = null;
-	     AdminDTO adminDTO = new AdminDTO();
+		 List<AdminDTO> adminListDTO = new ManagementController().memberManagement();
+	     AdminDTO adminDTO = null;
 
-//	 	 for(int i = 0; i < adminListDTO.size(); i++) {
+	 	 for(int i = 0; i < adminListDTO.size(); i++) {
 
-//	 	 adminDTO = adminListDTO.get(1);
+	 		
+	 	 adminDTO = adminListDTO.get(i);
 	 			
-	 	 JLabel jlabel = new JLabel();
-	 	 jlabel.setText(adminDTO.getMEMBER_NAME());
-	 	 jlabel.setLayout(null);
-	 	 jlabel.setBounds(110, 10, 720, 35);
-	 	 bottomPanel.add(jlabel);
+
+	 	 JLabel[] jlabel = new JLabel[adminListDTO.size()];
+	 	 jlabel[i] = new JLabel(adminDTO.getMEMBER_NICKNAME());
+//	 	 jlabel.setText(adminDTO.getMEMBER_NICKNAME());
+	 	 jlabel[i].setLayout(null);
+	 	 jlabel[i].setBounds(110, 10, 720, 35);
+	 	 bottomPanel.add(jlabel[i]);
+
 //	 			this.nickName = new JLabel[adminListDTO.size()];
 //	 			this.nickName[i] = new JLabel(img000);
-	 	 //여기까지 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//	 	 여기까지 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 	 	 
 	 			
 	       //컨테이너에 패널 추가
