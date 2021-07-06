@@ -6,26 +6,29 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 /* 공지사항 내용 확인 패널 */
 public class NoticeContentView extends JPanel{
 	
-	JFrame frame;
-	NoticeContentView noticeContentView;
+	private MainFrame frame;
+	private NoticeContentView noticeContentView;
+	
+	private AdminList adminList; //newPanel로 쓸 것
+	private NoticeWrite noticeWrite;
 	
 	private PostDTO postDTO;
 	
 	/* 공지내용 확인 겸, 수정버튼 */
-	public NoticeContentView(PostDTO postDTO) {
+	public NoticeContentView(MainFrame frame, PostDTO postinfoDTO) {
 		
-		this.frame = FrameManagerYs.getFrame();
+		this.frame = frame;
 		this.noticeContentView = this;
-		this.postDTO = postDTO;
+		this.postDTO = postinfoDTO;
 		
 		
 		/* 제일 기본 패널 */
@@ -40,8 +43,9 @@ public class NoticeContentView extends JPanel{
 		honddoniBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				//관리자메인 페이지로 이동
+				System.out.println("관리자메인 페이지로 나감");
+				noticeContentView.setVisible(false);
+				adminList = new AdminList(frame);
 //				FrameManagerYs.changePanel(notice, new 관리자메인());
 //				frame.remove(notice);
 //				frame.add(adminList);
@@ -74,8 +78,10 @@ public class NoticeContentView extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				//NoticeWrite으로 넘어가야
+				System.out.println("공지글 수정으로 이동");
+				noticeContentView.setVisible(false);
+				noticeWrite = new NoticeWrite(frame);
 				
 			}
 		});				
