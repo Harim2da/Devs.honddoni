@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -160,7 +159,9 @@ public class SelectedComment extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("my혼또니 버튼 클릭");
+				
+				downPanel.setVisible(false);
+				new MyPage(frame);
 			}
 		});
 
@@ -178,7 +179,7 @@ public class SelectedComment extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("혼또니 찾기 버튼 클릭");
+				new PostHonddoni(frame);
 			}
 		});
 
@@ -196,7 +197,10 @@ public class SelectedComment extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("홈  버튼 클릭");
+				
+				downPanel.setVisible(false);
+				MyPage mp = new MyPage(frame);
+
 			}
 		});
 

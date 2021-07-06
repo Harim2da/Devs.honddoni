@@ -57,7 +57,6 @@ public class SelectAllHonPost3 extends JPanel {
 
 		/* 하단패널에 포함될 버튼, 라벨 */
 
-		
 		aim();
 		pageLongbarLabel();
 		searchLabel();

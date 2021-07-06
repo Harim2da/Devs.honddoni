@@ -15,11 +15,15 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.ContactController;
 
-public class PostHonddoni extends JFrame{
-
-	private JFrame mainFrame; // 메인프레임
+public class PostHonddoni extends JFrame {
+	
+	private PostHonddoni postHonddoni;
+	private MainFrame frame;
+	
+//	private JFrame mainFrame; // 메인프레임
 	private JPanel topPanel;  // 상단 패널
 	private JPanel bottomPanel; // 하단 패널
 	private JLabel bottomLabel; // 하단 게시판 라벨(그림 배경)
@@ -44,7 +48,11 @@ public class PostHonddoni extends JFrame{
 
 
 	/*혼또니 게시글 작성 화면 불러오기*/
-	public PostHonddoni() {
+	public PostHonddoni(MainFrame frame) {
+		
+		this.frame = frame;
+		this.postHonddoni = this;
+		
 		this.setBounds(100, 100, 516, 909);
 		this.setLayout(null);
 		topPanel();
