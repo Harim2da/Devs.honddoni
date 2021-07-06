@@ -33,7 +33,7 @@ public class FirstView extends JPanel{
 				
 		//시작화면에 올릴 전체크기패널 
 		this.setBounds(0, 0, 500, 870);
-		this.setBackground(Color.yellow);
+		this.setBackground(Color.white);
 		this.setLayout(null);
 		frame.add(this);
 		
@@ -42,6 +42,7 @@ public class FirstView extends JPanel{
 		btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon("image/memberLog/login/login_1_logo.png"));
 		btnNewButton.setBounds(174, 276, 152, 154);
+		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setBorderPainted(false);
 		
 		btnNewButton.addActionListener(new ActionListener() {			

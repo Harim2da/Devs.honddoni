@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.memberLog.controller.MemberLogController;
@@ -24,6 +25,7 @@ public class SearchId extends JPanel{
 	
 	private MemberLogController memberLogController = new MemberLogController(); //이어질 기능
 	private SearchIdDTO searchIdDTO;	
+	FontManager font = new FontManager();
 	
 	public SearchId(MainFrame frame) {
 		
@@ -34,7 +36,7 @@ public class SearchId extends JPanel{
 //		searchId = new JPanel(); //이거하면 또 생성돼서 안된다
 		searchId.setBounds(0, 0, 500, 870);
 		searchId.setLayout(null);
-		searchId.setBackground(Color.YELLOW);
+		searchId.setBackground(Color.WHITE);
 		frame.add(this);
 		
 		
@@ -42,6 +44,8 @@ public class SearchId extends JPanel{
 		JButton honddoniBtn = new JButton("");
 		honddoniBtn.setBounds(303, 29, 173, 71);
 		honddoniBtn.setIcon(new ImageIcon("image/common/honddoniLogo.png"));
+		honddoniBtn.setBorderPainted(false);
+		honddoniBtn.setContentAreaFilled(false);
 		honddoniBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -69,9 +73,15 @@ public class SearchId extends JPanel{
 		
 		//이름입력과 휴대폰번호입력 텍필
 		JTextField nameTf = new JTextField();
-		nameTf.setBounds(250, 346, 150, 26);		
+		nameTf.setBounds(150, 188, 230, 44);		
+		nameTf.setBorder(null);
+		nameTf.setOpaque(false);
+		nameTf.setFont(font.customFont12);
 		JTextField phoneTf = new JTextField();		
-		phoneTf.setBounds(250, 453, 150, 26);
+		phoneTf.setBounds(160, 300, 230, 44);
+		phoneTf.setBorder(null);
+		phoneTf.setOpaque(false);
+		phoneTf.setFont(font.customFont12);
 		
 		JButton agreeBtn = new JButton();
 		agreeBtn.setBounds(96, 434, 111, 41);
@@ -129,12 +139,12 @@ public class SearchId extends JPanel{
 		
 		
 		/* 컴포넌트 붙이기 */
-		searchId.add(honddoniBtn);
-		searchId.add(searchIdLb);
-		searchId.add(nameTf);
-		searchId.add(phoneTf);
+		searchIdLb.add(nameTf);
+		searchIdLb.add(phoneTf);
 		searchIdLb.add(agreeBtn);
 		searchIdLb.add(cancelBtn);		
+		searchId.add(honddoniBtn);
+		searchId.add(searchIdLb);
 				
 		searchId.setVisible(true);
 		

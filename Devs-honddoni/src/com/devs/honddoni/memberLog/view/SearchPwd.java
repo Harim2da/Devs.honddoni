@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.memberLog.controller.MemberLogController;
 import com.devs.honddoni.memberLog.model.dto.SearchPwdDTO;
@@ -24,6 +25,8 @@ public class SearchPwd extends JPanel{
 	private MemberLogController memberLogController = new MemberLogController();;
 	private SearchPwdDTO searchPwdDTO;
 	
+	FontManager font = new FontManager();
+	
 	public SearchPwd(MainFrame frame) {	
 	
 		this.frame = frame;
@@ -32,13 +35,15 @@ public class SearchPwd extends JPanel{
 		/* 제일 기본 패널 */
 		searchPwd.setBounds(0, 0, 500, 870);
 		searchPwd.setLayout(null);
-		searchPwd.setBackground(Color.YELLOW);
+		searchPwd.setBackground(Color.WHITE);
 		frame.add(this);
 		
 		/* 혼또니 로고버튼(오른쪽 상단) */
 		JButton honddoniBtn = new JButton("");
 		honddoniBtn.setBounds(303, 29, 173, 71);
 		honddoniBtn.setIcon(new ImageIcon("image/common/honddoniLogo.png"));
+		honddoniBtn.setBorderPainted(false);
+		honddoniBtn.setContentAreaFilled(false);
 		honddoniBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -65,11 +70,20 @@ public class SearchPwd extends JPanel{
 		
 		//이름입력과 휴대폰번호입력 텍필
 		JTextField nameTf = new JTextField();
-		nameTf.setBounds(214, 368, 180, 26);	
+		nameTf.setBounds(160, 213, 220, 40);
+		nameTf.setBorder(null);
+		nameTf.setOpaque(false);
+		nameTf.setFont(font.customFont12);
 		JTextField idTf = new JTextField();
-		idTf.setBounds(214, 456, 180, 26);
+		idTf.setBounds(160, 300, 220, 40);
+		idTf.setBorder(null);
+		idTf.setOpaque(false);
+		idTf.setFont(font.customFont12);
 		JTextField phoneTf = new JTextField();		
-		phoneTf.setBounds(214, 543, 180, 26);
+		phoneTf.setBounds(165, 387, 215, 40);
+		phoneTf.setBorder(null);
+		phoneTf.setOpaque(false);
+		phoneTf.setFont(font.customFont12);
 		
 		
 		JButton agreeBtn = new JButton();
@@ -149,13 +163,13 @@ public class SearchPwd extends JPanel{
 		
 		
 		/* 컴포넌트 붙이기 */
-		searchPwd.add(honddoniBtn);
-		searchPwd.add(searchPwdLb);		
-		searchPwd.add(nameTf);
-		searchPwd.add(idTf);		
-		searchPwd.add(phoneTf);
+		searchPwdLb.add(nameTf);
+		searchPwdLb.add(idTf);		
+		searchPwdLb.add(phoneTf);
 		searchPwdLb.add(agreeBtn);
 		searchPwdLb.add(cancelBtn);		
+		searchPwd.add(honddoniBtn);
+		searchPwd.add(searchPwdLb);		
 				
 		searchPwd.setVisible(true);
 		

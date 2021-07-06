@@ -87,8 +87,7 @@ public class AdminDAO {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
-		}
-		
+		}		
 		
 		return result;
 	}
