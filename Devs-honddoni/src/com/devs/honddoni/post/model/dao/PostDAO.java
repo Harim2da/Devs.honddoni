@@ -213,10 +213,10 @@ public class PostDAO {
 			pstmt.setString(3, post.getPostCategory());
 			pstmt.setString(4, post.getPostMeetingDate());
 			pstmt.setString(5, post.getPostMeetingTime());
-			pstmt.setInt(6, post.getLocalCode());
-			pstmt.setInt(7, post.getCategoryCode()); 
-			pstmt.setInt(8, post.getPostNumberOfPeopleNumber());
-			pstmt.setInt(9, post.getPostNo());
+		//	pstmt.setInt(6, post.getLocalCode());
+			pstmt.setInt(6, post.getCategoryCode()); 
+			pstmt.setInt(7, post.getPostNumberOfPeopleNumber());
+			pstmt.setInt(8, post.getPostNo());
 
 			result = pstmt.executeUpdate();
 

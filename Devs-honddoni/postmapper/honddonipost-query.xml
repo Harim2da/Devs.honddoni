@@ -87,7 +87,6 @@
 	    ,A.POST_CATEGORY = ?
 	    ,A.POST_MEETINGDATE = ?
 	    ,A.POST_MEETINGTIME = ?
-	    ,A.LOCAL_CODE = ?
 	    ,A.CATEGORY_CODE = ?
 	    ,A.POST_NUMBER_OF_PEOPLE = ?
 	    WHERE A.POST_NO = ?
