@@ -33,7 +33,7 @@ public class MainFrame extends JFrame{
 //		new FirstView(this);
 		
 		
-//		new SelectedComment(this, 1);
+		new SelectedComment(this, 1);
 //		new SelectAllHonPost2(this);
 
 
