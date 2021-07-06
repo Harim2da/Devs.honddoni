@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,25 +9,32 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 
-
-public class Delite {
+public class Delite extends JPanel {
 	//탈퇴요청 회원 화면
 	
-	MainFrame1 MainFrame = new MainFrame1();
-	
+	private MainFrame frame;
+	private Delite delite;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
-	public Delite() {
-
+	public Delite(MainFrame frame) {
+		//프레임, 패널설정
+		this.frame = frame;
+		this.delite = this;
+		//전체 패널 생성
+		delite.setBounds(0, 0, 500, 870);
+		delite.setLayout(null);
+		delite.setBackground(Color.white);
+		frame.add(delite);
+				
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
-
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		MainFrame.add(bottomPanel);
+		delite.add(bottomPanel);
 		
 		//
 		/* 상단 패널 생성 */
@@ -35,7 +42,7 @@ public class Delite {
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		MainFrame.add(topPanel);
+		delite.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -121,9 +128,9 @@ public class Delite {
 		   btn8.setContentAreaFilled(false);
 		   btn8.setBorderPainted(false);
 	     
-	       //컨테이너에 패널 추가
-	       MainFrame.add(bottomPanel);
-	       MainFrame.setVisible(true); //창을 보이게함
+//	       //컨테이너에 패널 추가
+//	       MainFrame.add(bottomPanel);
+//	       MainFrame.setVisible(true); //창을 보이게함
 	       
 	       
 //	       btn1.addActionListener(new ActionListener() {
@@ -149,9 +156,9 @@ public class Delite {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList();
+	    		   new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   delite.setVisible(false);
 	    	   }
 	       });
 	       
@@ -191,9 +198,9 @@ public class Delite {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Delite2();
+	    		   new Delite2(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   delite.setVisible(false);
 	    	   }
 	       });
 	       }

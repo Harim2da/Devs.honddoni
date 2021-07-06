@@ -9,15 +9,26 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
+
 //업적관리 화면
 
-public class Honnest {
+public class Honnest extends JPanel {
 	
-	MainFrame1 MainFrame = new MainFrame1();
-	
+	private MainFrame frame;
+	private Honnest honnest;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
-	public Honnest() {
+	public Honnest(MainFrame frame) {
+		//프레임, 패널설정
+		this.frame = frame;
+		this.honnest = this;
+		
+		//전체 패널 생성
+		honnest.setBounds(0, 0, 500, 870);
+		honnest.setLayout(null);
+		honnest.setBackground(Color.white);
+		frame.add(honnest);
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -25,14 +36,14 @@ public class Honnest {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		MainFrame.add(bottomPanel);
+		honnest.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		MainFrame.add(topPanel);
+		honnest.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -104,23 +115,23 @@ public class Honnest {
 		   btn11.setContentAreaFilled(false);
 		   btn11.setBorderPainted(false);
 	       
-	       //컨테이너에 패널 추가
-	       MainFrame.add(bottomPanel);
-	       MainFrame.setVisible(true); //창을 보이게함
+//	       //컨테이너에 패널 추가
+//	       MainFrame.add(bottomPanel);
+//	       MainFrame.setVisible(true); //창을 보이게함
 	       
-	       btn1.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
+//	       btn1.addActionListener(new ActionListener() {
+//	    	   @Override
+//	    	   public void actionPerformed(ActionEvent e) {
+////	    		   login2 login2 = new login2();
+////	    		   JPanel.add(login2);
+////	    		   new login2();
+////	    		   bottomPanel.setVisible(false);
+//	    		   
+//	    		   new Login2();
 //	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   new Login2();
-	    		   bottomPanel.setVisible(false);
-//	    		  MainFrame.setVisible(false);
-	    	   }
-	       });
+////	    		  MainFrame.setVisible(false);
+//	    	   }
+//	       });
 //	       
 //	       btn7.addActionListener(new ActionListener() {
 //	    	   @Override
@@ -144,9 +155,9 @@ public class Honnest {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList();
+	    		   new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+//	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -158,9 +169,9 @@ public class Honnest {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Honnest2();
+	    		   new Honnest2(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+//	    		   MainFrame.setVisible(false);
 	    	   }
 	       });
 	}

@@ -1,6 +1,7 @@
 package com.devs.honddoni.admin.viewpenel;
 
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,32 +10,46 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.memberLog.view.MemberLogView;
+
 //관리자 로그아웃 화면
 
-public class AdminList2 {
+public class AdminList2 extends JPanel {
 	
-	MainFrame1 MainFrame = new MainFrame1();
-	
+	private MainFrame frame;
+	private AdminList2 adminList;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
 	private JLabel lb1, lb2;
 	
-	public AdminList2() {
-
-		/* 하단 패널 생성 */
-		JPanel bottomPanel = new JPanel();
-
-		bottomPanel.setBounds(0, 100, 500, 770);
-		bottomPanel.setLayout(null);
-		bottomPanel.setBackground(Color.WHITE);
-		MainFrame.add(bottomPanel);
+	public AdminList2(MainFrame frame) {
+		//프레임, 패널설정
+		this.frame = frame;
+		this.adminList = this;
+		
+		//전체패널 생성
+		adminList.setBounds(0, 0, 500, 870);
+		adminList.setLayout(null);
+		adminList.setBackground(Color.white);
+		frame.add(adminList);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		MainFrame.add(topPanel);
+		adminList.add(topPanel);
+		
+		/* 하단 패널 생성 */
+		JPanel bottomPanel = new JPanel();
+
+		adminList.setBounds(0, 100, 500, 770);
+		adminList.setLayout(null);
+		adminList.setBackground(Color.WHITE);
+		adminList.add(bottomPanel);
+		
+		
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -77,13 +92,13 @@ public class AdminList2 {
 	   
 	  
 	       //패널에 버튼 추가
-	       bottomPanel.add(btn1);
-	       bottomPanel.add(btn2);
-	       bottomPanel.add(btn3);
-	       bottomPanel.add(btn4);
-	       bottomPanel.add(btn5);
-	       bottomPanel.add(btn6);
-	       bottomPanel.add(btn7);
+	       adminList.add(btn1);
+	       adminList.add(btn2);
+	       adminList.add(btn3);
+	       adminList.add(btn4);
+	       adminList.add(btn5);
+	       adminList.add(btn6);
+	       adminList.add(btn7);
 	       
 	    
 	       //버튼 위치 조정
@@ -104,8 +119,8 @@ public class AdminList2 {
 	   
 	     
 	       //컨테이너에 패널 추가
-	       MainFrame.add(bottomPanel);
-	       MainFrame.setVisible(true); //창을 보이게함
+//	       MainFrame.add(bottomPanel);
+//	       MainFrame.setVisible(true); //창을 보이게함
 	       
 	       btn7.addActionListener(new ActionListener() {
 	    	   @Override
@@ -116,7 +131,7 @@ public class AdminList2 {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   
-	    		   adminList2.setVisible(false); 
+	    		   adminList.setVisible(false); 
 //	    		   MainFrame.setVisible(false);
 	    		   new MemberLogView(frame);
 	    	   }

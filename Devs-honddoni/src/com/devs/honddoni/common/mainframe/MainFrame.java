@@ -8,7 +8,8 @@ import javax.swing.JFrame;
 
 
 import com.devs.honddoni.admin.viewpenel.AdminList;
-
+import com.devs.honddoni.admin.viewpenel.AdminList1;
+import com.devs.honddoni.admin.viewpenel.AdminList2;
 import com.devs.honddoni.memberLog.view.FirstView;
 
 import com.devs.honddoni.post.view.PostHonddoni;
@@ -43,7 +44,7 @@ public class MainFrame extends JFrame{
 //		new FirstView(this);
 		
 		
-		new SelectedComment(this, 1);
+//		new SelectedComment(this, 1);
 //		new SelectAllHonPost2(this);
 
 
@@ -62,12 +63,12 @@ public class MainFrame extends JFrame{
 //		new Notice(this);
 		
 		//태훈 실험중(메인바텀패널)
-		new MainBottomPanel(this);
+//		new MainBottomPanel(this);
 		
 //		new AllBoardList(this);
 		
 
-		new PostHonddoni(this);
+//		new PostHonddoni(this);
 
 
 		//명길 실험중
@@ -79,7 +80,7 @@ public class MainFrame extends JFrame{
 //		new PostFreeBoard(this);
 
 		/*하림 test*/
-		new PostModify(this);
+//		new PostModify(this);
 
 
 	}
