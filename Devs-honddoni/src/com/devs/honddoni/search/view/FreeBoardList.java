@@ -63,12 +63,6 @@ public class FreeBoardList extends JPanel {
 		this.frame = frame;
 		this.FreeBoardList = this;
 
-		this.setBounds(0, 0, 500, 870); //<-크기조절
-		this.setBackground(Color.white);
-		this.setLayout(null);
-
-		frame.add(this);
-
 		/* 패널 */
 		upPanel();
 		bottomPanel();
@@ -118,8 +112,8 @@ public class FreeBoardList extends JPanel {
 		pageLongbarLabel.add(beforeBtn);
 		pageLongbarLabel.add(afterBtn);
 
-		this.add(upPanel);
-		this.add(bottomPanel);
+		frame.add(upPanel);
+		frame.add(bottomPanel);
 	}
 
 	public JPanel getDownPanel() {
