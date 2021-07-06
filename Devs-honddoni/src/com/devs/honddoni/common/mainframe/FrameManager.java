@@ -2,6 +2,7 @@ package com.devs.honddoni.common.mainframe;
 
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class FrameManager {
@@ -17,12 +18,12 @@ public class FrameManager {
 
 //	MyPage myPage;
 
-//	public static JFrame frame = new MainFrame();
+	public static JFrame frame = new MainFrame();
 	
 	/* 패널 변경 메소드 */
 
-	public static void changePanel(MainFrame frame, ActionListener actionListener, JPanel newPanel) {	
-		frame.remove(actionListener);
+	public static void changePanel(MainFrame frame, JPanel oldPanel, JPanel newPanel) {	
+		frame.remove(oldPanel);
 		frame.add(newPanel);
 		frame.repaint();
 		frame.revalidate();
@@ -51,14 +52,14 @@ public class FrameManager {
 //		frame.revalidate();
 //	}
 //
-//	public static void refresh() {
-//		frame.repaint();
-//		frame.revalidate();
-//	}
+	public static void refresh() {
+		frame.repaint();
+		frame.revalidate();
+	}
 //	
-//	public static JFrame getInstance() {
-//		return frame;
-//	}
+	public static JFrame getInstance() {
+		return frame;
+	}
 	
 
 //	public static void activeUpSidePanel(MainFrame frame, JPanel presentPage, MyPage myPage) {

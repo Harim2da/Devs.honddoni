@@ -17,11 +17,12 @@ import java.util.Properties;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
+import com.devs.honddoni.memberLog.controller.GetLoginMember;
 
 public class MemberDAO {
 
 	Properties prop = new Properties();
-
+	
 	public MemberDAO() {
 		this.prop = new Properties();
 
@@ -118,7 +119,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, "sample01");
+			pstmt.setString(1, GetLoginMember.getInstance().getLoginMemberId());
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -152,7 +153,7 @@ public class MemberDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, changePwd.getMemberNewPassword());
-			pstmt.setString(2, "user06");
+			pstmt.setString(2, GetLoginMember.getInstance().getLoginMemberId());
 			
 			result = pstmt.executeUpdate();
 			
