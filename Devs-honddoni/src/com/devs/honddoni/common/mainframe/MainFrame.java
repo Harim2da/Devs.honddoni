@@ -7,7 +7,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import com.devs.honddoni.memberLog.view.FirstView;
-import com.devs.honddoni.post.view.PostModify;
+
+import com.devs.honddoni.search.view.MainBottomPanel;
+
 
 
 
@@ -52,12 +54,18 @@ public class MainFrame extends JFrame{
 //		new Notice(this);
 		
 		//태훈 실험중(메인바텀패널)
-//		new MainBottomPanel(this);
+		new MainBottomPanel(this);
 		
 //		new AllBoardList(this);
 		
+
+//		new FreeBoardList(this);
+		
+//		new PostFreeBoard(this);
+
 		/*하림 test*/
 		new PostModify(this);
+
 	}
 	
 }
