@@ -67,10 +67,18 @@
 		FROM TBL_MEMBER
 		</entry>
 		
-				<entry key="onlyNicname">
+		<entry key="onlyNicname">
 		SELECT
 				*
 		FROM TBL_MEMBER
+		</entry>
+		
+		<entry key="insertNoticePost">
+		
+		</entry>
+		
+		<entry key="insertNoticePost">
+		
 		</entry>
 		
 </properties>

@@ -130,4 +130,28 @@ public class MemberLogDAO {
 		return result;
 	}
 
+	public int editPwd(Connection con, SearchPwdDTO searchPwdDTO) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("editPwd");
+		
+		try {
+			//난수를, 이름이 같은곳에 비밀번호 설정한다.
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, searchPwdDTO.getNewPwd());
+			pstmt.setString(2, searchPwdDTO.getName());
+			
+			result = pstmt.executeUpdate();			
+						
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

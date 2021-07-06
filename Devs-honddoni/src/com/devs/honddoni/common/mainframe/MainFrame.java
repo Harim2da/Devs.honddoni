@@ -6,15 +6,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-
+import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.memberLog.view.FirstView;
-import com.devs.honddoni.post.view.SelectedComment;
 
 
 public class MainFrame extends JFrame{
 	
 
-//	FirstView firstView;
+	FirstView firstView;
 	public static MainFrame mf;
 	
 	public MainFrame() {
@@ -29,8 +28,7 @@ public class MainFrame extends JFrame{
 		}
 
 //		new MyPage(this);
-//		new FirstView(this);
-		new SelectedComment(this);
+//		new SelectedComment(this);
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,7 +41,8 @@ public class MainFrame extends JFrame{
 //		FrameManager.initPanel(this, new SelectAllHonPost());
 		
 		//예슬 실험중
-//		new Notice(this);
+//		new FirstView(this);
+		new Notice(this);
 		
 		//태훈 실험중(메인바텀패널)
 //		new MainBottomPanel(this);

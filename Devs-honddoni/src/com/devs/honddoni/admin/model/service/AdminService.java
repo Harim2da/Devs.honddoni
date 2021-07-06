@@ -33,35 +33,37 @@ public class AdminService {
 	}
 
 
-//	public int insertNoticePost(PostDTO postDTO) {
-//		
-//		Connection con = getConnection();
-//		
-//		int result = adminDAO.insertNoticePost(con, postDTO);
-//		
-//		if(result > 0) {
-//			commit(con);
-//			result = 1;
-//		} else {
-//			rollback(con);
-//		}
-//		
-//		close(con);
-//		
-//		return result;
-//	}
-//
-//
-//	public PostDTO selectTheNoticePost(int postNo) {
-//		
-//		Connection con = getConnection();
-//
-//		PostDTO postDTO = new PostDTO();
-//		postDTO = adminDAO.selectTheNoticePost(con, postNo);
-//		
-//		close(con);
-//		
-//		return postDTO;
+	public int insertNoticePost(PostDTO postDTO) {
+		
+		Connection con = getConnection();
+		
+		int result = adminDAO.insertNoticePost(con, postDTO);
+		
+		if(result > 0) {
+			commit(con);
+			result = 1;
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+
+	public PostDTO selectTheNoticePost(int postNo) {
+		
+		Connection con = getConnection();
+
+		PostDTO postDTO = new PostDTO();
+		postDTO = adminDAO.selectTheNoticePost(con, postNo);
+		
+		close(con);
+		
+		return postDTO;
 		
 	}
+
+}
 
