@@ -49,14 +49,14 @@ public class MainFrame extends JFrame{
 
 //		new MyPage(this);
 
-		new FirstView(this);
+//		new FirstView(this);
 
 //		new PostFreeBoard(this);
 
 		
 //		new SelectedComment(this, 1);
 
-		new SelectAllHonPost(this);
+//		new SelectAllHonPost(this);
 
 
 
