@@ -25,8 +25,8 @@ public class AllDataTest {
 //	private JLabel lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11, lb12, lb13, lb14, lb15, lb16,
 //	lb17, lb18, lb19, lb20, lb21;
 	
-	private JLabel[] adminList;								//댓글리스트의 밑바탕(디자인 용도)
-	private List<AdminDTO> adminListDTO = null;			//댓글리스트 저장할 List
+	private JLabel[] adminList;								//
+	private List<AdminDTO> adminListDTO = null;			//
 	private JLabel[] nickName;
 	
 	 
@@ -65,6 +65,7 @@ public class AllDataTest {
 //	     lb01.setBounds(32, 56, 263, 33);
 	     
 
+	     ////////////여기서부터 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 //	 	 AdminDTO adminDTO = null;
 	     AdminDTO adminDTO = new AdminDTO();
 
@@ -80,17 +81,6 @@ public class AllDataTest {
 //	 			this.nickName = new JLabel[adminListDTO.size()];
 //	 			this.nickName[i] = new JLabel(img000);
 	 			
-	 			
-	 			
-//	 			this.nickName[1].setLayout(null);
-//	 			this.nickName[1].setBounds(110, 10, 720, 35);
-//	 			this.nickName[1].setText(adminDTO.getMEMBER_NICKNAME());
-////	 			ImageIcon img000 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
-////	 		     JButton nickName[i] = new JButton(img0);
-//	 			bottomPanel.add(nickName[1]);
-//	 			y += 62;
-	 		
-
 	       //컨테이너에 패널 추가
 	 		MainFrame.add(bottomPanel);
 	 	    MainFrame.setVisible(true); //창을 보이게함
