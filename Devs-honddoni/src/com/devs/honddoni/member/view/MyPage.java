@@ -123,7 +123,7 @@ public class MyPage extends JPanel {
 		
 		
 		bottomPanel.setBounds(0, 100, 500, 770);
-		bottomPanel.setBackground(Color.WHITE);
+		bottomPanel.setBackground(Color.black);
 		bottomPanel.setLayout(null);
 		frame.add(bottomPanel);
 		
@@ -162,7 +162,8 @@ public class MyPage extends JPanel {
 				myPage.revalidate();
 				
 				frame.add(bottomPanel);
-				bottomPanel.add(menuNameLabel);
+//				bottomPanel.add(menuNameLabel);
+				new MyPage(frame);
 //				bottomPanel.add(changePwdButton);
 //				bottomPanel.add(changeMemberinfo);
 //				bottomPanel.add(resignMemberButton);
@@ -374,7 +375,11 @@ public class MyPage extends JPanel {
 								   changePwdDTO.setMemberNewPassword(newPassword);
 								   changePwdDTO.setMemberNewPasswordRecheck(newPasswordReCheck);
 								   
-								   memberController.newPwdEqualCheck(changePwdDTO);
+								   boolean newPwdCheck = memberController.newPwdEqualCheck(changePwdDTO);
+								   
+								   if(!newPwdCheck) {
+									   PopupFrame.popup("image/popup/FailMessage.png");
+								   }
 								   
 							   } else {
 								   /* 입력정보 다를 시 팝업 출력 */

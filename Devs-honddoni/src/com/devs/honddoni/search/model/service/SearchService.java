@@ -17,9 +17,6 @@ public class SearchService {
 	
 	private SearchDAO searchDAO;
 	
-
-	
-
 	public List<PostDTO> selectList() {
 	
 		Connection con = getConnection();
@@ -37,4 +34,42 @@ public class SearchService {
 		return selectList;
 	}
 
+	public int insertFreeBoardPost(PostDTO post) {
+
+		Connection con = getConnection();
+		
+		int result = 0;
+		
+		int postFreeBoardResult = searchDAO.insertNewFreeBoard(con, post);
+		
+		if(postFreeBoardResult > 0) {
+			commit(con);
+			result = 1;
+		} else {
+			rollback(con);
+		}
+		close(con);
+		
+		return result;
+	}
+
+	public int updateThePost(PostDTO post) {
+
+		int result = 0;
+		
+		return result;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
