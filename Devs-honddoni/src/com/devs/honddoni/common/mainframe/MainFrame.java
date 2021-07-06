@@ -52,7 +52,7 @@ public class MainFrame extends JFrame{
 		
 		//예슬 실험중
 //		new FirstView(this);
-		new Notice(this);
+//		new Notice(this);
 		
 		//태훈 실험중(메인바텀패널)
 //		new MainBottomPanel(this);
