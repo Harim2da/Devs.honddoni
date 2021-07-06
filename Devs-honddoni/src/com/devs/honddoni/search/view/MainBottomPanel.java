@@ -322,39 +322,40 @@ public class MainBottomPanel extends JPanel{
 		allListBoardBtn.setBorderPainted(false);
 		allListBoardBtn.setBounds(62, 23, 90, 110);  
 		
-		
-		
-		
 		allListBoardBtn.addActionListener(new ActionListener() {
 
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				allBoardList.bottomPanel();
 			 
-				JPanel changeBoardList = new JPanel();
-				changeBoardList.setLayout(null);
-				changeBoardList.setBounds(0,100,500,770);
-				changeBoardList.setVisible(true);
-				changeBoardList.setBackground(Color.white);
-				frame.add(changeBoardList);
+				frame.remove(bottomPanel);
+				frame.remove(upPanel);
+				bottomPanel.setVisible(false);
+				upPanel.setVisible(false);
+				new AllBoardList(frame);
+				frame.getIgnoreRepaint();
+				frame.revalidate();
 				
-//				searchController = new SearchController();
-//				searchController.selectSearch();
-				
-				AllBoardList allBoardList = new AllBoardList(frame);
-				allBoardList.bottomPanel();
-				
-				
-				// 패널이 넘어가서 그 전체조회 해당하는 이미지
-				changeBoardList.repaint();
-				changeBoardList.revalidate();
-				// 전체조회 게시판으로
-				// DB연결 (MVC)
-				
-				// 패널이 넘어가서 그 전체조회 해당하는 이미지
-				
-				System.out.println("전체조회 게시판으로");
+//				JPanel changeBoardList = new JPanel();
+//				changeBoardList.setLayout(null);
+//				changeBoardList.setBounds(0,100,500,770);
+//				changeBoardList.setVisible(true);
+//				changeBoardList.setBackground(Color.white);
+//				frame.add(changeBoardList);
+//				
+//				AllBoardList allBoardList = new AllBoardList(frame);
+//				allBoardList.bottomPanel();
+//				
+//				
+//				// 패널이 넘어가서 그 전체조회 해당하는 이미지
+//				changeBoardList.repaint();
+//				changeBoardList.revalidate();
+//				// 전체조회 게시판으로
+//				// DB연결 (MVC)
+//				
+//				// 패널이 넘어가서 그 전체조회 해당하는 이미지
+//				
+//				System.out.println("전체조회 게시판으로");
 			}});
 	}
 	
@@ -396,24 +397,32 @@ public class MainBottomPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// 자유 게시판으로
 				
-				JPanel changeFreeList = new JPanel();
-				changeFreeList.setLayout(null);
-				changeFreeList.setBounds(0,100,500,770);
-				changeFreeList.setVisible(true);
-				changeFreeList.setBackground(Color.white);
-				frame.add(changeFreeList);
+				frame.remove(bottomPanel);
+				frame.remove(upPanel);
+				bottomPanel.setVisible(false);
+				upPanel.setVisible(false);
+				new FreeBoardList(frame);
+				frame.getIgnoreRepaint();
+				frame.revalidate();
 				
-				AllBoardList allBoardList = new AllBoardList(frame);
-				allBoardList.bottomPanel();
-
-				// 패널이 넘어가서  자유 게시판에 해당하는 이미지
-				changeFreeList.repaint();
-				changeFreeList.revalidate();
-				// 전체조회 게시판으로
-				// DB연결 (MVC)
-				
-				// 패널이 넘어가서 그 자유 게시판에 해당하는 이미지
-				System.out.println("자유 게시판으로");
+//				JPanel changeFreeList = new JPanel();
+//				changeFreeList.setLayout(null);
+//				changeFreeList.setBounds(0,100,500,770);
+//				changeFreeList.setVisible(true);
+//				changeFreeList.setBackground(Color.white);
+//				frame.add(changeFreeList);
+//				
+//				AllBoardList allBoardList = new AllBoardList(frame);
+//				allBoardList.bottomPanel();
+//
+//				// 패널이 넘어가서  자유 게시판에 해당하는 이미지
+//				changeFreeList.repaint();
+//				changeFreeList.revalidate();
+//				// 전체조회 게시판으로
+//				// DB연결 (MVC)
+//				
+//				// 패널이 넘어가서 그 자유 게시판에 해당하는 이미지
+//				System.out.println("자유 게시판으로");
 			}});
 	}
 	

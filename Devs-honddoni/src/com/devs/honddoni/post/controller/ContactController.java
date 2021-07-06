@@ -3,12 +3,13 @@ package com.devs.honddoni.post.controller;
 import java.text.SimpleDateFormat;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.post.model.service.PostService;
 
 public class ContactController {
 	
 	private PostService postService = new PostService();
-	
+	GetLoginMember loginMember = GetLoginMember.getInstance();
 	
 	public void writeHonddoniBoardPost(PostDTO postDTO) {
 		
@@ -16,7 +17,7 @@ public class ContactController {
 		String postName = postDTO.getPostName();
 		String postContents = postDTO.getPostContents();
 		String postCategory = postDTO.getPostCategory();
-		int postMemberNo = 6; //임시값
+		int postMemberNo = loginMember.getLoginMemberNo();
 		
 		String postMeetingDate = postDTO.getPostMeetingDate();
 		String postMeetingTime = postDTO.getPostMeetingTime();
@@ -99,15 +100,15 @@ public void updateThePost(PostDTO postDTO) {
 		String postName = postDTO.getPostName();
 		String postContents = postDTO.getPostContents();
 		String postCategory = postDTO.getPostCategory();
-		int postMemberNo = 6; //임시값
+		//임시값		int postMemberNo = 6; 
 		
 		String postMeetingDate = postDTO.getPostMeetingDate();
 		String postMeetingTime = postDTO.getPostMeetingTime();
 		
 		
 		/*선택한 지역명의 코드를 조회*/		
-		String localName= postDTO.getLocalName();
-		int localCode = postService.searchLocalCode(localName);
+//		String localName= postDTO.getLocalName();
+//		int localCode = postService.searchLocalCode(localName);
 		
 		/*선택한 카테고리명의 코드를 조회*/
 		String categoryName = postDTO.getCategoryName();
@@ -126,7 +127,7 @@ public void updateThePost(PostDTO postDTO) {
 		post.setPostCategory(postCategory);	
 		post.setPostMeetingDate(postMeetingDate);
 		post.setPostMeetingTime(postMeetingTime);
-		post.setLocalCode(localCode);
+//		post.setLocalCode(localCode);
 		post.setCategoryCode(categoryCode);
 		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
 		

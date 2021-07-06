@@ -115,9 +115,10 @@ public class AdminList2 {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Login();
-	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   
+	    		   adminList2.setVisible(false); 
+//	    		   MainFrame.setVisible(false);
+	    		   new MemberLogView(frame);
 	    	   }
 	       });
 	}
