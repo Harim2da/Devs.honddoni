@@ -11,31 +11,44 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.admin.viewpenel.MainFrame1;
+
 import com.devs.honddoni.common.mainframe.MainFrame;
 
-public class AdminList {
+public class AdminList extends JPanel {
 		
-		MainFrame1 MainFrame = new MainFrame1();
+
 		
+		private MainFrame frame;
+		private AdminList adminList;
 		private JButton btn1, btn2, btn3, btn4, btn5;
 		
-		public AdminList() {
-
-		/* 하단 패널 생성 */
-		JPanel bottomPanel = new JPanel();
-
-		bottomPanel.setBounds(0, 100, 500, 770);
-		bottomPanel.setLayout(null);
-		bottomPanel.setBackground(Color.WHITE);
-		MainFrame.add(bottomPanel);
+		public AdminList(MainFrame frame) {
+		//프레임, 패널설정
+		this.frame = frame;
+		this.adminList = this;
+		
+		/* 전체패널 생성 */
+		adminList.setBounds(0, 0, 500, 870);
+		adminList.setLayout(null);
+		adminList.setBackground(Color.white);
+		frame.add(adminList);
+		
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		MainFrame.add(topPanel);
+		adminList.add(topPanel);
+		
+		/* 하단 패널 생성 */
+		JPanel bottomPanel = new JPanel();
+		bottomPanel.setBounds(0, 100, 500, 770);
+		bottomPanel.setLayout(null);
+		bottomPanel.setBackground(Color.WHITE);
+		adminList.add(bottomPanel);
+		
+
 		
 		//혼또니마크(뒤로가기)
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
@@ -70,11 +83,11 @@ public class AdminList {
 	   
 	  
 	       //패널에 버튼 추가
-	       bottomPanel.add(btn1);
-	       bottomPanel.add(btn2);
-	       bottomPanel.add(btn3);
-	       bottomPanel.add(btn4);
-	       bottomPanel.add(btn5);
+	       adminList.add(btn1);
+	       adminList.add(btn2);
+	       adminList.add(btn3);
+	       adminList.add(btn4);
+	       adminList.add(btn5);
 	    
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 29, 430, 121);
@@ -93,8 +106,8 @@ public class AdminList {
 	       
 	     
 	       //컨테이너에 패널 추가
-	       MainFrame.add(bottomPanel);
-	       MainFrame.setVisible(true); //창을 보이게함
+//	       frame.add(adminList);
+//	       frame.setVisible(true); //창을 보이게함
 	       
 	       //관리자목록2번째로 넘어가는 버튼
 	       btn5.addActionListener(new ActionListener() {
@@ -106,8 +119,8 @@ public class AdminList {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1();
-	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   adminList.setVisible(false); 
+	    		   frame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -135,9 +148,10 @@ public class AdminList {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Delite();
-	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   
+	    		   adminList.setVisible(false); 
+//	    		   frame.setVisible(false);
+	    		   new Delite(frame);
 	    	   }
 	       });
 	       
@@ -151,8 +165,8 @@ public class AdminList {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AllData();
-	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   adminList.setVisible(false); 
+	    		   frame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -166,8 +180,8 @@ public class AdminList {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new Honnest();
-	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   adminList.setVisible(false); 
+	    		   frame.setVisible(false);
 	    	   }
 	       });
 	       
@@ -180,9 +194,9 @@ public class AdminList {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList();
-	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   new AdminList(frame);
+	    		   adminList.setVisible(false); 
+	    		   frame.setVisible(false);
 	    	   }
 	       });
 		}  

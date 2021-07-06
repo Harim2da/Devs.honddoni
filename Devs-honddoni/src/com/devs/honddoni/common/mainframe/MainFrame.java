@@ -6,7 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-
+import com.devs.honddoni.admin.viewpenel.AdminList;
 import com.devs.honddoni.memberLog.view.FirstView;
 
 import com.devs.honddoni.post.view.SelectAllHonPost2;
@@ -33,7 +33,7 @@ public class MainFrame extends JFrame{
 
 //		new MyPage(this);
 
-		new FirstView(this);
+//		new FirstView(this);
 		
 		
 //		new SelectedComment(this, 1);
@@ -52,12 +52,15 @@ public class MainFrame extends JFrame{
 		
 		//예슬 실험중
 //		new FirstView(this);
-		new Notice(this);
+//		new Notice(this);
 		
 		//태훈 실험중(메인바텀패널)
 //		new MainBottomPanel(this);
 		
 //		new AllBoardList(this);
+		
+		//명길 실험중
+		new AdminList(this);
 	}
 	
 }
