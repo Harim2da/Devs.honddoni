@@ -17,8 +17,10 @@ import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.reportDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
+import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.post.controller.ContactController2;
 import com.devs.honddoni.post.controller.PagingController;
+import com.devs.honddoni.search.view.MainBottomPanel;
 
 public class SelectedComment extends JPanel {
 
@@ -52,11 +54,11 @@ public class SelectedComment extends JPanel {
 	private JLabel backgroundImage;								//로고 포함 테두리 배경 (디자인용)
 	private int postNo = 1;	/* 게시글에서 받아올 것 */					//게시글 번호
 	private JButton[] deleteBtn;								//게시글 삭제 버튼
-	private int userNum = 1;									//로그인된 유저 번호
-
+	GetLoginMember userNum = GetLoginMember.getInstance();		//로그인된 유저 번호를 가져오기위한 인스턴스 생성
+	
 	/* 프레임을 제외한 나머지를 합친 것 */
-	public SelectedComment(MainFrame frame) {
-		
+	public SelectedComment(MainFrame frame, int postNo) {
+		this.postNo = postNo;
 		this.frame = frame;
 		this.selectedComment = this;
 		
@@ -159,9 +161,13 @@ public class SelectedComment extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				frame.remove(downPanel);
+				frame.remove(upPanel);
 				downPanel.setVisible(false);
+				upPanel.setVisible(false);
 				new MyPage(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -179,7 +185,13 @@ public class SelectedComment extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				frame.remove(downPanel);
+				frame.remove(upPanel);
+				downPanel.setVisible(false);
+				upPanel.setVisible(false);
 				new PostHonddoni(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -198,8 +210,13 @@ public class SelectedComment extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				frame.remove(downPanel);
+				frame.remove(upPanel);
 				downPanel.setVisible(false);
-				MyPage mp = new MyPage(frame);
+				upPanel.setVisible(false);
+				new MainBottomPanel(frame);
+				frame.repaint();
+				frame.revalidate();
 
 			}
 		});
@@ -263,7 +280,7 @@ public class SelectedComment extends JPanel {
 				newComment.setPostNo(postNo);
 
 				/* 싱글톤으로 생성된 멤버넘버 받아와야댐 */
-				newComment.setMemberNo(userNum);
+				newComment.setMemberNo(userNum.getLoginMemberNo());
 
 				ContactController2 contactController2 = new ContactController2();
 				contactController2.communicationComment(newComment);
@@ -328,8 +345,9 @@ public class SelectedComment extends JPanel {
 				if(frontPage >= 2 ) {
 					frontPage--;
 				}
-
-				downPanel.setVisible(false);
+				
+				frame.remove(downPanel);
+//				downPanel.setVisible(false);
 				SelectedComment2 cm = new SelectedComment2(frame);
 				frame.add(cm.getDownPanel1());
 
@@ -377,7 +395,7 @@ public class SelectedComment extends JPanel {
 				if(frontPage < pageInfo.getMaxPage()) {
 					frontPage++;
 				}
-
+				
 				downPanel.setVisible(false);
 				SelectedComment2 cm = new SelectedComment2(frame);
 				frame.add(cm.getDownPanel1());
@@ -517,7 +535,7 @@ public class SelectedComment extends JPanel {
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo == userNum /* 로그인된 번호 */) {
+			if(getMemberNo == userNum.getLoginMemberNo() /* 로그인된 번호 */) {
 				updateBtn[i].addActionListener(new ActionListener() {
 
 					@Override
@@ -595,7 +613,7 @@ public class SelectedComment extends JPanel {
 
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo != userNum /* 로그인된 번호 */) {
+			if(getMemberNo != userNum.getLoginMemberNo() /* 로그인된 번호 */) {
 				reportBtn[i].addActionListener(new ActionListener() {
 
 					@Override
@@ -723,7 +741,7 @@ public class SelectedComment extends JPanel {
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo == userNum /* 로그인된 번호 */) {
+			if(getMemberNo == userNum.getLoginMemberNo() /* 로그인된 번호 */) {
 				deleteBtn[i].addActionListener(new ActionListener() {
 
 					@Override

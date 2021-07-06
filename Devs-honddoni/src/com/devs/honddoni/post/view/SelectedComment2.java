@@ -17,6 +17,7 @@ import com.devs.honddoni.common.dto.CommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.reportDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.post.controller.ContactController2;
 import com.devs.honddoni.post.controller.PagingController;
 
@@ -44,8 +45,8 @@ public class SelectedComment2 extends JPanel {
 	private JLabel[] profilePictrue;							//프로필 사진
 	private int postNo = 1;	/* 게시글에서 받아올 것 */				    //게시글 번호
 	private JButton[] deleteBtn;								//게시글 삭제 버튼
-	private int userNum = 1;									//로그인된 유저 번호
-
+	GetLoginMember userNum = GetLoginMember.getInstance();		//로그인된 유저 번호를 가져오기위한 인스턴스 생성
+	
 	/* 프레임을 제외한 나머지를 합친 것 */
 	public SelectedComment2(MainFrame frame) {
 		
@@ -125,7 +126,7 @@ public class SelectedComment2 extends JPanel {
 				newComment.setPostNo(postNo);
 
 				/* 로그인된 번호*/
-				newComment.setMemberNo(userNum);
+				newComment.setMemberNo(userNum.getLoginMemberNo());
 
 				ContactController2 contactController2 = new ContactController2();
 				contactController2.communicationComment(newComment);
@@ -383,7 +384,7 @@ public class SelectedComment2 extends JPanel {
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo == userNum /* 로그인된 번호 */) {
+			if(getMemberNo == userNum.getLoginMemberNo() /* 로그인된 번호 */) {
 				updateBtn[i].addActionListener(new ActionListener() {
 
 					@Override
@@ -458,7 +459,7 @@ public class SelectedComment2 extends JPanel {
 
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo != userNum /* 로그인된 번호 */) {
+			if(getMemberNo != userNum.getLoginMemberNo() /* 로그인된 번호 */) {
 				reportBtn[i].addActionListener(new ActionListener() {
 
 					@Override
@@ -593,7 +594,7 @@ public class SelectedComment2 extends JPanel {
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo == userNum /* 로그인된 번호 */) {
+			if(getMemberNo == userNum.getLoginMemberNo() /* 로그인된 번호 */) {
 				deleteBtn[i].addActionListener(new ActionListener() {
 
 					@Override

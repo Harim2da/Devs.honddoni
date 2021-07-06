@@ -16,9 +16,11 @@ import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.ContactController;
+import com.devs.honddoni.search.view.MainBottomPanel;
 
-public class PostHonddoni extends JFrame {
+public class PostHonddoni extends JPanel {
 	
 	private PostHonddoni postHonddoni;
 	private MainFrame frame;
@@ -45,6 +47,12 @@ public class PostHonddoni extends JFrame {
 	private PostDTO postDTO = new PostDTO();
 	private ContactController contactController = new ContactController();
 	private String localpick = "";  // 지도 위 선택한 지역
+	private JButton myHonddoniBtn;								//마이페이지 이동 버튼
+	private JButton searchHonddoniBtn;							//게시글 작성페이지 이동 버튼
+	private JButton homeBtn;									//메인화면이동 버튼
+	private JButton interestingBtn;								//관심글 목록 이동 버튼
+	private JButton noticeBtn;									//공지사항 목록 이동 버튼
+	private JLabel backgroundImage;	
 
 
 	/*혼또니 게시글 작성 화면 불러오기*/
@@ -53,9 +61,13 @@ public class PostHonddoni extends JFrame {
 		this.frame = frame;
 		this.postHonddoni = this;
 		
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
 		topPanel();
+		bottomPanel();
+		myHonddoniBtn();
+		searchHonddoniBtn();
+		homeBtn();
+		interestingBtn();
+		noticeBtn();
 		selectPost();
 		createPostTitle();
 		selectLocal();
@@ -65,8 +77,10 @@ public class PostHonddoni extends JFrame {
 		postMeetingTime();
 		addPostComponent();
 		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(topPanel);
+		frame.add(bottomPanel);
+//		this.setVisible(true);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/*상단 패널 생성*/
@@ -75,6 +89,12 @@ public class PostHonddoni extends JFrame {
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
+		
+		/* 상단 패널 뒷배경 생성 */
+		backgroundImage = new JLabel("");
+		backgroundImage.setBounds(0, 0, 500, 100);
+		backgroundImage.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
+		backgroundImage.setVisible(true); 
 
 	}
 
@@ -93,21 +113,133 @@ public class PostHonddoni extends JFrame {
 		bottomLabel.setIcon(new ImageIcon("image/post/postbtmpanel.png"));
 
 	}
+	
+	/* My혼또니(마이페이지 화면으로 이동) 버튼 */
+	public void myHonddoniBtn() {
+
+		myHonddoniBtn = new JButton("");
+		myHonddoniBtn.setBounds(171,23,56,56);
+		myHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
+		myHonddoniBtn.setBorderPainted(false);
+		myHonddoniBtn.setContentAreaFilled(false);
+		myHonddoniBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bottomPanel.setVisible(false);
+				topPanel.setVisible(false);
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				MyPage mp = new MyPage(frame);
+				frame.repaint();
+				frame.revalidate();
+			}
+		});
+
+	}
+
+	/* 혼또니 찾기(게시글 작성) 버튼 */
+	public void searchHonddoniBtn() {
+
+		searchHonddoniBtn = new JButton("");
+		searchHonddoniBtn.setBounds(234,23,56,56);
+		searchHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/SearchHonddoniBtn.png"));
+		searchHonddoniBtn.setBorderPainted(false);
+		searchHonddoniBtn.setContentAreaFilled(false);
+		searchHonddoniBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bottomPanel.setVisible(false);
+				topPanel.setVisible(false);
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				new PostHonddoni(frame);
+				frame.repaint();
+				frame.revalidate();
+			}
+		});
+
+	}
+	
+	/* Home(메인화면으로 이동) 버튼 생성 */
+	public void homeBtn() {
+
+		homeBtn = new JButton("");
+		homeBtn.setBounds(298,23,56,56);
+		homeBtn.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));
+		homeBtn.setBorderPainted(false);
+		homeBtn.setContentAreaFilled(false);
+		homeBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bottomPanel.setVisible(false);
+				topPanel.setVisible(false);
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				new MainBottomPanel(frame);
+				frame.repaint();
+				frame.revalidate();
+			}
+		});
+
+	}
+
+	/* 관심금 목록페이지로 이동하는 버튼 생성 */
+	public void interestingBtn() {
+
+		interestingBtn = new JButton("");
+		interestingBtn.setBounds(362,23,56,56);
+		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
+		interestingBtn.setBorderPainted(false);
+		interestingBtn.setContentAreaFilled(false);
+		interestingBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("관심글 목록 버튼 클릭");
+			}
+		});
+
+	}
+
+	/* 공지사항목록을 조회할 수 있는 버튼 생성 */
+	public void noticeBtn() {
+
+		noticeBtn = new JButton("");
+		noticeBtn.setBounds(426,23,56,56);
+		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
+		noticeBtn.setBorderPainted(false);
+		noticeBtn.setContentAreaFilled(false);
+		noticeBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("공지사항 버튼 클릭");
+			}
+		});
+
+	}
 
 	/* 팝업용 패널 생성 */
 	public void popupPanel() {
 
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
-		this.add(pann);
+		frame.add(pann);
 
 	}
 
 	/* 게시글 작성 화면 내 쌓아올리기  */
 	public void addPostComponent() {
 
-		this.add(topPanel);
-		this.add(bottomPanel);
+		topPanel.add(myHonddoniBtn);
+		topPanel.add(searchHonddoniBtn);
+		topPanel.add(homeBtn);
+		topPanel.add(interestingBtn);
+		topPanel.add(noticeBtn);
+		topPanel.add(backgroundImage);
 		bottomPanel.add(postTypebtn);
 		bottomPanel.add(postTitle);
 		bottomPanel.add(localSelectbtn);
@@ -116,8 +248,10 @@ public class PostHonddoni extends JFrame {
 		bottomPanel.add(postContents);
 		bottomPanel.add(postbtn);
 		bottomPanel.add(bottomLabel);
-		this.repaint();
-		this.revalidate();
+		frame.add(topPanel);
+		frame.add(bottomPanel);
+		frame.repaint();
+		frame.revalidate();
 
 	}
 
@@ -162,7 +296,7 @@ public class PostHonddoni extends JFrame {
 
 		pann = new JLayeredPane();
 		pann.setBounds(0, 30, 500, 670);
-		this.add(pann);
+		frame.add(pann);
 
 
 
@@ -199,7 +333,7 @@ public class PostHonddoni extends JFrame {
 		closeMap.setIcon(new ImageIcon("image/post/canclebtn.png"));
 		koreaMapLabel.add(closeMap);
 
-		this.repaint();
+		frame.repaint();
 
 		closeMap.addActionListener(new ActionListener() {
 

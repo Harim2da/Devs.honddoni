@@ -6,12 +6,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.view.MyPage;
+import com.devs.honddoni.post.view.PostHonddoni;
+import com.devs.honddoni.post.view.SelectAllHonPost2;
 import com.devs.honddoni.search.controller.SearchController;
 
 
@@ -56,11 +58,11 @@ public class MainBottomPanel extends JPanel{
 		this.mainBottomPanel = this;
 		
 		
-		this.setBounds(0, 0, 500, 870); //<-크기조절
-		this.setBackground(Color.white);
-		this.setLayout(null);
+//		this.setBounds(0, 0, 500, 870); //<-크기조절
+//		this.setBackground(Color.white);
+//		this.setLayout(null);
 		
-		frame.add(this);
+//		frame.add(this);
 		
 		
 //		/*수정한부분*/
@@ -107,8 +109,8 @@ public class MainBottomPanel extends JPanel{
 		
 		allBottomPanelComponent();
 		
-		this.add(upPanel);  //<-- 메인프레임에 내 클래스의 업패널, 바텀패널 붙임
-		this.add(bottomPanel);
+		frame.add(upPanel);  //<-- 메인프레임에 내 클래스의 업패널, 바텀패널 붙임
+		frame.add(bottomPanel);
 		
 		
 //		frame.add(bottomPanel); // <--프레임에 하단 패널...???
@@ -214,7 +216,13 @@ public class MainBottomPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("my혼또니 버튼 클릭");
+				frame.remove(bottomPanel);
+				frame.remove(upPanel);
+				bottomPanel.setVisible(false);
+				upPanel.setVisible(false);
+				MyPage mp = new MyPage(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -232,7 +240,13 @@ public class MainBottomPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("혼또니 찾기 버튼 클릭");
+				frame.remove(bottomPanel);
+				frame.remove(upPanel);
+				bottomPanel.setVisible(false);
+				upPanel.setVisible(false);
+				new PostHonddoni(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -250,7 +264,14 @@ public class MainBottomPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("홈  버튼 클릭");
+				frame.remove(bottomPanel);
+				frame.remove(upPanel);
+				bottomPanel.setVisible(false);
+				upPanel.setVisible(false);
+				new MainBottomPanel(frame);
+				frame.repaint();
+				frame.revalidate();
+			
 			}
 		});
 
@@ -350,8 +371,13 @@ public class MainBottomPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 혼또니 게시판으로
-				System.out.println("혼또니 게시판으로");
+				frame.remove(bottomPanel);
+				frame.remove(upPanel);
+				bottomPanel.setVisible(false);
+				upPanel.setVisible(false);
+				new SelectAllHonPost2(frame);
+				frame.repaint();
+				frame.revalidate();
 			}});
 	}
 	

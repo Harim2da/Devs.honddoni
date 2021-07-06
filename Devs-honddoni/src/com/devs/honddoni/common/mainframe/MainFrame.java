@@ -9,6 +9,10 @@ import javax.swing.JFrame;
 
 import com.devs.honddoni.memberLog.view.FirstView;
 
+import com.devs.honddoni.post.view.SelectAllHonPost2;
+import com.devs.honddoni.post.view.SelectedComment;
+
+
 
 public class MainFrame extends JFrame{
 	
@@ -30,8 +34,11 @@ public class MainFrame extends JFrame{
 //		new MyPage(this);
 
 		new FirstView(this);
+		
+		
+//		new SelectedComment(this, 1);
+//		new SelectAllHonPost2(this);
 
-//		new SelectedComment(this);
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
