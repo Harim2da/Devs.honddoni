@@ -1,12 +1,19 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color;  
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import com.devs.honddoni.admin.viewpenel.MainFrame1;
+import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.memberLog.view.LoginFail;
 
 //관리자목록2
 
@@ -178,6 +185,20 @@ public class AdminList1 {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminComment();
+	    		   bottomPanel.setVisible(false); 
+	    		   MainFrame.setVisible(false);
+	    	   }
+	       });
+	       
+	       btn5.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   new LoginFail();
 	    		   bottomPanel.setVisible(false); 
 	    		   MainFrame.setVisible(false);
 	    	   }

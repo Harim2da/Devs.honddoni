@@ -8,14 +8,16 @@ import javax.swing.JFrame;
 
 
 import com.devs.honddoni.memberLog.view.FirstView;
+
 import com.devs.honddoni.post.view.SelectAllHonPost2;
 import com.devs.honddoni.post.view.SelectedComment;
+
 
 
 public class MainFrame extends JFrame{
 	
 
-//	FirstView firstView;
+	FirstView firstView;
 	public static MainFrame mf;
 	
 	public MainFrame() {
@@ -30,11 +32,13 @@ public class MainFrame extends JFrame{
 		}
 
 //		new MyPage(this);
+
 		new FirstView(this);
 		
 		
 //		new SelectedComment(this, 1);
 //		new SelectAllHonPost2(this);
+
 
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +51,8 @@ public class MainFrame extends JFrame{
 //		FrameManager.initPanel(this, new SelectAllHonPost());
 		
 		//예슬 실험중
-//		new Notice(this);
+//		new FirstView(this);
+		new Notice(this);
 		
 		//태훈 실험중(메인바텀패널)
 //		new MainBottomPanel(this);

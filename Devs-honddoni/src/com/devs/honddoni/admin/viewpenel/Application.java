@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color; 
+import java.awt.Color;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.view.MyPage;
+import com.devs.honddoni.memberLog.view.LoginFail;
 import com.devs.honddoni.post.view.SelectedComment;
 
 public class Application {
@@ -24,11 +25,13 @@ public class Application {
 //		
 //		new Notice(); //공지사항게시판 실행
 		
-//		new AdminList();
+		new AdminList();
 		
-		new AllDataTest();
+//		new AllDataTest();
 		
 //		new AdminPostDelite();
+		
+
 		
 		
 		

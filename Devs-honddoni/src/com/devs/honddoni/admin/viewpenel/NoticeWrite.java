@@ -13,25 +13,31 @@ import javax.swing.JTextField;
 
 import com.devs.honddoni.admin.controller.NoticeController;
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.font.FontManager;
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 /* 공지사항 글쓰기 창 */
 public class NoticeWrite extends JPanel{
 	
-	JFrame frame;
-	NoticeWrite noticeWrite;
+	private MainFrame frame;
+	private NoticeWrite noticeWrite;
+	
+	private AdminList adminList; //newPanel로 쓸 것
 	
 	private NoticeController noticeController = new NoticeController();
 	
-	public NoticeWrite() {
+	FontManager font = new FontManager();
+	
+	public NoticeWrite(MainFrame frame) {
 		
-		this.frame = FrameManagerYs.getFrame();
-		this.noticeWrite = this;
-		
+		this.frame = frame;
+		this.noticeWrite = this;		
 		
 		/* 제일 기본 패널 */
-		noticeWrite.setBounds(0, 0, 500, 870);
-		noticeWrite.setLayout(null);
-		noticeWrite.setBackground(Color.yellow);
+		this.setBounds(0, 0, 500, 870);
+		this.setLayout(null);
+		this.setBackground(Color.yellow);
+		frame.add(this);
 
 		/* 혼또니 로고버튼 */
 		JButton honddoniBtn = new JButton("");
@@ -40,8 +46,10 @@ public class NoticeWrite extends JPanel{
 		honddoniBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				//관리자메인 페이지로 이동
+				//관리자메인 페이지로 나감
+				System.out.println("관리자메인 페이지로 나감");
+				noticeWrite.setVisible(false);
+				adminList = new AdminList(frame);
 //				FrameManagerYs.changePanel(notice, new 관리자메인());
 //				frame.remove(notice);
 //				frame.add(adminList);
@@ -78,8 +86,10 @@ public class NoticeWrite extends JPanel{
 				
 				noticeController.writeNoticeBoardPost(postDTO);				
 				
-				
 				//완료 시, 다시 공지사항게시판으로
+				System.out.println("관리자메인 페이지로 나감");
+				noticeWrite.setVisible(false);
+				adminList = new AdminList(frame);
 //				frame.remove(NoticeWrite);
 //				frame.add(new Notice());
 //				frame.repaint();

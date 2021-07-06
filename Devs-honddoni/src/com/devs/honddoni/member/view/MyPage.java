@@ -25,12 +25,14 @@ import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
+import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.memberLog.view.FirstView;
 import com.devs.honddoni.memberLog.view.MemberLogView;
+import com.devs.honddoni.search.view.MainBottomPanel;
 
 public class MyPage extends JPanel {
 	
-	private MyPage myPage;
+	public MyPage myPage;
 	private MainFrame frame;
 	private MemberLogView memberLogView;
 	
@@ -87,12 +89,18 @@ public class MyPage extends JPanel {
 	static JPanel bottomPanel = new JPanel();
 
 	
+	JButton resignMemberButton = new JButton("");
+	JButton interestingPostButton = new JButton("");
+	JButton rewardButton = new JButton("");
+	JButton writtenPostButton = new JButton(""); /* 내글 모아보기 버튼 */
+	JLabel menuNameLabel = new JLabel("");
+	
 	FontManager font = new FontManager();
 	
 	
-	static String 테스트아이디 = "user06";
+//	static String 테스트아이디 = "user06";
 //	static String 테스트아이디 = "sample01";
-	
+	String userId = GetLoginMember.getInstance().getLoginMemberId();
 	
 	public static JButton btnRemove(JButton jbtn) {
 		jbtn.setBorderPainted(false);
@@ -143,6 +151,7 @@ public class MyPage extends JPanel {
 				
 				frame.remove(bottomPanel);
 				frame.remove(myPage);
+				
 				bottomPanel.remove(changePwdPanel);
 				bottomPanel.removeAll();
 				frame.repaint();
@@ -152,17 +161,15 @@ public class MyPage extends JPanel {
 				myPage.repaint();
 				myPage.revalidate();
 				
-				new MyPage(frame);
-				frame.repaint();
-				frame.revalidate();
-				bottomPanel.repaint();
-				bottomPanel.revalidate();
-				myPage.repaint();
-				myPage.revalidate();
-				
+				frame.add(bottomPanel);
+				bottomPanel.add(menuNameLabel);
+//				bottomPanel.add(changePwdButton);
+//				bottomPanel.add(changeMemberinfo);
+//				bottomPanel.add(resignMemberButton);
+//				bottomPanel.add(interestingPostButton);
+//				bottomPanel.add(rewardButton);
+//				bottomPanel.add(writtenPostButton);
 
-				
-				
 			}
 		});
 		
@@ -191,6 +198,19 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("홈  버튼 클릭");
+				frame.remove(bottomPanel);
+				frame.remove(myPage);
+				
+				bottomPanel.remove(changePwdPanel);
+				bottomPanel.removeAll();
+				frame.repaint();
+				frame.revalidate();
+				bottomPanel.repaint();
+				bottomPanel.revalidate();
+				myPage.repaint();
+				myPage.revalidate();
+
+				new MainBottomPanel(frame);
 			}
 		});
 		
@@ -204,6 +224,19 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("관심글 목록 버튼 클릭");
+				frame.remove(bottomPanel);
+				frame.remove(myPage);
+				
+				bottomPanel.remove(changePwdPanel);
+				bottomPanel.removeAll();
+				frame.repaint();
+				frame.revalidate();
+				bottomPanel.repaint();
+				bottomPanel.revalidate();
+				myPage.repaint();
+				myPage.revalidate();
+
+				new MainBottomPanel(frame);
 			}
 		});
 		
@@ -243,6 +276,7 @@ public class MyPage extends JPanel {
 				/* 비밀번호 변경 창 패널 */
 //				JPanel changePwdPanel = new JPanel();
 				changePwdPanel.setLayout(null);
+				changePwdButton.setEnabled(false);
 				changePwdPanel.setBounds(0, 100, 500, 770);
 				changePwdPanel.setBackground(Color.white);
 				frame.remove(bottomPanel);
@@ -288,6 +322,7 @@ public class MyPage extends JPanel {
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("취소 버튼 클릭");
 						changePwdPanel.setVisible(false);
+						changePwdButton.setEnabled(true);
 						bottomPanel.setVisible(true);
 						frame.remove(changePwdPanel);
 						frame.add(bottomPanel);
@@ -382,8 +417,9 @@ public class MyPage extends JPanel {
 				frame.remove(bottomPanel);
 				frame.add(changeMemberinfoPanel);
 				
-				/* 싱글벙글톤 */
-				MemberInfoDTO memberInfo = memberController.callMemberInfo(테스트아이디);
+				/* Singleton으로 접속자ID 보내기 */
+				MemberInfoDTO memberInfo 
+				= memberController.callMemberInfo(userId);
 				
 				String profile = memberInfo.getProfile();
 				String name = memberInfo.getName();
@@ -747,7 +783,7 @@ public class MyPage extends JPanel {
 		
 		
 		/* 탈퇴하기 버튼 */
-		JButton resignMemberButton = new JButton("");
+//		JButton resignMemberButton = new JButton("");
 		resignMemberButton.setIcon(new ImageIcon("image/member/myPage/resign.png"));
 		resignMemberButton.setContentAreaFilled(false);
 		resignMemberButton.setBorderPainted(false);
@@ -821,7 +857,7 @@ public class MyPage extends JPanel {
 							   if(!checkP) {
 								   PopupFrame.popup("image/popup/FailMessage.png");
 							   } else {
-								   memberController.deleteMember(테스트아이디);
+								   memberController.deleteMember(GetLoginMember.getInstance().getLoginMemberId());
 							   }
 							   
 							   
@@ -844,7 +880,7 @@ public class MyPage extends JPanel {
 /*==================================  관심글 버튼   ================================================== */	
 		
 		/* 관심글 모아보기 버튼 */
-		JButton interestingPostButton = new JButton("");
+//		JButton interestingPostButton = new JButton("");
 		interestingPostButton.setIcon(new ImageIcon("image/member/myPage/heart.png"));
 		interestingPostButton.setContentAreaFilled(false);
 		interestingPostButton.setBorderPainted(false);
@@ -892,7 +928,7 @@ public class MyPage extends JPanel {
 /*==================================  업적 & 포인트 버튼   ================================================== */		
 		
 		/* 업적 & 포인트 버튼 */
-		JButton rewardButton = new JButton("");
+//		JButton rewardButton = new JButton("");
 		rewardButton.setIcon(new ImageIcon("image/member/myPage/medal.png"));
 		rewardButton.setContentAreaFilled(false);
 		rewardButton.setBorderPainted(false);
@@ -990,7 +1026,7 @@ public class MyPage extends JPanel {
 /* 내글 모아보기 */
 		
 		
-		JButton writtenPostButton = new JButton(""); /* 내글 모아보기 버튼 */
+//		JButton writtenPostButton = new JButton(""); /* 내글 모아보기 버튼 */
 		writtenPostButton.setIcon(new ImageIcon("image/member/myPage/moabogi.png"));
 		writtenPostButton.setContentAreaFilled(false);
 		writtenPostButton.setBorderPainted(false);
@@ -1023,7 +1059,7 @@ public class MyPage extends JPanel {
 /*==================================  마이페이지에 있는 버튼 밑에 글씨들   ================================================== */
 		
 		/* 마이페이지에 있는 버튼 밑에 글씨들 */
-		JLabel menuNameLabel = new JLabel("");
+//		JLabel menuNameLabel = new JLabel("");
 		menuNameLabel.setIcon(new ImageIcon("image/member/myPage/myPageName.png"));
 		menuNameLabel.setBounds(111, 10, 500, 870);
 		bottomPanel.add(menuNameLabel);

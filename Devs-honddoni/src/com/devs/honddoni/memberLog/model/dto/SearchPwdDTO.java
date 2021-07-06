@@ -5,14 +5,16 @@ public class SearchPwdDTO {
 	private String name;
 	private String id;
 	private String phone;
+	private String newPwd;
 	
 	public SearchPwdDTO() {}
 	
-	public SearchPwdDTO(String name, String id, String phone) {
+	public SearchPwdDTO(String name, String id, String phone, String newPwd) {
 		super();
 		this.name = name;
 		this.id = id;
 		this.phone = phone;
+		this.newPwd = newPwd;
 	}
 
 	public String getName() {
@@ -39,10 +41,20 @@ public class SearchPwdDTO {
 		this.phone = phone;
 	}
 
+	public String getNewPwd() {
+		return newPwd;
+	}
+
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
+	}
+
 	@Override
 	public String toString() {
-		return "SearchPwdDTO [name=" + name + ", id=" + id + ", phone=" + phone + "]";
+		return "SearchPwdDTO [name=" + name + ", id=" + id + ", phone=" + phone + ", newPwd=" + newPwd + "]";
 	}
+
+	
 	
 	
 

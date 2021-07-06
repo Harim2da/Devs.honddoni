@@ -284,8 +284,8 @@ public class RegistMember extends JPanel {
 				System.out.println("로그인창으로 이동");
 				registMember.setVisible(false);
 				memberLogView = new MemberLogView(frame);
-//				FrameManager.changePanel(frame, firstPanel, newPanel);
-//				frame.remove(searchPwd);
+//				FrameManager.changePanel(frame, firstPanel, memberLogView);
+//				frame.remove(firstPanel);
 //				frame.add(memberLogView);
 //				frame.repaint();
 //				frame.revalidate();				

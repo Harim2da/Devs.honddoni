@@ -25,8 +25,6 @@ public class MainBottomPanel extends JPanel{
 
 	private MainBottomPanel mainBottomPanel;
 	private MainFrame frame;
-	//MainFrame frame; //메인프레임
-	//private JFrame frame;
 	
 	private JPanel upPanel; 	
 	private JPanel bottomPanel;
@@ -56,8 +54,8 @@ public class MainBottomPanel extends JPanel{
 	
 	public MainBottomPanel(MainFrame frame) {
 		
-		this.mainBottomPanel = this;
 		this.frame = frame;
+		this.mainBottomPanel = this;
 		
 		
 //		this.setBounds(0, 0, 500, 870); //<-크기조절

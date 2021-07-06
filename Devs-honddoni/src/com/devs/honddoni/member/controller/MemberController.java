@@ -85,7 +85,6 @@ public class MemberController {
 	public MemberInfoDTO callMemberInfo(String testId) {
 		
 		MemberInfoDTO memberInfo = new MemberInfoDTO();
-		System.out.println("테스트아이디 컨트롤러 : " + testId);
 		memberInfo = memberService.callMemberInfo(testId);
 		System.out.println(memberInfo);
 		
