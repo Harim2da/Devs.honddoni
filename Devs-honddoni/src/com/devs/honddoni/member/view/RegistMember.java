@@ -62,17 +62,19 @@ public class RegistMember extends JPanel {
 		JPanel upsidePanel = new JPanel();
 		upsidePanel.setBounds(0, 0, 500, 100);
 		upsidePanel.setLayout(null);
-		upsidePanel.setBackground(Color.BLACK); //나중에 지울 거
+		upsidePanel.setBackground(Color.WHITE); //나중에 지울 거
 
 		/* 세부내용 들어갈 나머지 패널 */
 		JPanel downsidePanel = new JPanel();
 		downsidePanel.setBounds(0, 100, 500, 770);
 		//downsidePanel.setLayout(null); //원래 했어야 하는데, 안 하고 xy를 재버려서 각주처리 일단 끕니다..
-		downsidePanel.setBackground(Color.YELLOW);
+		downsidePanel.setBackground(Color.WHITE);
 
 		/* 혼또니 로고버튼 */
 		JButton honddoniBtn = new JButton("");
 		honddoniBtn.setBounds(305, 29, 173, 71);
+		honddoniBtn.setContentAreaFilled(false);
+		honddoniBtn.setBorderPainted(false);
 		honddoniBtn.setIcon(new ImageIcon("image/common/honddoniLogo.png"));
 		honddoniBtn.addActionListener(new ActionListener() {
 
@@ -100,24 +102,40 @@ public class RegistMember extends JPanel {
 		/* 입력받는 텍스트필드들 */
 		JTextField nameTf = new JTextField();
 		nameTf.setBounds(80, 12, 348, 26);
+		nameTf.setBorder(null);
+		nameTf.setOpaque(false);
+		nameTf.setFont(font.customFont12);
 		//		nameTf.setContentAreaFilled(color(f2, f2, f2, 0.5));		
 
 		JTextField idTf = new JTextField();
 		idTf.setBounds(80, 74, 200, 26);
+		idTf.setBorder(null);
+		idTf.setOpaque(false);
+		idTf.setFont(font.customFont12);
 
 		JPasswordField passwordPf = new JPasswordField();
 		passwordPf.setBounds(95, 136, 333, 26);
+		passwordPf.setBorder(null);
+		passwordPf.setOpaque(false);
 
 		JPasswordField passwordRePf = new JPasswordField();
-		passwordRePf.setBounds(125, 199, 303, 26);		
+		passwordRePf.setBounds(125, 199, 303, 26);	
+		passwordRePf.setBorder(null);
+		passwordRePf.setOpaque(false);
 
 		JTextField birthdayTf = new JTextField();
 		birthdayTf.setBounds(125, 261, 192, 26);
+		birthdayTf.setBorder(null);
+		birthdayTf.setOpaque(false);
+		birthdayTf.setFont(font.customFont12);
 
 		/* 라디오 버튼에 따라 gender 설정 */
 		/* 왜 String gender를 액션리스너에서 또 설정해줘야 되냐... */
 		JRadioButton genderMRb = new JRadioButton("남");
 		genderMRb.setBounds(330, 260, 55, 26);
+		genderMRb.setBorder(null);
+		genderMRb.setOpaque(false);
+		genderMRb.setFont(font.customFont12);
 		genderMRb.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -129,6 +147,9 @@ public class RegistMember extends JPanel {
 
 		JRadioButton genderFRb = new JRadioButton("여");
 		genderFRb.setBounds(385, 260, 55, 26);
+		genderFRb.setBorder(null);
+		genderFRb.setOpaque(false);
+		genderFRb.setFont(font.customFont12);
 		genderFRb.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -145,15 +166,27 @@ public class RegistMember extends JPanel {
 
 		JTextField nicknameTf = new JTextField();
 		nicknameTf.setBounds(80, 324, 348, 26);
+		nicknameTf.setBorder(null);
+		nicknameTf.setOpaque(false);
+		nicknameTf.setFont(font.customFont12);
 
 		JTextField addressTf = new JTextField();
-		addressTf.setBounds(80, 387, 348, 26);		
+		addressTf.setBounds(80, 387, 348, 26);	
+		addressTf.setBorder(null);
+		addressTf.setOpaque(false);
+		addressTf.setFont(font.customFont12);
 
 		JTextField phoneTf = new JTextField();
 		phoneTf.setBounds(100, 451, 348, 26);
+		phoneTf.setBorder(null);
+		phoneTf.setOpaque(false);
+		phoneTf.setFont(font.customFont12);
 
 		JTextField emailTf = new JTextField();
 		emailTf.setBounds(80, 514, 348, 26);
+		emailTf.setBorder(null);
+		emailTf.setOpaque(false);
+		emailTf.setFont(font.customFont12);
 
 		/* 라벨위에 라벨 & 콤보박스를 각각 올릴 것 */
 		JLabel characterSelectLb = new JLabel();
@@ -198,7 +231,7 @@ public class RegistMember extends JPanel {
 					case "내향적" : characterNum = 6; break;
 					case "감성적" : characterNum = 7; break;
 					case "이성적" : characterNum = 8; break;
-				default : characterNum = 1; break;
+					default : characterNum = 1; break;
 				}
 //				characterNum = newCharacterCode;
 			}
@@ -323,20 +356,6 @@ public class RegistMember extends JPanel {
 
 	}	
 
-	public void popupPanel() {
-
-		//팝업시 반투명 패널생성
-		pann = new JLayeredPane();
-		pann.setBounds(0, 30, 500, 670);
-		frame.add(pann);	
-	}
-
-	public void characterSelect() {
-
-		//지도라벨생성
-		JLabel koreaMapLabel = new JLabel();
-
-	}
 
 
 }
