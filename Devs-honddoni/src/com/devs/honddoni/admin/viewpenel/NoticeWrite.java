@@ -15,6 +15,7 @@ import com.devs.honddoni.admin.controller.NoticeController;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.common.mainframe.PopupFrame;
 
 /* 공지사항 글쓰기 창 */
 public class NoticeWrite extends JPanel{
@@ -36,7 +37,7 @@ public class NoticeWrite extends JPanel{
 		/* 제일 기본 패널 */
 		this.setBounds(0, 0, 500, 870);
 		this.setLayout(null);
-		this.setBackground(Color.yellow);
+		this.setBackground(Color.WHITE);
 		frame.add(this);
 
 		/* 혼또니 로고버튼 */
@@ -84,16 +85,29 @@ public class NoticeWrite extends JPanel{
 				postDTO.setPostName(titleTf.getText());
 				postDTO.setPostContents(contentTf.getText());
 				
-				noticeController.writeNoticeBoardPost(postDTO);				
+				//컨트롤러로 작성내용 넘김
+				int result = noticeController.writeNoticeBoardPost(postDTO);
 				
-				//완료 시, 다시 공지사항게시판으로
-				System.out.println("관리자메인 페이지로 나감");
-				noticeWrite.setVisible(false);
-				adminList = new AdminList(frame);
-//				frame.remove(NoticeWrite);
-//				frame.add(new Notice());
-//				frame.repaint();
-//				frame.revalidate();
+				//작성완료 팝업
+				if(result > 0) {
+					PopupFrame.popup("image/popup/noticeWriteSuccess.png");
+					
+					//완료 시, 다시 공지사항게시판으로
+					System.out.println("관리자메인 페이지로 나감");
+					noticeWrite.setVisible(false);
+					adminList = new AdminList(frame);
+//					frame.remove(NoticeWrite);
+//					frame.add(new Notice());
+//					frame.repaint();
+//					frame.revalidate();
+					
+				} else {
+					PopupFrame.popup("image/popup/writingFail.png");
+					
+				}
+				
+				
+				
 			}
 		});
 				

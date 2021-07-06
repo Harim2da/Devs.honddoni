@@ -55,6 +55,7 @@ public class Notice extends JPanel{
 	private int postNo;
 	private int totalPostNum;
 	private PostDTO postinfoDTO = null;
+	
 	FontManager font = new FontManager();
 			
 	public Notice(MainFrame frame) {
@@ -64,7 +65,7 @@ public class Notice extends JPanel{
 		/* 제일 기본 패널 (init)*/
 		this.setBounds(0, 0, 500, 870);
 		this.setLayout(null);
-		this.setBackground(Color.white);
+		this.setBackground(Color.WHITE);
 		frame.add(this);
 		System.out.println("Notice 패널 생성");	
 
@@ -97,11 +98,11 @@ public class Notice extends JPanel{
 		
 		/* 입력받는 텍스트필드들 */
 		JTextField searchTf = new JTextField();
-		searchTf.setBounds(107, 143, 328, 30);
+		searchTf.setBounds(72, 16, 328, 30);
 		
 		/* 검색어입력 받아서 검색하는 버튼 */
 		JButton searchBtn = new JButton();
-		searchBtn.setBounds(60, 144, 29, 29);
+		searchBtn.setBounds(25, 16, 29, 29);
 		searchBtn.setIcon(new ImageIcon("image/admin/notice_glassBtn.png"));
 		searchBtn.addActionListener(new ActionListener() {			
 			@Override
@@ -140,9 +141,9 @@ public class Notice extends JPanel{
 		//패널에 버튼 추가
 	    this.add(honddoniBtn);
 	    this.add(searchLb);
-	    this.add(searchTf);
-	    this.add(searchBtn);
 	    this.add(writeNoticeBtn);	
+	    searchLb.add(searchTf);
+	    searchLb.add(searchBtn);
 	    		
 	    /* 페이지 표기 바 세팅*/
 	    pagebarLabel = new JLabel("");
@@ -291,6 +292,8 @@ public class Notice extends JPanel{
 		
 		//해당페이지에 맞는 포스트DTO를 List에 담아온다
 		postDTOList = new PagingController().NoticePostList(pageNo);
+		
+		System.out.println("DTO리스트 크기 : " + postDTOList.size());
 
 		//반복문으로 밑바탕라벨을 깔아준다
 		for(int i = 0; i < postDTOList.size(); i++) {			
@@ -319,6 +322,8 @@ public class Notice extends JPanel{
 		postDTOList = new PagingController().NoticePostList(pageNo);
 		PostDTO postInfo = null;
 		
+		System.out.println("DTO리스트 크기 : " + postDTOList.size());
+		
 		for(int i = 0; i < postDTOList.size(); i++) {
 			
 			postInfo = postDTOList.get(i);			
@@ -342,9 +347,10 @@ public class Notice extends JPanel{
 	public void postBtnAdd() {
 		
 		int pageNo = frontPage;
-		int j = 83; //늘어나는 y축 값
+		int j = 266; //늘어나는 y축 값
 		
 		postDTOList = new PagingController().NoticePostList(pageNo);
+		System.out.println("DTO리스트 크기 : " + postDTOList.size());
 		
 		
 		for(int i = 0; i < postDTOList.size(); i++) {
@@ -355,7 +361,7 @@ public class Notice extends JPanel{
 			postBtn[i] = new JButton();
 			postBtn[i].setLayout(null);
 			postBtn[i].setIcon(new ImageIcon("image/admin/notice_noticeBtn.png"));
-			postBtn[i].setBounds(54, j + 63, 140, 45);
+			postBtn[i].setBounds(54, j, 140, 45);
 			notice.add(postBtn[i]);
 			j += 119;
 			
@@ -367,7 +373,7 @@ public class Notice extends JPanel{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("글번호 : " + "번 포스트로 이동");
+					System.out.println("글번호 : " + postNo + "번 포스트로 이동");
 					
 					notice.setVisible(false);
 					noticeContentView = new NoticeContentView(frame, postinfoDTO);

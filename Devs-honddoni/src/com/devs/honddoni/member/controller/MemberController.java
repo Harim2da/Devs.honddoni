@@ -55,7 +55,9 @@ public class MemberController {
 		return result > 0 ? true : false;
 	}
 
-	public void newPwdEqualCheck(ChangePwdDTO changePwd) {
+	public boolean newPwdEqualCheck(ChangePwdDTO changePwd) {
+		
+		int result = 0;
 		
 		String newPwd = changePwd.getMemberNewPassword();	//새 비번
 		String newPwdRe = changePwd.getMemberNewPasswordRecheck();	//새 비번 확인
@@ -65,8 +67,9 @@ public class MemberController {
 			modifyPassword(changePwd);
 		} else {
 			System.out.println("새비번 불일치");
-			PopupFrame.popup("image/popup/FailMessage.png");
 		}
+		
+		return result > 0 ? true : false;
 	}
 	
 	public void modifyPassword(ChangePwdDTO changePwd) {
