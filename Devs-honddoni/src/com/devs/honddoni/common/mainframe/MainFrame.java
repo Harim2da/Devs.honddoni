@@ -9,7 +9,20 @@ import javax.swing.JFrame;
 
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.view.FirstView;
+
+import com.devs.honddoni.memberLog.view.MemberLogView;
+import com.devs.honddoni.post.view.SelectAllHonPost;
+
+
+import com.devs.honddoni.admin.viewpenel.AdminList;
+import com.devs.honddoni.admin.viewpenel.AdminList1;
+import com.devs.honddoni.admin.viewpenel.AdminList2;
+
+import com.devs.honddoni.memberLog.view.FirstView;
+import com.devs.honddoni.search.view.AllBoardList;
+
 import com.devs.honddoni.search.view.MainBottomPanel;
+
 
 import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.post.view.SelectAllHonPost;
@@ -73,6 +86,7 @@ public class MainFrame extends JFrame{
 
 		//명길 실험중
 //		new AdminList(this);
+		new AdminList(this);
 
 
 //		new FreeBoardList(this);
