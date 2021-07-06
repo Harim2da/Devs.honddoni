@@ -11,6 +11,11 @@ import com.devs.honddoni.admin.viewpenel.AdminList;
 
 import com.devs.honddoni.memberLog.view.FirstView;
 
+import com.devs.honddoni.post.view.PostHonddoni;
+import com.devs.honddoni.post.view.SelectAllHonPost2;
+import com.devs.honddoni.post.view.SelectedComment;
+
+
 import com.devs.honddoni.search.view.MainBottomPanel;
 
 
@@ -62,6 +67,9 @@ public class MainFrame extends JFrame{
 //		new AllBoardList(this);
 		
 
+		new PostHonddoni(this);
+
+
 		//명길 실험중
 		new AdminList(this);
 
@@ -72,6 +80,7 @@ public class MainFrame extends JFrame{
 
 		/*하림 test*/
 		new PostModify(this);
+
 
 	}
 	

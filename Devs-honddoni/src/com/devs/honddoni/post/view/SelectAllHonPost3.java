@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import com.devs.honddoni.common.PagenationPost;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.post.controller.GetFilter;
 import com.devs.honddoni.post.controller.PagingController;
@@ -40,6 +41,7 @@ public class SelectAllHonPost3 extends JPanel {
 	private JLabel[] postTitle; // 게시글 제목
 	private JLabel[] categoryName; //카테고리명
 	private JLabel[] localName;
+	FontManager font = new FontManager();
 	//	private int postNo; //게시글 번호
 	//	private int totalPostNum;
 	//	private PostDTO postDTO = new PostDTO();
@@ -326,6 +328,7 @@ public class SelectAllHonPost3 extends JPanel {
 			nickName[i] = new JLabel();
 			nickName[i].setLayout(null);
 			nickName[i].setText(postInfo.getMemberNickname());
+			nickName[i].setFont(font.customFont1);
 			nickName[i].setBounds(100, y + 10, 90, 50);
 			downPanel.add(nickName[i]);
 			y += 118;
@@ -390,6 +393,7 @@ public class SelectAllHonPost3 extends JPanel {
 			postTitle = new JLabel[postListDTO.size()];
 			postTitle[i] = new JLabel();
 			postTitle[i].setText(postInfo.getPostName());
+			postTitle[i].setFont(font.customFont12);
 			postTitle[i].setLayout(null);
 			postTitle[i].setBounds(64, y + 63, 343, 25);
 			downPanel.add(postTitle[i]);
