@@ -93,4 +93,58 @@ public class ContactController {
 	}
 	
 	
+public void updateThePost(PostDTO postDTO) {
+		
+		int postNo = postDTO.getPostNo();
+		String postName = postDTO.getPostName();
+		String postContents = postDTO.getPostContents();
+		String postCategory = postDTO.getPostCategory();
+		int postMemberNo = 6; //임시값
+		
+		String postMeetingDate = postDTO.getPostMeetingDate();
+		String postMeetingTime = postDTO.getPostMeetingTime();
+		
+		
+		/*선택한 지역명의 코드를 조회*/		
+		String localName= postDTO.getLocalName();
+		int localCode = postService.searchLocalCode(localName);
+		
+		/*선택한 카테고리명의 코드를 조회*/
+		String categoryName = postDTO.getCategoryName();
+		int categoryCode = postService.searchCategoryCode(categoryName);
+		
+		
+		int postNumberOfPeopleNumber = postDTO.getPostNumberOfPeopleNumber();
+		
+		
+		
+		/* 서비스 전달용  DTO 담기 */
+		PostDTO post = new PostDTO();
+		post.setPostNo(postNo);
+		post.setPostName(postName);
+		post.setPostContents(postContents);
+		post.setPostCategory(postCategory);	
+		post.setPostMeetingDate(postMeetingDate);
+		post.setPostMeetingTime(postMeetingTime);
+		post.setLocalCode(localCode);
+		post.setCategoryCode(categoryCode);
+		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
+		
+		System.out.println(post);
+		/* 서비스 호출 결과 리턴 받기 */
+		int result = postService.updateThePost(post);
+		
+		if(result > 0) {
+			System.out.println("등록 성공");
+		} else {
+			System.out.println("등록 실패");
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 }
