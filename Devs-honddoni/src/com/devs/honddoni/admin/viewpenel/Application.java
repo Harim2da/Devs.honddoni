@@ -24,9 +24,9 @@ public class Application {
 //		
 //		new Notice(); //공지사항게시판 실행
 		
-		new AdminList();
+//		new AdminList();
 		
-//		new AllDataTest();
+		new AllDataTest();
 		
 //		new AdminPostDelite();
 		
