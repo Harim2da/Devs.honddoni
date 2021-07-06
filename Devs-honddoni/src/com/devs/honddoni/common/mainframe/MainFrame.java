@@ -24,7 +24,9 @@ public class MainFrame extends JFrame{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//		new MyPage(this);
+
+		new MyPage(this);
+
 //		new FirstView(this);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
