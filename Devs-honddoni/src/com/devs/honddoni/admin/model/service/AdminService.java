@@ -36,6 +36,7 @@ public class AdminService {
 
 
 	public int insertNoticePost(PostDTO postDTO) {
+
 		
 		Connection con = getConnection();
 		
@@ -52,6 +53,8 @@ public class AdminService {
 		
 		return result;
 	}
+	
+}
 
 
 	public PostDTO selectTheNoticePost(int postNo) {
@@ -66,6 +69,6 @@ public class AdminService {
 		return postDTO;
 		
 	}
-	
+
 }
 
