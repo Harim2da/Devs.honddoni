@@ -70,5 +70,23 @@ public class AdminService {
 		
 	}
 
+
+	public List<AdminDTO> memberManagement() {
+	
+		Connection con = getConnection();
+		
+		List<AdminDTO> adminListDTO = new AdminDAO().memberManagement(con);
+		
+		if(adminListDTO != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return adminListDTO;
+	}
+
 }
 

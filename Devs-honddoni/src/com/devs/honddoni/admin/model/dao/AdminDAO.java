@@ -136,4 +136,40 @@ public class AdminDAO {
 		
 		return postDTO;
 	}
+
+	public List<AdminDTO> memberManagement(Connection con) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<AdminDTO> adminList = null;
+		
+		String query = prop.getProperty("memberManagement");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			adminList = new ArrayList<>();
+			
+			while(rset.next()) {
+				AdminDTO row = new AdminDTO();
+				
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+//				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
+				
+				adminList.add(row);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return adminList;
+	}
 }

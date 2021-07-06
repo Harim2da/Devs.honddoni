@@ -26,10 +26,6 @@ import com.devs.honddoni.post.view.PostModify;
 import com.devs.honddoni.search.view.MainBottomPanel;
 import com.devs.honddoni.search.view.PostFreeBoard;
 
-
-
-
-
 public class MainFrame extends JFrame{
 	
 
@@ -49,14 +45,13 @@ public class MainFrame extends JFrame{
 
 //		new MyPage(this);
 
-		new FirstView(this);
+//		new FirstView(this);
 
 //		new PostFreeBoard(this);
 
-		
-//		new SelectedComment(this, 1);
+		new SelectedComment(this, 1);
 
-		new SelectAllHonPost(this);
+//		new SelectAllHonPost(this);
 
 
 
@@ -72,7 +67,7 @@ public class MainFrame extends JFrame{
 		
 		//예슬 실험중
 //		new FirstView(this);
-		new Notice(this);
+//		new Notice(this);
 		
 		//태훈 실험중(메인바텀패널)
 //		new MainBottomPanel(this);

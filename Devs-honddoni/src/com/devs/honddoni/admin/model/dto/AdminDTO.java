@@ -2,7 +2,8 @@ package com.devs.honddoni.admin.model.dto;
 
 public class AdminDTO implements java.io.Serializable {
 	
-	private String MEMBER_NICKNAME;
+	private String MemberNickName;
+	private String M
 
 	public AdminDTO(String mEMBER_NICKNAME) {
 		super();
