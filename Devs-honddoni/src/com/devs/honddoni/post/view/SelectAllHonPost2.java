@@ -17,6 +17,7 @@ import com.devs.honddoni.common.PagenationPost;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.GetFilter;
 import com.devs.honddoni.post.controller.PagingController;
 public class SelectAllHonPost2 extends JPanel {
@@ -158,7 +159,8 @@ public class SelectAllHonPost2 extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("my혼또니 버튼 클릭");
+				downPanel.setVisible(false);
+				MyPage mp = new MyPage(frame);
 			}
 		});
 
