@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.model.service;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 
 import java.util.List;
 
@@ -15,6 +15,8 @@ import com.devs.honddoni.admin.model.dao.AdminDAO;
 
 
 public class AdminService {
+	
+	Connection con = getConnection();
    
 	private AdminDAO adminDAO = new AdminDAO();
 	
@@ -34,6 +36,7 @@ public class AdminService {
 
 
 	public int insertNoticePost(PostDTO postDTO) {
+
 		
 		Connection con = getConnection();
 		
@@ -50,6 +53,8 @@ public class AdminService {
 		
 		return result;
 	}
+	
+}
 
 
 	public PostDTO selectTheNoticePost(int postNo) {

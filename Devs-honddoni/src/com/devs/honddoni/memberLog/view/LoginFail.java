@@ -58,6 +58,7 @@ public class LoginFail extends JPanel {
 //		frame.add(firstPanel);	
 		
 	}
+
 	
 	
 
