@@ -16,6 +16,7 @@ import com.devs.honddoni.common.PagenationComments;
 import com.devs.honddoni.common.dto.CommentsDTO;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.reportDTO;
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.post.controller.ContactController2;
@@ -46,6 +47,7 @@ public class SelectedComment2 extends JPanel {
 	private int postNo = 1;	/* 게시글에서 받아올 것 */				    //게시글 번호
 	private JButton[] deleteBtn;								//게시글 삭제 버튼
 	GetLoginMember userNum = GetLoginMember.getInstance();		//로그인된 유저 번호를 가져오기위한 인스턴스 생성
+	FontManager font = new FontManager();
 	
 	/* 프레임을 제외한 나머지를 합친 것 */
 	public SelectedComment2(MainFrame frame) {
@@ -266,6 +268,7 @@ public class SelectedComment2 extends JPanel {
 		beforeNumber.setText(frontPageString);
 		beforeNumber.setLayout(null);
 		beforeNumber.setBounds(50, 4, 14, 14);
+		beforeNumber.setFont(font.customFont12);
 		System.out.println(frontPageString);
 
 	}
@@ -284,6 +287,7 @@ public class SelectedComment2 extends JPanel {
 		afterNumber = new JLabel(backPageString);
 		afterNumber.setLayout(null);
 		afterNumber.setBounds(85, 4, 14, 14);
+		afterNumber.setFont(font.customFont12);
 		
 
 	}
@@ -328,8 +332,9 @@ public class SelectedComment2 extends JPanel {
 			nickName = new JLabel[commentListDTO.size()];
 			nickName[i] = new JLabel();
 			nickName[i].setLayout(null);
-			nickName[i].setBounds(110, y + 10, 720, 35);
+			nickName[i].setBounds(90, y + 10, 720, 35);
 			nickName[i].setText(commentInfo.getMemberNickname());
+			nickName[i].setFont(font.customFont1);
 			downPanel1.add(nickName[i]);
 			y += 62;
 			
@@ -353,6 +358,7 @@ public class SelectedComment2 extends JPanel {
 			content[i].setLayout(null);
 			content[i].setBounds(187, y + 10, 250, 35);
 			content[i].setText(commentInfo.getCommentsContents());
+			content[i].setFont(font.customFont12);
 			downPanel1.add(content[i]);
 			y += 62;
 			downPanel1.repaint();
@@ -429,6 +435,7 @@ public class SelectedComment2 extends JPanel {
 			commentsDate[i].setLayout(null);
 			commentsDate[i].setBounds(418, y - 7 , 250, 35);
 			commentsDate[i].setText(commentInfo.getCommentsDate());
+			commentsDate[i].setFont(font.customFont2);
 			downPanel1.add(commentsDate[i]);
 			y += 62;
 			downPanel1.repaint();
@@ -513,6 +520,7 @@ public class SelectedComment2 extends JPanel {
 			commentsTime[i].setLayout(null);
 			commentsTime[i].setBounds(422, y + 7 , 250, 35);
 			commentsTime[i].setText(commentInfo.getCommentsTime());
+			commentsTime[i].setFont(font.customFont2);
 			downPanel1.add(commentsTime[i]);
 			y += 62;
 			downPanel1.repaint();

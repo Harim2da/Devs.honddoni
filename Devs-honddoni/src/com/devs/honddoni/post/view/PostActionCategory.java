@@ -8,10 +8,12 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.font.FontManager;
+
 public class PostActionCategory {
 	
 	private static JComboBox selectCategorycombo;
-	
+	FontManager font = new FontManager();
 	
 	public PostActionCategory() {
 		
@@ -21,6 +23,7 @@ public class PostActionCategory {
 
 		selectCategorycombo.setBounds(139, 145, 306, 28);
 		selectCategorycombo.setSelectedIndex(0);
+		selectCategorycombo.setFont(font.customFont12);
 		selectCategorycombo.addActionListener(new ActionListener() {
 			
 			@Override

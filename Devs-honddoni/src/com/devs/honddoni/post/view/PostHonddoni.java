@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.ContactController;
@@ -53,7 +54,7 @@ public class PostHonddoni extends JPanel {
 	private JButton interestingBtn;								//관심글 목록 이동 버튼
 	private JButton noticeBtn;									//공지사항 목록 이동 버튼
 	private JLabel backgroundImage;	
-
+	FontManager font = new FontManager();
 
 	/*혼또니 게시글 작성 화면 불러오기*/
 	public PostHonddoni(MainFrame frame) {
@@ -283,6 +284,7 @@ public class PostHonddoni extends JPanel {
 		postTitle.setOpaque(false);
 		postTitle.setBounds(113, 25, 322, 28);	// 폰트 크기 키우면 y축 위치 조정
 		postTitle.setColumns(10);
+		postTitle.setFont(font.customFont12);
 	}
 
 	/*지역 선택 버튼*/
@@ -575,6 +577,7 @@ public class PostHonddoni extends JPanel {
 		joinmember.setOpaque(false);
 		joinmember.setBounds(327, 90, 108, 28); // 폰트 크기 키우면 y축 위치 조정
 		joinmember.setColumns(10);
+		joinmember.setFont(font.customFont12);
 	}
 
 	/* 게시글 작성*/
@@ -582,6 +585,7 @@ public class PostHonddoni extends JPanel {
 		postContents = new JTextArea();
 		postContents.setOpaque(false);
 		postContents.setBounds(59, 305, 399, 273);
+		postContents.setFont(font.customFont12);
 
 	}
 
@@ -599,6 +603,7 @@ public class PostHonddoni extends JPanel {
 		meetingYear = new JComboBox(year);	
 		meetingYear.setBounds(102, 211, 42, 28);
 		meetingYear.setSelectedIndex(0);
+		meetingYear.setFont(font.customFont12);
 
 
 
@@ -615,6 +620,7 @@ public class PostHonddoni extends JPanel {
 		meetingMonth = new JComboBox(month);
 		meetingMonth.setBounds(170, 211, 39, 28);
 		meetingMonth.setSelectedIndex(0);
+		meetingMonth.setFont(font.customFont12);
 
 
 		String[] day = new String[32];
@@ -630,6 +636,7 @@ public class PostHonddoni extends JPanel {
 		meetingDay = new JComboBox(day);
 		meetingDay.setBounds(238, 211, 39, 28);
 		meetingDay.setSelectedIndex(0);
+		meetingDay.setFont(font.customFont12);
 
 
 		String[] hour = new String[25];
@@ -645,12 +652,14 @@ public class PostHonddoni extends JPanel {
 		meetingHour = new JComboBox(hour);
 		meetingHour.setBounds(327, 211, 39, 28);
 		meetingHour.setSelectedIndex(0);
+		meetingHour.setFont(font.customFont12);
 
 
 		String[] min = {"", "00", "30"};
 		meetingMinutes = new JComboBox(min);
 		meetingMinutes.setBounds(396, 211, 39, 28);
 		meetingMinutes.setSelectedIndex(0);
+		meetingMinutes.setFont(font.customFont12);
 
 		bottomPanel.add(meetingYear);
 		bottomPanel.add(meetingMonth);
