@@ -6,7 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import com.devs.honddoni.admin.viewpenel.Notice;
+
 import com.devs.honddoni.memberLog.view.FirstView;
 
 
@@ -28,6 +28,9 @@ public class MainFrame extends JFrame{
 		}
 
 //		new MyPage(this);
+
+		new FirstView(this);
+
 //		new SelectedComment(this);
 
 		this.setVisible(true);

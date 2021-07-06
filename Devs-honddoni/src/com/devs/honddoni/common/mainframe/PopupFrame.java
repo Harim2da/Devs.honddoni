@@ -33,8 +33,6 @@ public class PopupFrame {
 		popupFrame.add(popupLabel);
 	}
 	
-	
-	
-	
+
 }
 
