@@ -50,7 +50,7 @@ public class PostFreeBoard extends JPanel {
 		this.frame = frame;
 		this.postFreeBoard = this;
 
-		this.setBounds(100, 0, 500, 870);
+		this.setBounds(0, 0, 500, 870);
 		this.setLayout(null);
 
 		frame.add(this);
@@ -291,6 +291,8 @@ public class PostFreeBoard extends JPanel {
 					postDTO.setPostName(postTitle.getText()); //게시글 제목
 					postDTO.setPostContents(postContents.getText()); // 게시글 내용
 					postDTO.setPostCategory("자유");
+					
+					System.out.println("게시글 작성 완료");
 
 				}
 			});

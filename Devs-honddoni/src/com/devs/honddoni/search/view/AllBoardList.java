@@ -36,7 +36,7 @@ public class AllBoardList extends JPanel {
 	private JLabel pageLongbarLabel;	//페이지표기 바
 	private JLabel beforeNumber = new JLabel("");
 	private JLabel afterNumber;
-	public static int frontPage2 = 1;
+	public static int nowPage2 = 1;
 	private JButton beforeBtn = new JButton(); // 앞페이지 버튼
 	private JButton afterBtn = new JButton(); // 뒷 페이지 버튼
 	private JLabel[] postList;	
@@ -285,7 +285,7 @@ public class AllBoardList extends JPanel {
 
 	/* 이전 페이지 */
 	public void beforeBtn() {
-		int pageNo = AllBoardList.frontPage2;
+		int pageNo = AllBoardList.nowPage2;
 
 		beforeBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
 		beforeBtn.setContentAreaFilled(false);
@@ -300,8 +300,8 @@ public class AllBoardList extends JPanel {
 			beforeBtn.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					if(AllBoardList.frontPage2 >= 2 ) {
-						AllBoardList.frontPage2--;
+					if(AllBoardList.nowPage2 >= 2 ) {
+						AllBoardList.nowPage2--;
 					}
 
 					bottomPanel.setVisible(false);
@@ -324,7 +324,7 @@ public class AllBoardList extends JPanel {
 
 	public void afterBtn() {
 
-		int pageNo = AllBoardList.frontPage2;
+		int pageNo = AllBoardList.nowPage2;
 
 
 		int totalCount = new PagingController().selectWholePostNum(getName.getLocalName(), getName.getCategoryName());
@@ -347,8 +347,8 @@ public class AllBoardList extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if(AllBoardList.frontPage2 < pageInfo.getMaxPage()) {
-					AllBoardList.frontPage2++;
+				if(AllBoardList.nowPage2 < pageInfo.getMaxPage()) {
+					AllBoardList.nowPage2++;
 				}
 
 				bottomPanel.setVisible(false);
@@ -369,7 +369,7 @@ public class AllBoardList extends JPanel {
 	}
 
 	public void beforeNumber() {
-		String frontPageString = Integer.valueOf(AllBoardList.frontPage2).toString();
+		String frontPageString = Integer.valueOf(AllBoardList.nowPage2).toString();
 		beforeNumber.setText(frontPageString);
 		beforeNumber.setLayout(null);
 		beforeNumber.setBounds(50, 4, 14, 14);
@@ -379,7 +379,7 @@ public class AllBoardList extends JPanel {
 
 	public void afterNumber() {
 
-		int pageNo = AllBoardList.frontPage2;
+		int pageNo = AllBoardList.nowPage2;
 
 		int totalCount = new PagingController().selectWholePostNum(getName.getLocalName(), getName.getCategoryName());
 		PagenationPost pagenationPost = new PagenationPost();
@@ -393,7 +393,7 @@ public class AllBoardList extends JPanel {
 
 	/* 게시글 배경 틀*/
 	public void postList() {
-		int pageNo = AllBoardList.frontPage2;
+		int pageNo = AllBoardList.nowPage2;
 		int y = 153;
 
 		postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
@@ -419,7 +419,7 @@ public class AllBoardList extends JPanel {
 
 	/* 게시글에 맞는 프로필 불러오기 */
 	public void profilePictrue() {
-		int pageNo = AllBoardList.frontPage2;
+		int pageNo = AllBoardList.nowPage2;
 		int y = 153;
 
 		postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
@@ -453,7 +453,7 @@ public class AllBoardList extends JPanel {
 
 	/* 게시글 별 작성자 닉네임 불러오기 */
 	public void nickName() {
-		int pageNo = AllBoardList.frontPage2;
+		int pageNo = AllBoardList.nowPage2;
 		int y = 153;
 
 		postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
@@ -477,7 +477,7 @@ public class AllBoardList extends JPanel {
 
 	/* 카테고리 라벨*/
 	public void categoryName() {
-		int pageNo = AllBoardList.frontPage2;
+		int pageNo = AllBoardList.nowPage2;
 		int y = 153;
 
 		postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
@@ -519,7 +519,7 @@ public class AllBoardList extends JPanel {
 	}
 
 	public void postTitle() {
-		int pageNo = AllBoardList.frontPage2;
+		int pageNo = AllBoardList.nowPage2;
 		int y = 153;
 
 		postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());
@@ -556,7 +556,7 @@ public class AllBoardList extends JPanel {
 	}
 
 	public void localName() {
-		int pageNo = AllBoardList.frontPage2;
+		int pageNo = AllBoardList.nowPage2;
 		int y = 153;
 
 		postListDTO = new PagingController().selectPostList(pageNo, getName.getLocalName(), getName.getCategoryName());

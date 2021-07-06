@@ -34,7 +34,7 @@ public class FreeBoardList extends JPanel {
 	private JLabel pageLongbarLabel;	//페이지표기 바
 	private JLabel beforeNumber = new JLabel("");
 	private JLabel afterNumber;
-	public static int frontPage2 = 1;
+	public static int presentPage2 = 1;
 	private JButton beforeBtn = new JButton(); // 앞페이지 버튼
 	private JButton afterBtn = new JButton(); // 뒷 페이지 버튼
 	private JLabel[] postList;	
@@ -62,12 +62,6 @@ public class FreeBoardList extends JPanel {
 
 		this.frame = frame;
 		this.FreeBoardList = this;
-
-		this.setBounds(0, 0, 500, 870); //<-크기조절
-		this.setBackground(Color.white);
-		this.setLayout(null);
-
-		frame.add(this);
 
 		/* 패널 */
 		upPanel();
@@ -118,8 +112,8 @@ public class FreeBoardList extends JPanel {
 		pageLongbarLabel.add(beforeBtn);
 		pageLongbarLabel.add(afterBtn);
 
-		this.add(upPanel);
-		this.add(bottomPanel);
+		frame.add(upPanel);
+		frame.add(bottomPanel);
 	}
 
 	public JPanel getDownPanel() {
@@ -283,7 +277,7 @@ public class FreeBoardList extends JPanel {
 
 	/* 이전 페이지 */
 	public void beforeBtn() {
-		int pageNo = FreeBoardList.frontPage2;
+		int pageNo = FreeBoardList.presentPage2;
 
 		beforeBtn.setIcon(new ImageIcon("image/post/beforePageButton.png"));
 		beforeBtn.setContentAreaFilled(false);
@@ -298,8 +292,8 @@ public class FreeBoardList extends JPanel {
 			beforeBtn.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					if(FreeBoardList.frontPage2 >= 2 ) {
-						FreeBoardList.frontPage2--;
+					if(FreeBoardList.presentPage2 >= 2 ) {
+						FreeBoardList.presentPage2--;
 					}
 
 					bottomPanel.setVisible(false);
@@ -322,7 +316,7 @@ public class FreeBoardList extends JPanel {
 
 	public void afterBtn() {
 
-		int pageNo = FreeBoardList.frontPage2;
+		int pageNo = FreeBoardList.presentPage2;
 
 
 		int totalCount = new PagingController().selectWholePostNum(getName.getLocalName(), getName.getCategoryName());
@@ -345,8 +339,8 @@ public class FreeBoardList extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if(FreeBoardList.frontPage2 < pageInfo.getMaxPage()) {
-					FreeBoardList.frontPage2++;
+				if(FreeBoardList.presentPage2 < pageInfo.getMaxPage()) {
+					FreeBoardList.presentPage2++;
 				}
 
 				bottomPanel.setVisible(false);

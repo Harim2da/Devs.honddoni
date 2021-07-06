@@ -546,12 +546,13 @@ public class SelectAllHonPost2 extends JPanel {
 			postTitle[i].setBounds(64, y + 63, 343, 25);
 			downPanel.add(postTitle[i]);
 			y += 118;
-
+			
+			int postNo = postInfo.getPostNo();
 			postTitle[i].addMouseListener(new MouseListener() {
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					System.out.println("세부게시판 조회");
+					new PostModify(frame, postNo);
 
 				}
 				@Override
