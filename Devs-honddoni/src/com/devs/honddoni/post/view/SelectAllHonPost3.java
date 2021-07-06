@@ -404,7 +404,12 @@ public class SelectAllHonPost3 extends JPanel {
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					frame.remove(downPanel);
+					downPanel.setVisible(false);
 					new PostModify(frame, postNo);
+					frame.repaint();
+					frame.revalidate();
+					
 
 				}
 				@Override

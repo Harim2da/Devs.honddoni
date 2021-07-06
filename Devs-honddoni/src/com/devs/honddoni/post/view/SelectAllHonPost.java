@@ -12,12 +12,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.GetFilter;
 
-public class SelectAllHonPost extends JFrame{
+public class SelectAllHonPost extends JPanel{
 
-	private JFrame mainframe = new JFrame(); 
-	private JPanel bottomPanel = new JPanel();  //하단 패널 = new JPanel();
+	private MainFrame frame; 
+	private SelectAllHonPost selectAllHonPost;
+	private JPanel topPanel;
+	private JButton myHonddoniBtn;								//마이페이지 이동 버튼
+	private JButton searchHonddoniBtn;							//게시글 작성페이지 이동 버튼
+	private JButton homeBtn;									//메인화면이동 버튼
+	private JButton interestingBtn;								//관심글 목록 이동 버튼
+	private JButton noticeBtn;
+	private JLabel topLabel;
+	private JPanel bottomPanel;  //하단 패널 = new JPanel();
 	private JLabel mapLabel;	// 지역선택용 라벨 
 	private JLabel searchLabel; // 검색창 라벨
 	private JButton aim;        // 검색 버튼
@@ -26,29 +36,172 @@ public class SelectAllHonPost extends JFrame{
 	private PostDTO postDTO = new PostDTO();
 //	MainFrame frame;
 	
-	public SelectAllHonPost() {
-		this.setBounds(100, 100, 516, 909);
-		this.setLayout(null);
-//		this.frame = frame;
-//		this.bottomPanel;
+	public SelectAllHonPost(MainFrame frame) {
+
+		this.frame = frame;
+		this.selectAllHonPost = this;
+		
+		/*상단 패널 및 버튼*/
+		topPanel();
+		myHonddoniBtn();
+		searchHonddoniBtn();
+		homeBtn();
+		interestingBtn();
+		noticeBtn();
+		
+		
 		
 		BottomPanel();
 		addComponents();
 		searching();
 		selectLocal();
 		
+	}
+	
+	private void topPanel() {
 
+		topPanel = new JPanel();
+		topPanel.setBounds(0, 0, 500, 100);
+		topPanel.setLayout(null);
+		topPanel.setBackground(Color.WHITE);
+		frame.add(topPanel);
 		
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		topLabel = new JLabel();
+		topLabel.setBounds(0, 0, 500, 100);
+		topLabel.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
+		topLabel.setVisible(true); 
+		frame.add(topLabel);
+		
+	}
+	
+	/* My혼또니(마이페이지 화면으로 이동) 버튼 */
+	public void myHonddoniBtn() {
+
+		myHonddoniBtn = new JButton();
+		myHonddoniBtn.setBounds(171,23,56,56);
+		myHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
+		myHonddoniBtn.setBorderPainted(false);
+		myHonddoniBtn.setContentAreaFilled(false);
+		topPanel.add(myHonddoniBtn);
+		
+		
+		myHonddoniBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.remove(bottomPanel);
+				frame.remove(topPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new MyPage(frame);
+				frame.repaint();
+				frame.revalidate();
+			}
+		});
+
+	}
+
+	/* 혼또니 찾기(게시글 작성) 버튼 */
+	public void searchHonddoniBtn() {
+
+		searchHonddoniBtn = new JButton("");
+		searchHonddoniBtn.setBounds(234,23,56,56);
+		searchHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/SearchHonddoniBtn.png"));
+		searchHonddoniBtn.setBorderPainted(false);
+		searchHonddoniBtn.setContentAreaFilled(false);
+		topPanel.add(searchHonddoniBtn);
+		
+		searchHonddoniBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.remove(bottomPanel);
+				frame.remove(topPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new PostHonddoni(frame);
+				frame.repaint();
+				frame.revalidate();
+			}
+		});
+
+	}
+	
+	/* Home(메인화면으로 이동) 버튼 생성 */
+	public void homeBtn() {
+
+		homeBtn = new JButton("");
+		homeBtn.setBounds(298,23,56,56);
+		homeBtn.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));
+		homeBtn.setBorderPainted(false);
+		homeBtn.setContentAreaFilled(false);
+		topPanel.add(homeBtn);
+		
+		
+		homeBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.remove(bottomPanel);
+				frame.remove(topPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new MyPage(frame);			
+				frame.repaint();
+				frame.revalidate();
+				
+
+			}
+		});
+
+	}
+
+	/* 관심글 목록페이지로 이동하는 버튼 생성 */
+	public void interestingBtn() {
+
+		interestingBtn = new JButton("");
+		interestingBtn.setBounds(362,23,56,56);
+		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
+		interestingBtn.setBorderPainted(false);
+		interestingBtn.setContentAreaFilled(false);
+		topPanel.add(interestingBtn);
+		interestingBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("관심글 목록 버튼 클릭");
+			}
+		});
+
+	}
+
+	/* 공지사항목록을 조회할 수 있는 버튼 생성 */
+	public void noticeBtn() {
+
+		noticeBtn = new JButton("");
+		noticeBtn.setBounds(426,23,56,56);
+		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
+		noticeBtn.setBorderPainted(false);
+		noticeBtn.setContentAreaFilled(false);
+		topPanel.add(noticeBtn);
+		
+		noticeBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("공지사항 버튼 클릭");
+			}
+		});
+
 	}
 	
 	/* 하단 패널 */
 	public void BottomPanel() {
-	
+		bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
-		bottomPanel.setBackground(Color.CYAN);	
+		bottomPanel.setBackground(Color.WHITE);	
 		
 		searchLabel = new JLabel();   // 하단 패널 위 검색창
 		searchLabel.setBackground(Color.WHITE);
@@ -66,12 +219,12 @@ public class SelectAllHonPost extends JFrame{
 	
 	/* 패널과 라벨들 얹기 */
 	private void addComponents() {
-		this.add(bottomPanel);
+		frame.add(bottomPanel);
 		bottomPanel.add(searchLabel);
 		bottomPanel.add(mapLabel);
 	
-		this.repaint();
-		this.revalidate();
+		frame.repaint();
+		frame.revalidate();
 	}
 	
 	/* 검색창 처리 */
@@ -332,11 +485,14 @@ public class SelectAllHonPost extends JFrame{
 				GetFilter getCategoryName = GetFilter.getInstance();
 				getCategoryName.setCategoryName("맛집탐방");
 				System.out.println("맛집 탐방 선택");
-				mainframe.remove(bottomPanel);
-//				FrameManager.changePanel(frame, bottomPanel, SelectAllHonPost2.bottomPanel());
-//				mainframe.add(new SelectAllHonPost2(mainframe));
-				mainframe.repaint();
-				mainframe.revalidate();
+				
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new SelectAllHonPost2(frame);
+				frame.repaint();
+				frame.revalidate();
 				
 			}
 		});
@@ -355,6 +511,13 @@ public class SelectAllHonPost extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getCategoryName = GetFilter.getInstance();
 				getCategoryName.setCategoryName("산책");
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new SelectAllHonPost2(frame);
+				frame.repaint();
+				frame.revalidate();
 				System.out.println("산책 선택");
 				
 			}
@@ -374,6 +537,13 @@ public class SelectAllHonPost extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getCategoryName = GetFilter.getInstance();
 				getCategoryName.setCategoryName("활동");
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new SelectAllHonPost2(frame);
+				frame.repaint();
+				frame.revalidate();
 				System.out.println("활동 선택");
 				
 			}
@@ -393,6 +563,13 @@ public class SelectAllHonPost extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getCategoryName = GetFilter.getInstance();
 				getCategoryName.setCategoryName("취미");
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new SelectAllHonPost2(frame);
+				frame.repaint();
+				frame.revalidate();
 				System.out.println("취미 선택");
 				
 			}
@@ -412,6 +589,13 @@ public class SelectAllHonPost extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getCategoryName = GetFilter.getInstance();
 				getCategoryName.setCategoryName("게임");
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new SelectAllHonPost2(frame);
+				frame.repaint();
+				frame.revalidate();
 				System.out.println("게임 선택");
 				
 			}
@@ -431,6 +615,13 @@ public class SelectAllHonPost extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getCategoryName = GetFilter.getInstance();
 				getCategoryName.setCategoryName("스터디");
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new SelectAllHonPost2(frame);
+				frame.repaint();
+				frame.revalidate();
 				System.out.println("스터디 선택");
 				
 			}

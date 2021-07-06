@@ -425,7 +425,14 @@ public class PostModify extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				// 댓글 전체보기 연결
 				//int postNo = postDTO.getPostNo();
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
 				new SelectedComment(frame, postNo);
+				frame.repaint();
+				frame.revalidate();
+				
 			}
 
 			@Override

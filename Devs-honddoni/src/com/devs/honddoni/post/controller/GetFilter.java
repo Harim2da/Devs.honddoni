@@ -4,8 +4,8 @@ public class GetFilter {
 
 	private static GetFilter getFilter;
 	
-	private String localName = "부산";
-	private String categoryName = "맛집탐방";
+	private String localName;
+	private String categoryName;
 	
 	private GetFilter() {}
 
