@@ -68,44 +68,10 @@ public class AllDataTest {
 	     btn0.setBounds(303, 27, 172, 70);
 	     btn0.setContentAreaFilled(false);
 	     btn0.setBorderPainted(false);
-	     //상단에 페이지 이름
-//	     topPanel.add(lb01);
-//	     lb01.setBounds(32, 56, 263, 33);
 	     
-	     //////////////제가생각한 코드☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
-//	     List<AdminDTO> amdinList = new ArrayList<>();
-//	     String 
-	     
-//	     Connection con = getConnection();
-//			
-//			PreparedStatement pstmt = null;
-//			ResultSet rset = null;
-//			
-//			List<AdminDTO> adminList = null;
-//			
-//			
-//			try {
-//				pstmt = con.prepareStatement("SELECT MEMBER_NAME FROM TBL_MEMBER");
-//				
-//				rset = pstmt.executeQuery();
-//				
-//				adminList = new ArrayList<>();
-//				
-//				while(rset.next()) {
-//					System.out.println(rset.getString("MEMBER_NAME"));
-//				}
-//				
-//				
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			} finally {
-//				close(rset);
-//				close(pstmt);
-//				close(con);
-//			}
 	     ////////////여기서부터 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 //	 	 AdminDTO adminDTO = null;
-		 List<AdminDTO> adminListDTO = new ManagementController().memberManagement();
+		 List<AdminDTO> adminListDTO = new ManagementController().totalUserList();
 	     AdminDTO adminDTO = null;
 
 	 	 for(int i = 0; i < adminListDTO.size(); i++) {
@@ -115,14 +81,17 @@ public class AllDataTest {
 	 			
 
 	 	 JLabel[] jlabel = new JLabel[adminListDTO.size()];
-	 	 jlabel[i] = new JLabel(adminDTO.getMEMBER_NICKNAME());
+	 	 jlabel[i] = new JLabel(adminDTO.getMemberId());
+	 	 jlabel[i] = new JLabel(adminDTO.getMemberNicname());
+	 	 jlabel[i] = new JLabel(adminDTO.getMemberProfile());
+	 	 jlabel[i] = new JLabel(adminDTO.getMemRegistdate());
+//	 	 jlabel[i] = new JLabel(adminDTO.getMEMBER_NICKNAME());
 //	 	 jlabel.setText(adminDTO.getMEMBER_NICKNAME());
 	 	 jlabel[i].setLayout(null);
-	 	 jlabel[i].setBounds(110, 10, 720, 35);
+	 	 jlabel[i].setBounds(33, 23, 430, 121);
 	 	 bottomPanel.add(jlabel[i]);
 
-//	 			this.nickName = new JLabel[adminListDTO.size()];
-//	 			this.nickName[i] = new JLabel(img000);
+
 //	 	 여기까지 현수님코드★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 	 	 
 	 			
@@ -132,19 +101,8 @@ public class AllDataTest {
 	 	       
 //	 	       poupfrome.pup 이미지넣기
 	 	       
-//	 	       btn1.addActionListener(new ActionListener() {
-//	 	    	   @Override
-//	 	    	   public void actionPerformed(ActionEvent e) {
-////	 	    		   login2 login2 = new login2();
-////	 	    		   JPanel.add(login2);
-////	 	    		   new login2();
-////	 	    		   bottomPanel.setVisible(false);
-//	 	    		   
-//	 	    		   new Login2();
-//	 	    		   bottomPanel.setVisible(false);
-////	 	    		  MainFrame.setVisible(false);
-//	 	    	   }
-//	 	       });
+
+	 	 }
 	}
 }
 	       

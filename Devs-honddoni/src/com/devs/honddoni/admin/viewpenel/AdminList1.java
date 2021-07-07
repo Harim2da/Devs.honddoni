@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import com.devs.honddoni.admin.viewpenel.MainFrame1;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.memberLog.view.LoginFail;
 
 //관리자목록2
@@ -208,8 +209,10 @@ public class AdminList1 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList2(frame);
+//	    		   new AdminList2(frame);
 	    		   bottomPanel.setVisible(false); 
+	    		   
+	    		   PopupFrame.popup("image/popup/logoutSuccess.png");
 //	    		   adminList.setVisible(false);
 	    	   }
 	       });

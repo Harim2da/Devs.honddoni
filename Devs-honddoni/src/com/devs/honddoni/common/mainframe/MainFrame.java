@@ -68,7 +68,7 @@ public class MainFrame extends JFrame{
 //		FrameManager.initPanel(this, new SelectAllHonPost());
 		
 		//예슬 실험중
-//		new FirstView(this);
+		new FirstView(this);
 //		new Notice(this);
 		
 		//태훈 실험중(메인바텀패널)
@@ -80,8 +80,15 @@ public class MainFrame extends JFrame{
 
 
 		//명길 실험중
+
 //		new AdminList(this);
 //		new AdminList(this);
+
+
+		new AdminList(this);
+//		new MemberLogView(this);
+
+
 
 
 //		new FreeBoardList(this);
