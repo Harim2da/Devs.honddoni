@@ -44,7 +44,7 @@ public class SelectedComment2 extends JPanel {
 	private JLabel[] commentsDate;								//댓글 작성 날짜
 	private JLabel[] commentsTime;								//댓글 작성 시간
 	private JLabel[] profilePictrue;							//프로필 사진
-	private int postNo = 1;	/* 게시글에서 받아올 것 */				    //게시글 번호
+	private int postNo;	/* 게시글에서 받아올 것 */				    //게시글 번호
 	private JButton[] deleteBtn;								//게시글 삭제 버튼
 	GetLoginMember userNum = GetLoginMember.getInstance();		//로그인된 유저 번호를 가져오기위한 인스턴스 생성
 	FontManager font = new FontManager();
@@ -163,9 +163,11 @@ public class SelectedComment2 extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				System.out.println("게시글 조회 호출");
-				downPanel1.repaint();
-				downPanel1.revalidate();
+				frame.remove(downPanel1);		
+				downPanel1.setVisible(false);	
+				new PostModify(frame, postNo);
+				frame.repaint();
+				frame.revalidate();
 				
 			}
 		});

@@ -56,7 +56,7 @@ public class PagingController {
 	public int selectWholeCommentsNum(int postNo) {
 
 		int result = pagingService.selectWholeCommentsNum(postNo);
-
+		
 		return result;
 	}
 	
@@ -179,13 +179,14 @@ public class PagingController {
 		int totalCount = dto.getTotalCount();
 		PagenationPost pagenationPost = new PagenationPost();
 		
-		int limit = 5;
-		
+		int limit = 5;		
 		int buttonAmount = 2;
 		
 		PageInfoPostDTO pageInfo = pagenationPost.getPostPageInfo(pageNo, totalCount, limit, buttonAmount);
 		
 		List<PostDTO> postList = pagingService.NoticePostList(pageInfo);
+		
+		System.out.println("들고 온 postList의 사이즈 : " + postList.size());
 
 		return postList;
 		

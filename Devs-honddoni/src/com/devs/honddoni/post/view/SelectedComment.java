@@ -53,7 +53,7 @@ public class SelectedComment extends JPanel {
 	private JButton interestingBtn;								//관심글 목록 이동 버튼
 	private JButton noticeBtn;									//공지사항 목록 이동 버튼
 	private JLabel backgroundImage;								//로고 포함 테두리 배경 (디자인용)
-	private int postNo = 1;	/* 게시글에서 받아올 것 */					//게시글 번호
+	private int postNo;	/* 게시글에서 받아올 것 */					//게시글 번호
 	private JButton[] deleteBtn;								//게시글 삭제 버튼
 	GetLoginMember userNum = GetLoginMember.getInstance();		//로그인된 유저 번호를 가져오기위한 인스턴스 생성
 	FontManager font = new FontManager();
@@ -316,9 +316,13 @@ public class SelectedComment extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("게시글 조회 호출");
-				downPanel.repaint();
-				downPanel.revalidate();
+				frame.remove(downPanel);
+				frame.remove(upPanel);
+				downPanel.setVisible(false);
+				upPanel.setVisible(false);
+				new PostModify(frame, postNo);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 	}

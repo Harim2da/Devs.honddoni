@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color;  
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -10,12 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.devs.honddoni.admin.controller.ManagementController;
-import com.devs.honddoni.admin.model.dto.*;
-import com.devs.honddoni.admin.model.dao.AdminDAO;
-import com.devs.honddoni.common.dto.CommentsDTO;
+import com.devs.honddoni.admin.model.dto.AdminDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
-import com.devs.honddoni.post.controller.PagingController;
 
 //모든회원정보 조회 화면
 
@@ -27,6 +23,9 @@ public class AllData extends JPanel {
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	private JLabel lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11, lb12, lb13, lb14, lb15, lb16,
 	lb17, lb18, lb19, lb20, lb21; 
+	
+	AllData2 alldata2;
+	AdminList adminlist;
 	
 	public AllData(MainFrame frame) {
 		//프레임, 패널설정
@@ -274,19 +273,6 @@ public class AllData extends JPanel {
 //	    	   }
 //	       });
 	       
-	       btn0.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   new AdminList(frame);
-	    		   bottomPanel.setVisible(false); 
-	    		   alldata.setVisible(false);
-	    	   }
-	       });
 	       
 	       btn11.addActionListener(new ActionListener() {
 	    	   @Override
@@ -296,9 +282,46 @@ public class AllData extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AllData2(frame);
+	    		   alldata2 = new AllData2(frame);
 	    		   bottomPanel.setVisible(false); 
 	    		   alldata.setVisible(false);
+	    		   
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(btn2);
+	    		   bottomPanel.remove(btn3);
+	    		   bottomPanel.remove(btn4);
+	    		   bottomPanel.remove(btn5);
+	    		   bottomPanel.remove(lb1);
+	    		   bottomPanel.remove(btn10);
+	    		   bottomPanel.remove(btn11);
+	    		   alldata2.repaint();
+	    		   alldata2.revalidate();
+	    		   
+	    	   }
+	       });
+	       
+	       btn0.addActionListener(new ActionListener() {
+	    	   @Override
+	    	   public void actionPerformed(ActionEvent e) {
+//	    		   login2 login2 = new login2();
+//	    		   JPanel.add(login2);
+//	    		   new login2();
+//	    		   bottomPanel.setVisible(false);
+	    		   
+	    		   adminlist = new AdminList(frame);
+	    		   bottomPanel.setVisible(false); 
+	    		   alldata.setVisible(false);
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(btn2);
+	    		   bottomPanel.remove(btn3);
+	    		   bottomPanel.remove(btn4);
+	    		   bottomPanel.remove(btn5);
+	    		   bottomPanel.remove(lb1);
+	    		   bottomPanel.remove(btn10);
+	    		   bottomPanel.remove(btn11);
+	    		   alldata2.repaint();
+	    		   alldata2.revalidate();
+	    		   
 	    	   }
 	       });
 	}

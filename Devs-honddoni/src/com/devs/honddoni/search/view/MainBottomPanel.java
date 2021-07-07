@@ -11,9 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.view.MyPage;
+import com.devs.honddoni.memberLog.view.MemberLogView;
 import com.devs.honddoni.post.view.PostHonddoni;
-import com.devs.honddoni.post.view.SelectAllHonPost2;
+import com.devs.honddoni.post.view.SelectAllHonPost;
 import com.devs.honddoni.search.controller.SearchController;
 
 
@@ -376,7 +378,7 @@ public class MainBottomPanel extends JPanel{
 				frame.remove(upPanel);
 				bottomPanel.setVisible(false);
 				upPanel.setVisible(false);
-				new SelectAllHonPost2(frame);
+				new SelectAllHonPost(frame);
 				frame.repaint();
 				frame.revalidate();
 			}});
@@ -522,7 +524,17 @@ public class MainBottomPanel extends JPanel{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// 코로나 안전수칙
-					System.out.println("코로나 안전수칙으로");
+					PopupFrame.popup2("image/search/guideLine.png");
+					frame.remove(bottomPanel);
+					frame.remove(upPanel);
+					bottomPanel.setVisible(false);
+					upPanel.setVisible(false);
+					new MainBottomPanel(frame);
+					frame.getIgnoreRepaint();
+					frame.revalidate();
+					
+					//System.out.println("코로나 안전수칙으로");
+					//(23, 99, 455, 587);
 				}});
 		}	
 		
@@ -540,7 +552,16 @@ public class MainBottomPanel extends JPanel{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					//이용약관 버튼
-					System.out.println("이용약관으로");
+					PopupFrame.popup2("image/search/userguide.png");
+					frame.remove(bottomPanel);
+					frame.remove(upPanel);
+					bottomPanel.setVisible(false);
+					upPanel.setVisible(false);
+					new MainBottomPanel(frame);
+					frame.getIgnoreRepaint();
+					frame.revalidate();
+					
+					//System.out.println("이용약관으로");
 				}});
 		}	
 
@@ -558,7 +579,16 @@ public class MainBottomPanel extends JPanel{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					//로그아웃 버튼
-					System.out.println("로그아웃으로");
+					
+					PopupFrame.popup("image/popup/logoutSuccess.png");
+					frame.remove(bottomPanel);
+					frame.remove(upPanel);
+					bottomPanel.setVisible(false);
+					upPanel.setVisible(false);
+					new MemberLogView(frame);
+					frame.getIgnoreRepaint();
+					frame.revalidate();
+					
 				}});
 		}
 		

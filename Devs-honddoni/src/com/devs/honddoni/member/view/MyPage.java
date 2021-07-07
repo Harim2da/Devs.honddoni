@@ -120,7 +120,7 @@ public class MyPage extends JPanel {
 
 
 		bottomPanel.setBounds(0, 100, 500, 770);
-		bottomPanel.setBackground(Color.WHITE);
+		bottomPanel.setBackground(Color.black);
 		bottomPanel.setLayout(null);
 		frame.add(bottomPanel);
 
@@ -159,6 +159,7 @@ public class MyPage extends JPanel {
 				myPage.revalidate();
 
 				frame.add(bottomPanel);
+
 				bottomPanel.add(menuNameLabel);
 				//				bottomPanel.add(changePwdButton);
 				//				bottomPanel.add(changeMemberinfo);
@@ -166,6 +167,7 @@ public class MyPage extends JPanel {
 				//				bottomPanel.add(interestingPostButton);
 				//				bottomPanel.add(rewardButton);
 				//				bottomPanel.add(writtenPostButton);
+
 
 			}
 		});
@@ -346,6 +348,7 @@ public class MyPage extends JPanel {
 
 						if(e.getSource() == cpB2) {
 
+
 							String password = "";
 							char[] pass = cpPF1.getPassword();
 							for(int i = 0; i < pass.length; i++) {
@@ -374,6 +377,7 @@ public class MyPage extends JPanel {
 								memberController.newPwdEqualCheck(changePwdDTO);
 
 							}
+
 
 						}
 

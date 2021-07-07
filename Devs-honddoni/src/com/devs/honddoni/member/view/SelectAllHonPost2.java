@@ -51,6 +51,9 @@ public class SelectAllHonPost2 extends JPanel {
 	private JButton noticeBtn;									//공지사항 목록 이동 버튼
 	private JLabel backgroundImage;								//로고 포함 테두리 배경 (디자인용)
 	FontManager font = new FontManager();
+	//	private int postNo; //게시글 번호
+	//	private int totalPostNum;
+	//	private PostDTO postDTO = new PostDTO();
 	GetFilter getName = GetFilter.getInstance();
 
 	/* 프레임을 제외한 나머지를 합친 것 */
@@ -87,12 +90,12 @@ public class SelectAllHonPost2 extends JPanel {
 		postList();
 		
 		/* 버튼들을 상단패널에 더해줌 */
+		upPanel.add(myHonddoniBtn);
+		upPanel.add(searchHonddoniBtn);
+		upPanel.add(homeBtn);
+		upPanel.add(interestingBtn);
+		upPanel.add(noticeBtn);
 		upPanel.add(backgroundImage);
-		backgroundImage.add(myHonddoniBtn);
-		backgroundImage.add(searchHonddoniBtn);
-		backgroundImage.add(homeBtn);
-		backgroundImage.add(interestingBtn);
-		backgroundImage.add(noticeBtn);
 
 		/* 반복문이 필요없는 버튼, 라벨을 하단패널에 더해줌 */
 		downPanel.add(searchLabel);

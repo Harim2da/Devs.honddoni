@@ -18,6 +18,8 @@ public class Delite extends JPanel {
 	private MainFrame frame;
 	private Delite delite;
 	private JButton btn1, btn2, btn3, btn4, btn5;
+	AdminList adminlist;
+	Delite2 delite2;
 	
 	public Delite(MainFrame frame) {
 		//프레임, 패널설정
@@ -159,6 +161,15 @@ public class Delite extends JPanel {
 	    		   new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
 	    		   delite.setVisible(false);
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+	    		   btn3.remove(btn3);
+	    		   btn5.remove(btn5);
+	    		   btn8.remove(btn8);
+	    		   btn9.remove(btn9);
+	    		   btn05.remove(btn05);
+	    		   adminlist.repaint();
+	    		   adminlist.revalidate();
 	    	   }
 	       });
 	       
@@ -201,6 +212,16 @@ public class Delite extends JPanel {
 	    		   new Delite2(frame);
 	    		   bottomPanel.setVisible(false); 
 	    		   delite.setVisible(false);
+	    		   
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+	    		   btn3.remove(btn3);
+	    		   btn5.remove(btn5);
+	    		   btn8.remove(btn8);
+	    		   btn9.remove(btn9);
+	    		   btn5.remove(btn05);
+	    		   delite2.repaint();
+	    		   delite2.revalidate();
 	    	   }
 	       });
 	       }

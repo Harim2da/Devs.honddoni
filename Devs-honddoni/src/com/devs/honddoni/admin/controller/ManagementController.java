@@ -10,17 +10,21 @@ import com.devs.honddoni.common.dto.PostDTO;
 
 public class ManagementController {
    
-	private AdminService adminService = new AdminService();
+//	private AdminService adminService = new AdminService();
 
-	
-	
-	public void onlyNicname() {
+
+
+	public List<AdminDTO> totalUserList() {
 		
-		List<AdminDTO> adminList = adminService.onlyNicname();
+		List<AdminDTO> adminListDTO = new AdminService().totalUserList();
 		
-//		memberResultView.display(memberList);
+//		if(adminListDTO != null) {
+//			System.out.println("등록 성공");
+//		} else {
+//			System.out.println("등록 실패");
+//		}
 		
-		
+		return adminListDTO;
 	}
 }
 

@@ -26,7 +26,7 @@ public class PostHonddoni extends JPanel {
 	private PostHonddoni postHonddoni;
 	private MainFrame frame;
 	
-//	private JFrame mainFrame; // 메인프레임
+
 	private JPanel topPanel;  // 상단 패널
 	private JPanel bottomPanel; // 하단 패널
 	private JLabel bottomLabel; // 하단 게시판 라벨(그림 배경)
@@ -80,8 +80,7 @@ public class PostHonddoni extends JPanel {
 		
 		frame.add(topPanel);
 		frame.add(bottomPanel);
-//		this.setVisible(true);
-//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
 
 	/*상단 패널 생성*/
@@ -227,8 +226,11 @@ public class PostHonddoni extends JPanel {
 	public void popupPanel() {
 
 		pann = new JLayeredPane();
-		pann.setBounds(0, 30, 500, 770);
+		pann.setBounds(0, 0, 500, 870);
+		pann.setLayout(null);
+		pann.setBackground(Color.CYAN);
 		frame.add(pann);
+		
 
 	}
 
@@ -297,7 +299,7 @@ public class PostHonddoni extends JPanel {
 
 
 		pann = new JLayeredPane();
-		pann.setBounds(0, 30, 500, 670);
+		pann.setBounds(0, 30, 500, 770);
 		frame.add(pann);
 
 
@@ -322,7 +324,7 @@ public class PostHonddoni extends JPanel {
 		koreaMapLabel = new JLabel();
 		koreaMapLabel.setBackground(Color.WHITE);
 		koreaMapLabel.setLayout(null);
-		koreaMapLabel.setBounds(29, 80, 443, 605);
+		koreaMapLabel.setBounds(25, 125, 443, 597);
 		koreaMapLabel.setIcon(new ImageIcon("image/post/matchlocal.png"));
 		pann.add(koreaMapLabel, JLayeredPane.DRAG_LAYER);
 
@@ -349,8 +351,8 @@ public class PostHonddoni extends JPanel {
 
 		/* 지역 선택 버튼 */
 		JButton btn1 = new JButton();   
-		btn1.setBounds(350, 70, 65, 65);
-		btn1.setBorderPainted(true);
+		btn1.setBounds(345, 72, 65, 65);
+		btn1.setBorderPainted(false);
 		btn1.setOpaque(false);
 		btn1.setContentAreaFilled(false);
 		koreaMapLabel.add(btn1);
@@ -368,7 +370,7 @@ public class PostHonddoni extends JPanel {
 		/*지도 위 담양 버튼*/
 		JButton btn2 = new JButton();   
 		btn2.setBounds(50, 400, 65, 65);
-		btn2.setBorderPainted(true);
+		btn2.setBorderPainted(false);
 		btn2.setOpaque(false);
 		btn2.setContentAreaFilled(false);
 		koreaMapLabel.add(btn2);
@@ -386,7 +388,7 @@ public class PostHonddoni extends JPanel {
 		/*지도 위 대구 버튼*/
 		JButton btn3 = new JButton();   
 		btn3.setBounds(355, 300, 65, 65);
-		btn3.setBorderPainted(true);
+		btn3.setBorderPainted(false);
 		btn3.setOpaque(false);
 		btn3.setContentAreaFilled(false);
 		koreaMapLabel.add(btn3);
@@ -402,8 +404,8 @@ public class PostHonddoni extends JPanel {
 		});
 		/*지도 위 부산 버튼*/
 		JButton btn4 = new JButton();   
-		btn4.setBounds(350, 410, 65, 65);
-		btn4.setBorderPainted(true);
+		btn4.setBounds(350, 405, 65, 65);
+		btn4.setBorderPainted(false);
 		btn4.setOpaque(false);
 		btn4.setContentAreaFilled(false);
 		koreaMapLabel.add(btn4);
@@ -421,7 +423,7 @@ public class PostHonddoni extends JPanel {
 		/*지도 위 서울 버튼*/
 		JButton btn5 = new JButton();   
 		btn5.setBounds(80, 72, 63, 63);
-		btn5.setBorderPainted(true);
+		btn5.setBorderPainted(false);
 		btn5.setOpaque(false);
 		btn5.setContentAreaFilled(false);
 		koreaMapLabel.add(btn5);
@@ -439,7 +441,7 @@ public class PostHonddoni extends JPanel {
 		/*지도 위 인천 버튼*/
 		JButton btn6 = new JButton();   
 		btn6.setBounds(15, 125, 60, 60);
-		btn6.setBorderPainted(true);
+		btn6.setBorderPainted(false);
 		btn6.setOpaque(false);
 		btn6.setContentAreaFilled(false);
 		koreaMapLabel.add(btn6);
@@ -457,7 +459,7 @@ public class PostHonddoni extends JPanel {
 		/*지도 위 순천 버튼*/
 		JButton btn7 = new JButton();   
 		btn7.setBounds(242, 440, 60, 60);
-		btn7.setBorderPainted(true);
+		btn7.setBorderPainted(false);
 		btn7.setOpaque(false);
 		btn7.setContentAreaFilled(false);
 		koreaMapLabel.add(btn7);
@@ -475,7 +477,7 @@ public class PostHonddoni extends JPanel {
 		/*지도 위 전주 버튼*/
 		JButton btn8 = new JButton();   
 		btn8.setBounds(38, 310, 63, 63);
-		btn8.setBorderPainted(true);
+		btn8.setBorderPainted(false);
 		btn8.setOpaque(false);
 		btn8.setContentAreaFilled(false);
 		koreaMapLabel.add(btn8);
@@ -493,7 +495,7 @@ public class PostHonddoni extends JPanel {
 		/*지도 위 제주 버튼*/
 		JButton btn9 = new JButton();   
 		btn9.setBounds(195, 510, 63, 63);
-		btn9.setBorderPainted(true);
+		btn9.setBorderPainted(false);
 		btn9.setOpaque(false);
 		btn9.setContentAreaFilled(false);
 		koreaMapLabel.add(btn9);
@@ -511,7 +513,7 @@ public class PostHonddoni extends JPanel {
 		/*지도 위 천안 버튼*/
 		JButton btn10 = new JButton();   
 		btn10.setBounds(77, 223, 63, 63);
-		btn10.setBorderPainted(true);
+		btn10.setBorderPainted(false);
 		btn10.setOpaque(false);
 		btn10.setContentAreaFilled(false);
 		koreaMapLabel.add(btn10);
@@ -680,6 +682,7 @@ public class PostHonddoni extends JPanel {
 		postbtn.setOpaque(false);
 
 
+
 		postbtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -718,6 +721,14 @@ public class PostHonddoni extends JPanel {
 				System.out.println(postDTO);
 
 				contactController.writeHonddoniBoardPost(postDTO);
+				
+				bottomPanel.setVisible(false);
+				topPanel.setVisible(false);
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				new MainBottomPanel(frame);
+				frame.repaint();
+				frame.revalidate();
 
 			}
 		});

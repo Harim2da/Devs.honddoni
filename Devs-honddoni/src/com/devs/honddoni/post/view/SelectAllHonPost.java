@@ -70,7 +70,9 @@ public class SelectAllHonPost extends JPanel{
 		topLabel.setBounds(0, 0, 500, 100);
 		topLabel.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
 		topLabel.setVisible(true); 
-		frame.add(topLabel);
+		topPanel.add(topLabel);
+		frame.repaint();
+		
 		
 	}
 	
@@ -82,7 +84,7 @@ public class SelectAllHonPost extends JPanel{
 		myHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
 		myHonddoniBtn.setBorderPainted(false);
 		myHonddoniBtn.setContentAreaFilled(false);
-		topPanel.add(myHonddoniBtn);
+		topLabel.add(myHonddoniBtn);
 		
 		
 		myHonddoniBtn.addActionListener(new ActionListener() {
@@ -109,7 +111,7 @@ public class SelectAllHonPost extends JPanel{
 		searchHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/SearchHonddoniBtn.png"));
 		searchHonddoniBtn.setBorderPainted(false);
 		searchHonddoniBtn.setContentAreaFilled(false);
-		topPanel.add(searchHonddoniBtn);
+		topLabel.add(searchHonddoniBtn);
 		
 		searchHonddoniBtn.addActionListener(new ActionListener() {
 
@@ -135,7 +137,7 @@ public class SelectAllHonPost extends JPanel{
 		homeBtn.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));
 		homeBtn.setBorderPainted(false);
 		homeBtn.setContentAreaFilled(false);
-		topPanel.add(homeBtn);
+		topLabel.add(homeBtn);
 		
 		
 		homeBtn.addActionListener(new ActionListener() {
@@ -165,7 +167,7 @@ public class SelectAllHonPost extends JPanel{
 		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
 		interestingBtn.setBorderPainted(false);
 		interestingBtn.setContentAreaFilled(false);
-		topPanel.add(interestingBtn);
+		topLabel.add(interestingBtn);
 		interestingBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -184,7 +186,7 @@ public class SelectAllHonPost extends JPanel{
 		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
 		noticeBtn.setBorderPainted(false);
 		noticeBtn.setContentAreaFilled(false);
-		topPanel.add(noticeBtn);
+		topLabel.add(noticeBtn);
 		
 		noticeBtn.addActionListener(new ActionListener() {
 
@@ -471,7 +473,7 @@ public class SelectAllHonPost extends JPanel{
 		JButton studybtn = new JButton();
 		
 		/* 맛집 탐방 */
-		eatbtn.setBounds(50, 23, 137, 137);
+		eatbtn.setBounds(50, 23, 137, 161);
 		eatbtn.setIcon(new ImageIcon("image/post/categoryfood.png"));
 		eatbtn.setBorderPainted(false);
 		eatbtn.setOpaque(false);
@@ -498,7 +500,7 @@ public class SelectAllHonPost extends JPanel{
 		});
 		
 		/* 산책 */
-		walkbtn.setBounds(255, 23, 137, 137);
+		walkbtn.setBounds(255, 23, 137, 161);
 		walkbtn.setIcon(new ImageIcon("image/post/categorysports.png"));
 		walkbtn.setBorderPainted(false);
 		walkbtn.setOpaque(false);
@@ -524,7 +526,7 @@ public class SelectAllHonPost extends JPanel{
 		});
 		
 		/* 활동 */
-		activebtn.setBounds(50, 203, 137, 137);
+		activebtn.setBounds(50, 203, 137, 161);
 		activebtn.setIcon(new ImageIcon("image/post/categoryhonddoni.png"));
 		activebtn.setBorderPainted(false);
 		activebtn.setOpaque(false);
@@ -550,7 +552,7 @@ public class SelectAllHonPost extends JPanel{
 		});
 		
 		/* 취미 */
-		hobbybtn.setBounds(255, 203, 137, 137);
+		hobbybtn.setBounds(255, 203, 137, 161);
 		hobbybtn.setIcon(new ImageIcon("image/post/categorypuzzle.png"));
 		hobbybtn.setBorderPainted(false);
 		hobbybtn.setOpaque(false);
@@ -576,7 +578,7 @@ public class SelectAllHonPost extends JPanel{
 		});
 		
 		/* 게임 */
-		gamebtn.setBounds(50, 383, 137, 137);
+		gamebtn.setBounds(50, 383, 137, 161);
 		gamebtn.setIcon(new ImageIcon("image/post/categoryminigame.png"));
 		gamebtn.setBorderPainted(false);
 		gamebtn.setOpaque(false);
@@ -602,8 +604,8 @@ public class SelectAllHonPost extends JPanel{
 		});
 		
 		/* 스터디 */
-		studybtn.setBounds(255, 383, 137, 137);
-		studybtn.setIcon(new ImageIcon("image/post/categorystudy.png"));
+		studybtn.setBounds(255, 383, 137, 161);
+		studybtn.setIcon(new ImageIcon("image/post/categoryfindpost.png"));
 		studybtn.setBorderPainted(false);
 		studybtn.setOpaque(false);
 		studybtn.setContentAreaFilled(false);

@@ -18,6 +18,8 @@ public class Honnest extends JPanel {
 	private MainFrame frame;
 	private Honnest honnest;
 	private JButton btn1, btn2, btn3, btn4, btn5;
+	AdminList adminlist;
+	Honnest2 honnest2;
 	
 	public Honnest(MainFrame frame) {
 		//프레임, 패널설정
@@ -158,6 +160,16 @@ public class Honnest extends JPanel {
 	    		   new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
 //	    		   MainFrame.setVisible(false);
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+	    		   btn3.remove(btn3);
+	    		   btn4.remove(btn4);
+	    		   btn5.remove(btn5);
+	    		   btn10.remove(btn10);
+	    		   btn11.remove(btn11);
+	    		   adminlist.repaint();
+	    		   adminlist.revalidate();
+	    		   
 	    	   }
 	       });
 	       
@@ -172,6 +184,16 @@ public class Honnest extends JPanel {
 	    		   new Honnest2(frame);
 	    		   bottomPanel.setVisible(false); 
 //	    		   MainFrame.setVisible(false);
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+	    		   btn3.remove(btn3);
+	    		   btn4.remove(btn4);
+	    		   btn5.remove(btn5);
+	    		   btn10.remove(btn10);
+	    		   btn11.remove(btn11);
+	    		   honnest2.repaint();
+	    		   honnest2.revalidate();
+	    		   
 	    	   }
 	       });
 	}
