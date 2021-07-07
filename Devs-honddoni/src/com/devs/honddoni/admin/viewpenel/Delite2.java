@@ -147,7 +147,7 @@ public class Delite2 extends JPanel{
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Delite(frame);
+	    		   delite123 = new Delite(frame);
 	    		   bottomPanel.setVisible(false);
 //	    		  MainFrame.setVisible(false);
 	    		   btn1.remove(btn1);
@@ -169,7 +169,7 @@ public class Delite2 extends JPanel{
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList(frame);
+	    		   adminlist = new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
 	    		   delite.setVisible(false);
 	    		   btn1.remove(btn1);

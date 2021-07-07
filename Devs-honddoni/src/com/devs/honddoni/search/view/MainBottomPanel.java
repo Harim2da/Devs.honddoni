@@ -27,55 +27,37 @@ public class MainBottomPanel extends JPanel{
 
 	private MainBottomPanel mainBottomPanel;
 	private MainFrame frame;
-	
+
 	private JPanel upPanel; 	
 	private JPanel bottomPanel;
-	private JButton allListBoardBtn; //전체조회버튼
-	private JButton honddoniBoardBtn; //혼또니게시판버튼
-	private JButton freeBoardBtn; //자유게시판버튼
-	private JLabel searchBar; //검색바 라벨-----------------------
-	private JButton aim; //검색버튼
-	private JTextField search; //키워드 입력
-	private JLabel recommendTour; //추천여행지라벨----------------
-	private JButton localList1; //추천여행지1 버튼
-	private JButton localList2; //추천여행지2 버튼
-	private JButton localList3; // 추천여행지3 버튼
-	private JButton covid; //코로나 안전수칙버튼
-	private JButton guide; // 이용약관버튼
-	private JButton logout; // 로그아웃버튼
-	private JLabel adminEmail; // 문의메일-----------------------
+	private JButton allListBoardBtn; 			// 전체조회버튼
+	private JButton honddoniBoardBtn; 			// 혼또니게시판버튼
+	private JButton freeBoardBtn; 				// 자유게시판버튼
+	private JLabel searchBar; 					// 검색바 라벨
+	private JButton aim; 						// 검색버튼
+	private JTextField search; 					// 키워드 입력
+	private JLabel recommendTour; 				// 추천여행지라벨
+	private JButton localList1; 				// 추천여행지1 버튼
+	private JButton localList2; 				// 추천여행지2 버튼
+	private JButton localList3; 				// 추천여행지3 버튼
+	private JButton covid; 						// 코로나 안전수칙버튼
+	private JButton guide; 						// 이용약관버튼
+	private JButton logout; 					// 로그아웃버튼
+	private JLabel adminEmail; 					// 문의메일
 	private SearchController searchController;
-	
-	private JButton myHonddoniBtn;								//마이페이지 이동 버튼
-	private JButton searchHonddoniBtn;							//게시글 작성페이지 이동 버튼
-	private JButton homeBtn;									//메인화면이동 버튼
-	private JButton interestingBtn;								//관심글 목록 이동 버튼
-	private JButton noticeBtn;									//공지사항 목록 이동 버튼
-	private JLabel backgroundImage;								//로고 포함 테두리 배경 (디자인용)
-	
+
+	private JButton myHonddoniBtn;				// 마이페이지 이동 버튼
+	private JButton searchHonddoniBtn;			// 게시글 작성페이지 이동 버튼
+	private JButton homeBtn;					// 메인화면이동 버튼
+	private JButton interestingBtn;				// 관심글 목록 이동 버튼
+	private JButton noticeBtn;					// 공지사항 목록 이동 버튼
+	private JLabel backgroundImage;				// 로고 포함 테두리 배경 (디자인용)
+
 	
 	public MainBottomPanel(MainFrame frame) {
 		
 		this.frame = frame;
 		this.mainBottomPanel = this;
-		
-		
-//		this.setBounds(0, 0, 500, 870); //<-크기조절
-//		this.setBackground(Color.white);
-//		this.setLayout(null);
-		
-//		frame.add(this);
-		
-		
-//		/*수정한부분*/
-//		frame.setBounds(100, 100, 516, 909);
-//		frame.setLayout(null);
-//		frame.setVisible(true);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-//		searchController.selectSearch();
-//		topPanel();
-//		bottomPanel();
 		
 		/* 패널 */
 		upPanel();
@@ -107,27 +89,16 @@ public class MainBottomPanel extends JPanel{
 		clickCovid();
 		clickGuide();
 		clickLogout();
-		
-		
+				
 		allBottomPanelComponent();
 		
-		frame.add(upPanel);  //<-- 메인프레임에 내 클래스의 업패널, 바텀패널 붙임
+		frame.add(upPanel);  //<-- 메인프레임에 현재 클래스의 업패널, 바텀패널 붙임
 		frame.add(bottomPanel);
 		
-		
-//		frame.add(bottomPanel); // <--프레임에 하단 패널...???
-		
-//		frame.getContentPane().add(bottomPanel);
-//		this.repaint();
-//		this.revalidate();
-//		this.setVisible(true);
-//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void allBottomPanelComponent() {
 		
-//		this.add(topPanel);
-//		this.add(bottomPanel);
 		bottomPanel.add(allListBoardBtn);
 		bottomPanel.add(honddoniBoardBtn);
 		bottomPanel.add(freeBoardBtn);
@@ -144,20 +115,9 @@ public class MainBottomPanel extends JPanel{
 		bottomPanel.add(recommendTour);
 		bottomPanel.add(adminEmail);
 		
-//		this.repaint();
-//		this.revalidate();
-		
 		frame.repaint();
 		frame.revalidate();
 	}
-	
-//	//상단패널
-//	private void topPanel() {
-//		topPanel = new JPanel();
-//		topPanel.setBounds(0, 0, 500, 100);
-//		topPanel.setLayout(null);
-//		topPanel.setBackground(Color.white);
-//		}
 	
 	/* 상단 패널 */
 	public void upPanel() {
@@ -181,8 +141,6 @@ public class MainBottomPanel extends JPanel{
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.white);	
-		
-//		frame.add(bottomPanel); // <--프레임에 하단 패널...???
 		
 		//검색바 라벨
 		searchBar = new JLabel();
@@ -279,7 +237,7 @@ public class MainBottomPanel extends JPanel{
 
 	}
 
-	/* 관심금 목록페이지로 이동하는 버튼 생성 */
+	/* 관심글 목록페이지로 이동하는 버튼 생성 */
 	public void interestingBtn() {
 
 		interestingBtn = new JButton("");
@@ -338,32 +296,12 @@ public class MainBottomPanel extends JPanel{
 				frame.getIgnoreRepaint();
 				frame.revalidate();
 				
-//				JPanel changeBoardList = new JPanel();
-//				changeBoardList.setLayout(null);
-//				changeBoardList.setBounds(0,100,500,770);
-//				changeBoardList.setVisible(true);
-//				changeBoardList.setBackground(Color.white);
-//				frame.add(changeBoardList);
-//				
-//				AllBoardList allBoardList = new AllBoardList(frame);
-//				allBoardList.bottomPanel();
-//				
-//				
-//				// 패널이 넘어가서 그 전체조회 해당하는 이미지
-//				changeBoardList.repaint();
-//				changeBoardList.revalidate();
-//				// 전체조회 게시판으로
-//				// DB연결 (MVC)
-//				
-//				// 패널이 넘어가서 그 전체조회 해당하는 이미지
-//				
-//				System.out.println("전체조회 게시판으로");
 			}});
 	}
 	
 	//혼또니게시판조회버튼 클릭
 	public void clickHonddoniBoard() {
-//		bottomPanel();
+
 		honddoniBoardBtn = new JButton();
 		honddoniBoardBtn.setIcon(new ImageIcon("image/search/bottompanel/honddoniboardLogo.png"));
 		honddoniBoardBtn.setContentAreaFilled(false);
@@ -406,25 +344,7 @@ public class MainBottomPanel extends JPanel{
 				new FreeBoardList(frame);
 				frame.getIgnoreRepaint();
 				frame.revalidate();
-				
-//				JPanel changeFreeList = new JPanel();
-//				changeFreeList.setLayout(null);
-//				changeFreeList.setBounds(0,100,500,770);
-//				changeFreeList.setVisible(true);
-//				changeFreeList.setBackground(Color.white);
-//				frame.add(changeFreeList);
-//				
-//				AllBoardList allBoardList = new AllBoardList(frame);
-//				allBoardList.bottomPanel();
-//
-//				// 패널이 넘어가서  자유 게시판에 해당하는 이미지
-//				changeFreeList.repaint();
-//				changeFreeList.revalidate();
-//				// 전체조회 게시판으로
-//				// DB연결 (MVC)
-//				
-//				// 패널이 넘어가서 그 자유 게시판에 해당하는 이미지
-//				System.out.println("자유 게시판으로");
+
 			}});
 	}
 	
@@ -458,7 +378,7 @@ public class MainBottomPanel extends JPanel{
 	
 	//지역게시판 리스트1번으로 이동하는 버튼
 	public void clickLocalList1() {
-//		bottomPanel();
+
 		localList1 = new JButton();
 		localList1.setIcon(new ImageIcon("image/search/bottompanel/locallist1Logo.png"));
 		localList1.setContentAreaFilled(false);
@@ -476,7 +396,7 @@ public class MainBottomPanel extends JPanel{
 	
 	//지역게시판 리스트2번으로 이동하는 버튼
 	public void clickLocalList2() {
-//			bottomPanel();
+
 			localList2 = new JButton();
 			localList2.setIcon(new ImageIcon("image/search/bottompanel/locallist2Logo.png"));
 			localList2.setContentAreaFilled(false);
@@ -494,7 +414,7 @@ public class MainBottomPanel extends JPanel{
 		
 		//지역게시판 리스트3번으로 이동하는 버튼
 	public void clickLocalList3() {
-//			bottomPanel();
+
 			localList3 = new JButton();
 			localList3.setIcon(new ImageIcon("image/search/bottompanel/locallist3Logo.png"));
 			localList3.setContentAreaFilled(false);
@@ -512,7 +432,7 @@ public class MainBottomPanel extends JPanel{
 	
 		//코로나 안전수칙 버튼
 	public void clickCovid() {
-//			bottomPanel();
+
 			covid = new JButton();
 			covid.setIcon(new ImageIcon("image/search/bottompanel/covidLogo.png"));
 			covid.setContentAreaFilled(false);
@@ -533,14 +453,12 @@ public class MainBottomPanel extends JPanel{
 					frame.getIgnoreRepaint();
 					frame.revalidate();
 					
-					//System.out.println("코로나 안전수칙으로");
-					//(23, 99, 455, 587);
 				}});
 		}	
 		
 		//이용약관 버튼
 	public void clickGuide() {
-//			bottomPanel();
+
 			guide = new JButton();
 		    guide.setIcon(new ImageIcon("image/search/bottompanel/guideLogo.png"));
 			guide.setContentAreaFilled(false);
@@ -561,13 +479,12 @@ public class MainBottomPanel extends JPanel{
 					frame.getIgnoreRepaint();
 					frame.revalidate();
 					
-					//System.out.println("이용약관으로");
 				}});
 		}	
 
 		//로그아웃 버튼
 	public void clickLogout() {
-//			bottomPanel();
+
 			logout = new JButton();
 		    logout.setIcon(new ImageIcon("image/search/bottompanel/logoutLogo.png"));
 			logout.setContentAreaFilled(false);
@@ -591,15 +508,6 @@ public class MainBottomPanel extends JPanel{
 					
 				}});
 		}
-		
-		
-//		frame.repaint();
-//		fram.revalidate();
-//		
-	
-//	JPanel mainBottomPanel = new JPanel();
-//	JPanel mainBottomPanel = new JPanel();
-	
 	
 }
 

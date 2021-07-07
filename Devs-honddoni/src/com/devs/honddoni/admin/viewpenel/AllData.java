@@ -284,16 +284,24 @@ public class AllData extends JPanel {
 	    		   
 	    		   alldata2 = new AllData2(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   alldata.setVisible(false);
+//	    		   alldata.setVisible(false);
 	    		   
-	    		   bottomPanel.remove(btn1);
-	    		   bottomPanel.remove(btn2);
-	    		   bottomPanel.remove(btn3);
-	    		   bottomPanel.remove(btn4);
-	    		   bottomPanel.remove(btn5);
-	    		   bottomPanel.remove(lb1);
-	    		   bottomPanel.remove(btn10);
-	    		   bottomPanel.remove(btn11);
+//	    		   btn1.setVisible(false);
+//	    		   btn2.setVisible(false);
+//	    		   btn3.setVisible(false);
+//	    		   btn4.setVisible(false);
+//	    		   btn5.setVisible(false);
+//	    		   lb1.setVisible(false);
+//	    		   btn10.setVisible(false);
+//	    		   btn11.setVisible(false);
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+	    		   btn3.remove(btn3);
+	    		   btn4.remove(btn4);
+	    		   btn5.remove(btn5);
+	    		   lb1.remove(lb1);
+	    		   btn10.remove(btn10);
+	    		   btn11.remove(btn11);
 	    		   alldata2.repaint();
 	    		   alldata2.revalidate();
 	    		   
@@ -310,15 +318,25 @@ public class AllData extends JPanel {
 	    		   
 	    		   adminlist = new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   alldata.setVisible(false);
-	    		   bottomPanel.remove(btn1);
-	    		   bottomPanel.remove(btn2);
-	    		   bottomPanel.remove(btn3);
-	    		   bottomPanel.remove(btn4);
-	    		   bottomPanel.remove(btn5);
-	    		   bottomPanel.remove(lb1);
-	    		   bottomPanel.remove(btn10);
-	    		   bottomPanel.remove(btn11);
+//	    		   alldata.setVisible(false);
+	    		   
+//	    		   btn1.setVisible(false);
+//	    		   btn2.setVisible(false);
+//	    		   btn3.setVisible(false);
+//	    		   btn4.setVisible(false);
+//	    		   btn5.setVisible(false);
+//	    		   lb1.setVisible(false);
+//	    		   btn10.setVisible(false);
+//	    		   btn11.setVisible(false);
+	    		   
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+	    		   btn3.remove(btn3);
+	    		   btn4.remove(btn4);
+	    		   btn5.remove(btn5);
+	    		   lb1.remove(lb1);
+	    		   btn10.remove(btn10);
+	    		   btn11.remove(btn11);
 	    		   alldata2.repaint();
 	    		   alldata2.revalidate();
 	    		   
