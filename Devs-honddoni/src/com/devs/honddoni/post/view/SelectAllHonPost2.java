@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.common.PagenationPost;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
@@ -22,6 +21,7 @@ import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.GetFilter;
 import com.devs.honddoni.post.controller.PagingController;
 import com.devs.honddoni.search.view.MainBottomPanel;
+
 public class SelectAllHonPost2 extends JPanel {
 
 	private SelectAllHonPost2 selectAllHonPost2;
@@ -158,11 +158,11 @@ public class SelectAllHonPost2 extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				downPanel.setVisible(false);
-				upPanel.setVisible(false);
 				frame.remove(upPanel);
 				frame.remove(downPanel);
-				MyPage mp = new MyPage(frame);
+				downPanel.setVisible(false);
+				upPanel.setVisible(false);
+				new MyPage(frame);
 				frame.repaint();
 				frame.revalidate();
 			}
@@ -252,7 +252,7 @@ public class SelectAllHonPost2 extends JPanel {
 				frame.remove(downPanel);
 				upPanel.setVisible(false);
 				downPanel.setVisible(false);
-				new Notice(frame);
+				new PostNotice(frame);
 				frame.repaint();
 				frame.revalidate();
 			}

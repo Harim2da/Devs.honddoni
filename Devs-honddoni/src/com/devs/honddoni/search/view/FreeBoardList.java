@@ -16,11 +16,13 @@ import javax.swing.JTextField;
 import com.devs.honddoni.common.PagenationPost;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.GetFilter;
 import com.devs.honddoni.post.controller.PagingController;
 import com.devs.honddoni.post.view.PostHonddoni;
+import com.devs.honddoni.post.view.PostNotice;
 import com.devs.honddoni.post.view.SelectAllHonPost2;
 
 public class FreeBoardList extends JPanel {
@@ -51,7 +53,7 @@ public class FreeBoardList extends JPanel {
 	private JButton interestingBtn;					// 관심글 목록 이동 버튼
 	private JButton noticeBtn;						// 공지사항 목록 이동 버튼
 	private JLabel backgroundImage;					// 로고 포함 테두리 배경 (디자인용)
-
+	FontManager font = new FontManager();
 	GetFilter getName = GetFilter.getInstance();
 
 	/* 프레임을 제외한 나머지를 합친 것 */
@@ -241,7 +243,13 @@ public class FreeBoardList extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("공지사항 버튼 클릭");
+				frame.remove(upPanel);
+				frame.remove(bottomPanel);
+				upPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new PostNotice(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -458,6 +466,7 @@ public class FreeBoardList extends JPanel {
 			nickName[i] = new JLabel();
 			nickName[i].setLayout(null);
 			nickName[i].setText(postInfo.getMemberNickname());
+			nickName[i].setFont(font.customFont12);
 			nickName[i].setBounds(100, y + 10, 90, 50);
 			bottomPanel.add(nickName[i]);
 			y += 118;
@@ -479,6 +488,7 @@ public class FreeBoardList extends JPanel {
 			postTitle = new JLabel[postListDTO.size()];
 			postTitle[i] = new JLabel();
 			postTitle[i].setText(postInfo.getPostName());
+			postTitle[i].setFont(font.customFont12);
 			postTitle[i].setLayout(null);
 			postTitle[i].setBounds(64, y + 63, 343, 25);
 			bottomPanel.add(postTitle[i]);
