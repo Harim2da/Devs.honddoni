@@ -1,5 +1,7 @@
 package com.devs.honddoni.memberLog.model.dao;
 
+import static com.devs.honddoni.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,15 +12,16 @@ import java.sql.SQLException;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
+import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 import com.devs.honddoni.memberLog.model.dto.SearchIdDTO;
 import com.devs.honddoni.memberLog.model.dto.SearchPwdDTO;
 
-import static com.devs.honddoni.common.JDBCTemplate.close;
-
 public class MemberLogDAO {
 
 	Properties prop = new Properties();
+	
+	private MemberRegistDTO memberDBDTO;
 
 	public MemberLogDAO() {
 		this.prop = new Properties();
@@ -34,7 +37,7 @@ public class MemberLogDAO {
 		}
 	}
 
-	public String userLogin(Connection con, LoginDataDTO loginDataDTO) {
+	public MemberRegistDTO userLogin(Connection con, LoginDataDTO loginDataDTO) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -45,15 +48,20 @@ public class MemberLogDAO {
 
 		try {
 			pstmt = con.prepareStatement(query);
-			//스트링으로 잘 들어갈까..?
 			pstmt.setString(1, loginDataDTO.getMemberId());
 
 			rset = pstmt.executeQuery();
 
 			if(rset.next()) {
-				userPassword = rset.getString("MEMBER_PASSWORD");
+				memberDBDTO = new MemberRegistDTO();
+				
+				memberDBDTO.setMemberNo(rset.getInt("MEMBER_NO"));
+				memberDBDTO.setMemberPassword(rset.getString("MEMBER_PASSWORD"));
+				memberDBDTO.setMemberStatus(rset.getString("MEMBER_STATUS"));
+				memberDBDTO.setMemberProfile(rset.getString("MEMBER_ACCESS"));
+				
 			} else {
-				System.out.println("Password 값없음");
+				System.out.println("Password 값 없음");
 			}
 
 		} catch (SQLException e) {
@@ -63,7 +71,7 @@ public class MemberLogDAO {
 			close(rset);
 		}
 
-		return userPassword;
+		return memberDBDTO;
 	}
 
 	public String searchId(Connection con, SearchIdDTO searchIdDTO) {

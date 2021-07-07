@@ -4,7 +4,7 @@
 <comment/>	
 	<entry key="getMemberPassword">
 	  SELECT /*com.greedy.memberlog.model.dao.MemberLogDAO#userLogin()*/
-	        A.MEMBER_PASSWORD
+	        A.*
 	   FROM TBL_MEMBER A
 	  WHERE A.MEMBER_ID = ?
 	</entry>	

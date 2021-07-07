@@ -1,4 +1,4 @@
-package com.devs.honddoni.admin.viewpenel;
+package com.devs.honddoni.post.view;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -25,15 +25,12 @@ import com.devs.honddoni.post.controller.PagingController;
 
 
 //공지사항 게시판 화면
-public class Notice extends JPanel{
+public class PostNotice extends JPanel{
 	
 	private MainFrame frame;
-	private Notice notice;
+	private PostNotice postNotice;
 	
-	
-	private AdminList adminList; //newPanel로 쓸 것
-	private NoticeWrite noticeWrite; //newPanel로 쓸 것
-	private NoticeContentView noticeContentView; //newPanel로 쓸 것
+	private PostNoticeView postNoticeView; //newPanel로 쓸 것
 	
 	private JLabel pagebarLabel;					//페이지 표기 바
 	private JLabel preNumber = new JLabel("");		//페이지를 나타내는 앞의 숫자
@@ -48,6 +45,7 @@ public class Notice extends JPanel{
 	private List<PostDTO> postDTOList = null;		//페이지에 해당하는 게시물들의 목록
 	private PostDTO postDTO;						//해당 게시물의 정보
 	
+	private JPanel noticeLabel;
 	private JLabel[] postListLb;					//게시물 내용을 나타내는 밑바탕라벨 (디자인용도)
 	private JButton[] postBtn;						//해당 게시물로 가는 버튼
 	private JLabel[] title;							//해당 게시물의 제목
@@ -58,9 +56,9 @@ public class Notice extends JPanel{
 	
 	FontManager font = new FontManager();
 			
-	public Notice(MainFrame frame) {
+	public PostNotice(MainFrame frame) {
 		this.frame = frame; 
-		this.notice = this;		
+		this.postNotice = this;		
 		
 		/* 제일 기본 패널 (init)*/
 		this.setBounds(0, 0, 500, 870);
@@ -69,26 +67,8 @@ public class Notice extends JPanel{
 		frame.add(this);
 		System.out.println("Notice 패널 생성");	
 
-		/* 혼또니 로고버튼 */
-		JButton honddoniBtn = new JButton("");
-		honddoniBtn.setBounds(305, 29, 173, 71);
-		honddoniBtn.setBackground(null);
-		honddoniBtn.setBorderPainted(true);
-		honddoniBtn.setIcon(new ImageIcon("image/admin/HondoniWrite.png"));
-		honddoniBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//관리자메인 페이지로 나감
-				System.out.println("관리자메인 페이지로 나감");
-				
-				frame.remove(notice);
-				notice.setVisible(false);
-				adminList = new AdminList(frame);
-				frame.repaint();
-				frame.revalidate();	
-				
-			}
-		});
+		/* 상단패널 필요*/
+		
 		
 		/* 검색창 라벨 */
 		JLabel searchLb = new JLabel("");
@@ -108,14 +88,14 @@ public class Notice extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				System.out.println("공지게시판 검색으로 이동");
-				
-				//검색할 단어
-				String getText = searchTf.getText();
-				
-				//게시판 검색...	
-				SearchSingletonDTO searchSingletonDTO = SearchSingletonDTO.getInstance();
-				searchSingletonDTO.setGetSearchWord(getText);
+//				System.out.println("공지게시판 검색으로 이동");
+//				
+//				//검색할 단어
+//				String getText = searchTf.getText();
+//				
+//				//게시판 검색...	
+//				SearchSingletonDTO searchSingletonDTO = SearchSingletonDTO.getInstance();
+//				searchSingletonDTO.setGetSearchWord(getText);
 				
 				//싱글톤갖다쓸 때
 //				SearchSingletonDTO searchSingletonDTO = SearchSingletonDTO.getInstance();
@@ -124,36 +104,18 @@ public class Notice extends JPanel{
 			}
 		});		
 		
-		/* 공지사항 작성 버튼 */
-		JButton writeNoticeBtn = new JButton();
-		writeNoticeBtn.setBounds(36, 228, 72, 22);
-		writeNoticeBtn.setBorderPainted(false);
-		writeNoticeBtn.setIcon(new ImageIcon("image/admin/NoticeWrite.png"));
-		writeNoticeBtn.addActionListener(new ActionListener() {			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("NoticeWrite 패널로 이동");
 				
-				frame.remove(notice);
-				notice.setVisible(false);
-				noticeWrite = new NoticeWrite(frame);
-				frame.repaint();
-				frame.revalidate();	
-			}
-		});
-		
 		//패널에 버튼 추가
-	    this.add(honddoniBtn);
 	    this.add(searchLb);
-	    this.add(writeNoticeBtn);	
 	    searchLb.add(searchTf);
 	    searchLb.add(searchBtn);
+	    
 	    		
-	    /* 페이지 표기 바 세팅*/
+	    /* 페이지 표기 바 세팅 */
 	    pagebarLabel = new JLabel("");
 	    pagebarLabel.setBounds(184, 203, 138, 22);
 	    pagebarLabel.setIcon(new ImageIcon("image/admin/notice_pagingArea.png"));
-	    notice.add(pagebarLabel);
+	    this.add(pagebarLabel);
 	    
 		//페이징 버튼과 숫자들		
 		prePageNumber();
@@ -161,25 +123,32 @@ public class Notice extends JPanel{
 		prePageBtn();
 		commingPageBtn();
 		
-		//pagebarLabel에 라벨, 버튼을 더해줌
-		pagebarLabel.add(preNumber);
-		pagebarLabel.add(preBtn);
-		pagebarLabel.add(commingNumber);
-		pagebarLabel.add(commingBtn);		
-		
+		//게시글 올라가는 패널
+		setNoticeLabel();		
+				
 		//게시글 내용들 세팅
 		setTitle();	    
 		postBtnAdd();
 		setPostListLb();
 	    
-	    System.out.println("notice패널 : " + notice); //확인용 출력	    
-	    
+		//pagebarLabel에 라벨, 버튼을 더해줌
+		pagebarLabel.add(preNumber);
+		pagebarLabel.add(preBtn);
+		pagebarLabel.add(commingNumber);
+		pagebarLabel.add(commingBtn);		    
 	    
 	    //확인용
 	    frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	    
 	}
 	
+	public void setNoticeLabel() {
+		//게시글 올라가는 패널
+		noticeLabel = new JPanel();
+		noticeLabel.setBounds(35, 252, 430, 577);
+		noticeLabel.setLayout(null);
+		postNotice.add(noticeLabel);
+	}
 	
 	/* 현재페이지를 나타내는 숫자 */
 	public void prePageNumber() {
@@ -236,6 +205,14 @@ public class Notice extends JPanel{
 					frontPage++;
 				}
 				
+				postNotice.remove(noticeLabel);
+				setNoticeLabel();				
+				
+				//게시글 내용들 세팅
+				setTitle();	    
+				postBtnAdd();
+				setPostListLb();
+				
 				commingPageBtn();
 				prePageBtn();
 				prePageNumber();		
@@ -270,7 +247,10 @@ public class Notice extends JPanel{
 				}
 				
 				postDTOList = new PagingController().NoticePostList(pageNo);
-								
+				
+				postNotice.remove(noticeLabel);
+				setTitle();	    
+				postBtnAdd();
 				setPostListLb();		//게시글 배경 틀 다시 잡기
 
 				prePageBtn(); 		//이동 후에, 다시 버튼을 재설정해줘야 함
@@ -288,7 +268,7 @@ public class Notice extends JPanel{
 	/* 게시물 내용을 나타내는 밑바탕라벨 (디자인용도) 반복 */
 	public void setPostListLb() {
 		int pageNo = frontPage;
-		int y = 254; //늘어나는 y축 값
+		int y = 0; //늘어나는 y축 값
 		
 		//해당페이지에 맞는 포스트DTO를 List에 담아온다
 		postDTOList = new PagingController().NoticePostList(pageNo);
@@ -303,21 +283,21 @@ public class Notice extends JPanel{
 			postListLb[i] = new JLabel();
 			postListLb[i].setLayout(null);
 			postListLb[i].setIcon(new ImageIcon("image/admin/notice_postArea.png"));
-			postListLb[i].setBounds(35, y, 432, 105);
+			postListLb[i].setBounds(0, y, 432, 105);
 			
-			notice.add(postListLb[i]);
+			noticeLabel.add(postListLb[i]);
 			
 			y += 119;
-			
-			notice.repaint();
-			notice.revalidate();
+			System.out.println("게시물1개 밑바탕라벨 붙이기");
+			postNotice.repaint();
+			postNotice.revalidate();
 		}
 	}
 	
 	/* 해당 게시물 제목을 나타내는 라벨 */
 	public void setTitle() {
 		int pageNo = frontPage;
-		int p = 316; //늘어나는 y축 값
+		int p = 62; //늘어나는 y축 값
 		
 		postDTOList = new PagingController().NoticePostList(pageNo);
 		PostDTO postInfo = null;
@@ -334,10 +314,13 @@ public class Notice extends JPanel{
 			title[i].setText(postInfo.getPostName());
 			title[i].setFont(font.customFont12);
 			title[i].setLayout(null);
-			title[i].setBounds(64, p, 350, 25);
+			title[i].setBounds(29, p, 350, 25);
 			
-			notice.add(title[i]);
+			noticeLabel.add(title[i]);
 			p += 119;
+			System.out.println("게시물1개 제목라벨 붙이기");
+//			postNotice.repaint();
+//			postNotice.revalidate();
 		}
 		
 		
@@ -347,7 +330,7 @@ public class Notice extends JPanel{
 	public void postBtnAdd() {
 		
 		int pageNo = frontPage;
-		int j = 266; //늘어나는 y축 값
+		int j = 12; //늘어나는 y축 값
 		
 		postDTOList = new PagingController().NoticePostList(pageNo);
 		System.out.println("DTO리스트 크기 : " + postDTOList.size());
@@ -361,9 +344,13 @@ public class Notice extends JPanel{
 			postBtn[i] = new JButton();
 			postBtn[i].setLayout(null);
 			postBtn[i].setIcon(new ImageIcon("image/admin/notice_noticeBtn.png"));
-			postBtn[i].setBounds(54, j, 140, 45);
-			notice.add(postBtn[i]);
+			postBtn[i].setBounds(18, j, 140, 45);
+			noticeLabel.add(postBtn[i]);
 			j += 119;
+			
+			System.out.println("게시물1개 버튼 붙이기");
+			postNotice.repaint();
+			postNotice.revalidate();
 			
 			//postDTOList 중에 이번회차 내용을 DTO에 입력
 			int postNo = postinfoDTO.getPostNo(); 			//엥 왜 이거지			
@@ -373,13 +360,15 @@ public class Notice extends JPanel{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("글번호 : " + postNo + "번 포스트로 이동");
+					System.out.println("글번호 : " + postNo + "번 포스트로 이동");					
 					
-					notice.setVisible(false);
-					noticeContentView = new NoticeContentView(frame, postinfoDTO);
+					frame.remove(postNotice);
+					postNotice.setVisible(false);
+					postNoticeView = new PostNoticeView(frame, postinfoDTO);
+					frame.repaint();
+					frame.revalidate();
 					
 //					postDTO = contactController.selectThePost(i);  //이게 맞을까..?
-					
 //					noticeContentView(frame, postDTO);
 					 
 
