@@ -23,6 +23,9 @@ public class AllData2 extends JPanel {
 	private JLabel lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11, lb12, lb13, lb14, lb15, lb16,
 	lb17, lb18, lb19, lb20, lb21; 
 	
+	AdminList adminlist;
+	AllData alldata123;
+	
 	public AllData2(MainFrame frame) {
 		//프레임, 패널설정
 			this.frame = frame;
@@ -255,6 +258,12 @@ public class AllData2 extends JPanel {
 	    		   new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
 	    		   alldata.setVisible(false);
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(lb1);
+	    		   bottomPanel.remove(btn8);
+	    		   bottomPanel.remove(btn9);
+	    		   adminlist.repaint();
+	    		   adminlist.revalidate();
 	    	   }
 	       });
 	       
@@ -269,6 +278,12 @@ public class AllData2 extends JPanel {
 	    		   new AllData(frame);
 	    		   bottomPanel.setVisible(false); 
 	    		   alldata.setVisible(false);
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(lb1);
+	    		   bottomPanel.remove(btn8);
+	    		   bottomPanel.remove(btn9);
+	    		   alldata123.repaint();
+	    		   alldata123.revalidate();
 	    	   }
 	       });
 	}

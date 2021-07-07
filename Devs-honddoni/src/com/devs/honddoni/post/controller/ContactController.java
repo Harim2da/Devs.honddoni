@@ -3,15 +3,15 @@ package com.devs.honddoni.post.controller;
 import java.text.SimpleDateFormat;
 
 import com.devs.honddoni.common.dto.PostDTO;
-import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.post.model.service.PostService;
+import com.devs.honddoni.post.view.PostResultView;
 
 public class ContactController {
 	
 	private PostService postService = new PostService();
 	GetLoginMember loginMember = GetLoginMember.getInstance();
-	PopupFrame popup;
+	PostResultView postResultView;
 	public void writeHonddoniBoardPost(PostDTO postDTO) {
 		
 
@@ -61,16 +61,14 @@ public class ContactController {
 		post.setCategoryCode(categoryCode);
 		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
 		
-		System.out.println(post);
+		
 		/* 서비스 호출 결과 리턴 받기 */
 		int result = postService.insertHonddoniPost(post);
 		
 		if(result > 0) {
-			popup.popup("image/post/updateSuccess.png");
-			System.out.println("등록 성공");
+			postResultView.displayResult("updateSuccess");
 		} else {
-			popup.popup("image/post/updatefail.png");
-			System.out.println("등록 실패");
+			postResultView.displayResult("updatefail");
 		}
 		
 	}
@@ -90,11 +88,8 @@ public class ContactController {
 		int result = postService.deleteThePost(postNo);
 		
 		if(result > 0) {
-			popup.popup("image/post/ok.png");
-			System.out.println("변경 성공");
+			postResultView.displayResult("deleteSuccess");
 		}
-		
-		//return result; // 결과값 관련 화면 팝업고려
 	}
 	
 	
@@ -104,15 +99,10 @@ public void updateThePost(PostDTO postDTO) {
 		String postName = postDTO.getPostName();
 		String postContents = postDTO.getPostContents();
 		String postCategory = postDTO.getPostCategory();
-		//임시값		int postMemberNo = 6; 
 		
 		String postMeetingDate = postDTO.getPostMeetingDate();
 		String postMeetingTime = postDTO.getPostMeetingTime();
 		
-		
-		/*선택한 지역명의 코드를 조회*/		
-//		String localName= postDTO.getLocalName();
-//		int localCode = postService.searchLocalCode(localName);
 		
 		/*선택한 카테고리명의 코드를 조회*/
 		String categoryName = postDTO.getCategoryName();
@@ -131,22 +121,18 @@ public void updateThePost(PostDTO postDTO) {
 		post.setPostCategory(postCategory);	
 		post.setPostMeetingDate(postMeetingDate);
 		post.setPostMeetingTime(postMeetingTime);
-//		post.setLocalCode(localCode);
 		post.setCategoryCode(categoryCode);
 		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
 		
-		System.out.println(post);
+		
 		/* 서비스 호출 결과 리턴 받기 */
 		int result = postService.updateThePost(post);
 		
 		if(result > 0) {
-			popup.popup("image/post/updateSuccess.png");
-			System.out.println("등록 성공");
+			postResultView.displayResult("updateSuccess");
 		} else {
-			popup.popup("image/post/updatefail.png");
-			System.out.println("등록 실패");
+			postResultView.displayResult("updatefail");
 		}
-		
 	}
 	
 	

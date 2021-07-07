@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
+import com.devs.honddoni.common.mainframe.FrameManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class AdminList extends JPanel {
@@ -22,6 +22,10 @@ public class AdminList extends JPanel {
 		private MainFrame frame;
 		private AdminList adminList;
 		private JButton btn1, btn2, btn3, btn4, btn5;
+		AllData alldata;
+		Honnest honnest;
+		Delite delite;
+		AdminList adminlist;
 		
 		public AdminList(MainFrame frame) {
 		//프레임, 패널설정
@@ -151,6 +155,15 @@ public class AdminList extends JPanel {
 	    		   adminList.setVisible(false); 
 //	    		   frame.setVisible(false);
 	    		   new Delite(frame);
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+
+	    		   btn3.remove(btn3);
+	    		   btn4.remove(btn4);
+	    		   btn5.remove(btn5);
+
+	    		   delite.repaint();
+	    		   delite.revalidate();
 	    	   }
 	       });
 	       
@@ -163,10 +176,17 @@ public class AdminList extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   
 	    		   adminList.setVisible(false); 
 //	    		   frame.setVisible(false);
 	    		   new AllData(frame);
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(btn2);
+	    		   bottomPanel.remove(btn3);
+	    		   bottomPanel.remove(btn4);
+	    		   bottomPanel.remove(btn5);
+
+	    		   alldata.repaint();
+	    		   alldata.revalidate();
 	    	   }
 	       });
 	       
@@ -183,6 +203,14 @@ public class AdminList extends JPanel {
 	    		   adminList.setVisible(false); 
 //	    		   frame.setVisible(false);
 	    		   new Honnest(frame);
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+	    		   btn3.remove(btn3);
+	    		   btn5.remove(btn5);
+	    		   honnest.repaint();
+	    		   honnest.revalidate();
+	    		   
+	    		   
 	    	   }
 	       });
 	       
@@ -198,6 +226,12 @@ public class AdminList extends JPanel {
 	    		   new AdminList(frame);
 	    		   adminList.setVisible(false); 
 //	    		   frame.setVisible(false);
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+	    		   btn3.remove(btn3);
+	    		   btn5.remove(btn5);
+	    		   adminlist.repaint();
+	    		   adminlist.revalidate();
 	    	   }
 	       });
 		}  

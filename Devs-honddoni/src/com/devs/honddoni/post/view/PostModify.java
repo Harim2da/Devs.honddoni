@@ -268,7 +268,7 @@ public class PostModify extends JPanel{
 	
 	/* 게시글 내용 */
 	private void modifyPostContents(int postNo) {
-		postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
+	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
 
 		String contents = postDTO.getPostContents();
 		System.out.println(contents);
@@ -284,7 +284,7 @@ public class PostModify extends JPanel{
 
 	/* 모일 인원 */
 	private void modifyJoinmember(int postNo) {
-		postDTO = contactController.selectThePost(postNo);  //괄호 속 게시글 번호 입력받기
+	//	postDTO = contactController.selectThePost(postNo);  //괄호 속 게시글 번호 입력받기
 		String join = Integer.valueOf(postDTO.getPostNumberOfPeopleNumber()).toString();
 
 		joinmember = new JTextField();
@@ -299,7 +299,7 @@ public class PostModify extends JPanel{
 
 
 	private void modifyLocal(int postNo) {
-		postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
+	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
 
 		String localName = postDTO.getLocalName();
 		local = new JButton(localName);
@@ -313,7 +313,7 @@ public class PostModify extends JPanel{
 	}
 
 	private void modifyCategory(int postNo) {
-		postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
+	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
 
 		String categoryName = postDTO.getCategoryName();
 		category = new JButton(categoryName);
@@ -327,7 +327,7 @@ public class PostModify extends JPanel{
 	}
 
 	private void modifyDate(int postNo) {
-		postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
+	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
 
 		String meet = postDTO.getPostMeetingDate();
 		String year = "";
@@ -358,7 +358,7 @@ public class PostModify extends JPanel{
 	
 	/* 작성자 프로필 생성 */
 	private void profile(int postNo) {
-		postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
+	//	postDTO = contactController.selectThePost(postNo); //게시글 번호 입력받기
 		String profilenum = postDTO.getMemberProfile();
 
 		profile = new JLabel();
@@ -382,7 +382,7 @@ public class PostModify extends JPanel{
 	
 	/*닉네임 불러오기 */
 	private void nickName(int postNo) {
-		postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
+	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
 		String nick = postDTO.getMemberNickname();
 
 		nickName = new JLabel();
@@ -425,7 +425,6 @@ public class PostModify extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// 댓글 전체보기 연결
-				//int postNo = postDTO.getPostNo();
 				frame.remove(topPanel);
 				frame.remove(bottomPanel);
 				topPanel.setVisible(false);
@@ -477,7 +476,7 @@ public class PostModify extends JPanel{
 					bottomPanel.remove(modify);
 					bottomPanel.remove(commentcheck);
 					bottomPanel.remove(delete);
-					postbtn = new JLabel();			// 수정 후 작성완료용
+					postbtn = new JLabel();			// 수정 후 '게시글 등록'버튼
 					postbtn.setBounds(128, 684, 244, 42);
 					postbtn.setLayout(null);
 					postbtn.setIcon(new ImageIcon("image/post/postbutton.png"));
@@ -535,8 +534,7 @@ public class PostModify extends JPanel{
 							String meetTime = meetHour + ":" + meetMin ;
 							postDTO.setPostMeetingTime(meetTime);
 
-							//		postDTO.setLocalName(localSelectbtn.getText()); //일단 임의의 값 지도에서 지역선택 후 받아오기 - DB는 숫자
-
+					
 							/* 카테고리(맛집 탐방 등) 일단 받아오고 컨트롤러에서 코드로 변환해주기*/
 
 							postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
@@ -602,9 +600,7 @@ public class PostModify extends JPanel{
 					new MainBottomPanel(frame);			
 					frame.repaint();
 					frame.revalidate();
-			
-				
-				
+	
 				}
 				}
 		});
