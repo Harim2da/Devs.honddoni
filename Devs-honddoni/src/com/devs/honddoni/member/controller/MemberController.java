@@ -17,8 +17,9 @@ public class MemberController {
 	private DuplCheckResult duplCheckResult = new DuplCheckResult();
 	private MainFrame mainFrame;
 	
-	public void idDuplCheck(String getUserId) {
+	public int idDuplCheck(String getUserId) {
 		
+		//result가 0이면 중복아님 = 사용가능
 		int result = memberService.idDuplCheck(getUserId);
 		
 		if(result == 0) {
@@ -26,10 +27,11 @@ public class MemberController {
 		} else {
 			duplCheckResult.displayDuplCheckResult("중복");
 		}
-				
+		
+		return result;
 	}
 
-	public void registMember(MemberRegistDTO member) {
+	public int registMember(MemberRegistDTO member) {
 		
 		int result = memberService.registMember(member);
 		
@@ -39,6 +41,7 @@ public class MemberController {
 			System.out.println("등록실패!");
 		}
 		
+		return result;		
 	}
 
 	public boolean pwdCheck(ChangePwdDTO changePwd) {

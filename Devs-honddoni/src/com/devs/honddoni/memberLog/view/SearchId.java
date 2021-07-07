@@ -49,17 +49,15 @@ public class SearchId extends JPanel{
 		honddoniBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(e.getSource() == honddoniBtn) {
-					
+				if(e.getSource() == honddoniBtn) {					
 					/* 로고버튼 누를 시, 로그인 창으로 이동 */			
 					System.out.println("로그인창으로 이동");
+					
+					frame.remove(searchId);
 					searchId.setVisible(false);					
 					memberLogView = new MemberLogView(frame);
-//					FrameManager.changePanel(mainframe, firstPanel, newPanel);					
-//					frame.remove(searchId);
-//					frame.add(memberLogView);
-//					frame.repaint();
-//					frame.revalidate();
+					frame.repaint();
+					frame.revalidate();
 				}
 				
 			}
@@ -123,16 +121,14 @@ public class SearchId extends JPanel{
 		cancelBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				
 				//로그인창으로 나감
 				System.out.println("로그인창으로 이동");
+				
+				frame.remove(searchId);
 				searchId.setVisible(false);					
 				memberLogView = new MemberLogView(frame);
-//				FrameManager.changePanel(frame, firstPanel, new MemberLogView(frame));				
-//				frame.remove(searchId);
-//				frame.add(memberLogView);
-//				frame.repaint();
-//				frame.revalidate();
+				frame.repaint();
+				frame.revalidate();
 				
 			}
 		});

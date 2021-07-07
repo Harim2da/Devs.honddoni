@@ -22,6 +22,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.memberLog.view.MemberLogView;
@@ -83,13 +84,12 @@ public class RegistMember extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				//로그인창으로 나감
 				System.out.println("로그인창으로 이동");
+				
+				frame.remove(registMember);
 				registMember.setVisible(false);
 				memberLogView = new MemberLogView(frame);
-//				FrameManager.changePanel(frame, firstPanel, newPanel);
-//				frame.remove(searchPwd);
-//				frame.add(memberLogView);
-//				frame.repaint();
-//				frame.revalidate();
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -130,7 +130,8 @@ public class RegistMember extends JPanel {
 		birthdayTf.setFont(font.customFont12);
 
 		/* 라디오 버튼에 따라 gender 설정 */
-		/* 왜 String gender를 액션리스너에서 또 설정해줘야 되냐... */
+		/* 왜 String gender를 액션리스너에서 또 설정해줘야 되냐... 
+		 * > 액션리스너는 별개의 익명클래스이기때문에, 필드에 있어야만 가져다 쓸 수 있다. */
 		JRadioButton genderMRb = new JRadioButton("남");
 		genderMRb.setBounds(330, 260, 55, 26);
 		genderMRb.setBorder(null);
@@ -192,21 +193,6 @@ public class RegistMember extends JPanel {
 		JLabel characterSelectLb = new JLabel();
 		characterSelectLb.setBounds(92, 572, 316, 41);
 		characterSelectLb.setIcon(new ImageIcon("image/member/regist/regist_7_character_select.png"));
-
-		//패널로 성향 받는거 포기.. 페이징 안 될 수도 있어서
-		//		JButton characterSelectBtn = new JButton();
-		//		characterSelectBtn.setBounds(360, 580, 20, 20);
-		//		characterSelectBtn.setBackground(Color.CYAN);
-		//		characterSelectBtn.grabFocus();
-		//		characterSelectBtn.addActionListener(new ActionListener() {			
-		//			@Override
-		//			public void actionPerformed(ActionEvent e) {
-		//				if(e.getSource() == characterSelectBtn) {
-		//					//성향파악 패널을.. 올리자...									
-		//					//성향파악해서 DB에서 왔다갔다해서, 캐릭터 코드를 받아와야 함....				
-		//				}				
-		//			}
-		//		});
 		
 		//성향선택 콤보박스		
 		String[] characterCategory = {" ", "리더형", "팔로워형", "계획적", "즉흥적", "외향적", "내향적", "감성적", "이성적"};
@@ -233,7 +219,7 @@ public class RegistMember extends JPanel {
 					case "이성적" : characterNum = 8; break;
 					default : characterNum = 1; break;
 				}
-//				characterNum = newCharacterCode;
+				
 			}
 		});
 		
@@ -250,12 +236,20 @@ public class RegistMember extends JPanel {
 				if(e.getSource() == checkDuplBtn) {
 
 					String getUserId = idTf.getText();
-					memberController.idDuplCheck(getUserId);
+					
+					int result = memberController.idDuplCheck(getUserId);
+					
+					if(result == 0) {
+						//중복되는게 0개임 = 중복아님 = 사용가능
+						PopupFrame.popup("image/member/regist/regist_3_DuplCheck_1.png");
+					} else {
+						PopupFrame.popup("image/member/regist/regist_2_DuplCheck_1.png");
+					}
 				}
 			}
 		});
 
-		/* '혼또니 로그인' 버튼 */
+		/* '확인하기' 버튼 */
 		JButton agreeBtn = new JButton();
 		agreeBtn.setBounds(123, 773, 111, 41);
 		agreeBtn.setIcon(new ImageIcon("image/member/regist/regist_9_agree_btn.png"));
@@ -299,7 +293,24 @@ public class RegistMember extends JPanel {
 
 					System.out.println(memberRegistDTO);
 
-					memberController.registMember(memberRegistDTO);
+					int result = memberController.registMember(memberRegistDTO);
+					
+					if(result > 0) {
+						//회원가입완료팝업, 로그인창으로 이동
+						PopupFrame.popup("image/member/regist/regist_4_success.png");
+						System.out.println("로그인창으로 이동");
+						
+						frame.remove(registMember);
+						registMember.setVisible(false);
+						memberLogView = new MemberLogView(frame);
+						frame.repaint();
+						frame.revalidate();
+						
+						
+					} else {
+						PopupFrame.popup("image/member/regist/regist_6_fail.png");
+					}
+					
 				}
 
 			}
@@ -315,13 +326,14 @@ public class RegistMember extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				//로그인창으로 나감
 				System.out.println("로그인창으로 이동");
+				
+				PopupFrame.popup("image/member/regist/regist_5_cancel.png");
+				frame.remove(registMember);
 				registMember.setVisible(false);
 				memberLogView = new MemberLogView(frame);
-//				FrameManager.changePanel(frame, firstPanel, memberLogView);
-//				frame.remove(firstPanel);
-//				frame.add(memberLogView);
-//				frame.repaint();
-//				frame.revalidate();				
+				frame.repaint();
+				frame.revalidate();
+//							
 			}
 		});
 

@@ -47,16 +47,14 @@ public class FirstView extends JPanel{
 		
 		btnNewButton.addActionListener(new ActionListener() {			
 			@Override
-			public void actionPerformed(ActionEvent e) {			
+			public void actionPerformed(ActionEvent e) {	
+				
+				frame.remove(firstView);
 				firstView.setVisible(false);
 				memberLogView = new MemberLogView(frame); //frame.add는 넘어가서 한다. 흠 this.frame일까 frame일까
-				
-				//로그인창으로 바꾸기...?
-//				FrameManager.changePanel(frame, firstView, memberLogView);
-//				frame.remove(firstView);
-//				frame.add(memberLogView);
-//				frame.repaint();
-//				frame.revalidate();				
+				frame.repaint();
+				frame.revalidate();	
+							
 			}
 		});
 		
