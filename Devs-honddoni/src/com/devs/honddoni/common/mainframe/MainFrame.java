@@ -29,7 +29,7 @@ public class MainFrame extends JFrame{
 
 //		new MyPage(this);
 
-//		new FirstView(this);
+		new FirstView(this);
 
 //		new PostFreeBoard(this);
 
@@ -50,8 +50,10 @@ public class MainFrame extends JFrame{
 //		FrameManager.initPanel(this, new SelectAllHonPost());
 		
 		//예슬 실험중
+
 //		new FirstView(this);
 		new Notice(this);
+
 //		new PostNotice(this);
 		
 		//태훈 실험중(메인바텀패널)

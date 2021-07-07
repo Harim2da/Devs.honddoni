@@ -337,8 +337,8 @@ public class AllData extends JPanel {
 	    		   lb1.remove(lb1);
 	    		   btn10.remove(btn10);
 	    		   btn11.remove(btn11);
-	    		   alldata2.repaint();
-	    		   alldata2.revalidate();
+	    		   frame.repaint();
+	    		   frame.revalidate();
 	    		   
 	    	   }
 	       });

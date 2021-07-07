@@ -132,6 +132,7 @@ public class MemberController {
 		if(result > 0) {
 			myPageResultView.successView("chageInfoSuccess");
 		} else {
+			System.out.println("여긴가?");
 			myPageResultView.failedView("chageInfoFailed");
 		}
 	}

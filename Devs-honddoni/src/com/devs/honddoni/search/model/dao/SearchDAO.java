@@ -147,5 +147,18 @@ public class SearchDAO {
 		
 		return result;
 	}
+
+
+	public int wholeNum() {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = prop.getProperty("wholeNum");
+		pstmt = con
+		
+		return result;
+	}
 	
 }

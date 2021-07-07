@@ -79,9 +79,8 @@ public class PostDAO2 {
 			close(pstmt);
 		}
 
-
-
 		return result;
+		
 	}
 
 	/* 댓글 수정하여 DB에 저장하는 DAO */
@@ -125,7 +124,6 @@ public class PostDAO2 {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} close(pstmt);
 		

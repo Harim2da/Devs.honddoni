@@ -14,10 +14,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.view.PostActionCategory;
 import com.devs.honddoni.post.view.PostHonddoni;
+import com.devs.honddoni.post.view.PostNotice;
 import com.devs.honddoni.search.controller.SearchController;
 
 
@@ -41,7 +43,7 @@ public class PostFreeBoard extends JPanel {
 	private JButton interestingBtn;				// 관심글 목록 이동 버튼
 	private JButton noticeBtn;					// 공지사항 목록 이동 버튼
 	private JLabel backgroundImage;				// 로고 포함 테두리 배경 (디자인용)
-
+	FontManager font = new FontManager();
 	
 	/*자유 게시글 작성 화면 불러오기*/
 	public PostFreeBoard(MainFrame frame) {
@@ -220,7 +222,13 @@ public class PostFreeBoard extends JPanel {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("공지사항 버튼 클릭");
+					frame.remove(upPanel);
+					frame.remove(bottomPanel);
+					upPanel.setVisible(false);
+					bottomPanel.setVisible(false);
+					new PostNotice(frame);
+					frame.repaint();
+					frame.revalidate();
 				}
 			});
 
@@ -267,6 +275,7 @@ public class PostFreeBoard extends JPanel {
 		private void createPostTitle() {
 			postTitle = new JTextField();
 			postTitle.setBorder(null);
+			postTitle.setFont(font.customFont12);
 			postTitle.setDisabledTextColor(Color.WHITE);
 			postTitle.setOpaque(false);
 			postTitle.setBounds(113, 25, 322, 28);	
@@ -276,6 +285,7 @@ public class PostFreeBoard extends JPanel {
 		/* 게시글 작성*/
 		private void postContents() {
 			postContents = new JTextArea();
+			postContents.setFont(font.customFont12);
 			postContents.setOpaque(false);
 			postContents.setBounds(59, 305, 399, 273);
 

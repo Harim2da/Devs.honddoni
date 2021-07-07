@@ -10,8 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.GetFilter;
@@ -35,6 +35,7 @@ public class SelectAllHonPost extends JPanel{
 	private JTextField searching; 								// 검색어 입력창
 	private JLabel categoryPick; 								// 카테고리 선택 라벨
 	private PostDTO postDTO = new PostDTO();
+
 
 	
 	public SelectAllHonPost(MainFrame frame) {
@@ -188,7 +189,7 @@ public class SelectAllHonPost extends JPanel{
 				frame.remove(bottomPanel);
 				topPanel.setVisible(false);
 				bottomPanel.setVisible(false);
-				new Notice(frame);
+				new PostNotice(frame);
 				frame.repaint();
 				frame.revalidate();
 			}

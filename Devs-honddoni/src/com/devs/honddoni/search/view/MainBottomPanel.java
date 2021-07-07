@@ -15,6 +15,7 @@ import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.view.MemberLogView;
 import com.devs.honddoni.post.view.PostHonddoni;
+import com.devs.honddoni.post.view.PostNotice;
 import com.devs.honddoni.post.view.SelectAllHonPost;
 import com.devs.honddoni.search.controller.SearchController;
 
@@ -180,7 +181,7 @@ public class MainBottomPanel extends JPanel{
 				frame.remove(upPanel);
 				bottomPanel.setVisible(false);
 				upPanel.setVisible(false);
-				MyPage mp = new MyPage(frame);
+				new MyPage(frame);
 				frame.repaint();
 				frame.revalidate();
 			}
@@ -267,7 +268,13 @@ public class MainBottomPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("공지사항 버튼 클릭");
+				frame.remove(upPanel);
+				frame.remove(bottomPanel);
+				upPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new PostNotice(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
