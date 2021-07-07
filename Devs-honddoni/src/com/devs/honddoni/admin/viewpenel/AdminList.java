@@ -25,7 +25,7 @@ public class AdminList extends JPanel {
 		AllData alldata;
 		Honnest honnest;
 		Delite delite;
-		AdminList adminlist;
+		AdminList adminlist123;
 		
 		public AdminList(MainFrame frame) {
 		//프레임, 패널설정
@@ -154,7 +154,7 @@ public class AdminList extends JPanel {
 	    		   
 	    		   adminList.setVisible(false); 
 //	    		   frame.setVisible(false);
-	    		   new Delite(frame);
+	    		   delite = new Delite(frame);
 	    		   btn1.remove(btn1);
 	    		   btn2.remove(btn2);
 
@@ -178,7 +178,7 @@ public class AdminList extends JPanel {
 	    		   
 	    		   adminList.setVisible(false); 
 //	    		   frame.setVisible(false);
-	    		   new AllData(frame);
+	    		   alldata = new AllData(frame);
 	    		   bottomPanel.remove(btn1);
 	    		   bottomPanel.remove(btn2);
 	    		   bottomPanel.remove(btn3);
@@ -202,11 +202,11 @@ public class AdminList extends JPanel {
 	    		   
 	    		   adminList.setVisible(false); 
 //	    		   frame.setVisible(false);
-	    		   new Honnest(frame);
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-	    		   btn3.remove(btn3);
-	    		   btn5.remove(btn5);
+	    		   honnest = new Honnest(frame);
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(btn2);
+	    		   bottomPanel.remove(btn3);
+	    		   bottomPanel.remove(btn5);
 	    		   honnest.repaint();
 	    		   honnest.revalidate();
 	    		   
@@ -223,15 +223,15 @@ public class AdminList extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList(frame);
+	    		   adminlist123 =new AdminList(frame);
 	    		   adminList.setVisible(false); 
 //	    		   frame.setVisible(false);
 	    		   btn1.remove(btn1);
 	    		   btn2.remove(btn2);
 	    		   btn3.remove(btn3);
 	    		   btn5.remove(btn5);
-	    		   adminlist.repaint();
-	    		   adminlist.revalidate();
+	    		   adminlist123.repaint();
+	    		   adminlist123.revalidate();
 	    	   }
 	       });
 		}  
