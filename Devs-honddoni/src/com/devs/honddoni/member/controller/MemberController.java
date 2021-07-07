@@ -138,10 +138,8 @@ public class MemberController {
 		result = memberService.changeInfo(memberInfo);
 		
 		if(result > 0) {
-			System.out.println("정보 변경 성공");
 			myPageResultView.successView("chageInfoSuccess");
 		} else {
-			System.out.println("정보 변경 실패");
 			myPageResultView.failedView("chageInfoFailed");
 		}
 	}
@@ -153,11 +151,9 @@ public class MemberController {
 		result = memberService.deleteMember(userId);
 		
 		if(result > 0) {
-			System.out.println("회원탈퇴 성공");
 			new FirstView(mainFrame);
 			myPageResultView.successView("deleteSuccess");
 		} else {
-			System.out.println("회원탈퇴 실패");
 			myPageResultView.failedView("chageInfoFailed");
 		}
 		
