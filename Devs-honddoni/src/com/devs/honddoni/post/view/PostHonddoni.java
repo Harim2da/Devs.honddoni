@@ -26,7 +26,7 @@ public class PostHonddoni extends JPanel {
 	private PostHonddoni postHonddoni;
 	private MainFrame frame;
 	
-//	private JFrame mainFrame; // 메인프레임
+
 	private JPanel topPanel;  // 상단 패널
 	private JPanel bottomPanel; // 하단 패널
 	private JLabel bottomLabel; // 하단 게시판 라벨(그림 배경)
@@ -80,8 +80,7 @@ public class PostHonddoni extends JPanel {
 		
 		frame.add(topPanel);
 		frame.add(bottomPanel);
-//		this.setVisible(true);
-//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
 
 	/*상단 패널 생성*/
