@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.common.sound.SoundManager;
 import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
@@ -423,8 +424,12 @@ public class MyPage extends JPanel {
 					public void actionPerformed(ActionEvent e) {
 
 						/* 마이페이지로 돌아가기 */
+						
 						changeMemberinfoPanel.setVisible(false);
+						changeMemberinfo.setEnabled(true);
 						bottomPanel.setVisible(true);
+						frame.remove(changeMemberinfoPanel);
+						frame.add(bottomPanel);
 
 					}
 				});
@@ -861,19 +866,20 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/* 관심글 모아보기  호출 */
-				JPanel interestingPostPanel = new JPanel();
-				interestingPostPanel.setLayout(null);
-				interestingPostPanel.setBounds(0, 100, 500, 770);
-				interestingPostPanel.setVisible(true);
-				interestingPostPanel.setBackground(Color.white);
-				bottomPanel.setVisible(false);
-				frame.add(interestingPostPanel);  
-
-				/* 관심글 패널에 올릴 이미지 */
-				JLabel interestingPostLabel = new JLabel();
-				interestingPostLabel.setBounds(0, 100, 500, 770);
-				interestingPostLabel.setIcon(new ImageIcon("image/member/AllInteresting/qq.png"));
-				interestingPostPanel.add(interestingPostLabel);
+				PopupFrame.popup3("image/popup/error.png");
+//				JPanel interestingPostPanel = new JPanel();
+//				interestingPostPanel.setLayout(null);
+//				interestingPostPanel.setBounds(0, 100, 500, 770);
+//				interestingPostPanel.setVisible(true);
+//				interestingPostPanel.setBackground(Color.white);
+//				bottomPanel.setVisible(false);
+//				frame.add(interestingPostPanel);  
+//
+//				/* 관심글 패널에 올릴 이미지 */
+//				JLabel interestingPostLabel = new JLabel();
+//				interestingPostLabel.setBounds(0, 100, 500, 770);
+//				interestingPostLabel.setIcon(new ImageIcon("image/member/AllInteresting/qq.png"));
+//				interestingPostPanel.add(interestingPostLabel);
 
 
 			}
@@ -883,7 +889,6 @@ public class MyPage extends JPanel {
 		/*==================================  업적 & 포인트 버튼   ================================================== */		
 
 		/* 업적 & 포인트 버튼 */
-		//		JButton rewardButton = new JButton("");
 		rewardButton.setIcon(new ImageIcon("image/member/myPage/medal.png"));
 		rewardButton.setContentAreaFilled(false);
 		rewardButton.setBorderPainted(false);
@@ -894,7 +899,6 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/* 업적 & 포인트 호출 */
-				SoundManager.playSound("image/member/wind.wav");
 				JPanel rewardPanel = new JPanel();
 				rewardPanel.setLayout(null);
 				rewardPanel.setBounds(0, 100, 500, 770);
@@ -929,6 +933,7 @@ public class MyPage extends JPanel {
 						rewardManageLabel.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
+								PopupFrame.popup3("image/popup/error.png");
 								rewardManagerPanel.setVisible(false);
 								rewardPanel.setVisible(true);
 
@@ -965,6 +970,7 @@ public class MyPage extends JPanel {
 						pointManageLabel.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
+								PopupFrame.popup3("image/popup/error.png");
 								pointManagePanel.setVisible(false);
 								rewardPanel.setVisible(true);
 							}
@@ -991,18 +997,19 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/* 내글 모아보기 호출 */
-				JPanel myPostPanel = new JPanel();
-				myPostPanel.setLayout(null);
-				myPostPanel.setBounds(0, 100, 500, 770);
-				myPostPanel.setVisible(true);
-				myPostPanel.setBackground(Color.white);
-				bottomPanel.setVisible(false);
-				frame.add(myPostPanel);  
-
-				JLabel myPostLabel = new JLabel();
-				myPostLabel.setBounds(0, 100, 500, 770);
-				myPostLabel.setIcon(new ImageIcon("image/member/selectMyPost/myPostLabel.png"));
-				myPostPanel.add(myPostLabel);
+				PopupFrame.popup3("image/popup/error.png");
+//				JPanel myPostPanel = new JPanel();
+//				myPostPanel.setLayout(null);
+//				myPostPanel.setBounds(0, 100, 500, 770);
+//				myPostPanel.setVisible(true);
+//				myPostPanel.setBackground(Color.white);
+//				bottomPanel.setVisible(false);
+//				frame.add(myPostPanel);  
+//
+//				JLabel myPostLabel = new JLabel();
+//				myPostLabel.setBounds(0, 100, 500, 770);
+//				myPostLabel.setIcon(new ImageIcon("image/member/selectMyPost/myPostLabel.png"));
+//				myPostPanel.add(myPostLabel);
 
 			}
 		});
