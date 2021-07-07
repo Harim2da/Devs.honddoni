@@ -86,7 +86,6 @@ public class PagingDAO {
 			close(rset);
 		}
 		
-		
 		return result;
 	}
 	
@@ -338,8 +337,6 @@ public class PagingDAO {
 		return commentsList;
 	}
 
-	
-	// ============= 공지게시판 사용 ========
 	/* 공지 게시판 갯수 불러오기 DAO */
 	public int NoticeWholePostNum(Connection con) {
 		

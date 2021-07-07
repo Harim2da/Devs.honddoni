@@ -44,7 +44,7 @@ public class SelectedComment2 extends JPanel {
 	private JLabel[] commentsDate;								//댓글 작성 날짜
 	private JLabel[] commentsTime;								//댓글 작성 시간
 	private JLabel[] profilePictrue;							//프로필 사진
-	private int postNo;	/* 게시글에서 받아올 것 */				    //게시글 번호
+	private int postNo;					    					//게시글 번호
 	private JButton[] deleteBtn;								//게시글 삭제 버튼
 	GetLoginMember userNum = GetLoginMember.getInstance();		//로그인된 유저 번호를 가져오기위한 인스턴스 생성
 	FontManager font = new FontManager();
@@ -86,8 +86,7 @@ public class SelectedComment2 extends JPanel {
 		commentLongbarLabel.add(afterNumber);
 		commentLongbarLabel.add(beforeBtn);
 		commentLongbarLabel.add(afterBtn);
-		
-//		frame.add(upPanel);
+
 		frame.add(downPanel1);
 		
 	}
@@ -119,15 +118,13 @@ public class SelectedComment2 extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("댓글 작성란 호출");
+				
 				String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
-				System.out.println(text);
 				CommentsDTO newComment = new CommentsDTO();
 
 				newComment.setCommentsContents(text);
 				newComment.setPostNo(postNo);
 
-				/* 로그인된 번호*/
 				newComment.setMemberNo(userNum.getLoginMemberNo());
 
 				ContactController2 contactController2 = new ContactController2();
@@ -188,7 +185,6 @@ public class SelectedComment2 extends JPanel {
 			beforeBtn.setVisible(true);
 		}
 
-		System.out.println("frontPage : " + SelectedComment.frontPage);
 		beforeBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -271,7 +267,6 @@ public class SelectedComment2 extends JPanel {
 		beforeNumber.setLayout(null);
 		beforeNumber.setBounds(50, 4, 14, 14);
 		beforeNumber.setFont(font.customFont12);
-		System.out.println(frontPageString);
 
 	}
 
@@ -387,7 +382,6 @@ public class SelectedComment2 extends JPanel {
 			updateBtn[i].setContentAreaFilled(false);
 			updateBtn[i].setBorderPainted(false);
 			updateBtn[i].setBounds(415, y + 37, 23, 23);
-			System.out.println("updateBtn[" + i + "] : " + commentListDTO.get(i).getCommentsNo());
 
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
@@ -397,9 +391,7 @@ public class SelectedComment2 extends JPanel {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("댓글 수정란 호출");
 						String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
-						System.out.println(text);
 						CommentsDTO updateComment = new CommentsDTO();
 
 						updateComment.setCommentsNo(getCommentsNo);
@@ -473,9 +465,7 @@ public class SelectedComment2 extends JPanel {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("신고 팝업창 띄우기");
 						String report = (String)JOptionPane.showInputDialog("신고 내용을 입력하세요.");
-						System.out.println(report);
 
 						ContactController2 contactController2 = new ContactController2();
 
@@ -486,8 +476,8 @@ public class SelectedComment2 extends JPanel {
 						reportDTO.setReportCategory(report);
 						reportDTO.setBroadType(postCategory);
 						reportDTO.setBroadNo(postNo);
-						reportDTO.setReportMemberNo(1 /* 싱글톤으로 저장된 로그인된 멤버 번호 */);
-						reportDTO.setReportedMemberNo(getMemberNo /* 댓글 작성자 */);
+						reportDTO.setReportMemberNo(userNum.getLoginMemberNo());
+						reportDTO.setReportedMemberNo(getMemberNo);
 
 						contactController2.reportComment(reportDTO);
 						downPanel1.repaint();
@@ -604,13 +594,12 @@ public class SelectedComment2 extends JPanel {
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo == userNum.getLoginMemberNo() /* 로그인된 번호 */) {
+			if(getMemberNo == userNum.getLoginMemberNo()) {
 				deleteBtn[i].addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
 
-						System.out.println("댓글 삭제");
 						CommentsDTO deleteComment = new CommentsDTO();
 
 						deleteComment.setCommentsNo(getCommentsNo);

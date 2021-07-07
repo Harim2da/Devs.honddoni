@@ -143,9 +143,6 @@ public class PagingService {
 		return commentsList;
 	}
 
-	
-	// ============ 공지게시판 사용 =========
-		
 	/* 공지게시판 갯수 불러오기 service */
 	public int NoticeWholePostNum() {
 		

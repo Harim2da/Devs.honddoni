@@ -53,7 +53,7 @@ public class SelectedComment extends JPanel {
 	private JButton interestingBtn;								//관심글 목록 이동 버튼
 	private JButton noticeBtn;									//공지사항 목록 이동 버튼
 	private JLabel backgroundImage;								//로고 포함 테두리 배경 (디자인용)
-	private int postNo;	/* 게시글에서 받아올 것 */					//게시글 번호
+	private int postNo;											//게시글 번호
 	private JButton[] deleteBtn;								//게시글 삭제 버튼
 	GetLoginMember userNum = GetLoginMember.getInstance();		//로그인된 유저 번호를 가져오기위한 인스턴스 생성
 	FontManager font = new FontManager();
@@ -237,7 +237,7 @@ public class SelectedComment extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("관심글 목록 버튼 클릭");
+				
 			}
 		});
 
@@ -255,7 +255,7 @@ public class SelectedComment extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("공지사항 버튼 클릭");
+			
 			}
 		});
 
@@ -273,15 +273,12 @@ public class SelectedComment extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("댓글 작성란 호출");
 				String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
-				System.out.println(text);
 				CommentsDTO newComment = new CommentsDTO();
 
 				newComment.setCommentsContents(text);
 				newComment.setPostNo(postNo);
 
-				/* 싱글톤으로 생성된 멤버넘버 받아와야댐 */
 				newComment.setMemberNo(userNum.getLoginMemberNo());
 
 				ContactController2 contactController2 = new ContactController2();
@@ -342,7 +339,6 @@ public class SelectedComment extends JPanel {
 			beforeBtn.setVisible(true);
 		}
 
-		System.out.println("frontPage : " + frontPage);
 		beforeBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -353,7 +349,6 @@ public class SelectedComment extends JPanel {
 				}
 				
 				frame.remove(downPanel);
-//				downPanel.setVisible(false);
 				SelectedComment2 cm = new SelectedComment2(frame);
 				frame.add(cm.getDownPanel1());
 
@@ -425,7 +420,6 @@ public class SelectedComment extends JPanel {
 		beforeNumber.setLayout(null);
 		beforeNumber.setFont(font.customFont12);
 		beforeNumber.setBounds(50, 4, 14, 14);
-		System.out.println(frontPageString);
 
 	}
 
@@ -454,8 +448,6 @@ public class SelectedComment extends JPanel {
 		int y = 52;
 
 		commentListDTO = new PagingController().selectCommentsList(pageNo, postNo);
-
-//		CommentsDTO commentInfo = null; 
 
 		for(int i = 0; i < commentListDTO.size(); i++) {
 
@@ -541,26 +533,21 @@ public class SelectedComment extends JPanel {
 			updateBtn[i].setContentAreaFilled(false);
 			updateBtn[i].setBorderPainted(false);
 			updateBtn[i].setBounds(415, y + 37, 23, 23);
-			System.out.println("updateBtn[" + i + "] : " + commentListDTO.get(i).getCommentsNo());
 
 			int getCommentsNo = commentListDTO.get(i).getCommentsNo();
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo == userNum.getLoginMemberNo() /* 로그인된 번호 */) {
+			if(getMemberNo == userNum.getLoginMemberNo()) {
 				updateBtn[i].addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("댓글 수정란 호출");
 						String text = (String)JOptionPane.showInputDialog("댓글 내용을 입력하세요.");
-						System.out.println(text);
 						CommentsDTO updateComment = new CommentsDTO();
 
 						updateComment.setCommentsNo(getCommentsNo);
 						updateComment.setMemberNo(getMemberNo);
 						updateComment.setCommentsContents(text);
-
-						System.out.println("getCommentsNo : " + getCommentsNo);
 
 						ContactController2 contactController2 = new ContactController2();
 						contactController2.updateComment(updateComment);
@@ -625,14 +612,12 @@ public class SelectedComment extends JPanel {
 
 			int getMemberNo = commentListDTO.get(i).getMemberNo();
 
-			if(getMemberNo != userNum.getLoginMemberNo() /* 로그인된 번호 */) {
+			if(getMemberNo != userNum.getLoginMemberNo()) {
 				reportBtn[i].addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("신고 팝업창 띄우기");
 						String report = (String)JOptionPane.showInputDialog("신고 내용을 입력하세요.");
-						System.out.println(report);
 
 						ContactController2 contactController2 = new ContactController2();
 
@@ -760,7 +745,6 @@ public class SelectedComment extends JPanel {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 
-						System.out.println("댓글 삭제");
 						CommentsDTO deleteComment = new CommentsDTO();
 
 						deleteComment.setCommentsNo(getCommentsNo);
