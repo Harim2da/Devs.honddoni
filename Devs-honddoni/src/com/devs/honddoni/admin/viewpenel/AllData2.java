@@ -18,7 +18,7 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 public class AllData2 extends JPanel {
 	
 	private MainFrame frame;
-	private AllData2 alldata;
+	private AllData2 alldata2;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	private JLabel lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11, lb12, lb13, lb14, lb15, lb16,
 	lb17, lb18, lb19, lb20, lb21; 
@@ -29,13 +29,13 @@ public class AllData2 extends JPanel {
 	public AllData2(MainFrame frame) {
 		//프레임, 패널설정
 			this.frame = frame;
-			this.alldata = this;
+			this.alldata2 = this;
 			
 		//전체 패널 생성
-		alldata.setBounds(0, 0, 500, 870);
-		alldata.setLayout(null);
-		alldata.setBackground(Color.white);
-		frame.add(alldata);
+			alldata2.setBounds(0, 0, 500, 870);
+			alldata2.setLayout(null);
+			alldata2.setBackground(Color.white);
+		frame.add(alldata2);
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -43,14 +43,14 @@ public class AllData2 extends JPanel {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		alldata.add(bottomPanel);
+		alldata2.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		alldata.add(topPanel);
+		alldata2.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -255,8 +255,8 @@ public class AllData2 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   adminlist = new AdminList(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   anew AdminList(frame);
+	    		   alldata2.setVisible(false); 
 //	    		   alldata.setVisible(false);
 	    		   
 //	    		   btn1.setVisible(false);
@@ -264,12 +264,12 @@ public class AllData2 extends JPanel {
 //	    		   btn8.setVisible(false);
 //	    		   btn8.setVisible(false);
 	    		   
-	    		   btn1.remove(btn1);
-	    		   lb1.remove(lb1);
-	    		   btn8.remove(btn8);
-	    		   btn9.remove(btn9);
-	    		   adminlist.repaint();
-	    		   adminlist.revalidate();
+//	    		   btn1.remove(btn1);
+//	    		   lb1.remove(lb1);
+//	    		   btn8.remove(btn8);
+//	    		   btn9.remove(btn9);
+//	    		   adminlist.repaint();
+//	    		   adminlist.revalidate();
 	    	   }
 	       });
 	       
@@ -281,20 +281,20 @@ public class AllData2 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   alldata123 = new AllData(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   new AllData(frame);
+	    		   alldata2.setVisible(false); 
 //	    		   alldata.setVisible(false);
 	    		   
 //	    		   btn1.setVisible(false);
 //	    		   lb1.setVisible(false);
 //	    		   btn8.setVisible(false);
 //	    		   btn9.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   lb1.remove(lb1);
-	    		   btn8.remove(btn8);
-	    		   btn9.remove(btn9);
-	    		   alldata123.repaint();
-	    		   alldata123.revalidate();
+//	    		   btn1.remove(btn1);
+//	    		   lb1.remove(lb1);
+//	    		   btn8.remove(btn8);
+//	    		   btn9.remove(btn9);
+//	    		   alldata123.repaint();
+//	    		   alldata123.revalidate();
 	    	   }
 	       });
 	}

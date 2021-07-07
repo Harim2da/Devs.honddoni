@@ -16,7 +16,7 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 public class Honnest2 extends JPanel {
 	
 	private MainFrame frame;
-	private Honnest2 honnest;
+	private Honnest2 honnest2;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	AdminList adminlist;
 	Honnest honnest123;
@@ -24,13 +24,13 @@ public class Honnest2 extends JPanel {
 	public Honnest2(MainFrame frame) {
 		//프레임, 패널설정
 		this.frame = frame;
-		this.honnest = this;
+		this.honnest2 = this;
 		
 		//전체 패널 생성
-		honnest.setBounds(0, 0, 500, 870);
-		honnest.setLayout(null);
-		honnest.setBackground(Color.white);
-		frame.add(honnest);
+		honnest2.setBounds(0, 0, 500, 870);
+		honnest2.setLayout(null);
+		honnest2.setBackground(Color.white);
+		frame.add(honnest2);
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -38,14 +38,14 @@ public class Honnest2 extends JPanel {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		honnest.add(bottomPanel);
+		honnest2.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		honnest.add(topPanel);
+		honnest2.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -157,15 +157,15 @@ public class Honnest2 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   adminlist = new AdminList(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   new AdminList(frame);
+	    		   honnest2.setVisible(false); 
 //	    		   honnest.setVisible(false);
-	    		   bottomPanel.remove(btn1);
-	    		   bottomPanel.remove(lb1);
-	    		   bottomPanel.remove(btn10);
-	    		   bottomPanel.remove(btn11);
-	    		   adminlist.repaint();
-	    		   adminlist.revalidate();
+//	    		   bottomPanel.remove(btn1);
+//	    		   bottomPanel.remove(lb1);
+//	    		   bottomPanel.remove(btn10);
+//	    		   bottomPanel.remove(btn11);
+//	    		   adminlist.repaint();
+//	    		   adminlist.revalidate();
 	    		   
 	    	   }
 	       });
@@ -178,15 +178,15 @@ public class Honnest2 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   honnest123 = new Honnest(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   new Honnest(frame);
+	    		   honnest2.setVisible(false); 
 //	    		   honnest.setVisible(false);
-	    		   bottomPanel.remove(btn1);
-	    		   bottomPanel.remove(lb1);
-	    		   bottomPanel.remove(btn10);
-	    		   bottomPanel.remove(btn11);
-	    		   honnest123.repaint();
-	    		   honnest123.revalidate();
+//	    		   bottomPanel.remove(btn1);
+//	    		   bottomPanel.remove(lb1);
+//	    		   bottomPanel.remove(btn10);
+//	    		   bottomPanel.remove(btn11);
+//	    		   honnest123.repaint();
+//	    		   honnest123.revalidate();
 	    		   
 	    	   }
 	       });

@@ -282,8 +282,8 @@ public class AllData extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   alldata2 = new AllData2(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   new AllData2(frame);
+	    		   alldata.setVisible(false); 
 //	    		   alldata.setVisible(false);
 	    		   
 //	    		   btn1.setVisible(false);
@@ -294,16 +294,16 @@ public class AllData extends JPanel {
 //	    		   lb1.setVisible(false);
 //	    		   btn10.setVisible(false);
 //	    		   btn11.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-	    		   btn3.remove(btn3);
-	    		   btn4.remove(btn4);
-	    		   btn5.remove(btn5);
-	    		   lb1.remove(lb1);
-	    		   btn10.remove(btn10);
-	    		   btn11.remove(btn11);
-	    		   alldata2.repaint();
-	    		   alldata2.revalidate();
+//	    		   btn1.remove(btn1);
+//	    		   btn2.remove(btn2);
+//	    		   btn3.remove(btn3);
+//	    		   btn4.remove(btn4);
+//	    		   btn5.remove(btn5);
+//	    		   lb1.remove(lb1);
+//	    		   btn10.remove(btn10);
+//	    		   btn11.remove(btn11);
+//	    		   alldata2.repaint();
+//	    		   alldata2.revalidate();
 	    		   
 	    	   }
 	       });
@@ -317,7 +317,7 @@ public class AllData extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   adminlist = new AdminList(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   alldata.setVisible(false); 
 //	    		   alldata.setVisible(false);
 	    		   
 //	    		   btn1.setVisible(false);
@@ -329,16 +329,16 @@ public class AllData extends JPanel {
 //	    		   btn10.setVisible(false);
 //	    		   btn11.setVisible(false);
 	    		   
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-	    		   btn3.remove(btn3);
-	    		   btn4.remove(btn4);
-	    		   btn5.remove(btn5);
-	    		   lb1.remove(lb1);
-	    		   btn10.remove(btn10);
-	    		   btn11.remove(btn11);
-	    		   frame.repaint();
-	    		   frame.revalidate();
+//	    		   btn1.remove(btn1);
+//	    		   btn2.remove(btn2);
+//	    		   btn3.remove(btn3);
+//	    		   btn4.remove(btn4);
+//	    		   btn5.remove(btn5);
+//	    		   lb1.remove(lb1);
+//	    		   btn10.remove(btn10);
+//	    		   btn11.remove(btn11);
+//	    		   frame.repaint();
+//	    		   frame.revalidate();
 	    		   
 	    	   }
 	       });
