@@ -17,22 +17,11 @@ public class PostActionCategory {
 	
 	public PostActionCategory() {
 		
-		
 		String[] actioncategory = {" ","맛집탐방", "활동", "취미", "산책", "스터디", "게임"};
 		selectCategorycombo = new JComboBox(actioncategory);
-
 		selectCategorycombo.setBounds(139, 145, 306, 28);
 		selectCategorycombo.setSelectedIndex(0);
 		selectCategorycombo.setFont(font.customFont12);
-		selectCategorycombo.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("콤박 동작");
-
-			}
-		});
-
 	}
 	
 	
@@ -41,10 +30,6 @@ public class PostActionCategory {
 		
 		return selectCategorycombo;
 	}
-	
-	
-	
-		
 	}
 	
 	

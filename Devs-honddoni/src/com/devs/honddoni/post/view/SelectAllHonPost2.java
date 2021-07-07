@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.common.PagenationPost;
 import com.devs.honddoni.common.dto.PageInfoPostDTO;
 import com.devs.honddoni.common.dto.PostDTO;
@@ -247,7 +248,13 @@ public class SelectAllHonPost2 extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("공지사항 버튼 클릭");
+				frame.remove(upPanel);
+				frame.remove(downPanel);
+				upPanel.setVisible(false);
+				downPanel.setVisible(false);
+				new Notice(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -323,8 +330,6 @@ public class SelectAllHonPost2 extends JPanel {
 					beforeNumber();
 					afterBtn();
 
-
-
 				}
 			});
 		}	
@@ -368,7 +373,6 @@ public class SelectAllHonPost2 extends JPanel {
 				afterBtn();
 				beforeBtn();
 				beforeNumber();
-
 
 			}
 		});
@@ -501,7 +505,7 @@ public class SelectAllHonPost2 extends JPanel {
 			categoryName = new JLabel[postListDTO.size()];
 			categoryName[i] = new JLabel();
 			categoryName[i].setLayout(null);
-			categoryName[i].setBounds(188, y + 21, 70, 31);
+			categoryName[i].setBounds(188, y + 15, 70, 31);
 
 			if(postInfo.getCategoryName().equals("맛집탐방")) {
 				categoryName[i].setIcon(new ImageIcon("image/post/eat.png"));
@@ -588,7 +592,7 @@ public class SelectAllHonPost2 extends JPanel {
 			localName = new JLabel[postListDTO.size()];
 			localName[i] = new JLabel();
 			localName[i].setLayout(null);
-			localName[i].setBounds(383, y + 6, 46, 25);
+			localName[i].setBounds(383, y + 6, 60, 28);
 
 			if(postInfo.getLocalName().equals("강릉")) {
 				localName[i].setIcon(new ImageIcon("image/post/gangneung.png"));

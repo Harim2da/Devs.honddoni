@@ -40,11 +40,7 @@ public class PostDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 
-		//		String localCode = prop.getProperty("searchLocalCode");
-		//		int categoryCode = Integer.parseInt(prop.getProperty("searchCategoryCode"));
-
 		String query = prop.getProperty("insertNewHonPost");
-		System.out.println(post);
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -160,8 +156,7 @@ public class PostDAO {
 				postDTO.setPostNumberOfPeopleNumber(rset.getInt("POST_NUMBER_OF_PEOPLE"));
 				postDTO.setMemberNickname(rset.getString("MEMBER_NICKNAME"));
 				postDTO.setMemberProfile(rset.getString("MEMBER_PROFILE"));
-			
-			
+	
 			}
 
 		} catch (SQLException e) {
@@ -203,8 +198,7 @@ public class PostDAO {
 		int result = 0;
 
 		String query = prop.getProperty("updateThePost");
-		System.out.println(post);
-
+		
 		try {
 			pstmt = con.prepareStatement(query);
 
@@ -213,7 +207,6 @@ public class PostDAO {
 			pstmt.setString(3, post.getPostCategory());
 			pstmt.setString(4, post.getPostMeetingDate());
 			pstmt.setString(5, post.getPostMeetingTime());
-		//	pstmt.setInt(6, post.getLocalCode());
 			pstmt.setInt(6, post.getCategoryCode()); 
 			pstmt.setInt(7, post.getPostNumberOfPeopleNumber());
 			pstmt.setInt(8, post.getPostNo());
