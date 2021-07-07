@@ -15,6 +15,7 @@ import com.devs.honddoni.admin.viewpenel.AdminList;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.common.mainframe.PopupFrame;
+import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.member.view.RegistMember;
 import com.devs.honddoni.memberLog.controller.LoginController;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
@@ -36,7 +37,7 @@ public class MemberLogView extends JPanel {
 	
 	private JTextField idTf;
 	private JPasswordField pwPf;
-	private String password = "";
+	private String password;
 	
 	FontManager font = new FontManager();
 
@@ -95,10 +96,7 @@ public class MemberLogView extends JPanel {
 					
 					makeDTO(); //DTO생성					
 					System.out.println(loginDataDTO);  //DTO가 잘 만들어졌는지 확인
-					System.out.println(loginController); //컨트롤러가 null인지 확인
-
-					//한번 실행할 때 마다 텍필 칸의 내용을 지워야줘야 함...
-					
+					System.out.println(loginController); //컨트롤러가 null인지 확인					
 					
 					//로그인메소드 실행
 					int result = loginController.userLogin(loginDataDTO);
@@ -106,23 +104,29 @@ public class MemberLogView extends JPanel {
 					
 					//로그인실패 : 0, 로그인성공(일반사용자 : 1, 관리자 : 2) 반환함
 					if(result == 0) {
-//						FrameManager.changePanel(frame, panel, loginFail);
 						PopupFrame.popup("image/popup/checkidAndPwd.png");
 						System.out.println("LoginFail팝업");
 						
 					} else if(result == 1) {
 						//메인화면 쪽으로 패널교체
-//						frame.topPannelBtnStart();
-
 						System.out.println("로그인 성공~ 메인화면 패널로 교체");
+						
+						frame.remove(memberLogView);
 						memberLogView.setVisible(false);
 						mainBottomPanel = new MainBottomPanel(frame);
+						frame.repaint();
+						frame.revalidate();						
 						
 					} else {
 						//관리자 쪽으로 패널교체
+						PopupFrame.popup("image/popup/login_8_admin_popup.png");
 						System.out.println("로그인 성공~ 관리자메인화면 패널로 교체");
+						
+						frame.remove(memberLogView);
 						memberLogView.setVisible(false);
-//						adminList = new AdminList(frame);
+						adminList = new AdminList(frame);
+						frame.repaint();
+						frame.revalidate();						
 						
 					}
 					
@@ -138,17 +142,15 @@ public class MemberLogView extends JPanel {
 		searchIdBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_id_btn.png"));
 		searchIdBtn.addActionListener(new ActionListener() {			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {				
 				//아이디찾기 패널로				
-				System.out.println("아이디 찾기 패널로~");				
+				System.out.println("아이디 찾기 패널로~");	
+				
+				frame.remove(memberLogView);
 				memberLogView.setVisible(false);
 				searchId = new SearchId(frame);	
-//				FrameManager.changePanel(frame, bottomPanel, searchId);
-//				frame.remove(memberLogView);
-//				frame.add(searchId);
-//				frame.repaint();
-//				frame.revalidate();
+				frame.repaint();
+				frame.revalidate();	
 
 			}
 		});
@@ -161,17 +163,15 @@ public class MemberLogView extends JPanel {
 		searchPasswordBtn.setIcon(new ImageIcon("image/memberLog/login/login_5_find_password_btn.png"));
 		searchPasswordBtn.addActionListener(new ActionListener() {				
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {				
 				//비밀번호 찾기쪽으로 간다
 				System.out.println("비밀번호 찾기 쪽으로");
+				
+				frame.remove(memberLogView);
 				memberLogView.setVisible(false);
 				searchPwd = new SearchPwd(frame);
-//				FrameManager.changePanel(frame, memberLogView, searchPwd);
-//				frame.remove(searchPwd);
-//				frame.add(searchPwd);
-//				frame.repaint();
-//				frame.revalidate();
+				frame.repaint();
+				frame.revalidate();	
 				
 			}
 		});
@@ -184,17 +184,16 @@ public class MemberLogView extends JPanel {
 		registBtn.setIcon(new ImageIcon("image/memberLog/login/login_6_regist_btn.png"));
 		registBtn.addActionListener(new ActionListener() {			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {				
 				//회원가입 쪽으로 간다
 				System.out.println("회원가입쪽으로");
+				
+				frame.remove(memberLogView);
 				memberLogView.setVisible(false);
 				registMember = new RegistMember(frame);
-//				FrameManager.changePanel(frame, memberLogView, registMember);
-//				frame.remove(memberLogView);
-//				frame.add(registMember);
-//				frame.repaint();
-//				frame.revalidate();
+				frame.repaint();
+				frame.revalidate();	
+
 			}
 		});
 
@@ -224,8 +223,9 @@ public class MemberLogView extends JPanel {
 		
 		//아이디와 비밀번호를 받아서 DTO로 뭉침
 		loginDataDTO.setMemberId(idTf.getText());
-
-		/* 비밀번호 추출 */		
+		
+		/* 비밀번호 추출 */
+		password = ""; //필드에서 초기화까지 해둘 경우, 한번 로그인 실패하고 
 		char[] pass = pwPf.getPassword();
 		for(int i = 0; i < pass.length; i++) {
 			password += pass[i];

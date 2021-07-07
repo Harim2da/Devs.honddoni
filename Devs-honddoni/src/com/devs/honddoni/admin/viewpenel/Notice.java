@@ -80,13 +80,13 @@ public class Notice extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				//관리자메인 페이지로 나감
 				System.out.println("관리자메인 페이지로 나감");
-//				notice.setVisible(false);
-//				adminList = new AdminList(frame);
-//				FrameManagerYs.changePanel(notice, new 관리자메인());
-//				frame.remove(notice);
-//				frame.add(adminList);
-//				frame.repaint();
-//				frame.revalidate();				
+				
+				frame.remove(notice);
+				notice.setVisible(false);
+				adminList = new AdminList(frame);
+				frame.repaint();
+				frame.revalidate();	
+				
 			}
 		});
 		
@@ -133,8 +133,12 @@ public class Notice extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("NoticeWrite 패널로 이동");
+				
+				frame.remove(notice);
 				notice.setVisible(false);
 				noticeWrite = new NoticeWrite(frame);
+				frame.repaint();
+				frame.revalidate();	
 			}
 		});
 		
@@ -170,7 +174,6 @@ public class Notice extends JPanel{
 	    
 	    System.out.println("notice패널 : " + notice); //확인용 출력
 	    
-	    this.setVisible(true);
 	    System.out.println("notice 패널 실행됨");
 	    
 	    

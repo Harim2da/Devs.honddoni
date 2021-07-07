@@ -68,4 +68,15 @@ public class MemberLogService {
 		return result;
 	}
 
+	public int getLoginMemberNo(String loginMemberId) {
+		
+		Connection con = getConnection();
+
+		int memberNo = memberLogDAO.getLoginMemberNo(con, loginMemberId);
+		
+		close(con);
+
+		return memberNo;
+	}
+
 }
