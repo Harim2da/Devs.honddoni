@@ -39,7 +39,7 @@ public class PostNoticeView extends JPanel{
 		frame.add(this);
 
 		/* 혼또니 로고버튼 */
-		JButton honddoniBtn = new JButton("");
+		JButton honddoniBtn = new JButton();
 		honddoniBtn.setBounds(305, 29, 173, 71);
 		honddoniBtn.setIcon(new ImageIcon("image/admin/HondoniWrite.png"));
 		honddoniBtn.addActionListener(new ActionListener() {
@@ -76,7 +76,7 @@ public class PostNoticeView extends JPanel{
 		/* 뒤로가기 버튼 */
 		JButton backBtn = new JButton("");
 		backBtn.setBounds(130, 789, 245, 42);
-		backBtn.setIcon(new ImageIcon("image/post/noticepostbtn.png.png"));
+		backBtn.setIcon(new ImageIcon("image/post/noticepostbtn.png"));
 		backBtn.addActionListener(new ActionListener() {	
 
 			@Override

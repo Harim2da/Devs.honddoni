@@ -19,7 +19,7 @@ public class MemberController {
 	private MyPageResultView myPageResultView = new MyPageResultView();
 	private MainFrame mainFrame;
 	
-	public void idDuplCheck(String getUserId) {
+	public int idDuplCheck(String getUserId) {
 		
 		int result = memberService.idDuplCheck(getUserId);
 		
@@ -28,10 +28,11 @@ public class MemberController {
 		} else {
 			duplCheckResult.displayDuplCheckResult("중복");
 		}
-				
+		
+		return result;
 	}
 
-	public void registMember(MemberRegistDTO member) {
+	public int registMember(MemberRegistDTO member) {
 		
 		int result = memberService.registMember(member);
 		
@@ -41,6 +42,7 @@ public class MemberController {
 			System.out.println("등록실패!");
 		}
 		
+		return result;
 	}
 
 	public boolean pwdCheck(ChangePwdDTO changePwd) {

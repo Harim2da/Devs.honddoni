@@ -35,8 +35,7 @@ public class NoticeModify extends JPanel{
 		this.frame = frame;
 		this.noticeModify = this;
 		this.postDTO = postinfoDTO;
-		
-		
+				
 		/* 제일 기본 패널 */
 		this.setBounds(0, 0, 500, 870);
 		this.setLayout(null);
@@ -50,14 +49,11 @@ public class NoticeModify extends JPanel{
 		honddoniBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("관리자메인 페이지로 나감");
+				frame.remove(noticeModify);
 				noticeModify.setVisible(false);
 				adminList = new AdminList(frame);
-//				FrameManagerYs.changePanel(notice, new 관리자메인());
-//				frame.remove(notice);
-//				frame.add(adminList);
-//				frame.repaint();
-//				frame.revalidate();
+				frame.repaint();
+				frame.revalidate();
 				
 			}
 		});
@@ -71,9 +67,15 @@ public class NoticeModify extends JPanel{
 		/* 제목텍필, 내용텍필 */
 		JTextField titleTf = new JTextField();
 		titleTf.setBounds(70, 7, 335, 26);
+		titleTf.setOpaque(false);
+		titleTf.setFont(font.customFont12);
 		titleTf.setText(postDTO.getPostName());
+		
 		JTextArea contentTf = new JTextArea();
 		contentTf.setBounds(20, 116, 396, 515);
+		contentTf.setOpaque(false);
+		contentTf.setLineWrap(true);
+		contentTf.setFont(font.customFont12);
 		contentTf.setText(postDTO.getPostContents());
 				
 		/* 작성완료 버튼 */
@@ -100,13 +102,11 @@ public class NoticeModify extends JPanel{
 					PopupFrame.popup("image/popup/noticeWriteSuccess.png");
 					
 					//완료 시, 다시 공지사항게시판으로
-					System.out.println("관리자메인 페이지로 나감");
+					frame.remove(noticeModify);
 					noticeModify.setVisible(false);
 					adminList = new AdminList(frame);
-//					frame.remove(NoticeWrite);
-//					frame.add(new Notice());
-//					frame.repaint();
-//					frame.revalidate();
+					frame.repaint();
+					frame.revalidate();
 					
 				} else {
 					PopupFrame.popup("image/popup/writingFail.png");

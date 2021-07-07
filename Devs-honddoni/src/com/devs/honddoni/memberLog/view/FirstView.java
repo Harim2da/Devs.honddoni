@@ -17,8 +17,8 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 
 public class FirstView extends JPanel{
 	
-	private MainFrame frame; //4조참조
-	private FirstView firstView; //4조참조	
+	private MainFrame frame; 
+	private FirstView firstView; 
 	
 	private MemberLogView memberLogView;
 	private JButton btnNewButton;
@@ -28,10 +28,10 @@ public class FirstView extends JPanel{
 	
 	public FirstView(MainFrame frame) {	
 		
-		this.frame = frame; //4조참조
-		this.firstView = this; //4조참조
+		this.frame = frame; 
+		this.firstView = this; 
 				
-		//시작화면에 올릴 전체크기패널 
+		/* 시작화면에 올릴 전체크기패널 */ 
 		this.setBounds(0, 0, 500, 870);
 		this.setBackground(Color.white);
 		this.setLayout(null);
@@ -62,8 +62,7 @@ public class FirstView extends JPanel{
 		honttoniLb = new JLabel();
 		honttoniLb.setBounds(130, 443, 241, 99);
 		honttoniLb.setIcon(new ImageIcon("image/memberLog/login/login_2_logo2.png"));
-		
-				
+						
 		//전체패널에 컴포넌트 2개 올리기
 		firstView.add(btnNewButton);
 		firstView.add(honttoniLb);

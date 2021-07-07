@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.admin.controller.NoticeController;
@@ -61,16 +62,22 @@ public class NoticeWrite extends JPanel{
 		});
 		
 		/* 공지겸 내용 라벨 */
-		JLabel searchLb = new JLabel();
-		searchLb.setBounds(35, 115, 433, 652);
-		searchLb.setBackground(null);
-		searchLb.setIcon(new ImageIcon("image/admin/noticeWrite_area.png"));		
+		JLabel writeLb = new JLabel();
+		writeLb.setBounds(35, 115, 433, 652);
+		writeLb.setBackground(null);
+		writeLb.setIcon(new ImageIcon("image/admin/noticeWrite_area.png"));		
 		
 		/* 제목텍필, 내용텍필 */
 		JTextField titleTf = new JTextField();
-		titleTf.setBounds(107, 121, 335, 26);
-		JTextField contentTf = new JTextField();
-		contentTf.setBounds(55, 230, 396, 515);
+		titleTf.setBounds(70, 7, 335, 26);
+		titleTf.setOpaque(false);				//배경투명
+		titleTf.setFont(font.customFont12);
+		
+		JTextArea contentTa = new JTextArea();
+		contentTa.setBounds(20, 116, 396, 515);
+		contentTa.setOpaque(false);
+		contentTa.setLineWrap(true); 
+		contentTa.setFont(font.customFont12);
 				
 		/* 작성완료 버튼 */
 		JButton completeBtn = new JButton();
@@ -83,7 +90,7 @@ public class NoticeWrite extends JPanel{
 				//저장할 제목, 내용을 DTO로 뭉친다
 				PostDTO postDTO = new PostDTO();
 				postDTO.setPostName(titleTf.getText());
-				postDTO.setPostContents(contentTf.getText());
+				postDTO.setPostContents(contentTa.getText());
 				
 				//컨트롤러로 작성내용 넘김
 				int result = noticeController.writeNoticeBoardPost(postDTO);
@@ -114,10 +121,13 @@ public class NoticeWrite extends JPanel{
 		
 		/* 컴포넌트 붙이기 */
 		noticeWrite.add(honddoniBtn);
-		noticeWrite.add(searchLb);
-		noticeWrite.add(titleTf);
-		noticeWrite.add(contentTf);		
 		noticeWrite.add(completeBtn);		
+		writeLb.add(titleTf);
+		writeLb.add(contentTa);		
+		noticeWrite.add(writeLb);
+		
+		frame.repaint();
+		frame.revalidate();
 	}
 
 }

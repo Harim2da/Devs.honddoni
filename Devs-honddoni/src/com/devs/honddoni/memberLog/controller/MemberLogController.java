@@ -20,28 +20,21 @@ public class MemberLogController {
 
 	public String searchId(SearchIdDTO searchIdDTO) {
 		
-		//제대로 찾았다면, 해당하는 아이디 값을 주겠지
-		String result = memberLogService.searchId(searchIdDTO);
+		/* DB에서 id를 찾는 기능연결 */
+		String dBid = memberLogService.searchId(searchIdDTO);
 		
-		if(result.equals("입력오류")) {
-			System.out.println("입력오류!");			
+		if(dBid.equals("입력오류")) {
+			PopupFrame.popup("image/memberLog/findPassword/findpassword_4_check_popup.png");			
 		} else {
-			System.out.println("입력일치");
+			editPwdPopup(dBid);
 		}
 		
-		return result;
+		return dBid;
 	}
 
 	public int searchPwd(SearchPwdDTO searchPwdDTO) {
 		
 		int result = memberLogService.searchPwd(searchPwdDTO);
-		
-		//음..  어떻게 판단해야 되지?? 일단 보류
-		if(result > 0) {
-			System.out.println("일치");
-		} else {
-			System.out.println("불일치!");
-		}
 		
 		return result;
 	}
@@ -51,10 +44,8 @@ public class MemberLogController {
 		int result = memberLogService.editPwd(searchPwdDTO);
 		
 		if(result > 0) {
-			System.out.println("비번변경 성공");
 			editPwdPopup(searchPwdDTO.getNewPwd());
 		} else {
-			System.out.println("비번변경 실패");
 			PopupFrame.popup("image/memberLog/findPassword/findpassword_4_check_popup.png");
 		}
 		
@@ -71,7 +62,6 @@ public class MemberLogController {
 		popupFrame.setVisible(true); 
 		popupFrame.setBounds(130,400,458,271);
 		
-//		JPanel popupPanel = new JPanel(); //필요없는듯
 		try {
 			/* 상단 혼또니 아이콘 */
 			popupFrame.setIconImage(ImageIO.read(new File("image/memberLog/login/login_1_logo.png")));
@@ -85,10 +75,9 @@ public class MemberLogController {
 		
 		JLabel newPwd = new JLabel();
 		newPwd.setBounds(140, 130, 200, 26);
-		newPwd.setText("임시비밀번호는 " + editPwd + " 입니다.");		
+		newPwd.setText(editPwd + " 입니다.");		
 		popupLabel.add(newPwd);
 		
-//		popupFrame.add(popupPanel);
 		popupFrame.add(popupLabel);
 	}
 

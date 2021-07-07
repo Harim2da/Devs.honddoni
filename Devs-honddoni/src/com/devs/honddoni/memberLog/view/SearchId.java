@@ -33,7 +33,6 @@ public class SearchId extends JPanel{
 		this.searchId = this;
 						
 		/* 제일 기본 패널 */
-//		searchId = new JPanel(); //이거하면 또 생성돼서 안된다
 		searchId.setBounds(0, 0, 500, 870);
 		searchId.setLayout(null);
 		searchId.setBackground(Color.WHITE);
@@ -50,9 +49,7 @@ public class SearchId extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == honddoniBtn) {					
-					/* 로고버튼 누를 시, 로그인 창으로 이동 */			
-					System.out.println("로그인창으로 이동");
-					
+					/* 로그인 창으로 이동 */			
 					frame.remove(searchId);
 					searchId.setVisible(false);					
 					memberLogView = new MemberLogView(frame);
@@ -69,7 +66,7 @@ public class SearchId extends JPanel{
 		searchIdLb.setBackground(null);
 		searchIdLb.setIcon(new ImageIcon("image/memberLog/findid/findid_1.png"));
 		
-		//이름입력과 휴대폰번호입력 텍필
+		/* 이름입력과 휴대폰번호입력하는 텍필 */
 		JTextField nameTf = new JTextField();
 		nameTf.setBounds(150, 188, 230, 44);		
 		nameTf.setBorder(null);
@@ -81,6 +78,7 @@ public class SearchId extends JPanel{
 		phoneTf.setOpaque(false);
 		phoneTf.setFont(font.customFont12);
 		
+		/* 확인버튼 */
 		JButton agreeBtn = new JButton();
 		agreeBtn.setBounds(96, 434, 111, 41);
 		agreeBtn.setIcon(new ImageIcon("image/memberLog/findid/findid_2_agree_btn.png"));
@@ -90,25 +88,13 @@ public class SearchId extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//아이디조회기능
-				System.out.println("아이디 조회기능으로~");
-								
+				/* 입력받은 값을 DTO로 모아서 아이디조회기능으로 연결 */
 				searchIdDTO = new SearchIdDTO();				
-				
 				searchIdDTO.setName(nameTf.getText());
 				searchIdDTO.setPhone(phoneTf.getText());
 				
-				System.out.println("searchIdDTO 입력값 : " + searchIdDTO); //아무것도 입력 안 하면 null인가?
-				
-				//실행하고나서, 맞다면 해당하는 아이디를, 아니라면 "입력오류"를 돌려줌
-				String result = memberLogController.searchId(searchIdDTO);
-				
-				//제대로 일치하면 아이디를 출력해주기
-				if(result.equals("입력오류")) {
-					System.out.println("이름 또는 핸드폰 번호가 잘못입력되었습니다.");
-				} else {
-					System.out.println("회원님의 아이디는 " + result + " 입니다.");					
-				}				
+				/* 실행하고나서, 맞다면 해당하는 아이디를, 아니라면 "입력오류"를 문자열로 돌려주는 기능 */
+				memberLogController.searchId(searchIdDTO);				
 				
 			}
 		});
@@ -121,9 +107,7 @@ public class SearchId extends JPanel{
 		cancelBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				//로그인창으로 나감
-				System.out.println("로그인창으로 이동");
-				
+				/* 로그인 창으로 이동 */	
 				frame.remove(searchId);
 				searchId.setVisible(false);					
 				memberLogView = new MemberLogView(frame);
