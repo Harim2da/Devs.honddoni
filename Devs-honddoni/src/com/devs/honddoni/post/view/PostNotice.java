@@ -13,15 +13,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.admin.model.dto.SearchSingletonDTO;
+import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.common.PagenationComments;
 import com.devs.honddoni.common.dto.PageInfoCommentsDTO;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.member.view.RegistMember;
 import com.devs.honddoni.memberLog.view.MemberLogView;
 import com.devs.honddoni.post.controller.ContactController;
 import com.devs.honddoni.post.controller.PagingController;
+import com.devs.honddoni.search.view.MainBottomPanel;
 
 
 //공지사항 게시판 화면
@@ -30,8 +33,16 @@ public class PostNotice extends JPanel{
 	private MainFrame frame;
 	private PostNotice postNotice;
 	
-	private PostNoticeView postNoticeView; //newPanel로 쓸 것
+	private JPanel upPanel;							//상단패널
+	private JButton myHonddoniBtn;					//마이페이지 이동 버튼
+	private JButton searchHonddoniBtn;				//게시글 작성페이지 이동 버튼
+	private JButton homeBtn;						//메인화면이동 버튼
+	private JButton interestingBtn;					//관심글 목록 이동 버튼
+	private JButton noticeBtn;						//공지사항 목록 이동 버튼
+	private JLabel backgroundImage;					//로고 포함 테두리 배경 (디자인용)
 	
+	private PostNoticeView postNoticeView; 			//newPanel로 쓸 것
+		
 	private JLabel pagebarLabel;					//페이지 표기 바
 	private JLabel preNumber = new JLabel("");		//페이지를 나타내는 앞의 숫자
 	private JButton preBtn = new JButton();			//앞의 페이지로 가는 버튼
@@ -45,7 +56,7 @@ public class PostNotice extends JPanel{
 	private List<PostDTO> postDTOList = null;		//페이지에 해당하는 게시물들의 목록
 	private PostDTO postDTO;						//해당 게시물의 정보
 	
-	private JPanel noticeLabel;
+	private JPanel noticeLabel;						//게시물 내용들을 올리는 라벨
 	private JLabel[] postListLb;					//게시물 내용을 나타내는 밑바탕라벨 (디자인용도)
 	private JButton[] postBtn;						//해당 게시물로 가는 버튼
 	private JLabel[] title;							//해당 게시물의 제목
@@ -60,15 +71,13 @@ public class PostNotice extends JPanel{
 		this.frame = frame; 
 		this.postNotice = this;		
 		
-		/* 제일 기본 패널 (init)*/
+		/* 제일 기본 패널 */
 		this.setBounds(0, 0, 500, 870);
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
 		frame.add(this);
 		System.out.println("Notice 패널 생성");	
 
-		/* 상단패널 필요*/
-		
 		
 		/* 검색창 라벨 */
 		JLabel searchLb = new JLabel("");
@@ -84,31 +93,31 @@ public class PostNotice extends JPanel{
 		JButton searchBtn = new JButton();
 		searchBtn.setBounds(25, 16, 29, 29);
 		searchBtn.setIcon(new ImageIcon("image/admin/notice_glassBtn.png"));
-		searchBtn.addActionListener(new ActionListener() {			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-//				System.out.println("공지게시판 검색으로 이동");
-//				
-//				//검색할 단어
-//				String getText = searchTf.getText();
-//				
-//				//게시판 검색...	
-//				SearchSingletonDTO searchSingletonDTO = SearchSingletonDTO.getInstance();
-//				searchSingletonDTO.setGetSearchWord(getText);
-				
-				//싱글톤갖다쓸 때
-//				SearchSingletonDTO searchSingletonDTO = SearchSingletonDTO.getInstance();
-//				searchSingletonDTO.getGetSearchWord();				
-				
-			}
-		});		
 		
-				
 		//패널에 버튼 추가
-	    this.add(searchLb);
-	    searchLb.add(searchTf);
-	    searchLb.add(searchBtn);
+		this.add(searchLb);
+		searchLb.add(searchTf);
+		searchLb.add(searchBtn);
+		
+		
+		/* 상단패널 필요 */
+		upPanel();
+		postNotice.add(upPanel);
+		
+		/* 상단패널에 포함될 버튼 */
+		myHonddoniBtn();
+		searchHonddoniBtn();
+		homeBtn();
+		interestingBtn();
+		noticeBtn();
+		
+		/* 버튼들을 상단패널에 더해줌 */
+		upPanel.add(backgroundImage);
+		backgroundImage.add(myHonddoniBtn);
+		backgroundImage.add(searchHonddoniBtn);
+		backgroundImage.add(homeBtn);
+		backgroundImage.add(interestingBtn);
+		backgroundImage.add(noticeBtn);			
 	    
 	    		
 	    /* 페이지 표기 바 세팅 */
@@ -137,15 +146,14 @@ public class PostNotice extends JPanel{
 		pagebarLabel.add(commingNumber);
 		pagebarLabel.add(commingBtn);		    
 	    
-	    //확인용
 	    frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	    
 	}
 	
+	/* 게시글 올라가는 패널 */
 	public void setNoticeLabel() {
-		//게시글 올라가는 패널
 		noticeLabel = new JPanel();
-		noticeLabel.setBounds(35, 252, 430, 577);
+		noticeLabel.setBounds(35, 252, 432, 577);
 		noticeLabel.setLayout(null);
 		postNotice.add(noticeLabel);
 	}
@@ -205,6 +213,7 @@ public class PostNotice extends JPanel{
 					frontPage++;
 				}
 				
+				//기존 내용들이 올라가있는 라벨을 remove하고, 새로운 라벨을 세팅한다.
 				postNotice.remove(noticeLabel);
 				setNoticeLabel();				
 				
@@ -271,13 +280,11 @@ public class PostNotice extends JPanel{
 		int y = 0; //늘어나는 y축 값
 		
 		//해당페이지에 맞는 포스트DTO를 List에 담아온다
-		postDTOList = new PagingController().NoticePostList(pageNo);
-		
+		postDTOList = new PagingController().NoticePostList(pageNo);		
 		System.out.println("DTO리스트 크기 : " + postDTOList.size());
 
 		//반복문으로 밑바탕라벨을 깔아준다
 		for(int i = 0; i < postDTOList.size(); i++) {			
-//			postInfo = postListDTO.get(i); 				//왜 이걸로 안 하지?
 
 			postListLb = new JLabel[postDTOList.size()];
 			postListLb[i] = new JLabel();
@@ -319,8 +326,6 @@ public class PostNotice extends JPanel{
 			noticeLabel.add(title[i]);
 			p += 119;
 			System.out.println("게시물1개 제목라벨 붙이기");
-//			postNotice.repaint();
-//			postNotice.revalidate();
 		}
 		
 		
@@ -335,10 +340,9 @@ public class PostNotice extends JPanel{
 		postDTOList = new PagingController().NoticePostList(pageNo);
 		System.out.println("DTO리스트 크기 : " + postDTOList.size());
 		
-		
 		for(int i = 0; i < postDTOList.size(); i++) {
-			
-			postinfoDTO = postDTOList.get(i); //오 이렇게 하네
+			//반복할 때마다, postDTOList 중에 이번회차 내용을 DTO에 입력
+			postinfoDTO = postDTOList.get(i);
 			
 			postBtn = new JButton[postDTOList.size()];
 			postBtn[i] = new JButton();
@@ -352,32 +356,161 @@ public class PostNotice extends JPanel{
 			postNotice.repaint();
 			postNotice.revalidate();
 			
-			//postDTOList 중에 이번회차 내용을 DTO에 입력
-			int postNo = postinfoDTO.getPostNo(); 			//엥 왜 이거지			
+			//버튼과 연결된 글의 DTO에서 글번호 추출
+			int postNo = postinfoDTO.getPostNo();			
 			
 			//버튼 클릭시, 해당 포스트 DTO를 들고 NoticeContent로 이동			
 			postBtn[i].addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("글번호 : " + postNo + "번 포스트로 이동");					
 					
 					frame.remove(postNotice);
 					postNotice.setVisible(false);
 					postNoticeView = new PostNoticeView(frame, postinfoDTO);
 					frame.repaint();
 					frame.revalidate();
-					
-//					postDTO = contactController.selectThePost(i);  //이게 맞을까..?
-//					noticeContentView(frame, postDTO);
-					 
 
-				}
+				} 
 			});
 
 		}	
 
 	}
+	
+	/* 상단 패널 */
+	public void upPanel() {
+
+		upPanel = new JPanel();
+		upPanel.setBounds(0, 0, 500, 100);
+		upPanel.setLayout(null);
+		upPanel.setBackground(Color.WHITE);
+
+		/* 상단 패널 뒷배경 생성 */
+		backgroundImage = new JLabel("");
+		backgroundImage.setBounds(0, 0, 500, 100);
+		backgroundImage.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
+		backgroundImage.setVisible(true); 
+
+	}
+	
+	/* My혼또니(마이페이지 화면으로 이동) 버튼 */
+	public void myHonddoniBtn() {
+
+		myHonddoniBtn = new JButton("");
+		myHonddoniBtn.setBounds(171,23,56,56);
+		myHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
+		myHonddoniBtn.setBorderPainted(false);
+		myHonddoniBtn.setContentAreaFilled(false);
+		myHonddoniBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postNotice.setVisible(false);
+				upPanel.setVisible(false);
+				frame.remove(upPanel);
+				frame.remove(postNotice);
+				MyPage mp = new MyPage(frame);
+				frame.repaint();
+				frame.revalidate();
+			}
+		});
+
+	}
+	
+	/* 혼또니 찾기(게시글 작성) 버튼 */
+	public void searchHonddoniBtn() {
+
+		searchHonddoniBtn = new JButton("");
+		searchHonddoniBtn.setBounds(234,23,56,56);
+		searchHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/SearchHonddoniBtn.png"));
+		searchHonddoniBtn.setBorderPainted(false);
+		searchHonddoniBtn.setContentAreaFilled(false);
+		searchHonddoniBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postNotice.setVisible(false);
+				upPanel.setVisible(false);
+				frame.remove(upPanel);
+				frame.remove(postNotice);
+				new PostHonddoni(frame);
+				frame.repaint();
+				frame.revalidate();
+			}
+		});
+
+	}
+	
+	/* Home(메인화면으로 이동) 버튼 생성 */
+	public void homeBtn() {
+
+		homeBtn = new JButton("");
+		homeBtn.setBounds(298,23,56,56);
+		homeBtn.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));
+		homeBtn.setBorderPainted(false);
+		homeBtn.setContentAreaFilled(false);
+		homeBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postNotice.setVisible(false);
+				upPanel.setVisible(false);
+				frame.remove(upPanel);
+				frame.remove(postNotice);
+				new MainBottomPanel(frame);
+				frame.repaint();
+				frame.revalidate();
+			}
+		});
+
+	}
+	
+	/* 관심금 목록페이지로 이동하는 버튼 생성 */
+	public void interestingBtn() {
+
+		interestingBtn = new JButton("");
+		interestingBtn.setBounds(362,23,56,56);
+		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
+		interestingBtn.setBorderPainted(false);
+		interestingBtn.setContentAreaFilled(false);
+		interestingBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("관심글 목록 버튼 클릭");
+			}
+		});
+
+	}
+	
+	/* 공지사항목록을 조회할 수 있는 버튼 생성 */
+	public void noticeBtn() {
+
+		noticeBtn = new JButton("");
+		noticeBtn.setBounds(426,23,56,56);
+		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
+		noticeBtn.setBorderPainted(false);
+		noticeBtn.setContentAreaFilled(false);
+		noticeBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.remove(upPanel);
+				frame.remove(postNotice);
+				upPanel.setVisible(false);
+				postNotice.setVisible(false);
+				new PostNotice(frame);
+				frame.repaint();
+				frame.revalidate();
+			}
+		});
+
+	}
+	
+	
+	
+	
 	
 	
 }

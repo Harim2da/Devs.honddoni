@@ -6,8 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.memberLog.view.FirstView;
-import com.devs.honddoni.post.view.PostNotice;
 
 
 public class MainFrame extends JFrame{
@@ -50,10 +50,9 @@ public class MainFrame extends JFrame{
 //		FrameManager.initPanel(this, new SelectAllHonPost());
 		
 		//예슬 실험중
-
 //		new FirstView(this);
-//		new Notice(this);
-		new PostNotice(this);
+		new Notice(this);
+//		new PostNotice(this);
 		
 		//태훈 실험중(메인바텀패널)
 //		new MainBottomPanel(this);

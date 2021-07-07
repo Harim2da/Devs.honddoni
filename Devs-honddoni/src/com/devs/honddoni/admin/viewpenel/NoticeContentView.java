@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 
 /* 공지사항 내용 확인 패널 */
@@ -24,6 +25,8 @@ public class NoticeContentView extends JPanel{
 	private NoticeModify noticeModify;
 	
 	private PostDTO postDTO;
+	
+	FontManager font = new FontManager();
 	
 	/* 공지내용 확인 겸, 수정버튼 */
 	public NoticeContentView(MainFrame frame, PostDTO postinfoDTO) {
@@ -45,47 +48,49 @@ public class NoticeContentView extends JPanel{
 		honddoniBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("관리자메인 페이지로 나감");
+				frame.remove(noticeContentView);
 				noticeContentView.setVisible(false);
 				adminList = new AdminList(frame);
-//				FrameManagerYs.changePanel(notice, new 관리자메인());
-//				frame.remove(notice);
-//				frame.add(adminList);
-//				frame.repaint();
-//				frame.revalidate();
+				frame.repaint();
+				frame.revalidate();
 				
 			}
 		});
 		
 		/* 공지겸 내용 라벨 */
-		JLabel searchLb = new JLabel();
-		searchLb.setBounds(35, 115, 433, 652);
-		searchLb.setBackground(null);
-		searchLb.setIcon(new ImageIcon("image/admin/noticeWrite_area.png"));		
+		JLabel writeLb = new JLabel();
+		writeLb.setBounds(35, 115, 433, 652);
+		writeLb.setBackground(null);
+		writeLb.setIcon(new ImageIcon("image/admin/noticeWrite_area.png"));		
 		
 		/* 제목라벨, 내용라벨 DTO에서 내용받아서 설정 */
-		JTextField titleLb = new JTextField();
-		titleLb.setBounds(70, 7, 335, 26);
-		titleLb.setEditable(false);
-		titleLb.setText(postDTO.getPostName());
-		JTextArea contentLb = new JTextArea();
-		contentLb.setBounds(20, 116, 396, 515);
-		contentLb.setLineWrap(true);  // 줄바꿈 처리
-		contentLb.setEditable(false); //수정 불가
-		contentLb.setText(postDTO.getPostContents());
+		JTextField titleTf = new JTextField();
+		titleTf.setBounds(70, 7, 335, 26);
+		titleTf.setOpaque(false);				//배경투명
+		titleTf.setEditable(false);				//수정불가
+		titleTf.setFont(font.customFont12);
+		titleTf.setText(postDTO.getPostName());
 		
-		/* 수정완료 버튼 */
+		JTextArea contentTa = new JTextArea();
+		contentTa.setBounds(20, 116, 396, 515);
+		contentTa.setOpaque(false);				//배경투명
+		contentTa.setLineWrap(true);  			//줄바꿈 처리
+		contentTa.setEditable(false); 			//수정 불가
+		contentTa.setFont(font.customFont12);
+		contentTa.setText(postDTO.getPostContents());
+		
+		/* 수정하기 버튼 */
 		JButton modifyBtn = new JButton("");
 		modifyBtn.setBounds(130, 789, 245, 42);
 		modifyBtn.setIcon(new ImageIcon("image/admin/noticeboard_5_modify_compleate_btn.png"));
-		modifyBtn.addActionListener(new ActionListener() {	
-			
+		modifyBtn.addActionListener(new ActionListener() {				
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//NoticeWrite으로 넘어가야
-				System.out.println("공지글 수정으로 이동");
+				frame.remove(noticeContentView);
 				noticeContentView.setVisible(false);
 				noticeModify = new NoticeModify(frame, postDTO);
+				frame.repaint();
+				frame.revalidate();
 				
 			}
 		});				
@@ -94,12 +99,12 @@ public class NoticeContentView extends JPanel{
 		/* 컴포넌트 붙이기 */		
 		this.add(modifyBtn);			
 		this.add(honddoniBtn);
-		this.add(searchLb);
-		searchLb.add(titleLb);
-		searchLb.add(contentLb);	
+		writeLb.add(titleTf);
+		writeLb.add(contentTa);	
+		this.add(writeLb);
 		
-	}
-	
-	
+		frame.repaint();
+		frame.revalidate();		
+	}	
 
 }

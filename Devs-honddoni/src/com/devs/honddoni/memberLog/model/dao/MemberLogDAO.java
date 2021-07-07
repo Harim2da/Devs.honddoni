@@ -112,6 +112,7 @@ public class MemberLogDAO {
 		ResultSet rset = null;
 
 		int result = 0;
+		
 
 		String query = prop.getProperty("searchById");
 
@@ -121,14 +122,25 @@ public class MemberLogDAO {
 
 			rset = pstmt.executeQuery();
 
-			while(rset.next()) {
-				System.out.println("기존 비밀번호는 : " + rset.getString("MEMBER_PASSWORD"));
-				result = 1;
+			if(rset.next()) {
+				
+				String getName = searchPwdDTO.getName();
+				String getId = searchPwdDTO.getId();
+				String getPhone = searchPwdDTO.getPhone();
+				
+				//3개가 다 일치하는 경우, 1을 반환
+				if(getName.equals(rset.getString("MEMBER_NAME"))) {
+					if(getId.equals(rset.getString("MEMBER_ID"))) {
+						if(getPhone.equals(rset.getString("MEMBER_PHONE"))) {
+							
+							result = 1;
+						}
+					}
+				}
+				
 			}
 
-
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -146,7 +158,7 @@ public class MemberLogDAO {
 		String query = prop.getProperty("editPwd");
 
 		try {
-			//난수를, 이름이 같은곳에 비밀번호로 설정한다.
+			/* 난수를, 이름이 같은곳에 비밀번호로 설정한다. */
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, searchPwdDTO.getNewPwd());
 			pstmt.setString(2, searchPwdDTO.getName());

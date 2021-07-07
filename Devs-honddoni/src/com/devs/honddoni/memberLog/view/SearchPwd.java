@@ -47,16 +47,14 @@ public class SearchPwd extends JPanel{
 		honddoniBtn.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				/* 로고버튼 누를 시, 로그인 창으로 이동 */			
 				if(e.getSource() == honddoniBtn) {
-					System.out.println("로그인창으로 이동");
 					searchPwd.setVisible(false);
+					frame.remove(searchPwd);
 					memberLogView = new MemberLogView(frame);
-//					FrameManager.changePanel(frame, firstPanel, newPanel);
-//					frame.remove(searchPwd);
-//					frame.add(memberLogView);
-//					frame.repaint();
-//					frame.revalidate();
+					frame.repaint();
+					frame.revalidate();
 				}
 				
 			}
@@ -68,7 +66,7 @@ public class SearchPwd extends JPanel{
 		searchPwdLb.setBackground(null);
 		searchPwdLb.setIcon(new ImageIcon("image/memberLog/findPassword/findpassword_1.png"));
 		
-		//이름입력과 휴대폰번호입력 텍필
+		/* 이름입력과 휴대폰번호입력 텍스트 필드 */
 		JTextField nameTf = new JTextField();
 		nameTf.setBounds(160, 213, 220, 40);
 		nameTf.setBorder(null);
@@ -85,7 +83,7 @@ public class SearchPwd extends JPanel{
 		phoneTf.setOpaque(false);
 		phoneTf.setFont(font.customFont12);
 		
-		
+		/* 확인하기 버튼 */
 		JButton agreeBtn = new JButton();
 		agreeBtn.setBounds(88, 496, 111, 41);
 		agreeBtn.setIcon(new ImageIcon("image/memberLog/findPassword/findpassword_2_accept_btn.png"));
@@ -95,46 +93,26 @@ public class SearchPwd extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//비밀번호 조회기능
-				System.out.println("비밀번호 조회기능으로~");
-				
-				searchPwdDTO = new SearchPwdDTO();
-				
+				/* 비밀번호 조회기능 */				
+				searchPwdDTO = new SearchPwdDTO();				
 				searchPwdDTO.setName(nameTf.getText());
 				searchPwdDTO.setId(idTf.getText());
 				searchPwdDTO.setPhone(phoneTf.getText());
 				
-				System.out.println("searchPwdDTO 입력값 : " + searchPwdDTO);
-				
 				int result = memberLogController.searchPwd(searchPwdDTO);
 				
-				if(result > 0) {
+				if(result > 0) {					
 					
-					System.out.println("입력값들이 일치합니다.");
-					
-					//난수발생시켜 6자리의 무작위 비밀번호(String) 만들어주자...
+					/* 난수 발생시켜 6자리의 무작위 비밀번호(String) 생성 */
 					String newPwd = "";					
 					for(int i = 0; i < 6; i++) {
 						int randomNum = (int)(Math.random() * 10);
 						newPwd += randomNum;
 					}
 					
-					System.out.println("새로운 비밀번호 : " + newPwd);
-					
-					//새 비밀번호 DTO에 넣고, 수정하기
+					/* 새 비밀번호 DTO에 담고, 수정하기 */
 					searchPwdDTO.setNewPwd(newPwd);
 					int result2 = memberLogController.editPwd(searchPwdDTO);
-//										
-//					if(result2 > 0) {
-//						System.out.println("새 비밀번호가 잘 저장되었습니다.");
-//					} else {
-//						System.out.println("새 비밀번호 수정 오류!");
-//					}
-					
-					
-				} else {
-					
-					System.out.println("입력값들이 일치하지 않습니다.");
 					
 				}
 				
@@ -148,16 +126,14 @@ public class SearchPwd extends JPanel{
 		cancelBtn.setBorderPainted(false);
 		cancelBtn.addActionListener(new ActionListener() {			
 			@Override
-			public void actionPerformed(ActionEvent e) {				
-				//로그인창으로 나감
-				System.out.println("로그인창으로 이동");
+			public void actionPerformed(ActionEvent e) {	
+				
+				/* 로그인창으로 이동 */
 				searchPwd.setVisible(false);
+				frame.remove(searchPwd);
 				memberLogView = new MemberLogView(frame);
-//				FrameManager.changePanel(frame, firstPanel, newPanel);
-//				frame.remove(searchPwd);
-//				frame.add(memberLogView);
-//				frame.repaint();
-//				frame.revalidate();
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 		
