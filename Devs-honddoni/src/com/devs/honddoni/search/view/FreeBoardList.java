@@ -33,27 +33,24 @@ public class FreeBoardList extends JPanel {
 	private JLabel searchLabel;
 	private JButton aim;
 	private JTextField searching;
-	private JLabel pageLongbarLabel;	//페이지표기 바
+	private JLabel pageLongbarLabel;				// 페이지표기 바
 	private JLabel beforeNumber = new JLabel("");
 	private JLabel afterNumber;
 	public static int presentPage2 = 1;
-	private JButton beforeBtn = new JButton(); // 앞페이지 버튼
-	private JButton afterBtn = new JButton(); // 뒷 페이지 버튼
+	private JButton beforeBtn = new JButton(); 		// 앞페이지 버튼
+	private JButton afterBtn = new JButton(); 		// 뒷 페이지 버튼
 	private JLabel[] postList;	
 	private List<PostDTO> postListDTO = null;
-	private JLabel[] profilePictrue; //프로필
-	private JLabel[] nickName; // 닉네임
-	private JLabel[] postTitle; // 게시글 제목
-	//	private int postNo; //게시글 번호
-	//	private int totalPostNum;
-	//	private PostDTO postDTO = new PostDTO();
+	private JLabel[] profilePictrue; 				// 프로필
+	private JLabel[] nickName; 						// 닉네임
+	private JLabel[] postTitle; 					// 게시글 제목
 
-	private JButton myHonddoniBtn;								//마이페이지 이동 버튼
-	private JButton searchHonddoniBtn;							//게시글 작성페이지 이동 버튼
-	private JButton homeBtn;									//메인화면이동 버튼
-	private JButton interestingBtn;								//관심글 목록 이동 버튼
-	private JButton noticeBtn;									//공지사항 목록 이동 버튼
-	private JLabel backgroundImage;								//로고 포함 테두리 배경 (디자인용)
+	private JButton myHonddoniBtn;					// 마이페이지 이동 버튼
+	private JButton searchHonddoniBtn;				// 게시글 작성페이지 이동 버튼
+	private JButton homeBtn;						// 메인화면이동 버튼
+	private JButton interestingBtn;					// 관심글 목록 이동 버튼
+	private JButton noticeBtn;						// 공지사항 목록 이동 버튼
+	private JLabel backgroundImage;					// 로고 포함 테두리 배경 (디자인용)
 
 	GetFilter getName = GetFilter.getInstance();
 
@@ -97,13 +94,11 @@ public class FreeBoardList extends JPanel {
 		postList();
 
 		/* 반복문이 필요없는 버튼, 라벨을 하단패널에 더해줌 */
-
 		bottomPanel.add(searchLabel);
 		bottomPanel.add(searching);
 		bottomPanel.add(aim);
 		bottomPanel.add(pageLongbarLabel);
-
-
+		
 		/* 디자인용도의 longbar에 라벨, 버튼을 더해줌 */
 		pageLongbarLabel.add(beforeNumber);
 		pageLongbarLabel.add(afterNumber);
@@ -316,19 +311,14 @@ public class FreeBoardList extends JPanel {
 					FreeBoardList sf = new FreeBoardList(frame);
 					frame.add(sf.getDownPanel());
 
-
 					beforeBtn();
 					beforeNumber();
 					afterBtn();
-
-
 
 				}
 			});
 		}	
 	}
-
-
 
 	public void afterBtn() {
 
@@ -366,7 +356,6 @@ public class FreeBoardList extends JPanel {
 				afterBtn();
 				beforeBtn();
 				beforeNumber();
-
 
 			}
 		});
@@ -418,9 +407,6 @@ public class FreeBoardList extends JPanel {
 
 		}
 	}
-
-
-
 
 	/* 게시글에 맞는 프로필 불러오기 */
 	public void profilePictrue() {
@@ -478,8 +464,6 @@ public class FreeBoardList extends JPanel {
 
 		}	
 
-
-
 	}
 
 	public void postTitle() {
@@ -518,9 +502,6 @@ public class FreeBoardList extends JPanel {
 			});
 		}
 	}
-
-
-
 
 }
 
