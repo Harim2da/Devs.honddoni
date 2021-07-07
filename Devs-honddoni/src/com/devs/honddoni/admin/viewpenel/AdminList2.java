@@ -134,6 +134,7 @@ public class AdminList2 extends JPanel {
 	    		   adminList.setVisible(false); 
 //	    		   MainFrame.setVisible(false);
 	    		   new MemberLogView(frame);
+	    		   
 	    	   }
 	       });
 	}

@@ -80,8 +80,10 @@ public class MainFrame extends JFrame{
 
 
 		//명길 실험중
-//		new AdminList(this);
-//		new AdminList(this);
+
+		new AdminList(this);
+//		new MemberLogView(this);
+
 
 
 //		new FreeBoardList(this);

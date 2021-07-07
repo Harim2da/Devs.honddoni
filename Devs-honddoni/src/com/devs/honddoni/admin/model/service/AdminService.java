@@ -21,18 +21,7 @@ public class AdminService {
 	private AdminDAO adminDAO = new AdminDAO();
 	
 
-	public List<AdminDTO> onlyNicname() {
-		
-		Connection con = getConnection();
-		
-		List <AdminDTO> adminList = null;
-		
-		adminList = adminDAO.onlyNicname(con);
-		
-		close(con);
-		
-		return adminList;
-	}
+
 
 
 	public int insertNoticePost(PostDTO postDTO) {
@@ -72,11 +61,11 @@ public class AdminService {
 
 
 
-	public List<AdminDTO> memberManagement() {
+	public List<AdminDTO> totalUserList() {
 	
 		Connection con = getConnection();
 		
-		List<AdminDTO> adminListDTO = new AdminDAO().memberManagement(con);
+		List<AdminDTO> adminListDTO = new AdminDAO().totalUserList(con);
 		
 		if(adminListDTO != null) {
 			commit(con);

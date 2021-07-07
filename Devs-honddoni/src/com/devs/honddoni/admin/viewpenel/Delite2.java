@@ -19,6 +19,8 @@ public class Delite2 extends JPanel{
 	private MainFrame frame;
 	private Delite2 delite;
 	private JButton btn1, btn2, btn3, btn4, btn5;
+	Delite delite123;
+	AdminList adminlist;
 	
 	public Delite2(MainFrame frame) {
 		//프레임, 패널설정
@@ -148,6 +150,14 @@ public class Delite2 extends JPanel{
 	    		   new Delite(frame);
 	    		   bottomPanel.setVisible(false);
 //	    		  MainFrame.setVisible(false);
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+
+	    		   btn8.remove(btn8);
+	    		   btn9.remove(btn9);
+
+	    		   delite123.repaint();
+	    		   delite123.revalidate();
 	    	   }
 	       });
 	       //뒤로가는 버튼
@@ -159,9 +169,17 @@ public class Delite2 extends JPanel{
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Delite(frame);
+	    		   new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
 	    		   delite.setVisible(false);
+	    		   btn1.remove(btn1);
+	    		   btn2.remove(btn2);
+
+	    		   btn8.remove(btn8);
+	    		   btn9.remove(btn9);
+
+	    		   adminlist.repaint();
+	    		   adminlist.revalidate();
 	    	   }
 	       });
 	}

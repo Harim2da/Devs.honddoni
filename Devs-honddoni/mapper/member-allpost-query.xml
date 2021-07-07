@@ -63,7 +63,10 @@
 		
 		<entry key="totalUserList">
 		SELECT
-				*
+				M.MEMBER_NICKNAME
+				M.MEMBER_PROFILE
+				M.MEMBER_ID
+				M.MEM_REGIST_DATE
 		FROM TBL_MEMBER
 		</entry>
 		
