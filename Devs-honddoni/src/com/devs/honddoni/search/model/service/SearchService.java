@@ -53,13 +53,6 @@ public class SearchService {
 		return result;
 	}
 
-	public int updateThePost(PostDTO post) {
-
-		int result = 0;
-		
-		return result;
-	}
-
 }
 
 
