@@ -3,6 +3,7 @@ package com.devs.honddoni.post.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -17,6 +18,7 @@ import javax.swing.JTextField;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
+import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.post.controller.ContactController;
@@ -63,6 +65,7 @@ public class PostModify extends JPanel{
 	private JButton homeBtn;									//메인화면이동 버튼
 	private JButton interestingBtn;								//관심글 목록 이동 버튼
 	private JButton noticeBtn;
+	private JButton matchingBtn;
 	FontManager font = new FontManager();
 
 
@@ -90,6 +93,7 @@ public class PostModify extends JPanel{
 		modifyLocal(postNo);
 		modifyCategory(postNo);
 		modifyDate(postNo);
+		matchingBtn(postNo);
 		profile(postNo);
 		nickName(postNo);
 
@@ -111,8 +115,32 @@ public class PostModify extends JPanel{
 		topLabel.setBounds(0, 0, 500, 100);
 		topLabel.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
 		topLabel.setVisible(true); 
-		frame.add(topLabel);
+		topPanel.add(topLabel);
 		
+	}
+	
+	public void matchingBtn(int postNo) {
+		
+		matchingBtn = new JButton();
+		matchingBtn.setBounds(363,613,79,26);
+		matchingBtn.setIcon(new ImageIcon("image/post/matchingBtn.png"));
+		matchingBtn.setBorderPainted(false);
+		matchingBtn.setContentAreaFilled(false);
+		matchingBtn.setVisible(true);
+		bottomPanel.add(matchingBtn);
+		matchingBtn.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				PopupFrame.popup3("image/popup/ending.png");
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				matchingBtn.setVisible(true);
+			}
+			
+		});
 	}
 	
 	/* My혼또니(마이페이지 화면으로 이동) 버튼 */
@@ -123,7 +151,7 @@ public class PostModify extends JPanel{
 		myHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
 		myHonddoniBtn.setBorderPainted(false);
 		myHonddoniBtn.setContentAreaFilled(false);
-		topPanel.add(myHonddoniBtn);
+		topLabel.add(myHonddoniBtn);
 		
 		
 		myHonddoniBtn.addActionListener(new ActionListener() {
@@ -150,7 +178,7 @@ public class PostModify extends JPanel{
 		searchHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/SearchHonddoniBtn.png"));
 		searchHonddoniBtn.setBorderPainted(false);
 		searchHonddoniBtn.setContentAreaFilled(false);
-		topPanel.add(searchHonddoniBtn);
+		topLabel.add(searchHonddoniBtn);
 		
 		searchHonddoniBtn.addActionListener(new ActionListener() {
 
@@ -176,7 +204,7 @@ public class PostModify extends JPanel{
 		homeBtn.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));
 		homeBtn.setBorderPainted(false);
 		homeBtn.setContentAreaFilled(false);
-		topPanel.add(homeBtn);
+		topLabel.add(homeBtn);
 		
 		
 		homeBtn.addActionListener(new ActionListener() {
@@ -205,7 +233,7 @@ public class PostModify extends JPanel{
 		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
 		interestingBtn.setBorderPainted(false);
 		interestingBtn.setContentAreaFilled(false);
-		topPanel.add(interestingBtn);
+		topLabel.add(interestingBtn);
 		
 	}
 
@@ -217,7 +245,7 @@ public class PostModify extends JPanel{
 		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
 		noticeBtn.setBorderPainted(false);
 		noticeBtn.setContentAreaFilled(false);
-		topPanel.add(noticeBtn);
+		topLabel.add(noticeBtn);
 		
 		noticeBtn.addActionListener(new ActionListener() {
 
@@ -300,7 +328,7 @@ public class PostModify extends JPanel{
 		local.setBounds(105, 88, 125, 30);
 		local.setFont(font.customFont12);
 		local.setContentAreaFilled(false);
-		local.setBorderPainted(true);
+		local.setBorderPainted(false);
 		local.setOpaque(false);
 		local.setEnabled(false);
 		bottomPanel.add(local);
@@ -313,7 +341,7 @@ public class PostModify extends JPanel{
 		category.setBounds(139, 152, 306, 28);
 		category.setFont(font.customFont12);
 		category.setContentAreaFilled(false);
-		category.setBorderPainted(true);
+		category.setBorderPainted(false);
 		category.setOpaque(false);
 		category.setEnabled(false);
 		bottomPanel.add(category);
