@@ -26,7 +26,6 @@ public class SearchDAO {
 		try {
 			prop.loadFromXML(new FileInputStream("postmapper/paging-query.xml"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -66,14 +65,10 @@ public class SearchDAO {
 				post.setMemberProfile(rset.getString("MEMBER_PROFILE"));
 				post.setPostNumberOfPeopleNumber(rset.getInt("POST_NUMBER_OF_PEOPLE"));
 				
-				
 				postList.add(post);
-				
-				
-				
+					
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(rset);
@@ -112,14 +107,10 @@ public class SearchDAO {
 				post.setMemberProfile(rset.getString("MEMBER_PROFILE"));
 				post.setPostNumberOfPeopleNumber(rset.getInt("POST_NUMBER_OF_PEOPLE"));
 				
-				
 				postList.add(post);
-				
-				
-				
+					
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(rset);
@@ -127,7 +118,6 @@ public class SearchDAO {
 		} 
 		return postList;
 	}
-
 
 	public int insertNewFreeBoard(Connection con, PostDTO post) {
 		
@@ -150,7 +140,6 @@ public class SearchDAO {
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
@@ -159,10 +148,4 @@ public class SearchDAO {
 		return result;
 	}
 	
-	
-	
-	
-	
-	
-
 }

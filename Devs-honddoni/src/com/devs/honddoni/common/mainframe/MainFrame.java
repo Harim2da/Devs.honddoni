@@ -71,7 +71,9 @@ public class MainFrame extends JFrame{
 
 
 //		new AdminList(this);
+
 //		new MemberLogView(this);
+
 
 
 

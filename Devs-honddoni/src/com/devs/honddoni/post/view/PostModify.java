@@ -9,13 +9,14 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.common.dto.PostDTO;
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.memberLog.controller.GetLoginMember;
@@ -62,7 +63,8 @@ public class PostModify extends JPanel{
 	private JButton searchHonddoniBtn;							//게시글 작성페이지 이동 버튼
 	private JButton homeBtn;									//메인화면이동 버튼
 	private JButton interestingBtn;								//관심글 목록 이동 버튼
-	private JButton noticeBtn;		
+	private JButton noticeBtn;
+	FontManager font = new FontManager();
 
 
 	public PostModify(MainFrame frame, int postNo) {
@@ -187,10 +189,9 @@ public class PostModify extends JPanel{
 				frame.remove(topPanel);
 				topPanel.setVisible(false);
 				bottomPanel.setVisible(false);
-				new MyPage(frame);			
+				new MainBottomPanel(frame);			
 				frame.repaint();
 				frame.revalidate();
-				
 
 			}
 		});
@@ -206,14 +207,7 @@ public class PostModify extends JPanel{
 		interestingBtn.setBorderPainted(false);
 		interestingBtn.setContentAreaFilled(false);
 		topPanel.add(interestingBtn);
-		interestingBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("관심글 목록 버튼 클릭");
-			}
-		});
-
+		
 	}
 
 	/* 공지사항목록을 조회할 수 있는 버튼 생성 */
@@ -230,7 +224,13 @@ public class PostModify extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("공지사항 버튼 클릭");
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new Notice(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -249,18 +249,17 @@ public class PostModify extends JPanel{
 
 	/* 게시글 제목 */
 	private void modifyPostTitle(int postNo) {
-		postDTO = contactController.selectThePost(postNo); // 게시글 번호 받아오기
+		postDTO = contactController.selectThePost(postNo); // 게시글 내용들 받아오기
 
 		String title = postDTO.getPostName();
-		System.out.println(title);
-
+		
 		postTitle = new JTextField();
 		postTitle.setEditable(false);
 		postTitle.setBorder(null);
 
 		postTitle.setOpaque(false);
-		postTitle.setBounds(113, 30, 322, 28);	// 폰트 크기 키우면 y축 위치 조정
-
+		postTitle.setBounds(113, 30, 322, 28);	
+		postTitle.setFont(font.customFont12);
 		postTitle.setText(title);
 		bottomPanel.add(postTitle);
 
@@ -268,14 +267,12 @@ public class PostModify extends JPanel{
 	
 	/* 게시글 내용 */
 	private void modifyPostContents(int postNo) {
-	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
-
 		String contents = postDTO.getPostContents();
-		System.out.println(contents);
 		postContents = new JTextArea();
 		postContents.setOpaque(false);
 		postContents.setBounds(59, 320, 399, 273);
 		postContents.setText(contents);
+		postContents.setFont(font.customFont12);
 		postContents.setLineWrap(true);  // 줄바꿈 처리
 		postContents.setEditable(false); //수정 불가
 		bottomPanel.add(postContents);
@@ -284,26 +281,25 @@ public class PostModify extends JPanel{
 
 	/* 모일 인원 */
 	private void modifyJoinmember(int postNo) {
-	//	postDTO = contactController.selectThePost(postNo);  //괄호 속 게시글 번호 입력받기
 		String join = Integer.valueOf(postDTO.getPostNumberOfPeopleNumber()).toString();
 
 		joinmember = new JTextField();
 		joinmember.setBorder(null);
 		joinmember.setOpaque(false);
-		joinmember.setBounds(350, 95, 108, 28); // 폰트 크기 키우면 y축 위치 조정
+		joinmember.setBounds(350, 95, 108, 28); 
 		joinmember.setColumns(10);
 		joinmember.setText(join);
+		joinmember.setFont(font.customFont12);
 		joinmember.setEditable(false);
 		bottomPanel.add(joinmember);
 	}
 
 
 	private void modifyLocal(int postNo) {
-	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
-
 		String localName = postDTO.getLocalName();
 		local = new JButton(localName);
 		local.setBounds(105, 88, 125, 30);
+		local.setFont(font.customFont12);
 		local.setContentAreaFilled(false);
 		local.setBorderPainted(true);
 		local.setOpaque(false);
@@ -313,11 +309,10 @@ public class PostModify extends JPanel{
 	}
 
 	private void modifyCategory(int postNo) {
-	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
-
 		String categoryName = postDTO.getCategoryName();
 		category = new JButton(categoryName);
 		category.setBounds(139, 152, 306, 28);
+		category.setFont(font.customFont12);
 		category.setContentAreaFilled(false);
 		category.setBorderPainted(true);
 		category.setOpaque(false);
@@ -327,8 +322,6 @@ public class PostModify extends JPanel{
 	}
 
 	private void modifyDate(int postNo) {
-	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
-
 		String meet = postDTO.getPostMeetingDate();
 		String year = "";
 		String month = "";
@@ -353,12 +346,12 @@ public class PostModify extends JPanel{
 		meetdate.setBounds(105, 224, 350, 20);
 		meetdate.setLayout(null);
 		meetdate.setText(year + " 년  " + month + " 월  " + day + " 일     " + time);
+		meetdate.setFont(font.customFont12);
 		bottomPanel.add(meetdate);
 	}
 	
 	/* 작성자 프로필 생성 */
 	private void profile(int postNo) {
-	//	postDTO = contactController.selectThePost(postNo); //게시글 번호 입력받기
 		String profilenum = postDTO.getMemberProfile();
 
 		profile = new JLabel();
@@ -382,13 +375,13 @@ public class PostModify extends JPanel{
 	
 	/*닉네임 불러오기 */
 	private void nickName(int postNo) {
-	//	postDTO = contactController.selectThePost(postNo); //괄호 속 게시글 번호 입력받기
 		String nick = postDTO.getMemberNickname();
 
 		nickName = new JLabel();
 		nickName.setBounds(105, 612, 91, 40);
 		nickName.setLayout(null);
 		nickName.setText(nick);
+		nickName.setFont(font.customFont12);
 
 		bottomPanel.add(nickName);
 
@@ -502,16 +495,13 @@ public class PostModify extends JPanel{
 					modiLabel.setBounds(35, 0, 500, 724); 
 					modiLabel.setIcon(new ImageIcon("image/post/editpage.png"));
 					bottomPanel.add(modiLabel);
-
-
-					System.out.println("작성완료체크");
+	
 					modiLabel.add(postbtn);
 
 					postbtn.addMouseListener(new MouseListener() {
 
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							System.out.println("반응체크");
 							postDTO = new PostDTO();
 
 
@@ -542,8 +532,7 @@ public class PostModify extends JPanel{
 							/* 텍스트 필드로 받은 모임인원, int로 전환 */
 							int numberOfJoin = Integer.parseInt(joinmember.getText());
 							postDTO.setPostNumberOfPeopleNumber(numberOfJoin);
-							System.out.println(postDTO);
-
+							
 							contactController.updateThePost(postDTO);
 							
 							frame.remove(bottomPanel);
@@ -600,7 +589,6 @@ public class PostModify extends JPanel{
 					new MainBottomPanel(frame);			
 					frame.repaint();
 					frame.revalidate();
-	
 				}
 				}
 		});
