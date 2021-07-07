@@ -209,7 +209,7 @@ public class Delite extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Delite2(frame);
+	    		   delite2 = new Delite2(frame);
 	    		   bottomPanel.setVisible(false); 
 	    		   delite.setVisible(false);
 	    		   

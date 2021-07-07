@@ -9,30 +9,40 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
+
 //신고된 게시글 관리
 
-public class AdminPost {
+public class AdminPost extends JPanel {
 	
-	MainFrame1 MainFrame = new MainFrame1();
-	
+	private MainFrame frame;
+	private AdminPost adminpost;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
-	public AdminPost() {
-
+	public AdminPost(MainFrame frame) {
+		this.frame = frame;
+		this.adminpost = this;
+		
+		//전체 패널 생성
+		adminpost.setBounds(0, 0, 500, 870);
+		adminpost.setLayout(null);
+		adminpost.setBackground(Color.white);
+		frame.add(adminpost);
+		
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
 
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		MainFrame.add(bottomPanel);
+		adminpost.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		MainFrame.add(topPanel);
+		adminpost.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -93,23 +103,23 @@ public class AdminPost {
 		   btn11.setBorderPainted(false);
 	   
 	     
-	       //컨테이너에 패널 추가
-	       MainFrame.add(bottomPanel);
-	       MainFrame.setVisible(true); //창을 보이게함
+//	       //컨테이너에 패널 추가
+//	       MainFrame.add(bottomPanel);
+//	       MainFrame.setVisible(true); //창을 보이게함
 	       
-	       btn1.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
+//	       btn1.addActionListener(new ActionListener() {
+//	    	   @Override
+//	    	   public void actionPerformed(ActionEvent e) {
+////	    		   login2 login2 = new login2();
+////	    		   JPanel.add(login2);
+////	    		   new login2();
+////	    		   bottomPanel.setVisible(false);
+//	    		   
+//	    		   new Login2();
 //	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   new Login2();
-	    		   bottomPanel.setVisible(false);
-//	    		  MainFrame.setVisible(false);
-	    	   }
-	       });
+////	    		  MainFrame.setVisible(false);
+//	    	   }
+//	       });
 	       
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
@@ -119,9 +129,9 @@ public class AdminPost {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList1();
+	    		   new AdminList1(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   adminpost.setVisible(false);
 	    	   }
 	       });
 	       
@@ -133,9 +143,9 @@ public class AdminPost {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminPost2();
+	    		   new AdminPost2(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   adminpost.setVisible(false);
 	    	   }
 	       });
 	       
@@ -149,7 +159,7 @@ public class AdminPost {
 	    		   
 	    		   new AdminPostDelite();
 	    		   bottomPanel.setVisible(false); 
-	    		   MainFrame.setVisible(false);
+	    		   adminpost.setVisible(false);
 	    	   }
 	       });
 	}

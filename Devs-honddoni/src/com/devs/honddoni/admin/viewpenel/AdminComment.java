@@ -10,18 +10,30 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 
 
-public class AdminComment {
+
+public class AdminComment extends JPanel {
 	
 	//신고된 댓글 확인
-	
-	MainFrame1 MainFrame = new MainFrame1();
-	
+	private MainFrame frame;
+	private AdminComment admincomment;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
-	public AdminComment() {
+	public AdminComment(MainFrame frame) {
+		//프레임, 패널설정
+		this.frame = frame;
+		this.admincomment = this;
+		
+		//전체 패널 생성
+		admincomment.setBounds(0, 0, 500, 870);
+		admincomment.setLayout(null);
+		admincomment.setBackground(Color.white);
+		frame.add(admincomment);
+		
+		
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -29,14 +41,14 @@ public class AdminComment {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		MainFrame.add(bottomPanel);
+		admincomment.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		MainFrame.add(topPanel);
+		admincomment.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -86,9 +98,9 @@ public class AdminComment {
 	      
 	   
 	     
-	       //컨테이너에 패널 추가
-	       MainFrame.add(bottomPanel);
-	       MainFrame.setVisible(true); //창을 보이게함
+//	       //컨테이너에 패널 추가
+//	       MainFrame.add(bottomPanel);
+//	       MainFrame.setVisible(true); //창을 보이게함
 	       
 	       btn1.addActionListener(new ActionListener() {
 	    	   @Override
@@ -112,7 +124,7 @@ public class AdminComment {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList1();
+	    		   new AdminList1(frame);
 	    		   bottomPanel.setVisible(false);
 //	    		  MainFrame.setVisible(false);
 	    	   }

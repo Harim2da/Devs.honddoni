@@ -10,20 +10,33 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.common.mainframe.MainFrame;
 
 
 
-public class AdminAll {
+
+public class AdminAll extends JPanel{
 	
 		//전체게시글 조회
-		
-		MainFrame1 MainFrame = new MainFrame1();
-		
+		private MainFrame frame;
+		private AdminAll adminall;
 		private JButton btn1, btn2, btn3, btn4, btn5;
 		private JLabel lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11, lb12, lb13, lb14, lb15, lb16,
 		lb17, lb18, lb19, lb20, lb21; 
 		
-		public AdminAll() {
+		AdminList1 adminlist1;
+		AdminAll2 adminall2;
+		
+		public AdminAll(MainFrame frame) {
+			//프레임, 패널설정
+			this.frame = frame;
+			this.adminall = this;
+			
+			//전체 패널 생성
+			adminall.setBounds(0, 0, 500, 870);
+			adminall.setLayout(null);
+			adminall.setBackground(Color.white);
+			frame.add(adminall);
 
 			/* 하단 패널 생성 */
 			JPanel bottomPanel = new JPanel();
@@ -31,14 +44,14 @@ public class AdminAll {
 			bottomPanel.setBounds(0, 100, 500, 770);
 			bottomPanel.setLayout(null);
 			bottomPanel.setBackground(Color.WHITE);
-			MainFrame.add(bottomPanel);
+			adminall.add(bottomPanel);
 			
 			/* 상단 패널 생성 */
 			JPanel topPanel = new JPanel();
 			topPanel.setBounds(0, 0, 500, 100);
 			topPanel.setLayout(null);
 			topPanel.setBackground(Color.WHITE);
-			MainFrame.add(topPanel);
+			adminall.add(topPanel);
 			
 			//상단패널의 두로가기버튼
 			 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
@@ -160,9 +173,9 @@ public class AdminAll {
 //			    t3.setBounds(54, 441, 395, 28);//제목위치
 //			    t4.setBounds(54, 559, 395, 28);//제목위치
 			    
-		       //컨테이너에 패널 추가
-		       MainFrame.add(bottomPanel);
-		       MainFrame.setVisible(true); //창을 보이게함
+//		       //컨테이너에 패널 추가
+//		       MainFrame.add(bottomPanel);
+//		       MainFrame.setVisible(true); //창을 보이게함
 		       
 		       //뒤로가기 액션
 		       btn0.addActionListener(new ActionListener() {
@@ -173,9 +186,18 @@ public class AdminAll {
 //		    		   new login2();
 //		    		   bottomPanel.setVisible(false);
 		    		   
-		    		   new AdminList1();
+		    		   adminlist1 = new AdminList1(frame);
 		    		   bottomPanel.setVisible(false);
 //		    		  MainFrame.setVisible(false);
+		    		   bottomPanel.remove(btn1);
+		    		   bottomPanel.remove(btn2);
+		    		   bottomPanel.remove(btn3);
+		    		   bottomPanel.remove(btn4);
+		    		   bottomPanel.remove(btn5);
+		    		   bottomPanel.remove(btn10);
+		    		   bottomPanel.remove(btn11);
+//		    		   adminlist1.repaint();
+//		    		   adminlist1.revalidate();
 		    	   }
 		       });
 		       
@@ -187,9 +209,18 @@ public class AdminAll {
 //		    		   new login2();
 //		    		   bottomPanel.setVisible(false);
 		    		   
-		    		   new AdminAll2();
+		    		   adminall2 = new AdminAll2(frame);
 		    		   bottomPanel.setVisible(false);
 //		    		  MainFrame.setVisible(false);
+		    		   bottomPanel.remove(btn1);
+		    		   bottomPanel.remove(btn2);
+		    		   bottomPanel.remove(btn3);
+		    		   bottomPanel.remove(btn4);
+		    		   bottomPanel.remove(btn5);
+		    		   bottomPanel.remove(btn10);
+		    		   bottomPanel.remove(btn11);
+		    		   adminall2.repaint();
+		    		   adminall2.revalidate();
 		    	   }
 		       });
 		}

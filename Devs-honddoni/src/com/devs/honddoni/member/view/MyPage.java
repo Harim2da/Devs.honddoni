@@ -94,9 +94,6 @@ public class MyPage extends JPanel {
 
 	FontManager font = new FontManager();
 
-
-	//	static String 테스트아이디 = "user06";
-	//	static String 테스트아이디 = "sample01";
 	String userId = GetLoginMember.getInstance().getLoginMemberId();
 
 	public static JButton btnRemove(JButton jbtn) {
@@ -120,7 +117,7 @@ public class MyPage extends JPanel {
 
 
 		bottomPanel.setBounds(0, 100, 500, 770);
-		bottomPanel.setBackground(Color.black);
+		bottomPanel.setBackground(Color.WHITE);
 		bottomPanel.setLayout(null);
 		frame.add(bottomPanel);
 
@@ -144,7 +141,6 @@ public class MyPage extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("my혼또니 버튼 클릭");
 
 				frame.remove(bottomPanel);
 				frame.remove(myPage);
@@ -161,12 +157,6 @@ public class MyPage extends JPanel {
 				frame.add(bottomPanel);
 
 				bottomPanel.add(menuNameLabel);
-				//				bottomPanel.add(changePwdButton);
-				//				bottomPanel.add(changeMemberinfo);
-				//				bottomPanel.add(resignMemberButton);
-				//				bottomPanel.add(interestingPostButton);
-				//				bottomPanel.add(rewardButton);
-				//				bottomPanel.add(writtenPostButton);
 
 
 			}
@@ -181,7 +171,6 @@ public class MyPage extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("혼또니 찾기 버튼 클릭");
 
 
 			}
@@ -196,7 +185,6 @@ public class MyPage extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("홈  버튼 클릭");
 				frame.remove(bottomPanel);
 				frame.remove(myPage);
 
@@ -222,7 +210,6 @@ public class MyPage extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("관심글 목록 버튼 클릭");
 				frame.remove(bottomPanel);
 				frame.remove(myPage);
 
@@ -248,7 +235,6 @@ public class MyPage extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("공지사항 버튼 클릭");
 
 
 			}
@@ -263,9 +249,6 @@ public class MyPage extends JPanel {
 		/*==================================  비밀번호 변경 버튼   ================================================== */		
 
 		/* 비밀번호 변경 버튼 */
-		//		JLabel changePwdButton = new JLabel("");
-		//		changePwdButton.setContentAreaFilled(false);
-		//		changePwdButton.setBorderPainted(false);
 		changePwdButton.setIcon(new ImageIcon("image/member/myPage/pwdchange.png"));
 		changePwdButton.setBounds(92, 53, 137, 137);
 		bottomPanel.add(changePwdButton);
@@ -319,13 +302,11 @@ public class MyPage extends JPanel {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("취소 버튼 클릭");
 						changePwdPanel.setVisible(false);
 						changePwdButton.setEnabled(true);
 						bottomPanel.setVisible(true);
 						frame.remove(changePwdPanel);
 						frame.add(bottomPanel);
-						//						FrameManager.changePanel(frame, changePwdPanel, new MyPage(frame));
 
 					}
 
@@ -469,7 +450,6 @@ public class MyPage extends JPanel {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("프로필 변경 버튼 클릭"); 
 
 						/* 프로필 변경창 프레임 */
 						JFrame popupFrame = new JFrame();
@@ -691,7 +671,6 @@ public class MyPage extends JPanel {
 				changeMemberinfoPanel.add(ciL4);
 
 				/* 본인 성향 선택 콤보박스 */
-
 				String character = null ;
 				switch(characterCode) {
 				case 1: character = "리더형"; break;
@@ -781,7 +760,6 @@ public class MyPage extends JPanel {
 
 
 		/* 탈퇴하기 버튼 */
-		//		JButton resignMemberButton = new JButton("");
 		resignMemberButton.setIcon(new ImageIcon("image/member/myPage/resign.png"));
 		resignMemberButton.setContentAreaFilled(false);
 		resignMemberButton.setBorderPainted(false);
@@ -820,7 +798,6 @@ public class MyPage extends JPanel {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("취소 버튼 클릭");
 						/* 마이페이지로 돌아가기 */
 						resignMemberPanel.setVisible(false);
 						bottomPanel.setVisible(true);
@@ -838,7 +815,6 @@ public class MyPage extends JPanel {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("탈퇴 버튼 클릭");
 						/* 입력받은 비밀번호가 사용자의 비밀번호와 일치하는지 체크 (비밀번호 변경 재활용)*/
 						if(e.getSource() == rmB2) {
 							memberController = new MemberController();
@@ -875,7 +851,6 @@ public class MyPage extends JPanel {
 		/*==================================  관심글 버튼   ================================================== */	
 
 		/* 관심글 모아보기 버튼 */
-		//		JButton interestingPostButton = new JButton("");
 		interestingPostButton.setIcon(new ImageIcon("image/member/myPage/heart.png"));
 		interestingPostButton.setContentAreaFilled(false);
 		interestingPostButton.setBorderPainted(false);
@@ -886,7 +861,6 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/* 관심글 모아보기  호출 */
-				System.out.println("관심글 모아보기  호출");
 				JPanel interestingPostPanel = new JPanel();
 				interestingPostPanel.setLayout(null);
 				interestingPostPanel.setBounds(0, 100, 500, 770);
@@ -895,26 +869,12 @@ public class MyPage extends JPanel {
 				bottomPanel.setVisible(false);
 				frame.add(interestingPostPanel);  
 
-				/* 관심을 패널에 올릴 이미지 */
+				/* 관심글 패널에 올릴 이미지 */
 				JLabel interestingPostLabel = new JLabel();
 				interestingPostLabel.setBounds(0, 100, 500, 770);
 				interestingPostLabel.setIcon(new ImageIcon("image/member/AllInteresting/qq.png"));
 				interestingPostPanel.add(interestingPostLabel);
 
-
-				/* 분류 구분 콤보박스 위에 이미지라벨 덧씌우기 (고민중) */
-				JLabel qqqq = new JLabel();
-
-				String[] qq = {"지역별(가나다)", "활동 카테고리별"};
-				JComboBox qqq = new JComboBox(qq);
-				qqq.setBounds(276, 140, 187, 36);
-				qqq.setVisible(true);
-				interestingPostPanel.add(qqq);
-
-				JLabel asdasd = new JLabel();
-				asdasd.setBounds(276, 40, 187, 36);
-				asdasd.setIcon(new ImageIcon("image/member/AllInteresting/qqq.png"));
-				interestingPostLabel.add(asdasd);
 
 			}
 		});
@@ -934,7 +894,6 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/* 업적 & 포인트 호출 */
-				System.out.println("업적 & 포인트 호출");
 				SoundManager.playSound("image/member/wind.wav");
 				JPanel rewardPanel = new JPanel();
 				rewardPanel.setLayout(null);
@@ -1032,7 +991,6 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/* 내글 모아보기 호출 */
-				System.out.println("내글 모아보기 호출");
 				JPanel myPostPanel = new JPanel();
 				myPostPanel.setLayout(null);
 				myPostPanel.setBounds(0, 100, 500, 770);
