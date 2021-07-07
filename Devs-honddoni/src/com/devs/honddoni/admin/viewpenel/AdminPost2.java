@@ -17,18 +17,18 @@ public class AdminPost2 extends JPanel {
 	
 	
 	private MainFrame frame;
-	private AdminPost2 adminpost;
+	private AdminPost2 adminpost2;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
 	public AdminPost2(MainFrame frame) {
 		this.frame = frame;
-		this.adminpost = this;
+		this.adminpost2 = this;
 		
 		//전체 패널 생성
-		adminpost.setBounds(0, 0, 500, 870);
-		adminpost.setLayout(null);
-		adminpost.setBackground(Color.white);
-		frame.add(adminpost);
+		adminpost2.setBounds(0, 0, 500, 870);
+		adminpost2.setLayout(null);
+		adminpost2.setBackground(Color.white);
+		frame.add(adminpost2);
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -36,14 +36,14 @@ public class AdminPost2 extends JPanel {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		adminpost.add(bottomPanel);
+		adminpost2.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		adminpost.add(topPanel);
+		adminpost2.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -130,8 +130,8 @@ public class AdminPost2 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
-	    		   bottomPanel.setVisible(false); 
-	    		   adminpost.setVisible(false);
+//	    		   bottomPanel.setVisible(false); 
+	    		   adminpost2.setVisible(false);
 	    	   }
 	       });
 	       
@@ -144,8 +144,8 @@ public class AdminPost2 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminPost(frame);
-	    		   bottomPanel.setVisible(false); 
-	    		   adminpost.setVisible(false);
+//	    		   bottomPanel.setVisible(false); 
+	    		   adminpost2.setVisible(false);
 	    	   }
 	       });
 	}

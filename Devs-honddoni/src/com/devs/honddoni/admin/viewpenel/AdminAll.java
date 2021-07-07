@@ -186,16 +186,16 @@ public class AdminAll extends JPanel{
 //		    		   new login2();
 //		    		   bottomPanel.setVisible(false);
 		    		   
-		    		   adminlist1 = new AdminList1(frame);
-		    		   bottomPanel.setVisible(false);
+		    		   new AdminList1(frame);
+		    		   adminall.setVisible(false);
 //		    		  MainFrame.setVisible(false);
-		    		   bottomPanel.remove(btn1);
-		    		   bottomPanel.remove(btn2);
-		    		   bottomPanel.remove(btn3);
-		    		   bottomPanel.remove(btn4);
-		    		   bottomPanel.remove(btn5);
-		    		   bottomPanel.remove(btn10);
-		    		   bottomPanel.remove(btn11);
+//		    		   bottomPanel.remove(btn1);
+//		    		   bottomPanel.remove(btn2);
+//		    		   bottomPanel.remove(btn3);
+//		    		   bottomPanel.remove(btn4);
+//		    		   bottomPanel.remove(btn5);
+//		    		   bottomPanel.remove(btn10);
+//		    		   bottomPanel.remove(btn11);
 //		    		   adminlist1.repaint();
 //		    		   adminlist1.revalidate();
 		    	   }
@@ -209,18 +209,18 @@ public class AdminAll extends JPanel{
 //		    		   new login2();
 //		    		   bottomPanel.setVisible(false);
 		    		   
-		    		   adminall2 = new AdminAll2(frame);
-		    		   bottomPanel.setVisible(false);
+		    		   new AdminAll2(frame);
+		    		   adminall.setVisible(false);
 //		    		  MainFrame.setVisible(false);
-		    		   bottomPanel.remove(btn1);
-		    		   bottomPanel.remove(btn2);
-		    		   bottomPanel.remove(btn3);
-		    		   bottomPanel.remove(btn4);
-		    		   bottomPanel.remove(btn5);
-		    		   bottomPanel.remove(btn10);
-		    		   bottomPanel.remove(btn11);
-		    		   adminall2.repaint();
-		    		   adminall2.revalidate();
+//		    		   bottomPanel.remove(btn1);
+//		    		   bottomPanel.remove(btn2);
+//		    		   bottomPanel.remove(btn3);
+//		    		   bottomPanel.remove(btn4);
+//		    		   bottomPanel.remove(btn5);
+//		    		   bottomPanel.remove(btn10);
+//		    		   bottomPanel.remove(btn11);
+//		    		   adminall2.repaint();
+//		    		   adminall2.revalidate();
 		    	   }
 		       });
 		}

@@ -23,7 +23,7 @@ public class AdminList1 extends JPanel {
 	
 
 	private MainFrame frame;
-	private AdminList1 adminList;
+	private AdminList1 adminList1;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	AdminAll adminall;
 	
@@ -31,13 +31,13 @@ public class AdminList1 extends JPanel {
 	public AdminList1(MainFrame frame) {
 		//프레임, 패널설정
 		this.frame = frame;
-		this.adminList = this;
+		this.adminList1 = this;
 		
 		//전체 패널 생성
-		adminList.setBounds(0, 0, 500, 870);
-		adminList.setLayout(null);
-		adminList.setBackground(Color.white);
-		frame.add(adminList);
+		adminList1.setBounds(0, 0, 500, 870);
+		adminList1.setLayout(null);
+		adminList1.setBackground(Color.white);
+		frame.add(adminList1);
 		
 		/* 하단 패널 생성 */
 		
@@ -45,7 +45,7 @@ public class AdminList1 extends JPanel {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		adminList.add(bottomPanel);
+		adminList1.add(bottomPanel);
 		
 		
 		/* 상단 패널 생성 */
@@ -53,7 +53,7 @@ public class AdminList1 extends JPanel {
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		adminList.add(topPanel);
+		adminList1.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -115,7 +115,7 @@ public class AdminList1 extends JPanel {
 //	    		   bottomPanel.setVisible(false);  
 	    		   
 	    		   new MemberLogView(frame);
-	    		   bottomPanel.setVisible(false);
+	    		   adminList1.setVisible(false);
 //	    		   frame.setVisible(false);
 	    	   }
 	       });
@@ -129,7 +129,7 @@ public class AdminList1 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList(frame);
-	    		   bottomPanel.setVisible(false);
+	    		   adminList1.setVisible(false);
 //	    		   adminList.setVisible(false);
 	    	   }
 	       });
@@ -143,7 +143,7 @@ public class AdminList1 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   adminall = new AdminAll(frame);
-	    		   bottomPanel.setVisible(false);
+	    		   adminList1.setVisible(false);
 //	    		   adminList.setVisible(false);
 	    		   
 	    		   btn1.setVisible(false);
@@ -172,7 +172,7 @@ public class AdminList1 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminPost(frame);
-	    		   bottomPanel.setVisible(false);
+	    		   adminList1.setVisible(false);
 //	    		   adminList.setVisible(false);
 	    	   }
 	       });
@@ -186,7 +186,7 @@ public class AdminList1 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminUser(frame);
-	    		   bottomPanel.setVisible(false);
+	    		   adminList1.setVisible(false);
 //	    		   adminList.setVisible(false);
 	    	   }
 	       });
@@ -200,7 +200,7 @@ public class AdminList1 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   adminList1.setVisible(false); 
 //	    		   adminList.setVisible(false);
 	    	   }
 	       });
@@ -214,7 +214,7 @@ public class AdminList1 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminComment(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   adminList1.setVisible(false); 
 //	    		   adminList.setVisible(false);
 	    	   }
 	       });
@@ -228,7 +228,7 @@ public class AdminList1 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 //	    		   new AdminList2(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   adminList1.setVisible(false); 
 	    		   
 	    		   PopupFrame.popup("image/popup/logoutSuccess.png");
 //	    		   adminList.setVisible(false);

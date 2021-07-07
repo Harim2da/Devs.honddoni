@@ -19,7 +19,7 @@ public class AdminComment2 extends JPanel {
 	
 	//신고된 댓글 확인
 	private MainFrame frame;
-	private AdminComment2 admincomment;
+	private AdminComment2 admincomment2;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	private JLabel lb1,lb2;
 	
@@ -27,13 +27,13 @@ public class AdminComment2 extends JPanel {
 		
 		//프레임, 패널설정
 		this.frame = frame;
-		this.admincomment = this;
+		this.admincomment2 = this;
 		
 		//전체 패널 생성
-		admincomment.setBounds(0, 0, 500, 870);
-		admincomment.setLayout(null);
-		admincomment.setBackground(Color.white);
-		frame.add(admincomment);
+		admincomment2.setBounds(0, 0, 500, 870);
+		admincomment2.setLayout(null);
+		admincomment2.setBackground(Color.white);
+		frame.add(admincomment2);
 		
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -41,14 +41,14 @@ public class AdminComment2 extends JPanel {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		admincomment.add(bottomPanel);
+		admincomment2.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		admincomment.add(topPanel);
+		admincomment2.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -128,7 +128,7 @@ public class AdminComment2 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
-	    		   bottomPanel.setVisible(false);
+	    		   admincomment2.setVisible(false);
 //	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
@@ -142,7 +142,7 @@ public class AdminComment2 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
-	    		   bottomPanel.setVisible(false);
+	    		   admincomment2.setVisible(false);
 //	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
