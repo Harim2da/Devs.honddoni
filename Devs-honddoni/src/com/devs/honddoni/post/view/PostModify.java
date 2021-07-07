@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
@@ -228,7 +227,7 @@ public class PostModify extends JPanel{
 				frame.remove(bottomPanel);
 				topPanel.setVisible(false);
 				bottomPanel.setVisible(false);
-				new Notice(frame);
+				new PostNotice(frame);
 				frame.repaint();
 				frame.revalidate();
 			}
@@ -350,7 +349,7 @@ public class PostModify extends JPanel{
 		bottomPanel.add(meetdate);
 	}
 	
-	/* 작성자 프로필 생성 */
+	/* 작성자 프로필 불러오기 */
 	private void profile(int postNo) {
 		String profilenum = postDTO.getMemberProfile();
 

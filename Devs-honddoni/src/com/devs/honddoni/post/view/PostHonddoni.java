@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
@@ -126,10 +125,10 @@ public class PostHonddoni extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				bottomPanel.setVisible(false);
-				topPanel.setVisible(false);
 				frame.remove(topPanel);
 				frame.remove(bottomPanel);
+				bottomPanel.setVisible(false);
+				topPanel.setVisible(false);
 				new MyPage(frame);
 				frame.repaint();
 				frame.revalidate();
@@ -150,10 +149,10 @@ public class PostHonddoni extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				bottomPanel.setVisible(false);
-				topPanel.setVisible(false);
 				frame.remove(topPanel);
 				frame.remove(bottomPanel);
+				bottomPanel.setVisible(false);
+				topPanel.setVisible(false);
 				new PostHonddoni(frame);
 				frame.repaint();
 				frame.revalidate();
@@ -174,10 +173,10 @@ public class PostHonddoni extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				bottomPanel.setVisible(false);
-				topPanel.setVisible(false);
 				frame.remove(topPanel);
 				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
 				new MainBottomPanel(frame);
 				frame.repaint();
 				frame.revalidate();
@@ -214,7 +213,7 @@ public class PostHonddoni extends JPanel {
 				frame.remove(bottomPanel);
 				topPanel.setVisible(false);
 				bottomPanel.setVisible(false);
-				new Notice(frame);
+				new PostNotice(frame);
 				frame.repaint();
 				frame.revalidate();
 			}
@@ -707,10 +706,10 @@ public class PostHonddoni extends JPanel {
 				String meetTime = meetHour + ":" + meetMin ;
 				postDTO.setPostMeetingTime(meetTime);
 
+				/* 이용자가 선택한 지역*/
 				postDTO.setLocalName(localSelectbtn.getText()); 
 
-				/* 카테고리(맛집 탐방 등) 받아오고 컨트롤러에서 코드로 변환해주기*/
-				
+				/* 이용자 선택한 카테고리(맛집 탐방 등)*/
 				postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
 
 				/* 텍스트 필드로 받은 모임인원, int로 전환 */
@@ -719,6 +718,7 @@ public class PostHonddoni extends JPanel {
 				
 				contactController.writeHonddoniBoardPost(postDTO);
 				
+				/*게시글 작성 완료 후 메인화면으로 전환*/
 				bottomPanel.setVisible(false);
 				topPanel.setVisible(false);
 				frame.remove(topPanel);
