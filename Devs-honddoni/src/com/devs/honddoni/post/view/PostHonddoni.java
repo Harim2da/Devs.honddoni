@@ -579,7 +579,7 @@ public class PostHonddoni extends JPanel {
 		joinmember.setOpaque(false);
 		joinmember.setBounds(327, 90, 108, 28); // 폰트 크기 키우면 y축 위치 조정
 		joinmember.setColumns(10);
-		joinmember.setFont(font.customFont12);
+		joinmember.setFont(font.customFont2);
 	}
 
 	/* 게시글 작성*/
@@ -587,7 +587,7 @@ public class PostHonddoni extends JPanel {
 		postContents = new JTextArea();
 		postContents.setOpaque(false);
 		postContents.setBounds(59, 305, 399, 273);
-		postContents.setFont(font.customFont12);
+		postContents.setFont(font.customFont2);
 
 	}
 
@@ -605,7 +605,7 @@ public class PostHonddoni extends JPanel {
 		meetingYear = new JComboBox(year);	
 		meetingYear.setBounds(102, 211, 42, 28);
 		meetingYear.setSelectedIndex(0);
-		meetingYear.setFont(font.customFont12);
+		meetingYear.setFont(font.customFont2);
 
 
 
@@ -622,7 +622,7 @@ public class PostHonddoni extends JPanel {
 		meetingMonth = new JComboBox(month);
 		meetingMonth.setBounds(170, 211, 39, 28);
 		meetingMonth.setSelectedIndex(0);
-		meetingMonth.setFont(font.customFont12);
+		meetingMonth.setFont(font.customFont2);
 
 
 		String[] day = new String[32];
@@ -638,7 +638,7 @@ public class PostHonddoni extends JPanel {
 		meetingDay = new JComboBox(day);
 		meetingDay.setBounds(238, 211, 39, 28);
 		meetingDay.setSelectedIndex(0);
-		meetingDay.setFont(font.customFont12);
+		meetingDay.setFont(font.customFont2);
 
 
 		String[] hour = new String[25];
@@ -654,14 +654,14 @@ public class PostHonddoni extends JPanel {
 		meetingHour = new JComboBox(hour);
 		meetingHour.setBounds(327, 211, 39, 28);
 		meetingHour.setSelectedIndex(0);
-		meetingHour.setFont(font.customFont12);
+		meetingHour.setFont(font.customFont2);
 
 
 		String[] min = {"", "00", "30"};
 		meetingMinutes = new JComboBox(min);
 		meetingMinutes.setBounds(396, 211, 39, 28);
 		meetingMinutes.setSelectedIndex(0);
-		meetingMinutes.setFont(font.customFont12);
+		meetingMinutes.setFont(font.customFont2);
 
 		bottomPanel.add(meetingYear);
 		bottomPanel.add(meetingMonth);
