@@ -12,18 +12,11 @@ public class ManagementController {
    
 //	private AdminService adminService = new AdminService();
 
-	public void onlyNicname() {
-		
-		List<AdminDTO> adminList = adminService.onlyNicname();
-		
-//		memberResultView.display(memberList);
-		
-		
-	}
 
-	public List<AdminDTO> memberManagement() {
+
+	public List<AdminDTO> totalUserList() {
 		
-		List<AdminDTO> adminListDTO = new AdminService().memberManagement();
+		List<AdminDTO> adminListDTO = new AdminService().totalUserList();
 		
 //		if(adminListDTO != null) {
 //			System.out.println("등록 성공");

@@ -45,13 +45,13 @@ public class MainFrame extends JFrame{
 			e.printStackTrace();
 		}
 
-		new MyPage(this);
+//		new MyPage(this);
 
 //		new FirstView(this);
 
 //		new PostFreeBoard(this);
 
-		new SelectedComment(this, 1);
+//		new SelectedComment(this, 1);
 
 //		new SelectAllHonPost(this);
 
@@ -72,7 +72,7 @@ public class MainFrame extends JFrame{
 //		new Notice(this);
 		
 		//태훈 실험중(메인바텀패널)
-		new MainBottomPanel(this);
+//		new MainBottomPanel(this);
 //		new AllBoardList(this);
 //		new FreeBoardList(this);
 		
@@ -80,8 +80,8 @@ public class MainFrame extends JFrame{
 
 
 		//명길 실험중
-//		new AdminList(this);
 		new AdminList(this);
+//		new MemberLogView(this);
 
 
 //		new FreeBoardList(this);

@@ -31,40 +31,7 @@ public class AdminDAO {
 		}
 	}
 
-	public List<AdminDTO> onlyNicname(Connection con) {
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		List<AdminDTO> adminList = null;
-		
-		String query = prop.getProperty("onlyNicname");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			
-			rset = pstmt.executeQuery();
-			
-			adminList = new ArrayList<>();
-			
-			while(rset.next()) {
-				
-			AdminDTO admin = new AdminDTO();
-			admin.setMEMBER_NICKNAME(rset.getString("MEMBER_NICKNAME"));
-//			admin.setMEMBER_ID(rset.getString("MEMBER_ID"));
-//			admin.setMEM_REGIST_DATE(rset.getString("MEM_REGIST_DATE"));
-			
-			adminList.add(admin);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		return adminList;
-	}
+
 
 
 	public int insertNoticePost(Connection con, PostDTO postDTO) {
@@ -138,13 +105,13 @@ public class AdminDAO {
 	}
 
 
-	public List<AdminDTO> memberManagement(Connection con) {
+	public List<AdminDTO> totalUserList(Connection con) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<AdminDTO> adminList = null;
 		
-		String query = prop.getProperty("memberManagement");
+		String query = prop.getProperty("totalUserList");
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -154,6 +121,10 @@ public class AdminDAO {
 			while(rset.next()) {
 				AdminDTO row = new AdminDTO();
 				
+				row.setMemberId("MEMBER_ID");
+				row.setMemberNicname("MEMBER_NICKNAME");
+				row.setMemberProfile("MEMBER_PROFILE");
+				row.setMemRegistdate("MEM_REGIST_DATE");
 //				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
 //				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
 //				row.setMEMBER_NICKNAME(mEMBER_NICKNAME);
