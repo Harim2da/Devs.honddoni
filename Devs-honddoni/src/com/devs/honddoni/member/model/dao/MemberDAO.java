@@ -21,6 +21,8 @@ import com.devs.honddoni.memberLog.controller.GetLoginMember;
 
 public class MemberDAO {
 
+	String userId = GetLoginMember.getInstance().getLoginMemberId();
+	
 	Properties prop = new Properties();
 	
 	public MemberDAO() {
@@ -119,13 +121,11 @@ public class MemberDAO {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, GetLoginMember.getInstance().getLoginMemberId());
+			pstmt.setString(1, userId);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
 				
-				System.out.println("rset.getStr : " + rset.getString("MEMBER_PASSWORD"));
-				System.out.println("oldPwd");
 				if(rset.getString("MEMBER_PASSWORD").equals(changePwd.getMemberOldPassword())) {
 					result = 1;
 				} else {
@@ -153,7 +153,7 @@ public class MemberDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, changePwd.getMemberNewPassword());
-			pstmt.setString(2, GetLoginMember.getInstance().getLoginMemberId());
+			pstmt.setString(2, userId);
 			
 			result = pstmt.executeUpdate();
 			
@@ -217,7 +217,7 @@ public class MemberDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, profile);
-			pstmt.setString(2, "user06");
+			pstmt.setString(2, userId);
 			
 			result = pstmt.executeUpdate();
 			
@@ -244,7 +244,7 @@ public class MemberDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, newCharacterCode);
-			pstmt.setString(2, "user06");
+			pstmt.setString(2, userId);
 			
 			result = pstmt.executeUpdate();
 			
@@ -271,7 +271,7 @@ public class MemberDAO {
 			pstmt.setString(2, memberInfo.getAddress());
 			pstmt.setString(3, memberInfo.getPhone());
 			pstmt.setString(4, memberInfo.getEmail());
-			pstmt.setString(5, "user06");
+			pstmt.setString(5, userId);
 			
 			result = pstmt.executeUpdate();
 			
@@ -286,7 +286,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int deleteMember(Connection con, String 테스트아이디) {
+	public int deleteMember(Connection con, String userId) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -295,7 +295,7 @@ public class MemberDAO {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, "Y");
-			pstmt.setString(2, 테스트아이디);
+			pstmt.setString(2, userId);
 			
 			result = pstmt.executeUpdate();
 			
