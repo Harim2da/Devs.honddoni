@@ -409,7 +409,6 @@ public class PostModify extends JPanel{
 		nickName.setLayout(null);
 		nickName.setText(nick);
 		nickName.setFont(font.customFont12);
-
 		bottomPanel.add(nickName);
 
 	}
@@ -440,6 +439,7 @@ public class PostModify extends JPanel{
 		int memberNo = postDTO.getPostMemberNo();
 		int loginNo = loginMember.getLoginMemberNo();
 
+		/*댓글 확인 버튼*/
 		commentcheck.addMouseListener(new MouseListener() {
 
 			@Override

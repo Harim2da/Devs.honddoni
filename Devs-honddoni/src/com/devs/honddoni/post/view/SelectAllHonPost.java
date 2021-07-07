@@ -452,8 +452,7 @@ public class SelectAllHonPost extends JPanel{
 		categoryPick.setLayout(null);
 		categoryPick.setBounds(25, 125, 450, 596);      
 		bottomPanel.add(categoryPick);
-		
-		
+			
 		JButton eatbtn = new JButton();
 		JButton walkbtn = new JButton();
 		JButton activebtn = new JButton();
