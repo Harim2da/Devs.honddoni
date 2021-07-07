@@ -87,10 +87,12 @@ public class NoticeModify extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				
 				//저장할 제목, 내용
+				int getPostNo = postinfoDTO.getPostNo();
 				String getTitle = titleTf.getText();
 				String getContent = contentTf.getText();				
 				
 				//수정할 내용만 DTO로 뭉친다
+				postDTO.setPostNo(getPostNo);
 				postDTO.setPostName(getTitle);
 				postDTO.setPostContents(getContent);
 				

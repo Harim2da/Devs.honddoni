@@ -74,11 +74,31 @@ public class AdminService {
 			rollback(con);
 		}
 		
-		close(con);
-		
+		close(con);		
 
 		return adminListDTO;
 
+	}
+
+
+
+
+	public int modifyNotice(PostDTO postDTO) {
+		
+		Connection con = getConnection();
+		
+		int result = adminDAO.modifyNotice(con, postDTO);
+		
+		if(result > 0) {
+			commit(con);
+			result = 1;
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
 	}
 
 }
