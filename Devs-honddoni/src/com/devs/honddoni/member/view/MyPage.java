@@ -376,9 +376,7 @@ public class MyPage extends JPanel {
 								   
 								   memberController.newPwdEqualCheck(changePwdDTO);
 								   
-							   } else {
-								   /* 입력정보 다를 시 팝업 출력 */
-								   PopupFrame.popup("image/popup/FailMessage.png");
+								   }
 								   
 							   }
 							   
@@ -402,7 +400,6 @@ public class MyPage extends JPanel {
 		changeMemberinfo.setBounds(272, 53, 137, 137);
 		bottomPanel.add(changeMemberinfo);
 		changeMemberinfo.addActionListener(new ActionListener() {
-			
 			@Override 	
 			public void actionPerformed(ActionEvent e) {
 				
@@ -852,13 +849,10 @@ public class MyPage extends JPanel {
 							   changePwdDTO = new ChangePwdDTO();
 							   changePwdDTO.setMemberOldPassword(password);
 							   boolean checkP = memberController.pwdCheck(changePwdDTO);
-							   System.out.println(checkP);
 							   
-							   if(!checkP) {
-								   PopupFrame.popup("image/popup/FailMessage.png");
-							   } else {
-								   memberController.deleteMember(GetLoginMember.getInstance().getLoginMemberId());
-							   }
+							   if(checkP) {
+								   memberController.deleteMember(userId);
+							   } 
 							   
 							   
 						}

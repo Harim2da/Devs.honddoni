@@ -9,12 +9,14 @@ import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.member.model.service.MemberService;
 import com.devs.honddoni.member.view.DuplCheckResult;
+import com.devs.honddoni.member.view.MyPageResultView;
 import com.devs.honddoni.memberLog.view.FirstView;
 
 public class MemberController {
 	
 	private MemberService memberService = new MemberService();
 	private DuplCheckResult duplCheckResult = new DuplCheckResult();
+	private MyPageResultView myPageResultView = new MyPageResultView();
 	private MainFrame mainFrame;
 	
 	public void idDuplCheck(String getUserId) {
@@ -49,6 +51,8 @@ public class MemberController {
 			System.out.println("비밀번호 일치");
 		} else {
 			System.out.println("비밀번호 불일치");
+			myPageResultView.failedView("chageInfoFailed");
+			
 		}
 		
 		
@@ -65,21 +69,24 @@ public class MemberController {
 			modifyPassword(changePwd);
 		} else {
 			System.out.println("새비번 불일치");
-			PopupFrame.popup("image/popup/FailMessage.png");
+			myPageResultView.failedView("chageInfoFailed");
 		}
+		
 	}
 	
-	public void modifyPassword(ChangePwdDTO changePwd) {
+	public int modifyPassword(ChangePwdDTO changePwd) {
 		
 		int result = memberService.modifyPassword(changePwd);
 		
 		if(result > 0) {
 			System.out.println("비번변경 성공");
-			PopupFrame.popup("image/popup/modifySuccess.png");
+			myPageResultView.successView("chageInfoSuccess");
 		} else {
 			System.out.println("비번변경 실패");
-			PopupFrame.popup("image/popup/FailMessage.png");
+			myPageResultView.failedView("chageInfoFailed");
 		}
+		
+		return result;
 	}
 
 	public MemberInfoDTO callMemberInfo(String testId) {
@@ -101,8 +108,10 @@ public class MemberController {
 		
 		if(result > 0) {
 			System.out.println("프로필 변경 성공");
+			myPageResultView.successView("chageInfoSuccess");
 		} else {
 			System.out.println("프로필 변경 실패");
+			myPageResultView.failedView("chageInfoFailed");
 		}
 		
 	}
@@ -115,8 +124,10 @@ public class MemberController {
 		
 		if(result > 0) {
 			System.out.println("성향 변경 성공");
+			myPageResultView.successView("chageInfoSuccess");
 		} else {
 			System.out.println("성향 변경 실패");
+			myPageResultView.failedView("chageInfoFailed");
 		}
 		
 	}
@@ -128,22 +139,26 @@ public class MemberController {
 		
 		if(result > 0) {
 			System.out.println("정보 변경 성공");
+			myPageResultView.successView("chageInfoSuccess");
 		} else {
 			System.out.println("정보 변경 실패");
+			myPageResultView.failedView("chageInfoFailed");
 		}
 	}
 
-	public void deleteMember(String 테스트아이디) {
+	public void deleteMember(String userId) {
 		
 		int result = 0;
 		
-		result = memberService.deleteMember(테스트아이디);
+		result = memberService.deleteMember(userId);
 		
 		if(result > 0) {
 			System.out.println("회원탈퇴 성공");
 			new FirstView(mainFrame);
+			myPageResultView.successView("deleteSuccess");
 		} else {
 			System.out.println("회원탈퇴 실패");
+			myPageResultView.failedView("chageInfoFailed");
 		}
 		
 	}
