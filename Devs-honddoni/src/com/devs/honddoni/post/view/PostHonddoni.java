@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
@@ -26,28 +27,27 @@ public class PostHonddoni extends JPanel {
 	private PostHonddoni postHonddoni;
 	private MainFrame frame;
 	
-
-	private JPanel topPanel;  // 상단 패널
-	private JPanel bottomPanel; // 하단 패널
-	private JLabel bottomLabel; // 하단 게시판 라벨(그림 배경)
-	private JButton postTypebtn; // 혼또니 게시판 버튼
-	private JTextField postTitle; // 게시글 제목
-	private JButton localSelectbtn; // 지역선택 버튼
-	private JLayeredPane pann; // 레이어 가능한 팝업 팬
-	private JLabel koreaMapLabel; //지도 라벨
+	private JPanel topPanel;  									// 상단 패널
+	private JPanel bottomPanel; 								// 하단 패널
+	private JLabel bottomLabel; 								// 하단 게시판 라벨(그림 배경)
+	private JButton postTypebtn; 								// 혼또니 게시판 버튼
+	private JTextField postTitle; 								// 게시글 제목
+	private JButton localSelectbtn; 							// 지역선택 버튼
+	private JLayeredPane pann; 									// 레이어 가능한 팝업 팬
+	private JLabel koreaMapLabel; 								//지도 라벨
 	private JButton closeMap;
-	private JTextField joinmember; // 모일 인원 
-	private JTextArea postContents; // 게시글 내용 
+	private JTextField joinmember; 								// 모일 인원 
+	private JTextArea postContents; 							// 게시글 내용 
 	private JComboBox selectCategorycombo = PostActionCategory.getInstance(); //카테고리 콤보박스
-	private JButton postbtn; //게시글 작성 완료 버튼
-	private JComboBox meetingYear; // 만남 년도 콤보박스
-	private JComboBox meetingMonth; // 만남 월 콤보박스
-	private JComboBox meetingDay; // 만남 일 콤보박스
-	private JComboBox meetingHour; // 만남 시간 콤보박스
-	private JComboBox meetingMinutes; // 만남 분 콤보박스
+	private JButton postbtn; 									//게시글 작성 완료 버튼
+	private JComboBox meetingYear; 								// 만남 년도 콤보박스
+	private JComboBox meetingMonth; 							// 만남 월 콤보박스
+	private JComboBox meetingDay; 								// 만남 일 콤보박스
+	private JComboBox meetingHour; 								// 만남 시간 콤보박스
+	private JComboBox meetingMinutes; 							// 만남 분 콤보박스
 	private PostDTO postDTO = new PostDTO();
 	private ContactController contactController = new ContactController();
-	private String localpick = "";  // 지도 위 선택한 지역
+	private String localpick = "";  							// 지도 위 선택한 지역
 	private JButton myHonddoniBtn;								//마이페이지 이동 버튼
 	private JButton searchHonddoniBtn;							//게시글 작성페이지 이동 버튼
 	private JButton homeBtn;									//메인화면이동 버튼
@@ -130,7 +130,7 @@ public class PostHonddoni extends JPanel {
 				topPanel.setVisible(false);
 				frame.remove(topPanel);
 				frame.remove(bottomPanel);
-				MyPage mp = new MyPage(frame);
+				new MyPage(frame);
 				frame.repaint();
 				frame.revalidate();
 			}
@@ -194,13 +194,7 @@ public class PostHonddoni extends JPanel {
 		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
 		interestingBtn.setBorderPainted(false);
 		interestingBtn.setContentAreaFilled(false);
-		interestingBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("관심글 목록 버튼 클릭");
-			}
-		});
+		
 
 	}
 
@@ -216,7 +210,13 @@ public class PostHonddoni extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("공지사항 버튼 클릭");
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new Notice(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -272,8 +272,7 @@ public class PostHonddoni extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 자유게시판으로 전환
-				System.out.println("자유게시판 전환");
+				
 			}
 		});
 	}
@@ -284,7 +283,7 @@ public class PostHonddoni extends JPanel {
 		postTitle.setBorder(null);
 		postTitle.setDisabledTextColor(Color.WHITE);
 		postTitle.setOpaque(false);
-		postTitle.setBounds(113, 25, 322, 28);	// 폰트 크기 키우면 y축 위치 조정
+		postTitle.setBounds(113, 25, 322, 28);	
 		postTitle.setColumns(10);
 		postTitle.setFont(font.customFont12);
 	}
@@ -569,7 +568,6 @@ public class PostHonddoni extends JPanel {
 		postTypebtn.setVisible(true);
 		postbtn.setEnabled(true);
 		localSelectbtn.setText(localpick);
-		//		System.out.println("실행확인");
 	}
 
 	/*모집 인원 기입*/
@@ -577,7 +575,7 @@ public class PostHonddoni extends JPanel {
 		joinmember = new JTextField();
 		joinmember.setBorder(null);
 		joinmember.setOpaque(false);
-		joinmember.setBounds(327, 90, 108, 28); // 폰트 크기 키우면 y축 위치 조정
+		joinmember.setBounds(327, 90, 108, 28); 
 		joinmember.setColumns(10);
 		joinmember.setFont(font.customFont2);
 	}
@@ -709,17 +707,16 @@ public class PostHonddoni extends JPanel {
 				String meetTime = meetHour + ":" + meetMin ;
 				postDTO.setPostMeetingTime(meetTime);
 
-				postDTO.setLocalName(localSelectbtn.getText()); //일단 임의의 값 지도에서 지역선택 후 받아오기 - DB는 숫자
+				postDTO.setLocalName(localSelectbtn.getText()); 
 
-				/* 카테고리(맛집 탐방 등) 일단 받아오고 컨트롤러에서 코드로 변환해주기*/
+				/* 카테고리(맛집 탐방 등) 받아오고 컨트롤러에서 코드로 변환해주기*/
 				
 				postDTO.setCategoryName((String)selectCategorycombo.getSelectedItem());
 
 				/* 텍스트 필드로 받은 모임인원, int로 전환 */
 				int numberOfJoin = Integer.parseInt(joinmember.getText());
 				postDTO.setPostNumberOfPeopleNumber(numberOfJoin);
-				System.out.println(postDTO);
-
+				
 				contactController.writeHonddoniBoardPost(postDTO);
 				
 				bottomPanel.setVisible(false);

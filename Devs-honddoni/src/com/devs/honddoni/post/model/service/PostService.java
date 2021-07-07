@@ -80,7 +80,6 @@ public class PostService {
 	public int deleteThePost(int postNo) {
 		
 		Connection con = getConnection();
-		System.out.println("삭제용 DAO작동");
 		int result = postDAO.deleteThePost(con, postNo);
 		
 		close(con);

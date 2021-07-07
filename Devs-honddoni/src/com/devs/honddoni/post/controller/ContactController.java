@@ -11,7 +11,7 @@ public class ContactController {
 	
 	private PostService postService = new PostService();
 	GetLoginMember loginMember = GetLoginMember.getInstance();
-	PostResultView postResultView;
+	PostResultView postResultView = new PostResultView();
 	public void writeHonddoniBoardPost(PostDTO postDTO) {
 		
 

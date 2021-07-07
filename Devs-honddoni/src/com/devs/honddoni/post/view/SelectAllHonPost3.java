@@ -42,9 +42,6 @@ public class SelectAllHonPost3 extends JPanel {
 	private JLabel[] categoryName; //카테고리명
 	private JLabel[] localName;
 	FontManager font = new FontManager();
-	//	private int postNo; //게시글 번호
-	//	private int totalPostNum;
-	//	private PostDTO postDTO = new PostDTO();
 	GetFilter getName = GetFilter.getInstance();
 
 	/* 프레임을 제외한 나머지를 합친 것 */
@@ -54,7 +51,6 @@ public class SelectAllHonPost3 extends JPanel {
 		this.selectAllHonPost3 = this;
 		
 		/* 패널 */
-		//upPanel();
 		downPanel();
 
 		/* 하단패널에 포함될 버튼, 라벨 */
@@ -234,7 +230,6 @@ public class SelectAllHonPost3 extends JPanel {
 		beforeNumber.setText(frontPageString);
 		beforeNumber.setLayout(null);
 		beforeNumber.setBounds(50, 4, 14, 14);
-		System.out.println(frontPageString);
 
 	}
 
@@ -352,7 +347,7 @@ public class SelectAllHonPost3 extends JPanel {
 			categoryName = new JLabel[postListDTO.size()];
 			categoryName[i] = new JLabel();
 			categoryName[i].setLayout(null);
-			categoryName[i].setBounds(188, y + 21, 70, 31);
+			categoryName[i].setBounds(188, y + 15, 70, 31);
 
 			if(postInfo.getCategoryName().equals("맛집탐방")) {
 				categoryName[i].setIcon(new ImageIcon("image/post/eat.png"));
@@ -438,7 +433,7 @@ public class SelectAllHonPost3 extends JPanel {
 			localName = new JLabel[postListDTO.size()];
 			localName[i] = new JLabel();
 			localName[i].setLayout(null);
-			localName[i].setBounds(383, y + 6, 46, 25);
+			localName[i].setBounds(383, y + 6, 60, 28);
 
 			if(postInfo.getLocalName().equals("강릉")) {
 				localName[i].setIcon(new ImageIcon("image/post/gangneung.png"));

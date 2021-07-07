@@ -6,15 +6,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.common.dto.PostDTO;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.member.view.MyPage;
 import com.devs.honddoni.post.controller.GetFilter;
+import com.devs.honddoni.search.view.MainBottomPanel;
 
 public class SelectAllHonPost extends JPanel{
 
@@ -27,14 +28,14 @@ public class SelectAllHonPost extends JPanel{
 	private JButton interestingBtn;								//관심글 목록 이동 버튼
 	private JButton noticeBtn;
 	private JLabel topLabel;
-	private JPanel bottomPanel;  //하단 패널 = new JPanel();
-	private JLabel mapLabel;	// 지역선택용 라벨 
-	private JLabel searchLabel; // 검색창 라벨
-	private JButton aim;        // 검색 버튼
-	private JTextField searching; // 검색어 입력창
-	private JLabel categoryPick; // 카테고리 선택 라벨
+	private JPanel bottomPanel;  								//하단 패널 	
+	private JLabel mapLabel;									// 지역선택용 라벨 
+	private JLabel searchLabel; 								// 검색창 라벨
+	private JButton aim;       								    // 검색 버튼
+	private JTextField searching; 								// 검색어 입력창
+	private JLabel categoryPick; 								// 카테고리 선택 라벨
 	private PostDTO postDTO = new PostDTO();
-//	MainFrame frame;
+
 	
 	public SelectAllHonPost(MainFrame frame) {
 
@@ -48,9 +49,7 @@ public class SelectAllHonPost extends JPanel{
 		homeBtn();
 		interestingBtn();
 		noticeBtn();
-		
-		
-		
+				
 		BottomPanel();
 		addComponents();
 		searching();
@@ -149,7 +148,7 @@ public class SelectAllHonPost extends JPanel{
 				frame.remove(topPanel);
 				topPanel.setVisible(false);
 				bottomPanel.setVisible(false);
-				new MyPage(frame);			
+				new MainBottomPanel(frame);			
 				frame.repaint();
 				frame.revalidate();
 				
@@ -168,14 +167,7 @@ public class SelectAllHonPost extends JPanel{
 		interestingBtn.setBorderPainted(false);
 		interestingBtn.setContentAreaFilled(false);
 		topLabel.add(interestingBtn);
-		interestingBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("관심글 목록 버튼 클릭");
-			}
-		});
-
+		
 	}
 
 	/* 공지사항목록을 조회할 수 있는 버튼 생성 */
@@ -192,7 +184,13 @@ public class SelectAllHonPost extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("공지사항 버튼 클릭");
+				frame.remove(topPanel);
+				frame.remove(bottomPanel);
+				topPanel.setVisible(false);
+				bottomPanel.setVisible(false);
+				new Notice(frame);
+				frame.repaint();
+				frame.revalidate();
 			}
 		});
 
@@ -266,7 +264,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("강릉");
-				System.out.println("강릉");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 			}
@@ -286,7 +283,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("담양");
-				System.out.println("담양");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 			}
@@ -306,7 +302,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("대구");
-				System.out.println("대구");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 			}
@@ -325,7 +320,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("부산");
-				System.out.println("부산");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 			}
@@ -345,7 +339,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("서울");
-				System.out.println("서울");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 			}
@@ -365,7 +358,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("인천");
-				System.out.println("인천");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 			}
@@ -385,7 +377,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("순천");
-				System.out.println("순천");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 			}
@@ -405,7 +396,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("전주");
-				System.out.println("전주");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 			}
@@ -425,7 +415,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("제주");
-				System.out.println("제주");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 			}
@@ -445,7 +434,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getLocalName = GetFilter.getInstance();
 				getLocalName.setLocalName("천안");
-				System.out.println("천안");
 				categoryPick();
 				bottomPanel.remove(mapLabel);
 
@@ -486,7 +474,6 @@ public class SelectAllHonPost extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				GetFilter getCategoryName = GetFilter.getInstance();
 				getCategoryName.setCategoryName("맛집탐방");
-				System.out.println("맛집 탐방 선택");
 				
 				frame.remove(topPanel);
 				frame.remove(bottomPanel);
@@ -519,9 +506,7 @@ public class SelectAllHonPost extends JPanel{
 				bottomPanel.setVisible(false);
 				new SelectAllHonPost2(frame);
 				frame.repaint();
-				frame.revalidate();
-				System.out.println("산책 선택");
-				
+				frame.revalidate();				
 			}
 		});
 		
@@ -545,9 +530,7 @@ public class SelectAllHonPost extends JPanel{
 				bottomPanel.setVisible(false);
 				new SelectAllHonPost2(frame);
 				frame.repaint();
-				frame.revalidate();
-				System.out.println("활동 선택");
-				
+				frame.revalidate();				
 			}
 		});
 		
@@ -571,9 +554,7 @@ public class SelectAllHonPost extends JPanel{
 				bottomPanel.setVisible(false);
 				new SelectAllHonPost2(frame);
 				frame.repaint();
-				frame.revalidate();
-				System.out.println("취미 선택");
-				
+				frame.revalidate();				
 			}
 		});
 		
@@ -597,9 +578,7 @@ public class SelectAllHonPost extends JPanel{
 				bottomPanel.setVisible(false);
 				new SelectAllHonPost2(frame);
 				frame.repaint();
-				frame.revalidate();
-				System.out.println("게임 선택");
-				
+				frame.revalidate();				
 			}
 		});
 		
@@ -623,9 +602,7 @@ public class SelectAllHonPost extends JPanel{
 				bottomPanel.setVisible(false);
 				new SelectAllHonPost2(frame);
 				frame.repaint();
-				frame.revalidate();
-				System.out.println("스터디 선택");
-				
+				frame.revalidate();				
 			}
 		});
 		
