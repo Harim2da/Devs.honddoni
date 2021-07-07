@@ -64,7 +64,7 @@ public class Honnest2 extends JPanel {
 	     lb01.setBounds(32, 56, 263, 33);
 		
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\Honnest2-1.png");
-	       JButton btn1 = new JButton(img1);
+		   JLabel btn1 = new JLabel(img1);
 	       
 //	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Honest2.png");
 //	       JButton btn2 = new JButton(img2);
@@ -157,13 +157,13 @@ public class Honnest2 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList(frame);
+	    		   adminlist = new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   honnest.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   lb1.remove(lb1);
-	    		   btn10.remove(btn10);
-	    		   btn11.remove(btn11);
+//	    		   honnest.setVisible(false);
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(lb1);
+	    		   bottomPanel.remove(btn10);
+	    		   bottomPanel.remove(btn11);
 	    		   adminlist.repaint();
 	    		   adminlist.revalidate();
 	    		   
@@ -178,13 +178,13 @@ public class Honnest2 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Honnest(frame);
+	    		   honnest123 = new Honnest(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   honnest.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   lb1.remove(lb1);
-	    		   btn10.remove(btn10);
-	    		   btn11.remove(btn11);
+//	    		   honnest.setVisible(false);
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(lb1);
+	    		   bottomPanel.remove(btn10);
+	    		   bottomPanel.remove(btn11);
 	    		   honnest123.repaint();
 	    		   honnest123.revalidate();
 	    		   

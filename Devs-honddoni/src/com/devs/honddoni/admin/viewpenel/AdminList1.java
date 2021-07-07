@@ -15,6 +15,7 @@ import com.devs.honddoni.admin.viewpenel.MainFrame1;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.memberLog.view.LoginFail;
+import com.devs.honddoni.memberLog.view.MemberLogView;
 
 //관리자목록2
 
@@ -24,6 +25,8 @@ public class AdminList1 extends JPanel {
 	private MainFrame frame;
 	private AdminList1 adminList;
 	private JButton btn1, btn2, btn3, btn4, btn5;
+	AdminAll adminall;
+	
 	
 	public AdminList1(MainFrame frame) {
 		//프레임, 패널설정
@@ -111,7 +114,7 @@ public class AdminList1 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);  
 	    		   
-	    		   new AdminList2(frame);
+	    		   new MemberLogView(frame);
 	    		   bottomPanel.setVisible(false);
 //	    		   frame.setVisible(false);
 	    	   }
@@ -139,9 +142,24 @@ public class AdminList1 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminAll();
+	    		   adminall = new AdminAll(frame);
 	    		   bottomPanel.setVisible(false);
 //	    		   adminList.setVisible(false);
+	    		   
+	    		   btn1.setVisible(false);
+	    		   btn2.setVisible(false);
+	    		   btn3.setVisible(false);
+	    		   btn4.setVisible(false);
+	    		   btn5.setVisible(false);
+	    		   btn6.setVisible(false);
+//	    		   btn1.remove(btn1);
+//	    		   btn2.remove(btn2);
+//	    		   btn3.remove(btn3);
+//	    		   btn4.remove(btn4);
+//	    		   btn5.remove(btn5);
+//	    		   btn6.remove(btn6);
+//	    		   adminall.repaint();
+//	    		   adminall.revalidate();
 	    	   }
 	       });
 	       
@@ -153,7 +171,7 @@ public class AdminList1 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminPost();
+	    		   new AdminPost(frame);
 	    		   bottomPanel.setVisible(false);
 //	    		   adminList.setVisible(false);
 	    	   }
@@ -167,7 +185,7 @@ public class AdminList1 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminUser();
+	    		   new AdminUser(frame);
 	    		   bottomPanel.setVisible(false);
 //	    		   adminList.setVisible(false);
 	    	   }
@@ -195,7 +213,7 @@ public class AdminList1 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminComment();
+	    		   new AdminComment(frame);
 	    		   bottomPanel.setVisible(false); 
 //	    		   adminList.setVisible(false);
 	    	   }

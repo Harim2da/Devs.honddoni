@@ -255,13 +255,19 @@ public class AllData2 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList(frame);
+	    		   adminlist = new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   alldata.setVisible(false);
-	    		   bottomPanel.remove(btn1);
-	    		   bottomPanel.remove(lb1);
-	    		   bottomPanel.remove(btn8);
-	    		   bottomPanel.remove(btn9);
+//	    		   alldata.setVisible(false);
+	    		   
+//	    		   btn1.setVisible(false);
+//	    		   lb1.setVisible(false);
+//	    		   btn8.setVisible(false);
+//	    		   btn8.setVisible(false);
+	    		   
+	    		   btn1.remove(btn1);
+	    		   lb1.remove(lb1);
+	    		   btn8.remove(btn8);
+	    		   btn9.remove(btn9);
 	    		   adminlist.repaint();
 	    		   adminlist.revalidate();
 	    	   }
@@ -275,13 +281,18 @@ public class AllData2 extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AllData(frame);
+	    		   alldata123 = new AllData(frame);
 	    		   bottomPanel.setVisible(false); 
-	    		   alldata.setVisible(false);
-	    		   bottomPanel.remove(btn1);
-	    		   bottomPanel.remove(lb1);
-	    		   bottomPanel.remove(btn8);
-	    		   bottomPanel.remove(btn9);
+//	    		   alldata.setVisible(false);
+	    		   
+//	    		   btn1.setVisible(false);
+//	    		   lb1.setVisible(false);
+//	    		   btn8.setVisible(false);
+//	    		   btn9.setVisible(false);
+	    		   btn1.remove(btn1);
+	    		   lb1.remove(lb1);
+	    		   btn8.remove(btn8);
+	    		   btn9.remove(btn9);
 	    		   alldata123.repaint();
 	    		   alldata123.revalidate();
 	    	   }

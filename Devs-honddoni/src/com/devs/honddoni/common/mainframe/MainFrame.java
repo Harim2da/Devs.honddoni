@@ -47,7 +47,7 @@ public class MainFrame extends JFrame{
 
 //		new MyPage(this);
 
-		new FirstView(this);
+//		new FirstView(this);
 
 //		new PostFreeBoard(this);
 
@@ -88,8 +88,8 @@ public class MainFrame extends JFrame{
 
 
 
-		new AdminList(this);
-//		new MemberLogView(this);
+//		new AdminList(this);
+		new MemberLogView(this);
 
 
 

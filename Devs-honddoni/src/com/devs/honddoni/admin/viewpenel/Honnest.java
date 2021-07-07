@@ -63,19 +63,19 @@ public class Honnest extends JPanel {
 	     lb01.setBounds(32, 56, 263, 33);
 	     	//첫번쨰회원 업적
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\Honest1.png");
-	       JButton btn1 = new JButton(img1);
+	       JLabel btn1 = new JLabel(img1);
 	       //두번째회원 업적
 	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Honest2.png");
-	       JButton btn2 = new JButton(img2);
+	       JLabel btn2 = new JLabel(img2);
 	       //세번쨰회원 업적
 	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Honest3.png");
-	       JButton btn3 = new JButton(img3);
+	       JLabel btn3 = new JLabel(img3);
 	       //네번째회원 업적
 	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\Honest4.png");
-	       JButton btn4 = new JButton(img4);
+	       JLabel btn4 = new JLabel(img4);
 	       //다섯번회원 업적
 	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Honest5.png");
-	       JButton btn5 = new JButton(img5);
+	       JLabel btn5 = new JLabel(img5);
 	       
 //	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
 //	       JLabel lb1 = new JLabel();
@@ -157,18 +157,27 @@ public class Honnest extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminList(frame);
+	    		   adminlist = new AdminList(frame);
 	    		   bottomPanel.setVisible(false); 
-//	    		   MainFrame.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-	    		   btn3.remove(btn3);
-	    		   btn4.remove(btn4);
-	    		   btn5.remove(btn5);
-	    		   btn10.remove(btn10);
-	    		   btn11.remove(btn11);
+//	    		   adminlist.setVisible(false);
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(btn2);
+	    		   bottomPanel.remove(btn3);
+	    		   bottomPanel.remove(btn4);
+	    		   bottomPanel.remove(btn5);
+	    		   bottomPanel.remove(btn10);
+	    		   bottomPanel.remove(btn11);
+//	    		   btn1.setVisible(false);
+//	    		   btn2.setVisible(false);
+//	    		   btn3.setVisible(false);
+//	    		   btn4.setVisible(false);
+//	    		   btn5.setVisible(false);
+//	    		   btn10.setVisible(false);
+//	    		   btn11.setVisible(false);
 	    		   adminlist.repaint();
 	    		   adminlist.revalidate();
+	    		   
+	    		   
 	    		   
 	    	   }
 	       });
@@ -181,16 +190,16 @@ public class Honnest extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new Honnest2(frame);
+	    		   honnest2 = new Honnest2(frame);
 	    		   bottomPanel.setVisible(false); 
-//	    		   MainFrame.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-	    		   btn3.remove(btn3);
-	    		   btn4.remove(btn4);
-	    		   btn5.remove(btn5);
-	    		   btn10.remove(btn10);
-	    		   btn11.remove(btn11);
+//	    		   honnest2.setVisible(false);
+	    		   bottomPanel.remove(btn1);
+	    		   bottomPanel.remove(btn2);
+	    		   bottomPanel.remove(btn3);
+	    		   bottomPanel.remove(btn4);
+	    		   bottomPanel.remove(btn5);
+	    		   bottomPanel.remove(btn10);
+	    		   bottomPanel.remove(btn11);
 	    		   honnest2.repaint();
 	    		   honnest2.revalidate();
 	    		   
