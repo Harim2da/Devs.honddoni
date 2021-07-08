@@ -141,5 +141,20 @@ public class MemberController {
 		}
 		
 	}
+	
+	/* 사용자가 선택한 프로필 사진의 정보를 전달 */
+	   public void changeProfile(String profile) {
+	      
+	      int result = 0;
+	      
+	      result = memberService.changeProfile(profile);
+	      
+	      if(result > 0) {
+	         myPageResultView.successView("chageInfoSuccess");
+	      } else {
+	         myPageResultView.failedView("chageInfoFailed");
+	      }
+	      
+	   }
 
 }
