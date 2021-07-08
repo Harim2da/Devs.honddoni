@@ -109,13 +109,13 @@ public class AdminPost extends JPanel {
 	    	   }
 	       });
 	       
-	       btn2.addActionListener(new ActionListener() {
-	    	   @Override
-	    	   public void actionPerformed(ActionEvent e) {
-	    		   
-	    		   new AdminPostDelite();
-	    		   adminpost.setVisible(false);
-	    	   }
-	       });
+//	       btn2.addActionListener(new ActionListener() {
+//	    	   @Override
+//	    	   public void actionPerformed(ActionEvent e) {
+//	    		   
+//	    		   new AdminPostDelite(frame);
+//	    		   adminpost.setVisible(false);
+//	    	   }
+//	       });
 	}
 }

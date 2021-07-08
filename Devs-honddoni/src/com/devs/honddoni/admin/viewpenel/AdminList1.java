@@ -1,6 +1,6 @@
 package com.devs.honddoni.admin.viewpenel;
 
-import java.awt.Color;  
+import java.awt.Color;   
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 import com.devs.honddoni.admin.viewpenel.MainFrame1;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.common.mainframe.PopupFrame;
-import com.devs.honddoni.memberLog.view.LoginFail;
 import com.devs.honddoni.memberLog.view.MemberLogView;
 
 //관리자목록2
