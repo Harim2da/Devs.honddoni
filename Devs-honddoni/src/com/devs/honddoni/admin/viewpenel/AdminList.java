@@ -22,10 +22,7 @@ public class AdminList extends JPanel {
 		private MainFrame frame;
 		private AdminList adminList;
 		private JButton btn1, btn2, btn3, btn4, btn5;
-		AllData alldata;
-		Honnest honnest;
-		Delite delite;
-		AdminList adminlist123;
+
 		
 		public AdminList(MainFrame frame) {
 		//프레임, 패널설정
@@ -106,24 +103,14 @@ public class AdminList extends JPanel {
 	       btn5.setBorderPainted(false);
 	       btn5.setContentAreaFilled(false);
 	       
-	       
-	     
-	       //컨테이너에 패널 추가
-//	       frame.add(adminList);
-//	       frame.setVisible(true); //창을 보이게함
-	       
 	       //관리자목록2번째로 넘어가는 버튼
 	       btn5.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
 	    		   adminList.setVisible(false); 
-//	    		   frame.setVisible(false);
+
 	    	   }
 	       });
 	       
@@ -131,14 +118,10 @@ public class AdminList extends JPanel {
 	       btn4.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
-	    		   
+
 	    		   new Notice(frame);
 	    		   adminList.setVisible(false); 
-//	    		   MainFrame.setVisible(false);
+
 	    	   }
 	       });
 	       
@@ -146,25 +129,10 @@ public class AdminList extends JPanel {
 	       btn1.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   
 
 	    		   new Delite(frame);
 	    		   adminList.setVisible(false); 
-//	    		   frame.setVisible(false);
-//	    		   btn1.remove(btn1);
-//	    		   btn2.remove(btn2);
-//
-//	    		   btn3.remove(btn3);
-//	    		   btn4.remove(btn4);
-//	    		   btn5.remove(btn5);
-//
-//	    		   delite.repaint();
-//	    		   delite.revalidate();
+	    		   
 	    	   }
 	       });
 	       
@@ -172,23 +140,9 @@ public class AdminList extends JPanel {
 	       btn2.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
-	    		   
-	    		  
+	    		   	    		  
 	    		   new AllData(frame);
 	    		   adminList.setVisible(false); 
-//	    		   frame.setVisible(false);
-//	    		   bottomPanel.remove(btn1);
-//	    		   bottomPanel.remove(btn2);
-//	    		   bottomPanel.remove(btn3);
-//	    		   bottomPanel.remove(btn4);
-//	    		   bottomPanel.remove(btn5);
-//
-//	    		   alldata.repaint();
-//	    		   alldata.revalidate();
 	    	   }
 	       });
 	       
@@ -196,24 +150,10 @@ public class AdminList extends JPanel {
 	       btn3.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
-	    		   
-	    		   
 
 	    		   new Honnest(frame);
 	    		   adminList.setVisible(false); 
-//	    		   frame.setVisible(false);
-//	    		   bottomPanel.remove(btn1);
-//	    		   bottomPanel.remove(btn2);
-//	    		   bottomPanel.remove(btn3);
-//	    		   bottomPanel.remove(btn5);
-//	    		   honnest.repaint();
-//	    		   honnest.revalidate();
-	    		   
-	    		   
+
 	    	   }
 	       });
 	       
@@ -221,20 +161,9 @@ public class AdminList extends JPanel {
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList(frame);
 	    		   adminList.setVisible(false); 
-//	    		   frame.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-	    		   btn3.remove(btn3);
-	    		   btn5.remove(btn5);
-	    		   adminlist123.repaint();
-	    		   adminlist123.revalidate();
 	    	   }
 	       });
 		}  

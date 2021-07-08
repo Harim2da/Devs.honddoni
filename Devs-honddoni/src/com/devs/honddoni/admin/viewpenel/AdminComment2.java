@@ -12,9 +12,6 @@ import javax.swing.JPanel;
 
 import com.devs.honddoni.common.mainframe.MainFrame;
 
-
-
-
 public class AdminComment2 extends JPanel {
 	
 	//신고된 댓글 확인
@@ -75,14 +72,6 @@ public class AdminComment2 extends JPanel {
 	       ImageIcon  img5 = new ImageIcon ("image\\\\admin\\\\DelitePop.png");
 	       JButton btn5 = new JButton(img5);
 	       
-	       
-	       
-	       
-
-	       
-	       
-	   
-	  
 	       //패널에 버튼 추가
 	       bottomPanel.add(btn1);
 	       bottomPanel.add(btn2);
@@ -90,7 +79,6 @@ public class AdminComment2 extends JPanel {
 	       bottomPanel.add(btn4);
 	       bottomPanel.add(btn5);
 	       
-	    
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 52, 433, 61);
 	       btn2.setBounds(35, 119, 433, 61);
@@ -99,51 +87,22 @@ public class AdminComment2 extends JPanel {
 	       btn5.setBounds(29, 205, 445, 233);//삭제완료 팝업
 		   btn4.setContentAreaFilled(false);
 		   btn4.setBorderPainted(false);
-	   
-	     
-//	       //컨테이너에 패널 추가
-//	       MainFrame.add(bottomPanel);
-//	       MainFrame.setVisible(true); //창을 보이게함
-	       
-//	       btn1.addActionListener(new ActionListener() {
-//	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
-////	    		   login2 login2 = new login2();
-////	    		   JPanel.add(login2);
-////	    		   new login2();
-////	    		   bottomPanel.setVisible(false);
-//	    		   
-//	    		   new Login2();
-//	    		   bottomPanel.setVisible(false);
-////	    		  MainFrame.setVisible(false);
-//	    	   }
-//	       });
 	       
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
 	    		   admincomment2.setVisible(false);
-//	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
 	       
 	       btn5.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
 	    		   admincomment2.setVisible(false);
-//	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
 	}

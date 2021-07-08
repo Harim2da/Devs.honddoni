@@ -1,6 +1,7 @@
 package com.devs.honddoni.common.mainframe;
 
-import java.io.File;
+
+import java.io.File; 
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -9,6 +10,7 @@ import javax.swing.JFrame;
 import com.devs.honddoni.admin.viewpenel.AdminList;
 import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.memberLog.view.FirstView;
+import com.devs.honddoni.memberLog.view.MemberLogView;
 import com.devs.honddoni.post.view.PostNotice;
 
 
@@ -76,7 +78,7 @@ public class MainFrame extends JFrame{
 
 //		new AdminList(this);
 
-//		new MemberLogView(this);
+		new MemberLogView(this);
 
 
 
