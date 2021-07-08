@@ -38,7 +38,6 @@ public class SearchId extends JPanel{
 		searchId.setBackground(Color.WHITE);
 		frame.add(this);
 		
-		
 		/* 혼또니 로고버튼(오른쪽 상단) */
 		JButton honddoniBtn = new JButton("");
 		honddoniBtn.setBounds(303, 29, 173, 71);
@@ -49,14 +48,12 @@ public class SearchId extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == honddoniBtn) {					
-					/* 로그인 창으로 이동 */			
 					frame.remove(searchId);
 					searchId.setVisible(false);					
 					memberLogView = new MemberLogView(frame);
 					frame.repaint();
 					frame.revalidate();
 				}
-				
 			}
 		});
 		

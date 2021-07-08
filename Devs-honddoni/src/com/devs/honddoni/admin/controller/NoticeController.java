@@ -11,7 +11,7 @@ public class NoticeController {
 
 	public int writeNoticeBoardPost(PostDTO postDTO) {
 
-		int postMemberNo = 16; //관리자 번호임
+		int postMemberNo = 16; //관리자 번호
 
 		/* 등록하는 오늘 날짜 추출 */
 		java.util.Date today = new java.util.Date(System.currentTimeMillis());
@@ -24,15 +24,11 @@ public class NoticeController {
 		String postWritingTime = postTimeFormat.format(today);
 		postDTO.setPostWritingTime(postWritingTime);
 		
-		//다 안해줘도 되지않나..?
 		postDTO.setPostMemberNo(postMemberNo);
 		postDTO.setPostWritingDate(postWritingDate);
 		postDTO.setPostWritingTime(postWritingTime);
 		
-		System.out.println("작성글 정보 : " + postDTO); //잘 들어갔는지 확인
-		
 		int result = adminService.insertNoticePost(postDTO);
-		
 		
 		return result;
 	}
@@ -50,7 +46,7 @@ public class NoticeController {
 	/* 공지글 조회 */
 	public int modifyNotice(PostDTO postDTO) {
 
-		int postMemberNo = 16; //관리자 번호임
+		int postMemberNo = 16; //관리자 번호
 
 		/* 등록하는 오늘 날짜 추출 */
 		java.util.Date today = new java.util.Date(System.currentTimeMillis());
@@ -68,10 +64,7 @@ public class NoticeController {
 		postDTO.setPostWritingDate(postWritingDate);
 		postDTO.setPostWritingTime(postWritingTime);
 		
-		System.out.println("수정글 정보 : " + postDTO); //잘 들어갔는지 확인
-		
 		int result = adminService.modifyNotice(postDTO);
-		
 		
 		return result;
 	}

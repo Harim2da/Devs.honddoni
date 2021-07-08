@@ -3,7 +3,6 @@ package com.devs.honddoni.memberLog.controller;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.memberLog.model.dto.LoginDataDTO;
 import com.devs.honddoni.memberLog.model.service.MemberLogService;
-import com.devs.honddoni.memberLog.view.LoginFail;
 
 public class LoginController {
 
@@ -21,7 +20,7 @@ public class LoginController {
 
 		} else {
 
-			/* 2. DB에서 넘버, 패스워드, 탈퇴여부, 권한 가져오기 */
+			/* 2. DB에서 회원번호, 패스워드, 탈퇴여부, 권한 가져오기 */
 			memberDBDTO = memberLogService.userLogin(loginDataDTO);
 			
 			/* 3. 탈퇴여부 확인 */
@@ -40,33 +39,26 @@ public class LoginController {
 				//로그인 성공시 
 				if(result == 1) {			
 
-					// 아이디가 어드민인 경우, 관리자로 그인쪽으로 전달
-					if((loginDataDTO.getMemberId()).equals("admin01")) {				
+					// 멤버의 권한이 "관리자"인 경우, 관리자 로그인쪽으로 전달
+					if((memberDBDTO.getMemberAccess()).equals("관리자")) {				
 						result = 2;
 					}
 
-					/* 로그인한 이 유저의 Id를 저장하기 */
+					/* 싱글톤 */
+					//로그인한 이 유저의 Id를 저장히기
 					String loginMemberId = loginDataDTO.getMemberId();
-
 					//DB에서 로그인 유저Id를 회원번호로 조회해오기(MVC)
 					int loginMemberNo = memberLogService.getLoginMemberNo(loginMemberId);
-					//				int loginMemberNo = 1;
 
-
-					//로그인 성공시, 로그인유저No를 ... 싱글톤으로 작성
+					//로그인 성공시, 로그인 유저No를 싱글톤으로 작성
 					GetLoginMember getLoginMember = GetLoginMember.getInstance();
-					//GetLoginMemberId getLoginMemberId = new GetLoginMemberId(); 이렇게 쓰지않는다.
 					getLoginMember.setLoginMemberNo(loginMemberNo);
 					getLoginMember.setLoginMemberId(loginMemberId);
 
-
 					//가져다 쓰실 때			
-					//			GetLoginMemberId getLoginMemberId = GetLoginMemberId.getInstance();
+					//GetLoginMemberId getLoginMemberId = GetLoginMemberId.getInstance();
 					int memberNo = getLoginMember.getLoginMemberNo();
 					String memberId = getLoginMember.getLoginMemberId();
-					//확인용
-					System.out.println("로그인하면서 싱글톤에 저장된 회원번호 : " + memberNo);
-					System.out.println("로그인하면서 싱글톤에 저장된 회원id : " + memberId);
 
 
 				} else {

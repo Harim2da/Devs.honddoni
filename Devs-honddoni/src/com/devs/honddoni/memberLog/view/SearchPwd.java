@@ -60,13 +60,13 @@ public class SearchPwd extends JPanel{
 			}
 		});
 		
-		/* 이름과 핸드폰번호 적을 공간 라벨 */
+		/* 이름, 아이디, 핸드폰번호 적을 공간 라벨 */
 		JLabel searchPwdLb = new JLabel();
 		searchPwdLb.setBounds(35, 145, 431, 641);
 		searchPwdLb.setBackground(null);
 		searchPwdLb.setIcon(new ImageIcon("image/memberLog/findPassword/findpassword_1.png"));
 		
-		/* 이름입력과 휴대폰번호입력 텍스트 필드 */
+		/* 이름, 아이디, 핸드폰번호 입력 텍스트 필드 */
 		JTextField nameTf = new JTextField();
 		nameTf.setBounds(160, 213, 220, 40);
 		nameTf.setBorder(null);
@@ -101,9 +101,9 @@ public class SearchPwd extends JPanel{
 				
 				int result = memberLogController.searchPwd(searchPwdDTO);
 				
+				/* 3가지 모두 일치한다면, 난수 발생시켜 6자리의 무작위 비밀번호(String) 생성 */
 				if(result > 0) {					
 					
-					/* 난수 발생시켜 6자리의 무작위 비밀번호(String) 생성 */
 					String newPwd = "";					
 					for(int i = 0; i < 6; i++) {
 						int randomNum = (int)(Math.random() * 10);
@@ -115,7 +115,6 @@ public class SearchPwd extends JPanel{
 					int result2 = memberLogController.editPwd(searchPwdDTO);
 					
 				}
-				
 			}
 		});
 		

@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.PopupFrame;
 import com.devs.honddoni.memberLog.model.dto.SearchIdDTO;
 import com.devs.honddoni.memberLog.model.dto.SearchPwdDTO;
@@ -17,8 +18,9 @@ import com.devs.honddoni.memberLog.model.service.MemberLogService;
 public class MemberLogController {
 	
 	private MemberLogService memberLogService = new MemberLogService();
+	FontManager font = new FontManager();
 
-	public String searchId(SearchIdDTO searchIdDTO) {
+	public void searchId(SearchIdDTO searchIdDTO) {
 		
 		/* DB에서 id를 찾는 기능연결 */
 		String dBid = memberLogService.searchId(searchIdDTO);
@@ -29,7 +31,6 @@ public class MemberLogController {
 			editPwdPopup(dBid);
 		}
 		
-		return dBid;
 	}
 
 	public int searchPwd(SearchPwdDTO searchPwdDTO) {
@@ -74,7 +75,8 @@ public class MemberLogController {
 		popupLabel.setIcon(popup);
 		
 		JLabel newPwd = new JLabel();
-		newPwd.setBounds(140, 130, 200, 26);
+		newPwd.setBounds(150, 130, 200, 26);
+		newPwd.setFont(font.customFont1);
 		newPwd.setText(editPwd + " 입니다.");		
 		popupLabel.add(newPwd);
 		

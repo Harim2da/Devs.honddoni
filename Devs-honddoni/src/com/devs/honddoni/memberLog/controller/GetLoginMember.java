@@ -11,7 +11,6 @@ public class GetLoginMember {
 	
 	public static GetLoginMember getInstance() {
 		
-		//LazySingleton (chap06/section06/singleton/LazySingleton.java 강의)
 		if(getLoginMember == null) {
 			getLoginMember = new GetLoginMember();
 		}		
@@ -19,8 +18,6 @@ public class GetLoginMember {
 		return getLoginMember;
 	}
 	
-	
-
 	public String getLoginMemberId() {
 		return loginMemberId;
 	}
@@ -37,6 +34,4 @@ public class GetLoginMember {
 		this.loginMemberNo = loginMemberNo;
 	}
 	
-	
-
 }

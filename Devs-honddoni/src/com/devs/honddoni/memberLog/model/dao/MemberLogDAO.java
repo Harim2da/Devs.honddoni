@@ -90,7 +90,10 @@ public class MemberLogDAO {
 			rset = pstmt.executeQuery();
 
 			if(rset.next()) {
-				userId = rset.getString("MEMBER_ID");
+				if((searchIdDTO.getName()).equals(rset.getString("MEMBER_NAME"))) {
+					userId = rset.getString("MEMBER_ID");
+				}
+				
 			} else {
 				userId = "입력오류";
 			}
