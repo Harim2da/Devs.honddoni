@@ -168,6 +168,7 @@ public class MemberDAO {
 		return result;
 	}
 
+	/* 현재 접속중인 사용자의 개인정보를 받아오기 위해 아이디 전달 */
 	public MemberInfoDTO callMemberInfo(Connection con, String testId) {
 		
 		PreparedStatement pstmt = null;
@@ -207,6 +208,7 @@ public class MemberDAO {
 		return memberInfo;
 	}
 
+	/* 사용자가 선택한 프로필 사진으로 업데이트 */
 	public int changeProfile(Connection con, String profile) {
 		
 		PreparedStatement pstmt = null;
@@ -234,6 +236,7 @@ public class MemberDAO {
 		
 	}
 
+	/* 전달받은 성향 정보를 사용자의 현재 성향으로 업데이트 해줌 */
 	public int changeCharacter(Connection con, Integer newCharacterCode) {
 		
 		PreparedStatement pstmt = null;
@@ -259,6 +262,7 @@ public class MemberDAO {
 		return result;
 	}
 
+	/* 변경된 사용자의 정보를 업데이트 */
 	public int changeInfo(Connection con, MemberInfoDTO memberInfo) {
 
 		PreparedStatement pstmt = null;

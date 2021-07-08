@@ -1006,9 +1006,6 @@ public class MyPage extends JPanel {
 
 
 		/* 내글 모아보기 */
-
-
-		//		JButton writtenPostButton = new JButton(""); /* 내글 모아보기 버튼 */
 		writtenPostButton.setIcon(new ImageIcon("image/member/myPage/moabogi.png"));
 		writtenPostButton.setContentAreaFilled(false);
 		writtenPostButton.setBorderPainted(false);

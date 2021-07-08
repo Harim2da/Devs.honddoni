@@ -74,17 +74,19 @@ public class MemberService {
 		return result;
 	}
 
-	public MemberInfoDTO callMemberInfo(String testId) {
+	/* 현재 접속중인 사용자의 개인정보를 받아오기 위해 아이디 전달 */
+	public MemberInfoDTO callMemberInfo(String userId) {
 		
 		Connection con = getConnection();
 		
-		MemberInfoDTO memberInfo = memberDAO.callMemberInfo(con, testId);
+		MemberInfoDTO memberInfo = memberDAO.callMemberInfo(con, userId);
 		
 		close(con);
 		
 		return memberInfo;
 	}
 
+	/* 사용자가 선택한 프로필 사진의 정보를 전달 */
 	public int changeProfile(String profile) {
 		
 		Connection con = getConnection();
@@ -97,6 +99,8 @@ public class MemberService {
 		
 	}
 
+	
+	/* 콤보박스를 통해 선택한 성향 정보를 전달 받아서 서비스로 전달 */
 	public int changeCharacter(Integer newCharacterCode) {
 		
 		Connection con = getConnection();
@@ -108,6 +112,7 @@ public class MemberService {
 		return result;
 	}
 
+	/* 변경된 사용자의 정보를 전달 */
 	public int changeInfo(MemberInfoDTO memberInfo) {
 		Connection con = getConnection();
 		
