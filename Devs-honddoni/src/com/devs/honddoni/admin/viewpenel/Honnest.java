@@ -18,8 +18,6 @@ public class Honnest extends JPanel {
 	private MainFrame frame;
 	private Honnest honnest;
 	private JButton btn1, btn2, btn3, btn4, btn5;
-	AdminList adminlist;
-	Honnest2 honnest2;
 	
 	public Honnest(MainFrame frame) {
 		//프레임, 패널설정
@@ -77,30 +75,19 @@ public class Honnest extends JPanel {
 	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Honest5.png");
 	       JLabel btn5 = new JLabel(img5);
 	       
-//	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
-//	       JLabel lb1 = new JLabel();
-	       
-//	       ImageIcon  img7 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\AllBack.png");
-//	       JButton btn7 = new JButton(img7);
-	       
 	       //검색기능버튼
 	       ImageIcon  img10 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
 	       JButton btn10 = new JButton(img10);
 	       
 	       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findnext.png");//다음페이지
 	       JButton btn11 = new JButton(img11);
-	       
-	       
-	   
-	  
+
 	       //패널에 버튼 추가
 	       bottomPanel.add(btn1);
 	       bottomPanel.add(btn2);
 	       bottomPanel.add(btn3);
 	       bottomPanel.add(btn4);
 	       bottomPanel.add(btn5);
-//	       bottomPanel.add(lb1);
-//	       bottomPanel.add(btn7);
 	       bottomPanel.add(btn10);
 	       bottomPanel.add(btn11);
 	    
@@ -110,99 +97,32 @@ public class Honnest extends JPanel {
 	       btn3.setBounds(34, 380, 430, 104);
 	       btn4.setBounds(33, 498, 430, 104);
 	       btn5.setBounds(34, 616, 430, 104);
-//	       lb1.setBounds(56, 0, 263, 33);
-//	       btn7.setBounds(226, 724, 56, 25);
 	       btn10.setBounds(31, 19, 430, 62);
 	       btn11.setBounds(181, 95, 136, 21);
 		   btn11.setContentAreaFilled(false);
 		   btn11.setBorderPainted(false);
+		   btn10.setContentAreaFilled(false);
+		   btn10.setBorderPainted(false);
 	       
-//	       //컨테이너에 패널 추가
-//	       MainFrame.add(bottomPanel);
-//	       MainFrame.setVisible(true); //창을 보이게함
-	       
-//	       btn1.addActionListener(new ActionListener() {
-//	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
-////	    		   login2 login2 = new login2();
-////	    		   JPanel.add(login2);
-////	    		   new login2();
-////	    		   bottomPanel.setVisible(false);
-//	    		   
-//	    		   new Login2();
-//	    		   bottomPanel.setVisible(false);
-////	    		  MainFrame.setVisible(false);
-//	    	   }
-//	       });
-//	       
-//	       btn7.addActionListener(new ActionListener() {
-//	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
-////	    		   login2 login2 = new login2();
-////	    		   JPanel.add(login2);
-////	    		   new login2();
-////	    		   bottomPanel.setVisible(false);
-//	    		   
-//	    		   new AdminList();
-//	    		   bottomPanel.setVisible(false);
-////	    		  MainFrame.setVisible(false);
-//	    	   }
-//	       });
 	       
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
+
 	    		   
-	    		   adminlist = new AdminList(frame);
+	    		   new AdminList(frame);
 	    		   honnest.setVisible(false); 
-//	    		   adminlist.setVisible(false);
-//	    		   bottomPanel.remove(btn1);
-//	    		   bottomPanel.remove(btn2);
-//	    		   bottomPanel.remove(btn3);
-//	    		   bottomPanel.remove(btn4);
-//	    		   bottomPanel.remove(btn5);
-//	    		   bottomPanel.remove(btn10);
-//	    		   bottomPanel.remove(btn11);
-//	    		   btn1.setVisible(false);
-//	    		   btn2.setVisible(false);
-//	    		   btn3.setVisible(false);
-//	    		   btn4.setVisible(false);
-//	    		   btn5.setVisible(false);
-//	    		   btn10.setVisible(false);
-//	    		   btn11.setVisible(false);
-//	    		   adminlist.repaint();
-//	    		   adminlist.revalidate();
-	    		   
-	    		   
-	    		   
+
 	    	   }
 	       });
 	       
 	       btn11.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   honnest2 = new Honnest2(frame);
+	    		   new Honnest2(frame);
 	    		   honnest.setVisible(false); 
-//	    		   honnest2.setVisible(false);
-//	    		   bottomPanel.remove(btn1);
-//	    		   bottomPanel.remove(btn2);
-//	    		   bottomPanel.remove(btn3);
-//	    		   bottomPanel.remove(btn4);
-//	    		   bottomPanel.remove(btn5);
-//	    		   bottomPanel.remove(btn10);
-//	    		   bottomPanel.remove(btn11);
-//	    		   honnest2.repaint();
-//	    		   honnest2.revalidate();
-	    		   
+ 		   
 	    	   }
 	       });
 	}

@@ -19,8 +19,6 @@ public class Delite2 extends JPanel{
 	private MainFrame frame;
 	private Delite2 delite2;
 	private JButton btn1, btn2, btn3, btn4, btn5;
-	Delite delite123;
-	AdminList adminlist;
 	
 	public Delite2(MainFrame frame) {
 		//프레임, 패널설정
@@ -73,10 +71,6 @@ public class Delite2 extends JPanel{
 	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Delite2-2.png");
 	       JButton btn2 = new JButton(img2);
 	       
-	       
-//	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\DeliteData4.png");
-//	       JLabel lb1 = new JLabel();
-	       
 	       //탈퇴 첫번째게시판으로 돌아가는 버튼
 	       ImageIcon  img8 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\FindBack.png");//이전페이지
 	       JButton btn8 = new JButton(img8);
@@ -85,101 +79,38 @@ public class Delite2 extends JPanel{
 	       ImageIcon  img9 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Find.png");//검색
 	       JButton btn9 = new JButton(img9);
 	       
-	       
-	   
-	  
 	       //패널에 버튼 추가
 	       bottomPanel.add(btn1);//탈퇴회원 버튼
 	       bottomPanel.add(btn2);
-
-//	       bottomPanel.add(lb1);
 	       bottomPanel.add(btn8);//다음페이지
 	       bottomPanel.add(btn9);//검색버튼
 	       //버튼 위치 조정
 	       btn1.setBounds(32, 143, 430, 104);
 	       btn2.setBounds(32, 262, 430, 104);
-//	       lb1.setBounds(56, -17, 263, 33);
 	       btn8.setBounds(181, 95, 136, 21);//이전페이지
 	       btn9.setBounds(31, 19, 430, 62);//다음페이지
-	       
 		   btn8.setContentAreaFilled(false);
 		   btn8.setBorderPainted(false);
+		   btn9.setContentAreaFilled(false);
+		   btn9.setBorderPainted(false);
 	   
-	     
-//	       //컨테이너에 패널 추가
-//	       MainFrame.add(bottomPanel);
-//	       MainFrame.setVisible(true); //창을 보이게함
-	       
-//	       btn1.addActionListener(new ActionListener() {
-//	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
-////	    		   login2 login2 = new login2();
-////	    		   JPanel.add(login2);
-////	    		   new login2();
-////	    		   bottomPanel.setVisible(false);
-//	    		   
-//	    		   new Login2();
-//	    		   bottomPanel.setVisible(false);
-////	    		  MainFrame.setVisible(false);
-//	    	   }
-//	       });
-	       
-	       //관리자메뉴 1로 돌아가게함
-//	       btn8.addActionListener(new ActionListener() {
-//	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
-////	    		   login2 login2 = new login2();
-////	    		   JPanel.add(login2);
-////	    		   new login2();
-////	    		   bottomPanel.setVisible(false);
-//	    		   
-//	    		   new Delite();
-//	    		   bottomPanel.setVisible(false);
-////	    		  MainFrame.setVisible(false);
-//	    	   }
-//	       });
 //	       //탈퇴게시판 1로 돌아가는 기능
 	       btn8.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new Delite(frame);
 	    		   delite2.setVisible(false);
-//	    		  MainFrame.setVisible(false);
-//	    		   btn1.remove(btn1);
-//	    		   btn2.remove(btn2);
-//
-//	    		   btn8.remove(btn8);
-//	    		   btn9.remove(btn9);
-//
-//	    		   delite123.repaint();
-//	    		   delite123.revalidate();
 	    	   }
 	       });
 	       //뒤로가는 버튼
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   adminlist = new AdminList(frame);
-//	    		   bottomPanel.setVisible(false); 
+	    		   new AdminList(frame);
 	    		   delite2.setVisible(false);
-//	    		   btn1.remove(btn1);
-//	    		   btn2.remove(btn2);
-//
-//	    		   btn8.remove(btn8);
-//	    		   btn9.remove(btn9);
-//
-//	    		   adminlist.repaint();
-//	    		   adminlist.revalidate();
+
 	    	   }
 	       });
 	}

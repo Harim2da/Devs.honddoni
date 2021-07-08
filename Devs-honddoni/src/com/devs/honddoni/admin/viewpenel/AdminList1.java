@@ -101,6 +101,7 @@ public class AdminList1 extends JPanel {
 	       btn2.setBorderPainted(false);
 	       btn3.setBorderPainted(false);
 	       btn4.setBorderPainted(false);
+	       btn5.setBorderPainted(false);
 	       
 //	       //컨테이너에 패널 추가
 //	       MainFrame.add(bottomPanel);

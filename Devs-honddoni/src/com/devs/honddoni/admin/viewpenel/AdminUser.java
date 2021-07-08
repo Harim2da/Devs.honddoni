@@ -104,36 +104,13 @@ public class AdminUser extends JPanel{
 	       btn11.setBounds(181, 95, 136, 21);
 	       btn11.setContentAreaFilled(false);
 		   btn11.setBorderPainted(false);
+	       btn10.setContentAreaFilled(false);
+		   btn10.setBorderPainted(false);
 	   
-	     
-//	       //컨테이너에 패널 추가
-//	       MainFrame.add(bottomPanel);
-//	       MainFrame.setVisible(true); //창을 보이게함
-	       
-//	       btn1.addActionListener(new ActionListener() {
-//	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
-////	    		   login2 login2 = new login2();
-////	    		   JPanel.add(login2);
-////	    		   new login2();
-////	    		   bottomPanel.setVisible(false);
-//	    		   
-//	    		   new Login2();
-//	    		   bottomPanel.setVisible(false);
-////	    		  MainFrame.setVisible(false);
-//	    	   }
-//	       });
-	       
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
-	    		   
 	    		   new AdminList1(frame);
-//	    		   bottomPanel.setVisible(false); 
 	    		   adminuser.setVisible(false);
 	    	   }
 	       });
@@ -141,13 +118,8 @@ public class AdminUser extends JPanel{
 	       btn11.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminUser2(frame);
-//	    		   bottomPanel.setVisible(false); 
 	    		   adminuser.setVisible(false);
 	    	   }
 	       });

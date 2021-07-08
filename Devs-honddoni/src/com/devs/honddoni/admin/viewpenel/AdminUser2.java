@@ -58,18 +58,6 @@ public class AdminUser2 extends JPanel {
 		   ImageIcon img1 = new ImageIcon ("image\\admin\\AdminUserNew2-1.png");
 	       JButton btn1 = new JButton(img1);
 	       
-//	       ImageIcon  img2 = new ImageIcon ("image\\\\admin\\\\Side.png");
-//	       JButton btn2 = new JButton(img2);
-//	       
-//	       ImageIcon  img3 = new ImageIcon ("image\\\\admin\\\\Side.png");
-//	       JButton btn3 = new JButton(img3);
-//	       
-//	       ImageIcon  img4 = new ImageIcon ("image\\\\admin\\\\Side.png");
-//	       JButton btn4 = new JButton(img4);
-//	       
-//	       ImageIcon  img5 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Side.png");
-//	       JButton btn5 = new JButton(img5);
-	       
 	       ImageIcon  img6 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Delite.png");
 	       JLabel lb1 = new JLabel();
 	       
@@ -79,60 +67,27 @@ public class AdminUser2 extends JPanel {
 	       ImageIcon  img11 = new ImageIcon ("image\\\\\\\\admin\\\\\\\\Findback.png");//이전페이지
 	       JButton btn11 = new JButton(img11);
 	       
-	       
-	   
-	  
 	       //패널에 버튼 추가
 	       bottomPanel.add(btn1);
-//	       bottomPanel.add(btn2);
-//	       bottomPanel.add(btn3);
-//	       bottomPanel.add(btn4);
-//	       bottomPanel.add(btn5);
 	       bottomPanel.add(lb1);
 	       bottomPanel.add(btn10);
 	       bottomPanel.add(btn11);
 	    
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 143, 430, 105);
-//	       btn2.setBounds(34, 262, 430, 121);
-//	       btn3.setBounds(34, 380, 430, 121);
-//	       btn4.setBounds(33, 498, 430, 121);
-//	       btn5.setBounds(34, 616, 430, 104);
 	       lb1.setBounds(56, 0, 263, 33);
 	       btn10.setBounds(31, 19, 430, 62);
 	       btn11.setBounds(181, 95, 136, 21);
 	       btn11.setContentAreaFilled(false);
 		   btn11.setBorderPainted(false);
+	       btn10.setContentAreaFilled(false);
+		   btn10.setBorderPainted(false);
 	   
-	     
-//	       //컨테이너에 패널 추가
-//	       MainFrame.add(bottomPanel);
-//	       MainFrame.setVisible(true); //창을 보이게함
-	       
-//	       btn1.addActionListener(new ActionListener() {
-//	    	   @Override
-//	    	   public void actionPerformed(ActionEvent e) {
-////	    		   login2 login2 = new login2();
-////	    		   JPanel.add(login2);
-////	    		   new login2();
-////	    		   bottomPanel.setVisible(false);
-//	    		   
-//	    		   new Login2();
-//	    		   bottomPanel.setVisible(false);
-////	    		  MainFrame.setVisible(false);
-//	    	   }
-//	       });
-	       
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
-//	    		   bottomPanel.setVisible(false); 
 	    		   adminuser2.setVisible(false);
 	    	   }
 	       });
@@ -140,13 +95,8 @@ public class AdminUser2 extends JPanel {
 	       btn11.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminUser(frame);
-//	    		   bottomPanel.setVisible(false); 
 	    		   adminuser2.setVisible(false);
 	    	   }
 	       });

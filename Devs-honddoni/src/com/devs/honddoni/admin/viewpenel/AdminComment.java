@@ -12,9 +12,6 @@ import javax.swing.JPanel;
 
 import com.devs.honddoni.common.mainframe.MainFrame;
 
-
-
-
 public class AdminComment extends JPanel {
 	
 	//신고된 댓글 확인
@@ -33,8 +30,6 @@ public class AdminComment extends JPanel {
 		admincomment.setBackground(Color.white);
 		frame.add(admincomment);
 		
-		
-
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
 
@@ -74,10 +69,6 @@ public class AdminComment extends JPanel {
 	       ImageIcon img01 = new ImageIcon ("image\\admin\\Emergency.png");
 	       JLabel btn01 = new JLabel(img01);
 
-	       
-	       
-	   
-	  
 	       //패널에 버튼 추가
 	       bottomPanel.add(btn1);
 	       bottomPanel.add(btn2);
@@ -85,8 +76,6 @@ public class AdminComment extends JPanel {
 	       bottomPanel.add(btn4);
 	       bottomPanel.add(btn01);
 	      
-	       
-	    
 	       //버튼 위치 조정
 	       btn1.setBounds(35, 52, 433, 61);
 	       btn2.setBounds(35, 119, 433, 61);
@@ -95,38 +84,22 @@ public class AdminComment extends JPanel {
 	       btn01.setBounds(437, 78, 22, 22);
 		   btn4.setContentAreaFilled(false);
 		   btn4.setBorderPainted(false);
-	      
-	   
-	     
-//	       //컨테이너에 패널 추가
-//	       MainFrame.add(bottomPanel);
-//	       MainFrame.setVisible(true); //창을 보이게함
 	       
 	       btn1.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminComment2(frame);
 	    		   admincomment.setVisible(false);
-//	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
 	       
 	       btn0.addActionListener(new ActionListener() {
 	    	   @Override
 	    	   public void actionPerformed(ActionEvent e) {
-//	    		   login2 login2 = new login2();
-//	    		   JPanel.add(login2);
-//	    		   new login2();
-//	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
 	    		   admincomment.setVisible(false);
-//	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
 	}
