@@ -37,46 +37,84 @@ public class  SearchController {
 	
 	}
 	
-	//게시글 등록
-	public void writeFreeBoard(PostDTO postDTO) {
-		
-		String postName = postDTO.getPostName(); //게시글 제목
-		String postContents = postDTO.getPostContents();
-		int postMemberNo = postDTO.getPostMemberNo();
-		
-		// 게시글 등록 날짜, 시간
-		java.util.Date today = new java.util.Date(System.currentTimeMillis());
-		SimpleDateFormat postdayFormat = new SimpleDateFormat("yyMMdd");
-		SimpleDateFormat postTimeFormat = new SimpleDateFormat("HH:mm");
-		
-		String postWritingDate = postdayFormat.format(today);
-		postDTO.setPostWritingDate(postWritingDate);
-		
-		String postWritingTime = postdayFormat.format(today);
-		postDTO.setPostWritingTime(postWritingTime);
-		
-		int postNumberOfPeopleNumber = postDTO.getPostNumberOfPeopleNumber();
-				
-		// 서비스 전달용 DTO 담기
-		PostDTO post = new PostDTO();
-		post.setPostName(postName);
-		post.setPostContents(postContents);
-		post.setPostMemberNo(postMemberNo);
-		post.setPostWritingDate(postWritingDate);
-		post.setPostWritingTime(postWritingTime);
-		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
-		
-		// 서비스 호출 결과 리턴 받기(팝업 띄워주기)
-		int result = searchService.insertFreeBoardPost(post);
-		if(result > 0) {
-			popup.popup("image/post/updateSuccess.png");
-		} else {
-			popup.popup("image/post/updateSuccess.png");
-		}
-		
-	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	//게시글 등록
+//	public void writeFreeBoard(PostDTO postDTO) {
+//		
+//		String postName = postDTO.getPostName(); //게시글 제목
+//		String postContents = postDTO.getPostContents();
+//		int postMemberNo = postDTO.getPostMemberNo();
+//		
+//		// 게시글 등록 날짜, 시간
+//		java.util.Date today = new java.util.Date(System.currentTimeMillis());
+//		SimpleDateFormat postdayFormat = new SimpleDateFormat("yyMMdd");
+//		SimpleDateFormat postTimeFormat = new SimpleDateFormat("HH:mm");
+//		
+//		String postWritingDate = postdayFormat.format(today);
+//		postDTO.setPostWritingDate(postWritingDate);
+//		
+//		String postWritingTime = postdayFormat.format(today);
+//		postDTO.setPostWritingTime(postWritingTime);
+//		
+//		int postNumberOfPeopleNumber = postDTO.getPostNumberOfPeopleNumber();
+//				
+//		// 서비스 전달용 DTO 담기
+//		PostDTO post = new PostDTO();
+//		post.setPostName(postName);
+//		post.setPostContents(postContents);
+//		post.setPostMemberNo(postMemberNo);
+//		post.setPostWritingDate(postWritingDate);
+//		post.setPostWritingTime(postWritingTime);
+//		post.setPostNumberOfPeopleNumber(postNumberOfPeopleNumber);
+//		
+//		// 서비스 호출 결과 리턴 받기(팝업 띄워주기)
+//		int result = searchService.insertFreeBoardPost(post);
+//		if(result > 0) {
+//			popup.popup("image/post/updateSuccess.png");
+//		} else {
+//			popup.popup("image/post/updateSuccess.png");
+//		}
+//		
+//	}
+//	
+//	
 }
 
 
