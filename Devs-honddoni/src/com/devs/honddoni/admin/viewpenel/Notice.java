@@ -145,7 +145,7 @@ public class Notice extends JPanel{
 		postBtnAdd();
 		setPostListLb();
 		
-		//pagebarLabel에 라벨, 버튼을 더해줌
+		//pagebarLabel에 라벨, 페이징버튼을 더해줌
 		pagebarLabel.add(preNumber);
 		pagebarLabel.add(preBtn);
 		pagebarLabel.add(commingNumber);
@@ -191,9 +191,7 @@ public class Notice extends JPanel{
 	
 	/* 다음페이지로 이동버튼 */
 	public void commingPageBtn() {
-
 		int pageNo = frontPage;
-
 		int totalCount = new PagingController().NoticeWholePostNum();
 
 		PagenationComments pagenationComments = new PagenationComments();
@@ -213,7 +211,6 @@ public class Notice extends JPanel{
 		commingBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				if(frontPage < pageInfo.getMaxPage()) {
 					frontPage++;
 				}

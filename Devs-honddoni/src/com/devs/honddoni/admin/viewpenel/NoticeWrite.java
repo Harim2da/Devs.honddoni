@@ -47,15 +47,11 @@ public class NoticeWrite extends JPanel{
 		honddoniBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//관리자메인 페이지로 나감
-				System.out.println("관리자메인 페이지로 나감");
+				frame.remove(noticeWrite);
 				noticeWrite.setVisible(false);
 				adminList = new AdminList(frame);
-//				FrameManagerYs.changePanel(notice, new 관리자메인());
-//				frame.remove(notice);
-//				frame.add(adminList);
-//				frame.repaint();
-//				frame.revalidate();
+				frame.repaint();
+				frame.revalidate();
 				
 			}
 		});
@@ -69,9 +65,8 @@ public class NoticeWrite extends JPanel{
 		/* 제목텍필, 내용텍필 */
 		JTextField titleTf = new JTextField();
 		titleTf.setBounds(70, 7, 335, 26);
-		titleTf.setOpaque(false);				//배경투명
-		titleTf.setFont(font.customFont12);
-		
+		titleTf.setOpaque(false);			//배경투명
+		titleTf.setFont(font.customFont12);		
 		JTextArea contentTa = new JTextArea();
 		contentTa.setBounds(20, 116, 396, 515);
 		contentTa.setOpaque(false);
@@ -98,25 +93,18 @@ public class NoticeWrite extends JPanel{
 				if(result > 0) {
 					PopupFrame.popup("image/popup/noticeWriteSuccess.png");
 					
-					//완료 시, 다시 공지사항게시판으로
-					System.out.println("관리자메인 페이지로 나감");
+					frame.remove(noticeWrite);
 					noticeWrite.setVisible(false);
 					adminList = new AdminList(frame);
-//					frame.remove(NoticeWrite);
-//					frame.add(new Notice());
-//					frame.repaint();
-//					frame.revalidate();
+					frame.repaint();
+					frame.revalidate();
 					
 				} else {
 					PopupFrame.popup("image/popup/writingFail.png");
-					
 				}
-				
-				
 				
 			}
 		});
-				
 		
 		/* 컴포넌트 붙이기 */
 		noticeWrite.add(honddoniBtn);

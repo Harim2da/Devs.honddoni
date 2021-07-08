@@ -146,7 +146,7 @@ public class PagingController {
 		return result;		
 	}
 	
-	/* 공지 게시판 리스트 불러오기 컨트롤러*/
+	/* 해당 페이지의 공지글 리스트 불러오기 컨트롤러*/
 	public List<PostDTO> NoticePostList(int pageNo){
 		
 		PageInfoPostDTO dto = new PageInfoPostDTO();
@@ -160,10 +160,7 @@ public class PagingController {
 		
 		List<PostDTO> postList = pagingService.NoticePostList(pageInfo);
 		
-		System.out.println("들고 온 postList의 사이즈 : " + postList.size());
-
 		return postList;
-		
 	}
 
 }

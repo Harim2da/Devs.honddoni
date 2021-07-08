@@ -53,7 +53,7 @@ public class MainFrame extends JFrame{
 		
 		//예슬 실험중
 
-//		new FirstView(this);
+		new FirstView(this);
 //		new Notice(this);
 
 //		new PostNotice(this);
@@ -69,7 +69,7 @@ public class MainFrame extends JFrame{
 		//명길 실험중
 
 //		new AdminList(this);
-		new AdminList(this);
+//		new AdminList(this);
 //		new Notice(this);
 
 
