@@ -40,7 +40,7 @@ public class LoginController {
 				if(result == 1) {			
 
 					// 멤버의 권한이 "관리자"인 경우, 관리자 로그인쪽으로 전달
-					if((memberDBDTO.getMemberAccess()).equals("관리자")) {				
+					if((loginDataDTO.getMemberId()).equals("admin01")) {				
 						result = 2;
 					}
 
