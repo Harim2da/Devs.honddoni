@@ -51,7 +51,7 @@
 	</entry>
 	
 	<entry key="selectThePostList">
-	  SELECT
+	  SELECT /*com.devs.honddoni.post.model.dao.PagingDAO#selectPostList()*/
              V.*
         FROM (SELECT P.POST_NO
                    , P.POST_NAME
