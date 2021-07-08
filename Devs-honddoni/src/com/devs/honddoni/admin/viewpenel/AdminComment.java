@@ -110,8 +110,8 @@ public class AdminComment extends JPanel {
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   new AdminComment2();
-	    		   bottomPanel.setVisible(false);
+	    		   new AdminComment2(frame);
+	    		   admincomment.setVisible(false);
 //	    		  MainFrame.setVisible(false);
 	    	   }
 	       });
@@ -125,7 +125,7 @@ public class AdminComment extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
-	    		   bottomPanel.setVisible(false);
+	    		   admincomment.setVisible(false);
 //	    		  MainFrame.setVisible(false);
 	    	   }
 	       });

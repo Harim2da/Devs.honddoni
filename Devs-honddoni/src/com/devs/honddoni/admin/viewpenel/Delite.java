@@ -159,17 +159,17 @@ public class Delite extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList(frame);
-	    		   bottomPanel.setVisible(false); 
+//	    		   bottomPanel.setVisible(false); 
 	    		   delite.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-	    		   btn3.remove(btn3);
-	    		   btn5.remove(btn5);
-	    		   btn8.remove(btn8);
-	    		   btn9.remove(btn9);
-	    		   btn05.remove(btn05);
-	    		   adminlist.repaint();
-	    		   adminlist.revalidate();
+//	    		   btn1.remove(btn1);
+//	    		   btn2.remove(btn2);
+//	    		   btn3.remove(btn3);
+//	    		   btn5.remove(btn5);
+//	    		   btn8.remove(btn8);
+//	    		   btn9.remove(btn9);
+//	    		   btn05.remove(btn05);
+//	    		   adminlist.repaint();
+//	    		   adminlist.revalidate();
 	    	   }
 	       });
 	       
@@ -210,18 +210,18 @@ public class Delite extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   delite2 = new Delite2(frame);
-	    		   bottomPanel.setVisible(false); 
+//	    		   bottomPanel.setVisible(false); 
 	    		   delite.setVisible(false);
 	    		   
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-	    		   btn3.remove(btn3);
-	    		   btn5.remove(btn5);
-	    		   btn8.remove(btn8);
-	    		   btn9.remove(btn9);
-	    		   btn5.remove(btn05);
-	    		   delite2.repaint();
-	    		   delite2.revalidate();
+//	    		   btn1.remove(btn1);
+//	    		   btn2.remove(btn2);
+//	    		   btn3.remove(btn3);
+//	    		   btn5.remove(btn5);
+//	    		   btn8.remove(btn8);
+//	    		   btn9.remove(btn9);
+//	    		   btn5.remove(btn05);
+//	    		   delite2.repaint();
+//	    		   delite2.revalidate();
 	    	   }
 	       });
 	       }

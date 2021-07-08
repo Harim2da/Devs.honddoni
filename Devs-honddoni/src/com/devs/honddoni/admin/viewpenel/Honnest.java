@@ -158,15 +158,15 @@ public class Honnest extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   adminlist = new AdminList(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   honnest.setVisible(false); 
 //	    		   adminlist.setVisible(false);
-	    		   bottomPanel.remove(btn1);
-	    		   bottomPanel.remove(btn2);
-	    		   bottomPanel.remove(btn3);
-	    		   bottomPanel.remove(btn4);
-	    		   bottomPanel.remove(btn5);
-	    		   bottomPanel.remove(btn10);
-	    		   bottomPanel.remove(btn11);
+//	    		   bottomPanel.remove(btn1);
+//	    		   bottomPanel.remove(btn2);
+//	    		   bottomPanel.remove(btn3);
+//	    		   bottomPanel.remove(btn4);
+//	    		   bottomPanel.remove(btn5);
+//	    		   bottomPanel.remove(btn10);
+//	    		   bottomPanel.remove(btn11);
 //	    		   btn1.setVisible(false);
 //	    		   btn2.setVisible(false);
 //	    		   btn3.setVisible(false);
@@ -174,8 +174,8 @@ public class Honnest extends JPanel {
 //	    		   btn5.setVisible(false);
 //	    		   btn10.setVisible(false);
 //	    		   btn11.setVisible(false);
-	    		   adminlist.repaint();
-	    		   adminlist.revalidate();
+//	    		   adminlist.repaint();
+//	    		   adminlist.revalidate();
 	    		   
 	    		   
 	    		   
@@ -191,17 +191,17 @@ public class Honnest extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   honnest2 = new Honnest2(frame);
-	    		   bottomPanel.setVisible(false); 
+	    		   honnest.setVisible(false); 
 //	    		   honnest2.setVisible(false);
-	    		   bottomPanel.remove(btn1);
-	    		   bottomPanel.remove(btn2);
-	    		   bottomPanel.remove(btn3);
-	    		   bottomPanel.remove(btn4);
-	    		   bottomPanel.remove(btn5);
-	    		   bottomPanel.remove(btn10);
-	    		   bottomPanel.remove(btn11);
-	    		   honnest2.repaint();
-	    		   honnest2.revalidate();
+//	    		   bottomPanel.remove(btn1);
+//	    		   bottomPanel.remove(btn2);
+//	    		   bottomPanel.remove(btn3);
+//	    		   bottomPanel.remove(btn4);
+//	    		   bottomPanel.remove(btn5);
+//	    		   bottomPanel.remove(btn10);
+//	    		   bottomPanel.remove(btn11);
+//	    		   honnest2.repaint();
+//	    		   honnest2.revalidate();
 	    		   
 	    	   }
 	       });

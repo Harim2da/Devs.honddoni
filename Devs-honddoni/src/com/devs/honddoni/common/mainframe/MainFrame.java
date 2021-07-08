@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import com.devs.honddoni.admin.viewpenel.AdminList;
 import com.devs.honddoni.admin.viewpenel.Notice;
 import com.devs.honddoni.memberLog.view.FirstView;
 import com.devs.honddoni.post.view.PostNotice;
@@ -30,7 +31,7 @@ public class MainFrame extends JFrame{
 
 //		new MyPage(this);
 
-		new FirstView(this);
+//		new FirstView(this);
 
 //		new PostFreeBoard(this);
 
@@ -68,7 +69,8 @@ public class MainFrame extends JFrame{
 		//명길 실험중
 
 //		new AdminList(this);
-//		new AdminList(this);
+		new AdminList(this);
+//		new Notice(this);
 
 
 

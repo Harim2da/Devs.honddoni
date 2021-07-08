@@ -130,7 +130,7 @@ public class AdminPost extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
-	    		   bottomPanel.setVisible(false); 
+//	    		   bottomPanel.setVisible(false); 
 	    		   adminpost.setVisible(false);
 	    	   }
 	       });
@@ -144,7 +144,7 @@ public class AdminPost extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminPost2(frame);
-	    		   bottomPanel.setVisible(false); 
+//	    		   bottomPanel.setVisible(false); 
 	    		   adminpost.setVisible(false);
 	    	   }
 	       });
@@ -158,7 +158,7 @@ public class AdminPost extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminPostDelite();
-	    		   bottomPanel.setVisible(false); 
+//	    		   bottomPanel.setVisible(false); 
 	    		   adminpost.setVisible(false);
 	    	   }
 	       });

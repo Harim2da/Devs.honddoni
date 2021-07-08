@@ -17,7 +17,7 @@ public class Delite2 extends JPanel{
 	
 
 	private MainFrame frame;
-	private Delite2 delite;
+	private Delite2 delite2;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	Delite delite123;
 	AdminList adminlist;
@@ -25,13 +25,13 @@ public class Delite2 extends JPanel{
 	public Delite2(MainFrame frame) {
 		//프레임, 패널설정
 		this.frame = frame;
-		this.delite = this;
+		this.delite2 = this;
 		
 		//전체 패널 생성
-		delite.setBounds(0, 0, 500, 870);
-		delite.setLayout(null);
-		delite.setBackground(Color.white);
-		frame.add(delite);
+		delite2.setBounds(0, 0, 500, 870);
+		delite2.setLayout(null);
+		delite2.setBackground(Color.white);
+		frame.add(delite2);
 
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -39,14 +39,14 @@ public class Delite2 extends JPanel{
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		delite.add(bottomPanel);
+		delite2.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		delite.add(topPanel);
+		delite2.add(topPanel);
 		
 		//상단 마크 뒤로가는기능
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
@@ -147,17 +147,17 @@ public class Delite2 extends JPanel{
 //	    		   new login2();
 //	    		   bottomPanel.setVisible(false);
 	    		   
-	    		   delite123 = new Delite(frame);
-	    		   bottomPanel.setVisible(false);
+	    		   new Delite(frame);
+	    		   delite2.setVisible(false);
 //	    		  MainFrame.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-
-	    		   btn8.remove(btn8);
-	    		   btn9.remove(btn9);
-
-	    		   delite123.repaint();
-	    		   delite123.revalidate();
+//	    		   btn1.remove(btn1);
+//	    		   btn2.remove(btn2);
+//
+//	    		   btn8.remove(btn8);
+//	    		   btn9.remove(btn9);
+//
+//	    		   delite123.repaint();
+//	    		   delite123.revalidate();
 	    	   }
 	       });
 	       //뒤로가는 버튼
@@ -170,16 +170,16 @@ public class Delite2 extends JPanel{
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   adminlist = new AdminList(frame);
-	    		   bottomPanel.setVisible(false); 
-	    		   delite.setVisible(false);
-	    		   btn1.remove(btn1);
-	    		   btn2.remove(btn2);
-
-	    		   btn8.remove(btn8);
-	    		   btn9.remove(btn9);
-
-	    		   adminlist.repaint();
-	    		   adminlist.revalidate();
+//	    		   bottomPanel.setVisible(false); 
+	    		   delite2.setVisible(false);
+//	    		   btn1.remove(btn1);
+//	    		   btn2.remove(btn2);
+//
+//	    		   btn8.remove(btn8);
+//	    		   btn9.remove(btn9);
+//
+//	    		   adminlist.repaint();
+//	    		   adminlist.revalidate();
 	    	   }
 	       });
 	}

@@ -17,19 +17,19 @@ import com.devs.honddoni.common.mainframe.MainFrame;
 public class AdminUser2 extends JPanel {
 	
 	private MainFrame frame;
-	private AdminUser2 adminuser;
+	private AdminUser2 adminuser2;
 	private JButton btn1, btn2, btn3, btn4, btn5;
 	
 	public AdminUser2(MainFrame frame) {
 		//프레임, 패널설정
 		this.frame = frame;
-		this.adminuser = this;
+		this.adminuser2 = this;
 		
 		//전체 패널 생성
-		adminuser.setBounds(0, 0, 500, 870);
-		adminuser.setLayout(null);
-		adminuser.setBackground(Color.white);
-		frame.add(adminuser);
+		adminuser2.setBounds(0, 0, 500, 870);
+		adminuser2.setLayout(null);
+		adminuser2.setBackground(Color.white);
+		frame.add(adminuser2);
 		
 		/* 하단 패널 생성 */
 		JPanel bottomPanel = new JPanel();
@@ -37,14 +37,14 @@ public class AdminUser2 extends JPanel {
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setLayout(null);
 		bottomPanel.setBackground(Color.WHITE);
-		adminuser.add(bottomPanel);
+		adminuser2.add(bottomPanel);
 		
 		/* 상단 패널 생성 */
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(0, 0, 500, 100);
 		topPanel.setLayout(null);
 		topPanel.setBackground(Color.WHITE);
-		adminuser.add(topPanel);
+		adminuser2.add(topPanel);
 		
 		 ImageIcon img0 = new ImageIcon ("image\\admin\\HondoniWrite.png");//상단 혼또니 마크
 	     JButton btn0 = new JButton(img0);
@@ -132,8 +132,8 @@ public class AdminUser2 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
-	    		   bottomPanel.setVisible(false); 
-	    		   adminuser.setVisible(false);
+//	    		   bottomPanel.setVisible(false); 
+	    		   adminuser2.setVisible(false);
 	    	   }
 	       });
 	       
@@ -146,8 +146,8 @@ public class AdminUser2 extends JPanel {
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminUser(frame);
-	    		   bottomPanel.setVisible(false); 
-	    		   adminuser.setVisible(false);
+//	    		   bottomPanel.setVisible(false); 
+	    		   adminuser2.setVisible(false);
 	    	   }
 	       });
 	}

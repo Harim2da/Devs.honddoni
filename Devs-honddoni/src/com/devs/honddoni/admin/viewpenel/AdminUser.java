@@ -133,7 +133,7 @@ public class AdminUser extends JPanel{
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminList1(frame);
-	    		   bottomPanel.setVisible(false); 
+//	    		   bottomPanel.setVisible(false); 
 	    		   adminuser.setVisible(false);
 	    	   }
 	       });
@@ -147,7 +147,7 @@ public class AdminUser extends JPanel{
 //	    		   bottomPanel.setVisible(false);
 	    		   
 	    		   new AdminUser2(frame);
-	    		   bottomPanel.setVisible(false); 
+//	    		   bottomPanel.setVisible(false); 
 	    		   adminuser.setVisible(false);
 	    	   }
 	       });
