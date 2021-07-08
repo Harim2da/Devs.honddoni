@@ -628,8 +628,8 @@ public class SelectedComment extends JPanel {
 						reportDTO.setReportCategory(report);
 						reportDTO.setBroadType(postCategory);
 						reportDTO.setBroadNo(postNo);
-						reportDTO.setReportMemberNo(3 /* 싱글톤으로 저장된 로그인된 멤버 번호 */);
-						reportDTO.setReportedMemberNo(getMemberNo /* 댓글 작성자 */);
+						reportDTO.setReportMemberNo(userNum.getLoginMemberNo());
+						reportDTO.setReportedMemberNo(getMemberNo);
 
 						contactController2.reportComment(reportDTO);
 
@@ -748,7 +748,7 @@ public class SelectedComment extends JPanel {
 						CommentsDTO deleteComment = new CommentsDTO();
 
 						deleteComment.setCommentsNo(getCommentsNo);
-						deleteComment.setMemberNo(getMemberNo);
+						
 
 						ContactController2 contactController2 = new ContactController2();
 						contactController2.deleteComment(deleteComment);
