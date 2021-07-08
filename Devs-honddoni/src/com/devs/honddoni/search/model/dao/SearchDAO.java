@@ -118,47 +118,80 @@ public class SearchDAO {
 		} 
 		return postList;
 	}
-
-	public int insertNewFreeBoard(Connection con, PostDTO post) {
-		
-		//게시글 번호를 DB에서 받음
-		PreparedStatement pstmt = null;
-		int result = 0;
-		
-		String query = prop.getProperty("insertNewFreeBoard");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			
-			pstmt.setString(1, post.getPostName());
-			pstmt.setString(2, post.getPostContents());
-			pstmt.setInt(3, post.getPostMemberNo());
-			pstmt.setString(4, post.getPostWritingDate());
-			pstmt.setString(5, post.getPostWritingTime());
-			pstmt.setInt(6, post.getPostNumberOfPeopleNumber());
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
-
-
-	public int wholeNum() {
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		int result = 0;
-		
-		String query = prop.getProperty("wholeNum");
-		pstmt = con
-		
-		return result;
-	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	public int insertNewFreeBoard(Connection con, PostDTO post) {
+//		
+//		//게시글 번호를 DB에서 받음
+//		PreparedStatement pstmt = null;
+//		int result = 0;
+//		
+//		String query = prop.getProperty("insertNewFreeBoard");
+//		
+//		try {
+//			pstmt = con.prepareStatement(query);
+//			
+//			pstmt.setString(1, post.getPostName());
+//			pstmt.setString(2, post.getPostContents());
+//			pstmt.setInt(3, post.getPostMemberNo());
+//			pstmt.setString(4, post.getPostWritingDate());
+//			pstmt.setString(5, post.getPostWritingTime());
+//			pstmt.setInt(6, post.getPostNumberOfPeopleNumber());
+//			
+//			result = pstmt.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(pstmt);
+//		}
+//		
+//		return result;
+//	}
+//
+//
+//	public int wholeNum() {
+//		
+//		PreparedStatement pstmt = null;
+//		ResultSet rset = null;
+//		int result = 0;
+//		
+//		String query = prop.getProperty("wholeNum");
+//		pstmt = con
+//		
+//		return result;
+//	}
+//	
+//}

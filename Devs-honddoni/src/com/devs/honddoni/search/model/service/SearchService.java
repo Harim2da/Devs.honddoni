@@ -33,27 +33,46 @@ public class SearchService {
 		 close(con);
 		return selectList;
 	}
-
-	public int insertFreeBoardPost(PostDTO post) {
-
-		Connection con = getConnection();
-		
-		int result = 0;
-		
-		int postFreeBoardResult = searchDAO.insertNewFreeBoard(con, post);
-		
-		if(postFreeBoardResult > 0) {
-			commit(con);
-			result = 1;
-		} else {
-			rollback(con);
-		}
-		close(con);
-		
-		return result;
-	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	public int insertFreeBoardPost(PostDTO post) {
+//
+//		Connection con = getConnection();
+//		
+//		int result = 0;
+//		
+//		int postFreeBoardResult = searchDAO.insertNewFreeBoard(con, post);
+//		
+//		if(postFreeBoardResult > 0) {
+//			commit(con);
+//			result = 1;
+//		} else {
+//			rollback(con);
+//		}
+//		close(con);
+//		
+//		return result;
+//	}
+//
+//}
 
 
 
