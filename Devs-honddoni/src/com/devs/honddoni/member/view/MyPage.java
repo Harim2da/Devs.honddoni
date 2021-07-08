@@ -19,13 +19,14 @@ import javax.swing.JTextField;
 import com.devs.honddoni.common.font.FontManager;
 import com.devs.honddoni.common.mainframe.MainFrame;
 import com.devs.honddoni.common.mainframe.PopupFrame;
-import com.devs.honddoni.common.sound.SoundManager;
 import com.devs.honddoni.member.controller.MemberController;
 import com.devs.honddoni.member.model.dto.ChangePwdDTO;
 import com.devs.honddoni.member.model.dto.MemberInfoDTO;
 import com.devs.honddoni.member.model.dto.MemberRegistDTO;
 import com.devs.honddoni.memberLog.controller.GetLoginMember;
 import com.devs.honddoni.memberLog.view.MemberLogView;
+import com.devs.honddoni.post.view.PostHonddoni;
+import com.devs.honddoni.post.view.PostNotice;
 import com.devs.honddoni.search.view.MainBottomPanel;
 
 public class MyPage extends JPanel {
@@ -110,29 +111,25 @@ public class MyPage extends JPanel {
 		this.myPage = this;
 
 
-
-		//		this.setBounds(0, 100, 500, 770);
-		//		this.setBackground(Color.white);
-		//		this.setLayout(null);
-		//		frame.add(this);
-
-
+		/* 하단 패널 */
 		bottomPanel.setBounds(0, 100, 500, 770);
 		bottomPanel.setBackground(Color.WHITE);
 		bottomPanel.setLayout(null);
 		frame.add(bottomPanel);
 
+		/* 상단 패널 */
 		upPanel = new JPanel();
 		upPanel.setBounds(0, 0, 500, 100);
 		upPanel.setLayout(null);
 		upPanel.setBackground(Color.WHITE);
 
-
+		/* 상단 패널 백그라운드 이미지 */
 		backgroundImage = new JLabel("");
 		backgroundImage.setBounds(0, 0, 500, 100);
 		backgroundImage.setIcon(new ImageIcon("image/common/toppanel/backgroundImage.png"));
 		backgroundImage.setVisible(true); 	
 
+		/* 마이혼또니 버튼 */
 		myHonddoniBtn = new JButton("");
 		myHonddoniBtn.setBounds(171,23,56,56);
 		myHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/myHonddoniBtn.png"));
@@ -162,7 +159,8 @@ public class MyPage extends JPanel {
 
 			}
 		});
-
+		
+		/* 혼또니 찾기 버튼 */
 		searchHonddoniBtn = new JButton("");
 		searchHonddoniBtn.setBounds(234,23,56,56);
 		searchHonddoniBtn.setIcon(new ImageIcon("image/common/toppanel/SearchHonddoniBtn.png"));
@@ -172,11 +170,27 @@ public class MyPage extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				frame.remove(bottomPanel);
+				frame.remove(myPage);
 
+				bottomPanel.remove(changePwdPanel);
+				bottomPanel.removeAll();
+				frame.repaint();
+				frame.revalidate();
+				bottomPanel.repaint();
+				bottomPanel.revalidate();
+				myPage.repaint();
+				myPage.revalidate();
+
+				new PostHonddoni(frame);
+				
+				frame.repaint();
+				frame.revalidate();
 
 			}
 		});
 
+		/* 메인화면 버튼 */
 		homeBtn = new JButton("");
 		homeBtn.setBounds(298,23,56,56);
 		homeBtn.setIcon(new ImageIcon("image/common/toppanel/HomeBtn.png"));
@@ -199,15 +213,34 @@ public class MyPage extends JPanel {
 				myPage.revalidate();
 
 				new MainBottomPanel(frame);
+				
+				frame.repaint();
+				frame.revalidate();
+
 			}
 		});
 
+		/* 관심글 목록 가기 버튼 */
 		interestingBtn = new JButton("");
 		interestingBtn.setBounds(362,23,56,56);
 		interestingBtn.setIcon(new ImageIcon("image/common/toppanel/InterestingBtn.png"));
 		interestingBtn.setBorderPainted(false);
 		interestingBtn.setContentAreaFilled(false);
 		interestingBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PopupFrame.popup3("image/popup/error.png");
+			}
+		});
+
+		/* 공지사항 */
+		noticeBtn = new JButton("");
+		noticeBtn.setBounds(426,23,56,56);
+		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
+		noticeBtn.setBorderPainted(false);
+		noticeBtn.setContentAreaFilled(false);
+		noticeBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -222,21 +255,11 @@ public class MyPage extends JPanel {
 				bottomPanel.revalidate();
 				myPage.repaint();
 				myPage.revalidate();
+				
+				new PostNotice(frame);
 
-				new MainBottomPanel(frame);
-			}
-		});
-
-		noticeBtn = new JButton("");
-		noticeBtn.setBounds(426,23,56,56);
-		noticeBtn.setIcon(new ImageIcon("image/common/toppanel/NoticeBtn.png"));
-		noticeBtn.setBorderPainted(false);
-		noticeBtn.setContentAreaFilled(false);
-		noticeBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
+				frame.repaint();
+				frame.revalidate();
 
 			}
 		});
@@ -257,7 +280,6 @@ public class MyPage extends JPanel {
 
 			public void mousePressed(MouseEvent e) {
 				/* 비밀번호 변경 창 패널 */
-				//				JPanel changePwdPanel = new JPanel();
 				changePwdPanel.setLayout(null);
 				changePwdButton.setEnabled(false);
 				changePwdPanel.setBounds(0, 100, 500, 770);
