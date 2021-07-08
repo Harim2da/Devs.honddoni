@@ -66,13 +66,13 @@
 	</entry>
 	
 	<entry key="checkPassword">
-        SELECT
+        SELECT /*com.greedy.member.model.dao.MemberDAO#checkPassword()*/
         	   A.MEMBER_PASSWORD
           FROM TBL_MEMBER A
          WHERE A.MEMBER_ID = ?
 	</entry>
 	<entry key="callMemberInfo">
-        SELECT
+        SELECT /*com.greedy.member.model.dao.MemberDAO#callMemberInfo()*/
         	   A.*
           FROM TBL_MEMBER A
          WHERE A.MEMBER_ID = ?

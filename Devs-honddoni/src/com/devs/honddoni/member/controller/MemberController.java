@@ -85,31 +85,21 @@ public class MemberController {
 		
 		return result;
 	}
-
-	public MemberInfoDTO callMemberInfo(String testId) {
+	
+	/* 현재 접속중인 사용자의 개인정보를 받아오기 위해 아이디 전달 */
+	public MemberInfoDTO callMemberInfo(String userId) {
 		
 		MemberInfoDTO memberInfo = new MemberInfoDTO();
-		memberInfo = memberService.callMemberInfo(testId);
+		memberInfo = memberService.callMemberInfo(userId);
 		
 		
 		return memberInfo;
 		
 	}
 
-	public void changeProfile(String profile) {
-		
-		int result = 0;
-		
-		result = memberService.changeProfile(profile);
-		
-		if(result > 0) {
-			myPageResultView.successView("chageInfoSuccess");
-		} else {
-			myPageResultView.failedView("chageInfoFailed");
-		}
-		
-	}
+ 
 
+	/* 콤보박스를 통해 선택한 성향 정보를 전달 받아서 서비스로 전달 */
 	public void changeCharacter(Integer newCharacterCode) {
 
 		int result = 0;
@@ -124,6 +114,7 @@ public class MemberController {
 		
 	}
 
+	/* 변경된 사용자의 정보를 전달 */
 	public void changeInfo(MemberInfoDTO memberInfo) {
 		int result = 0;
 		
@@ -132,7 +123,6 @@ public class MemberController {
 		if(result > 0) {
 			myPageResultView.successView("chageInfoSuccess");
 		} else {
-			System.out.println("여긴가?");
 			myPageResultView.failedView("chageInfoFailed");
 		}
 	}
