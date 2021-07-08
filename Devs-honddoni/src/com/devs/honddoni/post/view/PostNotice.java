@@ -258,6 +258,8 @@ public class PostNotice extends JPanel{
 				postDTOList = new PagingController().NoticePostList(pageNo);
 				
 				postNotice.remove(noticeLabel);
+				setNoticeLabel();
+				
 				setTitle();	    
 				postBtnAdd();
 				setPostListLb();		//게시글 배경 틀 다시 잡기
